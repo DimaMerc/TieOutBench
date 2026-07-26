@@ -1,0 +1,150 @@
+HEADLINE (goes in the article title field):
+
+The new model-risk rulebook leaves generative AI out. So who validates the AI doing finance work?
+
+
+BODY (paste below into the article editor; formatting notes at the bottom):
+
+Part of a series on building runnable evaluations for finance LLMs. This one steps back from the evals themselves to a question every risk and governance team in finance inherited this spring: what does validating generative AI even mean - and what can a defensible answer look like while the rulebook is still being written?
+
+For fifteen years, model risk in US banking had one rulebook. SR 11-7, issued in 2011, set the deal: if a model could move money or decisions, it got an inventory entry, an independent validation, ongoing monitoring, and a paper trail an examiner could read. Credit models, market risk models, pricing models - all of it, one discipline.
+
+In April, the Fed, the OCC, and the FDIC replaced it. The new guidance, SR 26-2, is mostly sensible modernization: validation effort calibrated to materiality instead of one-size-fits-all. But it contains one footnote with consequences far beyond its length. Generative AI and agentic AI are explicitly out of scope - "novel and rapidly evolving" - with firms told that their own risk-management practices should govern those tools.
+
+From the deployment side, the timing is the story. The first rewrite of model-risk guidance in fifteen years arrived in the same year AI agents started reconciling ledgers, drafting research, screening KYC files, and watching NAVs - and it politely declined to cover exactly those models. Not because they're safe. Because they're moving too fast to pin down.
+
+
+What firms are doing with the vacuum
+
+Risk.net reported in May on how the industry is splitting. Many firms classify their GenAI tools as productivity software - no model, no validation file, problem defined away. A few - reportedly including Bank of America and Goldman Sachs - were validating their GenAI models by default even before the old guidance was withdrawn. And in between sits an honest technical objection you hear from practitioners: you cannot validate a foundation model. There are no weights you control. The vendor can swap the model underneath you. Outputs are stochastic. There is no closed-form challenger to benchmark against.
+
+All of that is true. Three other things are also true.
+
+First, the exclusion is not an exemption from consequences. A wrong number in a client report is wrong whether or not supervisory guidance covered the tool that produced it. The obligation to be right about money predates every rulebook and survives all of them.
+
+Second, vendor tools don't launder the risk. For banks, the 2023 interagency third-party guidance already holds you responsible for a vendor's work as if you had performed it yourself. A vendor's accuracy claim is a sales slide, not a validation file. If an AI tool inside your operations flags exceptions or drafts numbers, someone in your building owns whether it works.
+
+Third, the vacuum is probably temporary. The agencies have signaled that a request for information on AI is coming, and GenAI-specific guidance is widely expected to follow. Whatever it says, the first thing an examiner is likely to ask about is the interim record: what your firm did about GenAI while the rules were unwritten. "We called it productivity software" is an answer. It's just not a good one.
+
+
+Validate the work, not the weights
+
+The foundation-model objection dissolves when you change the unit of validation.
+
+You can't validate a foundation model. You can absolutely validate a tool built on one - because the tool does a specific job, and jobs have right answers. A reconciliation either ties or it doesn't. A trade confirmation either matches the counterparty's or it doesn't. An earnings summary either states the filed figures or it invents them. The moment you ask "can this system do this job on these inputs," the un-validatable black box becomes a measurable worker.
+
+What that takes is not exotic. Decompose the workflow into checkpoints. Build a labeled gold set with evidence citations - including clean cases where everything ties, not just planted breaks. Grade outputs against a rubric where the catastrophic errors are automatic fails, not point deductions. Rerun the whole thing every time the model, the version, or the prompt changes. Keep the scores, the failures, and the fixes on file.
+
+Model-risk people will recognize every piece of that, because it's their own vocabulary wearing new clothes. The gold set is a benchmark portfolio. The auto-fail gates are validation thresholds. The failure taxonomy is findings and remediation. Running several models against the same gold set is challenger analysis. The discipline is fifteen years old. Only the model type is new.
+
+
+What the receipts look like
+
+I've been building exactly that, in public: five runnable evaluations across real asset-management workflows - quarterly earnings analysis, buffer-ETF diligence, DCF valuation, ETF creation/redemption reconciliation, and OTC swap confirmation matching - each with gated rubrics, gold cases cited to public sources wherever they exist, and live model runs: frontier models on three of the five, open-weight models on the other two. Three findings from that work show why output-level validation earns its keep, and why a decision-level spot check can miss what matters.
+
+The wrong method can look the safest. On a real DCF case, the correct valuation lands about 20% away from the market price - while the classic blunder (dividing enterprise value by shares and skipping the net-debt bridge) lands within 3% of the price. To a reviewer eyeballing outputs, the wrong method looks calibrated and the right one looks aggressive. A grader that averages correctness rewards the blunder. A gate on the valuation bridge catches it. "Looks right" and "is right" are different properties, and only one of them is a control.
+
+A model can make the right decision with the wrong number. On the reconciliation eval, one frontier model refused to settle a broken creation basket - the right call - but its own arithmetic was two hundred thousand dollars off, so it described a basket that was short as over-delivered. Grade only the decision and this model scores perfect. In production, its escalation email sends the desk hunting in the wrong direction. The eval pins the error to the exact valuation step that owns it.
+
+The same break can be sized wrong in both directions. On the confirmation-matching eval, all three models correctly refused to affirm a swap whose fixed rate was off by five basis points - about EUR 25,000 a year on the swap's EUR 50 million notional. But only one sized it right. One reported it ten times too small, which a human triages as trivia. One read five basis points as fifty and sized the damage at EUR 2.5 million over the life of the swap - twenty times the correct lifetime figure of EUR 125,000 - which triggers a fire drill. The affirm-or-stop call was right in every run; the number attached to it was wrong in two of three models. That is exactly the granularity a validation file needs: not "is the model good," but which checkpoint still needs the human.
+
+One more finding, about the tooling itself: on four of the five evals in this series, the first live models exposed bugs in my own grader that synthetic self-tests had been written around. Validation tooling needs validating too. That's not an argument against the approach - it's an argument for starting before the deadline arrives, because the first version of a GenAI validation harness will likely be wrong in ways only real runs reveal.
+
+
+A minimal credible program
+
+For a firm with GenAI anywhere near financial outputs - reports, reconciliations, client communications, oversight alerts - a defensible interim program fits in five steps:
+
+1. Inventory honestly. List every GenAI tool that touches figures, filings, or decisions - including the AI inside vendor products. "It's embedded in the platform" is where the riskiest models hide.
+
+2. Build gold sets. Twenty to fifty labeled cases per workflow, cited to source documents, with clean cases alongside known breaks. A model that flags everything is as undeployable as one that approves everything, and only clean cases catch the first kind.
+
+3. Set gates before averages. Decide which errors are automatic fails - unit and scale misreads, wrong periods, fabricated figures, approving what doesn't tie - before measuring average accuracy. A 95% average with a fired gate is a fail, and the file should say so.
+
+4. Rerun on every change. New model version, new prompt, new vendor release: same gold set, same gates, scores side by side. Vendors will change models underneath you; regression runs are how you notice.
+
+5. Write it down. Scores, gates fired, failure patterns, fixes. If guidance arrives next year, this record is your best evidence of sound interim practice. If it never arrives, it's still the acceptance test that told you exactly where the human stays in the loop.
+
+None of this requires a data-science department. It requires knowing the workflow well enough to say what the right answer is, what the catastrophic errors are, and what a defensible file looks like. That's domain knowledge plus discipline - which is fortunate, because that's what most risk and operations teams already have.
+
+
+The window is the point
+
+SR 26-2 didn't say generative AI is safe. It said: for now, you decide. That's rare - a moment where the standard of care is being set not by the regulation but by what serious firms choose to do before it exists. If and when the GenAI guidance lands, the firms that built gold sets, gates, and receipts during the vacuum won't just be ready faster - they'll be holding a record instead of an excuse.
+
+Everything I described is runnable and MIT-licensed - the workflows, the rubrics with every gate, the gold cases, the live-run results and failure taxonomies. Two commands reproduce the core without an API key. And if you're working out what GenAI validation should look like at your firm - asset manager, fund servicer, bank, or the vendor selling to them - I'd genuinely enjoy comparing notes.
+
+Repo: github.com/DimaMerc/finance-llm-evals
+
+Dmitry Krutous - I build evals for finance LLMs. ETF / derivatives domain expert; I ran the change-management side of an institutional ETF servicing platform (creation/redemption, derivatives processing). MBA, PMP. Greater Boston.
+
+
+==================================================================
+FORMATTING NOTES (do these by hand in the LinkedIn editor - not part of the article):
+
+1. Cover image: assets/cover-sr262.png (wide 1200x630 - article covers crop
+   square images; this one is laid out for the banner ratio).
+
+2. Make these lines Section Headers (the editor's "H2" style):
+   - What firms are doing with the vacuum
+   - Validate the work, not the weights
+   - What the receipts look like
+   - A minimal credible program
+   - The window is the point
+
+3. Italicize the opening "Part of a series..." paragraph.
+
+4. Bold SPARINGLY - a few phrases only, not whole sentences. Suggested spots:
+   - "Generative AI and agentic AI are explicitly out of scope" (second paragraph)
+   - "The affirm-or-stop call was right in every run; the number attached to it
+     was wrong in two of three models." (receipts section)
+   - "for now, you decide." (final section)
+   (The "validate the work, not the weights" idea is already carried by its H2 -
+   no body bold needed for it.) Anything more starts to look generated.
+
+5. The three receipt findings ("The wrong method can look the safest.", "A model
+   can make the right decision with the wrong number.", "The same break can be
+   sized wrong in both directions.") - bold just these lead-in
+   sentences OR use the editor's bullet style; pick one treatment, not both.
+
+6. Links inside article bodies are fine on LinkedIn (no feed-post penalty), so
+   the repo link at the bottom stays in the text.
+
+7. Timing per the standing runbook: publish Tue-Thu ~8-9:30am ET. The driver
+   post is content/linkedin-post-sr262-driver.txt (publish the article FIRST);
+   the driver's first comment carries the article link + repo link.
+
+FACT ANCHORS (for your own comfort before publishing - not part of the article;
+all claims below re-verified 2026-07-09 by a 3-reviewer adversarial pass):
+- SR 26-2 issued April 17, 2026 by Fed/OCC/FDIC; supersedes SR 11-7 (2011);
+  OCC version = Bulletin 2026-13; materiality-based calibration confirmed in
+  the guidance text. The GenAI/agentic exclusion is FOOTNOTE 3 of the
+  attachment PDF (SR2602a1.pdf), verified verbatim: "Generative AI and agentic
+  AI models are novel and rapidly evolving. As such, they are not within the
+  scope of this guidance. Nonetheless, a banking organization's risk management
+  and governance practices should guide the determination of appropriate
+  governance and controls for any tools, processes, or systems not covered in
+  this document." (Hence the article says "one footnote," not "one sentence.")
+  Sources: federalreserve.gov/supervisionreg/srletters/SR2602.htm;
+  occ.gov Bulletin 2026-13; Moody's/Sullivan & Cromwell analyses.
+- Industry split + BofA/Goldman + "you cannot validate a foundation model":
+  Risk.net, "Do banks still need to validate GenAI models?", May 7, 2026.
+  NOTE: Risk.net's wording is PAST tense - the two banks "were subjecting
+  GenAI models... to validation by default before SR 11-7 was withdrawn" -
+  which is why the article now says "were validating... even before the old
+  guidance was withdrawn."
+- Interagency RFI on AI: VERIFIED as an agency statement, not just analyst
+  expectation - OCC news release NR 2026-29 (Apr 17, 2026): the agencies
+  "plan to issue in the near future a request for information" addressing
+  model risk and "banks' use of AI, including generative AI and agentic AI."
+  So "the agencies have signaled" is accurate, even conservative.
+- Third-party guidance: Interagency Guidance on Third-Party Relationships,
+  June 2023 (OCC Bulletin 2023-17) - bank responsible for vendor activity
+  "as if the bank performed it directly." Applies to BANKS (phrased that way).
+- DCF finding: gold ~$228 (~20% below market) vs EV/shares blunder ~$279
+  (within 3% of price) - matches README eval #3.
+- Recon finding: $200,000 overstatement flips residual sign; model still
+  refused to settle - matches README eval #4 (Haiku, GATE.SCALE).
+- bp finding: 5 bp ~ EUR 25,000/yr; one model 10x low (EUR ~2,500/yr); one
+  read 5 bp as 50 bp -> EUR 2.5M lifetime vs correct EUR 125,000 lifetime
+  (stated as lifetime-vs-lifetime, per the eval-5 scoping rule).

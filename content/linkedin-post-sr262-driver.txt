@@ -1,0 +1,30 @@
+DRIVER POST for the SR 26-2 article (feed post; publish runbook at bottom)
+===========================================================================
+
+In April, US banking regulators rewrote model risk for the first time in fifteen years.
+
+SR 11-7 - the rulebook that made every consequential model earn an inventory entry, an independent validation, and a paper trail - is gone. Its replacement, SR 26-2, is mostly sensible modernization. Except for one footnote: generative AI and agentic AI are explicitly out of scope. "Novel and rapidly evolving." Firms should govern them with their own risk practices.
+
+So the rewrite arrived the same year AI agents started reconciling ledgers, drafting research, and watching NAVs - and declined to cover exactly those models.
+
+Some firms are treating that as a pass: GenAI is "productivity software," no validation file needed. A few were reportedly validating anyway, even before the rewrite. I think the honest answer sits elsewhere: you can't validate a foundation model, but you can validate the work it does. Gold sets. Auto-fail gates. Challenger runs. Receipts.
+
+I wrote up what that looks like in practice, including three findings from the gold cases and the live frontier-model runs that a decision-level spot check would have missed entirely.
+
+Article in the first comment. If this debate is live at your firm, I'd love to hear how you're approaching it.
+
+
+===========================================================================
+PUBLISH RUNBOOK (not part of the post):
+
+1. Timing: Tuesday ~8-9:30am ET, same morning as the article (publish the
+   article FIRST so the link exists).
+2. No links in the post body. FIRST COMMENT immediately after posting:
+   the article link + the repo link (github.com/DimaMerc/finance-llm-evals).
+3. Cover image: none needed - text-only driver reads cleaner; the article
+   carries the visual (cover-sr262.png).
+4. Different hook from the article title by design (rewrite-left-them-out
+   vs who-validates) so profile visitors don't see the same sentence twice.
+5. If anyone from model-risk/governance engages substantively, the earned
+   follow-up is a comment reply with a specific receipt (e.g., the
+   sized-10x-apart break), not another link.
