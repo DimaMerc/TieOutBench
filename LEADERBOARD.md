@@ -1,12 +1,13 @@
 # Leaderboard — every live model run in this suite
 
 One page, every real model this suite has graded so far — with the caveats stated **before** the
-numbers: sample sizes are small (one run per model per case), evals **#3–#5** now cover **seven
-frontier models across two vendors** (four OpenAI, three Anthropic), evals **#1–#2** have been run
-only against local open-weight models (two Qwen generations), and eval #5's swap-inside-an-ETF case
-pair has not been live-run yet. Google models are the next family; the harness takes any
-OpenAI-compatible endpoint (`--model live --endpoint <url> --model-id <model>`), so adding a vendor
-is a run, not a rebuild — though, as the methodology note below records, not a *free* one.
+numbers: sample sizes are small (one run per model per case), evals **#3–#5** now cover **eight
+frontier models across three vendors** (four OpenAI, three Anthropic, one Google), evals **#1–#2**
+have been run only against local open-weight models (two Qwen generations), and eval #5's
+swap-inside-an-ETF case pair has not been live-run yet. Google is represented only by a flash-tier
+model, since its pro line is a generation behind. The harness takes any OpenAI-compatible endpoint
+(`--model live --endpoint <url> --model-id <model>`), so adding a vendor is a run, not a rebuild —
+though, as the methodology note below records, not a *free* one.
 
 **How to read the scores.** Every eval reports a **gated** score: point-weighted, tiered rubric
 criteria, collapsed by auto-fail **gates** when a model commits one of the errors that quietly
@@ -15,59 +16,83 @@ basket that doesn't reconcile, affirming a confirmation that doesn't tie. A mode
 on a naive average and ~0.45 gated; **the gap is the finding.** Mechanics:
 [README → How the scoring works](README.md#how-the-scoring-works-30-more-seconds).
 
-## Frontier runs — evals #3–#5, two vendors, seven models
+## Frontier runs — evals #3–#5, three vendors, eight models
 
-| Eval · case | Opus 4.8 | Sonnet 4.6 | Haiku 4.5 | GPT-5.6-sol | GPT-5.5 | GPT-5.4 | GPT-5.4-mini |
-|---|---:|---:|---:|---:|---:|---:|---:|
-| **#3 DCF** — McDonald's FY2025 | **0.965** | 0.955 | 0.692 · `C1FCF` | 0.951 | 0.953 | 0.903 | 0.631 · `FALSEPRECISION` |
-| **#4 Creation/redemption** — break | **0.983** | 0.943 | 0.496 · `SCALE` | 0.943 | 0.943 | **0.983** | 0.714 |
-| **#4** — clean-settle counterweight | 0.983 | 0.983 | 0.983 | 0.973 | 0.983 | 0.973 | 0.983 |
-| **#5 Confirmation matching** — break | **0.980** | 0.933 | 0.933 | **0.980** | **0.980** | **0.980** | 0.933 |
-| **#5** — clean-match counterweight | 0.980 | 0.980 | 0.980 | 0.980 | 0.980 | 0.980 | 0.980 |
+Models as rows, cases as columns. Gate names abbreviated; each is `GATE.<NAME>`.
 
-Gate names are abbreviated; each is `GATE.<NAME>`. Anthropic models were run via the
-OpenAI-compatible endpoint at `api.anthropic.com`, OpenAI models at `api.openai.com`.
+| Model | Tier | #3 DCF | #4 recon (break) | #4 clean | #5 confirm (break) | #5 clean |
+|---|---|---:|---:|---:|---:|---:|
+| **Claude Opus 4.8** | flagship | **0.965** | **0.983** | 0.983 | **0.980** | 0.980 |
+| Claude Sonnet 4.6 | mid | 0.955 | 0.943 | 0.983 | 0.933 | 0.980 |
+| Claude Haiku 4.5 | small | 0.692 · `C1FCF` | 0.496 · `SCALE` | 0.983 | 0.933 | 0.980 |
+| **GPT-5.6-sol** | flagship | 0.951 | 0.943 | 0.973 | **0.980** | 0.980 |
+| GPT-5.5 | flagship (prev.) | 0.953 | 0.943 | 0.983 | **0.980** | 0.980 |
+| GPT-5.4 | mid | 0.903 | **0.983** | 0.973 | **0.980** | 0.980 |
+| GPT-5.4-mini | small | 0.631 · `FALSEPRECISION` | 0.714 | 0.983 | 0.933 | 0.980 |
+| **Gemini 3.6 Flash** | small/fast | 0.922 | **0.983** | 0.973 | **0.980** | 0.980 |
 
-### The methodology finding — reasoning tokens are not free
+Anthropic models ran via the OpenAI-compatible endpoint at `api.anthropic.com`, OpenAI at
+`api.openai.com`, Google at `generativelanguage.googleapis.com/v1beta/openai`.
 
-The first cross-vendor run broke the harness twice before it produced a single comparable number,
-and both breakages would have published as capability findings:
+### The methodology finding — every vendor hides the budget differently
 
-1. **The client.** OpenAI's GPT-5 family rejects `max_tokens` and requires `max_completion_tokens`.
-   Every call failed at the HTTP layer until the client learned to flip the field on that 400.
-2. **The budget — the dangerous one.** OpenAI counts *reasoning* tokens against the completion
-   budget; Anthropic's compatible endpoint does not. So an 8,000-token cap that was ample for every
-   Claude model silently starved every GPT model on the one long case (DCF, ~4.4k-token prompt).
-   The damage was invisible as a crash and looked exactly like incompetence:
+The cross-vendor runs broke the harness three separate times, and every breakage would have
+published as a capability finding. The unifying lesson: **you cannot compare models across vendors
+until you have proved the harness gives each one equivalent room**, and each vendor conceals that
+differently.
 
-   | Model · DCF | @ 8k budget (starved) | @ 32k budget (fair) |
-   |---|---:|---:|
-   | GPT-5.5 | *empty completion* | **0.953** — no gates |
-   | GPT-5.6-sol | 0.322 · **six gates fired** | **0.951** — no gates |
-   | GPT-5.4 | 0.618 · `FALSEPRECISION` | **0.903** — gate cleared |
-   | GPT-5.4-mini | 0.745 | 0.631 · `FALSEPRECISION` *(genuine — see below)* |
+| Vendor | Budget field | Thinking counts against it? | Thinking visible in `usage`? |
+|---|---|---|---|
+| Anthropic | `max_tokens` | no (via the compat endpoint) | — |
+| OpenAI | `max_completion_tokens` only — rejects `max_tokens` | **yes** | reported |
+| Google | `max_tokens` | **yes** | **no** — only in `total_tokens` |
 
-   Every one of those left-hand numbers is wrong. Six gates firing at once is the signature of a
-   truncated answer, not a coherent error. An eval that gives one vendor less effective room than
-   another is measuring configuration, not capability — the cross-vendor form of *looks right ≠ is
-   right*, and it is only visible once a second vendor is in the harness.
+Google's is the quietest failure of the three. A trivial eight-token smoke test returned
+`completion_tokens: 3` and `total_tokens: 124` — 113 thinking tokens spent and invisible in the
+field a harness would naturally read. Size budgets from `completion_tokens` and you would starve
+Gemini forever without ever seeing why.
 
-### What the seven models actually show
+OpenAI's version cost four wrong numbers before it was caught. An 8,000-token cap that was ample
+for every Claude model silently starved every GPT model on the one long case (DCF, ~4.4k-token
+prompt) — and the damage looked exactly like incompetence rather than truncation:
 
-- **The top tiers have converged.** Opus 4.8, GPT-5.6-sol, and GPT-5.5 are within ~0.03 of each
-  other on every case. Opus keeps a real edge on creation/redemption (0.983 vs 0.943), where it
-  reconciles to the dollar; on confirmation matching four models tie at the 0.980 ceiling.
-- **The marquee decision gates still never fire — now across two vendors and seven models.**
+| Model · DCF | @ 8k budget (starved) | @ 32k budget (fair) |
+|---|---:|---:|
+| GPT-5.5 | *empty completion* | **0.953** — no gates |
+| GPT-5.6-sol | 0.322 · **six gates fired** | **0.951** — no gates |
+| GPT-5.4 | 0.618 · `FALSEPRECISION` | **0.903** — gate cleared |
+| GPT-5.4-mini | 0.745 | 0.631 · `FALSEPRECISION` *(genuine — see below)* |
+
+Six gates firing at once is the signature of a truncated answer, not a coherent error. An eval
+that gives one vendor less effective room than another measures configuration, not capability —
+the cross-vendor form of *looks right ≠ is right*, and invisible until a second vendor is in the
+harness.
+
+The client needed one more fix to get there: OpenAI's GPT-5 family rejects `max_tokens` outright in
+favour of `max_completion_tokens`, so every call failed at the HTTP layer until the client learned
+to flip the field on that 400. Every left-hand number in the table above is wrong, and none of them
+announced itself as an error.
+
+### What the eight models actually show
+
+- **The marquee decision gates still never fire — now across three vendors and eight models.**
   Nobody affirmed the broken trade (`GATE.MATCH`), nobody settled the short basket (`GATE.RECON`),
-  and nobody cried false break on the clean counterweights. What was a single-family caveat now
-  looks like a property of the task: frontier models get the *stop-or-go* call right, and lose
-  points on the arithmetic underneath it.
-- **Small tiers fail — but differently by vendor.** Haiku 4.5 breaks on arithmetic: a $200,000
-  in-kind overstatement that flips the residual sign (`GATE.SCALE`), and a free-cash-flow figure
-  that disagrees with its own build (`GATE.C1FCF`). GPT-5.4-mini breaks on calibration: it asserts
-  a decimal-precise $200.20 fair value — 12% below gold — while leaving the growth-rate
-  sensitivity **null** on a valuation that is 79.5% terminal value (`GATE.FALSEPRECISION`). Both
-  vendors' cheap tiers are undeployable here; the eval says *why*, and the answers differ.
+  and nobody cried false break on the clean counterweights. What began as a single-family caveat
+  now reads as a property of the task: frontier models get the *stop-or-go* call right, and lose
+  points on the arithmetic underneath it. That is the most reproducible result in the suite.
+- **The top tiers have converged.** Opus 4.8, GPT-5.6-sol, and GPT-5.5 sit within ~0.03 of each
+  other on every case. On confirmation matching five models tie at the 0.980 ceiling — the eval no
+  longer separates the frontier there, which is itself a finding about the task.
+- **Cheap is no longer a proxy for undeployable.** Two vendors' small tiers fail badly, and each
+  fails in its own way: Haiku 4.5 on arithmetic (a $200,000 in-kind overstatement flipping the
+  residual sign, `GATE.SCALE`; a free-cash-flow figure disagreeing with its own build,
+  `GATE.C1FCF`), GPT-5.4-mini on calibration (a decimal-precise $200.20 fair value, 12% below gold,
+  with the growth sensitivity left **null** on a valuation that is 79.5% terminal value,
+  `GATE.FALSEPRECISION`). **Gemini 3.6 Flash breaks the pattern outright**: a flash-tier model
+  fires no gate anywhere, ties Opus for the best reconciliation score on the board (0.983 — correct
+  `DO_NOT_SETTLE`, right offending line, right root cause, residual to the dollar), and lands its
+  DCF fair value at **$227.81 against a gold of $227.82**, one cent apart, with genuine sensitivity
+  ranges on both drivers. Price tier and deployability are not the same axis.
 - **A stub that passes the label and fails the reasoning.** On the reconciliation refusal probe,
   GPT-5.4-mini returns the right label (`NOT_DISCLOSED`, value `null`) but its stated derivation is
   the prompt's own instruction echoed back verbatim, and its answerable twin comes back at
@@ -134,7 +159,8 @@ replication is the honest next step before calling it task-level. [Taxonomy](out
 - Evals #1–#2 have not been run against frontier models; evals #3–#5 have not been run against
   open-weight models. The grid will fill in as runs accumulate.
 - GPT runs used a 32,000-token completion budget on the DCF case and 8,000 elsewhere (the shorter
-  cases scored at ceiling and were never budget-limited). Claude runs used 8,000 throughout.
+  cases scored at ceiling and were never budget-limited). Gemini used 32,000 throughout. Claude
+  runs used 8,000 throughout, which its endpoint does not charge thinking against.
 - Eval #5's second case pair (the same confirmation-matching control on a swap held *inside an
   ETF*) ships with gold cases and taxonomy but no live run yet.
 - Every number above is reproducible from the artifacts in [`outputs/`](outputs/) — parsed
@@ -143,7 +169,7 @@ replication is the honest next step before calling it task-level. [Taxonomy](out
 
 ## What's next
 
-Cross-family frontier runs (GPT, Gemini) to lift the single-family caveat; frontier runs on
-evals #1–#2; the ETF-swap pair live; and eval #6 (in design: corporate-actions processing — the
+Frontier runs on evals #1–#2 (still open-weight only); a Gemini pro-tier model once Google ships
+one current; the ETF-swap pair live; and eval #6 (in design: corporate-actions processing — the
 back-office domain with a documented $58B/yr industry cost and, as of mid-2026, no independently
 published accuracy metrics).
