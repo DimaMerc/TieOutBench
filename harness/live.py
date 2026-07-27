@@ -56,7 +56,8 @@ def list_models(endpoint=DEFAULT_ENDPOINT, api_key=None):
 
 
 def chat(messages, *, endpoint=DEFAULT_ENDPOINT, model_id=None, max_tokens=4000, temperature=0.0,
-         stream=True, timeout=90, deadline=240, stats=None, api_key=None, _folded=False):
+         stream=True, timeout=90, deadline=240, stats=None, api_key=None, _folded=False,
+         _token_field="max_tokens"):
     """Call the OpenAI-compatible chat endpoint. Streaming by default so a long generation trickles
     tokens. `timeout` is the per-read socket timeout; `deadline` is a HARD wall-clock cap on the whole
     call -- the loop breaks past it no matter what, so a stalled/looping server can never hang forever.
@@ -70,7 +71,9 @@ def chat(messages, *, endpoint=DEFAULT_ENDPOINT, model_id=None, max_tokens=4000,
             raise RuntimeError("LM Studio reports no loaded model. Load one and Start Server.")
         model_id = ms[0]
     url = endpoint.rstrip("/") + "/chat/completions"
-    payload = {"model": model_id, "messages": messages, "max_tokens": max_tokens, "stream": stream}
+    # `max_tokens` is the classic field (LM Studio, Anthropic's compat endpoint); OpenAI's GPT-5
+    # family rejects it and requires `max_completion_tokens`. Start classic, flip on the 400 below.
+    payload = {"model": model_id, "messages": messages, _token_field: max_tokens, "stream": stream}
     if temperature is not None:                  # some newer models deprecate `temperature` -> omit it
         payload["temperature"] = temperature
     try:
@@ -109,16 +112,28 @@ def chat(messages, *, endpoint=DEFAULT_ENDPOINT, model_id=None, max_tokens=4000,
             body = e.read().decode("utf-8", "ignore")
         except Exception:
             pass
-        if e.code == 400 and temperature is not None and "temperature" in body.lower():
+        low = body.lower()
+        if e.code == 400 and _token_field == "max_tokens" and "max_completion_tokens" in low:
+            # OpenAI's GPT-5 family: `max_tokens` is rejected in favour of `max_completion_tokens`
+            return chat(messages, endpoint=endpoint, model_id=model_id, max_tokens=max_tokens,
+                        temperature=temperature, stream=stream, timeout=timeout, deadline=deadline,
+                        stats=stats, api_key=api_key, _folded=_folded,
+                        _token_field="max_completion_tokens")
+        if e.code == 400 and temperature is not None and "temperature" in low:
             # some newer models (e.g. Claude opus-4-8 via the OpenAI-compat endpoint) reject the
             # `temperature` field outright -> retry without it
             return chat(messages, endpoint=endpoint, model_id=model_id, max_tokens=max_tokens,
                         temperature=None, stream=stream, timeout=timeout, deadline=deadline,
-                        stats=stats, api_key=api_key, _folded=_folded)
+                        stats=stats, api_key=api_key, _folded=_folded, _token_field=_token_field)
+        if e.code == 400 and stream and "stream" in low:
+            # some orgs/models require verification before streaming -> fall back to a single POST
+            return chat(messages, endpoint=endpoint, model_id=model_id, max_tokens=max_tokens,
+                        temperature=temperature, stream=False, timeout=timeout, deadline=deadline,
+                        stats=stats, api_key=api_key, _folded=_folded, _token_field=_token_field)
         if e.code == 400 and not _folded and any(m.get("role") == "system" for m in messages):
             return chat(_fold_system(messages), endpoint=endpoint, model_id=model_id, max_tokens=max_tokens,
                         temperature=temperature, stream=stream, timeout=timeout, deadline=deadline,
-                        stats=stats, api_key=api_key, _folded=True)
+                        stats=stats, api_key=api_key, _folded=True, _token_field=_token_field)
         raise urllib.error.HTTPError(e.url, e.code, f"{e.reason}: {body[:300]}", e.headers, None)
 
 
