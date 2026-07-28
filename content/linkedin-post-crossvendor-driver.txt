@@ -1,0 +1,38 @@
+DRIVER POST for the cross-vendor article (feed post; publish runbook at bottom)
+===========================================================================
+
+One of the models in my study scored 0.322 and tripped six separate auto-fail gates on a valuation task.
+
+Given a bigger token budget, the same model on the same task scored 0.951 and tripped nothing.
+
+The difference wasn't the model. It was me.
+
+I'd spent six weeks publishing evals where every frontier model came from one vendor - and saying so, in every article, because a benchmark that has only met one family of models hasn't really been tested. This week I finally added two more vendors. Eight models, three companies, same gold cases, same rubrics.
+
+The harness broke three times before it produced a single comparable number.
+
+The dangerous one: modern models "think" before answering, and vendors disagree about whether that thinking comes out of your answer budget. On one endpoint it's free. On another it isn't. So a budget that was generous for every model I'd tested was quietly starving the new ones on my longest case - and a starved model doesn't throw an error. It just gives you a worse answer. Which is exactly what you're looking for when you benchmark, so you write it down and move on.
+
+Four scores. All plausible. All wrong.
+
+The rule I'd offer anyone comparing models to decide what to deploy: before you ask which model won, prove your harness gave them the same test. Mine didn't. Twice. And I built it.
+
+Article in the first comment - including what survived the fix, and a cheap, fast model that landed a valuation one cent from the gold answer.
+
+
+===========================================================================
+PUBLISH RUNBOOK (not part of the post):
+
+1. Timing: Tue-Thu ~8-9:30am ET. Publish the ARTICLE first so the link exists.
+2. No links in the post body. FIRST COMMENT right after posting: article link
+   + evals.finance.
+3. No image needed - the numbers carry it, and text-only drivers read cleaner.
+   The article carries the visual (cover-crossvendor.png).
+4. Hook is deliberately different from the article title (a single model's
+   score flip vs. "three bugs in my harness") so a profile visitor doesn't
+   read the same sentence twice.
+5. If a vendor-partisan comment shows up ("so which model is best?"), the
+   earned reply is the leaderboard link plus the honest line: the flagships
+   are within 0.04 of each other and five models tie on one case - the eval
+   doesn't separate the frontier there anymore. Don't get drawn into a
+   ranking argument; that's the point of the piece.

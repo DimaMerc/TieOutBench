@@ -52,9 +52,11 @@ Google's is the quietest failure of the three. A trivial eight-token smoke test 
 field a harness would naturally read. Size budgets from `completion_tokens` and you would starve
 Gemini forever without ever seeing why.
 
-OpenAI's version cost four wrong numbers before it was caught. An 8,000-token cap that was ample
-for every Claude model silently starved every GPT model on the one long case (DCF, ~4.4k-token
-prompt) — and the damage looked exactly like incompetence rather than truncation:
+OpenAI's version cost four wrong numbers before it was caught. The same 8,000-token cap had already
+truncated one Claude run on this case (see `outputs/eval3-live/TAXONOMY.md`, which is why the
+live-path floor was raised to 12k) — but as a single incident it read as a quirk of that run rather
+than a rule. Under OpenAI's accounting it starved *every* GPT model on the one long case (DCF,
+~4.4k-token prompt), and the damage looked exactly like incompetence rather than truncation:
 
 | Model · DCF | @ 8k budget (starved) | @ 32k budget (fair) |
 |---|---:|---:|
@@ -65,8 +67,8 @@ prompt) — and the damage looked exactly like incompetence rather than truncati
 
 Six gates firing at once is the signature of a truncated answer, not a coherent error. An eval
 that gives one vendor less effective room than another measures configuration, not capability —
-the cross-vendor form of *looks right ≠ is right*, and invisible until a second vendor is in the
-harness.
+the cross-vendor form of *looks right ≠ is right*. One vendor's truncation read as a quirk; a
+second vendor's turned it into a rule.
 
 The client needed one more fix to get there: OpenAI's GPT-5 family rejects `max_tokens` outright in
 favour of `max_completion_tokens`, so every call failed at the HTTP layer until the client learned
@@ -80,8 +82,8 @@ announced itself as an error.
   and nobody cried false break on the clean counterweights. What began as a single-family caveat
   now reads as a property of the task: frontier models get the *stop-or-go* call right, and lose
   points on the arithmetic underneath it. That is the most reproducible result in the suite.
-- **The top tiers have converged.** Opus 4.8, GPT-5.6-sol, and GPT-5.5 sit within ~0.03 of each
-  other on every case. On confirmation matching five models tie at the 0.980 ceiling — the eval no
+- **The top tiers have converged.** Opus 4.8, GPT-5.6-sol, and GPT-5.5 sit within 0.04 of each
+  other on every case, and within 0.015 on four of the five. On confirmation matching five models tie at the 0.980 ceiling — the eval no
   longer separates the frontier there, which is itself a finding about the task.
 - **Cheap is no longer a proxy for undeployable.** Two vendors' small tiers fail badly, and each
   fails in its own way: Haiku 4.5 on arithmetic (a $200,000 in-kind overstatement flipping the

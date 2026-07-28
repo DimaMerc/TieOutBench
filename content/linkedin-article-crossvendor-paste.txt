@@ -1,0 +1,134 @@
+HEADLINE (goes in the article title field):
+
+I ran eight frontier models through three finance workflows. The first three things I found were bugs in my own harness.
+
+
+BODY (paste below into the article editor; formatting notes at the bottom):
+
+Part of a series on building runnable evaluations for finance LLMs. Every eval I have published carried the same caveat: the models I tested all came from one vendor. This is what happened when I finally fixed that - and why the fix mattered more than the scores.
+
+For six weeks, every result I published came with an asterisk. The evals were real, the gold answers were cited, the gates fired where they should. But every frontier model I had run came from a single vendor. I wrote that caveat into the README, the leaderboard, and the bottom of every article, because a benchmark that has only met one family of models is a benchmark that has not been tested.
+
+So I ran two more vendors: eight models in total - three from Anthropic, four from OpenAI, one from Google - across three of the workflows, on the same gold cases, with the same rubrics and the same auto-fail gates.
+
+The findings come later, and the full model-by-model grid is in the repo - linked at the end. I want to start with what went wrong first, because it is the more useful half.
+
+
+Three breakages before a single comparable number
+
+Adding a second vendor to a working harness should be a configuration change. It was not. The harness broke three times, and each breakage produced output that looked like a result.
+
+The first was loud and harmless. OpenAI's newest models reject the field every other OpenAI-compatible API uses to cap a response length. They want a different field name. Every call failed immediately with an error, I taught the client to swap the field and retry, and that was that. Loud failures are the good kind.
+
+The second was quiet and expensive. Modern models "think" before they answer, and that thinking costs tokens. What I did not know is that the endpoints disagree about who pays for it. On the one I had been using, thinking did not count against the limit I set on the answer. On OpenAI's, it does - reasoning tokens are drawn from the same budget as the response.
+
+So the budget I had been using was quietly insufficient for the new models on my longest case - a discounted-cash-flow valuation with a prompt of about 4,400 tokens. The models thought, spent the budget thinking, and had little or nothing left to answer with.
+
+Here is what that looked like on the scoreboard, before and after I gave every model equivalent room:
+
+- One model returned nothing at all. An empty response. Scored as a failure.
+- Another scored 0.322 and tripped six separate auto-fail gates at once.
+- A third scored 0.618 and tripped the false-precision gate.
+- A fourth scored 0.745.
+
+With a proper budget, those same four models scored 0.953, 0.951, 0.903, and 0.631. All four of the original numbers were wrong, and not slightly wrong. Three badly understated the model - the one that "failed six gates" was, given room to finish, one of the strongest performers in the entire study. The fourth moved the other way, and its gate turned out to be real.
+
+Sit with the shape of that error for a second, because it is the whole point. Nothing crashed. Nothing logged a warning. I had four plausible-looking scores that told a clean story: the new vendor is worse at valuation work, and its weakest model is catastrophically bad. Every one of those numbers was measuring my configuration, not their capability. Six gates firing simultaneously is not a model making six mistakes. It is a sentence getting cut off.
+
+The third breakage was the quietest of all, and I only caught it because the second one had made me paranoid.
+
+Google's endpoint also charges thinking against the answer budget - but does not report it. I sent a one-line test question. The response said it had used three tokens on the answer and eight on my question. It also said the total was 124. The missing 113 tokens were spent thinking, and they appear in no field a harness would naturally read.
+
+If I had sized my budgets from the number that says "tokens used in the completion," I would have starved that model on every long case indefinitely, and the symptom would have been low scores rather than an error. There is no version of that where I find the bug by staring at the results.
+
+Three endpoints. Three different answers to "who pays for thinking, and will you tell me." None of them documented in the place I was looking. (Each vendor's native API behaves differently again - these are the compatibility layers, which is exactly what a harness like mine talks to.)
+
+
+The rule this produces
+
+You cannot compare models across vendors until you have proven your harness gives each of them equivalent room to work.
+
+That sounds obvious written down. It is not obvious in practice, because the failure does not announce itself. A starved model does not return an error; it returns a worse answer. And a worse answer is exactly what you are looking for when you are benchmarking, so you write it down and move on.
+
+This is the same trap the whole series is about, one level up. My evals exist because a model's answer can look right and be wrong, so I grade every step instead of the final number. It turns out an evaluation can look right and be wrong the same way. I had caught a version of this once before, on a single model, and filed it as a one-off quirk of that run. It took a second vendor to show me it was a rule. A benchmark that has met only one family of models has not been tested; it has been rehearsed.
+
+
+What survived - the actual findings
+
+With every model given equivalent room, here is what eight models across three vendors show.
+
+The most reproducible result in the suite got stronger. Across all eight models, on both back-office workflows, not one model made the catastrophic decision. Nobody affirmed a swap confirmation whose economic terms did not tie. Nobody settled a creation basket that was short by thirteen thousand dollars. And nobody cried wolf on the clean control cases either - no false breaks. When this was three models from one vendor I called it a promising negative result. At eight models across three vendors, it looks like a property of the task: frontier models get the stop-or-go call right, and lose their points on the arithmetic underneath it.
+
+The top tiers have converged. The three flagship models sit within four hundredths of each other on every case, and within a hundredth and a half on four of the five. On the confirmation case with a real break in it, five of the eight tie at exactly the same score. That is worth saying plainly: on this task, at this difficulty, the eval no longer separates the frontier. That is a finding about my eval as much as about the models, and the honest response is to make the task harder, not to pretend the ranking means something.
+
+Cheap stopped predicting bad. Two vendors' small, fast models fail badly here - and they fail differently. One breaks on arithmetic: it overstates a basket by two hundred thousand dollars, which flips a shortfall into an apparent surplus. The other breaks on calibration: it states a fair value of $200.20 per share - to the cent - while leaving the growth-rate sensitivity blank on a valuation that is roughly eighty percent terminal value. Precise to the penny about a number it never stress-tested against the assumption that drives it. That trips the false-precision gate, which exists for exactly that.
+
+And then the third vendor's cheap, fast model fired no gate anywhere, tied the best score anyone posted on the broken-basket case, and landed its valuation at $227.81 against a gold answer of $227.82. One cent. With honest sensitivity ranges on both drivers.
+
+I had two data points that said small models are undeployable on this work. The third one says that was never the rule - it was a coincidence of two vendors. Price tier and trustworthiness are different axes, and you cannot infer one from the other. You have to measure.
+
+One last thing, because it is the kind of detail that only step-by-step grading catches. On the reconciliation case, every model faces a deliberate trap: I ask for a figure that genuinely cannot be determined from the documents provided. The honest answer is to refuse and say what is missing. Every one of the eight refused correctly - right label, no invented number. But one of them, where it was supposed to explain what was missing, echoed my own instruction back to me almost word for word. It also got a related, answerable figure wrong by twenty thousand dollars. Grade only the refusal and that model looks perfectly calibrated.
+
+
+Why this matters beyond my repo
+
+In April, US banking regulators rewrote model-risk guidance and left generative AI explicitly out of scope. I wrote about that gap two weeks ago: firms deploying AI into real financial workflows now have to define for themselves what "validated" means.
+
+This study is a small, concrete argument about what that takes. Three vendors, three undocumented differences in how a request is metered, each capable of producing a confident wrong number about a model's competence. Not one of them was visible in the outputs. All of them were visible the moment I made the comparison fair.
+
+If your firm is benchmarking models against each other to decide what to deploy, the first question is not which model won. It is whether your harness gave them the same test. Mine did not, twice, and I built it.
+
+One caveat I want on the record: this is one run per model per case. That is enough to expose a broken harness and enough to say a gate did or did not fire, and it is not enough to rank models by hundredths. Read the small gaps as "indistinguishable here," not as a ranking.
+
+Everything here is runnable and MIT-licensed: the workflows, the rubrics with every gate, the gold cases, all the graded runs from all eight models, and the leaderboard with its caveats on its face. Two commands reproduce the core with no API key.
+
+Leaderboard and repo: evals.finance
+
+Dmitry Krutous - I build evals for finance LLMs. ETF / derivatives domain expert; I ran the change-management side of an institutional ETF servicing platform (creation/redemption, derivatives processing). MBA, PMP. Greater Boston.
+
+
+==================================================================
+FORMATTING NOTES (do these by hand in the LinkedIn editor - not part of the article):
+
+1. Cover image: assets/cover-crossvendor.png (wide 1200x630).
+
+2. Make these lines Section Headers (the editor's "H2" style):
+   - Three breakages before a single comparable number
+   - The rule this produces
+   - What survived - the actual findings
+   - Why this matters beyond my repo
+
+3. Italicize the opening "Part of a series..." paragraph.
+
+4. Bold SPARINGLY. Suggested spots:
+   - "You cannot compare models across vendors until you have proven your harness
+     gives each of them equivalent room to work." (its own line, in The rule section)
+   - "Nothing crashed. Nothing logged a warning." (breakages section)
+   - "One cent." (findings section)
+   Anything more starts to look generated.
+
+5. The before/after list of four scores reads well as a bulleted list (already
+   formatted that way). Do NOT also bold it.
+
+6. Links in article bodies are fine on LinkedIn, so evals.finance stays inline.
+
+FACT ANCHORS (verify before publishing - not part of the article):
+- 8 models / 3 vendors / 3 evals (#3 DCF, #4 creation-redemption, #5 confirmation
+  matching), 5 cases each run once per model. Source: LEADERBOARD.md.
+- Starved-vs-fair DCF numbers: empty->0.953 (GPT-5.5), 0.322 w/ six gates->0.951
+  (GPT-5.6-sol), 0.618->0.903 (GPT-5.4), 0.745->0.631 (GPT-5.4-mini). The last one
+  went DOWN and its gate firing is genuine - verified against the models that
+  cleared it (null g_sensitivity vs real ranges).
+- Google usage: prompt 8, completion 3, total 124 -> 113 unreported thinking tokens.
+- Flagships within 0.03: Opus 4.8 / GPT-5.6-sol / GPT-5.5.
+- Five models tie at 0.980 on the confirmation break case.
+- $200.20 false-precision case = GPT-5.4-mini, tv_share 79.5%, g_sensitivity null.
+- $227.81 vs gold $227.82 = Gemini 3.6 Flash; also 0.983 on recon (ties Opus).
+- $200,000 overstatement flipping the residual = Claude Haiku 4.5, GATE.SCALE.
+- Refusal-echo + $20k twin error = GPT-5.4-mini on grin-create-2026 (twin -33,320
+  vs correct -13,320).
+- SR 26-2 issued April 17, 2026; excludes generative/agentic AI (footnote 3).
+- MODELS ARE NOT NAMED IN THE BODY ON PURPOSE - the piece is about method, and
+  naming invites a vendor argument that buries the point. Names are all in the
+  repo leaderboard for anyone who wants them. Reconsider only if you want the
+  more shareable/more contentious version.
