@@ -1,4 +1,7 @@
-# finance-llm-evals
+# TieOutBench
+
+*Renamed from `finance-llm-evals` (August 2026) — old links redirect. The name is the
+fund-accounting control this suite ports to AI: a number that does not tie out does not settle.*
 
 ![Looks right ≠ is right — a runnable, rubric-graded evaluation for finance LLMs: a model that misreads a statement header scores 95% on a naive average but 45% once the gate fires.](assets/hero.png)
 
@@ -86,17 +89,20 @@ consolidated in [`LEADERBOARD.md`](LEADERBOARD.md).
   often quietly wrong)*. Project unlevered free cash flow, discount at WACC, capitalize a terminal
   value, **bridge enterprise value to equity**, divide by shares — every number a closed-form
   consequence of a handful of inputs, so it is perfectly recomputable. The signature is **the DCF
-  that looks right and is wrong**: on a real McDonald's FY2025 case the correct fair value is
-  ~$228/share (≈20% overvalued vs the market) while the classic **EV÷shares blunder** (skipping the
+  that looks right and is wrong**: on a real McDonald's FY2025 case the correct fair value under
+  the case's stated assumptions is
+  ~$228/share (≈20% below the case-date market price) while the classic **EV÷shares blunder** (skipping the
   net-debt bridge) lands at ~$279 — only −2.6% from price, so the *wrong* method looks fair. The
   consistency spine is the **basis gate** (unlevered cash flow must meet WACC must meet the
   net-debt bridge), and the calibration signature is the **false-precision gate** (a decimal-precise
-  target on a model that is 80% terminal value, where a 50bp discount-rate move shifts it ±15%,
-  auto-fails). 18 checkpoints, 107 criteria, one real-10-K gold case, **run live against three
-  frontier models**: the two strong ones do textbook DCF correctly (no gate, ~0.96); the weak one
-  trips the FCF-definition gate on a real arithmetic error the eval localizes to one checkpoint.
+  target on a model that is 80% terminal value, where a 50bp discount-rate move shifts it +15/−12%,
+  auto-fails). 18 checkpoints, 107 criteria, **two real-10-K gold cases that mirror each other**:
+  McDonald's FY2025 (heavy net debt — skipping the bridge overstates by ~22% and *looks fair*) and
+  NVIDIA FY2026 (net cash — the same blunder understates by only ~3% and is nearly invisible; the
+  gate catches the *method*, not the magnitude). Both **run live against eight frontier models
+  across three vendors** — traces in [`outputs/eval3-live/`](outputs/eval3-live/).
 - **Eval #4 — ETF creation/redemption basket reconciliation** *(the custodian back-office core,
-  authored by someone who ran it)*. Given an Authorized Participant's tendered creation basket, the
+  authored from having run the change-management side of an institutional ETF servicing platform)*. Given an Authorized Participant's tendered creation basket, the
   published PCF, and the NAV-based creation value, reconcile it line-by-line, value the basket and
   cash-in-lieu, compute the tie-out — and **settle only if it ties.** The signature is **GATE.RECON**:
   a model that returns SETTLE for a basket whose residual is out of tolerance auto-fails — the
@@ -104,7 +110,7 @@ consolidated in [`LEADERBOARD.md`](LEADERBOARD.md).
   not reconcile (a halted name's cash-in-lieu delivered at a stale prior-close price, short $13,320 on
   a $3.075M order — every in-kind line matches, only the cash plug is short); the gold answer is
   DO_NOT_SETTLE, localized to that line. A clean-settle counterweight case catches the over-cautious
-  mirror (crying break on a basket that ties). 8 checkpoints, ~31 criteria, two gold cases. *(PCFs are
+  mirror (crying break on a basket that ties). 8 checkpoints, 32 criteria (+5 gates), two gold cases. *(PCFs are
   NSCC-disseminated, not public filings, so this case is a constructed, mechanics-faithful scenario —
   real constituent securities and representative prices; fund, order, and break illustrative.)*
 - **Eval #5 — OTC derivative confirmation matching** *(the derivatives sibling of #4 — and grounded in
@@ -119,8 +125,8 @@ consolidated in [`LEADERBOARD.md`](LEADERBOARD.md).
   foil). Gold answer: MISMATCHED, do not affirm, localized to the fixed rate. A clean-match counterweight
   catches the over-cautious mirror. And because funds are among the biggest users of swaps (leveraged
   ETFs are built on total-return swaps, fixed-income ETFs hold interest-rate swaps), a second case pair
-  runs the *same control on a swap held inside an ETF* — the fund as one side. 8 checkpoints, ~33
-  criteria, four gold cases (a bank swap and an ETF's swap, each with a break and a clean match).
+  runs the *same control on a swap held inside an ETF* — the fund as one side. 8 checkpoints, 28
+  criteria (+5 gates), four gold cases (a bank swap and an ETF's swap, each with a break and a clean match).
 
 ## What's here
 
@@ -131,7 +137,7 @@ consolidated in [`LEADERBOARD.md`](LEADERBOARD.md).
 | [`cases/`](cases/) | Gold cases — every figure cited to a real SEC filing (10-K / 10-Q / 8-K / 497K / N-PORT); **no invented numbers** (the creation/redemption case is the one exception: PCFs are not public, so it is a constructed, mechanics-faithful scenario over real securities) |
 | [`harness/`](harness/) | The runnable scorer: one suite-agnostic engine + a module per eval; deterministic checks + gating + a pluggable LLM-judge interface; a live path for real models |
 | [`LEADERBOARD.md`](LEADERBOARD.md) | Every live model run on one page — frontier (evals #3–#5) and open-weight (#1–#2), with the discriminating findings and the honest caveats |
-| [`outputs/`](outputs/) | The real graded model runs + failure taxonomies — [`eval2-live/`](outputs/eval2-live/) (two local models, the judge-vs-expert calibration), [`eval3-live/`](outputs/eval3-live/) (three frontier models on the DCF eval), [`eval4-live/`](outputs/eval4-live/) (three frontier models on creation/redemption reconciliation), and [`eval5-live/`](outputs/eval5-live/) (three frontier models on confirmation matching) |
+| [`outputs/`](outputs/) | The real graded model runs + failure taxonomies — [`eval2-live/`](outputs/eval2-live/) (two local models, the judge-vs-expert calibration), [`eval3-live/`](outputs/eval3-live/) (eight frontier models on both DCF cases, incl. [`nvda-fy2026-dcf/`](outputs/eval3-live/nvda-fy2026-dcf/)), [`eval4-live/`](outputs/eval4-live/) and [`eval5-live/`](outputs/eval5-live/) (frontier runs on reconciliation and confirmation matching — the full eight-model grid is in [`LEADERBOARD.md`](LEADERBOARD.md)) |
 
 ## What the live runs found (eval #2)
 
@@ -153,7 +159,7 @@ fixed and everything re-graded; the log is in the taxonomy.
 
 ## What the live runs found (eval #3, DCF)
 
-Three frontier models (Claude Opus 4.8 / Sonnet 4.6 / Haiku 4.5, via the Anthropic OpenAI-compatible
+Three frontier models (the first, Claude-only round; the full eight-model grid is in [`LEADERBOARD.md`](LEADERBOARD.md)) (Claude Opus 4.8 / Sonnet 4.6 / Haiku 4.5, via the Anthropic OpenAI-compatible
 endpoint) on the real McDonald's FY2025 case, deterministic core + offline judge:
 
 | Model | Gated | Gate fired | Math-spine score | WACC probe |
@@ -168,11 +174,22 @@ build** (a +$2B/yr offset); the FCF-definition gate flags exactly that at C1, an
 into a wrong $138 valuation — one slip, surfaced and localized. The most consistent behavior across all
 three is a subtle one (and the opposite of a capability gap): they **compute the discount rate
 correctly** inside the model (~7.15%) and discount with it, yet, asked "what is the WACC *per the
-10-K*?", answer "not disclosed" without volunteering the figure they just derived — a framing quirk the
-eval isolates. And — as on both prior evals — the first real models surfaced **five
+10-K*?", answer "not disclosed" with a null value — declining to claim the derived figure as the
+answer, though most restate it in their derivation text — a framing quirk the eval isolates. And — as on both prior evals — the first real models surfaced **five
 grader bugs** the synthetic tests were written around; all fixed, all re-graded, the oracle still
 1.000/AllPass. Full matrix, traces, and the calibration log:
 [`outputs/eval3-live/`](outputs/eval3-live/).
+
+On the **NVIDIA mirror case** (net cash; all eight frontier models): five models — including a
+flash-tier one — land within **0.004** of each other at the case-gold ~$91.7 fair value with the
+correct "the price embeds growth beyond this base case" read; the one `GATE.BRIDGE` fire
+(GPT-5.4-mini) is the mirror trap in its subtler form — it added the net cash and **dropped the
+non-op assets it had itself extracted**; and two models from two vendors showed a new failure
+class on the WACC probe: **derive the right number, report a different one** (a derivation that
+builds 12.62 above an answer that says 12.51 or 12.31). The first live batch also surfaced three
+more grader-contract gaps (fraction-vs-pp rates, comma-formatted numeric strings, snake_case
+counted as one word) — all fixed, all re-graded, MCD reports unchanged. Details:
+[`outputs/eval3-live/nvda-fy2026-dcf/TAXONOMY.md`](outputs/eval3-live/nvda-fy2026-dcf/TAXONOMY.md).
 
 ## What the gate taxonomy shows (eval #3, DCF)
 
@@ -217,7 +234,7 @@ under a refusal label still trips GATE.FABRICATION). Design + gold:
 
 ## What the live runs found (eval #4, creation/redemption)
 
-Three frontier models (Claude Opus 4.8 / Sonnet 4.6 / Haiku 4.5) on both gold cases:
+Three frontier models (the first, Claude-only round; the full eight-model grid is in [`LEADERBOARD.md`](LEADERBOARD.md)) (Claude Opus 4.8 / Sonnet 4.6 / Haiku 4.5) on both gold cases:
 
 | Model | Break case | Gate | Clean-settle case |
 |---|---:|---|---:|
@@ -234,7 +251,7 @@ actually *short*. It still refuses to settle (the right call), but the eval pins
 valuation (GATE.SCALE) and the wrong answerable-twin. On the clean case all three correctly **SETTLE**
 (no false break). **The honest negative result:** `GATE.RECON` — *settle a basket that does not
 reconcile* — never fired; no frontier model approved the break. The capability gap showed up as
-Haiku's $200k arithmetic slip, localized to one checkpoint, not as the marquee failure. Single model
+Haiku's $200k arithmetic slip, localized to one checkpoint, not as the marquee failure. (This section describes the first Claude-only round; the cross-vendor grid in LEADERBOARD.md has since confirmed the negative across all eight models.) Single model
 family, n=1 per case — a cross-family run is the honest next step. Full matrix + traces:
 [`outputs/eval4-live/`](outputs/eval4-live/).
 
@@ -262,7 +279,7 @@ prose still trips GATE.FABRICATION. Design + gold:
 
 ## What the live runs found (eval #5, confirmation matching)
 
-Three frontier models (Claude Opus 4.8 / Sonnet 4.6 / Haiku 4.5) on both gold cases:
+Three frontier models (the first, Claude-only round; the full eight-model grid is in [`LEADERBOARD.md`](LEADERBOARD.md)) (Claude Opus 4.8 / Sonnet 4.6 / Haiku 4.5) on both gold cases:
 
 | Model | Break case | Basis-point read | Clean case |
 |---|---:|---|---:|

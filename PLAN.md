@@ -1,4 +1,4 @@
-# Build plan — finance-llm-evals
+# Build plan — TieOutBench
 
 Goal: a **runnable, portfolio-grade finance LLM evaluation** for the
 **Asset Management → Earnings Analysis** workflow. Done well, it proves
@@ -77,7 +77,7 @@ workflow definition + eval creation + capability assessment + data curation
 
 ## Phase 6 — Publish & extend
 - [x] MIT-licensed, public-ready: `LICENSE`, line-ending normalization, README + `PAPER.md`.
-- [x] Push to GitHub (public): `github.com/DimaMerc/finance-llm-evals`.
+- [x] Push to GitHub (public): `github.com/DimaMerc/TieOutBench`.
 - [ ] **Next:** broaden the suite (more issuers/quarters) and run the judge-vs-expert calibration.
 - [x] **Moat version** chosen and started → Eval #2 below.
 
@@ -277,6 +277,16 @@ with no sensitivity block (the DCF analog of eval #2's free-lunch).
       (wacc,g)-matching, S1 calibrated-range, false-precision-vs-own-C5) — all fixed, all re-graded,
       oracle still 1.000/AllPass, every variant still gated.
 - [x] PAPER.md → v3 (title + abstract + §3.6 findings + reproduce); README live-findings section.
+- [x] **Second gold case (2026-08-04): `nvda-fy2026-dcf`** — the net-cash growth-stock MIRROR of MCD
+      (real FY2026 10-K, accession 0001045810-26-000021; bridge ADDS $3.11/share, EV÷shares blunder
+      understates ~3%; TV 70.4%; the CL6 sensitivity claim TRUE on MCD is FALSE here — the
+      anti-pattern-matching pair). 3-agent adversarial verification (EDGAR re-extraction 34/34,
+      from-scratch recompute exact, coverage/gaming audit), then **all eight frontier models live**
+      (v2 prompt: netting convention + grid geometry taught): five models within 0.004 at ~$91.7;
+      GPT-5.4-mini fires GATE.BRIDGE by dropping the non-op add; Haiku/GPT-5.4 exhibit the new
+      derive-right-report-different class on the WACC probe. First batch surfaced 3 more
+      grader-contract gaps (fraction rates, comma-strings, snake_case word-count) — fixed,
+      re-graded, MCD unchanged. `outputs/eval3-live/nvda-fy2026-dcf/` + its TAXONOMY.md.
 
 # Eval #4 — ETF creation/redemption basket reconciliation  *(the custodian back-office core; same repo, same machinery)*
 

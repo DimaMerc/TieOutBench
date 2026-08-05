@@ -1,8 +1,13 @@
 # A Runnable, Rubric-Graded Evaluation Suite for Finance LLMs: Earnings Analysis, Defined-Outcome ETF Diligence, and DCF Valuation
 
 **Dmitry Krutous** · MBA, PMP · [linkedin.com/in/dmitrykrutous](https://www.linkedin.com/in/dmitrykrutous/) · welt.management.solutions@gmail.com
+> **Superseded (August 2026):** this note is the v1–v3 ancestor of the consolidated TieOutBench
+> technical report (see `paper/` and the PDF at evals.finance). Its three-model, one-DCF-case
+> results are the first round only; the current eight-model, three-vendor grid lives in
+> [LEADERBOARD.md](LEADERBOARD.md). Kept for history.
+
 *Methodology note & findings, v3. The artifact is the runnable repository this paper accompanies:
-[github.com/DimaMerc/finance-llm-evals](https://github.com/DimaMerc/finance-llm-evals). v1 covered the
+[github.com/DimaMerc/TieOutBench](https://github.com/DimaMerc/TieOutBench). v1 covered the
 earnings eval; v2 added the defined-outcome ETF eval with a two-model run matrix and a judge-vs-expert
 calibration; **v3 adds the discounted-cash-flow valuation eval** (18 checkpoints, 107 criteria, a real
 McDonald's FY2025 gold case; the signature is the EV÷shares "looks right, is wrong" bridge blunder and

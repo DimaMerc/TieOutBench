@@ -2,9 +2,10 @@
 
 One page, every real model this suite has graded so far — with the caveats stated **before** the
 numbers: sample sizes are small (one run per model per case), evals **#3–#5** now cover **eight
-frontier models across three vendors** (four OpenAI, three Anthropic, one Google), evals **#1–#2**
-have been run only against local open-weight models (two Qwen generations), and eval #5's
-swap-inside-an-ETF case pair has not been live-run yet. Google is represented only by a flash-tier
+frontier models across three vendors** (four OpenAI, three Anthropic, one Google) — eval #3 on
+**two gold cases** (McDonald's, a net-debt balance sheet; NVIDIA, its net-cash mirror) — evals
+**#1–#2** have been run only against local open-weight models (two Qwen generations), and eval
+#5's swap-inside-an-ETF case pair has not been live-run yet. Google is represented only by a flash-tier
 model, since its pro line is a generation behind. The harness takes any OpenAI-compatible endpoint
 (`--model live --endpoint <url> --model-id <model>`), so adding a vendor is a run, not a rebuild —
 though, as the methodology note below records, not a *free* one.
@@ -20,25 +21,25 @@ on a naive average and ~0.45 gated; **the gap is the finding.** Mechanics:
 
 Models as rows, cases as columns. Gate names abbreviated; each is `GATE.<NAME>`.
 
-| Model | Tier | #3 DCF | #4 recon (break) | #4 clean | #5 confirm (break) | #5 clean |
-|---|---|---:|---:|---:|---:|---:|
-| **Claude Opus 4.8** | flagship | **0.965** | **0.983** | 0.983 | **0.980** | 0.980 |
-| Claude Sonnet 4.6 | mid | 0.955 | 0.943 | 0.983 | 0.933 | 0.980 |
-| Claude Haiku 4.5 | small | 0.692 · `C1FCF` | 0.496 · `SCALE` | 0.983 | 0.933 | 0.980 |
-| **GPT-5.6-sol** | flagship | 0.951 | 0.943 | 0.973 | **0.980** | 0.980 |
-| GPT-5.5 | flagship (prev.) | 0.953 | 0.943 | 0.983 | **0.980** | 0.980 |
-| GPT-5.4 | mid | 0.903 | **0.983** | 0.973 | **0.980** | 0.980 |
-| GPT-5.4-mini | small | 0.631 · `FALSEPRECISION` | 0.714 | 0.983 | 0.933 | 0.980 |
-| **Gemini 3.6 Flash** | small/fast | 0.922 | **0.983** | 0.973 | **0.980** | 0.980 |
+| Model | Tier | #3 DCF (MCD) | #3 DCF (NVDA) | #4 recon (break) | #4 clean | #5 confirm (break) | #5 clean |
+|---|---|---:|---:|---:|---:|---:|---:|
+| **Claude Opus 4.8** | flagship | **0.965** | 0.974 | **0.983** | 0.983 | **0.980** | 0.980 |
+| Claude Sonnet 4.6 | mid | 0.955 | 0.973 | 0.943 | 0.983 | 0.933 | 0.980 |
+| Claude Haiku 4.5 | small | 0.692 · `C1FCF` | 0.799 | 0.496 · `SCALE` | 0.983 | 0.933 | 0.980 |
+| **GPT-5.6-sol** | flagship | 0.951 | 0.970 | 0.943 | 0.973 | **0.980** | 0.980 |
+| GPT-5.5 | flagship (prev.) | 0.953 | 0.970 | 0.943 | 0.983 | **0.980** | 0.980 |
+| GPT-5.4 | mid | 0.903 | 0.883 | **0.983** | 0.973 | **0.980** | 0.980 |
+| GPT-5.4-mini | small | 0.631 · `FALSEPRECISION` | 0.650 · `BRIDGE` | 0.714 | 0.983 | 0.933 | 0.980 |
+| **Gemini 3.6 Flash** | small/fast | 0.922 | 0.970 | **0.983** | 0.973 | **0.980** | 0.980 |
 
 Anthropic models ran via the OpenAI-compatible endpoint at `api.anthropic.com`, OpenAI at
 `api.openai.com`, Google at `generativelanguage.googleapis.com/v1beta/openai`.
 
-### The methodology finding — every vendor hides the budget differently
+### The methodology finding — every vendor meters the budget differently
 
 The cross-vendor runs broke the harness three separate times, and every breakage would have
 published as a capability finding. The unifying lesson: **you cannot compare models across vendors
-until you have proved the harness gives each one equivalent room**, and each vendor conceals that
+until you have proved the harness gives each one equivalent room**, and each vendor meters that
 differently.
 
 | Vendor | Budget field | Thinking counts against it? | Thinking visible in `usage`? |
@@ -81,9 +82,10 @@ announced itself as an error.
   Nobody affirmed the broken trade (`GATE.MATCH`), nobody settled the short basket (`GATE.RECON`),
   and nobody cried false break on the clean counterweights. What began as a single-family caveat
   now reads as a property of the task: frontier models get the *stop-or-go* call right, and lose
-  points on the arithmetic underneath it. That is the most reproducible result in the suite.
+  points on the arithmetic underneath it. That is the most consistently replicated result in the
+  suite.
 - **The top tiers have converged.** Opus 4.8, GPT-5.6-sol, and GPT-5.5 sit within 0.04 of each
-  other on every case, and within 0.015 on four of the five. On confirmation matching five models tie at the 0.980 ceiling — the eval no
+  other on every case, and within 0.015 on five of the six. On confirmation matching five models tie at the 0.980 ceiling — the eval no
   longer separates the frontier there, which is itself a finding about the task.
 - **Cheap is no longer a proxy for undeployable.** Two vendors' small tiers fail badly, and each
   fails in its own way: Haiku 4.5 on arithmetic (a $200,000 in-kind overstatement flipping the
@@ -112,8 +114,9 @@ requires a genuine numeric range on *both* sensitivities. It fired for the reaso
 
 - **#5 — the basis-point conversion.** All three models matched the confirmations correctly and
   returned MISMATCHED on the 6.05%-vs-6.00% break. Only Opus sized it right (~5 bp ≈ EUR 25k/yr on
-  EUR 50MM). Sonnet called it "0.5 bp" (EUR 2,500 — 10× low); Haiku called it "50 bp"
-  (EUR 2,500,000 — 10× high). Same trap, opposite directions, localized to one checkpoint
+  EUR 50MM). Sonnet called it "0.5 bp" (EUR 2,500/yr — 10× low); Haiku called it "50 bp" (10×
+  high — and its EUR 2,500,000 figure is a *lifetime* number, 20× the correct ≈EUR 125k over the
+  remaining term). Same trap, opposite directions, localized to one checkpoint
   (`C3.impact`). [Full traces](outputs/eval5-live/)
 - **#4 — a $200,000 arithmetic slip.** Opus and Sonnet reconciled to the dollar (residual exactly
   −$13,320, DO_NOT_SETTLE localized to the right line). Haiku overstated the in-kind value by
@@ -123,8 +126,19 @@ requires a genuine numeric range on *both* sensitivities. It fired for the reaso
   (fair value ~$228 vs gold $227.82). Haiku's reported free cash flow carried a +$2B/yr offset from
   its own components; `GATE.C1FCF` flagged it at the checkpoint and the error cascaded to a wrong
   $138 valuation. All three showed the same framing quirk: they *derive* the ~7.15% discount rate
-  correctly, then answer "not disclosed" when asked for the WACC per the 10-K — without
-  volunteering the figure they just computed. [Full traces](outputs/eval3-live/)
+  correctly, then answer "not disclosed" with a null value when asked for the WACC per the 10-K —
+  declining to claim the derived figure as the answer (most restate it inside their derivation
+  text). [Full traces](outputs/eval3-live/)
+- **#3 (NVDA) — the mirror bridge, and a new failure class.** On the net-cash case the classic
+  EV÷shares blunder *understates* fair value by only ~3% (vs MCD's +22% overstatement) — and the
+  one model that fired `GATE.BRIDGE` (GPT-5.4-mini) failed the bridge in its subtler form: it
+  added the $54.1B net cash but **dropped the $22.3B non-op add** it had itself extracted. Five
+  models (Opus, Sonnet, GPT-5.6-sol, GPT-5.5, Gemini Flash) land within **0.004** of each other,
+  gate-free, at $91.7 vs gold $91.67. And two models from two vendors exhibited the same new
+  failure on the WACC probe — **derive the right number, report a different one**: Haiku's
+  derivation builds 12.62 and answers 12.51 (then uses 12.51 consistently downstream); GPT-5.4's
+  derivation text literally ends "= 12.62174%" and its answer field says 12.31, contradicting its
+  own C2. Label-only grading calls both "computed." [Full traces](outputs/eval3-live/nvda-fy2026-dcf/)
 
 ### The honest negatives
 
@@ -160,9 +174,18 @@ replication is the honest next step before calling it task-level. [Taxonomy](out
 
 - Evals #1–#2 have not been run against frontier models; evals #3–#5 have not been run against
   open-weight models. The grid will fill in as runs accumulate.
-- GPT runs used a 32,000-token completion budget on the DCF case and 8,000 elsewhere (the shorter
+- GPT runs used a 32,000-token completion budget on the DCF cases and 8,000 elsewhere (the shorter
   cases scored at ceiling and were never budget-limited). Gemini used 32,000 throughout. Claude
-  runs used 8,000 throughout, which its endpoint does not charge thinking against.
+  runs used 8,000 on the short cases and the 12,000-token live-path floor on the MCD DCF case
+  (Sonnet's committed run completed at 16,000 after an 8k truncation — see the methodology
+  note above) and 16,000 on the NVDA DCF case; the compat endpoint does not charge thinking
+  against the budget.
+- The NVDA DCF runs used the case-hardened v2 system prompt (it states the net-debt/cash-like
+  netting convention and the 3×3 grid geometry — added after a pre-ship audit showed the netting
+  convention was graded but never taught). The MCD runs predate it; cross-case comparisons on
+  those two behaviors are hedged in the [NVDA taxonomy](outputs/eval3-live/nvda-fy2026-dcf/TAXONOMY.md),
+  which also logs the three grader-contract gaps this case's first live batch surfaced (all fixed,
+  all runs re-graded, MCD reports unchanged).
 - Eval #5's second case pair (the same confirmation-matching control on a swap held *inside an
   ETF*) ships with gold cases and taxonomy but no live run yet.
 - Every number above is reproducible from the artifacts in [`outputs/`](outputs/) — parsed
