@@ -43,7 +43,7 @@ ax.text(LX, 0.165, "Two of three models crossed the bridge.",
         fontsize=13.5, color=WHITE, weight="bold", va="center")
 ax.text(LX, 0.120, "The eval caught the one that didn't - and pinned the step.",
         fontsize=13, color=MUTE, va="center")
-ax.text(LX, 0.062, "finance-llm-evals  -  MIT  -  every number from a real SEC filing",
+ax.text(LX, 0.062, "TieOutBench  -  MIT  -  every number from a real SEC filing",
         fontsize=11.5, color=FAINT, va="center")
 
 # ---------------- RIGHT: the trap (enterprise value / shares) -- stacked, no horizontal collisions ----------------

@@ -77,7 +77,7 @@ ax.text(PX, 0.170, "That's expected - not a break.", fontsize=11, color=LGREEN, 
 
 # ---------------- footer ----------------
 ax.plot([0.038, 0.962], [0.065, 0.065], color=LINE, lw=1.2)
-ax.text(0.038, 0.035, "finance-llm-evals", fontsize=11, color=NAVY, ha="left", va="center", weight="bold")
+ax.text(0.038, 0.035, "TieOutBench", fontsize=11, color=NAVY, ha="left", va="center", weight="bold")
 ax.text(0.962, 0.035, "grounded in a real published FpML swap confirmation", fontsize=11, color=MUTE, ha="right", va="center")
 
 fig.savefig(os.path.join(HERE, "cover-eval5.png"), dpi=100, facecolor=BG)

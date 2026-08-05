@@ -81,7 +81,7 @@ ax.text(0.5, 0.140, "That's expected - not a break. The skill is telling the two
         fontsize=14, color=GREEN, weight="bold", ha="center", va="center")
 
 ax.plot([0.08, 0.92], [0.075, 0.075], color=LINE, lw=1.4)
-ax.text(0.5, 0.045, "finance-llm-evals   -   MIT   -   grounded in a real published FpML swap confirmation",
+ax.text(0.5, 0.045, "TieOutBench   -   MIT   -   grounded in a real published FpML swap confirmation",
         fontsize=12.5, color=MUTE, ha="center", va="center")
 
 fig.savefig(os.path.join(HERE, "hero-eval5.png"), dpi=100, facecolor=BG)

@@ -26,7 +26,7 @@ def _fold_system(messages):
         rest = [{"role": "user", "content": sys_text + "\n\n" + rest[0]["content"]}] + rest[1:]
     return rest
 
-UA = "finance-llm-evals research welt.management.solutions@gmail.com"
+UA = "TieOutBench research welt.management.solutions@gmail.com"
 DEFAULT_ENDPOINT = "http://localhost:1234/v1"
 
 

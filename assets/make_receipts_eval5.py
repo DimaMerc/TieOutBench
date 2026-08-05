@@ -71,7 +71,7 @@ ax.text(0.5, 0.145, "It agreed on WHAT was wrong and WHAT to do - it just mis-si
         fontsize=15, color=NAVY, ha="center", va="center")
 ax.text(0.5, 0.108, "The eval catches that, and pins it to the one step (C3).",
         fontsize=15, color=NAVY, weight="bold", ha="center", va="center")
-ax.text(0.5, 0.055, "finance-llm-evals   -   every step graded, every failure localized",
+ax.text(0.5, 0.055, "TieOutBench   -   every step graded, every failure localized",
         fontsize=12.5, color="#6B7785", ha="center", va="center")
 
 fig.savefig(os.path.join(HERE, "receipts-eval5.png"), dpi=100, facecolor=PAGE)

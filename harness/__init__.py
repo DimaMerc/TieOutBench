@@ -1,4 +1,4 @@
-"""finance-llm-evals harness — load the rubric + a gold case, grade a model's memo, score it.
+"""TieOutBench harness — load the rubric + a gold case, grade a model's memo, score it.
 
 Two suites share one engine: eval #1 (earnings-analysis) and eval #2 (defined-outcome-etf).
 Cases route by their `suite:` field; each suite brings its rubric file, handlers, oracle and

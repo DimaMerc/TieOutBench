@@ -95,7 +95,7 @@ ax.text(LX, 0.045, "Two of the three crossed the bridge. The eval caught the one
         fontsize=13, color=MUTE, va="center")
 ax.text(LX, 0.020, "and pinned exactly where it slipped.",
         fontsize=13, color=MUTE, va="center")
-ax.text(0.915, 0.020, "finance-llm-evals  -  MIT", fontsize=11.5, color=FAINT, va="center", ha="right")
+ax.text(0.915, 0.020, "TieOutBench  -  MIT", fontsize=11.5, color=FAINT, va="center", ha="right")
 
 fig.savefig(os.path.join(HERE, "hero-eval3.png"), dpi=100, facecolor=BG)
 print("wrote", os.path.join(HERE, "hero-eval3.png"))

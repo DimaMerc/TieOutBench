@@ -91,7 +91,7 @@ ax.text(0.5, 0.130, "The eval pinned exactly where each one broke.",
 
 # ---------------- footer ----------------
 ax.plot([0.08, 0.92], [0.075, 0.075], color=LINE, lw=1.4)
-ax.text(0.5, 0.045, "finance-llm-evals   -   MIT   -   a runnable ETF creation/redemption reconciliation eval",
+ax.text(0.5, 0.045, "TieOutBench   -   MIT   -   a runnable ETF creation/redemption reconciliation eval",
         fontsize=12.5, color=MUTE, ha="center", va="center")
 
 fig.savefig(os.path.join(HERE, "hero-eval4.png"), dpi=100, facecolor=BG)

@@ -422,7 +422,7 @@ def cmd_demo(_):
 
 
 def main():
-    ap = argparse.ArgumentParser(prog="harness", description="finance-llm-evals scoring harness")
+    ap = argparse.ArgumentParser(prog="harness", description="TieOutBench scoring harness")
     sub = ap.add_subparsers(dest="cmd", required=True)
     sub.add_parser("list").set_defaults(fn=cmd_list)
     r = sub.add_parser("run"); r.add_argument("--case", required=True); r.add_argument("--model", default="oracle",

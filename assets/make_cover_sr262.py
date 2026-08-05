@@ -72,7 +72,7 @@ ax.text(PX, 0.195, "not the weights.", fontsize=14, color=LGREEN, ha="center", v
 
 # ---------------- footer ----------------
 ax.plot([0.038, 0.962], [0.065, 0.065], color=LINE, lw=1.2)
-ax.text(0.038, 0.035, "finance-llm-evals", fontsize=11, color=NAVY, ha="left", va="center", weight="bold")
+ax.text(0.038, 0.035, "TieOutBench", fontsize=11, color=NAVY, ha="left", va="center", weight="bold")
 ax.text(0.962, 0.035, "gold sets · auto-fail gates · challenger runs · receipts", fontsize=11, color=MUTE, ha="right", va="center")
 
 fig.savefig(os.path.join(HERE, "cover-sr262.png"), dpi=100, facecolor=BG)
