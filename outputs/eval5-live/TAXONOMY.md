@@ -48,8 +48,9 @@ localizes.
 
 ## Two grader-calibration fixes the live runs surfaced
 
-The first real models surfaced two grader bugs the synthetic tests were written around (the same law
-that held on evals #1–#4) — both fixed, oracle still 1.000/AllPass, designed variants still gate:
+The first real models surfaced two grader bugs the synthetic tests were written around (the same rule
+that held on evals #1–#3; eval #4's first live batch surfaced none) — both fixed, oracle still
+1.000/AllPass, designed variants still gate:
 
 1. **`material_breaks` / `expected_diffs` shape.** Sonnet returned these as rich *dicts*
    (`[{"field": "fixed_rate", ...}]`) and Opus as *descriptive strings*

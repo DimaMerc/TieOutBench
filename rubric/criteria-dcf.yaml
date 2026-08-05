@@ -926,7 +926,7 @@ criteria:
   - id: C7.upside
     checkpoint: C7
     category: numerical
-    criterion: "Upside/downside vs the market price = value_per_share/price - 1 is computed, within 0.5pp of gold."
+    criterion: "Upside/downside vs the market price = value_per_share/price - 1 is computed, within the upside_pp band (1.5pp) of gold."
     points: 3
     grader: deterministic
     gate: none

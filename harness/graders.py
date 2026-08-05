@@ -44,10 +44,17 @@ def _num(node):
     if node is None:
         return None
     if isinstance(node, dict):
-        v = node.get("value_usd_mm", node.get("value"))
-        return float(v) if isinstance(v, (int, float)) else None
+        return _num(node.get("value_usd_mm", node.get("value")))
     if isinstance(node, (int, float)):
         return float(node)
+    if isinstance(node, str):
+        # a numeric STRING with display formatting ("7,469", "$ 206.64", "12.6%") is the model's
+        # reporting choice, not a wrong value — parse it (the eval-5 answer-shape precedent)
+        s = node.replace(",", "").replace("$", "").replace("%", "").strip()
+        try:
+            return float(s)
+        except ValueError:
+            return None
     return None
 
 

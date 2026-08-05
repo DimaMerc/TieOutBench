@@ -26,10 +26,12 @@ divided by diluted shares** — landing the fair value at ~$228 (gold $227.82) a
 read. No gate fires; the entire C1–C6 calculation spine is clean. The residuals are calibration and
 form, not correctness:
 - **Both computed the WACC correctly inside the valuation** (C2: Ke 7.80% + after-tax Kd 3.768% on
-  market weights = **7.15%**, exact) and discounted with it — but on the separate E5 probe ("what is the
-  WACC, *per its 10-K*?") both answered `NOT_DISCLOSED` ("no 10-K states a WACC"), *without volunteering
-  the 7.15% they had just computed*. The disclosure answer is true; not offering the figure is the
-  calibration quirk. The mock awards the grounded refusal 0.75; the run-mode-aware live judge
+  market weights = **7.15%**, exact) and discounted with it — and on the separate E5 probe ("what is the
+  WACC, *per its 10-K*?") both answered `NOT_DISCLOSED` with `value: null` ("no 10-K states a WACC"),
+  *declining to claim the derived figure as the answer* — though both restate ~7.155% inside their E5
+  derivation text. *(Corrected 2026-08: an earlier version of this note said they answered "without
+  volunteering the figure"; the committed `answer.json` derivations do state it.)* The disclosure answer
+  is true; the null-value refusal is the calibration quirk. The mock awards the grounded refusal 0.75; the run-mode-aware live judge
   (judge.md §9.1) scores it *below* 0.75 when the components are in context, since the more useful
   answer pairs the (correct) "not in the filing" with the derived value.
 - **Opus reported a 1-D WACC sweep, not the full 2-D WACC×g grid** (3/9 cells — the base-g column,
@@ -51,11 +53,13 @@ localized, is the whole point of the in-checkpoint gate.
 The most consistent cross-model behavior is easy to misread, so state it precisely: **all three
 *computed* the discount rate correctly inside the model** (C2 WACC ≈ 7.15% from the components) and
 discounted with it — the valuation arithmetic was right. The E5 probe is a *separate* calibrated-refusal
-question — "what is the WACC, **per its 10-K**?" — and all three answered "it is not disclosed," which
-is true (no 10-K states a WACC). What they did *not* do is volunteer the 7.15% they had just computed
-two steps earlier. So this is a **framing/context-dependence quirk** — they do the work but won't claim
-the number when asked about the *document* rather than asked to *use* it — not an inability to compute
-a discount rate. It is also the one place the calculation-heavy design hands real weight to the live
+question — "what is the WACC, **per its 10-K**?" — and all three answered "it is not disclosed" with
+`value: null`, which is true (no 10-K states a WACC). What they did *not* do is claim the derived
+figure *as the answer* — Opus and Sonnet restate ~7.155% inside their derivation text, Haiku its own
+7.203%, all with a null value. *(Corrected 2026-08: an earlier version said they did not volunteer the
+figure at all; the committed derivations do state it.)* So this is a **framing/context-dependence
+quirk** — they do the work but won't claim the number as an answer about the *document* rather than a
+figure they were asked to *use* — not an inability to compute a discount rate. It is also the one place the calculation-heavy design hands real weight to the live
 judge's run-mode mapping (a "not disclosed" that ignores the in-context components should score below a
 grounded refusal). *(Note: the probe's "per its 10-K" phrasing makes `NOT_DISCLOSED` defensible; a
 sharper probe would ask the model to estimate the WACC from the provided inputs — a Phase-6 refinement.)*

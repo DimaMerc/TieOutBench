@@ -35,7 +35,12 @@ def main():
 
     case_path = os.path.join(REPO, "cases", a.case + ".case.yaml")
     case = load_case(case_path)
-    outdir = os.path.join(REPO, "outputs", "eval3-live", a.model_id.replace("/", "_"))
+    # legacy layout for the original MCD case (committed artifacts live at eval3-live/<model>/);
+    # any other case gets its own subtree so runs never clobber each other.
+    if a.case == "mcd-fy2025-dcf":
+        outdir = os.path.join(REPO, "outputs", "eval3-live", a.model_id.replace("/", "_"))
+    else:
+        outdir = os.path.join(REPO, "outputs", "eval3-live", a.case, a.model_id.replace("/", "_"))
     os.makedirs(outdir, exist_ok=True)
 
     print(f"[live] {a.model_id} @ {a.endpoint} — building the 10-K packet and calling the model ...")

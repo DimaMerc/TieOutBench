@@ -101,6 +101,15 @@ def _gnorm(g):
     return g * 100.0 if abs(g) < 1.0 else g
 
 
+def _ratenorm(r):
+    """Ke / after-tax Kd / WACC in percentage points; a fraction report (0.1262 for 12.62%) is
+    normalized before grading — the schema asks for pp, but the math must not be failed on the
+    reporting choice (the _taxnorm precedent; no plausible Ke/Kd/WACC sits below 1pp)."""
+    if r is None:
+        return None
+    return r * 100.0 if 0 < abs(r) < 1.0 else r
+
+
 def _taxnorm(t):
     """a tax rate reported as a fraction (0.215) OR in percentage points (21.5) -> the fraction.
     The schema invites 'percentages in percentage points', so a model may legitimately report the
@@ -296,7 +305,11 @@ def handle(a, ctx):
                    "FCFF tax = cash_tax_rate")
     if a.id == "E2.netdebt":
         td, cash, nd = (_num(_figs(model, "E2").get(k)) for k in ("total_debt", "cash_and_equiv", "net_debt"))
-        return det(None not in (td, cash, nd) and abs((td - cash) - nd) <= 0.5, "net debt = total debt - cash")
+        # cash-like marketable securities net against debt where the balance sheet carries them
+        # (e.g. NVDA); absent/null on filers without the line (e.g. MCD) -> 0, the original identity.
+        ms = _num(_figs(model, "E2").get("marketable_securities")) or 0.0
+        return det(None not in (td, cash, nd) and abs((td - cash - ms) - nd) <= 0.5,
+                   "net debt = total debt - cash (- cash-like marketable securities where reported)")
     if a.id == "E2.leases":
         le = str(_g(model, "E2", "lease_exclusion") or "").lower()
         return det("lease" in le and ("exclud" in le or "operating" in le or "not " in le),
@@ -308,6 +321,10 @@ def handle(a, ctx):
         return det(within(_num(_figs(model, "E2").get("diluted_shares")),
                           Gv("E2", "figures", "diluted_shares"), "exact_int", tol), "diluted shares")
     if a.id == "E2.bookequity":
+        # applies only where the CASE presents the oddity (MCD's negative book equity). A case whose
+        # gold carries no negative_book_equity_note (e.g. NVDA, positive equity) passes vacuously.
+        if not str(_g(gold, "E2", "negative_book_equity_note") or _g(gold, "P2", "negative_book_equity_note") or ""):
+            return det(True, "no book-equity oddity in this case (not applicable)")
         note = str(_g(model, "E2", "negative_book_equity_note") or "").lower()
         return det(any(k in note for k in ("buyback", "negative", "deficit", "data error", "repurchase")),
                    "negative book equity not a data error")
@@ -363,11 +380,11 @@ def handle(a, ctx):
         return det(bool(rows) and all(r.get("ebit") is not None and r.get("fcff") is not None for r in rows),
                    "per-year build present")
     if a.id == "C2.ke":
-        return det(within(Mv("C2", "ke", "value"), Gv("C2", "ke", "value"), "wacc_bp", tol), "Ke via CAPM")
+        return det(within(_ratenorm(Mv("C2", "ke", "value")), Gv("C2", "ke", "value"), "wacc_bp", tol), "Ke via CAPM")
     if a.id == "C2.kd":
-        return det(within(Mv("C2", "kd_after", "value"), Gv("C2", "kd_after", "value"), "wacc_bp", tol), "after-tax Kd")
+        return det(within(_ratenorm(Mv("C2", "kd_after", "value")), Gv("C2", "kd_after", "value"), "wacc_bp", tol), "after-tax Kd")
     if a.id == "C2.wacc":
-        return det(within(Mv("C2", "wacc", "value"), Gv("C2", "wacc", "value"), "wacc_bp", tol), "WACC")
+        return det(within(_ratenorm(Mv("C2", "wacc", "value")), Gv("C2", "wacc", "value"), "wacc_bp", tol), "WACC")
     if a.id == "C2.weights":
         return det(bool(_g(model, "C2", "weights")), "market weights / after-tax Kd noted")
     if a.id == "C3.factors":
@@ -381,7 +398,7 @@ def handle(a, ctx):
                    "Gordon TV")
     if a.id == "C4.gterm":   # GATE.C4TERM — g < WACC strictly AND a finite, positive, discounted TV
         g_frac = _num({"value": _g(model, "P3", "terminal_param_g")})
-        wacc = Mv("C2", "wacc", "value")
+        wacc = _ratenorm(Mv("C2", "wacc", "value"))
         tv = Mv("C4", "tv_undiscounted", "value")
         discounted = Mv("C4", "pv_tv", "value") is not None
         # the declared g must be < WACC AND the realized TV must be positive (an explosive/negative
@@ -408,7 +425,7 @@ def handle(a, ctx):
     if a.id == "C5.consistency":   # GATE.BASIS (hook 2): EV built from FCFF@WACC, labeled enterprise
         if not _g(model, "C5", "consistency"):
             return det(0.0, "no enterprise-basis label")
-        wacc = Mv("C2", "wacc", "value")
+        wacc = _ratenorm(Mv("C2", "wacc", "value"))
         cf, pv = _years(model, "C1"), _years(model, "C3")
         if wacc is None or not cf or not pv or len(cf) != len(pv):
             return det(0.0, "cannot verify the discount basis")
@@ -518,7 +535,10 @@ def handle(a, ctx):
         # a STUB block (right TV-share + garbage strings) must NOT buy off the gate: the WACC and g
         # sensitivities must each be a genuine numeric RANGE, and the driver a substantive phrase
         ranges = _range_ok(blk.get("wacc_sensitivity_per_share")) and _range_ok(blk.get("g_sensitivity_per_share"))
-        driver = isinstance(blk.get("key_value_driver"), str) and len(blk["key_value_driver"].split()) >= 3
+        # "substantive phrase" tokenizes snake/kebab-case too — "terminal_value_and_wacc" is a
+        # substantive driver, not a stub (a live Sonnet answer fired the gate on style alone)
+        driver = isinstance(blk.get("key_value_driver"), str) \
+            and len(blk["key_value_driver"].replace("_", " ").replace("-", " ").split()) >= 3
         return det(ok_tv and ranges and driver, "sensitivity block: real range + TV-share internally consistent")
     if a.id == "S3.structure":
         n = _sentences(_g(model, "S3", "bottom_line_reference", default=""))
@@ -780,8 +800,14 @@ def make(case: dict, variant: str = "oracle") -> dict:
         s2.pop("sensitivity_block_gold", None)
         return m
     if variant == "g_explode":
-        # terminal g >= WACC (negative/explosive perpetuity) -> GATE.C4TERM (in-checkpoint, C4 -> 0)
-        m.setdefault("P3", {})["terminal_param_g"] = 0.08
+        # terminal g >= WACC (negative/explosive perpetuity) -> GATE.C4TERM (in-checkpoint, C4 -> 0).
+        # 0.08 explodes vs a ~7% WACC; on a high-WACC case (e.g. a growth stock at ~12.6%) derive an
+        # actually-explosive g from the case's own WACC instead (same +85bp margin 8.0% has over 7.15%).
+        g_bad = 0.08
+        wacc = _num(_g(m, "C2", "wacc", "value"))
+        if wacc is not None and g_bad < wacc / 100.0:
+            g_bad = round(wacc / 100.0 + 0.0085, 4)
+        m.setdefault("P3", {})["terminal_param_g"] = g_bad
         return m
     if variant == "c7_sign":
         # value below price reported as upside -> GATE.C7SIGN (in-checkpoint, C7 -> 0)

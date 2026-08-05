@@ -83,8 +83,15 @@ def _statement_text(html: str, max_rows: int = 80) -> str:
 
 def build_packet(case) -> str:
     cik, acc = _accession_path(case)
-    # R3 income, R7 balance sheet, R9 cash flows (the standard MCD ordering)
-    rmap = {"income": "R3.htm", "balance": "R7.htm", "cash_flow": "R9.htm"}
+    # R-file numbers differ per filer (MCD: R3/R7/R9; NVDA: R3/R5/R9) — read them from the case's
+    # sources.tenk.statements_used ("R5 — Consolidated Balance Sheets"), falling back to MCD's.
+    used = ((case.get("sources", {}) or {}).get("tenk", {}) or {}).get("statements_used", {}) or {}
+    def _rfile(key: str, default: str) -> str:
+        m = re.match(r"\s*(R\d+)", str(used.get(key) or ""))
+        return (m.group(1) + ".htm") if m else default
+    rmap = {"income": _rfile("income", "R3.htm"),
+            "balance": _rfile("balance", "R7.htm"),
+            "cash_flow": _rfile("cash_flow", "R9.htm")}
     titles = {"income": "CONSOLIDATED STATEMENT OF INCOME",
               "balance": "CONSOLIDATED BALANCE SHEET",
               "cash_flow": "CONSOLIDATED STATEMENT OF CASH FLOWS"}
@@ -123,6 +130,7 @@ filing's reporting units (millions). Use null only where you genuinely cannot de
                    "tax_provision":{"value":null,"citation":{}},"effective_tax_rate":{"value":null,"citation":{}},
                    "dep_amort":{"value":null,"citation":{}},"capex":{"value":null,"citation":{}}}},
  "E2": {"figures":{"total_debt":{"value":null,"citation":{}},"cash_and_equiv":{"value":null,"citation":{}},
+                   "marketable_securities":{"value":null,"citation":{}},
                    "net_debt":{"value":null},"minority_interest":{"value":null},"preferred":{"value":null},
                    "non_op_assets":{"value":null,"citation":{}},"diluted_shares":{"value":null,"citation":{}}},
         "lease_exclusion":"operating-lease liabilities excluded from net debt (rent stays in EBIT)",
@@ -188,9 +196,13 @@ def build_messages(case, packet: str):
         "equity), capitalize a Gordon terminal value (g < WACC strictly), sum to ENTERPRISE value, "
         "then BRIDGE to equity (subtract net debt, minority, preferred; add non-operating/equity-method "
         "assets) and divide by diluted shares — never divide enterprise value by shares directly. "
+        "Net debt = total debt less cash AND any cash-like MARKETABLE SECURITIES on the balance sheet; "
+        "non-marketable / equity-method investments are NOT cash-like — they are the non-operating add "
+        "in the bridge. A net-cash balance sheet makes net debt negative (the bridge ADDS value). "
         "Treat leases as operating (rent stays in EBIT; lease liabilities excluded from net debt). "
         "Report the fair value as a RANGE over a +-50bp WACC band with the terminal-value share of EV, "
-        "not a single decimal-precise target. Return ONLY the JSON object, no prose."
+        "not a single decimal-precise target; the sensitivity grid is 3x3 — WACC at -50bp/base/+50bp "
+        "by terminal g at -50bp/base/+50bp. Return ONLY the JSON object, no prose."
     )
     margin = asm.get("operating_margin")
     growth = asm.get("revenue_growth")
