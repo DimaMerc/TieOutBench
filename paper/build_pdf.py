@@ -83,16 +83,28 @@ try:
     subprocess.run(
         ["pandoc", TMP_MD, "-o", TMP_HTML, "--from", "markdown", "--to", "html5",
          "--standalone", "--embed-resources", "--resource-path", HERE,
-         "--css", TMP_CSS, "--metadata", "title=TieOutBench"],
+         "--css", TMP_CSS, "--metadata", "pagetitle=TieOutBench"],
         check=True, cwd=HERE,
     )
+    # A dedicated --user-data-dir keeps headless Edge from DELEGATING to an already-running
+    # browser instance (which returns immediately, races the temp-file cleanup, and prints a
+    # "File not found" error page to the PDF — this happened).
+    profile = os.path.join(HERE, "_edge_profile_tmp")
     subprocess.run(
-        [EDGE, "--headless", "--disable-gpu", "--no-pdf-header-footer",
+        [EDGE, "--headless", "--disable-gpu", "--no-first-run", "--disable-extensions",
+         f"--user-data-dir={profile}", "--no-pdf-header-footer",
          f"--print-to-pdf={OUT}", TMP_HTML],
         check=True, cwd=HERE,
     )
+    # Validate the output — a broken build must fail loudly, never write garbage.
+    data = open(OUT, "rb").read()
+    n_pages = data.count(b"/Type /Page") - data.count(b"/Type /Pages")
+    if len(data) < 300_000 or n_pages < 10 or b"ERR_FILE_NOT_FOUND" in data:
+        sys.exit(f"PDF looks broken: {len(data)} bytes, ~{n_pages} pages — build FAILED")
 finally:
+    import shutil
     for p in (TMP_MD, TMP_HTML, TMP_CSS):
         if os.path.exists(p):
             os.remove(p)
-print("wrote", OUT)
+    shutil.rmtree(os.path.join(HERE, "_edge_profile_tmp"), ignore_errors=True)
+print("wrote", OUT, "(validated)")
