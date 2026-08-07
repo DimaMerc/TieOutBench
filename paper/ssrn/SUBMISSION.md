@@ -44,6 +44,14 @@ cross-list there too.
 - After SSRN assigns the DOI/abstract number, add it to: docs/index.html (next to the PDF
   link), README.md (paper pointer), and the paper's front matter in a v1.1 rebuild.
 
+## Generative-AI disclosure (required by SSRN/Elsevier policy)
+The paper now carries a "Declaration on the use of generative AI" section (after the Author
+note, before References) — this is the disclosure the policy requires, and it must be IN the
+PDF, not just the form. If the submission form also has an AI-use question or free-text field,
+answer yes and paste the first sentence of that section. If the paper was already submitted
+without it: replace the PDF on the pending submission (My Papers → the submission → edit /
+replace file) or, if already approved, submit a revision — same abstract ID either way.
+
 ## Submission checklist
 1. [ ] Upload `tieoutbench-v1.pdf`
 2. [ ] Paste title, abstract, keywords, JEL codes

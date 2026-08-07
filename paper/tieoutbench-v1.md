@@ -742,6 +742,21 @@ The author ran the change-management side of an institutional ETF servicing plat
 independently since 2022. This suite is single-author by circumstance, not by philosophy — §9
 (item 2) and §10 describe where independent experts enter.
 
+## Declaration on the use of generative AI
+
+During the preparation of this work the author used Claude (Anthropic) as a drafting and
+analysis assistant: composing prose from the author's outline and the repository's committed
+artifacts, generating figure and harness code, and running the multi-agent adversarial review
+passes described in §3.6 and the per-case verification logs. All workflow designs, rubric
+criteria, gold-case judgments, and editorial decisions are the author's; every factual claim
+was verified against committed artifacts (source filings, raw model completions, scored
+reports), and the author reviewed and edited all content and takes full responsibility for it.
+Because generative AI is also this paper's subject, the safeguard against circularity is
+structural rather than procedural: gold answers derive from primary-source filings and
+closed-form arithmetic committed in the repository, grading is predominantly deterministic
+(§3.2), and every reported number is reproducible by any reader from the published artifacts —
+verification does not depend on trusting either the author or the tools that assisted him.
+
 ## References
 
 1. Arora, R. K., et al. (OpenAI). *HealthBench: Evaluating Large Language Models Towards Improved Human Health.* arXiv:2505.08775, 2025.
