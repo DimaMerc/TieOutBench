@@ -9,7 +9,8 @@ MBA, PMP · Independent · Greater Boston
 *Version 1 — August 2026. This is a technical report on a working artifact, written in the
 spirit of an honest v0: the caveats are stated next to the results they bound, and everything
 reported here is reproducible from the accompanying repository,
-[github.com/DimaMerc/TieOutBench](https://github.com/DimaMerc/TieOutBench).*
+[github.com/DimaMerc/TieOutBench](https://github.com/DimaMerc/TieOutBench). Posted on SSRN:
+[papers.ssrn.com/abstract=7243025](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7243025).*
 
 *Case gold answers — including the McDonald's and NVIDIA fair values and the KOCT snapshot
 arithmetic — are grading references computed under stated, dated case assumptions. They are not

@@ -1,5 +1,10 @@
 # SSRN submission package — TieOutBench v1
 
+**POSTED (2026-08): abstract ID 7243025 —
+https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7243025 — status DISTRIBUTED.
+DOI pending registration (will be 10.2139/ssrn.7243025); when it resolves, add it to
+docs/index.html, README, and the paper front matter in the next rebuild.**
+
 Everything to paste into the SSRN submission form. The PDF to upload:
 `paper/tieoutbench-v1.pdf` (identical to the canonical copy at `docs/paper.pdf` /
 evals.finance/paper.pdf).

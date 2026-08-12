@@ -71,8 +71,11 @@ flaw trip its gate. `python -m harness list` shows every case and variant ·
 <model>` with `OPENAI_API_KEY` set. The graded frontier-model runs are in [`outputs/`](outputs/),
 consolidated in [`LEADERBOARD.md`](LEADERBOARD.md).
 
-> 📄 **Prefer prose?** [`PAPER.md`](PAPER.md) is the methodology write-up. Each eval also has a
-> plain-language write-up in [`content/`](content/).
+> 📄 **Prefer prose?** The consolidated technical report is at
+> [evals.finance/paper.pdf](https://evals.finance/paper.pdf) and on
+> [SSRN (abstract 7243025)](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7243025);
+> source in [`paper/`](paper/). Each eval also has a plain-language write-up in
+> [`content/`](content/).
 
 ## The five evals in detail
 

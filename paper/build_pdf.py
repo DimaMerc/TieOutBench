@@ -22,6 +22,20 @@ TMP_CSS = os.path.join(HERE, "_paper_print.css")
 OUT = os.path.join(HERE, sys.argv[1] if len(sys.argv) > 1 else "tieoutbench-v1.pdf")
 EDGE = r"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe"
 
+def _find_pandoc() -> str:
+    """PATH first, then the known Windows install locations (fresh shells may lack the PATH entry)."""
+    import shutil as _sh
+    hit = _sh.which("pandoc")
+    if hit:
+        return hit
+    for c in (os.path.expandvars(r"%LOCALAPPDATA%\Pandoc\pandoc.exe"),
+              os.path.expandvars(r"%ProgramFiles%\Pandoc\pandoc.exe")):
+        if os.path.exists(c):
+            return c
+    sys.exit("pandoc not found — install it (winget install JohnMacFarlane.Pandoc)")
+
+PANDOC = _find_pandoc()
+
 CSS = """
 @page { size: Letter; margin: 22mm 20mm; }
 html { -webkit-print-color-adjust: exact; }
@@ -81,7 +95,7 @@ open(TMP_MD, "w", encoding="utf-8").write(new)
 open(TMP_CSS, "w", encoding="utf-8").write(CSS)
 try:
     subprocess.run(
-        ["pandoc", TMP_MD, "-o", TMP_HTML, "--from", "markdown", "--to", "html5",
+        [PANDOC, TMP_MD, "-o", TMP_HTML, "--from", "markdown", "--to", "html5",
          "--standalone", "--embed-resources", "--resource-path", HERE,
          "--css", TMP_CSS, "--metadata", "pagetitle=TieOutBench"],
         check=True, cwd=HERE,
