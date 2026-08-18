@@ -7,6 +7,7 @@ harness/__main__.py — CLI.
   python -m harness demo                       # the canonical oracle-vs-scale-slip contrast on SNOW
   python -m harness suite [--model oracle]     # score every case in cases/ (both suites)
   python -m harness selftest                   # per-suite regression invariants
+  python -m harness profiles                   # rebuild profiles/ from the committed live runs
 
 `--judge mock` (default, offline/no-API) grades the entailment/judge/refusal atoms heuristically;
 `--judge llm` is the (spend-incurring) live swap. The deterministic core + all gating are exact in
@@ -421,6 +422,19 @@ def cmd_demo(_):
     print("surface: 'can do the math, cannot be trusted to read a statement header.'")
 
 
+def cmd_profiles(_):
+    """Re-grade every committed frontier run (evals #3-#5) into machine-readable capability
+    profiles under profiles/ — per-checkpoint scores as data, not report text. Deterministic and
+    byte-stable: a clean diff after regeneration proves the grader still reproduces every
+    published number."""
+    from . import profiles as prof
+    built = prof.build()
+    written = prof.write(built)
+    print(prof.render_grid(built))
+    n_runs = sum(p["summary"]["n_runs"] for p in built.values())
+    print(f"\n{len(built)} models, {n_runs} runs -> {len(written)} files under profiles/")
+
+
 def main():
     ap = argparse.ArgumentParser(prog="harness", description="TieOutBench scoring harness")
     sub = ap.add_subparsers(dest="cmd", required=True)
@@ -442,6 +456,7 @@ def main():
     s.set_defaults(fn=cmd_suite)
     d = sub.add_parser("demo"); d.set_defaults(fn=cmd_demo)
     sub.add_parser("selftest").set_defaults(fn=cmd_selftest)
+    sub.add_parser("profiles").set_defaults(fn=cmd_profiles)
     args = ap.parse_args()
     args.fn(args)
 

@@ -191,6 +191,9 @@ replication is the honest next step before calling it task-level. [Taxonomy](out
 - Every number above is reproducible from the artifacts in [`outputs/`](outputs/) — parsed
   answers, raw completions, scored reports — or re-runnable via
   `python -m harness run --case <case> --model live ...`.
+- The frontier grid (evals #3–#5) also ships as machine-readable per-checkpoint
+  [capability profiles](profiles/) — `python -m harness profiles` regenerates them byte-stably
+  from the committed answers, so a clean diff doubles as a grader regression check.
 
 ## What's next
 

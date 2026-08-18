@@ -1,0 +1,543 @@
+{
+  "benchmark": "TieOutBench",
+  "model": "gemini-3.6-flash",
+  "notes": [
+    "Scores are re-graded offline from the committed answer.json artifacts via the deterministic mock-judge path \u2014 the same path that produced the committed report.txt files. No API calls.",
+    "One run per model per case; scores are point-in-time for the model versions named. This grid does not rank models and reports no single blended number per model on purpose.",
+    "Completion budgets differed by vendor where required for parity (GPT DCF runs 32k, Gemini 32k throughout, Claude 12-16k on DCF, 8k elsewhere); see LEADERBOARD.md 'Scope notes'.",
+    "The NVDA DCF runs used the case-hardened v2 system prompt; the MCD runs predate it. Cross-case comparisons on the netting-convention and grid-geometry behaviors are hedged in outputs/eval3-live/nvda-fy2026-dcf/TAXONOMY.md.",
+    "gates_fired lists auto-fail conditions that collapsed the gated score; an empty list plus a high gated score is the deployable signal, a high UNGATED score alone is not."
+  ],
+  "runs": [
+    {
+      "allpass": 0,
+      "answer": "outputs/eval3-live/gemini-3.6-flash/answer.json",
+      "case": "cases/mcd-fy2025-dcf.case.yaml",
+      "case_id": "mcd-fy2025-dcf",
+      "categories": {
+        "calibration": 1.0,
+        "entailment": 0.0,
+        "extraction": 1.0,
+        "numerical": 0.9775,
+        "reasoning": 0.9225,
+        "structure": 1.0
+      },
+      "checkpoints": {
+        "C1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.065
+        },
+        "C2": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.055
+        },
+        "C3": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.07
+        },
+        "C4": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.05
+        },
+        "C5": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.045
+        },
+        "C6": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.085
+        },
+        "C7": {
+          "gated": 0.619,
+          "ungated": 0.619,
+          "weight": 0.07
+        },
+        "E1": {
+          "gated": 0.7619,
+          "ungated": 0.7619,
+          "weight": 0.05
+        },
+        "E2": {
+          "gated": 0.8077,
+          "ungated": 0.8077,
+          "weight": 0.075
+        },
+        "E3": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.04
+        },
+        "E4": {
+          "gated": 0.8571,
+          "ungated": 0.8571,
+          "weight": 0.035
+        },
+        "E5": {
+          "gated": 0.7895,
+          "ungated": 0.7895,
+          "weight": 0.05
+        },
+        "P1": {
+          "gated": 0.8846,
+          "ungated": 0.8846,
+          "weight": 0.05
+        },
+        "P2": {
+          "gated": 0.9286,
+          "ungated": 0.9286,
+          "weight": 0.05
+        },
+        "P3": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.03
+        },
+        "S1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.06
+        },
+        "S2": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.07
+        },
+        "S3": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.05
+        }
+      },
+      "eval": 3,
+      "gap": 0.0,
+      "gates_fired": [],
+      "headline_flags": [],
+      "refusal": {
+        "checkpoint": "E5",
+        "f_beta": 0.7895,
+        "groundedness": 0.75,
+        "recall": 1.0
+      },
+      "score_gated": 0.9221,
+      "score_ungated": 0.9221,
+      "suite": "dcf-valuation"
+    },
+    {
+      "allpass": 0,
+      "answer": "outputs/eval3-live/nvda-fy2026-dcf/gemini-3.6-flash/answer.json",
+      "case": "cases/nvda-fy2026-dcf.case.yaml",
+      "case_id": "nvda-fy2026-dcf",
+      "categories": {
+        "calibration": 1.0,
+        "entailment": 0.75,
+        "extraction": 1.0,
+        "numerical": 0.9925,
+        "reasoning": 0.969,
+        "structure": 1.0
+      },
+      "checkpoints": {
+        "C1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.065
+        },
+        "C2": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.055
+        },
+        "C3": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.07
+        },
+        "C4": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.05
+        },
+        "C5": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.045
+        },
+        "C6": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.085
+        },
+        "C7": {
+          "gated": 0.8571,
+          "ungated": 0.8571,
+          "weight": 0.07
+        },
+        "E1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.05
+        },
+        "E2": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.075
+        },
+        "E3": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.04
+        },
+        "E4": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.035
+        },
+        "E5": {
+          "gated": 0.7895,
+          "ungated": 0.7895,
+          "weight": 0.05
+        },
+        "P1": {
+          "gated": 0.8846,
+          "ungated": 0.8846,
+          "weight": 0.05
+        },
+        "P2": {
+          "gated": 0.9286,
+          "ungated": 0.9286,
+          "weight": 0.05
+        },
+        "P3": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.03
+        },
+        "S1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.06
+        },
+        "S2": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.07
+        },
+        "S3": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.05
+        }
+      },
+      "eval": 3,
+      "gap": 0.0,
+      "gates_fired": [],
+      "headline_flags": [],
+      "refusal": {
+        "checkpoint": "E5",
+        "f_beta": 0.7895,
+        "groundedness": 0.75,
+        "recall": 1.0
+      },
+      "score_gated": 0.9701,
+      "score_ungated": 0.9701,
+      "suite": "dcf-valuation"
+    },
+    {
+      "allpass": 0,
+      "answer": "outputs/eval4-live/gemini-3.6-flash/grin-create-2026/answer.json",
+      "case": "cases/grin-create-2026.case.yaml",
+      "case_id": "grin-create-2026",
+      "categories": {
+        "calibration": 1.0,
+        "entailment": 0.0,
+        "extraction": 1.0,
+        "numerical": 1.0,
+        "reasoning": 1.0,
+        "structure": 1.0
+      },
+      "checkpoints": {
+        "C1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.14
+        },
+        "C2": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.16
+        },
+        "C3": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.16
+        },
+        "D1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.14
+        },
+        "D2": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.08
+        },
+        "E1": {
+          "gated": 0.8571,
+          "ungated": 0.8571,
+          "weight": 0.12
+        },
+        "E2": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.1
+        },
+        "P1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.1
+        }
+      },
+      "eval": 4,
+      "gap": 0.0,
+      "gates_fired": [],
+      "headline_flags": [],
+      "refusal": {
+        "checkpoint": "D2",
+        "f_beta": 1.0,
+        "groundedness": 1.0,
+        "recall": 1.0
+      },
+      "score_gated": 0.9829,
+      "score_ungated": 0.9829,
+      "suite": "creation-redemption"
+    },
+    {
+      "allpass": 0,
+      "answer": "outputs/eval4-live/gemini-3.6-flash/grin-create-2026-clean/answer.json",
+      "case": "cases/grin-create-2026-clean.case.yaml",
+      "case_id": "grin-create-2026-clean",
+      "categories": {
+        "calibration": 1.0,
+        "entailment": 0.0,
+        "extraction": 1.0,
+        "numerical": 0.9796,
+        "reasoning": 1.0,
+        "structure": 1.0
+      },
+      "checkpoints": {
+        "C1": {
+          "gated": 0.9286,
+          "ungated": 0.9286,
+          "weight": 0.14
+        },
+        "C2": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.16
+        },
+        "C3": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.16
+        },
+        "D1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.14
+        },
+        "D2": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.08
+        },
+        "E1": {
+          "gated": 0.8571,
+          "ungated": 0.8571,
+          "weight": 0.12
+        },
+        "E2": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.1
+        },
+        "P1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.1
+        }
+      },
+      "eval": 4,
+      "gap": 0.0,
+      "gates_fired": [],
+      "headline_flags": [],
+      "refusal": {
+        "checkpoint": "D2",
+        "f_beta": 1.0,
+        "groundedness": 1.0,
+        "recall": 1.0
+      },
+      "score_gated": 0.9729,
+      "score_ungated": 0.9729,
+      "suite": "creation-redemption"
+    },
+    {
+      "allpass": 0,
+      "answer": "outputs/eval5-live/gemini-3.6-flash/irs-confirm-2026/answer.json",
+      "case": "cases/irs-confirm-2026.case.yaml",
+      "case_id": "irs-confirm-2026",
+      "categories": {
+        "calibration": 1.0,
+        "entailment": 0.0,
+        "extraction": 1.0,
+        "numerical": 1.0,
+        "reasoning": 1.0,
+        "structure": 1.0
+      },
+      "checkpoints": {
+        "C1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.16
+        },
+        "C2": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.14
+        },
+        "C3": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.14
+        },
+        "D1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.16
+        },
+        "D2": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.08
+        },
+        "E1": {
+          "gated": 0.8333,
+          "ungated": 0.8333,
+          "weight": 0.12
+        },
+        "E2": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.1
+        },
+        "P1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.1
+        }
+      },
+      "eval": 5,
+      "gap": 0.0,
+      "gates_fired": [],
+      "headline_flags": [],
+      "refusal": {
+        "checkpoint": "D2",
+        "f_beta": 1.0,
+        "groundedness": 1.0,
+        "recall": 1.0
+      },
+      "score_gated": 0.98,
+      "score_ungated": 0.98,
+      "suite": "confirmation-matching"
+    },
+    {
+      "allpass": 0,
+      "answer": "outputs/eval5-live/gemini-3.6-flash/irs-confirm-2026-clean/answer.json",
+      "case": "cases/irs-confirm-2026-clean.case.yaml",
+      "case_id": "irs-confirm-2026-clean",
+      "categories": {
+        "calibration": 1.0,
+        "entailment": 0.0,
+        "extraction": 1.0,
+        "numerical": 1.0,
+        "reasoning": 1.0,
+        "structure": 1.0
+      },
+      "checkpoints": {
+        "C1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.16
+        },
+        "C2": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.14
+        },
+        "C3": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.14
+        },
+        "D1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.16
+        },
+        "D2": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.08
+        },
+        "E1": {
+          "gated": 0.8333,
+          "ungated": 0.8333,
+          "weight": 0.12
+        },
+        "E2": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.1
+        },
+        "P1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.1
+        }
+      },
+      "eval": 5,
+      "gap": 0.0,
+      "gates_fired": [],
+      "headline_flags": [],
+      "refusal": {
+        "checkpoint": "D2",
+        "f_beta": 1.0,
+        "groundedness": 1.0,
+        "recall": 1.0
+      },
+      "score_gated": 0.98,
+      "score_ungated": 0.98,
+      "suite": "confirmation-matching"
+    }
+  ],
+  "schema_version": "1.0",
+  "source": "https://github.com/DimaMerc/TieOutBench",
+  "summary": {
+    "gates_fired": {},
+    "n_allpass": 0,
+    "n_runs": 6,
+    "score_gated_by_case": {
+      "grin-create-2026": 0.9829,
+      "grin-create-2026-clean": 0.9729,
+      "irs-confirm-2026": 0.98,
+      "irs-confirm-2026-clean": 0.98,
+      "mcd-fy2025-dcf": 0.9221,
+      "nvda-fy2026-dcf": 0.9701
+    }
+  },
+  "vendor": "google"
+}

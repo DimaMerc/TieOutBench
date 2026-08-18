@@ -265,6 +265,22 @@ In order of importance, no hedging-by-burying:
 - Cross-family judge + blind multi-expert calibration.
 - The SFT/distillation flywheel (synthetic FpML → fine-tune → grade with the suite's own gates).
 
+### v2 addition (decided 2026-08-17, shipped in-repo; add to §10 in the next revision)
+
+- **The ODD framing + capability profiles (built 2026-08-17, post-v1):** per-checkpoint scores
+  from the committed frontier runs now ship as machine-readable capability profiles
+  (`profiles/scores.json`, `python -m harness profiles`, byte-stable regeneration = a grader
+  regression check), and `ODD.md` maps the suite's outputs — checkpoint vectors, gate records,
+  the decision/quantification split, calibrated refusal, re-performable artifacts — onto
+  allocator **operational due diligence** for AI inside investment processes, where DDQ answers
+  are today narrative with no capability instrument behind them. v2 future-work paragraph
+  (draft): *"Beyond deployment routing, the same outputs are shaped like operational-due-diligence
+  evidence: an allocator reviewing a manager's AI use needs per-step fitness evidence, hard-fail
+  records, and re-performable results rather than a blended vendor accuracy claim. We publish the
+  frontier grid as machine-readable per-checkpoint capability profiles and sketch the mapping
+  from this suite's outputs to an artifact-backed DDQ section; a purpose-built ODD workflow eval
+  is a natural successor to the corporate-actions eval."*
+
 ## 11. Reproducibility statement
 
 One dependency, no API key for everything deterministic; the five commands (from PAPER.md §5);
