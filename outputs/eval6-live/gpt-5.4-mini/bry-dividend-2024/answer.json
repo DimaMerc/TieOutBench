@@ -1,0 +1,101 @@
+{
+  "P1": {
+    "issuer": "Berry Corporation",
+    "security": {
+      "ticker": "BRY"
+    },
+    "event_type": "mandatory",
+    "governing_doc": "bry-8k-20240813",
+    "superseded_docs": [
+      "bry-8k-20240809"
+    ]
+  },
+  "P2": {
+    "dates": {
+      "declared": "2024-08-09",
+      "corrected": "2024-08-13",
+      "record_date": "2024-08-23",
+      "pay_date": "2024-08-30"
+    },
+    "entitlement_basis": "record_date",
+    "entitlement_basis_date": "2024-08-23",
+    "election_deadline": null
+  },
+  "E1": {
+    "terms": {
+      "rate_total": 0.17,
+      "rate_fixed": 0.12,
+      "rate_variable": 0.05,
+      "record_date": "2024-08-23",
+      "pay_date": "2024-08-30"
+    },
+    "citation": {
+      "document": "bry-8k-20240813",
+      "locator": "body",
+      "verbatim": "The dividends will be payable on August 30, 2024 to all stockholders of record as of the close of business on August 23, 2024"
+    }
+  },
+  "E2": {
+    "position": {
+      "shares_20240812": 50000,
+      "shares_settled_current": 40000
+    },
+    "basis_shares": 50000
+  },
+  "C1": {
+    "entitlement": {
+      "eligible_shares": 50000,
+      "rate": 0.17,
+      "gross_cash": 8500
+    },
+    "cil": {
+      "applicable": false,
+      "amount": null
+    }
+  },
+  "C2": {
+    "election_required": false,
+    "options": null,
+    "default_option": null,
+    "economics": null
+  },
+  "C3": {
+    "impact": {
+      "gross_cash": 8500
+    },
+    "changes": [
+      {
+        "what": "Dividend cash receivable projection for BRY",
+        "where": "ACCT-7712 corporate actions cash ledger",
+        "old": null,
+        "new": 8500
+      }
+    ]
+  },
+  "D1": {
+    "decision": "hold for dividend entitlement on corrected record date",
+    "actions": [
+      {
+        "action": "book dividend receivable",
+        "option": null,
+        "quantity": 50000,
+        "amount": 8500,
+        "by_date": "2024-08-30",
+        "basis_doc": "bry-8k-20240813"
+      }
+    ]
+  },
+  "D2": {
+    "probe": {
+      "label": "NOT_DETERMINABLE",
+      "value": null,
+      "derivation": "The store does not provide any withholding-tax rate or treaty status for the foreign-domiciled subaccount. Missing referenced document: tax withholding instruction / tax profile document for ACCT-7712. Escalate and hold only the net-cash calculation; gross cash is determined."
+    },
+    "twins": [
+      {
+        "id": "TW1",
+        "value": 8500
+      }
+    ]
+  }
+}

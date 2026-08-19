@@ -1,0 +1,120 @@
+{
+  "P1": {
+    "issuer": "Monster Beverage Corporation",
+    "security": {
+      "ticker": "MNST"
+    },
+    "event_type": "voluntary",
+    "governing_doc": "mnst-results-20240610",
+    "superseded_docs": []
+  },
+  "P2": {
+    "dates": {
+      "offer_commenced": "2024-05-08",
+      "expiration": "2024-06-05",
+      "results_announced": "2024-06-10"
+    },
+    "entitlement_basis": "shares_validly_tendered_by_expiration",
+    "entitlement_basis_date": "2024-06-05",
+    "election_deadline": "2024-06-05"
+  },
+  "E1": {
+    "terms": {
+      "final_price": 53.0,
+      "shares_tendered_total": 119018767,
+      "shares_accepted_total": 56603773,
+      "proration_factor": 0.4718,
+      "odd_lot_threshold": 100
+    },
+    "citation": {
+      "document": "mnst-results-20240610",
+      "locator": "body",
+      "verbatim": "Monster accepted for purchase a total of 56,603,773 shares of its common stock at the final purchase price of $53.00 per share, for an aggregate purchase price of approximately $3.0 billion. Because the number of shares tendered would have exceeded the aggregate purchase price of the tender offer, shares were accepted for purchase on a pro rata basis, except for tenders of \"odd lots,\" which will be accepted in full."
+    }
+  },
+  "E2": {
+    "position": {
+      "shares_held": 87,
+      "shares_tendered": 87
+    },
+    "basis_shares": 87
+  },
+  "C1": {
+    "entitlement": {
+      "shares_tendered": 87,
+      "accepted_shares": 87,
+      "final_price": 53.0,
+      "gross_proceeds": 4611.0,
+      "residual_shares": 0
+    },
+    "cil": {
+      "applicable": false,
+      "amount": null
+    }
+  },
+  "C2": {
+    "election_required": false,
+    "options": null,
+    "default_option": null,
+    "economics": {
+      "proration_applies": false,
+      "factor_used": 1.0,
+      "odd_lot_exception": true
+    }
+  },
+  "C3": {
+    "impact": {
+      "accepted_shares": 87,
+      "gross_proceeds": 4611.0,
+      "residual_shares": 0
+    },
+    "changes": [
+      {
+        "what": "MNST share position",
+        "where": "ACCT-0093 custody position ledger",
+        "old": 87,
+        "new": 0
+      },
+      {
+        "what": "Cash balance from tender proceeds",
+        "where": "ACCT-0093 cash account",
+        "old": 0,
+        "new": 4611.0
+      }
+    ]
+  },
+  "D1": {
+    "decision": "PROCESS_TENDER_SETTLEMENT",
+    "actions": [
+      {
+        "action": "DEBIT_SHARES",
+        "option": null,
+        "quantity": 87,
+        "amount": null,
+        "by_date": "2024-06-10",
+        "basis_doc": "acct0093-position-20240610"
+      },
+      {
+        "action": "CREDIT_CASH",
+        "option": null,
+        "quantity": null,
+        "amount": 4611.0,
+        "by_date": "2024-06-10",
+        "basis_doc": "mnst-results-20240610"
+      }
+    ]
+  },
+  "D2": {
+    "probe": {
+      "label": "NOT_DETERMINABLE",
+      "value": null,
+      "derivation": "The document store does not contain the Letter of Transmittal referenced in the offer document; specific fee and charge deduction terms cannot be determined without it."
+    },
+    "twins": [
+      {
+        "id": "TW1",
+        "value": 4611.0
+      }
+    ]
+  }
+}

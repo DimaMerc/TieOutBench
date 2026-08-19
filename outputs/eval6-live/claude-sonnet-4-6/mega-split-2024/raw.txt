@@ -1,0 +1,119 @@
+```json
+{
+  "P1": {
+    "issuer": "NVIDIA Corporation",
+    "security": {
+      "ticker": "NVDA"
+    },
+    "event_type": "mandatory",
+    "governing_doc": "nvda-8k-20240607",
+    "superseded_docs": ["nvda-8k-20240522"]
+  },
+  "P2": {
+    "dates": {
+      "announcement": "2024-05-22",
+      "record_date": "2024-06-06",
+      "distribution_date": "2024-06-07",
+      "split_adjusted_trading": "2024-06-10"
+    },
+    "entitlement_basis": "record_date",
+    "entitlement_basis_date": "2024-06-06",
+    "election_deadline": null
+  },
+  "E1": {
+    "terms": {
+      "ratio": 10.0,
+      "additional_shares_per_share": 9.0,
+      "record_date": "2024-06-06",
+      "distribution_date": "2024-06-07",
+      "split_adjusted_trading": "2024-06-10"
+    },
+    "citation": {
+      "document": "nvda-8k-20240607",
+      "locator": "Exhibit 3.1",
+      "verbatim": "At the Effective Time, each share of Common Stock issued as of immediately prior to the Effective Time shall be automatically subdivided and reclassified into ten (10) validly issued, fully paid and non-assessable shares of Common Stock."
+    }
+  },
+  "E2": {
+    "position": {
+      "basket_per_cu_pre": 180,
+      "creation_units": 100,
+      "basket_total_pre": 18000
+    },
+    "basis_shares": 18000
+  },
+  "C1": {
+    "entitlement": {
+      "pre_split_shares": 18000,
+      "ratio": 10.0,
+      "post_split_shares": 180000,
+      "additional_shares": 162000,
+      "basket_per_cu_post": 1800
+    },
+    "cil": {
+      "applicable": false,
+      "amount": null
+    }
+  },
+  "C2": {
+    "election_required": false,
+    "options": null,
+    "default_option": null,
+    "economics": null
+  },
+  "C3": {
+    "impact": {
+      "basket_per_cu_new": 1800,
+      "basket_total_new": 180000
+    },
+    "changes": [
+      {
+        "what": "NVDA shares per creation unit (basket quantity)",
+        "where": "MEGA PCF — mega-pcf-20240610, line 1",
+        "old": 180,
+        "new": 1800
+      },
+      {
+        "what": "NVDA total shares held across all creation units (position ledger entry)",
+        "where": "MEGA custody position ledger — mega-position-20240610",
+        "old": 18000,
+        "new": 180000
+      }
+    ]
+  },
+  "D1": {
+    "decision": "Update the MEGA PCF for trade date 2024-06-10 to reflect the NVDA 10-for-1 split effective at close 2024-06-07. The stale PCF line showing 180 NVDA shares per creation unit must be corrected to 1,800 shares per creation unit before dissemination. No election is required; this is a mandatory corporate action. The custody ledger already reflects 180,000 post-split shares (confirmed by mega-position-20240610) and requires no further adjustment.",
+    "actions": [
+      {
+        "action": "Amend PCF line 1 NVDA quantity from 180 to 1,800 shares per creation unit before today's PCF dissemination",
+        "option": null,
+        "quantity": 1800,
+        "amount": null,
+        "by_date": "2024-06-10",
+        "basis_doc": "nvda-8k-20240607"
+      },
+      {
+        "action": "Confirm custody ledger NVDA position is recorded at 180,000 post-split shares (no further ledger action required — already reflected per mega-position-20240610)",
+        "option": null,
+        "quantity": 180000,
+        "amount": null,
+        "by_date": "2024-06-10",
+        "basis_doc": "mega-position-20240610"
+      }
+    ]
+  },
+  "D2": {
+    "probe": {
+      "label": "NOT_DETERMINABLE",
+      "value": null,
+      "derivation": "The net cash after withholding cannot be determined from the document store. The gross dividend rate ($0.01 per post-split share) and the eligible post-split position (180,000 shares, record date 2024-06-11) are known, giving a gross amount of $1,800.00. However, the applicable withholding tax rate for MEGA's fund structure (e.g., whether MEGA qualifies as a RIC, its foreign/domestic investor mix, or any applicable treaty rate) is not contained in any document in the store. The specific missing document is the MEGA fund tax-status or withholding-rate schedule (e.g., a fund prospectus, tax certification, or custodian withholding instruction file). This dependent calculation is held pending that document."
+    },
+    "twins": [
+      {
+        "id": "TW1",
+        "value": 1800.00
+      }
+    ]
+  }
+}
+```

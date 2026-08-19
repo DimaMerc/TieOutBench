@@ -1,0 +1,104 @@
+{
+  "P1": {
+    "issuer": "Zoetis Inc.",
+    "security": {
+      "ticker": "ZTS"
+    },
+    "event_type": "mandatory",
+    "governing_doc": "zts-8k-20140327",
+    "superseded_docs": [
+      "zts-8k-20140326"
+    ]
+  },
+  "P2": {
+    "dates": {
+      "declared": "2014-03-26",
+      "corrected": "2014-03-27",
+      "record_date": "2014-04-28",
+      "pay_date": "2014-06-02"
+    },
+    "entitlement_basis": "record_date",
+    "entitlement_basis_date": "2014-04-28",
+    "election_deadline": null
+  },
+  "E1": {
+    "terms": {
+      "rate": 0.072,
+      "record_date": "2014-04-28",
+      "pay_date": "2014-06-02"
+    },
+    "citation": {
+      "document": "zts-8k-20140327",
+      "locator": "corrected release, first paragraph",
+      "verbatim": "The Board of Directors of Zoetis Inc. (NYSE:ZTS) declared a second quarter dividend payable to holders of the company's common stock of $0.072 per share. The dividend is to be paid on June 2, 2014 to holders of record on April 28, 2014."
+    }
+  },
+  "E2": {
+    "position": {
+      "shares_settled": 25000
+    },
+    "basis_shares": 25000
+  },
+  "C1": {
+    "entitlement": {
+      "eligible_shares": 25000,
+      "rate": 0.072,
+      "gross_cash": 1800.0
+    },
+    "cil": {
+      "applicable": false,
+      "amount": null
+    }
+  },
+  "C2": {
+    "election_required": false,
+    "options": null,
+    "default_option": "cash",
+    "economics": null
+  },
+  "C3": {
+    "impact": {
+      "gross_cash": 1800.0
+    },
+    "changes": [
+      {
+        "what": "record_date cash dividend projection for ZTS",
+        "where": "ACCT-2101 dividend receivable / income ledger",
+        "old": null,
+        "new": 1800.0
+      },
+      {
+        "what": "record_date used for entitlement determination",
+        "where": "ACCT-2101 corporate-actions event record (ZTS Q2 2014 dividend)",
+        "old": "2014-04-27",
+        "new": "2014-04-28"
+      }
+    ]
+  },
+  "D1": {
+    "decision": "No election required. Mandatory cash dividend. Book gross cash entitlement of $1,800.00 to ACCT-2101 for pay-date 2014-06-02, based on 25,000 settled shares at $0.072 per share and record date 2014-04-28 per governing corrected 8-K.",
+    "actions": [
+      {
+        "action": "Book dividend receivable",
+        "option": null,
+        "quantity": 25000,
+        "amount": 1800.0,
+        "by_date": "2014-06-02",
+        "basis_doc": "zts-8k-20140327"
+      }
+    ]
+  },
+  "D2": {
+    "probe": {
+      "label": "NOT_DETERMINABLE",
+      "value": null,
+      "derivation": "The reinvestment price for the DRIP on the June 2, 2014 payment date is not determinable from the document store. The specific missing document is the DRIP plan terms or agent pricing notice for Zoetis Inc. (e.g., the Zoetis Dividend Reinvestment Plan prospectus or the agent's reinvestment price confirmation for the 2014-06-02 pay date), which would specify whether reinvestment occurs at market price, a discounted price, or another defined rate. This action must be held pending receipt of that document."
+    },
+    "twins": [
+      {
+        "id": "TW1",
+        "value": 1800.0
+      }
+    ]
+  }
+}

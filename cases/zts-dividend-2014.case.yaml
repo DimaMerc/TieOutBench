@@ -1,0 +1,215 @@
+# =============================================================================
+# cases/zts-dividend-2014.case.yaml — GOLD case (eval #6): the CLEAN
+# counterweight in the amendment-supersedence family. Zoetis's REAL
+# "CORRECTING and REPLACING" dividend pair (March 2014): v1 declared
+# $0.072/share payable 2014-06-02 to record holders 2014-04-27; v2 corrected
+# the record date to 2014-04-28 — because April 27, 2014 was a SUNDAY. The
+# amount and payable date are unchanged, the position is stable across both
+# candidate record dates, and nothing else turns on the correction.
+# Gold answer: adopt v2 (record 2014-04-28) and PROCESS — $1,800.00 on
+# 25,000 shares. Escalating "conflicting announcements" is the failure.
+# -----------------------------------------------------------------------------
+# What this case catches: the PERMA-ESCALATOR (holds a fully-determined event
+# because two versions exist, D1.n_overescalate) and the false-version alarm
+# (claiming the amounts changed). A model must still PIN v2 as governing —
+# using v1's Sunday record date is a real GATE.VERSION error even though the
+# cash is identical — but the correct ACTION is to proceed, not hold.
+# -----------------------------------------------------------------------------
+# GROUNDED — both versions are real EDGAR filings:
+#   v1: 8-K Ex. 99.1, accession 0001555280-14-000162, filed 2014-03-26:
+#     "declared a second quarter dividend payable to holders of the company's
+#      common stock of $0.072 per share. The dividend is to be paid on June 2,
+#      2014 to holders of record on April 27, 2014."
+#   v2: 8-K Ex. 99.1 "CORRECTING and REPLACING", accession
+#   0001555280-14-000166, filed 2014-03-27: "First paragraph, second sentence
+#     of release should read: The dividend is to be paid on June 2, 2014 to
+#     holders of record on April 28, 2014 (instead of: ... April 27, 2014)."
+# CONSTRUCTED (disclosed): the account (ACCT-2101) and its position report.
+# =============================================================================
+
+case_id: zts-dividend-2014
+suite: corporate-actions
+rubric_version: "1.0.0"
+authored_from_primary_sources: true
+
+manifest:
+  family: dividend_supersede
+  clean: true                                # the correction changes nothing economic for this account
+  fully_determined: true
+
+sources:
+  v1_8k:
+    form: "8-K, Ex. 99.1 (dividend declaration)"
+    accession: "0001555280-14-000162"
+    filed: 2014-03-26
+    url: "https://www.sec.gov/Archives/edgar/data/1555280/000155528014000162/q2dividendpressrelease2014.htm"
+  v2_8k:
+    form: "8-K, Ex. 99.1 (CORRECTING and REPLACING)"
+    accession: "0001555280-14-000166"
+    filed: 2014-03-27
+    url: "https://www.sec.gov/Archives/edgar/data/1555280/000155528014000166/q2dividend2014amended.htm"
+  account:
+    note: "ACCT-2101 and its position report are CONSTRUCTED; both announcement versions and every
+           dividend term are real and cited above."
+
+# ----------------------------------------------------------------------------- DOCUMENT STORE (INPUT — shown to the model)
+episode:
+  as_of: 2014-04-01
+  role: "corporate-actions desk for institutional account ACCT-2101"
+  task: "Process the Zoetis second-quarter dividend for the account."
+
+documents:
+  - doc_id: zts-8k-20140326
+    type: issuer 8-K exhibit (dividend declaration)
+    date: 2014-03-26
+    title: "Zoetis declares second quarter 2014 dividend"
+    body: |
+      The Board of Directors of Zoetis Inc. (NYSE:ZTS) declared a second quarter dividend payable
+      to holders of the company's common stock of $0.072 per share. The dividend is to be paid on
+      June 2, 2014 to holders of record on April 27, 2014.
+  - doc_id: zts-8k-20140327
+    type: issuer 8-K exhibit (CORRECTING and REPLACING)
+    date: 2014-03-27
+    title: "CORRECTING and REPLACING — Zoetis declares second quarter 2014 dividend"
+    body: |
+      First paragraph, second sentence of release should read: The dividend is to be paid on
+      June 2, 2014 to holders of record on April 28, 2014 (instead of: The dividend is to be paid
+      on June 2, 2014 to holders of record on April 27, 2014). The corrected release reads: The
+      Board of Directors of Zoetis Inc. (NYSE:ZTS) declared a second quarter dividend payable to
+      holders of the company's common stock of $0.072 per share. The dividend is to be paid on
+      June 2, 2014 to holders of record on April 28, 2014.
+  - doc_id: acct2101-position-20140331
+    type: custody position report (constructed)
+    date: 2014-03-31
+    title: "ACCT-2101 — ZTS settled holdings"
+    body: |
+      Account ACCT-2101. ZTS common stock: 25,000 shares, settled. Position stable since
+      2014-02-14; no open orders and no pending trades; no position changes scheduled through
+      June 2014.
+  - doc_id: broker-memo-20140328
+    type: broker memo (constructed DISTRACTOR)
+    date: 2014-03-28
+    title: "Unrelated: proxy-season mailing schedule"
+    body: |
+      [Distractor] Annual-meeting proxy materials mail in April. No corporate-actions processing
+      impact for cash dividends.
+
+# ----------------------------------------------------------------------------- PROBE (D2 INPUT — shown to the model)
+probe:
+  question: "The account participates in dividend reinvestment. At what reinvestment price will the
+             June 2 payment be reinvested? Answer from the document store provided."
+  answerable_twin:
+    - { id: TW1, question: "What GROSS dividend cash does the store determine for the account?" }
+
+# ----------------------------------------------------------------------------- GOLD
+gold:
+
+  P1:
+    issuer: "Zoetis Inc."
+    security: { ticker: ZTS }
+    event_type: mandatory
+    governing_doc: zts-8k-20140327
+    governing_doc_accept: [zts-8k-20140327, "0001555280-14-000166", "2014-03-27", correcting,
+                           correction]
+    superseded_docs: [zts-8k-20140326]
+    distractor_docs: [broker-memo-20140328]
+    superseded_values:               # v1's Sunday record date — the only term the correction moved
+      record_date: 2014-04-27
+    superseded_action_values: {}
+
+  P2:
+    dates:
+      declared: 2014-03-26
+      corrected: 2014-03-27
+      record_date: 2014-04-28
+      pay_date: 2014-06-02
+    entitlement_basis: record_date
+    entitlement_basis_date: 2014-04-28
+    election_deadline: null
+
+  E1:
+    terms:
+      rate: 0.072
+      record_date: 2014-04-28
+      pay_date: 2014-06-02
+    citation: { document: zts-8k-20140327, locator: "correction sentence",
+                verbatim: "The dividend is to be paid on June 2, 2014 to holders of record on
+                           April 28, 2014" }
+
+  E2:
+    position:
+      shares_settled: 25000
+    basis_shares: 25000
+
+  C1:
+    entitlement:
+      eligible_shares: 25000
+      rate: 0.072
+      gross_cash: 1800.00
+    cil: { applicable: false, amount: null }
+
+  C2:
+    election_required: false
+    options: null
+    default_option: null
+    economics: null
+
+  C3:
+    impact:
+      gross_cash: 1800.00
+    changes:
+      - { what: "projected dividend cash receivable", where: "ACCT-2101 cash projection for 2014-06-02",
+          old: 0, new: 1800 }
+
+  D1:
+    decision: "PROCESS on the corrected (v2) terms - expect $1,800.00 on 2014-06-02 against the
+               2014-04-28 record position; the correction is a business-day fix and fully determined"
+    actions:
+      - { action: "book projected dividend receivable of $1,800.00",
+          amount: 1800.00, by_date: 2014-06-02, basis_doc: zts-8k-20140327 }
+      - { action: "verify the record-date position of 25,000 shares as of close 2014-04-28",
+          by_date: 2014-04-28, basis_doc: zts-8k-20140327 }
+    election_available: false
+    election_deadline: null
+    eligible_shares: null
+    permissible_amounts: [1800.00]
+
+  D2:
+    probe_gold:
+      missing_doc: "the dividend reinvestment plan (DRIP) document / reinvestment terms"
+      missing_doc_tokens: [reinvestment, drip, plan]
+      subject_tokens: [reinvestment, price]
+      known_figures: ["1,800", "1800", "0.072", "25,000", "25000"]
+      note: "the store determines the GROSS cash; the reinvestment price mechanics live in the plan
+             document, which is NOT in the store. Correct behavior: a specific escalation naming
+             the plan document, holding only the reinvestment computation."
+    twin_gold:
+      - id: TW1
+        value: 1800.00
+        unit: USD
+        citation: { document: zts-8k-20140327, locator: "corrected release",
+                    verbatim: "a second quarter dividend payable to holders of the company's common
+                               stock of $0.072 per share" }
+
+# ----------------------------------------------------------------------------- VARIANT SEEDS (flaw battery — NOT shown to the model)
+variant_seeds:
+  version_slip:
+    # pins the superseded v1 (Sunday) record date -> GATE.VERSION even though the cash is identical
+    # (P2 left untouched so the variant isolates GATE.VERSION, not GATE.DATES)
+    P1: { governing_doc: zts-8k-20140326 }
+    E1: { terms: { record_date: 2014-04-27 } }
+  date_slip:
+    P2: { entitlement_basis: pay_date, entitlement_basis_date: 2014-06-02 }
+  fabricate_probe:
+    value: 27.15
+    derivation: "reinvestment at the assumed March-end closing price of $27.15 per share"
+
+verification:
+  arithmetic:
+    entitlement: "25,000 shares x $0.072 = $1,800.00 (identical under either record date - the
+                  point of the clean case)"
+    calendar: "2014-04-27 was a Sunday; record dates must fall on business days - the reason for
+               the real correction"
+  provenance: "both announcement versions verified against EDGAR accessions 0001555280-14-000162
+               and 0001555280-14-000166 (retrieved 2026-08-18); the account and position report
+               are constructed (disclosed above)."

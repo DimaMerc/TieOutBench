@@ -373,3 +373,63 @@ analyst-facing) — this extends the category eval #4 opened, into derivatives (
       (material_breaks/expected_diffs as dicts or descriptive strings — fixed a crash + a false
       GATE.MATERIALITY) and `_impact_magnitudes` (economic_impact as prose — now catches the bp error).
       Oracle still 1.000/AllPass; all designed variants still gate. `outputs/eval5-live/TAXONOMY.md`.
+
+---
+
+# EVAL #6 — CORPORATE-ACTIONS PROCESSING (agentic; in build 2026-08-18)
+
+Design doc + build status: `workflow/corporate-actions-analysis.md` (decisions accepted
+2026-08-18; will finalize as `workflow/corporate-actions-analysis.md`).
+
+## Phase 0 — Design  ✅ done
+- [x] Document-store episode (Phase 1) vs tool-loop RL environment (Phase 2, gates already
+      terminal-state predicates); gates-as-constraints design principle stated (§3).
+
+## Phase 1 — Anchors  ✅ done (all real, verified from EDGAR primary sources)
+- [x] NVDA 10:1 split (8-Ks 0001045810-24-000113 / -000144); MNST self-tender + final results
+      (0001104659-24-058430 / -069878 — the 47.18%-vs-naive-47.56% proration trap); BRY corrected
+      dividend (0001705873-24-000046 / -000052); ZTS 2014 CORRECTING-and-REPLACING clean twin
+      (0001555280-14-000162 / -000166). Only the ETF/PCF/accounts are constructed (disclosed).
+
+## Phase 2 — Rubric  → `rubric/criteria-corporate-actions.yaml`  ✅ done
+- [x] 31 atoms, 5 gates (VERSION/DATES/SCALE/ELECT/FABRICATION) + over-escalation mirror
+      `D1.n_overescalate` + two-direction proration penalty. Lints 18/18. All 6 rubrics green.
+
+## Phase 3 — Gold cases  → `cases/`  ✅ done
+- [x] `mega-split-2024[-clean]` (stale-vs-adjusted PCF), `mnst-tender-2024[-oddlot]`
+      (proration vs odd-lot priority), `bry-dividend-2024` (supersedence with a position change
+      between the two record dates), `zts-dividend-2014` (supersedence, economically neutral —
+      catches the perma-escalator).
+
+## Phase 4 — Harness suite  ✅ core done; gaming review in flight
+- [x] `harness/suites/corporate_actions.py` + registration; 8 variants; case-aware selftest
+      (8 variants x 6 cases) + live-schema round-trip; `harness/live_corporate_actions.py`
+      (answer skeleton generated from each case's worksheet geometry). Full-suite selftest passes;
+      evals #1-#5 byte-invariant.
+- [x] **Adversarial gaming review** (4 attackers -> 21 verified exploits + 14 verified false
+      positives, ALL fixed & re-verified; 53-check regression script): clause-aware decision
+      classifier (elect > process > hold, hold-laundering dead, D2-scoped holds exempt);
+      wrong-source scan over every worksheet section w/ string/number/date normalization +
+      detection-vs-credit band asymmetry; permissible-amounts validation on committed releases
+      (a 10x-wrong payment fires GATE.ELECT); prose/string-row/basis_doc commitment scans;
+      GATE.VERSION generalized to distractor contamination (QSEM ratio / Incyte factor);
+      paraphrase-tolerant doc & basis matching. Documented tradeoff: mock refusal grader is
+      substring-based (salad caps at G=0.5); LLM judge is the semantic swap.
+
+## Phase 5 — Live runs + write-up  ✅ runs + taxonomy + leaderboard done
+- [x] **Frontier runs: 8 models x 6 cases (48 runs, 2026-08-18)** via outputs/run_live_eval6.py
+      (per-endpoint key resolution). Headlines: **Sonnet 4.6 = the suite's first perfect live row
+      (1.000/AllPass x 6)**; 32/48 runs AllPass; **GPT-5.4-mini committed the marquee cascade**
+      (correct v2 pinned, entitlement computed on the superseded 50,000-share position, $8,500
+      booked -> GATE.VERSION + GATE.ELECT, 0.225) — flagships still never commit the catastrophic
+      action, the small tier now does; "derive right, report different" replicates (Haiku twin
+      1,800->18,000; mini 1,800->180,000 as COMPUTED); the split/dividend double-count fired on
+      the clean case (Opus + Haiku, pre-split rate x post-split shares); no model used a
+      distractor's numbers or the naive 47.56% recompute.
+- [x] Grader-bug law round 5 (largest): two waves of live-surfaced contract gaps — ALL false
+      fires on correct answers, all fixed, 53/53 gaming regression + full selftest green after
+      every fix. Logged in outputs/eval6-live/TAXONOMY.md.
+- [x] LEADERBOARD eval-6 section + honest-negatives refinement; profiles/ regenerated (96 runs,
+      evals #3-#6; published eval-3-5 numbers still reproduce byte-for-byte).
+- [ ] README threading + finalize workflow/corporate-actions-analysis.md as
+      workflow/corporate-actions-analysis.md; commit on user's OK.

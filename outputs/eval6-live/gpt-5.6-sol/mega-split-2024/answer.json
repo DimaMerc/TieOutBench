@@ -1,0 +1,103 @@
+{
+  "P1": {
+    "issuer": "NVIDIA Corporation",
+    "security": {
+      "ticker": "NVDA"
+    },
+    "event_type": "mandatory",
+    "governing_doc": "nvda-8k-20240522",
+    "superseded_docs": []
+  },
+  "P2": {
+    "dates": {
+      "announcement": "2024-05-22",
+      "record_date": "2024-06-06",
+      "distribution_date": "2024-06-07",
+      "split_adjusted_trading": "2024-06-10"
+    },
+    "entitlement_basis": "record_date",
+    "entitlement_basis_date": "2024-06-06",
+    "election_deadline": null
+  },
+  "E1": {
+    "terms": {
+      "ratio": 10,
+      "additional_shares_per_share": 9,
+      "record_date": "2024-06-06",
+      "distribution_date": "2024-06-07",
+      "split_adjusted_trading": "2024-06-10"
+    },
+    "citation": {
+      "document": "nvda-8k-20240522",
+      "locator": "Item 8.01, first paragraph",
+      "verbatim": "Each record holder of common stock as of the close of market on Thursday, June 6, 2024 will receive nine additional shares of common stock, to be distributed after the close of market on Friday, June 7, 2024. Trading is expected to commence on a split-adjusted basis at market open on Monday, June 10, 2024."
+    }
+  },
+  "E2": {
+    "position": {
+      "basket_per_cu_pre": 180,
+      "creation_units": 100,
+      "basket_total_pre": 18000
+    },
+    "basis_shares": 18000
+  },
+  "C1": {
+    "entitlement": {
+      "pre_split_shares": 18000,
+      "ratio": 10,
+      "post_split_shares": 180000,
+      "additional_shares": 162000,
+      "basket_per_cu_post": 1800
+    },
+    "cil": {
+      "applicable": false,
+      "amount": 0
+    }
+  },
+  "C2": {
+    "election_required": false,
+    "options": null,
+    "default_option": null,
+    "economics": null
+  },
+  "C3": {
+    "impact": {
+      "basket_per_cu_new": 1800,
+      "basket_total_new": 180000
+    },
+    "changes": [
+      {
+        "what": "NVDA basket quantity per creation unit",
+        "where": "MEGA PCF for trade date 2024-06-10, line 1",
+        "old": 180,
+        "new": 1800
+      }
+    ]
+  },
+  "D1": {
+    "decision": "Apply the mandatory 10-for-1 split and correct the NVDA PCF basket quantity before dissemination.",
+    "actions": [
+      {
+        "action": "Update the NVDA quantity on the MEGA PCF from 180 to 1800 shares per creation unit.",
+        "option": null,
+        "quantity": 1800,
+        "amount": null,
+        "by_date": "2024-06-10",
+        "basis_doc": "nvda-8k-20240522"
+      }
+    ]
+  },
+  "D2": {
+    "probe": {
+      "label": "NOT_DETERMINABLE",
+      "value": null,
+      "derivation": "The store does not include the fund's applicable withholding-tax profile or custodian withholding-rate document for the NVDA dividend. Escalate for that specific tax documentation and hold only the net-cash determination."
+    },
+    "twins": [
+      {
+        "id": "TW1",
+        "value": 1800
+      }
+    ]
+  }
+}

@@ -1,0 +1,110 @@
+```json
+{
+ "P1": {
+  "issuer": "NVIDIA Corporation",
+  "security": {
+   "ticker": "NVDA"
+  },
+  "event_type": "mandatory",
+  "governing_doc": "nvda-8k-20240522",
+  "superseded_docs": []
+ },
+ "P2": {
+  "dates": {
+   "announcement": "2024-05-22",
+   "record_date": "2024-06-06",
+   "distribution_date": "2024-06-07",
+   "split_adjusted_trading": "2024-06-10"
+  },
+  "entitlement_basis": "record_date",
+  "entitlement_basis_date": "2024-06-06",
+  "election_deadline": null
+ },
+ "E1": {
+  "terms": {
+   "ratio": 10,
+   "additional_shares_per_share": 9,
+   "record_date": "2024-06-06",
+   "distribution_date": "2024-06-07",
+   "split_adjusted_trading": "2024-06-10"
+  },
+  "citation": {
+   "document": "nvda-8k-20240522",
+   "locator": "Item 8.01",
+   "verbatim": "Each record holder of common stock as of the close of market on Thursday, June 6, 2024 will receive nine additional shares of common stock, to be distributed after the close of market on Friday, June 7, 2024. Trading is expected to commence on a split-adjusted basis at market open on Monday, June 10, 2024."
+  }
+ },
+ "E2": {
+  "position": {
+   "basket_per_cu_pre": 180,
+   "creation_units": 100,
+   "basket_total_pre": 18000
+  },
+  "basis_shares": 18000
+ },
+ "C1": {
+  "entitlement": {
+   "pre_split_shares": 18000,
+   "ratio": 10,
+   "post_split_shares": 180000,
+   "additional_shares": 162000,
+   "basket_per_cu_post": 1800
+  },
+  "cil": {
+   "applicable": false,
+   "amount": null
+  }
+ },
+ "C2": {
+  "election_required": false,
+  "options": null,
+  "default_option": null,
+  "economics": null
+ },
+ "C3": {
+  "impact": {
+   "basket_per_cu_new": 1800,
+   "basket_total_new": 180000
+  },
+  "changes": [
+   {
+    "what": "NVDA basket quantity per CU",
+    "where": "MEGA PCF / portfolio composition file",
+    "old": 180,
+    "new": 1800
+   },
+   {
+    "what": "NVDA position ledger",
+    "where": "Custody position ledger",
+    "old": 18000,
+    "new": 180000
+   }
+  ]
+ },
+ "D1": {
+  "decision": "VERIFIED_AND_RELEASED",
+  "actions": [
+   {
+    "action": "CONFIRM_PCF_AND_CUSTODY_REFLECT_POST_SPLIT_POSITION",
+    "option": null,
+    "quantity": 180000,
+    "amount": null,
+    "by_date": "2024-06-10",
+    "basis_doc": "mega-pcf-20240610"
+   }
+  ]
+ },
+ "D2": {
+  "probe": {
+   "label": "NOT_DETERMINABLE",
+   "value": null,
+   "derivation": "The document store lacks tax documentation/withholding tax schedule for the fund to determine net cash after withholding."
+  },
+  "twins": [
+   {
+    "id": "TW1",
+    "value": 1800
+   }
+  ]
+ }
+}```

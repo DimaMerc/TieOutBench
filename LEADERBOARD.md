@@ -1,9 +1,10 @@
 # Leaderboard — every live model run in this suite
 
 One page, every real model this suite has graded so far — with the caveats stated **before** the
-numbers: sample sizes are small (one run per model per case), evals **#3–#5** now cover **eight
+numbers: sample sizes are small (one run per model per case), evals **#3–#6** now cover **eight
 frontier models across three vendors** (four OpenAI, three Anthropic, one Google) — eval #3 on
-**two gold cases** (McDonald's, a net-debt balance sheet; NVIDIA, its net-cash mirror) — evals
+**two gold cases** (McDonald's, a net-debt balance sheet; NVIDIA, its net-cash mirror), eval #6
+on **six gold cases** (the document-store corporate-actions episodes) — evals
 **#1–#2** have been run only against local open-weight models (two Qwen generations), and eval
 #5's swap-inside-an-ETF case pair has not been live-run yet. Google is represented only by a flash-tier
 model, since its pro line is a generation behind. The harness takes any OpenAI-compatible endpoint
@@ -34,6 +35,42 @@ Models as rows, cases as columns. Gate names abbreviated; each is `GATE.<NAME>`.
 
 Anthropic models ran via the OpenAI-compatible endpoint at `api.anthropic.com`, OpenAI at
 `api.openai.com`, Google at `generativelanguage.googleapis.com/v1beta/openai`.
+
+## Eval #6 — corporate-actions processing (the first document-store episode)
+
+Six gold cases: a real stock split hitting an ETF basket (stale-PCF break + clean twin), a real
+oversubscribed self-tender (proration break + odd-lot counterweight), and a real corrected-dividend
+pair (material supersedence + economically-neutral twin). "AP" = AllPass (every criterion met, no
+gate, calibrated refusal perfect).
+
+| Model | split (stale) | split (clean) | tender | tender (odd-lot) | dividend (corrected) | dividend (clean) |
+|---|---:|---:|---:|---:|---:|---:|
+| Claude Opus 4.8 | 1.000 AP | 0.920 | 1.000 AP | 1.000 AP | 0.983 | 1.000 AP |
+| **Claude Sonnet 4.6** | **1.000 AP** | **1.000 AP** | **1.000 AP** | **1.000 AP** | **1.000 AP** | **1.000 AP** |
+| Claude Haiku 4.5 | 1.000 AP | 0.895 | 1.000 AP | 0.983 | 0.983 | 1.000 AP |
+| GPT-5.6-sol | 1.000 AP | 1.000 AP | 1.000 AP | 1.000 AP | 0.983 | 1.000 AP |
+| GPT-5.5 | 1.000 AP | 1.000 AP | 1.000 AP | 1.000 AP | 0.983 | 1.000 AP |
+| GPT-5.4 | 1.000 AP | 1.000 AP | 0.936 | 1.000 AP | 0.983 | 1.000 AP |
+| GPT-5.4-mini | 0.840 | 0.920 · `FABRICATION` | 0.840 | 0.956 | **0.225 · `VERSION`+`ELECT`** | 0.828 |
+| Gemini 3.6 Flash | 1.000 AP | 1.000 AP | 1.000 AP | 1.000 AP | 0.983 | 1.000 AP |
+
+- **The suite's first perfect live row**: Sonnet 4.6 at 1.000/AllPass on all six cases (no live
+  model had AllPassed a single case before; 32 of 48 runs AllPass here). The frontier handles
+  procedural corporate-actions episodes at a far higher ceiling than the analyst evals.
+- **The marquee cascade finally happened — on the small tier.** GPT-5.4-mini pinned the correct
+  correction 8-K, stated the corrected record date, then computed the entitlement on the
+  **superseded 50,000-share position and booked $8,500** (gold $6,800 on 40,000) — a release on
+  superseded terms, `GATE.VERSION` + `GATE.ELECT`, gated 0.225 vs 0.574 ungated. Flagships still
+  never commit the catastrophic action; the small tier now does.
+- **"Derive the right number, report a different one" replicates in a third domain**: Haiku's
+  refusal-twin derivation computes "$1,800.00" and reports 18,000; mini's computes 1,800 and
+  reports 180,000 as COMPUTED (its fabrication gate). And a genuinely new trap fired where it was
+  planted: on the *clean* split case Opus and Haiku both answered the dividend twin at the
+  pre-split rate × post-split shares — the classic split/dividend double-count.
+- **Nobody used a distractor's numbers**: no model applied the fictional QSEM ratio, Incyte's
+  93.5% factor, or the naive 47.56% recompute in place of the depositary's stated 47.18% — and
+  every model honored the odd-lot priority. Full traces: [`outputs/eval6-live/`](outputs/eval6-live/)
+  and its [taxonomy](outputs/eval6-live/TAXONOMY.md).
 
 ### The methodology finding — every vendor meters the budget differently
 
@@ -142,11 +179,14 @@ requires a genuine numeric range on *both* sensitivities. It fired for the reaso
 
 ### The honest negatives
 
-The marquee decision gates **never fired on a frontier model**: no model settled the broken basket
-(`GATE.RECON`) or affirmed the broken trade (`GATE.MATCH`), and none cried break/mismatch on the
-clean counterweight cases. On these runs the frontier capability gap lives in the *quantification*
-(the bp conversion, the $200k slip), not the *decision*. Stated plainly because a benchmark that
-only reports its hits isn't one.
+Through evals #3–#5 the marquee decision gates **never fired on a frontier model**: no model
+settled the broken basket (`GATE.RECON`) or affirmed the broken trade (`GATE.MATCH`), and none
+cried break/mismatch on the clean counterweight cases. On those runs the frontier capability gap
+lived in the *quantification* (the bp conversion, the $200k slip), not the *decision*. **Eval #6
+refines that finding rather than repeating it**: across 48 corporate-actions runs the flagships
+still never committed the catastrophic action — but the small tier finally did (GPT-5.4-mini's
+release on superseded terms), which is what the temporal, multi-document format was built to
+test. Stated plainly because a benchmark that only reports its hits isn't one.
 
 ## Open-weight local runs — evals #1–#2
 
@@ -195,9 +235,16 @@ replication is the honest next step before calling it task-level. [Taxonomy](out
   [capability profiles](profiles/) — `python -m harness profiles` regenerates them byte-stably
   from the committed answers, so a clean diff doubles as a grader regression check.
 
+- Eval #6 used the same per-vendor budget parity (Claude 8k on the compat endpoint, GPT and
+  Gemini 32k); its cases share one finalized prompt contract (Sonnet's first batch drove one
+  prompt clarification and was fully re-run under the final prompt before any other model ran).
+  Its live batches surfaced grader-contract gaps in two waves — all false fires on correct
+  answers, all fixed and re-verified against the 53-check gaming-review regression suite —
+  logged in the [eval-6 taxonomy](outputs/eval6-live/TAXONOMY.md).
+
 ## What's next
 
 Frontier runs on evals #1–#2 (still open-weight only); a Gemini pro-tier model once Google ships
-one current; the ETF-swap pair live; and eval #6 (in design: corporate-actions processing — the
-back-office domain with a documented $58B/yr industry cost and, as of mid-2026, no independently
-published accuracy metrics).
+one current; the ETF-swap pair live; the eval-6 Phase-2 tool-loop form (the same gates as
+terminal-state reward — the RL-environment build); and the ODD workflow eval sketched in
+[`ODD.md`](ODD.md).

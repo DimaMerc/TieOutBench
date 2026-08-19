@@ -31,7 +31,8 @@ OUT_DIR = os.path.join(REPO, "profiles")
 
 SCHEMA_VERSION = "1.0"
 
-EVAL_OF_SUITE = {"dcf-valuation": 3, "creation-redemption": 4, "confirmation-matching": 5}
+EVAL_OF_SUITE = {"dcf-valuation": 3, "creation-redemption": 4, "confirmation-matching": 5,
+                 "corporate-actions": 6}
 
 # provenance the numbers cannot carry on their own (mirrors LEADERBOARD.md scope notes)
 NOTES = [
@@ -71,7 +72,7 @@ def discover():
         runs.append((os.path.basename(os.path.dirname(p)), "mcd-fy2025-dcf", p))
     for p in glob.glob(os.path.join(e3, "nvda-fy2026-dcf", "*", "answer.json")):
         runs.append((os.path.basename(os.path.dirname(p)), "nvda-fy2026-dcf", p))
-    for ev in ("eval4-live", "eval5-live"):
+    for ev in ("eval4-live", "eval5-live", "eval6-live"):
         for p in glob.glob(os.path.join(REPO, "outputs", ev, "*", "*", "answer.json")):
             case_id = os.path.basename(os.path.dirname(p))
             model = os.path.basename(os.path.dirname(os.path.dirname(p)))

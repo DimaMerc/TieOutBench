@@ -16,10 +16,12 @@ answer: the workflow broken into checkpoints, a gating-plus-weighted rubric, exp
 cases cited to SEC filings, and a grader that surfaces exactly *where* — and how badly — a model
 fails.
 
-Three of the five workflows are the analyst's (earnings, buffer-ETF diligence, DCF). Two are the
-**back office's** (ETF creation/redemption reconciliation, OTC swap confirmation matching) — and
-as of July 2026, those two appear to be the **only public LLM evals of capital-markets post-trade
-operations anywhere** (see [where this sits in the 2026 benchmark
+Three of the six workflows are the analyst's (earnings, buffer-ETF diligence, DCF). Three are the
+**back office's** (ETF creation/redemption reconciliation, OTC swap confirmation matching, and
+corporate-actions processing — the suite's first document-store episode, where the model must
+decide *which document governs* before any number is right) — and as of mid-2026, those three
+appear to be the **only public LLM evals of capital-markets post-trade operations anywhere** (see
+[where this sits in the 2026 benchmark
 landscape](#where-this-sits-in-the-2026-benchmark-landscape)). Every live model run is
 consolidated in [**LEADERBOARD.md**](LEADERBOARD.md).
 
@@ -41,7 +43,7 @@ CASE snow-2026q2   model=scale_slip   gated 0.452   AllPass 0   gates: GATE.P2  
 The arithmetic is internally consistent, so the naive (**ungated**) score stays ~0.95. But one hard
 **gate** fires on the scale misread and the **gated score collapses to 0.45.** That ~0.50 gap *is*
 the finding: *can do the math, cannot be trusted to read a statement header.* Measuring that gap —
-across five analyst and back-office workflows — is the whole repo.
+across six analyst and back-office workflows — is the whole repo.
 
 ## How the scoring works (30 more seconds)
 
@@ -53,7 +55,7 @@ exactly where and how badly** the model failed. Every gold figure is traced to a
 nothing is invented. Models also earn credit for **calibrated uncertainty** — saying "not
 determinable from this packet" instead of guessing.
 
-## The five evals — and how to run each
+## The six evals — and how to run each
 
 | Eval | What it tests | Run it (the perfect "oracle") | See it fail |
 |---|---|---|---|
@@ -62,6 +64,7 @@ determinable from this packet" instead of guessing.
 | **#3 — DCF** | project FCFF, discount at WACC, **bridge EV→equity**, per share | `python -m harness run --case mcd-fy2025-dcf` | `--model bridge_omit` — EV÷shares, net-debt bridge skipped → **GATE.BRIDGE** |
 | **#4 — Creation/redemption** | reconcile an AP's creation basket vs the PCF & NAV; **settle only if it ties** | `python -m harness run --case grin-create-2026` | `--model approve_break` — settle a basket that's $13,320 short → **GATE.RECON** |
 | **#5 — Confirmation matching** | match two OTC swap confirmations field-by-field; **affirm only if the economics tie** | `python -m harness run --case irs-confirm-2026` | `--model affirm_match` — affirm a trade with a material rate break → **GATE.MATCH** |
+| **#6 — Corporate actions** | process an event from a **document store** (announcement + amendment + distractors): pin the governing version and dates, compute the entitlement, **commit only what the deadline allows** | `python -m harness run --case bry-dividend-2024` | `--model version_slip` — terms sourced from the superseded announcement → **GATE.VERSION** |
 
 Every `run` defaults to a perfect answer (scores 1.000); add `--model <name>` to watch a designed
 flaw trip its gate. `python -m harness list` shows every case and variant ·
@@ -77,7 +80,7 @@ consolidated in [`LEADERBOARD.md`](LEADERBOARD.md).
 > source in [`paper/`](paper/). Each eval also has a plain-language write-up in
 > [`content/`](content/).
 
-## The five evals in detail
+## The six evals in detail
 
 - **Eval #1 — Quarterly earnings analysis.** Digest a 10-Q/earnings release, reconcile the figures,
   benchmark versus consensus, flag what moved. 17 checkpoints, 109 criteria, three gold cases
@@ -130,19 +133,42 @@ consolidated in [`LEADERBOARD.md`](LEADERBOARD.md).
   ETFs are built on total-return swaps, fixed-income ETFs hold interest-rate swaps), a second case pair
   runs the *same control on a swap held inside an ETF* — the fund as one side. 8 checkpoints, 28
   criteria (+5 gates), four gold cases (a bank swap and an ETF's swap, each with a break and a clean match).
+- **Eval #6 — Corporate-actions processing** *(the suite's first document-store episode, and the
+  temporal control the earlier evals don't test: some actions are irreversible once a deadline
+  passes)*. The model receives a **document store** — the governing announcement *and any
+  amendment*, a position report, an ETF basket file where relevant, plus distractors — and must
+  produce a structured action plan: pin the event and its **governing version**, pin the governing
+  dates, extract terms, compute the entitlement, judge the election state, and commit to actions.
+  The signature is **GATE.ELECT** (an irreversible wrong commitment: an election when none is
+  available, a commitment past the deadline, a release on superseded terms or of an amount no gold
+  figure permits) and **GATE.VERSION** is the document-store vintage slip (terms sourced from a
+  superseded version — or from a *distractor*: another event's ratio or proration factor carried
+  into this event's worksheet). Three real-anchored case families, each with a break and a clean
+  counterweight: **NVIDIA's 2024 10-for-1 split** hitting a constructed ETF basket whose PCF is
+  stale (adjust ×10 — and the clean twin catches the double-adjuster); **Monster Beverage's 2024
+  oversubscribed self-tender** (the depositary's stated 47.18% proration factor governs — the
+  naive 56.6M/119.0M ≈ 47.56% recompute is wrong because odd lots skip proration; the odd-lot twin
+  catches blind proration of an exempt holder); and a **real corrected-dividend pair** (Berry 2024,
+  record date moved 11 days with a position change in between — $8,500 on stale terms vs the
+  correct $6,800 — with Zoetis 2014's real one-day Sunday fix as the economically-neutral twin
+  that catches the perma-escalator). Gates are designed as **verifiable predicates over the
+  episode's terminal state**, so the same build doubles as an RL environment (a naive rubric
+  average is unconstrained optimization; gates define the feasible set). 9 checkpoints, 31
+  criteria (+5 gates), six gold cases — all corporate-action facts cited to EDGAR filings.
+  Live traces: [`outputs/eval6-live/`](outputs/eval6-live/).
 
 ## What's here
 
 | Path | Contents |
 |---|---|
-| [`workflow/`](workflow/) | Each workflow decomposed into measurable checkpoints (earnings: 17 · defined-outcome: 18 · DCF: 18 · creation/redemption: 8 · confirmation-matching: 8) |
+| [`workflow/`](workflow/) | Each workflow decomposed into measurable checkpoints (earnings: 17 · defined-outcome: 18 · DCF: 18 · creation/redemption: 8 · confirmation-matching: 8 · corporate-actions: 9) |
 | [`rubric/`](rubric/) | Gating + weighted, tiered rubrics — machine-readable atoms (`criteria*.yaml`), the frozen judge prompt (`judge.md`), and a `validate.py` linter |
 | [`cases/`](cases/) | Gold cases — every figure cited to a real SEC filing (10-K / 10-Q / 8-K / 497K / N-PORT); **no invented numbers** (the creation/redemption case is the one exception: PCFs are not public, so it is a constructed, mechanics-faithful scenario over real securities) |
 | [`harness/`](harness/) | The runnable scorer: one suite-agnostic engine + a module per eval; deterministic checks + gating + a pluggable LLM-judge interface; a live path for real models |
 | [`LEADERBOARD.md`](LEADERBOARD.md) | Every live model run on one page — frontier (evals #3–#5) and open-weight (#1–#2), with the discriminating findings and the honest caveats |
 | [`profiles/`](profiles/) | The leaderboard as data — machine-readable per-checkpoint capability profiles per model (routing priors: which workflow step a model can touch), regenerated byte-stably from the committed runs via `python -m harness profiles` |
 | [`ODD.md`](ODD.md) | The allocator framing — what these outputs look like as operational-due-diligence evidence for AI in the investment process, with a sample artifact-backed DDQ section |
-| [`outputs/`](outputs/) | The real graded model runs + failure taxonomies — [`eval2-live/`](outputs/eval2-live/) (two local models, the judge-vs-expert calibration), [`eval3-live/`](outputs/eval3-live/) (eight frontier models on both DCF cases, incl. [`nvda-fy2026-dcf/`](outputs/eval3-live/nvda-fy2026-dcf/)), [`eval4-live/`](outputs/eval4-live/) and [`eval5-live/`](outputs/eval5-live/) (frontier runs on reconciliation and confirmation matching — the full eight-model grid is in [`LEADERBOARD.md`](LEADERBOARD.md)) |
+| [`outputs/`](outputs/) | The real graded model runs + failure taxonomies — [`eval2-live/`](outputs/eval2-live/) (two local models, the judge-vs-expert calibration), [`eval3-live/`](outputs/eval3-live/) (eight frontier models on both DCF cases, incl. [`nvda-fy2026-dcf/`](outputs/eval3-live/nvda-fy2026-dcf/)), [`eval4-live/`](outputs/eval4-live/) and [`eval5-live/`](outputs/eval5-live/) (frontier runs on reconciliation and confirmation matching), [`eval6-live/`](outputs/eval6-live/) (eight frontier models on all six corporate-actions cases) — the full eight-model grid is in [`LEADERBOARD.md`](LEADERBOARD.md) |
 
 ## What the live runs found (eval #2)
 
@@ -302,6 +328,33 @@ models also surfaced **two grader-calibration bugs** (richer dict/prose answer s
 tests didn't anticipate); both fixed, oracle still 1.000/AllPass. Full matrix + traces:
 [`outputs/eval5-live/`](outputs/eval5-live/).
 
+## What the live runs found (eval #6, corporate actions)
+
+Eight frontier models × six cases (48 runs, three vendors). The four findings, stated with the
+caveats they need:
+
+- **The suite's first perfect live row.** Claude Sonnet 4.6 scored 1.000/AllPass on all six
+  cases — no live model had AllPassed a *single* case on any prior eval. Six of eight models sit
+  ≥ 0.92 everywhere (32 of 48 runs AllPass): the frontier handles these procedural document-store
+  episodes at a far higher ceiling than the judgment-heavy analyst evals.
+- **The marquee cascade finally happened — on the small tier.** Through evals #3–#5 the
+  catastrophic decision gates never fired on any live model. On the corrected-dividend case,
+  GPT-5.4-mini pinned the correct correction 8-K, stated the corrected record date — and then
+  computed the entitlement on the **superseded 50,000-share position and booked $8,500** (gold:
+  $6,800 on the corrected 40,000). A release on superseded terms: `GATE.VERSION` + `GATE.ELECT`,
+  gated 0.225 against an ungated 0.574. Flagships still never commit the catastrophic action;
+  the small tier now does.
+- **"Derive the right number, report a different one" replicates in a third domain.** Haiku's
+  refusal-twin derivation computes "$1,800.00" and its value field says 18,000; GPT-5.4-mini's
+  computes 1,800 and reports **180,000, labeled COMPUTED**, on a net-cash question the store does
+  not determine (its fabrication gate). And a planted trap fired exactly where designed: on the
+  *clean* split case, Opus and Haiku both answered the dividend twin at the pre-split rate ×
+  post-split shares — the classic **split/dividend double-count**.
+- **Nobody was fooled by the distractors**: no model used the fictional QSEM split's ratio or
+  Incyte's real 93.5% proration factor, none recomputed the naive 47.56% in place of the
+  depositary's stated 47.18%, and every model honored the odd-lot priority. Findings, grader log,
+  and scope notes: [`outputs/eval6-live/TAXONOMY.md`](outputs/eval6-live/TAXONOMY.md).
+
 ## What the demo shows
 
 `python -m harness demo` grades a model that does Snowflake's analysis **correctly** but misreads
@@ -319,7 +372,9 @@ strike-scale, stated-vs-remaining terms, and the free lunch for buffer ETFs; the
 basis mix, the missing net-debt bridge, and false precision for a DCF; the create/redeem direction,
 a stale cash-in-lieu, and **settling a basket that does not reconcile** for fund servicing; a trade
 direction, day-count, or rate break, and **affirming a confirmation that does not tie** for
-derivatives ops), localizes each to the checkpoint that owns it, and tells "looks right" apart from
+derivatives ops; a superseded announcement version, a missed election deadline, and **an
+irreversible commitment on the wrong terms** for corporate actions), localizes each to the
+checkpoint that owns it, and tells "looks right" apart from
 "is right." A firm uses it as an
 **acceptance test** (which model is deployable, and where it needs a guardrail) and a **regression
 test** (did a model/prompt change help or hurt, and where). The per-model results ship as

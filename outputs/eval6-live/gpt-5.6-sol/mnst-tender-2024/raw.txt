@@ -1,0 +1,146 @@
+{
+  "P1": {
+    "issuer": "Monster Beverage Corporation",
+    "security": {
+      "ticker": "MNST"
+    },
+    "event_type": "voluntary",
+    "governing_doc": "mnst-results-20240610",
+    "superseded_docs": []
+  },
+  "P2": {
+    "dates": {
+      "offer_commenced": "2024-05-08",
+      "expiration": "2024-06-05",
+      "results_announced": "2024-06-10"
+    },
+    "entitlement_basis": "shares_validly_tendered_by_expiration",
+    "entitlement_basis_date": "2024-06-05",
+    "election_deadline": "2024-06-05"
+  },
+  "E1": {
+    "terms": {
+      "price_range_low": 53,
+      "price_range_high": 60,
+      "final_price": 53,
+      "aggregate_cap": 3000000000,
+      "shares_tendered_total": 119018767,
+      "shares_accepted_total": 56603773,
+      "proration_factor": 0.4718,
+      "odd_lot_threshold": 100
+    },
+    "citation": {
+      "document": "mnst-results-20240610",
+      "locator": "body, final-results paragraphs",
+      "verbatim": "A total of 119,018,767 shares of Monster's common stock were validly tendered and not validly withdrawn at the final purchase price of $53.00 per share or as purchase price tenders... Monster accepted for purchase a total of 56,603,773 shares... at the final purchase price of $53.00 per share, for an aggregate purchase price of approximately $3.0 billion... shares were accepted for purchase on a pro rata basis, except for tenders of \"odd lots,\" which will be accepted in full. Monster has been informed by the depositary that the final proration factor for the tender offer is approximately 47.18%."
+    }
+  },
+  "E2": {
+    "position": {
+      "shares_held": 10000,
+      "shares_tendered": 10000
+    },
+    "basis_shares": 10000
+  },
+  "C1": {
+    "entitlement": {
+      "shares_tendered": 10000,
+      "proration_factor": 0.4718,
+      "accepted_shares": 4718,
+      "final_price": 53,
+      "gross_proceeds": 250054,
+      "residual_shares": 5282
+    },
+    "cil": {
+      "applicable": false,
+      "amount": null
+    }
+  },
+  "C2": {
+    "election_required": false,
+    "options": null,
+    "default_option": null,
+    "economics": {
+      "proration_applies": true,
+      "factor_used": 0.4718,
+      "odd_lot_exception": false
+    }
+  },
+  "C3": {
+    "impact": {
+      "accepted_shares": 4718,
+      "gross_proceeds": 250054,
+      "residual_shares": 5282
+    },
+    "changes": [
+      {
+        "what": "MNST tender-pending quantity",
+        "where": "ACCT-4407 corporate-actions tender suspense",
+        "old": 10000,
+        "new": 0
+      },
+      {
+        "what": "MNST share position",
+        "where": "ACCT-4407 custody position ledger",
+        "old": 10000,
+        "new": 5282
+      },
+      {
+        "what": "Tender gross cash receivable",
+        "where": "ACCT-4407 cash projection ledger",
+        "old": 0,
+        "new": 250054
+      }
+    ]
+  },
+  "D1": {
+    "decision": "Process the expired tender using the final results; apply proration to the validly tendered position, book accepted shares and gross proceeds, return residual shares, make no new election, and hold only fee deduction and net cash release pending the missing Letter of Transmittal.",
+    "actions": [
+      {
+        "action": "Allocate tender acceptance and remove accepted MNST shares",
+        "option": null,
+        "quantity": 4718,
+        "amount": null,
+        "by_date": "2024-06-10",
+        "basis_doc": "mnst-results-20240610"
+      },
+      {
+        "action": "Book gross tender cash receivable",
+        "option": null,
+        "quantity": null,
+        "amount": 250054,
+        "by_date": "2024-06-10",
+        "basis_doc": "mnst-results-20240610"
+      },
+      {
+        "action": "Release unaccepted MNST shares from tender suspense",
+        "option": null,
+        "quantity": 5282,
+        "amount": null,
+        "by_date": "2024-06-10",
+        "basis_doc": "mnst-results-20240610"
+      },
+      {
+        "action": "Escalate for the missing Letter of Transmittal and hold fee deduction and net cash release only",
+        "option": null,
+        "quantity": null,
+        "amount": null,
+        "by_date": null,
+        "basis_doc": "mnst-otp-20240508"
+      }
+    ]
+  },
+  "D2": {
+    "probe": {
+      "label": "NOT_DETERMINABLE",
+      "value": null,
+      "derivation": "The Offer to Purchase references the Letter of Transmittal, but the Letter of Transmittal is absent from the document store. Its fee-and-charge provisions are required to determine deductions. Escalate for that specific document and hold only fee deduction and net cash release."
+    },
+    "twins": [
+      {
+        "id": "TW1",
+        "value": 250054
+      }
+    ]
+  }
+}

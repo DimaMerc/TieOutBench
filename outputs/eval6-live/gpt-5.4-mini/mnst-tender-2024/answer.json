@@ -1,0 +1,118 @@
+{
+  "P1": {
+    "issuer": "Monster Beverage Corporation",
+    "security": {
+      "ticker": "MNST"
+    },
+    "event_type": "voluntary",
+    "governing_doc": "mnst-results-20240610",
+    "superseded_docs": [
+      "mnst-otp-20240508"
+    ]
+  },
+  "P2": {
+    "dates": {
+      "offer_commenced": "2024-05-08",
+      "expiration": "2024-06-05",
+      "results_announced": "2024-06-10"
+    },
+    "entitlement_basis": "shares_validly_tendered_by_expiration",
+    "entitlement_basis_date": "2024-06-05",
+    "election_deadline": "2024-06-05"
+  },
+  "E1": {
+    "terms": {
+      "price_range_low": 53,
+      "price_range_high": 60,
+      "final_price": 53,
+      "aggregate_cap": 3000000000,
+      "shares_tendered_total": 119018767,
+      "shares_accepted_total": 56603773,
+      "proration_factor": 0.4718,
+      "odd_lot_threshold": 100
+    },
+    "citation": {
+      "document": "mnst-results-20240610",
+      "locator": "body",
+      "verbatim": "A total of 119,018,767 shares of Monster's common stock were validly tendered and not validly withdrawn at the final purchase price of $53.00 per share or as purchase price tenders... Monster accepted for purchase a total of 56,603,773 shares of its common stock... Because the number of shares tendered would have exceeded the aggregate purchase price of the tender offer, shares were accepted for purchase on a pro rata basis, except for tenders of \"odd lots,\" which will be accepted in full. Monster has been informed by the depositary that the final proration factor for the tender offer is approximately 47.18%."
+    }
+  },
+  "E2": {
+    "position": {
+      "shares_held": 10000,
+      "shares_tendered": 10000
+    },
+    "basis_shares": 10000
+  },
+  "C1": {
+    "entitlement": {
+      "shares_tendered": 10000,
+      "proration_factor": 0.4718,
+      "accepted_shares": 4718,
+      "final_price": 53,
+      "gross_proceeds": 250054,
+      "residual_shares": 5282
+    },
+    "cil": {
+      "applicable": false,
+      "amount": null
+    }
+  },
+  "C2": {
+    "election_required": false,
+    "options": null,
+    "default_option": null,
+    "economics": {
+      "proration_applies": true,
+      "factor_used": 0.4718,
+      "odd_lot_exception": false
+    }
+  },
+  "C3": {
+    "impact": {
+      "accepted_shares": 4718,
+      "gross_proceeds": 250054,
+      "residual_shares": 5282
+    },
+    "changes": [
+      {
+        "what": "MNST tendered share position",
+        "where": "ACCT-4407 custody position ledger",
+        "old": 10000,
+        "new": 5282
+      },
+      {
+        "what": "Cash proceeds from tender acceptance",
+        "where": "ACCT-4407 cash projection",
+        "old": 0,
+        "new": 250054
+      }
+    ]
+  },
+  "D1": {
+    "decision": "hold for settlement of accepted tender shares; no further election available",
+    "actions": [
+      {
+        "action": "book tender acceptance and residual position",
+        "option": null,
+        "quantity": 4718,
+        "amount": 250054,
+        "by_date": "2024-06-10",
+        "basis_doc": "mnst-results-20240610"
+      }
+    ]
+  },
+  "D2": {
+    "probe": {
+      "label": "NOT_DETERMINABLE",
+      "value": null,
+      "derivation": "The store does not include the Letter of Transmittal or any document stating fees/charges deducted from tender proceeds. Missing referenced document: Letter of Transmittal."
+    },
+    "twins": [
+      {
+        "id": "TW1",
+        "value": 250054
+      }
+    ]
+  }
+}

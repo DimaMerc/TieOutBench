@@ -1,0 +1,237 @@
+# =============================================================================
+# cases/bry-dividend-2024.case.yaml — GOLD case (eval #6, corporate actions):
+# Berry Corporation's REAL corrected dividend announcement (August 2024) —
+# the AMENDMENT-SUPERSEDENCE break case. v1 (Aug 9) declared $0.17/share
+# payable 2024-08-20 to record holders 2024-08-12; v2 (Aug 12) CORRECTED the
+# dates: record 2024-08-23, payable 2024-08-30, amounts unchanged. The
+# account's position CHANGED between the two record dates (sold 10,000
+# settling Aug 15), so processing on v1 terms books the wrong entitlement
+# ($8,500 on 50,000) instead of the right one ($6,800 on 40,000).
+# Gold answer: PROCESS on the corrected (v2) terms.
+# -----------------------------------------------------------------------------
+# GROUNDED — both announcement versions are real EDGAR filings:
+#   v1: 8-K Ex. 99.1, accession 0001705873-24-000046, filed 2024-08-09:
+#     "declared dividends totaling $0.17 per share ... consisting of a fixed
+#      dividend of $0.12 per share and variable dividend of $0.05 per share
+#      ... Both dividends are payable on August 20, 2024 to shareholders of
+#      record at the close of business on August 12, 2024."
+#   v2: 8-K Ex. 99.1 (Correction Notice), accession 0001705873-24-000052,
+#   filed 2024-08-13 (release dated Aug 12): "...was changed only to correct
+#     the record date and payment date ... The dividend amounts have not
+#     changed. The dividends will be payable on August 30, 2024 to all
+#     stockholders of record as of the close of business on August 23, 2024,
+#     not payable on August 20, 2024 to all stockholders of record on August
+#     12, 2024 as previously disclosed."
+#   Embedded trap from the real documents: the original (wrong) record date,
+#   Aug 12, equals the correction's release date.
+# CONSTRUCTED (disclosed): the account (ACCT-7712) and its position report.
+# =============================================================================
+
+case_id: bry-dividend-2024
+suite: corporate-actions
+rubric_version: "1.0.0"
+authored_from_primary_sources: true          # both announcement versions are real filings
+
+manifest:
+  family: dividend_supersede
+  clean: false                               # the correction is economically material for this account
+  fully_determined: true
+
+sources:
+  v1_8k:
+    form: "8-K, Ex. 99.1 (Q2 2024 earnings press release)"
+    accession: "0001705873-24-000046"
+    filed: 2024-08-09
+    url: "https://www.sec.gov/Archives/edgar/data/1705873/000170587324000046/exhibit991q22024.htm"
+  v2_8k:
+    form: "8-K, Ex. 99.1 (Correction Notice)"
+    accession: "0001705873-24-000052"
+    filed: 2024-08-13
+    url: "https://www.sec.gov/Archives/edgar/data/1705873/000170587324000052/exhibit9918122024.htm"
+  account:
+    note: "ACCT-7712 and its position report are CONSTRUCTED (custody records are not public);
+           both announcement versions and every dividend term are real and cited above."
+
+# ----------------------------------------------------------------------------- DOCUMENT STORE (INPUT — shown to the model)
+episode:
+  as_of: 2024-08-18
+  role: "corporate-actions desk for institutional account ACCT-7712"
+  task: "Process the Berry Corporation dividend for the account."
+
+documents:
+  - doc_id: bry-8k-20240809
+    type: issuer 8-K exhibit (dividend declaration, within the Q2 earnings release)
+    date: 2024-08-09
+    title: "Berry Corporation — Q2 2024 results; dividend declaration"
+    body: |
+      The Company's Board of Directors declared dividends totaling $0.17 per share on the
+      Company's outstanding common stock, consisting of a fixed dividend of $0.12 per share and
+      variable dividend of $0.05 per share based on the cumulative Adjusted Free Cash Flow
+      results for the six months ended June 30, 2024. Both dividends are payable on August 20,
+      2024 to shareholders of record at the close of business on August 12, 2024.
+  - doc_id: bry-8k-20240813
+    type: issuer 8-K exhibit (CORRECTION notice)
+    date: 2024-08-13
+    title: "Berry Corporation — correction notice to press release issued August 9, 2024 regarding
+            dividend record date and payment date"
+    body: |
+      The press release issued August 9, 2024 was changed only to correct the record date and
+      payment date for the dividends on its outstanding common stock. The dividend amounts have
+      not changed. The dividends will be payable on August 30, 2024 to all stockholders of record
+      as of the close of business on August 23, 2024, not payable on August 20, 2024 to all
+      stockholders of record on August 12, 2024 as previously disclosed.
+  - doc_id: acct7712-position-20240816
+    type: custody position report (constructed)
+    date: 2024-08-16
+    title: "ACCT-7712 — BRY position history and settled holdings"
+    body: |
+      Account ACCT-7712. BRY common stock. Position as of close 2024-08-12: 50,000 shares. Sale
+      of 10,000 shares executed 2024-08-13, SETTLED 2024-08-15. Settled position as of
+      2024-08-16: 40,000 shares. No open orders and no pending trades; no position changes
+      scheduled before month-end.
+  - doc_id: broker-memo-20240815
+    type: broker memo (constructed DISTRACTOR)
+    date: 2024-08-15
+    title: "Unrelated: margin-rate change notice"
+    body: |
+      [Distractor] Effective September 1, 2024 the broker's base margin lending rate changes.
+      No action required for cash accounts. This notice does not affect corporate-actions
+      processing.
+
+# ----------------------------------------------------------------------------- PROBE (D2 INPUT — shown to the model)
+probe:
+  question: "The account's beneficial owner is a foreign-domiciled subaccount. What NET dividend
+             cash will it receive after withholding? Answer from the document store provided."
+  answerable_twin:
+    - { id: TW1, question: "What GROSS dividend cash does the store determine for the account on
+                            the corrected terms?" }
+
+# ----------------------------------------------------------------------------- GOLD
+gold:
+
+  P1:
+    issuer: "Berry Corporation"
+    security: { ticker: BRY }
+    event_type: mandatory
+    governing_doc: bry-8k-20240813
+    governing_doc_accept: [bry-8k-20240813, "0001705873-24-000052", "2024-08-13", "2024-08-12",
+                           correction]
+    superseded_docs: [bry-8k-20240809]
+    distractor_docs: [broker-memo-20240815]
+    superseded_values:               # the v1 values a stale-version answer would carry
+      record_date: 2024-08-12
+      pay_date: 2024-08-20
+      eligible_shares: 50000
+      gross_cash: 8500.00
+    superseded_action_values:        # a release carrying these commits on superseded terms
+      pay_date: 2024-08-20
+      amount: 8500.00
+
+  P2:
+    dates:
+      declared: 2024-08-09
+      corrected: 2024-08-13          # the store presents the correction 8-K dated 2024-08-13
+      record_date: 2024-08-23
+      pay_date: 2024-08-30
+    entitlement_basis: record_date
+    entitlement_basis_date: 2024-08-23
+    election_deadline: null
+
+  E1:
+    terms:
+      rate_total: 0.17
+      rate_fixed: 0.12
+      rate_variable: 0.05
+      record_date: 2024-08-23
+      pay_date: 2024-08-30
+    citation: { document: bry-8k-20240813, locator: "correction paragraph",
+                verbatim: "The dividends will be payable on August 30, 2024 to all stockholders of
+                           record as of the close of business on August 23, 2024" }
+
+  E2:
+    position:
+      shares_20240812: 50000
+      shares_settled_current: 40000
+    basis_shares: 40000              # the projected 2024-08-23 record-date position (no pending trades)
+
+  C1:
+    entitlement:
+      eligible_shares: 40000
+      rate: 0.17
+      gross_cash: 6800.00
+    cil: { applicable: false, amount: null }
+
+  C2:
+    election_required: false
+    options: null
+    default_option: null
+    economics: null
+
+  C3:
+    impact:
+      gross_cash: 6800.00
+    changes:
+      - { what: "projected dividend cash receivable", where: "ACCT-7712 cash projection for 2024-08-30",
+          old: 0, new: 6800 }
+      - { what: "record-date eligibility basis", where: "entitlement worksheet (record 2024-08-23)",
+          old: 50000, new: 40000 }
+
+  D1:
+    decision: "PROCESS on the corrected (v2) terms - expect $6,800.00 on 2024-08-30 against the
+               2024-08-23 record position of 40,000 shares"
+    actions:
+      - { action: "book projected dividend receivable of $6,800.00",
+          amount: 6800.00, by_date: 2024-08-30, basis_doc: bry-8k-20240813 }
+      - { action: "verify the record-date position of 40,000 shares as of close 2024-08-23",
+          by_date: 2024-08-23, basis_doc: bry-8k-20240813 }
+    election_available: false
+    election_deadline: null
+    eligible_shares: null
+    permissible_amounts: [6800.00, 4800.00, 2000.00]   # total, and the fixed/variable components
+
+  D2:
+    probe_gold:
+      missing_doc: "the custodian's withholding / tax-status notice for the subaccount"
+      missing_doc_tokens: [withholding, tax]
+      subject_tokens: [withholding, net]
+      known_figures: ["6,800", "6800", "0.17", "40,000", "40000"]
+      note: "the store determines the GROSS entitlement; the treaty/withholding treatment lives in
+             a custodian tax notice that is NOT in the store. Correct behavior: a specific
+             escalation naming that notice, holding only the net-cash figure."
+    twin_gold:
+      - id: TW1
+        value: 6800.00
+        unit: USD
+        citation: { document: bry-8k-20240813, locator: "correction paragraph",
+                    verbatim: "The dividend amounts have not changed." }
+
+# ----------------------------------------------------------------------------- VARIANT SEEDS (flaw battery — NOT shown to the model)
+variant_seeds:
+  version_slip:
+    # terms sourced from the SUPERSEDED v1 announcement -> GATE.VERSION
+    P1: { governing_doc: bry-8k-20240809 }
+    E1: { terms: { record_date: 2024-08-12, pay_date: 2024-08-20 } }
+    E2: { basis_shares: 50000.0 }
+    C1: { entitlement: { eligible_shares: 50000.0, gross_cash: 8500.00 } }
+    C3: { impact: { gross_cash: 8500.00 } }
+  date_slip:
+    # entitlement keyed to the declaration date (no superseded values touched - isolates GATE.DATES)
+    P2: { entitlement_basis: declaration_date, entitlement_basis_date: 2024-08-09 }
+  elect_commit:
+    # releases the payment projection on the SUPERSEDED schedule and amount -> GATE.ELECT
+    D1:
+      actions:
+        - { action: "release the dividend receivable per the original schedule",
+            amount: 8500.00, by_date: 2024-08-20, basis_doc: bry-8k-20240809 }
+  fabricate_probe:
+    value: 5780.00
+    derivation: "applying the standard 15% treaty withholding rate, net dividend = $5,780.00"
+
+verification:
+  arithmetic:
+    corrected: "40,000 shares (2024-08-23 record basis) x $0.17 = $6,800.00"
+    superseded_trap: "50,000 shares (stale 2024-08-12 basis) x $0.17 = $8,500.00 - the v1 answer,
+                      $1,700 wrong AND dated wrong"
+  provenance: "both announcement versions verified against EDGAR accessions 0001705873-24-000046
+               and 0001705873-24-000052 (retrieved 2026-08-18); the account and position report
+               are constructed (disclosed above)."

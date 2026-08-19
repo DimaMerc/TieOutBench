@@ -1,0 +1,31 @@
+========================================================================
+  CASE bry-dividend-2024    model=live:gpt-5.4-mini    judge=mock
+========================================================================
+  CaseScore (gated, headline) : 0.225
+  CaseScore (ungated)         : 0.574
+  GAP (ungated - gated)       : 0.349
+  AllPass                     : 0
+  D2 calibration (R,G->F_b)   : R=0.00 G=1.00 -> 0.000
+  Gates fired                 : GATE.VERSION, GATE.ELECT
+  Headline flags              : elect_override_fired
+
+  Checkpoint vector (which step failed):
+    cp   W      ungated  gated   raw
+    P1   0.100  0.545   0.545  +0.55
+    P2   0.120  1.000   1.000  +1.00
+    E1   0.100  1.000   0.000  +1.00  <-- gated
+    E2   0.080  0.625   0.625  +0.62
+    C1   0.140  0.686   0.000  +0.69  <-- gated
+    C2   0.120  1.000   0.000  +1.00  <-- gated
+    C3   0.100  0.333   0.000  +0.33  <-- gated
+    D1   0.160  0.000   0.000  -0.69
+    D2   0.080  0.000   0.000  +0.00
+
+  Category rollup (diagnostic -- what KIND of error):
+    extraction   +1.000  ####################
+    numerical    +0.522  ##########
+    entailment   +1.000  ####################
+    reasoning    +0.500  ##########
+    calibration  -0.385  
+    structure    +1.000  ####################
+========================================================================

@@ -1,0 +1,114 @@
+```json
+{
+  "P1": {
+    "issuer": "Zoetis Inc.",
+    "security": {
+      "ticker": "ZTS"
+    },
+    "event_type": "mandatory",
+    "governing_doc": "zts-8k-20140327",
+    "superseded_docs": [
+      "zts-8k-20140326"
+    ]
+  },
+  "P2": {
+    "dates": {
+      "declared": "2014-03-26",
+      "corrected": "2014-03-27",
+      "record_date": "2014-04-28",
+      "pay_date": "2014-06-02"
+    },
+    "entitlement_basis": "record_date",
+    "entitlement_basis_date": "2014-04-28",
+    "election_deadline": null
+  },
+  "E1": {
+    "terms": {
+      "rate": 0.072,
+      "record_date": "2014-04-28",
+      "pay_date": "2014-06-02"
+    },
+    "citation": {
+      "document": "zts-8k-20140327",
+      "locator": "corrected release, second sentence",
+      "verbatim": "The Board of Directors of Zoetis Inc. (NYSE:ZTS) declared a second quarter dividend payable to holders of the company's common stock of $0.072 per share. The dividend is to be paid on June 2, 2014 to holders of record on April 28, 2014."
+    }
+  },
+  "E2": {
+    "position": {
+      "shares_settled": 25000
+    },
+    "basis_shares": 25000
+  },
+  "C1": {
+    "entitlement": {
+      "eligible_shares": 25000,
+      "rate": 0.072,
+      "gross_cash": 1800.00
+    },
+    "cil": {
+      "applicable": false,
+      "amount": null
+    }
+  },
+  "C2": {
+    "election_required": false,
+    "options": null,
+    "default_option": null,
+    "economics": null
+  },
+  "C3": {
+    "impact": {
+      "gross_cash": 1800.00
+    },
+    "changes": [
+      {
+        "what": "ZTS dividend cash accrual for ACCT-2101",
+        "where": "dividend receivable ledger / cash projection",
+        "old": 0.00,
+        "new": 1800.00
+      },
+      {
+        "what": "ZTS dividend payment settlement",
+        "where": "cash account / settlement ledger",
+        "old": null,
+        "new": 1800.00
+      }
+    ]
+  },
+  "D1": {
+    "decision": "Process mandatory cash dividend. No election available. Entitlement fixed at record date 2014-04-28 for 25,000 settled shares at $0.072/share = $1,800.00 gross cash payable 2014-06-02.",
+    "actions": [
+      {
+        "action": "Accrue dividend receivable",
+        "option": null,
+        "quantity": 25000,
+        "amount": 1800.00,
+        "by_date": "2014-04-28",
+        "basis_doc": "zts-8k-20140327"
+      },
+      {
+        "action": "Settle cash payment",
+        "option": null,
+        "quantity": null,
+        "amount": 1800.00,
+        "by_date": "2014-06-02",
+        "basis_doc": "zts-8k-20140327"
+      }
+    ]
+  },
+  "D2": {
+    "probe": {
+      "label": "NOT_DETERMINABLE",
+      "value": null,
+      "derivation": "The document store does not contain the dividend reinvestment plan (DRIP) terms, reinvestment price schedule, or pricing methodology for Zoetis. The reinvestment price on June 2, 2014 cannot be determined from the provided documents. MISSING DOCUMENT: Zoetis dividend reinvestment plan prospectus or DRIP pricing schedule."
+    },
+    "twins": [
+      {
+        "id": "TW1",
+        "value": 1800.00
+      }
+    ]
+  }
+}
+```

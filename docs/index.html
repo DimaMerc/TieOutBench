@@ -16,7 +16,7 @@
 <meta property="og:image" content="https://evals.finance/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Where can you trust an AI with finance work? Five runnable, rubric-graded evaluations — looks right does not equal is right.">
+<meta property="og:image:alt" content="Where can you trust an AI with finance work? Six runnable, rubric-graded evaluations — looks right does not equal is right.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Dmitry Krutous — LLM Evaluation &amp; AI Model Validation for Asset Management">
 <meta name="twitter:description" content="Runnable evaluations for finance LLMs — analyst workflows and the back office.">
@@ -75,7 +75,7 @@
 </header>
 
 <h2>TieOutBench — an open benchmark suite</h2>
-<p>Five runnable evaluations of real asset-management workflows. Each decomposes the workflow into scored checkpoints, grades against a point-weighted rubric with auto-fail gates, cites gold answers to source documents, and runs live models end to end.</p>
+<p>Six runnable evaluations of real asset-management workflows. Each decomposes the workflow into scored checkpoints, grades against a point-weighted rubric with auto-fail gates, cites gold answers to source documents, and runs live models end to end.</p>
 
 <div class="tablewrap">
 <table>
@@ -86,17 +86,18 @@
     <tr><td>DCF valuation</td><td>Project cash flow, discount at WACC, bridge enterprise value to equity</td></tr>
     <tr><td>ETF creation/redemption reconciliation</td><td>Tie an authorized participant's basket to the published PCF — settle only if it ties</td></tr>
     <tr><td>OTC swap confirmation matching</td><td>Match two confirmations field by field — affirm only if the economics agree</td></tr>
+    <tr><td>Corporate-actions processing</td><td>From a document store with amendments and distractors: pin the governing version and dates, compute the entitlement — commit only what the deadline allows</td></tr>
   </tbody>
 </table>
 </div>
 
-<p>The last two are back-office controls. As of July 2026 they appear to be the only public LLM evaluations of capital-markets post-trade operations — every other prominent finance benchmark (GDPval, Vals AI's Finance Agent, Mercor's APEX, BigFinanceBench, FrontierFinance) grades front-office analyst work.</p>
+<p>The last three are back-office controls. As of mid-2026 they appear to be the only public LLM evaluations of capital-markets post-trade operations — every other prominent finance benchmark (GDPval, Vals AI's Finance Agent, Mercor's APEX, BigFinanceBench, FrontierFinance) grades front-office analyst work.</p>
 
 <ul class="facts">
-  <li>5 evaluations</li>
-  <li>69 scored checkpoints</li>
-  <li>~390 rubric criteria</li>
-  <li>14 gold cases</li>
+  <li>6 evaluations</li>
+  <li>78 scored checkpoints</li>
+  <li>~420 rubric criteria</li>
+  <li>20 gold cases</li>
   <li>MIT licensed</li>
 </ul>
 
@@ -124,7 +125,12 @@
   <p>Every frontier model tested — eight across three vendors — correctly refused to affirm a swap whose fixed rate was off by five basis points — about EUR 25,000 a year on a EUR 50 million notional. But in the first three-model round, only one sized it right. One called it ten times too small, which a human triages as trivia; one read five basis points as fifty and reported EUR 2.5 million over the life of the trade against a correct figure of EUR 125,000, which triggers a fire drill.</p>
 </div>
 
-<p class="caveat">Caveats stated rather than buried: one run per model per case; evaluations 3–5 now cover eight frontier models across three vendors, while evaluations 1–2 have been run only against open-weight models. The leaderboard says so on its face.</p>
+<div class="panel">
+  <h3>The catastrophic action, finally observed — on the small tier</h3>
+  <p>Across the first three live-run evaluations, no model ever committed the catastrophic action the signature gates exist to catch. The corporate-actions evaluation changed that: one small-tier model pinned the correct corrected announcement, stated the corrected record date — and then computed the entitlement on the superseded position and booked the wrong payment. The flagships still never commit the catastrophic action; the small tier now does, and the evaluation localizes exactly where.</p>
+</div>
+
+<p class="caveat">Caveats stated rather than buried: one run per model per case; evaluations 3–6 now cover eight frontier models across three vendors, while evaluations 1–2 have been run only against open-weight models. The leaderboard says so on its face.</p>
 
 <h2>What it's for</h2>
 <p>Before a firm lets an AI do analyst or operations work, it needs to know <em>whether — and exactly where — to trust it.</em> A blended accuracy number cannot answer that. A gated, checkpoint-level evaluation can, and it serves three purposes:</p>

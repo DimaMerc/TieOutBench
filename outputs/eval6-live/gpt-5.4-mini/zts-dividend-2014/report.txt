@@ -1,0 +1,30 @@
+========================================================================
+  CASE zts-dividend-2014    model=live:gpt-5.4-mini    judge=mock
+========================================================================
+  CaseScore (gated, headline) : 0.828
+  CaseScore (ungated)         : 0.828
+  GAP (ungated - gated)       : 0.000
+  AllPass                     : 0
+  D2 calibration (R,G->F_b)   : R=1.00 G=1.00 -> 1.000
+  Gates fired                 : none
+
+  Checkpoint vector (which step failed):
+    cp   W      ungated  gated   raw
+    P1   0.100  1.000   1.000  +1.00
+    P2   0.120  0.896   0.896  +0.90
+    E1   0.100  1.000   1.000  +1.00
+    E2   0.080  1.000   1.000  +1.00
+    C1   0.140  1.000   1.000  +1.00
+    C2   0.120  1.000   1.000  +1.00
+    C3   0.100  1.000   1.000  +1.00
+    D1   0.160  0.000   0.000  -0.08
+    D2   0.080  1.000   1.000  +1.00
+
+  Category rollup (diagnostic -- what KIND of error):
+    extraction   +0.940  ###################
+    numerical    +1.000  ####################
+    entailment   +1.000  ####################
+    reasoning    +0.733  ###############
+    calibration  +0.538  ###########
+    structure    +1.000  ####################
+========================================================================

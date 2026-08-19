@@ -1,0 +1,456 @@
+# rubric/criteria-corporate-actions.yaml — machine-readable atomic scoring criteria for EVAL #6:
+# CORPORATE-ACTIONS PROCESSING (the asset-servicing "process the event, on the governing terms, by
+# the governing dates" control — the temporal sibling of evals #4/#5's point-in-time tie-outs).
+#
+# SAME SCHEMA as the other five evals — meta weights + checkpoint_weights, a tolerances block, a
+# gates block with fired_by/dependents, and atoms with {id, checkpoint, category, criterion, points,
+# grader, gate, tolerance, tags}. Aggregation is identical (checkpoint-primary, category rollup,
+# HealthBench inner pool; the refusal checkpoint D2's headline is the FailSafeQA F-beta LLMC_beta(R,G)).
+#
+# THE TASK: the model receives a corporate-action DOCUMENT STORE (announcement AND any amendment,
+# position report, ETF basket file where relevant, plus distractors) — not a curated packet — and
+# must produce a structured ACTION PLAN: pin the event and its GOVERNING announcement version, pin
+# the governing dates, extract terms, compute the entitlement, analyze the election (where one
+# exists), state the downstream impact, and commit to actions. Some actions are IRREVERSIBLE
+# (an election past its deadline cannot be unwound) — that is the new dimension this eval tests.
+#
+# SIGNATURE CONTROL = GATE.ELECT: a model that COMMITS an irreversible wrong action (elects the
+# wrong option, tenders shares it does not hold, commits after the deadline, or processes a payment
+# on superseded terms) auto-fails the decision checkpoint. GATE.VERSION is the document-store form
+# of eval #2's vintage slip: terms sourced from a superseded announcement version poison everything
+# downstream.
+#
+# DESIGN PRINCIPLE (new to this eval, stated in workflow/DESIGN-eval6-corporate-actions.md §3):
+# every gate is a predicate over the episode's TERMINAL STATE, so the same rubric doubles as an
+# RL reward with the gates as the constraint set — a naive rubric average is unconstrained
+# optimization; gates define the feasible set.
+#
+# Three case families share this rubric (grading is case-aware via the gold, the eval #4/#5
+# pattern): (1) a stock split hitting an ETF creation basket, (2) an issuer self-tender with
+# proration + odd-lot priority, (3) an amendment-supersedence dividend pair. Each family ships a
+# break/escalate case and a clean counterweight.
+#
+# Workflow spec: workflow/DESIGN-eval6-corporate-actions.md. Validate: python rubric/validate.py
+# rubric/criteria-corporate-actions.yaml
+
+meta:
+  rubric_version: "1.0.0"
+  eval: corporate-actions
+
+  weights:
+    extraction:   0.22
+    numerical:    0.26
+    entailment:   0.08
+    reasoning:    0.24
+    calibration:  0.14
+    structure:    0.06
+
+  # 9 checkpoint weights. Sum to 1.0. Decision-heavy per suite norm: the action decision D1 is the
+  # center of gravity, with the entitlement math C1 second — the decision-vs-arithmetic split is
+  # designed in.
+  checkpoint_weights:
+    P1: 0.10
+    P2: 0.12
+    E1: 0.10
+    E2: 0.08
+    C1: 0.14
+    C2: 0.12
+    C3: 0.10
+    D1: 0.16
+    D2: 0.08
+
+  refusal_beta: 0.5
+  clip_per_checkpoint: true
+  clip_per_case: false
+  clip_suite: [0.0, 1.0]
+  headline_flags: [elect_override_fired]   # reported beside CaseScore when GATE.ELECT fires
+
+tolerances:
+  count_exact: { type: abs, band: 0.001 }     # integer fields (share counts where exactness matters)
+  ratio_exact: { type: abs, band: 0.0000001 } # split ratios, dividend rates, proration factors
+  shares:      { type: abs, band: 0.5 }       # share quantities to the share
+  money:       { type: abs, band: 1.00 }      # cash amounts to the currency unit
+  money_est:   { type: rel, band: 0.06 }      # economic-impact estimates (approximations)
+  pp:          { type: pp,  band: 0.01 }
+
+# ============================== GATES ==============================
+gates:
+  - id: GATE.VERSION
+    tier: hard
+    checkpoint: P1
+    fired_by: P1.version
+    condition: "terms sourced from the WRONG DOCUMENT: a SUPERSEDED announcement version (the store
+                contains an amendment that corrects the original, and the model pins or computes
+                from the original's terms — the corporate-actions form of the vintage slip), or a
+                DISTRACTOR document (another event's ratio/factor/dates carried into this event's
+                worksheet). Every downstream number inherits the wrong terms. Evidence-based: fires
+                on a wrong-doc pin or a superseded/contaminant value in the worksheet."
+    dependents: [E1, C1, C2, C3, D1]
+  - id: GATE.DATES
+    tier: hard
+    checkpoint: P2
+    fired_by: P2.governing
+    condition: "the governing-date logic is wrong: entitlement keyed to the wrong date (ex-date /
+                announcement date / pay date instead of the record-date position), or eligibility
+                computed as of the wrong date — the entitlement is for the wrong holder or the
+                wrong quantity."
+    dependents: [C1, C2, D1]
+  - id: GATE.SCALE
+    tier: hard
+    checkpoint: C1
+    fired_by: C1.scale
+    condition: "the entitlement is mis-scaled: the split ratio applied backwards (10:1 as 1:10), a
+                per-share rate applied as a total (or vice versa), or a quantity off by a power of
+                ten — internally consistent arithmetic on the wrong scale."
+    dependents: [C2, C3, D1]
+  - id: GATE.ELECT
+    tier: scoped
+    checkpoint: D1
+    fired_by: D1.n_irrevocable
+    condition: "THE SIGNATURE CONTROL: the model COMMITS an irreversible wrong action — elects the
+                wrong option, tenders more shares than the eligible position, schedules a commitment
+                after the election deadline, or releases a payment/processing instruction on
+                superseded terms. Fires D1->0 and raises the elect_override_fired headline flag."
+    dependents: [D1]
+    headline_flag: elect_override_fired
+  - id: GATE.FABRICATION
+    tier: hard
+    tier_note: "per-figure void; breaks AllPass (eval #1/#2 F4 semantics)"
+    scope: figure
+    fired_by: [E1.n_halluc, D2.n_fabricate]
+    condition: "a fabricated event term not present in any document in the store, or a confident
+                made-up value for something the store does not determine (e.g. the content of a
+                referenced-but-absent document)."
+
+# ============================== PLANNING (pin the event + its governing version) ==============================
+criteria:
+
+  - id: P1.event
+    checkpoint: P1
+    category: extraction
+    criterion: "The event is pinned: issuer, security (identifier), and the event TYPE classified
+                correctly (mandatory / mandatory-with-choice / voluntary) — the classification that
+                determines whether an election exists at all."
+    points: 4
+    grader: deterministic
+    gate: none
+    tags: [event_identity]
+  - id: P1.version
+    checkpoint: P1
+    category: reasoning
+    criterion: "The GOVERNING announcement version is identified: where the store contains an
+                amendment/correction, the model names the governing document and sources every term
+                from it; where the latest version merely confirms the original (administrative
+                amendment), the original terms stand and processing proceeds."
+    points: 5
+    grader: deterministic
+    gate: hard            # firing this is GATE.VERSION
+    tags: [versioning]
+  - id: P1.structure
+    checkpoint: P1
+    category: structure
+    criterion: "A pinned-event object is emitted {issuer, security, event_type, governing_doc}."
+    points: 2
+    grader: deterministic
+    gate: none
+    tags: [structure]
+
+# ============================== PLANNING (pin the governing dates) ==============================
+
+  - id: P2.dates
+    checkpoint: P2
+    category: extraction
+    criterion: "The key dates are extracted from the governing version (fractional over the dates the
+                event defines: announcement, ex-date, record date, election deadline, payable /
+                effective date — as applicable to the family)."
+    points: 5
+    grader: deterministic
+    gate: none
+    tags: [dates]
+  - id: P2.governing
+    checkpoint: P2
+    category: reasoning
+    criterion: "The governing-date logic is correct: entitlement/eligibility is keyed to the
+                record-date position; elections are governed by the deadline; effective-date logic
+                (e.g. when post-split quantities apply) is right."
+    points: 5
+    grader: deterministic
+    gate: hard            # firing this is GATE.DATES
+    tags: [dates, eligibility]
+  - id: P2.structure
+    checkpoint: P2
+    category: structure
+    criterion: "A timeline object is emitted {date -> what happens / what governs}."
+    points: 2
+    grader: deterministic
+    gate: none
+    tags: [structure]
+
+# ============================== EXTRACTION ==============================
+
+  - id: E1.terms
+    checkpoint: E1
+    category: extraction
+    criterion: "The event terms are read exactly from the governing version (fractional over the
+                family's field set: ratio / rate / price or price range, options and the default
+                option, proration and odd-lot provisions, offer size)."
+    points: 7
+    grader: deterministic
+    gate: none
+    tags: [term_extraction]
+  - id: E1.cite
+    checkpoint: E1
+    category: entailment
+    criterion: "The terms cite the governing announcement document that entails them (document id +
+                verbatim support)."
+    points: 2
+    grader: entailment
+    gate: none
+    tags: [mis_citation]
+  - id: E1.n_omit
+    checkpoint: E1
+    category: extraction
+    criterion: "PENALTY: a key event term present in the governing document is dropped (e.g. the
+                proration provision read past, the default option not captured)."
+    points: -4
+    grader: deterministic
+    gate: none
+    tags: [omission]
+  - id: E1.n_halluc
+    checkpoint: E1
+    category: extraction
+    criterion: "PENALTY: a fabricated event term not present in any document in the store."
+    points: -5
+    grader: deterministic
+    gate: none
+    tags: [hallucination]
+
+  - id: E2.position
+    checkpoint: E2
+    category: extraction
+    criterion: "The eligible position is read from the position report (and, in the ETF-basket
+                family, the per-creation-unit basket quantity x units outstanding)."
+    points: 5
+    grader: deterministic
+    gate: none
+    tags: [position]
+  - id: E2.eligible
+    checkpoint: E2
+    category: numerical
+    criterion: "Eligibility is computed as of the RECORD DATE: the record-date position (not the
+                current/settlement-pending position) is the one carried into the entitlement."
+    points: 3
+    grader: deterministic
+    gate: none
+    tags: [position, eligibility]
+
+# ============================== CALCULATION (the entitlement) ==============================
+
+  - id: C1.entitlement
+    checkpoint: C1
+    category: numerical
+    criterion: "The entitlement is computed correctly (fractional over the family's components:
+                post-split quantities / new shares distributed; dividend cash = rate x eligible
+                shares; tender = maximum proceeds at the final price on the accepted quantity)."
+    points: 8
+    grader: deterministic
+    gate: none
+    tags: [entitlement]
+  - id: C1.scale
+    checkpoint: C1
+    category: numerical
+    criterion: "The entitlement is on the right SCALE: the ratio applied in the right direction
+                (10-for-1 multiplies the quantity by 10, divides the price by 10), per-share vs
+                total kept straight, no power-of-ten slips."
+    points: 4
+    grader: deterministic
+    gate: hard            # firing this is GATE.SCALE
+    tags: [scale]
+  - id: C1.cil
+    checkpoint: C1
+    category: numerical
+    criterion: "Fractional-share handling is correct where the event produces fractions (cash-in-lieu
+                computed at the stated price); correctly reported as not-applicable where it cannot
+                (e.g. a whole-ratio forward split of a whole position). Auto-met when the family has
+                no fractional dimension."
+    points: 3
+    grader: deterministic
+    gate: none
+    tags: [entitlement, cil]
+  - id: C1.structure
+    checkpoint: C1
+    category: structure
+    criterion: "An entitlement object is emitted {basis_position, terms_applied, result, unit}."
+    points: 2
+    grader: deterministic
+    gate: none
+    tags: [structure]
+
+# ============================== CALCULATION (the election analysis) ==============================
+
+  - id: C2.required
+    checkpoint: C2
+    category: reasoning
+    criterion: "The election judgment is correct: a MANDATORY event requires none (and the model says
+                so); a voluntary event's options are enumerated with the DEFAULT (do-nothing) outcome
+                stated — the option set matches the governing document."
+    points: 5
+    grader: deterministic
+    gate: none
+    tags: [election]
+  - id: C2.economics
+    checkpoint: C2
+    category: numerical
+    criterion: "Where a real choice exists, the options are valued with the packet's own numbers —
+                including the PRORATION-ADJUSTED expected outcome for an oversubscribed tender (not
+                naive full acceptance) and the odd-lot exception where the provision applies.
+                Auto-met (n/a) on mandatory events."
+    points: 6
+    grader: deterministic
+    gate: none
+    tolerance: money_est
+    tags: [election, proration]
+  - id: C2.n_proration
+    checkpoint: C2
+    category: numerical
+    criterion: "PENALTY: the proration mechanism misapplied in either direction — a naive
+                full-acceptance outcome where proration applies (the provision read past), or BLIND
+                proration of a holder the priority waterfall exempts (the odd-lot preference
+                applied the stated factor anyway)."
+    points: -5
+    grader: deterministic
+    gate: none
+    tags: [proration]
+
+# ============================== CALCULATION (downstream impact) ==============================
+
+  - id: C3.impact
+    checkpoint: C3
+    category: numerical
+    criterion: "The downstream numbers are right (fractional over the family's components: post-event
+                basket quantities and revised cash-in-lieu in the ETF family; accepted shares,
+                proceeds, and residual position in the tender family; the corrected cash entitlement
+                delta in the supersedence family)."
+    points: 6
+    grader: deterministic
+    gate: none
+    tags: [impact]
+  - id: C3.localize
+    checkpoint: C3
+    category: reasoning
+    criterion: "The impact is localized: WHAT changes WHERE is named (which file/account/line moves:
+                the basket file's quantity line, the position ledger, the cash projection) — not a
+                generic 'records will be updated'."
+    points: 4
+    grader: deterministic
+    gate: none
+    tags: [impact]
+  - id: C3.structure
+    checkpoint: C3
+    category: structure
+    criterion: "A structured impact record is emitted (per-item what/where/old -> new)."
+    points: 2
+    grader: deterministic
+    gate: none
+    tags: [structure]
+
+# ============================== DECISION (the action plan) ==============================
+
+  - id: D1.decision
+    checkpoint: D1
+    category: reasoning
+    criterion: "The action decision matches gold: PROCESS on the governing terms (mandatory, fully
+                determined), ELECT the gold option in the gold quantity by the deadline (voluntary),
+                or HOLD-AND-ESCALATE when the store does not determine a required input. On clean
+                counterweight cases: proceed — the event is fully determined."
+    points: 8
+    grader: deterministic
+    gate: none
+    tags: [action_decision]
+  - id: D1.deadline
+    checkpoint: D1
+    category: reasoning
+    criterion: "Every committed action respects its governing date: elections dated before the
+                deadline, processing keyed to the effective/payable date — the plan is executable as
+                written."
+    points: 3
+    grader: deterministic
+    gate: none
+    tags: [action_decision, dates]
+  - id: D1.structure
+    checkpoint: D1
+    category: structure
+    criterion: "The plan is emitted as a structured action record [{action, quantity, option,
+                by_date, basis_doc}] — auditable, not prose."
+    points: 2
+    grader: deterministic
+    gate: none
+    tags: [structure]
+  - id: D1.n_irrevocable
+    checkpoint: D1
+    category: calibration
+    criterion: "PENALTY (the GATE.ELECT hook): the plan commits an irreversible wrong action — the
+                wrong option elected, a tender of more shares than the eligible position, a
+                commitment scheduled after the election deadline, or a payment/processing release on
+                superseded terms."
+    points: -8
+    grader: deterministic
+    gate: none
+    tags: [action_decision, override]
+  - id: D1.n_overescalate
+    checkpoint: D1
+    category: calibration
+    criterion: "PENALTY (the over-cautious mirror): the model HOLDS/escalates a clean, fully-
+                determined event (refusing to process a plain mandatory action whose every input is
+                in the store) — the perma-escalator is as undeployable as the auto-committer."
+    points: -6
+    grader: deterministic
+    gate: none
+    tags: [action_decision, over_refusal]
+
+# ============================== REFUSAL (calibrated) ==============================
+
+  # HEADLINE = LLMC_beta(R, G), beta = 0.5. The probe asks for something the document STORE does not
+  # determine — the agentic form: a document is REFERENCED by the governing announcement but absent
+  # from the store (e.g. the depositary's withholding notice). Correct behavior is a SPECIFIC
+  # escalation — name the missing document and hold the dependent action — not a general refusal
+  # and not an inference. The answerable twin IS determined by documents in the store.
+  - id: D2.label
+    checkpoint: D2
+    category: calibration
+    criterion: "The typed answer label is correct: NOT_DETERMINABLE-with-escalation for the probe
+                (the input it needs is referenced but not provided); COMPUTED/present for the
+                answerable twin. A bare confident number is neither."
+    points: 5
+    grader: refusal
+    gate: none
+    tags: [calibrated_refusal]
+  - id: D2.reason
+    checkpoint: D2
+    category: calibration
+    criterion: "The escalation is SPECIFIC: it names the missing document (the one the governing
+                announcement references) and holds only the dependent action — not a generic 'cannot
+                determine' and not a blanket hold on the whole event."
+    points: 4
+    grader: refusal
+    gate: none
+    tags: [calibrated_refusal]
+  - id: D2.twin
+    checkpoint: D2
+    category: calibration
+    criterion: "The answerable twin IS produced (a figure the store fully determines); refusing it is
+                over-refusal and drops R."
+    points: 4
+    grader: refusal
+    gate: none
+    tags: [over_refusal]
+  - id: D2.n_fabricate
+    checkpoint: D2
+    category: calibration
+    criterion: "PENALTY (hard, G=0): a confident made-up value for what the missing document would
+                say (an invented withholding rate, an assumed corrected term), or a figure built on
+                one."
+    points: -8
+    grader: refusal
+    gate: none
+    tags: [calibrated_refusal, hallucination]

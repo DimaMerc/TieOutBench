@@ -1,0 +1,130 @@
+{
+ "P1": {
+  "issuer": "Monster Beverage Corporation",
+  "security": {
+   "ticker": "MNST"
+  },
+  "event_type": "voluntary",
+  "governing_doc": "mnst-results-20240610",
+  "superseded_docs": []
+ },
+ "P2": {
+  "dates": {
+   "offer_commenced": "2024-05-08",
+   "expiration": "2024-06-05",
+   "results_announced": "2024-06-10"
+  },
+  "entitlement_basis": "shares_validly_tendered_by_expiration",
+  "entitlement_basis_date": "2024-06-05",
+  "election_deadline": "2024-06-05"
+ },
+ "E1": {
+  "terms": {
+   "price_range_low": 53.0,
+   "price_range_high": 60.0,
+   "final_price": 53.0,
+   "aggregate_cap": 3000000000,
+   "shares_tendered_total": 119018767,
+   "shares_accepted_total": 56603773,
+   "proration_factor": 0.4718,
+   "odd_lot_threshold": 100
+  },
+  "citation": {
+   "document": "mnst-results-20240610",
+   "locator": "Paragraph 1",
+   "verbatim": "Monster accepted for purchase a total of 56,603,773 shares of its common stock... at the final purchase price of $53.00 per share... final proration factor for the tender offer is approximately 47.18%."
+  }
+ },
+ "E2": {
+  "position": {
+   "shares_held": 10000,
+   "shares_tendered": 10000
+  },
+  "basis_shares": 10000
+ },
+ "C1": {
+  "entitlement": {
+   "shares_tendered": 10000,
+   "proration_factor": 0.4718,
+   "accepted_shares": 4718,
+   "final_price": 53.0,
+   "gross_proceeds": 250054.0,
+   "residual_shares": 5282
+  },
+  "cil": {
+   "applicable": false,
+   "amount": null
+  }
+ },
+ "C2": {
+  "election_required": false,
+  "options": null,
+  "default_option": null,
+  "economics": {
+   "proration_applies": true,
+   "factor_used": 0.4718,
+   "odd_lot_exception": false
+  }
+ },
+ "C3": {
+  "impact": {
+   "accepted_shares": 4718,
+   "gross_proceeds": 250054.0,
+   "residual_shares": 5282
+  },
+  "changes": [
+   {
+    "what": "MNST shares unencumbered position",
+    "where": "Custody position ledger",
+    "old": 0,
+    "new": 5282
+   },
+   {
+    "what": "MNST tendered shares position",
+    "where": "Custody pending tender ledger",
+    "old": 10000,
+    "new": 0
+   },
+   {
+    "what": "Cash settlement proceeds receivable",
+    "where": "Cash ledger / Cash projection",
+    "old": 0.0,
+    "new": 250054.0
+   }
+  ]
+ },
+ "D1": {
+  "decision": "PROCESS_FINAL_PRORATION_AND_PAYMENT",
+  "actions": [
+   {
+    "action": "RECORD_ACCEPTED_SHARES_PAYMENT",
+    "option": "CASH",
+    "quantity": 4718,
+    "amount": 250054.0,
+    "by_date": null,
+    "basis_doc": "mnst-results-20240610"
+   },
+   {
+    "action": "RETURN_UNACCEPTED_RESIDUAL_SHARES",
+    "option": "COMMON_STOCK",
+    "quantity": 5282,
+    "amount": null,
+    "by_date": null,
+    "basis_doc": "mnst-results-20240610"
+   }
+  ]
+ },
+ "D2": {
+  "probe": {
+   "label": "NOT_DETERMINABLE",
+   "value": null,
+   "derivation": "The Letter of Transmittal is referenced in mnst-otp-20240508 but absent from the document store; fee schedule/deductions cannot be determined without it."
+  },
+  "twins": [
+   {
+    "id": "TW1",
+    "value": 250054.0
+   }
+  ]
+ }
+}

@@ -1,0 +1,120 @@
+```json
+{
+  "P1": {
+    "issuer": "NVIDIA Corporation",
+    "security": {
+      "ticker": "NVDA"
+    },
+    "event_type": "mandatory",
+    "governing_doc": "nvda-8k-20240522",
+    "superseded_docs": []
+  },
+  "P2": {
+    "dates": {
+      "announcement": "2024-05-22",
+      "record_date": "2024-06-06",
+      "distribution_date": "2024-06-07",
+      "split_adjusted_trading": "2024-06-10"
+    },
+    "entitlement_basis": "record_date",
+    "entitlement_basis_date": "2024-06-06",
+    "election_deadline": null
+  },
+  "E1": {
+    "terms": {
+      "ratio": 10,
+      "additional_shares_per_share": 9,
+      "record_date": "2024-06-06",
+      "distribution_date": "2024-06-07",
+      "split_adjusted_trading": "2024-06-10"
+    },
+    "citation": {
+      "document": "nvda-8k-20240522",
+      "locator": "Item 8.01",
+      "verbatim": "Each record holder of common stock as of the close of market on Thursday, June 6, 2024 will receive nine additional shares of common stock, to be distributed after the close of market on Friday, June 7, 2024."
+    }
+  },
+  "E2": {
+    "position": {
+      "basket_per_cu_pre": 180,
+      "creation_units": 100,
+      "basket_total_pre": 18000
+    },
+    "basis_shares": 18000
+  },
+  "C1": {
+    "entitlement": {
+      "pre_split_shares": 18000,
+      "ratio": 10,
+      "post_split_shares": 180000,
+      "additional_shares": 162000,
+      "basket_per_cu_post": 1800
+    },
+    "cil": {
+      "applicable": false,
+      "amount": null
+    }
+  },
+  "C2": {
+    "election_required": false,
+    "options": null,
+    "default_option": null,
+    "economics": null
+  },
+  "C3": {
+    "impact": {
+      "basket_per_cu_new": 1800,
+      "basket_total_new": 180000
+    },
+    "changes": [
+      {
+        "what": "NVDA shares per creation unit in PCF basket",
+        "where": "mega-pcf (line 1, NVDA position)",
+        "old": 180,
+        "new": 1800
+      },
+      {
+        "what": "NVDA total shares in custody ledger",
+        "where": "mega-position (NVDA custody record)",
+        "old": 18000,
+        "new": 180000
+      }
+    ]
+  },
+  "D1": {
+    "decision": "Update MEGA PCF and custody records to reflect post-split position. No election or tender action required. Split is mandatory and effective as of distribution date 2024-06-07.",
+    "actions": [
+      {
+        "action": "Update PCF line 1 (NVDA) from 180 shares per CU to 1800 shares per CU",
+        "option": null,
+        "quantity": 1800,
+        "amount": null,
+        "by_date": "2024-06-10",
+        "basis_doc": "nvda-8k-20240522"
+      },
+      {
+        "action": "Confirm custody ledger reflects 180,000 NVDA shares post-distribution",
+        "option": null,
+        "quantity": 180000,
+        "amount": null,
+        "by_date": "2024-06-10",
+        "basis_doc": "mega-position-20240610"
+      }
+    ]
+  },
+  "D2": {
+    "probe": {
+      "label": "NOT_DETERMINABLE",
+      "value": null,
+      "derivation": "The document store does not provide the fund's withholding tax rate, treaty status, or net cash calculation methodology. The store determines only the GROSS dividend entitlement (TW1). To answer the NET cash question requires a missing document: the fund's tax withholding policy or a tax certificate not present in the store."
+    },
+    "twins": [
+      {
+        "id": "TW1",
+        "value": 1800,
+        "derivation": "Post-split NVDA position: 180,000 shares. Post-split dividend rate per nvda-8k-20240522: $0.01 per share. Gross dividend = 180,000 × $0.01 = $1,800.00 USD."
+      }
+    ]
+  }
+}
+```

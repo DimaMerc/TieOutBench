@@ -520,6 +520,450 @@
           "score_gated": 0.98,
           "score_ungated": 0.98,
           "suite": "confirmation-matching"
+        },
+        {
+          "allpass": 0,
+          "answer": "outputs/eval6-live/claude-haiku-4-5-20251001/bry-dividend-2024/answer.json",
+          "case": "cases/bry-dividend-2024.case.yaml",
+          "case_id": "bry-dividend-2024",
+          "categories": {
+            "calibration": 1.0,
+            "entailment": 1.0,
+            "extraction": 1.0,
+            "numerical": 1.0,
+            "reasoning": 0.9333,
+            "structure": 1.0
+          },
+          "checkpoints": {
+            "C1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.14
+            },
+            "C2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.12
+            },
+            "C3": {
+              "gated": 0.8333,
+              "ungated": 0.8333,
+              "weight": 0.1
+            },
+            "D1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.16
+            },
+            "D2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.08
+            },
+            "E1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "E2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.08
+            },
+            "P1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "P2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.12
+            }
+          },
+          "eval": 6,
+          "gap": 0.0,
+          "gates_fired": [],
+          "headline_flags": [],
+          "refusal": {
+            "checkpoint": "D2",
+            "f_beta": 1.0,
+            "groundedness": 1.0,
+            "recall": 1.0
+          },
+          "score_gated": 0.9833,
+          "score_ungated": 0.9833,
+          "suite": "corporate-actions"
+        },
+        {
+          "allpass": 1,
+          "answer": "outputs/eval6-live/claude-haiku-4-5-20251001/mega-split-2024/answer.json",
+          "case": "cases/mega-split-2024.case.yaml",
+          "case_id": "mega-split-2024",
+          "categories": {
+            "calibration": 1.0,
+            "entailment": 1.0,
+            "extraction": 1.0,
+            "numerical": 1.0,
+            "reasoning": 1.0,
+            "structure": 1.0
+          },
+          "checkpoints": {
+            "C1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.14
+            },
+            "C2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.12
+            },
+            "C3": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "D1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.16
+            },
+            "D2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.08
+            },
+            "E1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "E2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.08
+            },
+            "P1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "P2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.12
+            }
+          },
+          "eval": 6,
+          "gap": 0.0,
+          "gates_fired": [],
+          "headline_flags": [],
+          "refusal": {
+            "checkpoint": "D2",
+            "f_beta": 1.0,
+            "groundedness": 1.0,
+            "recall": 1.0
+          },
+          "score_gated": 1.0,
+          "score_ungated": 1.0,
+          "suite": "corporate-actions"
+        },
+        {
+          "allpass": 0,
+          "answer": "outputs/eval6-live/claude-haiku-4-5-20251001/mega-split-2024-clean/answer.json",
+          "case": "cases/mega-split-2024-clean.case.yaml",
+          "case_id": "mega-split-2024-clean",
+          "categories": {
+            "calibration": 0.6923,
+            "entailment": 1.0,
+            "extraction": 1.0,
+            "numerical": 1.0,
+            "reasoning": 1.0,
+            "structure": 0.8
+          },
+          "checkpoints": {
+            "C1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.14
+            },
+            "C2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.12
+            },
+            "C3": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "D1": {
+              "gated": 0.8462,
+              "ungated": 0.8462,
+              "weight": 0.16
+            },
+            "D2": {
+              "gated": 0.0,
+              "ungated": 0.0,
+              "weight": 0.08
+            },
+            "E1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "E2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.08
+            },
+            "P1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "P2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.12
+            }
+          },
+          "eval": 6,
+          "gap": 0.0,
+          "gates_fired": [],
+          "headline_flags": [],
+          "refusal": {
+            "checkpoint": "D2",
+            "f_beta": 0.0,
+            "groundedness": 1.0,
+            "recall": 0.0
+          },
+          "score_gated": 0.8954,
+          "score_ungated": 0.8954,
+          "suite": "corporate-actions"
+        },
+        {
+          "allpass": 1,
+          "answer": "outputs/eval6-live/claude-haiku-4-5-20251001/mnst-tender-2024/answer.json",
+          "case": "cases/mnst-tender-2024.case.yaml",
+          "case_id": "mnst-tender-2024",
+          "categories": {
+            "calibration": 1.0,
+            "entailment": 1.0,
+            "extraction": 1.0,
+            "numerical": 1.0,
+            "reasoning": 1.0,
+            "structure": 1.0
+          },
+          "checkpoints": {
+            "C1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.14
+            },
+            "C2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.12
+            },
+            "C3": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "D1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.16
+            },
+            "D2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.08
+            },
+            "E1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "E2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.08
+            },
+            "P1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "P2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.12
+            }
+          },
+          "eval": 6,
+          "gap": 0.0,
+          "gates_fired": [],
+          "headline_flags": [],
+          "refusal": {
+            "checkpoint": "D2",
+            "f_beta": 1.0,
+            "groundedness": 1.0,
+            "recall": 1.0
+          },
+          "score_gated": 1.0,
+          "score_ungated": 1.0,
+          "suite": "corporate-actions"
+        },
+        {
+          "allpass": 0,
+          "answer": "outputs/eval6-live/claude-haiku-4-5-20251001/mnst-tender-2024-oddlot/answer.json",
+          "case": "cases/mnst-tender-2024-oddlot.case.yaml",
+          "case_id": "mnst-tender-2024-oddlot",
+          "categories": {
+            "calibration": 1.0,
+            "entailment": 1.0,
+            "extraction": 0.9206,
+            "numerical": 1.0,
+            "reasoning": 1.0,
+            "structure": 1.0
+          },
+          "checkpoints": {
+            "C1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.14
+            },
+            "C2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.12
+            },
+            "C3": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "D1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.16
+            },
+            "D2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.08
+            },
+            "E1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "E2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.08
+            },
+            "P1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "P2": {
+              "gated": 0.8611,
+              "ungated": 0.8611,
+              "weight": 0.12
+            }
+          },
+          "eval": 6,
+          "gap": 0.0,
+          "gates_fired": [],
+          "headline_flags": [],
+          "refusal": {
+            "checkpoint": "D2",
+            "f_beta": 1.0,
+            "groundedness": 1.0,
+            "recall": 1.0
+          },
+          "score_gated": 0.9833,
+          "score_ungated": 0.9833,
+          "suite": "corporate-actions"
+        },
+        {
+          "allpass": 1,
+          "answer": "outputs/eval6-live/claude-haiku-4-5-20251001/zts-dividend-2014/answer.json",
+          "case": "cases/zts-dividend-2014.case.yaml",
+          "case_id": "zts-dividend-2014",
+          "categories": {
+            "calibration": 1.0,
+            "entailment": 1.0,
+            "extraction": 1.0,
+            "numerical": 1.0,
+            "reasoning": 1.0,
+            "structure": 1.0
+          },
+          "checkpoints": {
+            "C1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.14
+            },
+            "C2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.12
+            },
+            "C3": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "D1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.16
+            },
+            "D2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.08
+            },
+            "E1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "E2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.08
+            },
+            "P1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "P2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.12
+            }
+          },
+          "eval": 6,
+          "gap": 0.0,
+          "gates_fired": [],
+          "headline_flags": [],
+          "refusal": {
+            "checkpoint": "D2",
+            "f_beta": 1.0,
+            "groundedness": 1.0,
+            "recall": 1.0
+          },
+          "score_gated": 1.0,
+          "score_ungated": 1.0,
+          "suite": "corporate-actions"
         }
       ],
       "summary": {
@@ -531,15 +975,21 @@
             "grin-create-2026"
           ]
         },
-        "n_allpass": 0,
-        "n_runs": 6,
+        "n_allpass": 3,
+        "n_runs": 12,
         "score_gated_by_case": {
+          "bry-dividend-2024": 0.9833,
           "grin-create-2026": 0.4962,
           "grin-create-2026-clean": 0.9829,
           "irs-confirm-2026": 0.9333,
           "irs-confirm-2026-clean": 0.98,
           "mcd-fy2025-dcf": 0.6919,
-          "nvda-fy2026-dcf": 0.7994
+          "mega-split-2024": 1.0,
+          "mega-split-2024-clean": 0.8954,
+          "mnst-tender-2024": 1.0,
+          "mnst-tender-2024-oddlot": 0.9833,
+          "nvda-fy2026-dcf": 0.7994,
+          "zts-dividend-2014": 1.0
         }
       },
       "vendor": "anthropic"
@@ -1059,19 +1509,469 @@
           "score_gated": 0.98,
           "score_ungated": 0.98,
           "suite": "confirmation-matching"
+        },
+        {
+          "allpass": 0,
+          "answer": "outputs/eval6-live/claude-opus-4-8/bry-dividend-2024/answer.json",
+          "case": "cases/bry-dividend-2024.case.yaml",
+          "case_id": "bry-dividend-2024",
+          "categories": {
+            "calibration": 1.0,
+            "entailment": 1.0,
+            "extraction": 1.0,
+            "numerical": 1.0,
+            "reasoning": 0.9333,
+            "structure": 1.0
+          },
+          "checkpoints": {
+            "C1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.14
+            },
+            "C2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.12
+            },
+            "C3": {
+              "gated": 0.8333,
+              "ungated": 0.8333,
+              "weight": 0.1
+            },
+            "D1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.16
+            },
+            "D2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.08
+            },
+            "E1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "E2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.08
+            },
+            "P1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "P2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.12
+            }
+          },
+          "eval": 6,
+          "gap": 0.0,
+          "gates_fired": [],
+          "headline_flags": [],
+          "refusal": {
+            "checkpoint": "D2",
+            "f_beta": 1.0,
+            "groundedness": 1.0,
+            "recall": 1.0
+          },
+          "score_gated": 0.9833,
+          "score_ungated": 0.9833,
+          "suite": "corporate-actions"
+        },
+        {
+          "allpass": 1,
+          "answer": "outputs/eval6-live/claude-opus-4-8/mega-split-2024/answer.json",
+          "case": "cases/mega-split-2024.case.yaml",
+          "case_id": "mega-split-2024",
+          "categories": {
+            "calibration": 1.0,
+            "entailment": 1.0,
+            "extraction": 1.0,
+            "numerical": 1.0,
+            "reasoning": 1.0,
+            "structure": 1.0
+          },
+          "checkpoints": {
+            "C1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.14
+            },
+            "C2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.12
+            },
+            "C3": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "D1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.16
+            },
+            "D2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.08
+            },
+            "E1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "E2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.08
+            },
+            "P1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "P2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.12
+            }
+          },
+          "eval": 6,
+          "gap": 0.0,
+          "gates_fired": [],
+          "headline_flags": [],
+          "refusal": {
+            "checkpoint": "D2",
+            "f_beta": 1.0,
+            "groundedness": 1.0,
+            "recall": 1.0
+          },
+          "score_gated": 1.0,
+          "score_ungated": 1.0,
+          "suite": "corporate-actions"
+        },
+        {
+          "allpass": 0,
+          "answer": "outputs/eval6-live/claude-opus-4-8/mega-split-2024-clean/answer.json",
+          "case": "cases/mega-split-2024-clean.case.yaml",
+          "case_id": "mega-split-2024-clean",
+          "categories": {
+            "calibration": 0.6923,
+            "entailment": 1.0,
+            "extraction": 1.0,
+            "numerical": 1.0,
+            "reasoning": 1.0,
+            "structure": 1.0
+          },
+          "checkpoints": {
+            "C1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.14
+            },
+            "C2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.12
+            },
+            "C3": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "D1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.16
+            },
+            "D2": {
+              "gated": 0.0,
+              "ungated": 0.0,
+              "weight": 0.08
+            },
+            "E1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "E2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.08
+            },
+            "P1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "P2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.12
+            }
+          },
+          "eval": 6,
+          "gap": 0.0,
+          "gates_fired": [],
+          "headline_flags": [],
+          "refusal": {
+            "checkpoint": "D2",
+            "f_beta": 0.0,
+            "groundedness": 1.0,
+            "recall": 0.0
+          },
+          "score_gated": 0.92,
+          "score_ungated": 0.92,
+          "suite": "corporate-actions"
+        },
+        {
+          "allpass": 1,
+          "answer": "outputs/eval6-live/claude-opus-4-8/mnst-tender-2024/answer.json",
+          "case": "cases/mnst-tender-2024.case.yaml",
+          "case_id": "mnst-tender-2024",
+          "categories": {
+            "calibration": 1.0,
+            "entailment": 1.0,
+            "extraction": 1.0,
+            "numerical": 1.0,
+            "reasoning": 1.0,
+            "structure": 1.0
+          },
+          "checkpoints": {
+            "C1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.14
+            },
+            "C2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.12
+            },
+            "C3": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "D1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.16
+            },
+            "D2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.08
+            },
+            "E1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "E2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.08
+            },
+            "P1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "P2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.12
+            }
+          },
+          "eval": 6,
+          "gap": 0.0,
+          "gates_fired": [],
+          "headline_flags": [],
+          "refusal": {
+            "checkpoint": "D2",
+            "f_beta": 1.0,
+            "groundedness": 1.0,
+            "recall": 1.0
+          },
+          "score_gated": 1.0,
+          "score_ungated": 1.0,
+          "suite": "corporate-actions"
+        },
+        {
+          "allpass": 1,
+          "answer": "outputs/eval6-live/claude-opus-4-8/mnst-tender-2024-oddlot/answer.json",
+          "case": "cases/mnst-tender-2024-oddlot.case.yaml",
+          "case_id": "mnst-tender-2024-oddlot",
+          "categories": {
+            "calibration": 1.0,
+            "entailment": 1.0,
+            "extraction": 1.0,
+            "numerical": 1.0,
+            "reasoning": 1.0,
+            "structure": 1.0
+          },
+          "checkpoints": {
+            "C1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.14
+            },
+            "C2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.12
+            },
+            "C3": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "D1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.16
+            },
+            "D2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.08
+            },
+            "E1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "E2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.08
+            },
+            "P1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "P2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.12
+            }
+          },
+          "eval": 6,
+          "gap": 0.0,
+          "gates_fired": [],
+          "headline_flags": [],
+          "refusal": {
+            "checkpoint": "D2",
+            "f_beta": 1.0,
+            "groundedness": 1.0,
+            "recall": 1.0
+          },
+          "score_gated": 1.0,
+          "score_ungated": 1.0,
+          "suite": "corporate-actions"
+        },
+        {
+          "allpass": 1,
+          "answer": "outputs/eval6-live/claude-opus-4-8/zts-dividend-2014/answer.json",
+          "case": "cases/zts-dividend-2014.case.yaml",
+          "case_id": "zts-dividend-2014",
+          "categories": {
+            "calibration": 1.0,
+            "entailment": 1.0,
+            "extraction": 1.0,
+            "numerical": 1.0,
+            "reasoning": 1.0,
+            "structure": 1.0
+          },
+          "checkpoints": {
+            "C1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.14
+            },
+            "C2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.12
+            },
+            "C3": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "D1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.16
+            },
+            "D2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.08
+            },
+            "E1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "E2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.08
+            },
+            "P1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "P2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.12
+            }
+          },
+          "eval": 6,
+          "gap": 0.0,
+          "gates_fired": [],
+          "headline_flags": [],
+          "refusal": {
+            "checkpoint": "D2",
+            "f_beta": 1.0,
+            "groundedness": 1.0,
+            "recall": 1.0
+          },
+          "score_gated": 1.0,
+          "score_ungated": 1.0,
+          "suite": "corporate-actions"
         }
       ],
       "summary": {
         "gates_fired": {},
-        "n_allpass": 0,
-        "n_runs": 6,
+        "n_allpass": 4,
+        "n_runs": 12,
         "score_gated_by_case": {
+          "bry-dividend-2024": 0.9833,
           "grin-create-2026": 0.9829,
           "grin-create-2026-clean": 0.9829,
           "irs-confirm-2026": 0.98,
           "irs-confirm-2026-clean": 0.98,
           "mcd-fy2025-dcf": 0.9648,
-          "nvda-fy2026-dcf": 0.9735
+          "mega-split-2024": 1.0,
+          "mega-split-2024-clean": 0.92,
+          "mnst-tender-2024": 1.0,
+          "mnst-tender-2024-oddlot": 1.0,
+          "nvda-fy2026-dcf": 0.9735,
+          "zts-dividend-2014": 1.0
         }
       },
       "vendor": "anthropic"
@@ -1591,19 +2491,469 @@
           "score_gated": 0.98,
           "score_ungated": 0.98,
           "suite": "confirmation-matching"
+        },
+        {
+          "allpass": 1,
+          "answer": "outputs/eval6-live/claude-sonnet-4-6/bry-dividend-2024/answer.json",
+          "case": "cases/bry-dividend-2024.case.yaml",
+          "case_id": "bry-dividend-2024",
+          "categories": {
+            "calibration": 1.0,
+            "entailment": 1.0,
+            "extraction": 1.0,
+            "numerical": 1.0,
+            "reasoning": 1.0,
+            "structure": 1.0
+          },
+          "checkpoints": {
+            "C1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.14
+            },
+            "C2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.12
+            },
+            "C3": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "D1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.16
+            },
+            "D2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.08
+            },
+            "E1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "E2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.08
+            },
+            "P1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "P2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.12
+            }
+          },
+          "eval": 6,
+          "gap": 0.0,
+          "gates_fired": [],
+          "headline_flags": [],
+          "refusal": {
+            "checkpoint": "D2",
+            "f_beta": 1.0,
+            "groundedness": 1.0,
+            "recall": 1.0
+          },
+          "score_gated": 1.0,
+          "score_ungated": 1.0,
+          "suite": "corporate-actions"
+        },
+        {
+          "allpass": 1,
+          "answer": "outputs/eval6-live/claude-sonnet-4-6/mega-split-2024/answer.json",
+          "case": "cases/mega-split-2024.case.yaml",
+          "case_id": "mega-split-2024",
+          "categories": {
+            "calibration": 1.0,
+            "entailment": 1.0,
+            "extraction": 1.0,
+            "numerical": 1.0,
+            "reasoning": 1.0,
+            "structure": 1.0
+          },
+          "checkpoints": {
+            "C1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.14
+            },
+            "C2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.12
+            },
+            "C3": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "D1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.16
+            },
+            "D2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.08
+            },
+            "E1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "E2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.08
+            },
+            "P1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "P2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.12
+            }
+          },
+          "eval": 6,
+          "gap": 0.0,
+          "gates_fired": [],
+          "headline_flags": [],
+          "refusal": {
+            "checkpoint": "D2",
+            "f_beta": 1.0,
+            "groundedness": 1.0,
+            "recall": 1.0
+          },
+          "score_gated": 1.0,
+          "score_ungated": 1.0,
+          "suite": "corporate-actions"
+        },
+        {
+          "allpass": 1,
+          "answer": "outputs/eval6-live/claude-sonnet-4-6/mega-split-2024-clean/answer.json",
+          "case": "cases/mega-split-2024-clean.case.yaml",
+          "case_id": "mega-split-2024-clean",
+          "categories": {
+            "calibration": 1.0,
+            "entailment": 1.0,
+            "extraction": 1.0,
+            "numerical": 1.0,
+            "reasoning": 1.0,
+            "structure": 1.0
+          },
+          "checkpoints": {
+            "C1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.14
+            },
+            "C2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.12
+            },
+            "C3": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "D1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.16
+            },
+            "D2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.08
+            },
+            "E1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "E2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.08
+            },
+            "P1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "P2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.12
+            }
+          },
+          "eval": 6,
+          "gap": 0.0,
+          "gates_fired": [],
+          "headline_flags": [],
+          "refusal": {
+            "checkpoint": "D2",
+            "f_beta": 1.0,
+            "groundedness": 1.0,
+            "recall": 1.0
+          },
+          "score_gated": 1.0,
+          "score_ungated": 1.0,
+          "suite": "corporate-actions"
+        },
+        {
+          "allpass": 1,
+          "answer": "outputs/eval6-live/claude-sonnet-4-6/mnst-tender-2024/answer.json",
+          "case": "cases/mnst-tender-2024.case.yaml",
+          "case_id": "mnst-tender-2024",
+          "categories": {
+            "calibration": 1.0,
+            "entailment": 1.0,
+            "extraction": 1.0,
+            "numerical": 1.0,
+            "reasoning": 1.0,
+            "structure": 1.0
+          },
+          "checkpoints": {
+            "C1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.14
+            },
+            "C2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.12
+            },
+            "C3": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "D1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.16
+            },
+            "D2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.08
+            },
+            "E1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "E2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.08
+            },
+            "P1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "P2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.12
+            }
+          },
+          "eval": 6,
+          "gap": 0.0,
+          "gates_fired": [],
+          "headline_flags": [],
+          "refusal": {
+            "checkpoint": "D2",
+            "f_beta": 1.0,
+            "groundedness": 1.0,
+            "recall": 1.0
+          },
+          "score_gated": 1.0,
+          "score_ungated": 1.0,
+          "suite": "corporate-actions"
+        },
+        {
+          "allpass": 1,
+          "answer": "outputs/eval6-live/claude-sonnet-4-6/mnst-tender-2024-oddlot/answer.json",
+          "case": "cases/mnst-tender-2024-oddlot.case.yaml",
+          "case_id": "mnst-tender-2024-oddlot",
+          "categories": {
+            "calibration": 1.0,
+            "entailment": 1.0,
+            "extraction": 1.0,
+            "numerical": 1.0,
+            "reasoning": 1.0,
+            "structure": 1.0
+          },
+          "checkpoints": {
+            "C1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.14
+            },
+            "C2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.12
+            },
+            "C3": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "D1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.16
+            },
+            "D2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.08
+            },
+            "E1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "E2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.08
+            },
+            "P1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "P2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.12
+            }
+          },
+          "eval": 6,
+          "gap": 0.0,
+          "gates_fired": [],
+          "headline_flags": [],
+          "refusal": {
+            "checkpoint": "D2",
+            "f_beta": 1.0,
+            "groundedness": 1.0,
+            "recall": 1.0
+          },
+          "score_gated": 1.0,
+          "score_ungated": 1.0,
+          "suite": "corporate-actions"
+        },
+        {
+          "allpass": 1,
+          "answer": "outputs/eval6-live/claude-sonnet-4-6/zts-dividend-2014/answer.json",
+          "case": "cases/zts-dividend-2014.case.yaml",
+          "case_id": "zts-dividend-2014",
+          "categories": {
+            "calibration": 1.0,
+            "entailment": 1.0,
+            "extraction": 1.0,
+            "numerical": 1.0,
+            "reasoning": 1.0,
+            "structure": 1.0
+          },
+          "checkpoints": {
+            "C1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.14
+            },
+            "C2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.12
+            },
+            "C3": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "D1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.16
+            },
+            "D2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.08
+            },
+            "E1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "E2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.08
+            },
+            "P1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "P2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.12
+            }
+          },
+          "eval": 6,
+          "gap": 0.0,
+          "gates_fired": [],
+          "headline_flags": [],
+          "refusal": {
+            "checkpoint": "D2",
+            "f_beta": 1.0,
+            "groundedness": 1.0,
+            "recall": 1.0
+          },
+          "score_gated": 1.0,
+          "score_ungated": 1.0,
+          "suite": "corporate-actions"
         }
       ],
       "summary": {
         "gates_fired": {},
-        "n_allpass": 0,
-        "n_runs": 6,
+        "n_allpass": 6,
+        "n_runs": 12,
         "score_gated_by_case": {
+          "bry-dividend-2024": 1.0,
           "grin-create-2026": 0.9429,
           "grin-create-2026-clean": 0.9829,
           "irs-confirm-2026": 0.9333,
           "irs-confirm-2026-clean": 0.98,
           "mcd-fy2025-dcf": 0.9549,
-          "nvda-fy2026-dcf": 0.9728
+          "mega-split-2024": 1.0,
+          "mega-split-2024-clean": 1.0,
+          "mnst-tender-2024": 1.0,
+          "mnst-tender-2024-oddlot": 1.0,
+          "nvda-fy2026-dcf": 0.9728,
+          "zts-dividend-2014": 1.0
         }
       },
       "vendor": "anthropic"
@@ -2123,19 +3473,469 @@
           "score_gated": 0.98,
           "score_ungated": 0.98,
           "suite": "confirmation-matching"
+        },
+        {
+          "allpass": 0,
+          "answer": "outputs/eval6-live/gemini-3.6-flash/bry-dividend-2024/answer.json",
+          "case": "cases/bry-dividend-2024.case.yaml",
+          "case_id": "bry-dividend-2024",
+          "categories": {
+            "calibration": 1.0,
+            "entailment": 1.0,
+            "extraction": 1.0,
+            "numerical": 1.0,
+            "reasoning": 0.9333,
+            "structure": 1.0
+          },
+          "checkpoints": {
+            "C1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.14
+            },
+            "C2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.12
+            },
+            "C3": {
+              "gated": 0.8333,
+              "ungated": 0.8333,
+              "weight": 0.1
+            },
+            "D1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.16
+            },
+            "D2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.08
+            },
+            "E1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "E2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.08
+            },
+            "P1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "P2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.12
+            }
+          },
+          "eval": 6,
+          "gap": 0.0,
+          "gates_fired": [],
+          "headline_flags": [],
+          "refusal": {
+            "checkpoint": "D2",
+            "f_beta": 1.0,
+            "groundedness": 1.0,
+            "recall": 1.0
+          },
+          "score_gated": 0.9833,
+          "score_ungated": 0.9833,
+          "suite": "corporate-actions"
+        },
+        {
+          "allpass": 1,
+          "answer": "outputs/eval6-live/gemini-3.6-flash/mega-split-2024/answer.json",
+          "case": "cases/mega-split-2024.case.yaml",
+          "case_id": "mega-split-2024",
+          "categories": {
+            "calibration": 1.0,
+            "entailment": 1.0,
+            "extraction": 1.0,
+            "numerical": 1.0,
+            "reasoning": 1.0,
+            "structure": 1.0
+          },
+          "checkpoints": {
+            "C1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.14
+            },
+            "C2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.12
+            },
+            "C3": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "D1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.16
+            },
+            "D2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.08
+            },
+            "E1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "E2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.08
+            },
+            "P1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "P2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.12
+            }
+          },
+          "eval": 6,
+          "gap": 0.0,
+          "gates_fired": [],
+          "headline_flags": [],
+          "refusal": {
+            "checkpoint": "D2",
+            "f_beta": 1.0,
+            "groundedness": 1.0,
+            "recall": 1.0
+          },
+          "score_gated": 1.0,
+          "score_ungated": 1.0,
+          "suite": "corporate-actions"
+        },
+        {
+          "allpass": 1,
+          "answer": "outputs/eval6-live/gemini-3.6-flash/mega-split-2024-clean/answer.json",
+          "case": "cases/mega-split-2024-clean.case.yaml",
+          "case_id": "mega-split-2024-clean",
+          "categories": {
+            "calibration": 1.0,
+            "entailment": 1.0,
+            "extraction": 1.0,
+            "numerical": 1.0,
+            "reasoning": 1.0,
+            "structure": 1.0
+          },
+          "checkpoints": {
+            "C1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.14
+            },
+            "C2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.12
+            },
+            "C3": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "D1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.16
+            },
+            "D2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.08
+            },
+            "E1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "E2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.08
+            },
+            "P1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "P2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.12
+            }
+          },
+          "eval": 6,
+          "gap": 0.0,
+          "gates_fired": [],
+          "headline_flags": [],
+          "refusal": {
+            "checkpoint": "D2",
+            "f_beta": 1.0,
+            "groundedness": 1.0,
+            "recall": 1.0
+          },
+          "score_gated": 1.0,
+          "score_ungated": 1.0,
+          "suite": "corporate-actions"
+        },
+        {
+          "allpass": 1,
+          "answer": "outputs/eval6-live/gemini-3.6-flash/mnst-tender-2024/answer.json",
+          "case": "cases/mnst-tender-2024.case.yaml",
+          "case_id": "mnst-tender-2024",
+          "categories": {
+            "calibration": 1.0,
+            "entailment": 1.0,
+            "extraction": 1.0,
+            "numerical": 1.0,
+            "reasoning": 1.0,
+            "structure": 1.0
+          },
+          "checkpoints": {
+            "C1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.14
+            },
+            "C2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.12
+            },
+            "C3": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "D1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.16
+            },
+            "D2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.08
+            },
+            "E1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "E2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.08
+            },
+            "P1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "P2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.12
+            }
+          },
+          "eval": 6,
+          "gap": 0.0,
+          "gates_fired": [],
+          "headline_flags": [],
+          "refusal": {
+            "checkpoint": "D2",
+            "f_beta": 1.0,
+            "groundedness": 1.0,
+            "recall": 1.0
+          },
+          "score_gated": 1.0,
+          "score_ungated": 1.0,
+          "suite": "corporate-actions"
+        },
+        {
+          "allpass": 1,
+          "answer": "outputs/eval6-live/gemini-3.6-flash/mnst-tender-2024-oddlot/answer.json",
+          "case": "cases/mnst-tender-2024-oddlot.case.yaml",
+          "case_id": "mnst-tender-2024-oddlot",
+          "categories": {
+            "calibration": 1.0,
+            "entailment": 1.0,
+            "extraction": 1.0,
+            "numerical": 1.0,
+            "reasoning": 1.0,
+            "structure": 1.0
+          },
+          "checkpoints": {
+            "C1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.14
+            },
+            "C2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.12
+            },
+            "C3": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "D1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.16
+            },
+            "D2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.08
+            },
+            "E1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "E2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.08
+            },
+            "P1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "P2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.12
+            }
+          },
+          "eval": 6,
+          "gap": 0.0,
+          "gates_fired": [],
+          "headline_flags": [],
+          "refusal": {
+            "checkpoint": "D2",
+            "f_beta": 1.0,
+            "groundedness": 1.0,
+            "recall": 1.0
+          },
+          "score_gated": 1.0,
+          "score_ungated": 1.0,
+          "suite": "corporate-actions"
+        },
+        {
+          "allpass": 1,
+          "answer": "outputs/eval6-live/gemini-3.6-flash/zts-dividend-2014/answer.json",
+          "case": "cases/zts-dividend-2014.case.yaml",
+          "case_id": "zts-dividend-2014",
+          "categories": {
+            "calibration": 1.0,
+            "entailment": 1.0,
+            "extraction": 1.0,
+            "numerical": 1.0,
+            "reasoning": 1.0,
+            "structure": 1.0
+          },
+          "checkpoints": {
+            "C1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.14
+            },
+            "C2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.12
+            },
+            "C3": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "D1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.16
+            },
+            "D2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.08
+            },
+            "E1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "E2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.08
+            },
+            "P1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "P2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.12
+            }
+          },
+          "eval": 6,
+          "gap": 0.0,
+          "gates_fired": [],
+          "headline_flags": [],
+          "refusal": {
+            "checkpoint": "D2",
+            "f_beta": 1.0,
+            "groundedness": 1.0,
+            "recall": 1.0
+          },
+          "score_gated": 1.0,
+          "score_ungated": 1.0,
+          "suite": "corporate-actions"
         }
       ],
       "summary": {
         "gates_fired": {},
-        "n_allpass": 0,
-        "n_runs": 6,
+        "n_allpass": 5,
+        "n_runs": 12,
         "score_gated_by_case": {
+          "bry-dividend-2024": 0.9833,
           "grin-create-2026": 0.9829,
           "grin-create-2026-clean": 0.9729,
           "irs-confirm-2026": 0.98,
           "irs-confirm-2026-clean": 0.98,
           "mcd-fy2025-dcf": 0.9221,
-          "nvda-fy2026-dcf": 0.9701
+          "mega-split-2024": 1.0,
+          "mega-split-2024-clean": 1.0,
+          "mnst-tender-2024": 1.0,
+          "mnst-tender-2024-oddlot": 1.0,
+          "nvda-fy2026-dcf": 0.9701,
+          "zts-dividend-2014": 1.0
         }
       },
       "vendor": "google"
@@ -2655,19 +4455,469 @@
           "score_gated": 0.98,
           "score_ungated": 0.98,
           "suite": "confirmation-matching"
+        },
+        {
+          "allpass": 0,
+          "answer": "outputs/eval6-live/gpt-5.4/bry-dividend-2024/answer.json",
+          "case": "cases/bry-dividend-2024.case.yaml",
+          "case_id": "bry-dividend-2024",
+          "categories": {
+            "calibration": 1.0,
+            "entailment": 1.0,
+            "extraction": 1.0,
+            "numerical": 1.0,
+            "reasoning": 0.9333,
+            "structure": 1.0
+          },
+          "checkpoints": {
+            "C1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.14
+            },
+            "C2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.12
+            },
+            "C3": {
+              "gated": 0.8333,
+              "ungated": 0.8333,
+              "weight": 0.1
+            },
+            "D1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.16
+            },
+            "D2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.08
+            },
+            "E1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "E2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.08
+            },
+            "P1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "P2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.12
+            }
+          },
+          "eval": 6,
+          "gap": 0.0,
+          "gates_fired": [],
+          "headline_flags": [],
+          "refusal": {
+            "checkpoint": "D2",
+            "f_beta": 1.0,
+            "groundedness": 1.0,
+            "recall": 1.0
+          },
+          "score_gated": 0.9833,
+          "score_ungated": 0.9833,
+          "suite": "corporate-actions"
+        },
+        {
+          "allpass": 1,
+          "answer": "outputs/eval6-live/gpt-5.4/mega-split-2024/answer.json",
+          "case": "cases/mega-split-2024.case.yaml",
+          "case_id": "mega-split-2024",
+          "categories": {
+            "calibration": 1.0,
+            "entailment": 1.0,
+            "extraction": 1.0,
+            "numerical": 1.0,
+            "reasoning": 1.0,
+            "structure": 1.0
+          },
+          "checkpoints": {
+            "C1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.14
+            },
+            "C2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.12
+            },
+            "C3": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "D1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.16
+            },
+            "D2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.08
+            },
+            "E1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "E2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.08
+            },
+            "P1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "P2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.12
+            }
+          },
+          "eval": 6,
+          "gap": 0.0,
+          "gates_fired": [],
+          "headline_flags": [],
+          "refusal": {
+            "checkpoint": "D2",
+            "f_beta": 1.0,
+            "groundedness": 1.0,
+            "recall": 1.0
+          },
+          "score_gated": 1.0,
+          "score_ungated": 1.0,
+          "suite": "corporate-actions"
+        },
+        {
+          "allpass": 1,
+          "answer": "outputs/eval6-live/gpt-5.4/mega-split-2024-clean/answer.json",
+          "case": "cases/mega-split-2024-clean.case.yaml",
+          "case_id": "mega-split-2024-clean",
+          "categories": {
+            "calibration": 1.0,
+            "entailment": 1.0,
+            "extraction": 1.0,
+            "numerical": 1.0,
+            "reasoning": 1.0,
+            "structure": 1.0
+          },
+          "checkpoints": {
+            "C1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.14
+            },
+            "C2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.12
+            },
+            "C3": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "D1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.16
+            },
+            "D2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.08
+            },
+            "E1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "E2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.08
+            },
+            "P1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "P2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.12
+            }
+          },
+          "eval": 6,
+          "gap": 0.0,
+          "gates_fired": [],
+          "headline_flags": [],
+          "refusal": {
+            "checkpoint": "D2",
+            "f_beta": 1.0,
+            "groundedness": 1.0,
+            "recall": 1.0
+          },
+          "score_gated": 1.0,
+          "score_ungated": 1.0,
+          "suite": "corporate-actions"
+        },
+        {
+          "allpass": 0,
+          "answer": "outputs/eval6-live/gpt-5.4/mnst-tender-2024/answer.json",
+          "case": "cases/mnst-tender-2024.case.yaml",
+          "case_id": "mnst-tender-2024",
+          "categories": {
+            "calibration": 1.0,
+            "entailment": 1.0,
+            "extraction": 0.7262,
+            "numerical": 1.0,
+            "reasoning": 1.0,
+            "structure": 1.0
+          },
+          "checkpoints": {
+            "C1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.14
+            },
+            "C2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.12
+            },
+            "C3": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "D1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.16
+            },
+            "D2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.08
+            },
+            "E1": {
+              "gated": 0.3611,
+              "ungated": 0.3611,
+              "weight": 0.1
+            },
+            "E2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.08
+            },
+            "P1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "P2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.12
+            }
+          },
+          "eval": 6,
+          "gap": 0.0,
+          "gates_fired": [],
+          "headline_flags": [],
+          "refusal": {
+            "checkpoint": "D2",
+            "f_beta": 1.0,
+            "groundedness": 1.0,
+            "recall": 1.0
+          },
+          "score_gated": 0.9361,
+          "score_ungated": 0.9361,
+          "suite": "corporate-actions"
+        },
+        {
+          "allpass": 1,
+          "answer": "outputs/eval6-live/gpt-5.4/mnst-tender-2024-oddlot/answer.json",
+          "case": "cases/mnst-tender-2024-oddlot.case.yaml",
+          "case_id": "mnst-tender-2024-oddlot",
+          "categories": {
+            "calibration": 1.0,
+            "entailment": 1.0,
+            "extraction": 1.0,
+            "numerical": 1.0,
+            "reasoning": 1.0,
+            "structure": 1.0
+          },
+          "checkpoints": {
+            "C1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.14
+            },
+            "C2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.12
+            },
+            "C3": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "D1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.16
+            },
+            "D2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.08
+            },
+            "E1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "E2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.08
+            },
+            "P1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "P2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.12
+            }
+          },
+          "eval": 6,
+          "gap": 0.0,
+          "gates_fired": [],
+          "headline_flags": [],
+          "refusal": {
+            "checkpoint": "D2",
+            "f_beta": 1.0,
+            "groundedness": 1.0,
+            "recall": 1.0
+          },
+          "score_gated": 1.0,
+          "score_ungated": 1.0,
+          "suite": "corporate-actions"
+        },
+        {
+          "allpass": 1,
+          "answer": "outputs/eval6-live/gpt-5.4/zts-dividend-2014/answer.json",
+          "case": "cases/zts-dividend-2014.case.yaml",
+          "case_id": "zts-dividend-2014",
+          "categories": {
+            "calibration": 1.0,
+            "entailment": 1.0,
+            "extraction": 1.0,
+            "numerical": 1.0,
+            "reasoning": 1.0,
+            "structure": 1.0
+          },
+          "checkpoints": {
+            "C1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.14
+            },
+            "C2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.12
+            },
+            "C3": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "D1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.16
+            },
+            "D2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.08
+            },
+            "E1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "E2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.08
+            },
+            "P1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "P2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.12
+            }
+          },
+          "eval": 6,
+          "gap": 0.0,
+          "gates_fired": [],
+          "headline_flags": [],
+          "refusal": {
+            "checkpoint": "D2",
+            "f_beta": 1.0,
+            "groundedness": 1.0,
+            "recall": 1.0
+          },
+          "score_gated": 1.0,
+          "score_ungated": 1.0,
+          "suite": "corporate-actions"
         }
       ],
       "summary": {
         "gates_fired": {},
-        "n_allpass": 0,
-        "n_runs": 6,
+        "n_allpass": 4,
+        "n_runs": 12,
         "score_gated_by_case": {
+          "bry-dividend-2024": 0.9833,
           "grin-create-2026": 0.9829,
           "grin-create-2026-clean": 0.9729,
           "irs-confirm-2026": 0.98,
           "irs-confirm-2026-clean": 0.98,
           "mcd-fy2025-dcf": 0.9033,
-          "nvda-fy2026-dcf": 0.883
+          "mega-split-2024": 1.0,
+          "mega-split-2024-clean": 1.0,
+          "mnst-tender-2024": 0.9361,
+          "mnst-tender-2024-oddlot": 1.0,
+          "nvda-fy2026-dcf": 0.883,
+          "zts-dividend-2014": 1.0
         }
       },
       "vendor": "openai"
@@ -3193,6 +5443,457 @@
           "score_gated": 0.98,
           "score_ungated": 0.98,
           "suite": "confirmation-matching"
+        },
+        {
+          "allpass": 0,
+          "answer": "outputs/eval6-live/gpt-5.4-mini/bry-dividend-2024/answer.json",
+          "case": "cases/bry-dividend-2024.case.yaml",
+          "case_id": "bry-dividend-2024",
+          "categories": {
+            "calibration": -0.3846,
+            "entailment": 1.0,
+            "extraction": 1.0,
+            "numerical": 0.5222,
+            "reasoning": 0.5,
+            "structure": 1.0
+          },
+          "checkpoints": {
+            "C1": {
+              "gated": 0.0,
+              "ungated": 0.6863,
+              "weight": 0.14
+            },
+            "C2": {
+              "gated": 0.0,
+              "ungated": 1.0,
+              "weight": 0.12
+            },
+            "C3": {
+              "gated": 0.0,
+              "ungated": 0.3333,
+              "weight": 0.1
+            },
+            "D1": {
+              "gated": 0.0,
+              "ungated": 0.0,
+              "weight": 0.16
+            },
+            "D2": {
+              "gated": 0.0,
+              "ungated": 0.0,
+              "weight": 0.08
+            },
+            "E1": {
+              "gated": 0.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "E2": {
+              "gated": 0.625,
+              "ungated": 0.625,
+              "weight": 0.08
+            },
+            "P1": {
+              "gated": 0.5455,
+              "ungated": 0.5455,
+              "weight": 0.1
+            },
+            "P2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.12
+            }
+          },
+          "eval": 6,
+          "gap": 0.3494,
+          "gates_fired": [
+            "GATE.VERSION",
+            "GATE.ELECT"
+          ],
+          "headline_flags": [
+            "elect_override_fired"
+          ],
+          "refusal": {
+            "checkpoint": "D2",
+            "f_beta": 0.0,
+            "groundedness": 1.0,
+            "recall": 0.0
+          },
+          "score_gated": 0.2245,
+          "score_ungated": 0.574,
+          "suite": "corporate-actions"
+        },
+        {
+          "allpass": 0,
+          "answer": "outputs/eval6-live/gpt-5.4-mini/mega-split-2024/answer.json",
+          "case": "cases/mega-split-2024.case.yaml",
+          "case_id": "mega-split-2024",
+          "categories": {
+            "calibration": 0.5385,
+            "entailment": 1.0,
+            "extraction": 1.0,
+            "numerical": 1.0,
+            "reasoning": 0.7333,
+            "structure": 1.0
+          },
+          "checkpoints": {
+            "C1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.14
+            },
+            "C2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.12
+            },
+            "C3": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "D1": {
+              "gated": 0.0,
+              "ungated": 0.0,
+              "weight": 0.16
+            },
+            "D2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.08
+            },
+            "E1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "E2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.08
+            },
+            "P1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "P2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.12
+            }
+          },
+          "eval": 6,
+          "gap": 0.0,
+          "gates_fired": [],
+          "headline_flags": [],
+          "refusal": {
+            "checkpoint": "D2",
+            "f_beta": 1.0,
+            "groundedness": 1.0,
+            "recall": 1.0
+          },
+          "score_gated": 0.84,
+          "score_ungated": 0.84,
+          "suite": "corporate-actions"
+        },
+        {
+          "allpass": 0,
+          "answer": "outputs/eval6-live/gpt-5.4-mini/mega-split-2024-clean/answer.json",
+          "case": "cases/mega-split-2024-clean.case.yaml",
+          "case_id": "mega-split-2024-clean",
+          "categories": {
+            "calibration": -0.3077,
+            "entailment": 1.0,
+            "extraction": 1.0,
+            "numerical": 1.0,
+            "reasoning": 1.0,
+            "structure": 1.0
+          },
+          "checkpoints": {
+            "C1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.14
+            },
+            "C2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.12
+            },
+            "C3": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "D1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.16
+            },
+            "D2": {
+              "gated": 0.0,
+              "ungated": 0.0,
+              "weight": 0.08
+            },
+            "E1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "E2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.08
+            },
+            "P1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "P2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.12
+            }
+          },
+          "eval": 6,
+          "gap": 0.0,
+          "gates_fired": [
+            "GATE.FABRICATION"
+          ],
+          "headline_flags": [],
+          "refusal": {
+            "checkpoint": "D2",
+            "f_beta": 0.0,
+            "groundedness": 0.0,
+            "recall": 1.0
+          },
+          "score_gated": 0.92,
+          "score_ungated": 0.92,
+          "suite": "corporate-actions"
+        },
+        {
+          "allpass": 0,
+          "answer": "outputs/eval6-live/gpt-5.4-mini/mnst-tender-2024/answer.json",
+          "case": "cases/mnst-tender-2024.case.yaml",
+          "case_id": "mnst-tender-2024",
+          "categories": {
+            "calibration": 0.5385,
+            "entailment": 1.0,
+            "extraction": 1.0,
+            "numerical": 1.0,
+            "reasoning": 0.7333,
+            "structure": 1.0
+          },
+          "checkpoints": {
+            "C1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.14
+            },
+            "C2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.12
+            },
+            "C3": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "D1": {
+              "gated": 0.0,
+              "ungated": 0.0,
+              "weight": 0.16
+            },
+            "D2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.08
+            },
+            "E1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "E2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.08
+            },
+            "P1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "P2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.12
+            }
+          },
+          "eval": 6,
+          "gap": 0.0,
+          "gates_fired": [],
+          "headline_flags": [],
+          "refusal": {
+            "checkpoint": "D2",
+            "f_beta": 1.0,
+            "groundedness": 1.0,
+            "recall": 1.0
+          },
+          "score_gated": 0.84,
+          "score_ungated": 0.84,
+          "suite": "corporate-actions"
+        },
+        {
+          "allpass": 0,
+          "answer": "outputs/eval6-live/gpt-5.4-mini/mnst-tender-2024-oddlot/answer.json",
+          "case": "cases/mnst-tender-2024-oddlot.case.yaml",
+          "case_id": "mnst-tender-2024-oddlot",
+          "categories": {
+            "calibration": 1.0,
+            "entailment": 1.0,
+            "extraction": 1.0,
+            "numerical": 0.8667,
+            "reasoning": 1.0,
+            "structure": 1.0
+          },
+          "checkpoints": {
+            "C1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.14
+            },
+            "C2": {
+              "gated": 0.6364,
+              "ungated": 0.6364,
+              "weight": 0.12
+            },
+            "C3": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "D1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.16
+            },
+            "D2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.08
+            },
+            "E1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "E2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.08
+            },
+            "P1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "P2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.12
+            }
+          },
+          "eval": 6,
+          "gap": 0.0,
+          "gates_fired": [],
+          "headline_flags": [],
+          "refusal": {
+            "checkpoint": "D2",
+            "f_beta": 1.0,
+            "groundedness": 1.0,
+            "recall": 1.0
+          },
+          "score_gated": 0.9564,
+          "score_ungated": 0.9564,
+          "suite": "corporate-actions"
+        },
+        {
+          "allpass": 0,
+          "answer": "outputs/eval6-live/gpt-5.4-mini/zts-dividend-2014/answer.json",
+          "case": "cases/zts-dividend-2014.case.yaml",
+          "case_id": "zts-dividend-2014",
+          "categories": {
+            "calibration": 0.5385,
+            "entailment": 1.0,
+            "extraction": 0.9405,
+            "numerical": 1.0,
+            "reasoning": 0.7333,
+            "structure": 1.0
+          },
+          "checkpoints": {
+            "C1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.14
+            },
+            "C2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.12
+            },
+            "C3": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "D1": {
+              "gated": 0.0,
+              "ungated": 0.0,
+              "weight": 0.16
+            },
+            "D2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.08
+            },
+            "E1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "E2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.08
+            },
+            "P1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "P2": {
+              "gated": 0.8958,
+              "ungated": 0.8958,
+              "weight": 0.12
+            }
+          },
+          "eval": 6,
+          "gap": 0.0,
+          "gates_fired": [],
+          "headline_flags": [],
+          "refusal": {
+            "checkpoint": "D2",
+            "f_beta": 1.0,
+            "groundedness": 1.0,
+            "recall": 1.0
+          },
+          "score_gated": 0.8275,
+          "score_ungated": 0.8275,
+          "suite": "corporate-actions"
         }
       ],
       "summary": {
@@ -3200,19 +5901,34 @@
           "GATE.BRIDGE": [
             "nvda-fy2026-dcf"
           ],
+          "GATE.ELECT": [
+            "bry-dividend-2024"
+          ],
+          "GATE.FABRICATION": [
+            "mega-split-2024-clean"
+          ],
           "GATE.FALSEPRECISION": [
             "mcd-fy2025-dcf"
+          ],
+          "GATE.VERSION": [
+            "bry-dividend-2024"
           ]
         },
         "n_allpass": 0,
-        "n_runs": 6,
+        "n_runs": 12,
         "score_gated_by_case": {
+          "bry-dividend-2024": 0.2245,
           "grin-create-2026": 0.7135,
           "grin-create-2026-clean": 0.9829,
           "irs-confirm-2026": 0.9333,
           "irs-confirm-2026-clean": 0.98,
           "mcd-fy2025-dcf": 0.631,
-          "nvda-fy2026-dcf": 0.6502
+          "mega-split-2024": 0.84,
+          "mega-split-2024-clean": 0.92,
+          "mnst-tender-2024": 0.84,
+          "mnst-tender-2024-oddlot": 0.9564,
+          "nvda-fy2026-dcf": 0.6502,
+          "zts-dividend-2014": 0.8275
         }
       },
       "vendor": "openai"
@@ -3732,19 +6448,469 @@
           "score_gated": 0.98,
           "score_ungated": 0.98,
           "suite": "confirmation-matching"
+        },
+        {
+          "allpass": 0,
+          "answer": "outputs/eval6-live/gpt-5.5/bry-dividend-2024/answer.json",
+          "case": "cases/bry-dividend-2024.case.yaml",
+          "case_id": "bry-dividend-2024",
+          "categories": {
+            "calibration": 1.0,
+            "entailment": 1.0,
+            "extraction": 1.0,
+            "numerical": 1.0,
+            "reasoning": 0.9333,
+            "structure": 1.0
+          },
+          "checkpoints": {
+            "C1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.14
+            },
+            "C2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.12
+            },
+            "C3": {
+              "gated": 0.8333,
+              "ungated": 0.8333,
+              "weight": 0.1
+            },
+            "D1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.16
+            },
+            "D2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.08
+            },
+            "E1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "E2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.08
+            },
+            "P1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "P2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.12
+            }
+          },
+          "eval": 6,
+          "gap": 0.0,
+          "gates_fired": [],
+          "headline_flags": [],
+          "refusal": {
+            "checkpoint": "D2",
+            "f_beta": 1.0,
+            "groundedness": 1.0,
+            "recall": 1.0
+          },
+          "score_gated": 0.9833,
+          "score_ungated": 0.9833,
+          "suite": "corporate-actions"
+        },
+        {
+          "allpass": 1,
+          "answer": "outputs/eval6-live/gpt-5.5/mega-split-2024/answer.json",
+          "case": "cases/mega-split-2024.case.yaml",
+          "case_id": "mega-split-2024",
+          "categories": {
+            "calibration": 1.0,
+            "entailment": 1.0,
+            "extraction": 1.0,
+            "numerical": 1.0,
+            "reasoning": 1.0,
+            "structure": 1.0
+          },
+          "checkpoints": {
+            "C1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.14
+            },
+            "C2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.12
+            },
+            "C3": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "D1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.16
+            },
+            "D2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.08
+            },
+            "E1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "E2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.08
+            },
+            "P1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "P2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.12
+            }
+          },
+          "eval": 6,
+          "gap": 0.0,
+          "gates_fired": [],
+          "headline_flags": [],
+          "refusal": {
+            "checkpoint": "D2",
+            "f_beta": 1.0,
+            "groundedness": 1.0,
+            "recall": 1.0
+          },
+          "score_gated": 1.0,
+          "score_ungated": 1.0,
+          "suite": "corporate-actions"
+        },
+        {
+          "allpass": 1,
+          "answer": "outputs/eval6-live/gpt-5.5/mega-split-2024-clean/answer.json",
+          "case": "cases/mega-split-2024-clean.case.yaml",
+          "case_id": "mega-split-2024-clean",
+          "categories": {
+            "calibration": 1.0,
+            "entailment": 1.0,
+            "extraction": 1.0,
+            "numerical": 1.0,
+            "reasoning": 1.0,
+            "structure": 1.0
+          },
+          "checkpoints": {
+            "C1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.14
+            },
+            "C2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.12
+            },
+            "C3": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "D1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.16
+            },
+            "D2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.08
+            },
+            "E1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "E2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.08
+            },
+            "P1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "P2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.12
+            }
+          },
+          "eval": 6,
+          "gap": 0.0,
+          "gates_fired": [],
+          "headline_flags": [],
+          "refusal": {
+            "checkpoint": "D2",
+            "f_beta": 1.0,
+            "groundedness": 1.0,
+            "recall": 1.0
+          },
+          "score_gated": 1.0,
+          "score_ungated": 1.0,
+          "suite": "corporate-actions"
+        },
+        {
+          "allpass": 1,
+          "answer": "outputs/eval6-live/gpt-5.5/mnst-tender-2024/answer.json",
+          "case": "cases/mnst-tender-2024.case.yaml",
+          "case_id": "mnst-tender-2024",
+          "categories": {
+            "calibration": 1.0,
+            "entailment": 1.0,
+            "extraction": 1.0,
+            "numerical": 1.0,
+            "reasoning": 1.0,
+            "structure": 1.0
+          },
+          "checkpoints": {
+            "C1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.14
+            },
+            "C2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.12
+            },
+            "C3": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "D1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.16
+            },
+            "D2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.08
+            },
+            "E1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "E2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.08
+            },
+            "P1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "P2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.12
+            }
+          },
+          "eval": 6,
+          "gap": 0.0,
+          "gates_fired": [],
+          "headline_flags": [],
+          "refusal": {
+            "checkpoint": "D2",
+            "f_beta": 1.0,
+            "groundedness": 1.0,
+            "recall": 1.0
+          },
+          "score_gated": 1.0,
+          "score_ungated": 1.0,
+          "suite": "corporate-actions"
+        },
+        {
+          "allpass": 1,
+          "answer": "outputs/eval6-live/gpt-5.5/mnst-tender-2024-oddlot/answer.json",
+          "case": "cases/mnst-tender-2024-oddlot.case.yaml",
+          "case_id": "mnst-tender-2024-oddlot",
+          "categories": {
+            "calibration": 1.0,
+            "entailment": 1.0,
+            "extraction": 1.0,
+            "numerical": 1.0,
+            "reasoning": 1.0,
+            "structure": 1.0
+          },
+          "checkpoints": {
+            "C1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.14
+            },
+            "C2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.12
+            },
+            "C3": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "D1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.16
+            },
+            "D2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.08
+            },
+            "E1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "E2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.08
+            },
+            "P1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "P2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.12
+            }
+          },
+          "eval": 6,
+          "gap": 0.0,
+          "gates_fired": [],
+          "headline_flags": [],
+          "refusal": {
+            "checkpoint": "D2",
+            "f_beta": 1.0,
+            "groundedness": 1.0,
+            "recall": 1.0
+          },
+          "score_gated": 1.0,
+          "score_ungated": 1.0,
+          "suite": "corporate-actions"
+        },
+        {
+          "allpass": 1,
+          "answer": "outputs/eval6-live/gpt-5.5/zts-dividend-2014/answer.json",
+          "case": "cases/zts-dividend-2014.case.yaml",
+          "case_id": "zts-dividend-2014",
+          "categories": {
+            "calibration": 1.0,
+            "entailment": 1.0,
+            "extraction": 1.0,
+            "numerical": 1.0,
+            "reasoning": 1.0,
+            "structure": 1.0
+          },
+          "checkpoints": {
+            "C1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.14
+            },
+            "C2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.12
+            },
+            "C3": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "D1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.16
+            },
+            "D2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.08
+            },
+            "E1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "E2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.08
+            },
+            "P1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "P2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.12
+            }
+          },
+          "eval": 6,
+          "gap": 0.0,
+          "gates_fired": [],
+          "headline_flags": [],
+          "refusal": {
+            "checkpoint": "D2",
+            "f_beta": 1.0,
+            "groundedness": 1.0,
+            "recall": 1.0
+          },
+          "score_gated": 1.0,
+          "score_ungated": 1.0,
+          "suite": "corporate-actions"
         }
       ],
       "summary": {
         "gates_fired": {},
-        "n_allpass": 0,
-        "n_runs": 6,
+        "n_allpass": 5,
+        "n_runs": 12,
         "score_gated_by_case": {
+          "bry-dividend-2024": 0.9833,
           "grin-create-2026": 0.9429,
           "grin-create-2026-clean": 0.9829,
           "irs-confirm-2026": 0.98,
           "irs-confirm-2026-clean": 0.98,
           "mcd-fy2025-dcf": 0.9529,
-          "nvda-fy2026-dcf": 0.9698
+          "mega-split-2024": 1.0,
+          "mega-split-2024-clean": 1.0,
+          "mnst-tender-2024": 1.0,
+          "mnst-tender-2024-oddlot": 1.0,
+          "nvda-fy2026-dcf": 0.9698,
+          "zts-dividend-2014": 1.0
         }
       },
       "vendor": "openai"
@@ -4264,19 +7430,469 @@
           "score_gated": 0.98,
           "score_ungated": 0.98,
           "suite": "confirmation-matching"
+        },
+        {
+          "allpass": 0,
+          "answer": "outputs/eval6-live/gpt-5.6-sol/bry-dividend-2024/answer.json",
+          "case": "cases/bry-dividend-2024.case.yaml",
+          "case_id": "bry-dividend-2024",
+          "categories": {
+            "calibration": 1.0,
+            "entailment": 1.0,
+            "extraction": 1.0,
+            "numerical": 1.0,
+            "reasoning": 0.9333,
+            "structure": 1.0
+          },
+          "checkpoints": {
+            "C1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.14
+            },
+            "C2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.12
+            },
+            "C3": {
+              "gated": 0.8333,
+              "ungated": 0.8333,
+              "weight": 0.1
+            },
+            "D1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.16
+            },
+            "D2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.08
+            },
+            "E1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "E2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.08
+            },
+            "P1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "P2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.12
+            }
+          },
+          "eval": 6,
+          "gap": 0.0,
+          "gates_fired": [],
+          "headline_flags": [],
+          "refusal": {
+            "checkpoint": "D2",
+            "f_beta": 1.0,
+            "groundedness": 1.0,
+            "recall": 1.0
+          },
+          "score_gated": 0.9833,
+          "score_ungated": 0.9833,
+          "suite": "corporate-actions"
+        },
+        {
+          "allpass": 1,
+          "answer": "outputs/eval6-live/gpt-5.6-sol/mega-split-2024/answer.json",
+          "case": "cases/mega-split-2024.case.yaml",
+          "case_id": "mega-split-2024",
+          "categories": {
+            "calibration": 1.0,
+            "entailment": 1.0,
+            "extraction": 1.0,
+            "numerical": 1.0,
+            "reasoning": 1.0,
+            "structure": 1.0
+          },
+          "checkpoints": {
+            "C1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.14
+            },
+            "C2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.12
+            },
+            "C3": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "D1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.16
+            },
+            "D2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.08
+            },
+            "E1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "E2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.08
+            },
+            "P1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "P2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.12
+            }
+          },
+          "eval": 6,
+          "gap": 0.0,
+          "gates_fired": [],
+          "headline_flags": [],
+          "refusal": {
+            "checkpoint": "D2",
+            "f_beta": 1.0,
+            "groundedness": 1.0,
+            "recall": 1.0
+          },
+          "score_gated": 1.0,
+          "score_ungated": 1.0,
+          "suite": "corporate-actions"
+        },
+        {
+          "allpass": 1,
+          "answer": "outputs/eval6-live/gpt-5.6-sol/mega-split-2024-clean/answer.json",
+          "case": "cases/mega-split-2024-clean.case.yaml",
+          "case_id": "mega-split-2024-clean",
+          "categories": {
+            "calibration": 1.0,
+            "entailment": 1.0,
+            "extraction": 1.0,
+            "numerical": 1.0,
+            "reasoning": 1.0,
+            "structure": 1.0
+          },
+          "checkpoints": {
+            "C1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.14
+            },
+            "C2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.12
+            },
+            "C3": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "D1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.16
+            },
+            "D2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.08
+            },
+            "E1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "E2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.08
+            },
+            "P1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "P2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.12
+            }
+          },
+          "eval": 6,
+          "gap": 0.0,
+          "gates_fired": [],
+          "headline_flags": [],
+          "refusal": {
+            "checkpoint": "D2",
+            "f_beta": 1.0,
+            "groundedness": 1.0,
+            "recall": 1.0
+          },
+          "score_gated": 1.0,
+          "score_ungated": 1.0,
+          "suite": "corporate-actions"
+        },
+        {
+          "allpass": 1,
+          "answer": "outputs/eval6-live/gpt-5.6-sol/mnst-tender-2024/answer.json",
+          "case": "cases/mnst-tender-2024.case.yaml",
+          "case_id": "mnst-tender-2024",
+          "categories": {
+            "calibration": 1.0,
+            "entailment": 1.0,
+            "extraction": 1.0,
+            "numerical": 1.0,
+            "reasoning": 1.0,
+            "structure": 1.0
+          },
+          "checkpoints": {
+            "C1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.14
+            },
+            "C2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.12
+            },
+            "C3": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "D1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.16
+            },
+            "D2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.08
+            },
+            "E1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "E2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.08
+            },
+            "P1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "P2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.12
+            }
+          },
+          "eval": 6,
+          "gap": 0.0,
+          "gates_fired": [],
+          "headline_flags": [],
+          "refusal": {
+            "checkpoint": "D2",
+            "f_beta": 1.0,
+            "groundedness": 1.0,
+            "recall": 1.0
+          },
+          "score_gated": 1.0,
+          "score_ungated": 1.0,
+          "suite": "corporate-actions"
+        },
+        {
+          "allpass": 1,
+          "answer": "outputs/eval6-live/gpt-5.6-sol/mnst-tender-2024-oddlot/answer.json",
+          "case": "cases/mnst-tender-2024-oddlot.case.yaml",
+          "case_id": "mnst-tender-2024-oddlot",
+          "categories": {
+            "calibration": 1.0,
+            "entailment": 1.0,
+            "extraction": 1.0,
+            "numerical": 1.0,
+            "reasoning": 1.0,
+            "structure": 1.0
+          },
+          "checkpoints": {
+            "C1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.14
+            },
+            "C2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.12
+            },
+            "C3": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "D1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.16
+            },
+            "D2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.08
+            },
+            "E1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "E2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.08
+            },
+            "P1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "P2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.12
+            }
+          },
+          "eval": 6,
+          "gap": 0.0,
+          "gates_fired": [],
+          "headline_flags": [],
+          "refusal": {
+            "checkpoint": "D2",
+            "f_beta": 1.0,
+            "groundedness": 1.0,
+            "recall": 1.0
+          },
+          "score_gated": 1.0,
+          "score_ungated": 1.0,
+          "suite": "corporate-actions"
+        },
+        {
+          "allpass": 1,
+          "answer": "outputs/eval6-live/gpt-5.6-sol/zts-dividend-2014/answer.json",
+          "case": "cases/zts-dividend-2014.case.yaml",
+          "case_id": "zts-dividend-2014",
+          "categories": {
+            "calibration": 1.0,
+            "entailment": 1.0,
+            "extraction": 1.0,
+            "numerical": 1.0,
+            "reasoning": 1.0,
+            "structure": 1.0
+          },
+          "checkpoints": {
+            "C1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.14
+            },
+            "C2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.12
+            },
+            "C3": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "D1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.16
+            },
+            "D2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.08
+            },
+            "E1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "E2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.08
+            },
+            "P1": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.1
+            },
+            "P2": {
+              "gated": 1.0,
+              "ungated": 1.0,
+              "weight": 0.12
+            }
+          },
+          "eval": 6,
+          "gap": 0.0,
+          "gates_fired": [],
+          "headline_flags": [],
+          "refusal": {
+            "checkpoint": "D2",
+            "f_beta": 1.0,
+            "groundedness": 1.0,
+            "recall": 1.0
+          },
+          "score_gated": 1.0,
+          "score_ungated": 1.0,
+          "suite": "corporate-actions"
         }
       ],
       "summary": {
         "gates_fired": {},
-        "n_allpass": 0,
-        "n_runs": 6,
+        "n_allpass": 5,
+        "n_runs": 12,
         "score_gated_by_case": {
+          "bry-dividend-2024": 0.9833,
           "grin-create-2026": 0.9429,
           "grin-create-2026-clean": 0.9729,
           "irs-confirm-2026": 0.98,
           "irs-confirm-2026-clean": 0.98,
           "mcd-fy2025-dcf": 0.9507,
-          "nvda-fy2026-dcf": 0.9698
+          "mega-split-2024": 1.0,
+          "mega-split-2024-clean": 1.0,
+          "mnst-tender-2024": 1.0,
+          "mnst-tender-2024-oddlot": 1.0,
+          "nvda-fy2026-dcf": 0.9698,
+          "zts-dividend-2014": 1.0
         }
       },
       "vendor": "openai"

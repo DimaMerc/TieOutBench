@@ -32,6 +32,7 @@ def run_case(case_path: str, variant: str = "oracle", mode: str = "mock", model_
     gold["manifest"] = case.get("manifest", {})
     gold["_snapshot"] = case.get("snapshot")   # oracle inputs the graders may need (eval #2)
     gold["_claims"] = case.get("claims")
+    gold["_documents"] = case.get("documents")  # eval #6: the store, for value-in-docs checks
     judge_fn = None
     if mode == "llm":
         from .judge_llm import make_judge

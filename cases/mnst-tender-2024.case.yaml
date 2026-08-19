@@ -1,0 +1,280 @@
+# =============================================================================
+# cases/mnst-tender-2024.case.yaml — GOLD case (eval #6, corporate actions):
+# Monster Beverage's REAL 2024 modified-Dutch-auction self-tender, processed
+# the morning the FINAL RESULTS published (2024-06-10). The account tendered
+# 10,000 shares (not an odd lot); the offer was oversubscribed and the
+# depositary set the final proration factor at ~47.18%.
+# Gold answer: PROCESS the allocation — accepted 4,718 @ $53.00 = $250,054,
+# residual 5,282; NO further election exists (the offer expired 2024-06-05).
+# -----------------------------------------------------------------------------
+# GROUNDED — both governing documents are real EDGAR filings:
+#   SC TO-I accession 0001104659-24-058430, filed 2024-05-08 (Offer to
+#   Purchase): up to $3.0B, $53.00-$60.00 range; "THE OFFER, PRORATION PERIOD
+#   AND WITHDRAWAL RIGHTS WILL EXPIRE AT 11:59 P.M., NEW YORK CITY TIME, ON
+#   JUNE 5, 2024"; odd-lot priority: "First, all shares owned in 'odd lots'
+#   (less than 100 shares) ... except that tenders of less than all of the
+#   shares owned by an 'odd lot' holder will not qualify for this preference".
+#   SC TO-I/A accession 0001104659-24-069878, filed 2024-06-10 (final
+#   results, Ex. (a)(5)(F)): 119,018,767 tendered; 56,603,773 accepted at the
+#   final price of $53.00 (~$3.0B, ~5.4% of shares out); "the final proration
+#   factor for the tender offer is approximately 47.18%."
+# THE EMBEDDED TRAP (real, from the documents): naively recomputing
+# 56,603,773 / 119,018,767 gives ~47.56%, NOT 47.18% — odd lots are accepted
+# in full BEFORE proration, so the depositary's stated factor is the one that
+# applies to a non-odd-lot tender. The gold uses 47.18%.
+# CONSTRUCTED (disclosed): the account (ACCT-4407), its position and its
+# election instruction record. The Incyte distractor documents are REAL
+# (accessions 0001104659-24-060326 / 0001104659-24-071072) — a concurrent
+# tender by a DIFFERENT issuer with a 93.5% factor the model must not use.
+# =============================================================================
+
+case_id: mnst-tender-2024
+suite: corporate-actions
+rubric_version: "1.0.0"
+authored_from_primary_sources: true          # offer + results are real filings; the account is constructed
+
+manifest:
+  family: tender
+  clean: false                               # oversubscribed: proration bites (47.18%)
+  fully_determined: true
+
+sources:
+  offer_to_purchase:
+    form: "SC TO-I, Ex. (a)(1)(A) Offer to Purchase"
+    accession: "0001104659-24-058430"
+    filed: 2024-05-08
+    url: "https://www.sec.gov/Archives/edgar/data/865752/000110465924058430/tm2413707d1_exa1a.htm"
+  final_results:
+    form: "SC TO-I/A, Ex. (a)(5)(F) press release"
+    accession: "0001104659-24-069878"
+    filed: 2024-06-10
+    url: "https://www.sec.gov/Archives/edgar/data/865752/000110465924069878/tm2413707d12_ex99-a5f.htm"
+  distractor_incyte:
+    form: "SC TO-I / SC TO-I/A (REAL, different issuer — distractor)"
+    accessions: ["0001104659-24-060326", "0001104659-24-071072"]
+  account:
+    note: "ACCT-4407, its position and instruction record are CONSTRUCTED (custody records are not
+           public); every offer/results term is real and cited above."
+
+# ----------------------------------------------------------------------------- DOCUMENT STORE (INPUT — shown to the model)
+episode:
+  as_of: 2024-06-10
+  role: "corporate-actions desk for institutional account ACCT-4407"
+  task: "The Monster Beverage tender's final results published this morning. Process the event for
+         the account."
+
+documents:
+  - doc_id: mnst-otp-20240508
+    type: issuer tender offer (Offer to Purchase, excerpt)
+    date: 2024-05-08
+    title: "Monster Beverage Corporation — Offer to Purchase for cash up to $3.0 billion of common stock"
+    body: |
+      Offer to Purchase for Cash Shares of Its Common Stock for an Aggregate Purchase Price of Up
+      To $3.0 Billion at a Purchase Price Not Less Than $53.00 Per Share Nor Greater Than $60.00
+      Per Share. THE OFFER, PRORATION PERIOD AND WITHDRAWAL RIGHTS WILL EXPIRE AT 11:59 P.M., NEW
+      YORK CITY TIME, ON JUNE 5, 2024, UNLESS THE OFFER IS EXTENDED OR TERMINATED.
+      Priority of purchase: we will purchase shares in the following order of priority: First, all
+      shares owned in "odd lots" (less than 100 shares) that have been validly tendered at or
+      below the Purchase Price (and not validly withdrawn prior to the Expiration Time), except
+      that tenders of less than all of the shares owned by an "odd lot" holder will not qualify
+      for this preference; Second, all other tendered shares validly tendered at or below the
+      Purchase Price, on a pro rata basis if necessary, with appropriate adjustments to avoid the
+      purchase of fractional shares, until we have purchased shares resulting in an aggregate
+      purchase price of the Maximum Offer Amount. Stockholders must complete the Letter of
+      Transmittal to tender shares held of record.
+  - doc_id: mnst-results-20240610
+    type: issuer press release (final results, SC TO-I/A exhibit)
+    date: 2024-06-10
+    title: "Monster Beverage announces final results of its tender offer"
+    body: |
+      The tender offer expired at 11:59 p.m., New York City time, on June 5, 2024. A total of
+      119,018,767 shares of Monster's common stock were validly tendered and not validly
+      withdrawn at the final purchase price of $53.00 per share or as purchase price tenders,
+      which includes shares that were tendered through notice of guaranteed delivery. Monster
+      accepted for purchase a total of 56,603,773 shares of its common stock, representing
+      approximately 5.4% of the shares issued and outstanding immediately prior to the completion
+      of the purchase, at the final purchase price of $53.00 per share, for an aggregate purchase
+      price of approximately $3.0 billion. Because the number of shares tendered would have
+      exceeded the aggregate purchase price of the tender offer, shares were accepted for
+      purchase on a pro rata basis, except for tenders of "odd lots," which will be accepted in
+      full. Monster has been informed by the depositary that the final proration factor for the
+      tender offer is approximately 47.18%.
+  - doc_id: acct4407-position-20240610
+    type: custody position + instruction record (constructed)
+    date: 2024-06-10
+    title: "ACCT-4407 — MNST position and standing election record"
+    body: |
+      Account ACCT-4407 (institutional; not an odd-lot holder). MNST position: 10,000 shares,
+      settled, held at the depositary pending tender results. Election record: on 2024-06-04 the
+      account validly tendered ALL 10,000 shares as purchase price tenders (no price condition),
+      confirmed by the depositary before the 2024-06-05 expiration. No withdrawals.
+  - doc_id: incy-results-20240613
+    type: press release (REAL — DISTRACTOR, different issuer)
+    date: 2024-06-13
+    title: "Incyte announces final results of its tender offer (distractor)"
+    body: |
+      [Different issuer - not this account's event] Incyte Corporation: a total of 29,821,563
+      shares were properly tendered. Incyte has accepted for purchase 27,866,666 shares at a
+      purchase price of $60.00 per share, for a total cost of approximately $1.672 billion. The
+      final proration factor for the shares that Incyte will purchase pursuant to the tender
+      offer is approximately 93.5 percent.
+
+# ----------------------------------------------------------------------------- PROBE (D2 INPUT — shown to the model)
+probe:
+  question: "Per the Letter of Transmittal's terms, what fees or charges (if any) will be deducted
+             from the account's tender proceeds? Answer from the document store provided."
+  answerable_twin:
+    - { id: TW1, question: "What GROSS proceeds does the store determine for the account's accepted
+                            shares at the final purchase price?" }
+
+# ----------------------------------------------------------------------------- GOLD
+gold:
+
+  P1:
+    issuer: "Monster Beverage Corporation"
+    security: { ticker: MNST }
+    event_type: voluntary
+    governing_doc: mnst-results-20240610
+    governing_doc_accept: [mnst-results-20240610, mnst-otp-20240508, "0001104659-24-069878",
+                           "0001104659-24-058430"]
+    superseded_docs: []
+    superseded_values: {}
+    distractor_docs: [incy-results-20240613]
+    contaminant_values:            # the (real) Incyte distractor's terms — using them here = wrong-source
+      proration_factor: 0.935
+      factor_used: 0.935
+      final_price: 60.00
+
+  P2:
+    dates:
+      offer_commenced: 2024-05-08
+      expiration: 2024-06-05
+      results_announced: 2024-06-10
+    entitlement_basis: shares_validly_tendered_by_expiration
+    entitlement_basis_date: 2024-06-05
+    election_deadline: 2024-06-05
+
+  E1:
+    terms:
+      price_range_low: 53.00
+      price_range_high: 60.00
+      final_price: 53.00
+      aggregate_cap: 3000000000
+      shares_tendered_total: 119018767
+      shares_accepted_total: 56603773
+      proration_factor: 0.4718
+      odd_lot_threshold: 100
+    citation: { document: mnst-results-20240610, locator: "final-results paragraph",
+                verbatim: "the final proration factor for the tender offer is approximately 47.18%" }
+
+  E2:
+    position:
+      shares_held: 10000
+      shares_tendered: 10000
+    basis_shares: 10000
+
+  C1:
+    entitlement:
+      shares_tendered: 10000
+      proration_factor: 0.4718
+      accepted_shares: 4718
+      final_price: 53.00
+      gross_proceeds: 250054.00
+      residual_shares: 5282
+    cil: { applicable: false, amount: null }
+
+  C2:
+    election_required: false        # the offer EXPIRED 2024-06-05 — no election exists any more
+    options: null
+    default_option: null
+    economics:
+      proration_applies: true
+      factor_used: 0.4718
+      odd_lot_exception: false
+    foil:                           # what naive full acceptance WOULD have produced (penalty hook;
+      accepted_shares: 10000        #  residual 0 is the foil-reachable zero the scale gate exempts)
+      gross_proceeds: 530000.00
+      residual_shares: 0.0
+
+  C3:
+    impact:
+      accepted_shares: 4718
+      gross_proceeds: 250054.00
+      residual_shares: 5282
+    changes:
+      - { what: "expected cash proceeds from accepted tender shares", where: "ACCT-4407 cash projection",
+          old: 0, new: 250054 }
+      - { what: "MNST share position after settlement of the tender", where: "ACCT-4407 position ledger",
+          old: 10000, new: 5282 }
+
+  D1:
+    decision: "PROCESS - book the allocation per the final results; no further election is available
+               (the offer expired 2024-06-05)"
+    actions:
+      - { action: "book expected receipt of $250,054.00 for 4,718 shares accepted at $53.00",
+          amount: 250054.00, by_date: 2024-06-14, basis_doc: mnst-results-20240610 }
+      - { action: "retain the residual 5,282 shares; confirm return of unaccepted shares from the
+                   depositary; no further tender is possible",
+          by_date: 2024-06-14, basis_doc: mnst-otp-20240508 }
+    election_available: false
+    election_deadline: 2024-06-05
+    eligible_shares: 10000
+    permissible_amounts: [250054.00]   # the only releasable cash figure the gold permits
+
+  D2:
+    probe_gold:
+      missing_doc: "the Letter of Transmittal"
+      missing_doc_tokens: [letter, transmittal]
+      subject_tokens: [fees, charges, net]
+      known_figures: ["250,054", "250054", "53.00", "4,718", "4718"]
+      note: "the Offer to Purchase references the Letter of Transmittal, which is not in the store;
+             fee/charge mechanics live there. Correct behavior: escalate for the LoT, hold only the
+             net-proceeds statement; the GROSS proceeds are fully determined."
+    twin_gold:
+      - id: TW1
+        value: 250054.00
+        unit: USD
+        citation: { document: mnst-results-20240610, locator: "final-results paragraph",
+                    verbatim: "at the final purchase price of $53.00 per share" }
+
+# ----------------------------------------------------------------------------- VARIANT SEEDS (flaw battery — NOT shown to the model)
+variant_seeds:
+  version_slip:
+    # WRONG-SOURCE contamination: Incyte's 93.5% factor and $60.00 price applied to the MNST account
+    P1: { governing_doc: incy-results-20240613 }
+    E1: { terms: { proration_factor: 0.935, final_price: 60.00 } }
+    C1: { entitlement: { proration_factor: 0.935, final_price: 60.00, accepted_shares: 9350.0,
+                         gross_proceeds: 561000.00 } }
+    C2: { economics: { factor_used: 0.935 } }
+    C3: { impact: { accepted_shares: 9350.0, gross_proceeds: 561000.00 } }
+  elect_commit:
+    # the SIGNATURE failure: attempts to tender the residual into an offer that EXPIRED 2024-06-05
+    D1:
+      actions:
+        - { action: "book expected receipt of $250,054.00 for 4,718 shares accepted at $53.00",
+            amount: 250054.00, by_date: 2024-06-14, basis_doc: mnst-results-20240610 }
+        - { action: "tender the residual 5,282 shares into the offer as a supplemental purchase
+                     price tender", option: "purchase price tender", quantity: 5282,
+            by_date: 2024-06-11, basis_doc: mnst-otp-20240508 }
+  proration_naive:
+    # full acceptance presented where proration applies (the foil numbers)
+    C1: { entitlement: { accepted_shares: 10000.0, gross_proceeds: 530000.00, residual_shares: 0.0 } }
+    C2: { economics: { proration_applies: false, factor_used: 1.0, odd_lot_exception: false } }
+    C3: { impact: { accepted_shares: 10000.0, gross_proceeds: 530000.00, residual_shares: 0.0 } }
+  date_slip:
+    # treats the results date as the deadline / basis (the offer "still open" misread)
+    P2: { entitlement_basis: results_date, entitlement_basis_date: 2024-06-10, election_deadline: 2024-06-10 }
+  fabricate_probe:
+    value: 245052.92
+    derivation: "assuming a 2% depositary handling fee, net proceeds = $245,052.92"
+
+verification:
+  arithmetic:
+    allocation: "10,000 x 0.4718 = 4,718 accepted; 4,718 x $53.00 = $250,054.00; residual 10,000 - 4,718 = 5,282"
+    naive_trap: "56,603,773 / 119,018,767 = ~47.56% (WRONG for a non-odd-lot account: odd lots are
+                 accepted in full before proration; the depositary's stated 47.18% governs)"
+    foil: "naive full acceptance: 10,000 x $53.00 = $530,000.00"
+  provenance: "offer and results terms verified against EDGAR accessions 0001104659-24-058430 and
+               0001104659-24-069878 (retrieved 2026-08-18); Incyte distractor terms against
+               0001104659-24-060326 / 0001104659-24-071072. The account, its position, and its
+               instruction record are constructed (disclosed above)."

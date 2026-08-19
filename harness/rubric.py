@@ -24,6 +24,7 @@ SUITE_RUBRICS = {
     "dcf-valuation": "criteria-dcf.yaml",
     "creation-redemption": "criteria-creation-redemption.yaml",
     "confirmation-matching": "criteria-confirmation-matching.yaml",
+    "corporate-actions": "criteria-corporate-actions.yaml",
 }
 DEFAULT_SUITE = "earnings-analysis"
 

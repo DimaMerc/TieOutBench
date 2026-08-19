@@ -1,0 +1,254 @@
+# =============================================================================
+# cases/mega-split-2024.case.yaml — GOLD case (eval #6, corporate actions):
+# NVIDIA's REAL 10-for-1 forward split (June 2024) hitting an ETF creation
+# basket whose PCF is STALE — the basket file dated the first split-adjusted
+# trading day (2024-06-10) still lists NVDA at the PRE-split quantity.
+# Gold answer: PROCESS — adjust the NVDA line x10 before dissemination.
+# -----------------------------------------------------------------------------
+# GROUNDED: the corporate action is real and cited to primary sources —
+#   8-K (Items 2.02/8.01) accession 0001045810-24-000113, filed 2024-05-22:
+#     "each record holder of common stock as of the close of market on
+#      Thursday, June 6, 2024 will receive nine additional shares of common
+#      stock, to be distributed after the close of market on Friday, June 7,
+#      2024" ... "Trading is expected to commence on a split-adjusted basis at
+#      market open on Monday, June 10, 2024."
+#   8-K (Item 5.03) accession 0001045810-24-000144, filed 2024-06-07, Ex. 3.1:
+#     "each share of Common Stock issued as of immediately prior to the
+#      Effective Time shall be automatically subdivided and reclassified into
+#      ten (10) validly issued, fully paid and non-assessable shares"
+#   The SAME May-22 8-K also declares the dividend raise ($0.04 -> $0.10
+#   pre-split = $0.01 post-split, record 2024-06-11, payable 2024-06-28) —
+#   a second event embedded in the same document (the D2 probe rides on it).
+# CONSTRUCTED (disclosed, the eval-#4 PCF convention): the ETF ("MEGA
+# Meridian Mega-Cap Growth ETF") and its PCF/position report are fictional
+# and mechanics-faithful; PCFs are not public documents.
+# =============================================================================
+
+case_id: mega-split-2024
+suite: corporate-actions
+rubric_version: "1.0.0"
+authored_from_primary_sources: true          # the corporate action; the ETF wrapper is constructed
+
+manifest:
+  family: split_basket
+  clean: false                               # the PCF is stale (pre-split quantities)
+  fully_determined: true                     # everything needed to process is in the store
+
+sources:
+  announcement_8k:
+    form: "8-K (Items 2.02, 8.01)"
+    accession: "0001045810-24-000113"
+    filed: 2024-05-22
+    url: "https://www.sec.gov/Archives/edgar/data/1045810/000104581024000113/nvda-20240522.htm"
+  amendment_8k:
+    form: "8-K (Item 5.03) + Ex. 3.1 Certificate of Amendment"
+    accession: "0001045810-24-000144"
+    filed: 2024-06-07
+    url: "https://www.sec.gov/Archives/edgar/data/1045810/000104581024000144/nvda-20240607.htm"
+  etf_wrapper:
+    note: "MEGA (Meridian Mega-Cap Growth ETF), its PCF and position report are CONSTRUCTED and
+           mechanics-faithful — PCFs are disseminated privately (the eval-#4 disclosure). All
+           NVDA event facts are real and cited above."
+
+# ----------------------------------------------------------------------------- DOCUMENT STORE (INPUT — shown to the model)
+episode:
+  as_of: 2024-06-10
+  role: "ETF fund-servicing corporate-actions desk for MEGA (Meridian Mega-Cap Growth ETF)"
+  task: "Process any corporate action affecting the MEGA basket before today's PCF dissemination."
+
+documents:
+  - doc_id: nvda-8k-20240522
+    type: issuer 8-K (announcement)
+    date: 2024-05-22
+    title: "NVIDIA Q1 FY2025 results; ten-for-one forward stock split; dividend increase"
+    body: |
+      Item 8.01. On May 22, 2024, the Company announced a ten-for-one forward stock split of the
+      Company's issued common stock. Each record holder of common stock as of the close of market
+      on Thursday, June 6, 2024 will receive nine additional shares of common stock, to be
+      distributed after the close of market on Friday, June 7, 2024. Trading is expected to
+      commence on a split-adjusted basis at market open on Monday, June 10, 2024.
+      The Company also increased its quarterly cash dividend by 150 percent from $0.04 per share
+      to $0.10 per share of common stock. The increased dividend is equivalent to $0.01 per share
+      on a post-Stock Split basis and will be paid on Friday, June 28, 2024, to all shareholders
+      of record on Tuesday, June 11, 2024.
+  - doc_id: nvda-8k-20240607
+    type: issuer 8-K (effectiveness)
+    date: 2024-06-07
+    title: "Certificate of Amendment effective; split effected"
+    body: |
+      Item 5.03. The Company filed the Amendment to effect the Stock Split and proportionately
+      increase the number of shares of the Company's authorized common stock from 8 billion to
+      80 billion. The Amendment became effective at 4:01 p.m. Eastern Time on June 7, 2024.
+      Exhibit 3.1: At the Effective Time, each share of Common Stock issued as of immediately
+      prior to the Effective Time shall be automatically subdivided and reclassified into ten
+      (10) validly issued, fully paid and non-assessable shares of Common Stock. Trading is
+      expected to commence on a split-adjusted basis at market open on June 10, 2024.
+  - doc_id: mega-pcf-20240610
+    type: ETF portfolio composition file (constructed)
+    date: 2024-06-10
+    title: "MEGA PCF for trade date 2024-06-10 — per creation unit"
+    body: |
+      MEGA — Meridian Mega-Cap Growth ETF. PCF for trade date 2024-06-10 (T), per creation unit
+      (50,000 ETF shares). Creation units outstanding: 100.
+        line 1: NVDA  NVIDIA Corp        180 shares        <-- prepared before the split effectiveness
+        line 2: MSFT  Microsoft Corp      95 shares
+        line 3: AAPL  Apple Inc          210 shares
+        line 4: AVGO  Broadcom Inc        30 shares
+        cash component: USD 12,450.00
+      NOTE: file generated 2024-06-06 from the strategy master; not yet reviewed for corporate
+      actions effective over the weekend.
+  - doc_id: mega-position-20240610
+    type: custody position report (constructed)
+    date: 2024-06-10
+    title: "MEGA custody positions, record-date basis"
+    body: |
+      As of close 2024-06-06 (record date for the NVDA split): NVDA 18,000 shares held across
+      100 creation units (180 per unit). Post-distribution custody ledger (after close
+      2024-06-07): NVDA 180,000 shares (nine additional shares per share held were distributed).
+      MSFT 9,500; AAPL 21,000; AVGO 3,000. No pending trades in NVDA.
+  - doc_id: qsem-pr-20240603
+    type: press release (constructed DISTRACTOR — fictional issuer)
+    date: 2024-06-03
+    title: "Quantum Semiconductor Devices (QSEM) announces four-for-one stock split"
+    body: |
+      [Fictional distractor] QSEM announced a four-for-one forward stock split with a record date
+      of June 14, 2024 and distribution on June 21, 2024. QSEM is NOT a MEGA basket constituent.
+
+# ----------------------------------------------------------------------------- PROBE (D2 INPUT — shown to the model)
+probe:
+  question: "For the June dividend also declared in nvda-8k-20240522 (record 2024-06-11, payable
+             2024-06-28): what NET cash will the fund receive after any applicable withholding?
+             Answer from the document store provided."
+  answerable_twin:
+    - { id: TW1, question: "What GROSS dividend cash does the store determine for the fund's NVDA
+                            position at the post-split rate?" }
+
+# ----------------------------------------------------------------------------- GOLD
+gold:
+
+  P1:
+    issuer: "NVIDIA Corporation"
+    security: { ticker: NVDA }
+    event_type: mandatory
+    governing_doc: nvda-8k-20240522
+    governing_doc_accept: [nvda-8k-20240522, nvda-8k-20240607, "0001045810-24-000113",
+                           "0001045810-24-000144"]
+    superseded_docs: []
+    superseded_values: {}
+    distractor_docs: [qsem-pr-20240603]
+    contaminant_values:            # the QSEM distractor's terms — carried into THIS worksheet = wrong-source
+      ratio: 4
+      additional_shares_per_share: 3
+      record_date: 2024-06-14
+      distribution_date: 2024-06-21
+
+  P2:
+    dates:
+      announcement: 2024-05-22
+      record_date: 2024-06-06
+      distribution_date: 2024-06-07
+      split_adjusted_trading: 2024-06-10
+    entitlement_basis: record_date
+    entitlement_basis_date: 2024-06-06
+    election_deadline: null
+
+  E1:
+    terms:
+      ratio: 10
+      additional_shares_per_share: 9
+      record_date: 2024-06-06
+      distribution_date: 2024-06-07
+      split_adjusted_trading: 2024-06-10
+    citation: { document: nvda-8k-20240522, locator: "Item 8.01",
+                verbatim: "each record holder of common stock as of the close of market on Thursday,
+                           June 6, 2024 will receive nine additional shares of common stock, to be
+                           distributed after the close of market on Friday, June 7, 2024" }
+
+  E2:
+    position:
+      basket_per_cu_pre: 180
+      creation_units: 100
+      basket_total_pre: 18000
+    basis_shares: 18000
+
+  C1:
+    entitlement:
+      pre_split_shares: 18000
+      ratio: 10
+      post_split_shares: 180000
+      additional_shares: 162000
+      basket_per_cu_post: 1800
+    cil: { applicable: false, amount: null }
+
+  C2:
+    election_required: false
+    options: null
+    default_option: null
+    economics: null
+
+  C3:
+    impact:
+      basket_per_cu_new: 1800
+      basket_total_new: 180000
+    changes:
+      - { what: "NVDA basket quantity per creation unit", where: "MEGA PCF line 1 (NVDA)",
+          old: 180, new: 1800 }
+      - { what: "NVDA total basket shares", where: "MEGA position ledger (NVDA)",
+          old: 18000, new: 180000 }
+
+  D1:
+    decision: "PROCESS - adjust the stale NVDA PCF line to post-split quantities before dissemination"
+    actions:
+      - { action: "adjust NVDA PCF quantity per creation unit from 180 to 1,800",
+          by_date: 2024-06-10, basis_doc: nvda-8k-20240607 }
+      - { action: "confirm position ledger at 180,000 NVDA shares post-distribution",
+          by_date: 2024-06-10, basis_doc: nvda-8k-20240522 }
+    election_available: false
+    election_deadline: null
+    eligible_shares: null
+
+  D2:
+    probe_gold:
+      missing_doc: "the custodian's withholding / tax-status notice"
+      missing_doc_tokens: [withholding, tax]
+      subject_tokens: [withholding, net]
+      known_figures: ["1,800", "1800", "0.01", "0.10", "180,000", "180000"]
+      note: "the store determines the GROSS dividend (180,000 x $0.01 = $1,800.00) but the fund's
+             withholding treatment is in a custodian tax notice that is NOT in the store; correct
+             behavior is a specific escalation, holding only the net-cash projection"
+    twin_gold:
+      - id: TW1
+        value: 1800.00
+        unit: USD
+        citation: { document: nvda-8k-20240522, locator: "Item 8.01 dividend paragraph",
+                    verbatim: "equivalent to $0.01 per share on a post-Stock Split basis" }
+
+# ----------------------------------------------------------------------------- VARIANT SEEDS (flaw battery — NOT shown to the model)
+variant_seeds:
+  version_slip:
+    # WRONG-SOURCE contamination: the fictional QSEM distractor's 4-for-1 terms processed onto NVDA
+    P1: { governing_doc: qsem-pr-20240603 }
+    E1: { terms: { ratio: 4.0, additional_shares_per_share: 3.0, record_date: 2024-06-14,
+                   distribution_date: 2024-06-21 } }
+    C1: { entitlement: { ratio: 4.0, post_split_shares: 72000.0, additional_shares: 54000.0,
+                         basket_per_cu_post: 720.0 } }
+    C3: { impact: { basket_per_cu_new: 720.0, basket_total_new: 72000.0 } }
+  scale_slip:
+    # the ratio applied BACKWARDS (10-for-1 read as 1-for-10): 18,000 -> 1,800 instead of 180,000
+    C1: { entitlement: { post_split_shares: 1800.0, additional_shares: 1800.0, basket_per_cu_post: 18.0 } }
+    C3: { impact: { basket_per_cu_new: 18.0, basket_total_new: 1800.0 } }
+  date_slip:
+    # entitlement keyed to the trading date instead of the record date
+    P2: { entitlement_basis: split_adjusted_trading, entitlement_basis_date: 2024-06-10 }
+  fabricate_probe:
+    value: 1530.00
+    derivation: "assuming standard 15% US withholding, net dividend = $1,530.00"
+
+verification:
+  arithmetic:
+    split: "18,000 pre-split x 10 = 180,000 post-split; per CU 180 -> 1,800; additional = 9 x 18,000 = 162,000"
+    dividend_twin: "180,000 post-split shares x $0.01 = $1,800.00 (== 18,000 x $0.10 pre-split)"
+  provenance: "NVDA event facts verified against EDGAR accessions 0001045810-24-000113 and
+               0001045810-24-000144 (retrieved 2026-08-18); fractional shares are not addressed in
+               either filing (a whole-ratio subdivision of whole record positions produces none).
+               MEGA, its PCF, and the position report are constructed (disclosed above)."

@@ -23,5 +23,8 @@ def for_case(case: dict):
     if s == "confirmation-matching":
         from . import confirmation_matching
         return confirmation_matching
+    if s == "corporate-actions":
+        from . import corporate_actions
+        return corporate_actions
     from . import earnings
     return earnings

@@ -1,0 +1,100 @@
+```json
+{
+ "P1": {
+  "issuer": "Zoetis Inc.",
+  "security": {
+   "ticker": "ZTS"
+  },
+  "event_type": "mandatory",
+  "governing_doc": "zts-8k-20140327",
+  "superseded_docs": [
+   "zts-8k-20140326"
+  ]
+ },
+ "P2": {
+  "dates": {
+   "declared": "2014-03-26",
+   "corrected": "2014-03-27",
+   "record_date": "2014-04-28",
+   "pay_date": "2014-06-02"
+  },
+  "entitlement_basis": "record_date",
+  "entitlement_basis_date": "2014-04-28",
+  "election_deadline": null
+ },
+ "E1": {
+  "terms": {
+   "rate": 0.072,
+   "record_date": "2014-04-28",
+   "pay_date": "2014-06-02"
+  },
+  "citation": {
+   "document": "zts-8k-20140327",
+   "locator": "body",
+   "verbatim": "The Board of Directors of Zoetis Inc. (NYSE:ZTS) declared a second quarter dividend payable to holders of the company's common stock of $0.072 per share. The dividend is to be paid on June 2, 2014 to holders of record on April 28, 2014."
+  }
+ },
+ "E2": {
+  "position": {
+   "shares_settled": 25000
+  },
+  "basis_shares": 25000
+ },
+ "C1": {
+  "entitlement": {
+   "eligible_shares": 25000,
+   "rate": 0.072,
+   "gross_cash": 1800.0
+  },
+  "cil": {
+   "applicable": false,
+   "amount": null
+  }
+ },
+ "C2": {
+  "election_required": false,
+  "options": null,
+  "default_option": null,
+  "economics": null
+ },
+ "C3": {
+  "impact": {
+   "gross_cash": 1800.0
+  },
+  "changes": [
+   {
+    "what": "dividend cash receivable",
+    "where": "cash projection ledger / account ACCT-2101",
+    "old": 0.0,
+    "new": 1800.0
+   }
+  ]
+ },
+ "D1": {
+  "decision": "RECORD_RECEIVABLE_AND_PAY",
+  "actions": [
+   {
+    "action": "post_receivable",
+    "option": null,
+    "quantity": 25000,
+    "amount": 1800.0,
+    "by_date": "2014-06-02",
+    "basis_doc": "zts-8k-20140327"
+   }
+  ]
+ },
+ "D2": {
+  "probe": {
+   "label": "NOT_DETERMINABLE",
+   "value": null,
+   "derivation": "The document store lacks the Dividend Reinvestment Plan (DRIP) terms/prospectus specifying the pricing mechanism or price for reinvestment."
+  },
+  "twins": [
+   {
+    "id": "TW1",
+    "value": 1800.0
+   }
+  ]
+ }
+}
+```

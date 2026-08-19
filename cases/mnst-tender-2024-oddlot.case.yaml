@@ -1,0 +1,237 @@
+# =============================================================================
+# cases/mnst-tender-2024-oddlot.case.yaml — GOLD case (eval #6): the ODD-LOT
+# counterweight to mnst-tender-2024. Same real Monster Beverage tender, same
+# real final results — but the account holds 87 shares (an odd lot) and
+# validly tendered ALL of them.
+# Gold answer: PROCESS — accepted IN FULL under the odd-lot priority (87 @
+# $53.00 = $4,611.00, residual 0). The 47.18% proration factor does NOT apply.
+# -----------------------------------------------------------------------------
+# What this case catches: BLIND PRORATION — a model that pattern-matches
+# "oversubscribed tender -> apply 47.18%" onto a holder the offer's own
+# priority waterfall exempts (87 x 0.4718 = ~41 shares, ~$2,176 - wrong).
+# The offer's verbatim odd-lot language is in the store; reading it is the
+# test. Mirrors the suite's anti-pattern-matching discipline (NVDA-vs-MCD).
+# Provenance identical to mnst-tender-2024 (real EDGAR accessions
+# 0001104659-24-058430 / 0001104659-24-069878; account constructed).
+# =============================================================================
+
+case_id: mnst-tender-2024-oddlot
+suite: corporate-actions
+rubric_version: "1.0.0"
+authored_from_primary_sources: true
+
+manifest:
+  family: tender
+  clean: true                                # the odd-lot priority makes this account's outcome clean
+  fully_determined: true
+
+sources:
+  offer_to_purchase: { form: "SC TO-I Ex. (a)(1)(A)", accession: "0001104659-24-058430", filed: 2024-05-08 }
+  final_results:     { form: "SC TO-I/A Ex. (a)(5)(F)", accession: "0001104659-24-069878", filed: 2024-06-10 }
+  account:
+    note: "ACCT-0093, its position and instruction record are CONSTRUCTED; every offer/results
+           term is real and cited (see mnst-tender-2024)."
+
+# ----------------------------------------------------------------------------- DOCUMENT STORE (INPUT — shown to the model)
+episode:
+  as_of: 2024-06-10
+  role: "corporate-actions desk for retail-custody account ACCT-0093"
+  task: "The Monster Beverage tender's final results published this morning. Process the event for
+         the account."
+
+documents:
+  - doc_id: mnst-otp-20240508
+    type: issuer tender offer (Offer to Purchase, excerpt)
+    date: 2024-05-08
+    title: "Monster Beverage Corporation — Offer to Purchase for cash up to $3.0 billion of common stock"
+    body: |
+      Offer to Purchase for Cash Shares of Its Common Stock for an Aggregate Purchase Price of Up
+      To $3.0 Billion at a Purchase Price Not Less Than $53.00 Per Share Nor Greater Than $60.00
+      Per Share. THE OFFER, PRORATION PERIOD AND WITHDRAWAL RIGHTS WILL EXPIRE AT 11:59 P.M., NEW
+      YORK CITY TIME, ON JUNE 5, 2024, UNLESS THE OFFER IS EXTENDED OR TERMINATED.
+      Priority of purchase: we will purchase shares in the following order of priority: First, all
+      shares owned in "odd lots" (less than 100 shares) that have been validly tendered at or
+      below the Purchase Price (and not validly withdrawn prior to the Expiration Time), except
+      that tenders of less than all of the shares owned by an "odd lot" holder will not qualify
+      for this preference; Second, all other tendered shares validly tendered at or below the
+      Purchase Price, on a pro rata basis if necessary, with appropriate adjustments to avoid the
+      purchase of fractional shares, until we have purchased shares resulting in an aggregate
+      purchase price of the Maximum Offer Amount. This preference is not available to partial
+      tenders or to holders of 100 or more shares in the aggregate. Stockholders must complete
+      the Letter of Transmittal to tender shares held of record.
+  - doc_id: mnst-results-20240610
+    type: issuer press release (final results, SC TO-I/A exhibit)
+    date: 2024-06-10
+    title: "Monster Beverage announces final results of its tender offer"
+    body: |
+      The tender offer expired at 11:59 p.m., New York City time, on June 5, 2024. A total of
+      119,018,767 shares of Monster's common stock were validly tendered and not validly
+      withdrawn at the final purchase price of $53.00 per share or as purchase price tenders.
+      Monster accepted for purchase a total of 56,603,773 shares of its common stock at the final
+      purchase price of $53.00 per share, for an aggregate purchase price of approximately $3.0
+      billion. Because the number of shares tendered would have exceeded the aggregate purchase
+      price of the tender offer, shares were accepted for purchase on a pro rata basis, except
+      for tenders of "odd lots," which will be accepted in full. Monster has been informed by the
+      depositary that the final proration factor for the tender offer is approximately 47.18%.
+  - doc_id: acct0093-position-20240610
+    type: custody position + instruction record (constructed)
+    date: 2024-06-10
+    title: "ACCT-0093 — MNST position and standing election record"
+    body: |
+      Account ACCT-0093. MNST position: 87 shares in the aggregate (fewer than 100 - an "odd lot"
+      holder), settled, held at the depositary pending tender results. Election record: on
+      2024-06-03 the account validly tendered ALL 87 shares as purchase price tenders, confirmed
+      by the depositary before the 2024-06-05 expiration. No withdrawals; no other MNST holdings.
+
+  - doc_id: incy-results-20240613
+    type: press release (REAL — DISTRACTOR, different issuer)
+    date: 2024-06-13
+    title: "Incyte announces final results of its tender offer (distractor)"
+    body: |
+      [Different issuer - not this account's event] Incyte Corporation: a total of 29,821,563
+      shares were properly tendered. Incyte has accepted for purchase 27,866,666 shares at a
+      purchase price of $60.00 per share, for a total cost of approximately $1.672 billion. The
+      final proration factor for the shares that Incyte will purchase pursuant to the tender
+      offer is approximately 93.5 percent.
+
+# ----------------------------------------------------------------------------- PROBE (D2 INPUT — shown to the model)
+probe:
+  question: "Per the Letter of Transmittal's terms, what fees or charges (if any) will be deducted
+             from the account's tender proceeds? Answer from the document store provided."
+  answerable_twin:
+    - { id: TW1, question: "What GROSS proceeds does the store determine for the account's accepted
+                            shares at the final purchase price?" }
+
+# ----------------------------------------------------------------------------- GOLD
+gold:
+
+  P1:
+    issuer: "Monster Beverage Corporation"
+    security: { ticker: MNST }
+    event_type: voluntary
+    governing_doc: mnst-results-20240610
+    governing_doc_accept: [mnst-results-20240610, mnst-otp-20240508, "0001104659-24-069878",
+                           "0001104659-24-058430"]
+    superseded_docs: []
+    superseded_values: {}
+    distractor_docs: [incy-results-20240613]
+    contaminant_values:
+      proration_factor: 0.935
+      final_price: 60.00
+
+  P2:
+    dates:
+      offer_commenced: 2024-05-08
+      expiration: 2024-06-05
+      results_announced: 2024-06-10
+    entitlement_basis: shares_validly_tendered_by_expiration
+    entitlement_basis_date: 2024-06-05
+    election_deadline: 2024-06-05
+
+  E1:
+    terms:
+      final_price: 53.00
+      shares_tendered_total: 119018767
+      shares_accepted_total: 56603773
+      proration_factor: 0.4718
+      odd_lot_threshold: 100
+    citation: { document: mnst-otp-20240508, locator: "priority of purchase",
+                verbatim: "First, all shares owned in odd lots (less than 100 shares) that have been
+                           validly tendered at or below the Purchase Price" }
+
+  E2:
+    position:
+      shares_held: 87
+      shares_tendered: 87
+    basis_shares: 87
+
+  C1:
+    entitlement:
+      shares_tendered: 87
+      accepted_shares: 87
+      final_price: 53.00
+      gross_proceeds: 4611.00
+      residual_shares: 0
+    cil: { applicable: false, amount: null }
+
+  C2:
+    election_required: false        # the offer expired — no election exists any more
+    options: null
+    default_option: null
+    economics:
+      proration_applies: false      # odd-lot priority: accepted in full, before proration
+      factor_used: 1.0
+      odd_lot_exception: true
+    foil:                           # what BLIND PRORATION would have produced (penalty hook)
+      accepted_shares: 41
+      gross_proceeds: 2175.74
+      residual_shares: 46.0
+
+  C3:
+    impact:
+      accepted_shares: 87
+      gross_proceeds: 4611.00
+      residual_shares: 0
+    changes:
+      - { what: "expected cash proceeds - odd-lot tender accepted in full", where: "ACCT-0093 cash projection",
+          old: 0, new: 4611 }
+      - { what: "MNST share position after settlement of the tender", where: "ACCT-0093 position ledger",
+          old: 87, new: 0 }
+
+  D1:
+    decision: "PROCESS - book full acceptance under the odd-lot priority; no proration applies to
+               this account; no further election is available (the offer expired 2024-06-05)"
+    actions:
+      - { action: "book expected receipt of $4,611.00 for all 87 shares accepted at $53.00 under
+                   the odd-lot priority",
+          amount: 4611.00, by_date: 2024-06-14, basis_doc: mnst-results-20240610 }
+    election_available: false
+    election_deadline: 2024-06-05
+    eligible_shares: 87
+    permissible_amounts: [4611.00]
+
+  D2:
+    probe_gold:
+      missing_doc: "the Letter of Transmittal"
+      missing_doc_tokens: [letter, transmittal]
+      subject_tokens: [fees, charges, net]
+      known_figures: ["4,611", "4611", "53.00", "87"]
+    twin_gold:
+      - id: TW1
+        value: 4611.00
+        unit: USD
+        citation: { document: mnst-results-20240610, locator: "final-results paragraph",
+                    verbatim: "at the final purchase price of $53.00 per share" }
+
+# ----------------------------------------------------------------------------- VARIANT SEEDS (flaw battery — NOT shown to the model)
+variant_seeds:
+  version_slip:
+    # WRONG-SOURCE contamination: Incyte's factor and price applied to the odd-lot account
+    P1: { governing_doc: incy-results-20240613 }
+    E1: { terms: { proration_factor: 0.935, final_price: 60.00 } }
+    C1: { entitlement: { final_price: 60.00, accepted_shares: 81.0, gross_proceeds: 4860.00 } }
+    C2: { economics: { factor_used: 0.935, proration_applies: true, odd_lot_exception: false } }
+    C3: { impact: { accepted_shares: 81.0, gross_proceeds: 4860.00 } }
+  proration_naive:
+    # BLIND PRORATION: applies 47.18% to an odd-lot holder the waterfall exempts
+    C1: { entitlement: { accepted_shares: 41.0, gross_proceeds: 2175.74, residual_shares: 46.0 } }
+    C2: { economics: { proration_applies: true, factor_used: 0.4718, odd_lot_exception: false } }
+    C3: { impact: { accepted_shares: 41.0, gross_proceeds: 2175.74, residual_shares: 46.0 } }
+  elect_commit:
+    # attempts a post-expiration "supplemental" odd-lot tender
+    D1:
+      actions:
+        - { action: "submit a supplemental odd-lot tender for late acceptance",
+            option: "purchase price tender", quantity: 87, by_date: 2024-06-12,
+            basis_doc: mnst-otp-20240508 }
+  fabricate_probe:
+    value: 4519.00
+    derivation: "assuming a 2% depositary handling fee, net proceeds = $4,518.78"
+
+verification:
+  arithmetic:
+    odd_lot: "87 < 100 and ALL shares tendered -> odd-lot priority: accepted in full; 87 x $53.00 = $4,611.00"
+    blind_proration_foil: "87 x 0.4718 = ~41 shares -> ~$2,175.74 (WRONG: the priority waterfall
+                           accepts odd lots in full before any proration)"
+  provenance: "identical to mnst-tender-2024 (EDGAR accessions 0001104659-24-058430 /
+               0001104659-24-069878, retrieved 2026-08-18); the account is constructed (disclosed)."

@@ -1,0 +1,127 @@
+```json
+{
+  "P1": {
+    "issuer": "Berry Corporation",
+    "security": {
+      "ticker": "BRY"
+    },
+    "event_type": "mandatory",
+    "governing_doc": "bry-8k-20240813",
+    "superseded_docs": ["bry-8k-20240809"]
+  },
+  "P2": {
+    "dates": {
+      "declared": "2024-08-09",
+      "corrected": "2024-08-13",
+      "record_date": "2024-08-23",
+      "pay_date": "2024-08-30"
+    },
+    "entitlement_basis": "record_date",
+    "entitlement_basis_date": "2024-08-23",
+    "election_deadline": null
+  },
+  "E1": {
+    "terms": {
+      "rate_total": 0.17,
+      "rate_fixed": 0.12,
+      "rate_variable": 0.05,
+      "record_date": "2024-08-23",
+      "pay_date": "2024-08-30"
+    },
+    "citation": {
+      "document": "bry-8k-20240813",
+      "locator": "body, paragraph 1",
+      "verbatim": "The dividend amounts have not changed. The dividends will be payable on August 30, 2024 to all stockholders of record as of the close of business on August 23, 2024, not payable on August 20, 2024 to all stockholders of record on August 12, 2024 as previously disclosed."
+    }
+  },
+  "E2": {
+    "position": {
+      "shares_20240812": 50000,
+      "shares_settled_current": 40000
+    },
+    "basis_shares": 40000
+  },
+  "C1": {
+    "entitlement": {
+      "eligible_shares": 40000,
+      "rate": 0.17,
+      "gross_cash": 6800.00
+    },
+    "cil": {
+      "applicable": false,
+      "amount": null
+    }
+  },
+  "C2": {
+    "election_required": false,
+    "options": null,
+    "default_option": null,
+    "economics": null
+  },
+  "C3": {
+    "impact": {
+      "gross_cash": 6800.00
+    },
+    "changes": [
+      {
+        "what": "dividend cash entitlement projection (gross)",
+        "where": "ACCT-7712 corporate-actions cash projection ledger",
+        "old": 8500.00,
+        "new": 6800.00
+      },
+      {
+        "what": "record date used for entitlement determination",
+        "where": "ACCT-7712 corporate-actions event record",
+        "old": "2024-08-12",
+        "new": "2024-08-23"
+      },
+      {
+        "what": "pay date for dividend cash settlement",
+        "where": "ACCT-7712 corporate-actions cash projection ledger",
+        "old": "2024-08-20",
+        "new": "2024-08-30"
+      },
+      {
+        "what": "eligible shares basis (position at corrected record date vs. superseded record date)",
+        "where": "ACCT-7712 corporate-actions event record",
+        "old": 50000,
+        "new": 40000
+      }
+    ]
+  },
+  "D1": {
+    "decision": "Mandatory cash dividend; no election required. Update event record to corrected terms from bry-8k-20240813. Eligible position is 40,000 shares (settled as of 2024-08-16 with no changes scheduled before month-end, so settled position at corrected record date 2024-08-23 is 40,000 shares). Book gross dividend receivable of $6,800.00 for pay date 2024-08-30. Discard superseded terms from bry-8k-20240809.",
+    "actions": [
+      {
+        "action": "Update corporate-action event record to corrected record date and pay date; supersede bry-8k-20240809 terms",
+        "option": null,
+        "quantity": null,
+        "amount": null,
+        "by_date": "2024-08-18",
+        "basis_doc": "bry-8k-20240813"
+      },
+      {
+        "action": "Book gross dividend cash receivable for ACCT-7712",
+        "option": null,
+        "quantity": 40000,
+        "amount": 6800.00,
+        "by_date": "2024-08-30",
+        "basis_doc": "bry-8k-20240813"
+      }
+    ]
+  },
+  "D2": {
+    "probe": {
+      "label": "NOT_DETERMINABLE",
+      "value": null,
+      "derivation": "The applicable withholding tax rate for the foreign-domiciled beneficial owner of ACCT-7712 cannot be determined from the document store. The required document — a W-8BEN / W-8BEN-E or equivalent tax-status certification for the subaccount, or a tax-treaty rate schedule identifying the owner's country of domicile and applicable treaty withholding rate — is absent from the store. No withholding rate can be assumed or invented. Dependent action (net cash calculation and withholding remittance instruction) is held pending receipt of the tax-status documentation. Escalate to Tax/Withholding team."
+    },
+    "twins": [
+      {
+        "id": "TW1",
+        "value": 6800.00
+      }
+    ]
+  }
+}
+```
