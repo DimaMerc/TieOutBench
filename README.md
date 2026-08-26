@@ -71,8 +71,10 @@ flaw trip its gate. `python -m harness list` shows every case and variant ·
 `python -m harness suite` scores them all · `python -m harness selftest` prints PASSED.
 
 **Run a real model** (optional, needs an API key): add `--model live --endpoint <url> --model-id
-<model>` with `OPENAI_API_KEY` set. The graded frontier-model runs are in [`outputs/`](outputs/),
-consolidated in [`LEADERBOARD.md`](LEADERBOARD.md).
+<model>`. Keys come from the environment or a gitignored repo-root `.env` (copy
+[`.env.example`](.env.example)); the harness picks the right vendor's key from the endpoint
+(`ANTHROPIC_API_KEY` / `OPENAI_API_KEY` / `GEMINI_API_KEY`). The graded frontier-model runs are
+in [`outputs/`](outputs/), consolidated in [`LEADERBOARD.md`](LEADERBOARD.md).
 
 > 📄 **Prefer prose?** The consolidated technical report is at
 > [evals.finance/paper.pdf](https://evals.finance/paper.pdf) and on

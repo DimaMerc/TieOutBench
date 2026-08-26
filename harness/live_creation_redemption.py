@@ -21,7 +21,7 @@ from __future__ import annotations
 import copy
 import json
 import os
-from .live import DEFAULT_ENDPOINT, chat, parse_answer
+from .live import DEFAULT_ENDPOINT, chat, parse_answer, resolve_key
 
 
 # ---------------- the packet (order + PCF + delivery + probe; all in the case) ----------------
@@ -139,7 +139,7 @@ def answer(case, *, endpoint=DEFAULT_ENDPOINT, model_id=None, api_key=None, max_
     msgs = build_messages(case, packet)
     approx_tok = sum(len(m["content"]) for m in msgs) // 4
     stats = {}
-    key = api_key or os.environ.get("OPENAI_API_KEY") or os.environ.get("OPENROUTER_API_KEY")
+    key = resolve_key(endpoint, api_key)
     content, used = chat(msgs, endpoint=endpoint, model_id=model_id, max_tokens=max_tokens,
                          deadline=deadline, timeout=300, stats=stats, api_key=key)
     if not content.strip():

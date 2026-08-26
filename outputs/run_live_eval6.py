@@ -7,10 +7,11 @@ case and save artifacts.
       --endpoint https://api.anthropic.com/v1 [--case mega-split-2024] [--max-tokens 8000]
 
 Saves under outputs/eval6-live/<model>/<case>/: answer.json, raw.txt, report.txt. The API key is
-read from the environment, never passed on the command line. Because the three vendors' keys live
-in different variables on this rig, the key env var is RESOLVED FROM THE ENDPOINT unless --key-env
-overrides: api.anthropic.com -> OPENROUTER_API_KEY (holds the sk-ant key on this rig),
-api.openai.com -> OPENAI_API_KEY, googleapis.com -> GEMINI_API_KEY.
+read from the environment (or a gitignored repo-root .env — see .env.example), never passed on
+the command line. The key env var is RESOLVED FROM THE ENDPOINT unless --key-env overrides:
+api.anthropic.com -> ANTHROPIC_API_KEY (legacy fallback OPENROUTER_API_KEY, which held the
+sk-ant key on the original rig), api.openai.com -> OPENAI_API_KEY, googleapis.com ->
+GEMINI_API_KEY.
 """
 from __future__ import annotations
 import argparse
@@ -29,7 +30,8 @@ from harness.report import render                            # noqa: E402
 
 def _key_env_for(endpoint: str) -> str:
     if "anthropic" in endpoint:
-        return "OPENROUTER_API_KEY"
+        # honest name first; the legacy var (which held the sk-ant key on the original rig) still works
+        return "ANTHROPIC_API_KEY" if os.environ.get("ANTHROPIC_API_KEY") else "OPENROUTER_API_KEY"
     if "googleapis" in endpoint:
         return "GEMINI_API_KEY"
     return "OPENAI_API_KEY"

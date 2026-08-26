@@ -30,11 +30,49 @@ UA = "TieOutBench research welt.management.solutions@gmail.com"
 DEFAULT_ENDPOINT = "http://localhost:1234/v1"
 
 
+def _load_env_file():
+    """Minimal stdlib .env loader (KEY=VALUE lines, # comments; quotes stripped) from the repo
+    root — kept dependency-free on purpose (the repo's one-dependency claim). The real
+    environment always wins; the file only fills gaps. `.env` is gitignored — never commit keys."""
+    p = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), ".env")
+    try:
+        with open(p, encoding="utf-8") as fh:
+            for line in fh:
+                line = line.strip()
+                if not line or line.startswith("#") or "=" not in line:
+                    continue
+                k, v = line.split("=", 1)
+                k, v = k.strip(), v.strip().strip('"').strip("'")
+                if k and v and k not in os.environ:
+                    os.environ[k] = v
+    except OSError:
+        pass
+
+
+_load_env_file()
+
+
+def resolve_key(endpoint, api_key=None):
+    """Endpoint-aware key resolution — the right vendor's key for the right host, so a multi-vendor
+    environment can hold all three keys at once: api.anthropic.com -> ANTHROPIC_API_KEY (legacy
+    fallback: OPENROUTER_API_KEY, which held the sk-ant key on the original rig);
+    googleapis -> GEMINI_API_KEY; everything else (OpenAI, OpenRouter, LM Studio) ->
+    OPENAI_API_KEY/OPENROUTER_API_KEY. None is fine (LM Studio needs no auth)."""
+    if api_key:
+        return api_key
+    e = (endpoint or "").lower()
+    if "anthropic" in e:
+        return os.environ.get("ANTHROPIC_API_KEY") or os.environ.get("OPENROUTER_API_KEY")
+    if "googleapis" in e:
+        return os.environ.get("GEMINI_API_KEY") or os.environ.get("GOOGLE_API_KEY")
+    return os.environ.get("OPENAI_API_KEY") or os.environ.get("OPENROUTER_API_KEY")
+
+
 # ---------------- OpenAI-compatible client (LM Studio local, or a frontier API) ----------------
 def _headers(api_key=None):
-    """LM Studio needs no auth; a frontier OpenAI-compatible endpoint (OpenAI, OpenRouter, ...) needs a
-    Bearer key. Resolve from the arg or OPENAI_API_KEY/OPENROUTER_API_KEY; omit the header when absent
-    so the local-server path is byte-identical to before."""
+    """LM Studio needs no auth; a frontier OpenAI-compatible endpoint needs a Bearer key. Callers
+    resolve via resolve_key(endpoint, ...); omit the header when absent so the local-server path
+    is byte-identical to before."""
     h = {"Content-Type": "application/json"}
     key = api_key or os.environ.get("OPENAI_API_KEY") or os.environ.get("OPENROUTER_API_KEY")
     if key:
@@ -50,7 +88,8 @@ def _post(url, payload, timeout=600, api_key=None):
 
 
 def list_models(endpoint=DEFAULT_ENDPOINT, api_key=None):
-    req = urllib.request.Request(endpoint.rstrip("/") + "/models", headers=_headers(api_key))
+    req = urllib.request.Request(endpoint.rstrip("/") + "/models",
+                                 headers=_headers(resolve_key(endpoint, api_key)))
     with urllib.request.urlopen(req, timeout=15) as r:
         return [m["id"] for m in json.loads(r.read().decode("utf-8")).get("data", [])]
 
@@ -65,6 +104,7 @@ def chat(messages, *, endpoint=DEFAULT_ENDPOINT, model_id=None, max_tokens=4000,
     `delta.content`; pass a dict as `stats` to receive {'reasoning_chars', 'content_chars'} so a
     caller can tell 'spent the whole budget thinking' apart from a context overflow.
     On a 400 (some templates, e.g. Gemma, reject a `system` role) we fold system into user and retry."""
+    api_key = resolve_key(endpoint, api_key)
     if model_id is None:
         ms = list_models(endpoint, api_key=api_key)
         if not ms:
