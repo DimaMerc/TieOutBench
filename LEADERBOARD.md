@@ -51,7 +51,7 @@ gate, calibrated refusal perfect).
 | GPT-5.6-sol | 1.000 AP | 1.000 AP | 1.000 AP | 1.000 AP | 0.983 | 1.000 AP |
 | GPT-5.5 | 1.000 AP | 1.000 AP | 1.000 AP | 1.000 AP | 0.983 | 1.000 AP |
 | GPT-5.4 | 1.000 AP | 1.000 AP | 0.936 | 1.000 AP | 0.983 | 1.000 AP |
-| GPT-5.4-mini | 0.840 | 0.920 · `FABRICATION` | 0.840 | 0.956 | **0.225 · `VERSION`+`ELECT`** | 0.828 |
+| GPT-5.4-mini | 0.840 | 0.920 · `FABRICATION` | 0.901 | 0.956 | **0.225 · `VERSION`+`ELECT`** | 0.828 |
 | Gemini 3.6 Flash | 1.000 AP | 1.000 AP | 1.000 AP | 1.000 AP | 0.983 | 1.000 AP |
 
 - **The suite's first perfect live row**: Sonnet 4.6 at 1.000/AllPass on all six cases (no live
@@ -67,10 +67,11 @@ gate, calibrated refusal perfect).
   reports 180,000 as COMPUTED (its fabrication gate). And a genuinely new trap fired where it was
   planted: on the *clean* split case Opus and Haiku both answered the dividend twin at the
   pre-split rate × post-split shares — the classic split/dividend double-count.
-- **Nobody used a distractor's numbers**: no model applied the fictional QSEM ratio, Incyte's
-  93.5% factor, or the naive 47.56% recompute in place of the depositary's stated 47.18% — and
-  every model honored the odd-lot priority. Full traces: [`outputs/eval6-live/`](outputs/eval6-live/)
-  and its [taxonomy](outputs/eval6-live/TAXONOMY.md).
+- **The unlabeled traps caught nobody**: no model used the naive 47.56% recompute in place of
+  the depositary's stated 47.18%, and every model accepted the odd lot in full rather than
+  prorating an exempt holder. (The distractor documents are labeled as such in the store, so no
+  model borrowing their values is the expected minimum, not a finding.) Full traces:
+  [`outputs/eval6-live/`](outputs/eval6-live/) and its [taxonomy](outputs/eval6-live/TAXONOMY.md).
 
 ### The methodology finding — every vendor meters the budget differently
 

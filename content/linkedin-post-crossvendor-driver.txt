@@ -36,3 +36,19 @@ PUBLISH RUNBOOK (not part of the post):
    are within 0.04 of each other and five models tie on one case - the eval
    doesn't separate the frontier there anymore. Don't get drawn into a
    ranking argument; that's the point of the piece.
+
+REFRESH (Aug 2026 - what changed since the July verification, so the piece
+stays accurate on publish day):
+- The consolidated technical report is now on SSRN (abstract 7243025, posted
+  Aug 12 2026). Add it to the FIRST COMMENT alongside the article link and
+  evals.finance: https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7243025
+- The repo was renamed finance-llm-evals -> TieOutBench (old links redirect).
+  Any repo link you paste: https://github.com/DimaMerc/TieOutBench
+- Eval #6 (corporate actions) has since run on the same eight models. The
+  article's "three of the workflows" and "eight models, three vendors" remain
+  exactly true for what it describes; do NOT edit the body to add eval 6 -
+  that is the Sep 22-23 piece. If a commenter asks "what's next", the reply is
+  "corporate actions, next week".
+- The article body's evals.finance link and all figures were re-checked against
+  LEADERBOARD.md on 2026-08-26: unchanged (the eval-3-5 grid reproduces
+  byte-for-byte from the committed runs - `python -m harness profiles`).

@@ -1,0 +1,182 @@
+HEADLINE (goes in the article title field; 95 characters):
+
+One AI cited the right document and booked the wrong amount. Eight models on corporate actions.
+
+
+BODY (paste below into the article editor; formatting notes at the bottom):
+
+Latest in a series on building runnable evaluations for finance LLMs. This one goes to the corner of post-trade that custodians themselves describe as one of the most manual and error-prone: corporate actions. Six cases built on four real events, eight frontier models, and two results I did not expect - the first model that has ever come through every case perfect, and a failure that looks exactly like competence until you check the number.
+
+
+The most manual corner of post-trade
+
+Last month the head of custody at one of the largest global custodians described corporate actions, at a media briefing, as "one of the more, if not the most, complex manual and error-prone part of post-trade processing." The industry's own estimate for what that work costs is around USD 58 billion a year, with well under half of it automated.
+
+It is also one of the corners where the industry has been testing AI most visibly. A consortium of two dozen institutions - market infrastructures, custodians, asset managers - has been running large language models over issuer announcements to turn unstructured text into structured records. The published result is that the models agree with each other nearly all the time, and that records reach full accuracy after a human attests to them. What nobody has published for corporate actions, as far as I can find, is how often the models are simply right on their own.
+
+That is the gap this evaluation is built for. Not "can AI read a corporate action announcement" - it clearly can. The question is whether, given the kind of document pile a desk works from, the AI processes the event on the right version of the facts, on the right dates, and commits only what the deadline allows. Because in corporate actions, some mistakes are not corrected. They are paid.
+
+
+The test: real events, a document store, and a deadline
+
+Four real events sit under the six cases, all cited to the issuers' own filings. There is a ten-for-one stock split by a large technology company in 2024, with its record date, distribution date, and first split-adjusted trading day taken from the 8-Ks. There is an oversubscribed self-tender by a large consumer company the same year - the company offering to buy back its own shares - with the offer document, the expiration deadline, the odd-lot priority rule, and the final results, including the proration factor the depositary announced. And there are two corrected dividends: one where the issuer moved the record date - the date that fixes who is owed the payment - by eleven days after declaring it, and one, from 2014, where a record date landed on a Sunday and was moved to the next business day.
+
+What the model receives is a document store, not a tidy packet: the announcement and its amendment, a position report, an ETF basket file where the event hits a fund, and distractors - a fictional issuer's split, and a real, concurrent tender by a different company with a different proration factor. The correction announces itself as a correction, as the real one did, and the distractors are labeled as such. What nothing in the store says is which version to process against, or that the account's position changed between the two record dates.
+
+The custody side is the constructed element, and every case file says so: the accounts, their positions, and the ETF basket where a fund is involved are illustrative and mechanics-faithful, built over the real event, because custody records and basket files are not public. Every event term the model is graded on - the ratio, the dates, the proration factor, the corrected record date - comes from the filings. The positions it applies them to are constructed and disclosed.
+
+The scoring follows the same design as the five evaluations before it. The workflow is broken into checkpoints: pin the event and the version of it that governs - the one the desk must act on - pin the governing dates, extract the terms, read the position, compute the entitlement, judge whether an election exists, state what changes where, and commit to actions. Each checkpoint is scored against a rubric. A few conditions are gates: if one fires, the run fails automatically, no matter how good the rest of the work is. The signature gate here is new to the series. It fires when the model commits an irreversible wrong action: an election (a holder's choice between options) when none is on offer, a commitment dated after the deadline, a payment released on superseded terms or in an amount the governing facts do not support.
+
+A gate is not a heavy penalty. It is the definition of what counts as a solution. A weighted average lets a model make up for a catastrophic action with excellence everywhere else. A gate says: you do not get to average that.
+
+And one thing the earlier evaluations never had in this form: a deadline. A tender that expired on Wednesday cannot accept shares on Thursday. An announcement corrected on the thirteenth cannot be processed on the eighteenth using the terms from the ninth.
+
+
+What eight frontier models did
+
+I ran eight frontier models from three vendors through all six cases, one run per model per case - forty-eight runs. Thirty-two of them passed every criterion with no gate fired. That is a far higher pass rate than the analyst-style evaluations in this series ever produced, and it makes sense: a corporate action is a procedure, a valuation is a judgment.
+
+One model - a mid-tier model, not a flagship - passed all six cases with a perfect score. In five evaluations and more than fifty live runs before this one, no model had ever passed a single case cleanly. On the case where the basket file was stale - not yet adjusted for the split - it adjusted the fund's holdings itself. On the tender it applied the depositary's proration factor rather than recomputing its own. On the corrected dividend it processed the corrected record date against the position the account would hold on that date. And on every case it named the one document the store did not contain, put on hold only the action that depended on it, and refused to invent a number for it. One disclosure: that model's first batch surfaced an ambiguity in my prompt; I fixed the prompt, re-ran it in full, and every other model ran under that same final prompt.
+
+Two traps sat in the tender case with no label on them, and neither caught anyone. Recomputing the proration factor from the headline numbers gives 47.56 percent, but the depositary announced 47.18 percent, because odd lots are accepted in full before anything is prorated - and every model used the announced figure. On the odd-lot case, every model accepted the odd lot in full instead of applying the proration factor to a holder the rule exempts. (The labeled distractors - the fictional split, the other company's tender - caught nobody either, which is a floor, not a feat.)
+
+Then the failure I built the evaluation to find happened, on the corrected dividend, to a small-tier model - the least expensive of the eight.
+
+It pinned the correct document - the correction, not the original. It listed the original announcement, in its own worksheet, as superseded. It stated the corrected record date. And then it computed the entitlement on the position from the original record date - 50,000 shares, not the 40,000 the account would hold on the corrected date - and booked USD 8,500 against the correct payment date, when the correct amount was USD 6,800. Two gates fired: one for superseded values in the worksheet, one for booking the payment on the superseded terms. Its gated score was 0.225. Its ungated score, the naive average of everything it did well, was 0.574.
+
+That is the failure this series has been looking for since the first evaluation: the right narrative wrapped around the wrong number. A reviewer who reads the model's worksheet sees a careful analyst. Only the number under it is wrong, and the number is the thing that gets paid. Across the two back-office evaluations before this one - the basket reconciliation and the confirmation match - no live model had ever committed the catastrophic action the signature gates exist to catch; the flagships still have not. That model now has committed it, once, on a corporate action. The other two small models did not; one of them fired no gate anywhere.
+
+Two smaller findings deserve their own lines, because each showed up in more than one model.
+
+The first is a failure class that appeared earlier in the series, on a valuation: the model derives the right number and reports a different one. Asked for the gross dividend on the fund's split-adjusted position, one small model wrote "180,000 x $0.01 = $1,800.00" in its own working and then put 18,000 in the answer field. A different small model derived 1,800 and reported 180,000 - and labeled it as computed, on a net-cash question the documents cannot answer at all. That is a fabrication by any standard. The derivation was right both times. The reported figure was not.
+
+The second is a trap I planted without really expecting anyone to fall into it. The split announcement also raised the dividend, and stated the new rate in both pre-split and post-split terms. On the version of the case where the basket was already adjusted, a flagship model answered the dividend question at ten times the real figure - exactly the number you get by applying the pre-split rate to the post-split share count. It got the same question right on the version of the case where the basket was still stale. The already-adjusted context is what triggered the error. It is the textbook split mistake, the one the split-adjustment check exists to catch, and it appeared exactly where I had set the trap.
+
+
+Attacking my own test
+
+A benchmark that only reports what it found, and not how it was tested itself, is not finished. Here is what it took to make this one trustworthy.
+
+Before any live model saw the cases, I put the grader through an adversarial review: four independent passes - AI agents, each briefed to break a different part of the grader - each trying to game a gate or force a false alarm, with every claimed exploit re-run against the actual scoring code. They found twenty-one ways to slip a wrong action or a wrong source past a gate - appending "escalate any depositary rejects" to a committing instruction was enough to slip it past the signature gate - and fourteen ways a correct, professionally phrased answer would be punished. All thirty-five were fixed, and all thirty-five now re-run automatically as part of the suite's self-test, so a grader change that reopens any of them fails the build.
+
+Then the live models found the rest. This has happened on five of the six evaluations in the series, and it happened here more than ever: the first real answers found gaps in what the grader expected, and all of them were false alarms on correct answers. A results-booking instruction that said "settle accepted tender shares" was being read as a new election, because "tender" is a verb in the grader's vocabulary and a label in the desk's. "Hold for settlement", which in custody simply means the trade is waiting to settle, was being read as an escalation. A model's account reference was being read as a fabricated figure because it contained four digits. The other direction is held by the deliberately wrong answers and the attacker cases, so the grader cannot quietly become lenient. The full log is in the repository, because a finding you cannot audit is a claim.
+
+Every fix raised scores. None of them touched the small model's failure. It was real before the fixes and real after them.
+
+
+Where the human belongs, revised
+
+A month ago I argued that human review in AI-assisted operations belongs on the numbers under the decision - the tie-out, the check that every figure agrees with its source - because across the earlier evaluations the strong models got the go/no-go decision right and slipped on the arithmetic beneath it. This evaluation refines that in two directions.
+
+For every model but that one it still holds, even more clearly: the pass rate is high, the decisions are right, and the losses are in the numbers - a dividend double-count by a flagship, two terms left blank by a mid-tier model that were sitting in the offer document, a partial localization of what changes where on the corrected dividend. I would put the human on the tie-out.
+
+For that model it no longer holds. It did not slip on the arithmetic under a right decision; it booked the entitlement on the wrong version of the facts while narrating the right version. The tie-out that catches it is not "does the number agree with the source" but "does the number agree with the governing source" - the version check and the number check together. If a firm is deploying the small, inexpensive models on corporate actions to save money, that is the check I would build the review around, before every booking.
+
+For anyone running operational due diligence on a provider's AI, this is the shape I think an answer has to take: per-step scores, a record of whether the auto-fail conditions ever fired, and every run saved so a reviewer can re-grade it.
+
+The evaluation, the six cases with their citations, the grader, and all forty-eight runs are open in the repository (github.com/DimaMerc/TieOutBench), and the consolidated technical report for the first five evaluations - TieOutBench - is on SSRN. The next step is designed, not built: because every gate here is a yes/no check on what the model actually did, the same build can serve as a training environment for models - the gates as the rules, the score as the reward. That is a post for another month.
+
+If you sit anywhere near a corporate-actions desk - custodian, CSD, fund administrator, the asset manager on the other end - I would like to hear which of these failures you have seen a person make. My guess is all of them.
+
+evals.finance
+
+
+==================================================================
+FORMATTING NOTES (do these by hand in the LinkedIn editor - not part of the article):
+
+1. Cover image: assets/cover-eval6.png (wide). The square hero-eval6.png is for
+   the feed driver post, not the article header.
+
+2. Make these lines Section Headers (the editor's "H2" style):
+   - The most manual corner of post-trade
+   - The test: real events, a document store, and a deadline
+   - What eight frontier models did
+   - Attacking my own test
+   - Where the human belongs, revised
+
+3. Italicize the opening "Latest in a series..." paragraph.
+
+4. Bold SPARINGLY. Suggested spots:
+   - "some mistakes are not corrected. They are paid." (end of section 1)
+   - "A gate is not a heavy penalty. It is the definition of what counts as a
+     solution." (section 2)
+   - "the right narrative wrapped around the wrong number" (section 3)
+   - "Every fix raised scores. None of them touched the small model's failure."
+     (end of section 4)
+   Anything more starts to look generated.
+
+5. The hero image (assets/hero-eval6.png) can go inline right after the
+   "Its gated score was 0.225" paragraph as a visual break.
+
+6. Links inside article bodies are fine on LinkedIn, so the repo URL and
+   evals.finance stay inline. Add the SSRN link inline at "is on SSRN" if you
+   want it clickable: https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7243025
+
+7. Timing words: "Last month" (the custodian quote, Aug 18) and "A month ago I
+   argued" (the trust-the-call post, Aug 26) are correct for Sep 22-23. If it
+   slips into October, change both to "In August".
+
+FACT ANCHORS (verified by the three-reviewer pass 2026-08-26 - not part of the article):
+- Custodian quote: Citi's head of custody for investor services (Amit Agarwal),
+  MEDIA BRIEFING Aug 18 2026 (Markets Media) - NOT the same-day Custody+ press
+  release, which does not contain it. Verbatim as quoted. Unnamed in body.
+- $58bn/yr = DTCC estimate via the Chainlink/Swift/DTCC/Euroclear/SIX release
+  (Sep 29 2025); automation <40%; 24 institutions; "almost 100% data consensus
+  agreement among AI models"; 100% after institutional attestation; no
+  raw-model accuracy figure; no 2026 status update found. ISDA publishes CSA
+  extraction accuracy (>90%) - hence "for corporate actions" + "as far as I
+  can find".
+- Events: NVIDIA 10:1 split (8-Ks 0001045810-24-000113 / -000144; record
+  2024-06-06, distribution 2024-06-07, adjusted trading 2024-06-10; dividend
+  raise $0.10 pre = $0.01 post in the same 8-K); Monster Beverage self-tender
+  (SC TO-I 0001104659-24-058430; results 0001104659-24-069878: $53.00 final,
+  119,018,767 tendered, 56,603,773 accepted, factor ~47.18%; naive = 47.56%);
+  Berry Corp corrected dividend (0001705873-24-000046 / -000052: record 8/12
+  -> 8/23, pay 8/20 -> 8/30; the STORE presents the correction 8-K dated
+  2024-08-13, hence "corrected on the thirteenth"; case as-of 2024-08-18);
+  Zoetis 2014 (0001555280-14-000162 / -000166: record 4/27 Sunday -> 4/28).
+  Distractor tender = Incyte (real, factor ~93.5%). Distractors and the
+  correction ARE labeled in the store (types/titles) - body says so.
+- Constructed and disclosed: the ETF/PCF (two cases), all accounts, positions,
+  instruction records, the BRY position change between record dates, the
+  fictional QSEM split, the broker memos. Gold entitlements are computed on
+  constructed positions; every event TERM is from the filings.
+- Grid: 8 models x 6 cases = 48 runs; 32 AllPass (report.txt). Perfect row =
+  Claude Sonnet 4.6 (mid tier); its first batch drove the C3-changes prompt
+  clarification and was fully re-run under the final prompt before any other
+  model ran (TAXONOMY header). Prior live runs = 57 (eval 1: 2, eval 2: 7,
+  evals 3-5: 48); no prior AllPass anywhere (best 0.983).
+- The cascade = GPT-5.4-mini on bry-dividend-2024: governing_doc bry-8k-
+  20240813; superseded_docs [bry-8k-20240809] (the "listed as superseded" line
+  - it has NO decision-text sentence about superseded terms; that sentence,
+  "Discard superseded terms from bry-8k-20240809", is SONNET's - never
+  attribute it to the mini); record_date 2024-08-23; E2 basis 50,000; C1
+  eligible 50,000 / gross 8,500; action "book dividend receivable" 50,000 /
+  $8,500 by 2024-08-30 (an accrual BOOKING, not a cash release - body says
+  "booked"); GATE.VERSION + GATE.ELECT (permissible_amounts [6800, 4800,
+  2000]); gated 0.225 / ungated 0.574. Gold 40,000 x $0.17 = $6,800.
+  The other two small-tier models (Haiku 4.5, Gemini 3.6 Flash) did not
+  commit it; Gemini fired no gate anywhere.
+- Derive-right-report-different: Haiku 4.5 twin derivation "180,000 x $0.01 =
+  $1,800.00" (verbatim), value 18,000 (mega-split-2024-clean); GPT-5.4-mini
+  derivation 1,800, value 180,000 labeled COMPUTED on the NET-cash probe ->
+  FABRICATION. Both small tier.
+- Double-count: attributed to Opus 4.8 ONLY (twin 18,000, no derivation - the
+  mechanism is inferred from the value; Haiku's 18,000 is the derive/report
+  mismatch above and is counted once). Opus got 1,800 on the break case.
+- "two terms left blank by a mid-tier model" = GPT-5.4 on mnst-tender-2024
+  (price range low/high null; in the OTP). "partial localization" = the 0.983
+  cluster on bry-dividend-2024 (C3.localize).
+- Gaming review: 4 AI-agent adversarial passes; 21 exploits (ELECT dodges,
+  VERSION/DATES dodges, refusal/scale) + 14 false positives; the 53-check
+  suite is now committed as harness/gaming_review_eval6.py and runs inside
+  `python -m harness selftest` (hence "re-run automatically ... fails the
+  build"). "escalate any depositary rejects" is verbatim from check A1#1.
+  Live waves: ~15 fixes, all false fires; "settle accepted tender shares" is
+  verbatim from Haiku's odd-lot answer; ACCT-7712 was the four-digit
+  identifier. Grader-bug rounds logged on evals 1, 2, 3, 5, 6 (not 4).
+- Paper on SSRN covers the FIRST FIVE evaluations; eval 6 is post-paper.
+- Attribution wall: "I argued", "in my evaluation work", "I would put",
+  "I would build the review around" - owned opinion; no desk claims; no
+  former employer named or identifiable; no bio line on purpose.
+- Models are named by tier only in the body; names are in the leaderboard.

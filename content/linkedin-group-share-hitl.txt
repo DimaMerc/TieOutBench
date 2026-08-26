@@ -1,0 +1,32 @@
+GROUP SHARE INTRO - international ETF group (companion to linkedin-post-human-in-the-loop.txt)
+===========================================================================
+Mechanics: share the ORIGINAL post into the group 2-3 days after it peaks
+(Thursday earliest; next Tuesday if the main post is still climbing). This
+text sits ABOVE the embedded original post - it frames, it does not repeat.
+The original's first-comment links do not travel with a share; readers click
+through to the original, which is where the engagement should consolidate.
+
+---------------------------------------------------------------------------
+MAIN VERSION:
+
+Sharing here because the two checks in this post live inside every ETF: the creation basket, and the swaps the fund holds - total-return swaps in leveraged and synthetic funds, rate swaps in fixed-income ones.
+
+Eight frontier models got the settle-or-not and affirm-or-not call right in every run. Where they slipped was the money underneath: one sized a 5 basis point break ten times too small, another ten times too big.
+
+UCITS or '40 Act, the question is the same - does the human check the decision, or the number under it? Curious how your fund's servicing chain handles it.
+
+---------------------------------------------------------------------------
+SHORT VERSION (if the group skews toward quick reads):
+
+The two checks in this post live inside every ETF - the creation basket and the fund's swaps. Frontier models got the settle/affirm call right every time and mis-sized the money underneath, ten times off in both directions. Does your servicing chain put the human on the decision, or on the number? Curious how it's done in your funds.
+
+---------------------------------------------------------------------------
+CLAIM CHECK:
+- "in every run" = the strong tier across evals #4-#5: all eight models
+  returned DO_NOT_SETTLE / MISMATCHED; GATE.RECON and GATE.MATCH never fired.
+- The swap-inside-an-ETF case pair exists as gold cases but has NOT been
+  live-run. The intro says the checks "live inside every ETF" (true of the
+  control), not that the ETF swap cases were run - keep it that way.
+- "ten times too small / too big" = eval #5 live runs (0.5 bp vs 50 bp on a
+  5 bp break), same receipt as the main post.
+- No desk-experience claim; no firm named.

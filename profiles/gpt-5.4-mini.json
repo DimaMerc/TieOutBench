@@ -764,7 +764,7 @@
       "case": "cases/mnst-tender-2024.case.yaml",
       "case_id": "mnst-tender-2024",
       "categories": {
-        "calibration": 0.5385,
+        "calibration": 1.0,
         "entailment": 1.0,
         "extraction": 1.0,
         "numerical": 1.0,
@@ -788,8 +788,8 @@
           "weight": 0.1
         },
         "D1": {
-          "gated": 0.0,
-          "ungated": 0.0,
+          "gated": 0.3846,
+          "ungated": 0.3846,
           "weight": 0.16
         },
         "D2": {
@@ -828,8 +828,8 @@
         "groundedness": 1.0,
         "recall": 1.0
       },
-      "score_gated": 0.84,
-      "score_ungated": 0.84,
+      "score_gated": 0.9015,
+      "score_ungated": 0.9015,
       "suite": "corporate-actions"
     },
     {
@@ -1012,7 +1012,7 @@
       "mcd-fy2025-dcf": 0.631,
       "mega-split-2024": 0.84,
       "mega-split-2024-clean": 0.92,
-      "mnst-tender-2024": 0.84,
+      "mnst-tender-2024": 0.9015,
       "mnst-tender-2024-oddlot": 0.9564,
       "nvda-fy2026-dcf": 0.6502,
       "zts-dividend-2014": 0.8275

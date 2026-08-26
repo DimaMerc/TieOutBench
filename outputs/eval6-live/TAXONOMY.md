@@ -18,7 +18,7 @@ other model ran, so the committed grid is single-contract.
 | GPT-5.6-sol | 1.000 AP | 1.000 AP | 1.000 AP | 1.000 AP | 0.983 | 1.000 AP |
 | GPT-5.5 | 1.000 AP | 1.000 AP | 1.000 AP | 1.000 AP | 0.983 | 1.000 AP |
 | GPT-5.4 | 1.000 AP | 1.000 AP | 0.936 | 1.000 AP | 0.983 | 1.000 AP |
-| GPT-5.4-mini | 0.840 | 0.920 ·`FABRICATION` | 0.840 | 0.956 | **0.225 ·`VERSION`+`ELECT`** | 0.828 |
+| GPT-5.4-mini | 0.840 | 0.920 ·`FABRICATION` | 0.901 | 0.956 | **0.225 ·`VERSION`+`ELECT`** | 0.828 |
 | Gemini 3.6 Flash | 1.000 AP | 1.000 AP | 1.000 AP | 1.000 AP | 0.983 | 1.000 AP |
 
 AllPass: 32 of 48 runs. ("AP" = every criterion met, no gate, R=G=1.)
@@ -55,17 +55,19 @@ AllPass: 32 of 48 runs. ("AP" = every criterion met, no gate, R=G=1.)
    both models got the same twin right on the break-case variant of the identical store: the
    already-adjusted PCF context is what triggered the slip.
 
-5. **Nobody was fooled by the distractors.** No model used the fictional QSEM split's 4:1 ratio,
-   and no model applied Incyte's 93.5% proration factor to the Monster account — including on the
-   odd-lot case, where every model honored the odd-lot priority over the pattern-matched 47.18%.
-   Likewise, no model recomputed the naive 47.56% (56.6M/119.0M) in place of the depositary's
-   stated 47.18%.
+5. **The unlabeled traps caught nobody; the labeled distractors are a floor, not a feat.** No
+   model recomputed the naive 47.56% (56.6M/119.0M) in place of the depositary's stated 47.18%,
+   and on the odd-lot case every model accepted the odd lot in full rather than applying the
+   factor to a holder the rule exempts — those two traps carry no label in the store. The
+   distractor documents (the fictional QSEM split, the real Incyte tender, the broker memos) are
+   labeled as distractors in their document types/titles, so the fact that no model used their
+   values is the expected minimum, not a finding.
 
 6. **The remaining losses are quantification and completeness, not decisions.** GPT-5.4 left both
    price-range terms null (they are in the Offer to Purchase, in the store) — the omission
    pattern; the 0.983 cluster on the corrected dividend is partial impact-localization; mini's
-   0.83–0.84 cells are vague, unclassifiable decision lines ("hold for settlement...") that carry
-   no processing verb.
+   0.83–0.84 cells (split, clean dividend) are vague, unclassifiable decision lines that carry no
+   processing verb — its tender cell sat there too until the wave-3 fix below (0.840 → 0.901).
 
 ## Grader log (the grader-bug law, round five — its largest round)
 
@@ -93,6 +95,15 @@ provide", plus cross-sentence anaphora ("...the Letter of Transmittal... **This 
 absent") defeating clause-local prong matching (prongs are now derivation-wide with a length
 guard). Direction note: every live-surfaced fix raised scores (false fires); the planted battery
 and the 53 gaming-review checks pin the opposite direction, so the grader cannot drift lax.
+
+*Wave 3 (2026-08-26, surfaced by the content review of the eval-6 write-up):* the fix for the
+"hold for settlement" idiom had replaced it with the word "awaiting" — which re-triggered the
+HOLD classifier, so GPT-5.4-mini's tender decision ("hold for settlement of accepted tender
+shares") was still being penalized as an over-escalation. Replaced with a neutral token; that
+one cell moved 0.840 → 0.901 (no gate either way); no other run changed. The full gaming-review
+suite — the 35 attacker findings plus the live-wave false fires, 59 checks — is now committed as
+`harness/gaming_review_eval6.py` and runs inside `python -m harness selftest`, so a grader change
+that reopens any of them fails the selftest.
 
 ## Scope notes
 

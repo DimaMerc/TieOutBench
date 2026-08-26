@@ -460,6 +460,10 @@ def cmd_selftest(_):
         s = suite_of(case)
         n1[s] = n1.get(s, 0) + 1
         failures += dispatch.get(s, _selftest_earnings)(p, name)
+    # eval #6's adversarial gaming review runs as a standing regression: every verified exploit
+    # must fire its gate, every verified correct phrasing must score clean
+    from . import gaming_review_eval6 as _gr
+    failures += [f"gaming-review-eval6: {nm}" for nm in _gr.run()]
     if failures:
         print("SELFTEST FAILED:")
         for f in failures:

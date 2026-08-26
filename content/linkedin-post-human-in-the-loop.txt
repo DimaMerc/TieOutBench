@@ -1,0 +1,73 @@
+FEED POST - "Post-trade AI: trust the call, check the number." (publish runbook at bottom)
+VERIFIED 2026-08-25: three-reviewer pass (fact-check vs sources / overclaim + attribution audit /
+editor) - all MUST findings applied, SHOULDs where two reviewers agreed.
+===========================================================================
+
+Post-trade AI: trust the call, check the number.
+
+Since my Munich post, many of you reading this are working in custody, ETF servicing and post-trade - in Frankfurt, Zurich, Vienna. Here is something I keep noticing about AI in fund operations, and I'd like your view.
+
+I went through as many public statements as I could find from custodians, CSDs, vendors and regulators about AI in operations. Nearly all of them promise the same thing: a human in the loop, and everything auditable.
+
+The same firms are putting agents on work like reconciliation, payment validation and corporate actions - and reporting lower headcount in the same breath. ESMA's survey of 728 firms found human oversight is the most-cited safeguard, at 65%.
+
+Almost none of them say where the human sits. The few that do put the human on the decision - the final call, the sign-off, the attestation.
+
+In my own evaluation work, I run frontier models through back-office tasks built from real filings and real trade formats: reconcile an ETF creation basket, match a swap confirmation, build a valuation. Eight models, three vendors, one run per model per case. In every one of those runs, the strong models got the go/no-go decision right. None settled the broken basket. None affirmed the mismatched trade. That was the strong tier. The cheapest tier has since given me one exception, on a corporate action - a post of its own.
+
+Where they slip is in the numbers under the decision. One example: two confirmations of the same EUR 50 million swap, fixed rates 5 basis points apart - about EUR 25,000 a year. Every model returned mismatch, do not affirm.
+
+But when asked how big the problem was, one model said 0.5 basis points - about EUR 2,500 a year. Another said 50 basis points - which on that swap is about EUR 250,000 a year. The first would be ignored as noise. The second would trigger an escalation. Right call, wrong size, in both directions.
+
+In fund accounting the check that catches this has a name: the tie-out. Before a number is released, someone confirms it agrees with the number it came from. The basket to the file it was built from. The confirmation to the terms. A number that does not tie out does not settle.
+
+That is where I would put the human. A review that only repeats the decision is checking the part that held in every one of my runs, and missing the part that slipped. With a strong model, put the human on the tie-out.
+
+How does your desk decide where the human sits? I suspect the Zurich answer and the Boston answer are not the same, and I'd like to hear both.
+
+
+===========================================================================
+FIRST COMMENT (post immediately after publishing):
+
+The evaluations behind this - gold cases, auto-fail gates, every model run committed - are open:
+Paper: https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7243025
+Leaderboard: https://github.com/DimaMerc/TieOutBench/blob/main/LEADERBOARD.md
+
+===========================================================================
+PUBLISH RUNBOOK (not part of the post):
+
+1. Timing: Tuesday or Wednesday ~8-9:30am ET = 14:00-15:30 CET, which
+   catches the DACH afternoon AND the US morning. Avoid Sept 8+ - that
+   week is reserved for the cross-vendor article.
+2. No links in the body. First comment carries paper + leaderboard.
+3. Image: assets/post-hitl.png (square 1080x1080 feed card, white/navy
+   brand; regenerate with python assets/make_post_hitl.py). The first
+   line of the post mirrors the card's title. Optional variant the
+   editor suggested: open with the Munich line instead of the title so
+   the preview shows the readers' own cities, and let the card carry
+   the title.
+4. Every figure is sourced (memory: custody-ai-signals-2026-08):
+   728 / 65% = ESMA TRV Feb 2026 ("human oversight" = most-cited
+   security measure, 65% of 728 entities); the swap = eval #5 live
+   runs on EUR 50M notional: 5 bp = EUR 25,000/yr; one model (mid tier)
+   said 0.5 bp and EUR 2,500/yr verbatim; another (small tier) said
+   50 bp and a EUR 2.5M cumulative figure - the EUR 250,000/yr is OUR
+   per-year conversion, which is why the body says "which on that swap
+   is"; all eight models returned MISMATCHED / do not affirm. The
+   regulator paragraph was CUT on the editor's recommendation (weakest
+   logical link; "Frankfurt's law" was wrong - KI-MIG is federal; SR 26-2
+   left GenAI to firms' own practices, which is not "wanting evidence").
+   If a regulator line is ever wanted back, the safe version is: "The
+   European supervisors are becoming explicit about what they want from
+   AI in operations: testing and monitoring evidence, and a decision a
+   human can still correct." (BaFin "korrigierbar"; ECB Montagner Feb 3
+   2026; FINMA testing + ongoing monitoring) - no cities, no US claim.
+5. Claim discipline: "the strong models" is load-bearing - eval #6's
+   small-tier exception (GPT-5.4-mini releasing on superseded terms) is
+   already public on the linked leaderboard, so the body carries the
+   one-line exception; details stay for the September eval-6 post.
+   "That is where I would put the human" = owned opinion, not desk
+   instruction (attribution wall: change-management seat, not ops).
+6. If someone from a desk replies with how they place review, THAT is
+   the earned follow-up: reply with a specific receipt, not a link.
+

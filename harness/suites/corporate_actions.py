@@ -267,7 +267,7 @@ def _clause_class(clause: str) -> str | None:
     c = _TENDER_NOUN_RE.sub(" ", c)
     c = _TENDER_NOUN2_RE.sub(" ", c)
     c = _GENERIC_TENDER_RE.sub(" ", c)
-    c = _HOLD_IDIOM_RE.sub(" awaiting ", c)
+    c = _HOLD_IDIOM_RE.sub(" settling ", c)     # neutral: "awaiting" would re-trigger _HOLD_RE
     c = _NEG_PRORATION_RE.sub(" ", c)
     c = _NEG_ELECT_RE.sub(" ", c)
     if _SCOPED_HOLD_RE.search(c):
