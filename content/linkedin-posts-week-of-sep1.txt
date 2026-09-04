@@ -1,0 +1,71 @@
+TWO SHORT POSTS FOR THE WEEK OF SEP 1 (neither spends any September material)
+===========================================================================
+
+---------------------------------------------------------------------------
+A. Wed Sep 2 - "The autumn agenda" (topical reaction; PostTrade 360 Nordic is
+   running in Stockholm Sep 2-3; DACH/Nordic readers are fully back)
+---------------------------------------------------------------------------
+
+PostTrade 360 is on in Stockholm this week and Sibos follows at the end of the month. I am following from Boston, which mostly means reading the agendas - and the AI session titles read very differently in a row than one at a time.
+
+Some titles sell autonomy. "Kill the exception queue: how autonomous AI is taking over post-trade operations." "Agentic operations for post trade: building the operating model that delivers board-ready ROI."
+
+Others ask about control. "AI in post-trade operations: readiness, governance and control ahead of T+1." "Artificial Intelligence Operating Models - Cost Reduction Vs. Risk." "AI in Financial Services - Productivity Engine or Emerging Operational Risk?" And from the network itself, at Sibos: "Agentic AI: identity, control and compliance."
+
+Put the two lists next to each other and one thing stands out. Nobody is asking whether to use AI in post-trade any more - that debate is over. What both sides are asking, in different words, is who validates the agent, and with what evidence.
+
+If you are in Stockholm this week, what is the answer in the room?
+
+First comment: none needed. (If someone asks what you do about it, THEN the
+evals.finance link is earned.)
+
+Facts: every session title was re-checked VERBATIM on the agenda pages 2026-09-02:
+PostTrade 360 Nordic, Sep 2-3 Stockholm (two titles had been quoted truncated and
+are now full); Sibos, Sep 28-Oct 1 Miami; The Network Forum Americas, Oct 22 New York
+("Artificial Intelligence Operating Models - Cost Reduction Vs. Risk") and Asia, Nov
+16-17 Singapore ("AI in Financial Services - Productivity Engine or Emerging
+Operational Risk?", printed with a long dash; the post uses " - " as in all your posts).
+"Reading the agendas" covers the autumn: two of the control titles are from the
+October/November Network Forum meetings, not Stockholm. Titles are not attributed to vendor vs
+practitioner on purpose - several "control" titles are vendor sessions too.
+
+---------------------------------------------------------------------------
+B. Thu Sep 3 - "Show your work" (the human post; back-to-school day)
+---------------------------------------------------------------------------
+
+My son starts school today. The homework rule in our house is the one I grew up with, and the one no kid has ever liked: show your work. You have the answer. Why does anyone need the journey?
+
+It turns out I now say the same thing to AI. On one of the finance tasks I test, a model worked through a discount rate line by line, arrived at 12.62% at the end of its own working, and then wrote 12.31% in the answer box. Any parent who has checked homework knows this one: the work is right, the number copied into the box is not. At school it costs a point. In finance, the number in the box is the one that gets used.
+
+A teacher catches that in a second, because reading the work is most of the job. Most checks on AI read only the answer.
+
+Good luck to everyone doing first days this week, the kids and the parents pretending to be calm. And to everyone who still reads the work.
+
+First comment: none. No photo of the child; a photo of a notebook or nothing.
+Written for Thursday morning ("today"); if it goes out Wednesday evening, say "tomorrow".
+
+Softened 2026-09-02 (his ask: more human, a little humor). Humor check against the
+standing rules - TRUE (nothing invented about him or the boy: the kid's-eye view of
+"show your work", the homework with the right work and the wrong number in the box,
+parents pretending to be calm are all universal, not events), not GEEKY, not BITTER.
+Word count ~175. Lines you can swap:
+  - Opener alternative, self-deprecating, ONLY if true of you: "...show your work. I did
+    not love it at his age either. You have the answer, why does anyone need the journey?"
+  - If "the parents pretending to be calm" feels like too much, the plain close is:
+    "Good luck to everyone doing first days this week - and to everyone who still reads
+    the work."
+  - Do NOT write "grading AI for a living" - it overstates the seat (attribution wall).
+
+Facts: GPT-5.4 on the NVDA DCF case (eval #3, published on the leaderboard
+since August): derivation text ends "= 12.62174%", answer field 12.31 - the post
+says 12.62% without quotation marks because the verbatim string is 12.62174%. Public
+already - does not spend eval #6. The model is unnamed in the post.
+Attribution wall: "the finance tasks I test" - no desk claim.
+
+---------------------------------------------------------------------------
+Why both, why this order: A is the reaction post for the readers who are
+already back (Stockholm this week; the DACH audience); B is the top-of-funnel
+human post that earned the Munich audience in the first place, landing before
+the US long weekend. Neither carries a link, neither names a firm, and neither
+touches the cross-vendor article (Sep 9), the paper post (Sep 15-16), or the
+eval-6 pieces (Sep 22-23). If you only want one, post B.

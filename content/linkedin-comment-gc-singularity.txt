@@ -1,0 +1,33 @@
+COMMENT on Global Custodian's post of Virginie O'Shea's column "Are we really at the
+point of the singularity, and if so, what does that mean?" (post ~Aug 12 2026; column
+is paywalled - the comment reacts to the QUESTION, never claims to have read the body).
+Rules: one comment, no link, no firm named, "in my own evaluation work" = the wall.
+If she or anyone replies asking how the evaluation works, THEN the SSRN link is earned.
+===========================================================================
+
+MAIN (about 95 words):
+
+The singularity is the wrong yardstick for operations, I think. Nobody on a corporate-actions desk needs the model to be smarter than a person. They need its number to be right, and to know who checked it. In my own evaluation work this summer, eight frontier models got the go/no-go decision right on the back-office cases I gave them and lost their points on the arithmetic underneath, with a fluent explanation attached to the wrong figure. That is not a singularity. It is a very capable colleague whose work still has to be tied out. The human role that survives is the one that reads the work.
+
+---------------------------------------------------------------------------
+SHORT (about 60 words):
+
+Whether the model is smarter than the analyst is the wrong question for operations. Whether its number is right, and who checked it, is the one that gets asked when something is paid. In my own evaluation runs this summer, the strong models got the decision right and slipped on the arithmetic underneath, fluently. The role that survives is the one that reads the work.
+
+---------------------------------------------------------------------------
+CLAIM CHECK:
+- "got the go/no-go decision right ... lost their points on the arithmetic underneath"
+  = the published evals #3-#5 finding, all eight models (GATE.RECON / GATE.MATCH never
+  fired). The SHORT version says "the strong models" - the eval-6 small-tier exception
+  is public, so prefer that wording if you want zero exposure; the MAIN version is
+  scoped to "the back-office cases I gave them" in those runs, which is also true.
+- "a fluent explanation attached to the wrong figure" = Haiku's $200,000 in-kind
+  overstatement with a clean narrative (eval #4); the 10x bp conversions (eval #5).
+- "this summer" = runs were late July 2026. No desk claim; "I think" keeps it a view.
+- The post is three weeks old: expect less distribution than a fresh one. Still worth
+  it - Global Custodian's page reach, and the author reads her own comment threads.
+- She speaks at PostTrade 360 Stockholm on Thu Sep 3 ("building brand trust in the age
+  of AI"). Do not mention it in the comment; it is only useful context if she replies.
+- "The human role that survives is the one that reads the work" rhymes with Thursday's
+  post B closer ("to everyone who still reads the work") - same idea, different words,
+  never the same text twice.

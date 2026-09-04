@@ -5,7 +5,7 @@ I ran eight frontier models through three finance workflows. The first three thi
 
 BODY (paste below into the article editor; formatting notes at the bottom):
 
-Part of a series on building runnable evaluations for finance LLMs. Every eval I have published carried the same caveat: the models I tested all came from one vendor. This is what happened when I finally fixed that - and why the fix mattered more than the scores.
+Part of a series on building runnable evaluations for finance LLMs. Until this summer, every eval I had published carried the same caveat: the models I tested all came from one vendor. This is what happened when I fixed that - and why the fix mattered more than the scores.
 
 For six weeks, every result I published came with an asterisk. The evals were real, the gold answers were cited, the gates fired where they should. But every frontier model I had run came from a single vendor. I wrote that caveat into the README, the leaderboard, and the bottom of every article, because a benchmark that has only met one family of models is a benchmark that has not been tested.
 
@@ -57,9 +57,9 @@ What survived - the actual findings
 
 With every model given equivalent room, here is what eight models across three vendors show.
 
-The most reproducible result in the suite got stronger. Across all eight models, on both back-office workflows, not one model made the catastrophic decision. Nobody affirmed a swap confirmation whose economic terms did not tie. Nobody settled a creation basket that was short by thirteen thousand dollars. And nobody cried wolf on the clean control cases either - no false breaks. When this was three models from one vendor I called it a promising negative result. At eight models across three vendors, it looks like a property of the task: frontier models get the stop-or-go call right, and lose their points on the arithmetic underneath it.
+The most reproducible result in the suite got stronger. Across all eight models, on both back-office workflows, not one model made the catastrophic decision. Nobody affirmed a swap confirmation whose economic terms did not tie. Nobody settled a creation basket that was short by thirteen thousand dollars. And nobody raised a false alarm on the clean control cases either - no false breaks. When this was three models from one vendor I called it a promising negative result. At eight models across three vendors, it looks like a property of the task: frontier models get the go/no-go decision right, and lose their points on the arithmetic underneath it. (Since these runs, the small tier has given me one exception, on a corporate action - a piece of its own later this month.)
 
-The top tiers have converged. The three flagship models sit within four hundredths of each other on every case, and within a hundredth and a half on four of the five. On the confirmation case with a real break in it, five of the eight tie at exactly the same score. That is worth saying plainly: on this task, at this difficulty, the eval no longer separates the frontier. That is a finding about my eval as much as about the models, and the honest response is to make the task harder, not to pretend the ranking means something.
+The top tiers have converged. The three flagship models sit within four hundredths of each other on every case, and within a hundredth and a half on all but one. On the confirmation case with a real break in it, five of the eight tie at exactly the same score. That is worth saying plainly: on this task, at this difficulty, the eval no longer separates the frontier. That is a finding about my eval as much as about the models, and the honest response is to make the task harder, not to pretend the ranking means something.
 
 Cheap stopped predicting bad. Two vendors' small, fast models fail badly here - and they fail differently. One breaks on arithmetic: it overstates a basket by two hundred thousand dollars, which flips a shortfall into an apparent surplus. The other breaks on calibration: it states a fair value of $200.20 per share - to the cent - while leaving the growth-rate sensitivity blank on a valuation that is roughly eighty percent terminal value. Precise to the penny about a number it never stress-tested against the assumption that drives it. That trips the false-precision gate, which exists for exactly that.
 
@@ -72,7 +72,7 @@ One last thing, because it is the kind of detail that only step-by-step grading 
 
 Why this matters beyond my repo
 
-In April, US banking regulators rewrote model-risk guidance and left generative AI explicitly out of scope. I wrote about that gap two weeks ago: firms deploying AI into real financial workflows now have to define for themselves what "validated" means.
+In April, US banking regulators rewrote model-risk guidance and left generative AI explicitly out of scope. I wrote about that gap in July: firms deploying AI into real financial workflows now have to define for themselves what "validated" means.
 
 This study is a small, concrete argument about what that takes. Three vendors, three undocumented differences in how a request is metered, each capable of producing a confident wrong number about a model's competence. Not one of them was visible in the outputs. All of them were visible the moment I made the comparison fair.
 
@@ -82,7 +82,7 @@ One caveat I want on the record: this is one run per model per case. That is eno
 
 Everything here is runnable and MIT-licensed: the workflows, the rubrics with every gate, the gold cases, all the graded runs from all eight models, and the leaderboard with its caveats on its face. Two commands reproduce the core with no API key.
 
-Leaderboard and repo: evals.finance
+Leaderboard and repo (the suite is called TieOutBench): evals.finance
 
 Dmitry Krutous - I build evals for finance LLMs. ETF / derivatives domain expert; I ran the change-management side of an institutional ETF servicing platform (creation/redemption, derivatives processing). MBA, PMP. Greater Boston.
 
@@ -114,13 +114,15 @@ FORMATTING NOTES (do these by hand in the LinkedIn editor - not part of the arti
 
 FACT ANCHORS (verify before publishing - not part of the article):
 - 8 models / 3 vendors / 3 evals (#3 DCF, #4 creation-redemption, #5 confirmation
-  matching), 5 cases each run once per model. Source: LEADERBOARD.md.
+  matching); 5 cases when written, 6 since the NVDA DCF case was added (Aug 2026),
+  each run once per model - hence "all but one", not "four of the five". Source: LEADERBOARD.md.
 - Starved-vs-fair DCF numbers: empty->0.953 (GPT-5.5), 0.322 w/ six gates->0.951
   (GPT-5.6-sol), 0.618->0.903 (GPT-5.4), 0.745->0.631 (GPT-5.4-mini). The last one
   went DOWN and its gate firing is genuine - verified against the models that
   cleared it (null g_sensitivity vs real ranges).
 - Google usage: prompt 8, completion 3, total 124 -> 113 unreported thinking tokens.
-- Flagships within 0.03: Opus 4.8 / GPT-5.6-sol / GPT-5.5.
+- Flagships (Opus 4.8 / GPT-5.6-sol / GPT-5.5) within 0.04 on every case - the recon-break
+  column is the 0.040 one (0.983/0.943/0.943) - and within 0.015 on the other five.
 - Five models tie at 0.980 on the confirmation break case.
 - $200.20 false-precision case = GPT-5.4-mini, tv_share 79.5%, g_sensitivity null.
 - $227.81 vs gold $227.82 = Gemini 3.6 Flash; also 0.983 on recon (ties Opus).
@@ -132,3 +134,13 @@ FACT ANCHORS (verify before publishing - not part of the article):
   naming invites a vendor argument that buries the point. Names are all in the
   repo leaderboard for anyone who wants them. Reconsider only if you want the
   more shareable/more contentious version.
+- RE-VERIFIED 2026-09-02 for a Sep 9 publish: all grid figures unchanged against the
+  six-column LEADERBOARD.md (five-way 0.980 tie on the confirm-break case holds; $227.81 vs
+  $227.82; $200,000; $200.20; -13,320 vs -33,320). Edits made that day: time words re-anchored
+  ("Until this summer"; "in July" for the SR 26-2 article, published Jul 14 - it said "two
+  weeks ago"); "stop-or-go call" -> "go/no-go decision" and "cried wolf" -> "false alarm"
+  (DACH-reader lessons from the Aug 26 review); "four of the five" -> "all but one"; one-line
+  small-tier exception added in the same words as the Aug 26 post (the exception has been
+  public on the leaderboard since Aug 18 - the article must not read as if it never happened);
+  TieOutBench named in the closing line so the first-comment links match. MIT license: LICENSE
+  file in the repo root. "Two commands" = pip install -r requirements.txt + python -m harness demo.

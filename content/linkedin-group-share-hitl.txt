@@ -30,3 +30,4 @@ CLAIM CHECK:
 - "ten times too small / too big" = eval #5 live runs (0.5 bp vs 50 bp on a
   5 bp break), same receipt as the main post.
 - No desk-experience claim; no firm named.
+

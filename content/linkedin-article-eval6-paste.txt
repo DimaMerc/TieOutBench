@@ -40,7 +40,7 @@ One model - a mid-tier model, not a flagship - passed all six cases with a perfe
 
 Two traps sat in the tender case with no label on them, and neither caught anyone. Recomputing the proration factor from the headline numbers gives 47.56 percent, but the depositary announced 47.18 percent, because odd lots are accepted in full before anything is prorated - and every model used the announced figure. On the odd-lot case, every model accepted the odd lot in full instead of applying the proration factor to a holder the rule exempts. (The labeled distractors - the fictional split, the other company's tender - caught nobody either, which is a floor, not a feat.)
 
-Then the failure I built the evaluation to find happened, on the corrected dividend, to a small-tier model - the least expensive of the eight.
+Then the failure I built the evaluation to find happened, on the corrected dividend, to a small-tier model, one of the least expensive of the eight.
 
 It pinned the correct document - the correction, not the original. It listed the original announcement, in its own worksheet, as superseded. It stated the corrected record date. And then it computed the entitlement on the position from the original record date - 50,000 shares, not the 40,000 the account would hold on the corrected date - and booked USD 8,500 against the correct payment date, when the correct amount was USD 6,800. Two gates fired: one for superseded values in the worksheet, one for booking the payment on the superseded terms. Its gated score was 0.225. Its ungated score, the naive average of everything it did well, was 0.574.
 
@@ -180,3 +180,7 @@ FACT ANCHORS (verified by the three-reviewer pass 2026-08-26 - not part of the a
   "I would build the review around" - owned opinion; no desk claims; no
   former employer named or identifiable; no bio line on purpose.
 - Models are named by tier only in the body; names are in the leaderboard.
+- "one of the least expensive of the eight" (NOT "the least expensive"): list prices
+  checked 2026-09-02 - GPT-5.4-mini $0.75 in / $4.50 out per M tokens; Gemini 3.6 Flash
+  $0.75 / $3.75 (introductory through Dec 31 2026); Haiku 4.5 $1 / $5. Flash is cheaper on
+  output, so the mini is not the single cheapest model in the grid.

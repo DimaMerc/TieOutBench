@@ -30,7 +30,7 @@ capability profiles for all eight models)
 PUBLISH RUNBOOK (not part of the post):
 
 1. Timing: the week AFTER the cross-vendor article - Tue Sep 15 or Wed Sep 16,
-   ~8-9:30am ET. (Sequence: cross-vendor article Sep 8-9 -> paper post Sep
+   ~8-9:30am ET. (Sequence: cross-vendor article Sep 9-10 -> paper post Sep
    15-16 -> eval-6 article + driver Sep 22-23.)
 2. No links in the body. First comment carries SSRN + evals.finance.
 3. Image: assets/post-paper.png (square card: the opening line + the report
@@ -56,4 +56,5 @@ PUBLISH RUNBOOK (not part of the post):
    10x-both-directions finding was cut here on purpose - it is the driver of
    the cross-vendor article one week earlier.
 6. The DOI: if it has resolved by publish day, put the DOI form of the link in
-   the first comment instead of the abstract URL.
+   the first comment instead of the abstract URL. Checked 2026-09-02: NOT resolved
+   (doi.org returns 404) - re-check on the morning you post.

@@ -14,7 +14,7 @@ I have now run eight frontier models through six cases built on four real corpor
 
 Thirty-two runs passed every check with nothing to flag. One mid-tier model passed all six cases perfectly - the first perfect score from a live model in this series.
 
-And the least expensive model of the eight did what I described above, which is the exact failure I built the evaluation to catch: the right explanation wrapped around the wrong number, and the payment booked.
+And one of the least expensive models of the eight did what I described above, which is the exact failure I built the evaluation to catch: the right explanation wrapped around the wrong number, and the payment booked.
 
 Where the human review belongs is a question I keep coming back to, and this changed my answer a little. The article has the two smaller failures that repeated across models, what it took to make the grader trustworthy, and where I would put the human now. Link in the first comment.
 
@@ -41,6 +41,7 @@ PUBLISH RUNBOOK (not part of the post):
    "released" (its action is an accrual booking). Perfect row = Claude Sonnet
    4.6. 32/48 AllPass. Models unnamed in the post on purpose.
 6. If asked "which model?", answer with the leaderboard link and the tier
-   framing (the least expensive small-tier model; the other two small models
+   framing (a small-tier model, one of the least expensive of the eight - never "the
+   cheapest": Gemini 3.6 Flash lists cheaper on output tokens; the other two small models
    did not commit it and one fired no gate at all; flagships never committed
    the action) - not a vendor argument.

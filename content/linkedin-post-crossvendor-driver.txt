@@ -7,7 +7,7 @@ Given a bigger token budget, the same model on the same task scored 0.951 and tr
 
 The difference wasn't the model. It was me.
 
-I'd spent six weeks publishing evals where every frontier model came from one vendor - and saying so, in every article, because a benchmark that has only met one family of models hasn't really been tested. This week I finally added two more vendors. Eight models, three companies, same gold cases, same rubrics.
+I'd spent six weeks publishing evals where every frontier model came from one vendor - and saying so, in every article, because a benchmark that has only met one family of models hasn't really been tested. This summer I finally added two more vendors. Eight models, three companies, same gold cases, same rubrics.
 
 The harness broke three times before it produced a single comparable number.
 
@@ -23,7 +23,8 @@ Article in the first comment - including what survived the fix, and a cheap, fas
 ===========================================================================
 PUBLISH RUNBOOK (not part of the post):
 
-1. Timing: Tue-Thu ~8-9:30am ET. Publish the ARTICLE first so the link exists.
+1. Timing: Wed Sep 9 (or Thu Sep 10), ~8-9:30am ET - not Tue Sep 8, the day after
+   Labor Day. Publish the ARTICLE first so the link exists.
 2. No links in the post body. FIRST COMMENT right after posting: article link
    + evals.finance.
 3. No image needed - the numbers carry it, and text-only drivers read cleaner.
@@ -52,3 +53,8 @@ stays accurate on publish day):
 - The article body's evals.finance link and all figures were re-checked against
   LEADERBOARD.md on 2026-08-26: unchanged (the eval-3-5 grid reproduces
   byte-for-byte from the committed runs - `python -m harness profiles`).
+- 2026-09-02 re-check: the driver said "This week I finally added two more vendors" -
+  now "This summer". The article body got the small set of edits listed in its FACT
+  ANCHORS (time words, go/no-go, false alarm, "all but one", the one-line small-tier
+  exception, TieOutBench in the closing line). DOI 10.2139/ssrn.7243025 NOT resolved as
+  of Sep 2 (doi.org returns 404) - the first comment uses the abstract URL.

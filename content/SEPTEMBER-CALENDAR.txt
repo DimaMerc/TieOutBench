@@ -7,20 +7,37 @@ DRIVER post so the link exists. Tue-Thu, ~8-9:30am ET = 14:00-15:30 CET (DACH af
 Reply to every comment on your own posts within the first hours (velocity is the signal).
 
 -------------------------------------------------------------------------------------------
-Thu Aug 27 (or Fri Aug 28)   GROUP SHARE of the "trust the call" post
+Wed Sep 2 or Thu Sep 3        GROUP SHARE of the "trust the call" post (the Aug 27 slot passed;
+                              a week-old post is fine to share into a group - normal practice)
 -------------------------------------------------------------------------------------------
   File:   content/linkedin-group-share-hitl.txt (main or short version)
   How:    Share the ORIGINAL post into the international ETF group; the intro text sits
           above the embedded post. Then a first comment ON THE SHARE with the two links
           (SSRN paper + leaderboard) - comments do not travel with a share.
-  Skip if the main post is still climbing on Thursday; do it the following Tuesday.
+  The post is a week old - nothing to wait for. Just not in the same hour as a filler
+  post: Wed early afternoon ET (after post A has had its morning) or Thu after post B.
 
 -------------------------------------------------------------------------------------------
-Tue Sep 8 or Wed Sep 9        CROSS-VENDOR ARTICLE + DRIVER POST
+Wed Sep 2 / Thu Sep 3         TWO SHORT FILLER POSTS (optional; no September material spent)
+-------------------------------------------------------------------------------------------
+  File:   content/linkedin-posts-week-of-sep1.txt
+  A (Wed): "The autumn agenda" - reaction to the post-trade conference AI session titles
+           (PostTrade 360 Nordic is on in Stockholm Sep 2-3). No link.
+  B (Thu): "Show your work" - the human post for back-to-school day, one professional
+           thread (the derive-right/report-different finding from eval #3, already public).
+           No link, no photo of the child. Written for Thursday morning ("today").
+           If only one: B.
+
+-------------------------------------------------------------------------------------------
+Wed Sep 9 (preferred) or Thu Sep 10   CROSS-VENDOR ARTICLE + DRIVER POST
+                              (Labor Day is Mon Sep 7 in 2026; Tue Sep 8 is the inbox-clearing
+                              day after a holiday - Wednesday reads better on both continents)
 -------------------------------------------------------------------------------------------
   Article: content/linkedin-article-crossvendor-paste.txt (cover: assets/cover-crossvendor.png)
            Verified July 2026 (3-reviewer pass); refreshed Aug 2026 - see the REFRESH block
-           at the bottom of the driver runbook.
+           at the bottom of the driver runbook. Re-checked Sep 2: time words re-anchored
+           ("in July", "this summer"), DACH idioms, "all but one" cases, the one-line
+           small-tier exception (same words as the Aug 26 post) - see its FACT ANCHORS.
   Driver:  content/linkedin-post-crossvendor-driver.txt (text-only, no image)
   First comment on the driver: article link + evals.finance + SSRN paper link.
   Why first: it is the methodology piece; the paper post the following week cites it.
@@ -29,7 +46,8 @@ Tue Sep 8 or Wed Sep 9        CROSS-VENDOR ARTICLE + DRIVER POST
 Tue Sep 15 or Wed Sep 16      PAPER ANNOUNCEMENT POST
 -------------------------------------------------------------------------------------------
   File:   content/linkedin-post-paper.txt   Image: assets/post-paper.png (square)
-  First comment: SSRN link (DOI form if 10.2139/ssrn.7243025 has resolved) + evals.finance.
+  First comment: SSRN link (DOI form if 10.2139/ssrn.7243025 has resolved - not yet as of
+  Sep 2, doi.org returns 404; re-check that morning) + evals.finance.
   Opens with the line held back all summer: "AI doesn't just make right answers faster.
   It makes wrong ones more convincing." Says FIVE evaluations (the paper's scope) - eval #6
   is next week's post, on purpose.
@@ -41,6 +59,8 @@ Tue Sep 22 or Wed Sep 23      EVAL #6 ARTICLE + DRIVER POST  (Boston Fintech Wee
   Article: content/linkedin-article-eval6-paste.txt (cover: assets/cover-eval6.png, wide)
   Driver:  content/linkedin-post-eval6-driver.txt   Image: assets/hero-eval6.png (square)
   First comment on the driver: article link + evals.finance + leaderboard link.
+  Body and driver say "one of the least expensive" models, never "the least expensive"
+  (Sep 2 price check: Gemini 3.6 Flash lists cheaper on output tokens).
   This is the DACH home-turf piece (corporate actions = the CSDs' business) AND the
   Boston-week piece. If you attend a Fintech Week / AI Week session that week, a one-line
   "posted this morning" mention with no link is fine in person; the post carries itself.
@@ -52,12 +72,15 @@ Any time in September (no fixed date)
     TieOutBench / six evals / SSRN). About section + headline + Featured link card first.
   - Comment lever: one substantive comment on any custodian/CSD/FMI post about AI in
     operations, no self-link (their reach is 10-40x yours). The scan digest (memory:
-    custody-ai-signals-2026-08) lists who is publishing what.
+    custody-ai-signals-2026-08) lists who is publishing what. Sibos week (Sep 28-Oct 1,
+    Miami) is the best week for it - custodian/CSD/FMI posts peak; one comment a day at most.
 
 -------------------------------------------------------------------------------------------
 Held for October+ (not in this package)
 -------------------------------------------------------------------------------------------
   - ODD-for-AI post (the allocator framing; the NT peer-study 57% ODD data point is the hook).
+  - Foil post on the "fifty AI finance agents" genre ("fifty agents, zero evidence of being
+    right") - react to the genre, never name or dunk the page.
   - Eval-6 Phase 2 (tool-loop / RL environment) - when built.
   - Cross-vendor consistency-inversion angle (HSBC / SmartStream quotes) - the cross-vendor
     driver already carries the harness-bug story; save the quotes for a comment reply or the
