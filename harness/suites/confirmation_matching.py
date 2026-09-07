@@ -78,22 +78,87 @@ _NEG_MISMATCH_RE = re.compile(
 # won't tie out") = a break. Matched on s_pos so a 'NOT' buried in an already-stripped mismatch
 # phrase ("affirmed, NOThing to escalate") does not false-trigger.
 _NEG_AFFIRM_RE = re.compile(
-    r"(?:DONOT|DONT|CANNOT|CANT|WONT|WILLNOT|REFUSETO|NOT|NO)(?:YET|TO|READYTO)?"
-    r"(?:AFFIRM|MATCH|CONFIRM|SETTLE|RELEASE|APPROVE|BOOK|TIEOUT|TIE|CLEAR|SIGNOFF|GREENLIGHT|VALID)")
+    r"(?:DONOT|DONT|CANNOT|CANT|WONT|WILLNOT|MUSTNOT|SHOULDNOT|REFUSETO|UNABLETO|NOT|NO|UN)"
+    r"(?:YET|TO|BE|READYTO|OKTO|OK)?"
+    r"(?:AFFIRM|MATCH|CONFIRM|SETTLE|RELEASE|APPROVE|ACCEPT|AGREE|PROCEED|BOOK|TIEOUT|TIE|CLEAR|"
+    r"SIGNOFF|GREENLIGHT|VALID)")
+# THE CONTRADICTORY-INSTRUCTION RULE (gaming review 2026-09-06): a decision carrying BOTH a
+# break/mismatch-family instruction AND an unqualified affirm-family COMMITMENT ("MISMATCHED; affirm
+# and release for settlement") is AMBIGUOUS -> None: D1.decision fails on every case, GATE.MATCH does
+# not fire on the ambiguity alone (the gate means "committed the wrong action" — the ACTION text is
+# scanned separately, see _action_commits_affirm), and no false-mismatch penalty is charged. The
+# strict commitment subset below excludes the short/overloaded tokens (MATCH, TIE, OK, PASS, YES,
+# CONFIRM, BOOK, VALID, GREEN, CLEAR) that also occur inside ordinary break prose ("counterparties",
+# "confirmation", "booking desk"), and a conditioned affirm-word ("prior to affirmation", "before
+# the fund affirms", "pending amendment") is stripped first — a deferred affirm is not a commitment.
+# Flags: the engine derives headline flags only from fired gates (scoring.py), so ambiguity is
+# surfaced in the D1 verdict notes ("ambiguous decision"), not as a headline flag.
+_AFFIRM_COMMIT_ROOTS = ("AFFIRM", "MATCHED", "CONFIRMED", "AGREED", "AGREE", "PROCEED", "ACCEPT",
+                        "APPROVE", "RELEASE", "SIGNOFF", "SIGNEDOFF", "BOOKED", "BOOKIT", "BOOKTHE",
+                        "CLEARED", "SETTLE", "GOAHEAD", "GOODTOGO", "GOODTOBOOK", "GREENLIGHT",
+                        "VALIDATED", "OKTOAFFIRM")
+_COND_AFFIRM_RE = re.compile(
+    r"(PRIORTO|BEFORE|UNTIL|PENDING|AHEADOF|WITHHOLD|WITHHOLDING|DEFER|DEFERRING|SUSPEND|"
+    r"SUSPENDING|AWAIT|AWAITING|HOLD|HOLDING|STOP|STOPPING)"
+    r"(?:[A-Z]{0,14}?)"
+    r"(?:AFFIRMATION|AFFIRMING|AFFIRMS|AFFIRM|MATCHING|CONFIRMING|CONFIRM|SETTLEMENT|SETTLING|SETTLE|"
+    r"RELEASING|RELEASE|BOOKING|BOOK|SIGNOFF|CLEARING|CLEAR|APPROVAL|APPROVING|APPROVE|ACCEPTANCE|"
+    r"ACCEPTING|ACCEPT|PROCEEDING|PROCEED)")
+_MISMATCH_ROOTS_BY_LEN = tuple(sorted(_MISMATCH_ROOTS, key=len, reverse=True))
 
 
 def _classify_decision(v) -> str | None:
     s = _norm(v)
     if not s:
         return None
-    s_pos = _NEG_MISMATCH_RE.sub("", s)       # drop negated mismatch-nouns ("NOMATERIALBREAK" -> "")
-    if any(r in s_pos for r in _MISMATCH_ROOTS):
-        return "mismatch"
-    if _NEG_AFFIRM_RE.search(s_pos):          # a negated affirm ("do not release/book/tie out") = a break
-        return "mismatch"
-    if any(r in s_pos for r in _AFFIRM_ROOTS):
-        return "affirm"
-    return None
+    s_pos = _NEG_MISMATCH_RE.sub("|", s)      # drop negated mismatch-nouns ("NOMATERIALBREAK" -> "|")
+    mismatch_hit = any(r in s_pos for r in _MISMATCH_ROOTS)
+    neg_affirm = _NEG_AFFIRM_RE.search(s_pos) is not None   # "do not release/book/tie out" = a break
+    if not (mismatch_hit or neg_affirm):
+        return "affirm" if any(r in s_pos for r in _AFFIRM_ROOTS) else None
+    # a break signal is present — the contradiction test: is there ALSO an unqualified affirm
+    # commitment left once the negated, conditioned and mismatch-family spans are removed?
+    s_aff = _NEG_AFFIRM_RE.sub("|", s_pos)
+    s_aff = _COND_AFFIRM_RE.sub(r"\1|", s_aff)        # keep the qualifier (HOLD/STOP are roots), drop the verb
+    for r in _MISMATCH_ROOTS_BY_LEN:                    # MISMATCHED before MATCH, DONOTAFFIRM before AFFIRM
+        s_aff = s_aff.replace(r, "|")
+    if any(r in s_aff for r in _AFFIRM_COMMIT_ROOTS):
+        return None                                     # ambiguous: credited as neither call
+    return "mismatch"
+
+
+def _is_ambiguous_decision(v) -> bool:
+    """True when the decision carries BOTH families (the contradictory-instruction case) — as opposed
+    to being merely empty / unclassifiable."""
+    s = _norm(v)
+    if not s or _classify_decision(v) is not None:
+        return False
+    s_pos = _NEG_MISMATCH_RE.sub("|", s)
+    return any(r in s_pos for r in _MISMATCH_ROOTS) or _NEG_AFFIRM_RE.search(s_pos) is not None
+
+
+# the ACTION-text gate (gaming review 2026-09-06): on a break case the catastrophic act is the
+# affirm/release/settle INSTRUCTION, whatever the decision enum says. An action classifies as a
+# commitment when it is affirm-class by the decision classifier (so any mismatch root or negated
+# affirm already disqualifies it) AND carries none of the negation / conditional words below as a
+# whole word. Every stored break-case live action reads "Do NOT affirm. Escalate ..." or "Escalate ...
+# prior to affirmation" (both disqualified); every clean-case action reads "Affirm the trade" (clean
+# cases are never scanned).
+_ACTION_VETO_WORDS = ("do not", "don t", "dont", "not", "before", "until", "prior to", "pending",
+                      "reject", "escalate", "hold", "once", "after", "unless", "subject to", "await",
+                      "awaiting", "cannot", "can t", "won t", "refrain", "withhold", "suspend",
+                      "dispute", "amend", "query", "chase", "stop", "block")
+_ACTION_VETO_STEMS = ("mismatch", "break", "discrepanc", "escalat")
+
+
+def _action_commits_affirm(action) -> bool:
+    t = str(action or "").strip()
+    if not t or _classify_decision(t) != "affirm":
+        return False
+    low = " " + re.sub(r"[^a-z0-9]+", " ", t.lower()) + " "
+    if any(f" {w} " in low for w in _ACTION_VETO_WORDS):
+        return False
+    return not any(stem in low for stem in _ACTION_VETO_STEMS)
 
 
 def _term_match(mterms, gterms, field, tol) -> bool:
@@ -272,9 +337,16 @@ def handle(a, ctx):
         return det(ok, "economic impact (from prose)")
 
     # ============================== DECISION ==============================
+    # a contradictory affirm+mismatch instruction is not an actionable decision: the whole D1
+    # checkpoint (call, localization, structured record) scores 0 — without a gate unless the ACTION
+    # text itself commits the affirm (penalty_present D1.n_override)
+    ambiguous = _is_ambiguous_decision(_g(model, "D1", "decision"))
     if aid == "D1.decision":
         gc, mc = _classify_decision(_g(gold, "D1", "decision")), _classify_decision(_g(model, "D1", "decision"))
-        return det(gc is not None and mc == gc, "affirm/mismatch call (class match)")
+        return det(gc is not None and mc == gc,
+                   "ambiguous decision (affirm AND mismatch instruction)" if ambiguous else "affirm/mismatch call (class match)")
+    if aid in ("D1.localize", "D1.escalate") and ambiguous:
+        return det(0.0, "ambiguous decision: no actionable D1 record")
     if aid == "D1.localize":
         D1m = _g(model, "D1", default={})
         if _matches_clean(gold):
@@ -324,6 +396,12 @@ def penalty_present(a, model, gold) -> bool:
             return False
         dec = _classify_decision(_g(model, "D1", "decision"))
         if dec == "affirm":
+            return True
+        # the ACTION text is the act: an unnegated affirm/release/settle instruction on a break case
+        # is the override whatever the decision enum says ("MISMATCHED" + "Affirm the confirmation
+        # and release the trade for settlement" -> GATE.MATCH). An AMBIGUOUS decision alone (None,
+        # both families in the enum) does NOT fire — it earns nothing at D1 instead.
+        if _action_commits_affirm(_g(model, "D1", "action")):
             return True
         # fail-closed backstop: an UNclassifiable decision on a break case whose body reads as an
         # affirm (claims the trade matches / names no offending field / lists no material break) is

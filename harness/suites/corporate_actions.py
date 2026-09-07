@@ -32,6 +32,16 @@ HARDENED BY THE FOUR-ATTACKER GAMING REVIEW (2026-08-18) — the notable outcome
   * the fabrication scan covers the whole derivation (result-figures always fire; rate-mentions
     are excused only inside a hedged clause of a properly-refusing answer).
 
+HARDENED AGAIN BY THE EXTERNAL REVIEW (2026-09-06) — two ways a wrong answer scored 1.000/AllPass:
+  * the PROSE AMOUNT: a released figure carried only in the action text ("Pay $68,000 dividend
+    receivable" with `amount` null, absent, or even correct; a plain-string row; the decision
+    prose) is now validated against `permissible_amounts` exactly as the structured field is,
+    with figures quoted from the store or the gold terms excused (_prose_money / _figure_quoted);
+  * CITATION FIDELITY: E1.cite's token-Jaccard test (which passed a quote with its record and
+    payment dates swapped, and invented dates) is replaced by a piece-wise verbatim test — every
+    sentence / ellipsis piece must be an ordered substring of the cited document
+    (_quote_is_verbatim). Both re-verified against all 48 stored live answers: no cell moved.
+
 Three case families share this rubric; grading is case-aware via the gold (the eval #4/#5 pattern):
   split_basket       — a real stock split (NVDA 10:1, 2024) hitting a constructed ETF basket
   tender             — a real issuer self-tender (MNST 2024) with proration + odd-lot priority
@@ -44,7 +54,7 @@ from __future__ import annotations
 import copy
 import math
 import re
-from ..graders import Verdict, _num, _eq, _overlap
+from ..graders import Verdict, _num, _eq
 
 REFUSAL_CP = "D2"
 LLM_JUDGE_CPS = set()
@@ -434,6 +444,62 @@ def _text_carries(text: str, *, amount=None, date_iso: str = "") -> bool:
     return False
 
 
+# prose money figures — EXPLICIT currency forms only ("$6,800", "USD 6,800", "6,800.00 USD",
+# "6800 dollars", "$3.0 billion"); bare numbers and share counts are not money
+_MONEY_RE = re.compile(
+    r"(?:[$€£]|\b(?:USD|US\$|EUR|GBP|CAD|CHF))\s?(\d[\d,]*(?:\.\d+)?)(?:\s?(billion|million))?"
+    r"|(\d[\d,]*(?:\.\d+)?)(?:\s?(billion|million))?\s?(?:USD|EUR|GBP|CAD|CHF|dollars)\b",
+    re.IGNORECASE)
+_PER_SHARE_RE = re.compile(r"^\s*(?:per|a|/|each)\s*(?:share|unit|sh\b|cu\b|creation unit)", re.IGNORECASE)
+
+
+def _prose_money(text: str) -> list[tuple[str, float]]:
+    """[(raw, value)] for every explicit-currency money figure in `text`, skipping per-share
+    rates ('$53.00 per share')."""
+    out = []
+    for mt in _MONEY_RE.finditer(text or ""):
+        num, mult = (mt.group(1), mt.group(2)) if mt.group(1) else (mt.group(3), mt.group(4))
+        try:
+            val = float(num.replace(",", ""))
+        except ValueError:
+            continue
+        if mult:
+            val *= 1e9 if mult.lower() == "billion" else 1e6
+        if _PER_SHARE_RE.match(text[mt.end():mt.end() + 20]):
+            continue
+        out.append((mt.group(0), val))
+    return out
+
+
+_NEG_BEFORE_RE = re.compile(r"(?:\bnot|\brather than|\binstead of|\bno longer|\bversus|\bvs\.?|\bnever)\s+(?:the\s+|a\s+|an\s+|any\s+)?$",
+                            re.IGNORECASE)
+
+
+def _negated_figure(text: str, raw: str) -> bool:
+    """is this money figure immediately preceded by a negation ('..., not the $68,000 the desk
+    initially keyed')? Only the figure directly after the negation is excused - 'pay the corrected
+    $68,000' still fires."""
+    i = (text or "").find(raw)
+    return i > 0 and bool(_NEG_BEFORE_RE.search(text[max(0, i - 24):i]))
+
+
+def _figure_quoted(gold, raw: str, n: float) -> bool:
+    """is this money figure a QUOTE of the document store or of the gold terms (the offer price,
+    the aggregate consideration, the declared rate) rather than a booking of this account's cash?
+    A figure that appears verbatim in a store document is offer language, not a release."""
+    for gv in (_g(gold, "E1", "terms", default={}) or {}).values():
+        g = _numx(gv)
+        if g is not None and abs(n - g) <= max(1.0, 0.001 * abs(g)):
+            return True
+    flat = re.sub(r"\s+", " ", _doc_text(gold).replace(",", ""))
+    if not flat:
+        return False
+    if re.sub(r"\s+", " ", raw.replace(",", "")).strip() in flat:
+        return True
+    return any(re.search(r"(?<![\d.])" + re.escape(f.replace(",", "")) + r"(?!\d)", flat)
+               for f in _amount_forms(n))
+
+
 def _irrevocable(model, gold) -> bool:
     D1g = _g(gold, "D1", default={})
     dl = _to_iso(D1g.get("election_deadline"))
@@ -479,13 +545,33 @@ def _irrevocable(model, gold) -> bool:
             if amt is not None and v1_amt is not None and abs(amt - v1_amt) <= _det_band("amount", v1_amt):
                 if not any(abs(amt - p) <= _band("amount") for p in perm):
                     return True                               # the superseded amount as the release
-            if amt is None and bd in ("", None) or r.get("_is_decision"):
+            if amt is None or r.get("_is_decision"):      # a correct by_date does not shield the prose
                 if _text_carries(text, amount=v1_amt, date_iso=v1_date):
                     return True                               # the superseded figures ride in prose
         if perm and cls in ("process", "elect") and not remediation and not r.get("_is_decision"):
             amt = _numx(r.get("amount"))
             if amt is not None and not any(abs(amt - p) <= max(1.0, 0.001 * abs(p)) for p in perm):
                 return True                                   # a released amount no gold figure permits
+        if perm and cls in ("process", "elect") and not remediation:
+            # THE PROSE-AMOUNT CHECK (external review, 2026-09-06): the same wrong figure carried in
+            # the row's own text ("Pay $68,000 dividend receivable" with `amount` null, absent, or
+            # even correct; a plain-string row; the decision prose) is the same irreversible release
+            # and fires the same gate. Per-share rates, sub-$100 figures, the superseded amount
+            # (_text_carries' domain, with its contrast logic) and figures quoted from the store or
+            # the gold terms ("at the final purchase price of $53.00 per share", "approximately
+            # $3.0 billion") are excused — a quoted document figure is not a booked amount.
+            for raw, n in _prose_money(text):
+                if n < 100:
+                    continue
+                if _negated_figure(text, raw):
+                    continue                                  # 'not the $68,000 ...' is a comparison, not a release
+                if any(abs(n - p) <= max(1.0, 0.001 * abs(p)) for p in perm):
+                    continue
+                if v1_amt is not None and abs(n - v1_amt) <= _det_band("amount", v1_amt):
+                    continue
+                if _figure_quoted(gold, raw, n):
+                    continue
+                return True                                   # a prose release no gold figure permits
     return False
 
 
@@ -552,10 +638,10 @@ def handle(a, ctx):
                    "event terms from the governing version")
     if aid == "E1.cite":
         # accepted when the cited document is a legitimate governing doc AND the verbatim is real:
-        # it overlaps the gold quote, or it genuinely appears in the cited document's body (a model
-        # may quote the OTHER accepted governing document — e.g. the Certificate of Amendment
-        # instead of the announcement 8-K; that is correct entailment, not a miss). A fabricated
-        # quote matches neither.
+        # every piece of it is the document's own words (a model may quote the OTHER accepted
+        # governing document — e.g. the Certificate of Amendment instead of the announcement 8-K;
+        # that is correct entailment, not a miss). A fabricated or altered quote matches neither
+        # the cited body nor the gold quote. See _quote_is_verbatim for the standard.
         gc = _g(gold, "E1", "citation", default={}) or {}
         mc = _g(model, "E1", "citation")
         if not isinstance(mc, dict):
@@ -564,14 +650,8 @@ def handle(a, ctx):
             + [_g(gold, "P1", "governing_doc")]
         doc_ok = _doc_match(mc.get("document"), accept)
         mv = mc.get("verbatim") or ""
-        entail = _overlap(mv, gc.get("verbatim") or "", 0.5)
-        if doc_ok and not entail:
-            for d in (gold.get("_documents") or []):
-                if isinstance(d, dict) and _doc_match(mc.get("document"), [d.get("doc_id")]):
-                    body_toks = set(re.findall(r"[a-z0-9]+", str(d.get("body") or "").lower()))
-                    mtoks = re.findall(r"[a-z0-9]+", mv.lower())
-                    if len(mtoks) >= 6 and sum(1 for t in mtoks if t in body_toks) / len(mtoks) >= 0.8:
-                        entail = True
+        corpus = [gc.get("verbatim") or ""] + _cited_bodies(gold, mc.get("document"), accept)
+        entail = _quote_is_verbatim(mv, corpus)
         return Verdict(1.0 if (doc_ok and entail) else 0.0, "entailment", "governing-announcement citation")
 
     if aid == "E2.position":
@@ -690,6 +770,64 @@ def handle(a, ctx):
         return det(len(rows) >= 1 and all(r.get("action") for r in rows), "structured action record")
 
     return None   # penalties / D2 (refusal) / fallthrough
+
+
+# ---------------- citation fidelity (E1.cite) ----------------
+def _squash(s) -> str:
+    return re.sub(r"[^a-z0-9]+", " ", str(s or "").lower()).strip()
+
+
+# a quote splits into pieces at ellipses ("...", "…") and at sentence ends (a '.', '!' or '?' —
+# except a '.' BETWEEN digits, so "$0.072" and "47.18%" stay whole while "April 28, 2014. The"
+# still splits; "p.m." / "Inc." over-split harmlessly into short pieces that are skipped)
+_PIECE_SPLIT_RE = re.compile(r"\.{2,}|…|\n+|\.(?!\d)|(?<!\d)\.|[!?]")
+
+
+def _quote_is_verbatim(mv: str, corpus: list[str]) -> bool:
+    """PIECE-WISE VERBATIM (external review, 2026-09-06 — replaces token-Jaccard, which passed a
+    quote with its record and payment dates swapped, and even invented dates, at Jaccard 1.0).
+
+    Split the model's quote on ellipses AND sentence boundaries; normalize each piece (lowercase,
+    alphanumerics only, whitespace collapsed); every piece of >= 4 tokens must appear as an ORDERED
+    SUBSTRING of one corpus text (the cited document's body, or the gold verbatim). Pieces may
+    appear in any order and may skip text between them — that is what ellipses are for — so a
+    stitched, ellipsised or sentence-reordered quote of real sentences PASSES (11 of the 48 live
+    answers quote that way). Decided case: GPT-5.5 on zts-dividend-2014 quotes two sentences that
+    each exist in the filing (it dropped the filing's "instead of" sentence and quoted the corrected
+    one) — every piece is the document's words, so it PASSES. A real sentence with one date swapped,
+    an invented date, or a paraphrase FAILS: no piece of it is in the document.
+
+    This is a VERBATIM-FIDELITY check (are these the document's words?), NOT semantic entailment
+    (does the document support the claim?) — a model may still quote a true sentence that does not
+    bear on the term; that is the LLM-judge's question, not this atom's. Short pieces (< 4 tokens:
+    "p.m.", "Inc.", a lone "47.18%") are not checked, but the checked pieces must cover >= 75% of
+    the quote's tokens — a quote chopped into unverifiable fragments around one real sentence is
+    not a verbatim quote either."""
+    hay = [f" {_squash(c)} " for c in corpus if _squash(c)]
+    if not hay:
+        return False
+    covered = total = 0
+    for piece in _PIECE_SPLIT_RE.split(mv or ""):
+        p = _squash(piece)
+        n = len(p.split())
+        total += n
+        if n < 4:
+            continue
+        if not any(f" {p} " in h for h in hay):
+            return False
+        covered += n
+    return total > 0 and covered / total >= 0.75
+
+
+def _cited_bodies(gold, mdoc, accept) -> list[str]:
+    """bodies of the store documents the model's citation names; if the citation string resolves
+    to none (a descriptive alias — '8-K filed 2024-08-13 (Correction Notice)'), the bodies of the
+    accepted governing documents, since doc_ok has already established which document is meant."""
+    docs = [d for d in (gold.get("_documents") or []) if isinstance(d, dict)]
+    named = [str(d.get("body") or "") for d in docs if _doc_match(mdoc, [d.get("doc_id")])]
+    if named:
+        return named
+    return [str(d.get("body") or "") for d in docs if _doc_match(d.get("doc_id"), accept)]
 
 
 # ---------------- value-in-documents check (for the hallucination penalty) ----------------

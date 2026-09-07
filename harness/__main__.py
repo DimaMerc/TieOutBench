@@ -460,10 +460,27 @@ def cmd_selftest(_):
         s = suite_of(case)
         n1[s] = n1.get(s, 0) + 1
         failures += dispatch.get(s, _selftest_earnings)(p, name)
-    # eval #6's adversarial gaming review runs as a standing regression: every verified exploit
-    # must fire its gate, every verified correct phrasing must score clean
-    from . import gaming_review_eval6 as _gr
-    failures += [f"gaming-review-eval6: {nm}" for nm in _gr.run()]
+    # the adversarial gaming reviews run as standing regressions: every verified exploit must fire
+    # its gate, every verified correct phrasing must score clean. eval-6's review (Aug 2026) plus
+    # the external-review round of Sep 2026 (evals #4-#5 decision/action contradictions, the
+    # judge-verdict coercion) — see outputs/*/TAXONOMY.md and the module docstrings.
+    from . import gaming_review_eval6 as _gr6
+    failures += [f"gaming-review-eval6: {nm}" for nm in _gr6.run()]
+    from . import gaming_review_evals45 as _gr45
+    failures += [f"gaming-review-evals45: {nm}" for nm in _gr45.run()]
+    from . import gaming_review_judge as _grj
+    failures += [f"gaming-review-judge: {nm}" for nm in _grj.run()]
+    from . import gaming_review_eval1 as _gr1
+    failures += [f"gaming-review-eval1: {nm}" for nm in _gr1.run()]
+    # fail-closed invariant (Sep 2026): no positive criterion may fall through unhandled on any
+    # case — an unhandled atom is a grader gap, never credit; the grader scores it 0 and this fails
+    from . import suites as _suites
+    for p in _cases():
+        case = load_case(p)
+        name = os.path.basename(p).replace(".case.yaml", "")
+        u = _gr1._grade(name, _suites.for_case(case).make(case, "oracle")).unhandled
+        if u:
+            failures.append(f"{name}: unhandled criteria (no suite handler): {', '.join(u)}")
     if failures:
         print("SELFTEST FAILED:")
         for f in failures:

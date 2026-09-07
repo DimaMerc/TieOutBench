@@ -1,6 +1,6 @@
 # Harness — Phase 4
 
-A runnable scorer for **all three evals in the suite**: it loads each case's rubric
+A runnable scorer for **all six evals in the suite**: it loads each case's rubric
 ([criteria.yaml](../rubric/criteria.yaml) for the earnings eval,
 [criteria-defined-outcome.yaml](../rubric/criteria-defined-outcome.yaml) for the defined-outcome
 ETF eval, [criteria-dcf.yaml](../rubric/criteria-dcf.yaml) for the DCF-valuation eval), grades a

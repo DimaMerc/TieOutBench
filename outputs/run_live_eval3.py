@@ -6,7 +6,8 @@ outputs/run_live_eval3.py — drive a REAL model through the eval-#3 (DCF) case 
       --endpoint https://api.anthropic.com/v1 [--case mcd-fy2025-dcf] [--max-tokens 8000]
 
 Saves under outputs/eval3-live/<model>/: answer.json (parsed), raw.txt (the model's raw completion),
-report.txt (the scored report). Prints a one-line summary. The API key is read from the environment
+report.txt (the scored report), run.json (provenance: settings, usage, finish_reason,
+hashes; an earlier run in the same directory is moved to prior/<run_id>/ first, never overwritten). Prints a one-line summary. The API key is read from the environment
 (OPENAI_API_KEY / OPENROUTER_API_KEY) — never passed on the command line.
 """
 from __future__ import annotations
@@ -22,6 +23,7 @@ from harness import run_case                       # noqa: E402
 from harness.rubric import load_case               # noqa: E402
 from harness import live_dcf                       # noqa: E402
 from harness.report import render                  # noqa: E402
+from harness.run_record import new_run_id, preserve_prior, rel, run_fields, unclobbered, write_run_record  # noqa: E402
 
 
 def main():
@@ -42,6 +44,7 @@ def main():
     else:
         outdir = os.path.join(REPO, "outputs", "eval3-live", a.case, a.model_id.replace("/", "_"))
     os.makedirs(outdir, exist_ok=True)
+    run_id = new_run_id()
 
     print(f"[live] {a.model_id} @ {a.endpoint} — building the 10-K packet and calling the model ...")
     try:
@@ -49,11 +52,15 @@ def main():
     except Exception as e:
         raw = getattr(e, "raw", "")
         if raw:
-            with open(os.path.join(outdir, "raw_FAILED.txt"), "w", encoding="utf-8") as fh:
+            with open(unclobbered(os.path.join(outdir, "raw_FAILED.txt"), run_id), "w", encoding="utf-8") as fh:
                 fh.write(raw)
+        st = getattr(e, "stats", None) or {}
+        if st:
+            print(f"[live] endpoint reported finish_reason={st.get('finish_reason')} usage={st.get('usage')}")
         print(f"[live] FAILED: {e}")
         sys.exit(1)
 
+    prior = preserve_prior(outdir)                    # never overwrite a cited run in place
     with open(os.path.join(outdir, "raw.txt"), "w", encoding="utf-8") as fh:
         fh.write(ans.get("_raw", ""))
     clean = {k: v for k, v in ans.items() if not k.startswith("_")}
@@ -64,12 +71,21 @@ def main():
     report = render(result, rubric, variant=f"live:{a.model_id}", mode=a.judge)
     with open(os.path.join(outdir, "report.txt"), "w", encoding="utf-8") as fh:
         fh.write(report)
+    write_run_record(outdir, **run_fields(ans, case_path=case_path, case=case, live_module=live_dcf,
+                                         judge=a.judge, run_id=run_id, model_id=a.model_id),
+                     prior_dir=rel(prior) if prior else None,
+                     score={"gated": result.case_gated, "ungated": result.case_ungated, "gap": result.gap,
+                            "allpass": result.allpass, "gates": result.fired_gates, "flags": result.flags})
     print(report)
+    st = ans.get("_stats") or {}
+    print(f"[live] finish_reason={st.get('finish_reason')} usage={st.get('usage')} "
+          f"parse={ans.get('_parse_status')} retries={ans.get('_retries')} elapsed={ans.get('_elapsed_s')}s"
+          + ("  ** TRUNCATED by the token budget **" if st.get("finish_reason") == "length" else ""))
     print(f"\n[live] {a.model_id}: gated={result.case_gated:.3f} ungated={result.case_ungated:.3f} "
           f"GAP={result.gap:.3f} AllPass={result.allpass} "
           f"gates={result.fired_gates} flags={result.flags} "
           f"E5(R,G)={result.e6}  (prompt ~{ans.get('_prompt_tokens_approx')} tok)")
-    print(f"[live] artifacts -> {outdir}")
+    print(f"[live] artifacts -> {outdir}  (run.json = provenance; prior runs under prior/)")
 
 
 if __name__ == "__main__":

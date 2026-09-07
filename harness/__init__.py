@@ -40,5 +40,9 @@ def run_case(case_path: str, variant: str = "oracle", mode: str = "mock", model_
         judge_fn = make_judge(endpoint=endpoint or DEFAULT_ENDPOINT, model_id=model_id, rubric=rubric,
                               memo_kind=getattr(suite, "MEMO_KIND", "an analyst's memo"))
     verdicts, refusal_RG = grade(atoms, answer, gold, rubric, suite, mode=mode, judge_fn=judge_fn)
+    if judge_fn is not None and getattr(judge_fn, "record", None) is not None:
+        # grading failures are reported separately from model mistakes (external review, Sep 2026)
+        from .judge_llm import judge_status_line
+        print("  " + judge_status_line(judge_fn.record))
     return score(atoms, verdicts, refusal_RG, rubric, case_id=case["case_id"],
                  refusal_cp=suite.REFUSAL_CP), rubric

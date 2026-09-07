@@ -44,26 +44,81 @@ def _norm_decision(v) -> str:
 
 # settle/break family classifier (used by BOTH the D1.decision atom and the GATE.RECON hook, so a
 # model is not rewarded for an approval SYNONYM that the literal-"SETTLE" match would miss, nor
-# penalized for a natural refusal phrasing). Negations ("DO NOT SETTLE") are classified as a break
-# BEFORE the bare-settle test. Returns "settle" | "break" | None (neither / ambiguous).
-_BREAK_ROOTS = ("DONOTSETTLE", "DONTSETTLE", "DONOTAPPROVE", "DONOTRELEASE", "NOTSETTLE", "NOSETTLE",
-                "BREAK", "HOLD", "REJECT", "STOP", "FAIL", "DENY", "BLOCK", "ESCALATE", "DONOTPROCEED")
+# penalized for a natural refusal phrasing). Returns "settle" | "break" | None (neither / ambiguous).
+#
+# THE CONTRADICTORY-INSTRUCTION RULE (gaming review 2026-09-06): a decision that carries BOTH an
+# unqualified settle-family commitment AND a break-family instruction ("SETTLE; escalate the
+# shortfall separately") is AMBIGUOUS -> None. It is credited as neither call: D1.decision fails on
+# every case (break and clean), GATE.RECON does not fire on the ambiguity alone (the gate means
+# "committed the wrong action"), and no false-break penalty is charged either. Single-family forms
+# are handled first so they cannot trip the rule: a negated settle ("DO NOT SETTLE", "not ok to
+# release") is a pure break signal; a negated break-noun ("no exceptions", "no escalation needed")
+# is a pure settle qualifier; a conditioned settle-word ("before settlement", "pending approval")
+# is not a commitment. Flags: the engine derives headline flags only from fired gates
+# (scoring.py), so ambiguity is surfaced in the D1 verdict notes ("ambiguous decision"), not as a flag.
+_BREAK_ROOTS = ("BREAK", "HOLD", "REJECT", "STOP", "FAIL", "DENY", "BLOCK", "ESCALATE")
 _SETTLE_ROOTS = ("SETTLE", "APPROVE", "APPROVED", "PROCEED", "RELEASE", "ACCEPT", "CLEAR", "PASS",
                  "OKTOSETTLE", "OKTO", "GREENLIGHT", "ALLOW", "GOAHEAD", "GOODTOSETTLE")
+# the strict COMMITMENT subset used by the contradiction test: verbs a desk would act on, not the
+# short/overloaded tokens (CLEAR, PASS, OKTO) that also occur inside ordinary break prose
+_SETTLE_COMMIT_ROOTS = ("SETTLE", "APPROVE", "PROCEED", "RELEASE", "ACCEPT", "GREENLIGHT", "ALLOW",
+                        "GOAHEAD", "GOODTOSETTLE", "CLEARED")
+# a negator directly before a settle-family word -> a negated settle (the DONOT* forms) = a break
+_NEG_SETTLE_RE = re.compile(
+    r"(?:DONOT|DONT|CANNOT|CANT|WONT|WILLNOT|MUSTNOT|SHOULDNOT|REFUSETO|UNABLETO|NOT|NO|UN)"
+    r"(?:YET|TO|BE|READYTO|OKTO|OK)?"
+    r"(?:SETTLE|SETTLED|APPROVE|APPROVED|RELEASE|RELEASED|PROCEED|ACCEPT|ACCEPTED|ALLOW|GOAHEAD|GREENLIGHT)")
+# a negator before a break NOUN ("no exceptions", "no escalation required", "nothing to escalate")
+# -> the model is asserting the basket is clean; that is a settle qualifier, not a break signal
+_NEG_BREAK_RE = re.compile(
+    r"(?:NO|NOT|NOTHINGTO|DONOT|DONT|WITHOUT|FREEOF|ZERO|NONE)"
+    r"(?:MATERIAL|ANY|A|FURTHER|OTHER)*"
+    r"(?:BREAKS|BREAK|HOLDS|HOLD|REJECTS|REJECT|STOPS|STOP|FAILURES|FAILURE|FAILS|FAIL|DENY|BLOCKS|"
+    r"BLOCK|ESCALATIONS|ESCALATION|ESCALATES|ESCALATE|EXCEPTIONS|EXCEPTION|ISSUES|ISSUE)")
+# a conditional/temporal qualifier before a settle-word ("prior to settlement", "before release",
+# "pending approval", "hold settlement") -> a deferred settle is not a settle commitment
+_COND_SETTLE_RE = re.compile(
+    r"(PRIORTO|BEFORE|UNTIL|PENDING|AHEADOF|WITHHOLD|WITHHOLDING|DEFER|DEFERRING|SUSPEND|"
+    r"SUSPENDING|AWAIT|AWAITING|HOLD|HOLDING|BLOCK|BLOCKING|STOP|STOPPING)"
+    r"(?:[A-Z]{0,14}?)"
+    r"(?:SETTLEMENT|SETTLING|SETTLE|RELEASING|RELEASE|APPROVAL|APPROVING|APPROVE|PROCEEDING|PROCEED)")
+_COND_KEEP = r"\1|"   # keep the qualifier (HOLD/BLOCK/STOP are break roots themselves), drop the settle-word
 
 
 def _classify_decision(v) -> str | None:
     s = _norm_decision(v)                       # upper, alnum-only: "do not settle" -> "DONOTSETTLE"
     if not s:
         return None
-    # a negated settle is a break — test the break family (which includes the DONOT* forms) first
-    if any(r in s for r in _BREAK_ROOTS):
+    neg_settle = _NEG_SETTLE_RE.search(s) is not None
+    # strip the single-family forms (each is replaced by a separator so no new token is formed)
+    s1 = _NEG_SETTLE_RE.sub("|", s)
+    s1 = _NEG_BREAK_RE.sub("|", s1)
+    s1 = _COND_SETTLE_RE.sub(_COND_KEEP,s1)
+    break_hit = neg_settle or any(r in s1 for r in _BREAK_ROOTS)
+    # legacy loose negation (a NOT/DONT/CANNOT anywhere alongside a settle word) is still a break
+    if not break_hit and ("NOT" in s1 or "DONT" in s1 or "CANNOT" in s1) \
+            and ("SETTLE" in s1 or "APPROVE" in s1 or "RELEASE" in s1):
         return "break"
-    if ("NOT" in s or "DONT" in s or "CANNOT" in s) and ("SETTLE" in s or "APPROVE" in s or "RELEASE" in s):
+    if break_hit:
+        # the contradiction test: an UNqualified settle commitment beside the break instruction?
+        # ("SETTLEMENT" the noun — "settlement tolerance breached" — is not a commitment)
+        s_commit = s1.replace("SETTLEMENT", "|")
+        if any(r in s_commit for r in _SETTLE_COMMIT_ROOTS):
+            return None                           # ambiguous: credited as neither call
         return "break"
-    if any(r in s for r in _SETTLE_ROOTS):
+    if any(r in s1 for r in _SETTLE_ROOTS):
         return "settle"
     return None
+
+
+def _is_ambiguous_decision(v) -> bool:
+    """True when the decision carries BOTH families (the contradictory-instruction case) — as opposed
+    to being merely empty / unclassifiable."""
+    s = _norm_decision(v)
+    return bool(s) and _classify_decision(v) is None and (
+        _NEG_SETTLE_RE.search(s) is not None
+        or any(r in _COND_SETTLE_RE.sub(_COND_KEEP,_NEG_BREAK_RE.sub("|", _NEG_SETTLE_RE.sub("|", s)))
+               for r in _BREAK_ROOTS))
 
 
 def _by_ticker(rows, key_shares="shares"):
@@ -240,9 +295,16 @@ def handle(a, ctx):
 
     # ============================== DECISION ==============================
     ties_out = _g(gold, "C3", "ties_out", default=False) is True
+    # a contradictory settle+break instruction is not an actionable decision: the whole D1 checkpoint
+    # (call, localization, structured record) scores 0 — without a gate, since no wrong action was
+    # committed (the GATE.RECON hook in penalty_present only fires on a clean "settle" class)
+    ambiguous = _is_ambiguous_decision(_g(model, "D1", "decision"))
     if aid == "D1.decision":
         gc, mc = _classify_decision(_g(gold, "D1", "decision")), _classify_decision(_g(model, "D1", "decision"))
-        return det(gc is not None and mc == gc, "settle/break call (class match)")
+        return det(gc is not None and mc == gc,
+                   "ambiguous decision (settle AND break instruction)" if ambiguous else "settle/break call (class match)")
+    if aid in ("D1.localize", "D1.escalate") and ambiguous:
+        return det(0.0, "ambiguous decision: no actionable D1 record")
     if aid == "D1.localize":
         res = _num(_g(model, "D1", "residual"))
         gres = _num(_g(gold, "D1", "residual"))
@@ -300,7 +362,10 @@ def penalty_present(a, model, gold) -> bool:
                 return True
         return "C2.n_cil_blind" in inj
     if a.id == "D1.n_override":
-        # the GATE.RECON hook: SETTLE (or any approval synonym) on a basket that does not tie out
+        # the GATE.RECON hook: SETTLE (or any approval synonym) on a basket that does not tie out.
+        # An AMBIGUOUS decision (settle AND break instruction, class None) does NOT fire the gate —
+        # it earns nothing at D1 instead. The eval-4 D1 contract has no action/instruction field
+        # (escalate_to is a routing destination), so there is no second text to scan here.
         gold_breaks = _g(gold, "C3", "ties_out", default=True) is False
         return (gold_breaks and _classify_decision(_g(model, "D1", "decision")) == "settle") \
             or "D1.n_override" in inj

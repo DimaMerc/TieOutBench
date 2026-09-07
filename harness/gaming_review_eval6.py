@@ -8,6 +8,12 @@ phrased answer that lost a gate or points). Every one is encoded here as a check
 grader, and `python -m harness selftest` runs them all: every exploit must fire its gate, every
 correct phrasing must score 1.000. A grader change that reopens any of them fails the selftest.
 
+Later waves extend the table in the same style: the live-run wave (LW#, false fires the first real
+answers surfaced) and the external review of 2026-09-06 (ER#: the prose amount that bypassed
+GATE.ELECT in three surfaces, and the citation whose dates could be swapped or invented under the
+old token-Jaccard test — plus the real quote shapes, ellipsis / reordered / stitched sentences,
+that the verbatim test must keep accepting).
+
 Run standalone for the per-check table: python -m harness.gaming_review_eval6
 """
 from __future__ import annotations
@@ -277,6 +283,94 @@ def checks():
         m["D1"]["decision"] = "Process the expired tender using the final results; apply proration to the validly tendered position, book accepted shares and gross proceeds, return residual shares, make no new election."
     C.append(("LW#6 the-expired-tender noun", "mnst-tender-2024", lw_6, lambda r: "GATE.ELECT" not in r.fired_gates and r.case_gated > 0.99))
 
+    # ============ external review (2026-09-06): the prose amount — must FIRE ============
+    # (bry gold: 40,000 x $0.17 = $6,800; permissible [6800, 4800, 2000]; a 10x figure in the row's
+    # own text scored 1.000/AllPass whether `amount` was null, absent, or even correct)
+    def er_1a(m):
+        m["D1"]["actions"][0] = {"action": "Pay $68,000 dividend receivable", "amount": None, "by_date": "2024-08-30", "basis_doc": "bry-8k-20240813"}
+    C.append(("ER#1a prose $68,000, amount null", "bry-dividend-2024", er_1a, lambda r: "GATE.ELECT" in r.fired_gates))
+
+    def er_1b(m):
+        m["D1"]["actions"][0] = {"action": "Pay $68,000 dividend receivable", "by_date": "2024-08-30", "basis_doc": "bry-8k-20240813"}
+    C.append(("ER#1b prose $68,000, amount absent", "bry-dividend-2024", er_1b, lambda r: "GATE.ELECT" in r.fired_gates))
+
+    def er_1c(m):
+        m["D1"]["actions"][0] = {"action": "Pay $68,000 dividend receivable", "amount": 6800.0, "by_date": "2024-08-30", "basis_doc": "bry-8k-20240813"}
+    C.append(("ER#1c prose $68,000 beside amount 6800", "bry-dividend-2024", er_1c, lambda r: "GATE.ELECT" in r.fired_gates))
+
+    def er_1d(m):
+        m["D1"]["actions"][0] = "Pay $68,000 dividend receivable by 2024-08-30"
+    C.append(("ER#1d prose $68,000, string row", "bry-dividend-2024", er_1d, lambda r: "GATE.ELECT" in r.fired_gates))
+
+    def er_1e(m):
+        m["D1"]["decision"] = "PROCESS on the corrected (v2) terms - pay $68,000 dividend receivable on 2024-08-30"
+    C.append(("ER#1e prose $68,000, decision", "bry-dividend-2024", er_1e, lambda r: "GATE.ELECT" in r.fired_gates))
+
+    def er_1f(m):
+        m["D1"]["actions"][0] = "release 68,000.00 USD dividend receivable to the client cash account on 2024-08-30"
+    C.append(("ER#1f prose '68,000.00 USD' form", "bry-dividend-2024", er_1f, lambda r: "GATE.ELECT" in r.fired_gates))
+
+    def er_1g(m):
+        m["D1"]["actions"][0]["action"] = "credit gross tender proceeds of USD 2,500,540 to the client cash account"
+    C.append(("ER#1g prose 10x proceeds MNST", "mnst-tender-2024", er_1g, lambda r: "GATE.ELECT" in r.fired_gates))
+
+    # ============ external review (2026-09-06): prose figures that must NOT fire ============
+    def er_2a(m):
+        m["D1"]["actions"][0] = {"action": "book $6,800.00 dividend receivable (fixed $4,800.00 plus variable $2,000.00) for 2024-08-30", "amount": None, "by_date": "2024-08-30", "basis_doc": "bry-8k-20240813"}
+    C.append(("ER#2a permissible prose figures", "bry-dividend-2024", er_2a, lambda r: not r.fired_gates and r.case_gated > 0.99))
+
+    def er_2b(m):
+        m["D1"]["actions"][0]["action"] = "accept and settle 4,718 shares at the final purchase price of $53.00 per share (aggregate purchase price of approximately $3.0 billion for the offer); credit gross proceeds of $250,054.00"
+    C.append(("ER#2b quoted offer terms in a row", "mnst-tender-2024", er_2b, lambda r: not r.fired_gates and r.case_gated > 0.99))
+
+    def er_2c(m):
+        m["D1"]["actions"][0]["action"] = "Pay $6,800 dividend receivable; note the rate of $0.17 per share"
+    C.append(("ER#2c per-share rate in a row", "bry-dividend-2024", er_2c, lambda r: not r.fired_gates and r.case_gated > 0.99))
+
+    # ============ external review (2026-09-06): citation fidelity — altered quotes must FAIL ============
+    # (token-Jaccard passed a quote with its record and payment dates swapped at Jaccard 1.0)
+    def er_3a(m):
+        m["E1"]["citation"]["verbatim"] = "The dividends will be payable on August 23, 2024 to all stockholders of record as of the close of business on August 30, 2024"
+    C.append(("ER#3a cite dates swapped", "bry-dividend-2024", er_3a, lambda r: r.checkpoints["E1"]["score_gated"] < 1.0))
+
+    def er_3b(m):
+        m["E1"]["citation"]["verbatim"] = "The dividends will be payable on March 1, 2099 to all stockholders of record as of the close of business on February 1, 2099"
+    C.append(("ER#3b cite invented dates", "bry-dividend-2024", er_3b, lambda r: r.checkpoints["E1"]["score_gated"] < 1.0))
+
+    def er_3c(m):
+        m["E1"]["citation"]["verbatim"] = "The dividends will be payable on August 20, 2024 to all stockholders of record as of the close of business on August 12, 2024"
+    C.append(("ER#3c cite superseded dates", "bry-dividend-2024", er_3c, lambda r: r.checkpoints["E1"]["score_gated"] < 1.0))
+
+    def er_3d(m):
+        m["E1"]["citation"]["verbatim"] = "Dividends are payable Aug 30, 2024 to holders of record at the close of business Aug 23, 2024"
+    C.append(("ER#3d cite paraphrase", "bry-dividend-2024", er_3d, lambda r: r.checkpoints["E1"]["score_gated"] < 1.0))
+
+    # ============ external review (2026-09-06): real quotes in real shapes — must PASS ============
+    def er_4a(m):   # ellipsis quote, every piece verbatim (the opus-4-8 live shape)
+        m["E1"]["citation"]["verbatim"] = "Monster accepted for purchase a total of 56,603,773 shares of its common stock ... at the final purchase price of $53.00 per share ... the final proration factor for the tender offer is approximately 47.18%."
+    C.append(("ER#4a cite ellipsis pieces", "mnst-tender-2024", er_4a, lambda r: not r.fired_gates and r.case_gated > 0.99))
+
+    def er_4b(m):   # two real sentences in the reverse order of the filing (the opus-4-8 live shape)
+        m["E1"]["citation"]["verbatim"] = "The dividends will be payable on August 30, 2024 to all stockholders of record as of the close of business on August 23, 2024, not payable on August 20, 2024 to all stockholders of record on August 12, 2024 as previously disclosed. The dividend amounts have not changed."
+    C.append(("ER#4b cite reordered sentences", "bry-dividend-2024", er_4b, lambda r: not r.fired_gates and r.case_gated > 0.99))
+
+    def er_4c(m):   # two real sentences, the filing's "instead of" sentence dropped (the gpt-5.5 live shape)
+        m["E1"]["citation"]["verbatim"] = "The dividend is to be paid on June 2, 2014 to holders of record on April 28, 2014. The corrected release reads: The Board of Directors of Zoetis Inc. (NYSE:ZTS) declared a second quarter dividend payable to holders of the company's common stock of $0.072 per share. The dividend is to be paid on June 2, 2014 to holders of record on April 28, 2014."
+    C.append(("ER#4c cite stitched sentences", "zts-dividend-2014", er_4c, lambda r: not r.fired_gates and r.case_gated > 0.99))
+
+
+    # ER#5 (parent follow-up, 2026-09-07): the two residual gaps the package-B agent reported
+    def er_5a(m):
+        m["D1"]["actions"][0] = {"action": "release the dividend receivable of $8,500.00", "amount": None, "by_date": "2024-08-30", "basis_doc": "bry-8k-20240813"}
+    C.append(("ER#5a superseded $8,500.00 in prose behind a correct by_date", "bry-dividend-2024", er_5a, lambda r: "GATE.ELECT" in r.fired_gates))
+
+    def er_5b(m):
+        m["D1"]["actions"][0] = {"action": "book $6,800.00 dividend receivable, not the $68,000 the desk initially keyed", "amount": None, "by_date": "2024-08-30", "basis_doc": "bry-8k-20240813"}
+    C.append(("ER#5b negated figure is a comparison, not a release", "bry-dividend-2024", er_5b, lambda r: not r.fired_gates and r.case_gated > 0.99))
+
+    def er_5c(m):
+        m["D1"]["actions"][0] = {"action": "pay the corrected $68,000 dividend receivable", "amount": None, "by_date": "2024-08-30", "basis_doc": "bry-8k-20240813"}
+    C.append(("ER#5c 'corrected' wording does not excuse a wrong prose release", "bry-dividend-2024", er_5c, lambda r: "GATE.ELECT" in r.fired_gates))
     return C
 
 

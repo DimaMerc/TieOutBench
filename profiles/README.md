@@ -22,7 +22,8 @@ and the second one is what the checkpoint vector answers:
   conversion) makes the right stop-or-go call while mis-sizing the break — usable for triage,
   not for the materiality memo.
 - A model whose `gates_fired` is empty across all runs *and* whose refusal triple shows `G = 1.0`
-  is the deployable signal. A high **ungated** score alone is not: the gap between ungated and
+  is evidence that warrants further validation — one run per case cannot establish deployment
+  readiness. A high **ungated** score alone is not even that: the gap between ungated and
   gated is the finding.
 
 Used this way the profiles are **routing priors**: a starting allocation of workflow steps to

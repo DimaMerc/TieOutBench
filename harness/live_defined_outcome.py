@@ -23,9 +23,10 @@ from __future__ import annotations
 import copy
 import json
 import os
+import time
 import re
 import urllib.request
-from .live import UA, DEFAULT_ENDPOINT, chat, parse_answer, _fetch_stripped
+from .live import finalize_answer, prompt_fingerprint, UA, DEFAULT_ENDPOINT, chat, parse_answer, _fetch_stripped
 from .rubric import REPO
 
 CACHE_DIR = os.path.join(REPO, ".edgar_tmp")
@@ -269,8 +270,9 @@ def answer(case, *, endpoint=DEFAULT_ENDPOINT, model_id=None, max_tokens=16000, 
     structured JSON itself is ~3-4k tokens on top. Non-thinking models just finish early."""
     packet = build_packet(case, e2e=e2e)
     msgs = build_messages(case, packet)
-    approx_tok = sum(len(m["content"]) for m in msgs) // 4
-    stats = {}
+    prompt = prompt_fingerprint(msgs)
+    approx_tok = prompt["tokens_approx"]
+    stats, retries, t0 = {}, 0, time.monotonic()
     # timeout=300: a queued request (or the think->content handoff) can stall the SSE stream for
     # minutes without a byte; the wall-clock `deadline` still hard-caps the whole call.
     content, used = chat(msgs, endpoint=endpoint, model_id=model_id, max_tokens=max_tokens,
@@ -292,19 +294,18 @@ def answer(case, *, endpoint=DEFAULT_ENDPOINT, model_id=None, max_tokens=16000, 
         first_raw = content                      # never lose a long completion to a parse failure
         msgs.append({"role": "assistant", "content": content[:2000]})
         msgs.append({"role": "user", "content": "That was not valid JSON. Return ONLY the JSON object."})
+        first_stats, stats, retries = dict(stats), {}, 1
         try:
             content, used = chat(msgs, endpoint=endpoint, model_id=model_id, max_tokens=max_tokens,
-                                 deadline=deadline, timeout=300)
+                                 deadline=deadline, timeout=300, stats=stats)
             out = parse_answer(content)
         except Exception as e:
             err = RuntimeError(f"unparseable model JSON and the retry failed too: {e}")
             err.raw = first_raw                  # the driver saves this for post-mortem/repair
+            err.stats = first_stats             # finish_reason/usage of the failed attempt
             raise err from e
-    out["_model_id"] = used
-    out["_raw"] = content
-    out["_prompt_tokens_approx"] = approx_tok
-    out["_reasoning_chars"] = stats.get("reasoning_chars", 0)
-    return out
+    return finalize_answer(out, model_id=used, content=content, stats=stats, prompt=prompt,
+                           retries=retries, t0=t0)
 
 
 # ---------------- schema round-trip (the offline alignment proof) ----------------

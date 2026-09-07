@@ -70,15 +70,19 @@ workflow definition + eval creation + capability assessment + data curation
 ## Phase 5 — Graded outputs + write-up  → `outputs/` + `README.md`  ◐ single demo done; full run deferred (spend)
 - [x] **Single demo** (offline, no spend): the SNOW scale-slip finding (GATE.P2, GAP 0.53) + the
       gate-tier taxonomy, captured in `outputs/`. — `python -m harness demo`
-- [ ] Run 20–50 *live* model outputs; grade; write rationales. *(deferred — needs the spend cap raised)*
-- [ ] Build the **failure taxonomy** table from real traces.
-- [ ] A short calibration write-up (judge-vs-human agreement on a sample).
+- [x] Run 20–50 *live* model outputs; grade; write rationales. *(suite-wide: 96 frontier runs on
+      evals #3–#6 + 9 open-weight runs on #1–#2, every one graded with a rationale in its TAXONOMY;
+      eval #1 itself is still open-weight-only — see LEADERBOARD.)*
+- [x] Build the **failure taxonomy** table from real traces. *(per-eval `outputs/*/TAXONOMY.md`; consolidated in the paper §8.)*
+- [x] A short calibration write-up (judge-vs-human agreement on a sample). *(eval #2, n = 28:
+      `outputs/eval2-live/CALIBRATION-WORKSHEET.md`; blind multi-expert grading remains open.)*
 - [x] README so a screener can run it and read the findings (`outputs/README.md`, `harness/README.md`).
 
 ## Phase 6 — Publish & extend
 - [x] MIT-licensed, public-ready: `LICENSE`, line-ending normalization, README + `PAPER.md`.
 - [x] Push to GitHub (public): `github.com/DimaMerc/TieOutBench`.
-- [ ] **Next:** broaden the suite (more issuers/quarters) and run the judge-vs-expert calibration.
+- [x] **Next:** broaden the suite — done as five further evals (#2–#6) rather than more issuers on #1;
+      more issuers/quarters on #1 remains open.
 - [x] **Moat version** chosen and started → Eval #2 below.
 
 ---
@@ -229,18 +233,18 @@ with no sensitivity block (the DCF analog of eval #2's free-lunch).
 > `C5.tvshare`); plus run-mode-dependent E5 credit, a `C3.n_convention` penalty atom, the
 > `deciding_kind` carry-forward at C7, and the signature-case blast-radius note.
 
-## Phase 2 — Rubric  → `rubric/criteria-dcf.yaml` + `rubric/rubric-dcf.md`  ⏳ next
-- [ ] Turn each checkpoint's success criteria into gated, weighted atoms on the existing
+## Phase 2 — Rubric  → `rubric/criteria-dcf.yaml` + `rubric/rubric-dcf.md`  ✅ done
+- [x] Turn each checkpoint's success criteria into gated, weighted atoms on the existing
       `criteria.yaml` schema (no schema change); set calculation-heavy weights.
-- [ ] Encode the gate ledger as deterministic predicates; `GATE.FALSEPRECISION` predicated
+- [x] Encode the gate ledger as deterministic predicates; `GATE.FALSEPRECISION` predicated
       on the structured sensitivity block; tolerances into `tolerances:`.
-- [ ] Document the E5 typed-answer extension + `false_precision_fired` flag in `judge.md`.
-- [ ] `validate.py` linter (invariant assertions) + a reproducible worked example.
+- [x] Document the E5 typed-answer extension + `false_precision_fired` flag in `judge.md`.
+- [x] `validate.py` linter (invariant assertions) + a reproducible worked example.
 
-## Phase 3 — Gold cases  → `cases/`  ⏳
-- [ ] MCD FY2025 gold: every base line + bridge item cited to the 10-K, the assumption set
+## Phase 3 — Gold cases  → `cases/`  ✅ done (MCD FY2025 + NVDA FY2026 mirror case)
+- [x] MCD FY2025 gold: every base line + bridge item cited to the 10-K, the assumption set
       as the labeled oracle layer, the closed-form DCF math as gold.
-- [ ] The **signature "subtly-wrong DCF"** case — headline variant = the missing net-debt
+- [x] The **signature "subtly-wrong DCF"** case — headline variant = the missing net-debt
       bridge (scoped, looks-right-is-wrong); basis-mix + `g≥WACC` as catastrophic contrast.
 
 ## Phase 4 — Harness suite  → `harness/suites/dcf.py`  ✅ done
@@ -431,5 +435,4 @@ Design doc + build status: `workflow/corporate-actions-analysis.md` (decisions a
       every fix. Logged in outputs/eval6-live/TAXONOMY.md.
 - [x] LEADERBOARD eval-6 section + honest-negatives refinement; profiles/ regenerated (96 runs,
       evals #3-#6; published eval-3-5 numbers still reproduce byte-for-byte).
-- [ ] README threading + finalize workflow/corporate-actions-analysis.md as
-      workflow/corporate-actions-analysis.md; commit on user's OK.
+- [x] README threading + finalize workflow/corporate-actions-analysis.md; committed 2026-08-18 (5c078d9).

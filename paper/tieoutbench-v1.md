@@ -702,6 +702,26 @@ In order of importance:
    oracle layers the model could not have seen), not recall — but the exposure is real and is
    why constructed-but-labeled cases have a place in the suite alongside cited ones.
 
+
+8. **Grader coverage, corrected after publication (September 2026).** An external review of the
+   grader — every claim reproduced before acting — found that in v1 eighteen deterministic criteria
+   of the eval-#1 rubric (49 of 350 positive points) had no explicit handler and were credited
+   whenever the checkpoint contained content; the eval-#1 figures in §6.5 therefore carry up to 14
+   points of unverified credit. The fallback now fails closed, every criterion has a handler, and
+   `selftest` asserts that no criterion on any case is unhandled. Under real checks the 32B model's
+   offline score is 0.603 (v1: 0.679) and its 10-Q-fed run 0.563 (v1: 0.671); the judge-graded
+   0.532 has not been re-run (v1 did not persist the raw judge verdicts — the harness now does) and
+   should be read as an upper bound. Part of the drop is a prompt-schema limitation: the live output
+   contract has no field for six of those criteria, so a schema-following model cannot earn them; the
+   contract will be extended before eval #1 is re-run. The same review found four ways a wrong answer
+   could pass the evals #4–#6 graders (a settle-and-escalate decision credited as the refusal; an
+   affirm-and-release action under a MISMATCHED decision; a wrong amount carried only in action
+   prose; a "verbatim" quote with two dates swapped — the offline "entailment" check was token
+   overlap at a 0.5 threshold, which this section now discloses) and that the live client never read
+   the completion's finish reason. All are fixed and regression-tested; **no evals #3–#5 number in
+   this report changes** (all 48 committed answers re-grade identically, and the 48 eval-#6 answers
+   published after v1 likewise). This is the grader-bug rule of §3.7 in a new form: the reviewer that
+   found these was not a model but a reader of the grader.
 ## 10. Future work
 
 - **Eval #6 — agentic corporate-actions processing.** The back-office domain with a documented

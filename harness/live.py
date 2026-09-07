@@ -10,12 +10,15 @@ Default endpoint is LM Studio's server: http://localhost:1234/v1  (Developer tab
 Uses only the standard library (urllib/json) so there is no extra dependency.
 """
 from __future__ import annotations
+import hashlib
 import json
 import os
 import re
+import sys
 import time
-import urllib.request
 import urllib.error
+import urllib.parse
+import urllib.request
 
 
 def _fold_system(messages):
@@ -94,15 +97,66 @@ def list_models(endpoint=DEFAULT_ENDPOINT, api_key=None):
         return [m["id"] for m in json.loads(r.read().decode("utf-8")).get("data", [])]
 
 
+def _host_of(endpoint: str) -> str:
+    """host[:port] of an endpoint URL -- for run records; never carries a key or a path."""
+    try:
+        u = urllib.parse.urlsplit(endpoint or "")
+        return (u.hostname or "") + (f":{u.port}" if u.port else "")
+    except ValueError:
+        return ""
+
+
+def _init_stats(stats, **kw) -> dict:
+    """(Re)initialise the caller's stats dict at the top of every chat() attempt so EVERY key is
+    present -- None where the endpoint never told us -- and a retry (field flip, temperature drop,
+    stream fallback, system fold) overwrites the previous attempt's values rather than mixing them."""
+    st = stats if isinstance(stats, dict) else {}
+    st.update({"finish_reason": None, "usage": None, "reasoning_chars": 0, "content_chars": 0,
+               "elapsed_s": None, "deadline_hit": False, "model_id": None})
+    st.update(kw)
+    return st
+
+
+def _finish_stats(st, *, finish_reason, usage, content_chars, reasoning_chars, t0, model_id, deadline_hit=False):
+    st["finish_reason"] = finish_reason
+    st["usage"] = usage if isinstance(usage, dict) else None
+    st["content_chars"] = content_chars
+    st["reasoning_chars"] = reasoning_chars
+    st["elapsed_s"] = round(time.monotonic() - t0, 3)
+    st["deadline_hit"] = deadline_hit
+    st["model_id"] = model_id
+    # The one line this whole change exists for: a length-cut completion is otherwise indistinguishable
+    # from a complete one at the caller (the JSON tail is simply missing). Say so, loudly, once.
+    if finish_reason == "length":
+        print(f"[live] WARNING: finish_reason=length for {model_id} -- the completion was CUT by the "
+              f"{st.get('token_field', 'max_tokens')}={st.get('max_tokens')} budget after "
+              f"{content_chars:,} content chars (+{reasoning_chars:,} reasoning chars). The answer is "
+              f"TRUNCATED, not complete; grade it as such or raise --max-tokens.", file=sys.stderr, flush=True)
+    elif deadline_hit:
+        print(f"[live] WARNING: wall-clock deadline hit for {model_id} after {st['elapsed_s']}s -- the stream "
+              f"was abandoned mid-generation ({content_chars:,} content chars). The answer is TRUNCATED.",
+              file=sys.stderr, flush=True)
+
+
 def chat(messages, *, endpoint=DEFAULT_ENDPOINT, model_id=None, max_tokens=4000, temperature=0.0,
          stream=True, timeout=90, deadline=240, stats=None, api_key=None, _folded=False,
-         _token_field="max_tokens"):
+         _token_field="max_tokens", _stream_usage=True, _temp_dropped=False):
     """Call the OpenAI-compatible chat endpoint. Streaming by default so a long generation trickles
     tokens. `timeout` is the per-read socket timeout; `deadline` is a HARD wall-clock cap on the whole
     call -- the loop breaks past it no matter what, so a stalled/looping server can never hang forever.
     Reasoning models (e.g. Qwen3.6) stream their think-phase as `delta.reasoning_content`, NOT
-    `delta.content`; pass a dict as `stats` to receive {'reasoning_chars', 'content_chars'} so a
-    caller can tell 'spent the whole budget thinking' apart from a context overflow.
+    `delta.content`; pass a dict as `stats` to receive it. Returns (content, model_id) -- unchanged.
+
+    `stats` (a caller-supplied dict) is filled with the run-record facts the content string cannot
+    carry: `finish_reason` ("stop" | "length" | ... | None when the endpoint never sent one),
+    `usage` (the endpoint's token counts, or None), `reasoning_chars`, `content_chars`, `elapsed_s`,
+    `deadline_hit`, `stream`, `stream_usage_requested`, `token_field` (the max-tokens field actually
+    accepted), `max_tokens`, `temperature` (the value sent, or "omitted"), `temperature_dropped`,
+    `system_folded`, `endpoint_host` (host only, never the key) and `model_id`.
+    finish_reason == "length" logs ONE warning line to stderr and never raises: a length-truncated
+    completion must be visible to the caller instead of masquerading as a complete answer.
+    Streaming requests ask for `stream_options.include_usage` (OpenAI honours it; other compat
+    endpoints may ignore it -- usage stays None -- or reject it with a 400, which retries without it).
     On a 400 (some templates, e.g. Gemma, reject a `system` role) we fold system into user and retry."""
     api_key = resolve_key(endpoint, api_key)
     if model_id is None:
@@ -116,15 +170,32 @@ def chat(messages, *, endpoint=DEFAULT_ENDPOINT, model_id=None, max_tokens=4000,
     payload = {"model": model_id, "messages": messages, _token_field: max_tokens, "stream": stream}
     if temperature is not None:                  # some newer models deprecate `temperature` -> omit it
         payload["temperature"] = temperature
+    want_usage = bool(stream and _stream_usage)
+    if want_usage:                               # ask the stream to end with a usage chunk (OpenAI honours it)
+        payload["stream_options"] = {"include_usage": True}
+    st = _init_stats(stats, stream=stream, stream_usage_requested=want_usage, token_field=_token_field,
+                     max_tokens=max_tokens, temperature="omitted" if temperature is None else temperature,
+                     temperature_dropped=_temp_dropped, system_folded=_folded,
+                     endpoint_host=_host_of(endpoint))
+    t0 = time.monotonic()
     try:
         if not stream:
-            return _post(url, payload, timeout, api_key=api_key)["choices"][0]["message"]["content"], model_id
+            resp = _post(url, payload, timeout, api_key=api_key)
+            choice = (resp.get("choices") or [{}])[0]
+            msg = choice.get("message") or {}
+            content = msg.get("content") or ""
+            rc = msg.get("reasoning_content") or msg.get("reasoning") or ""
+            _finish_stats(st, finish_reason=choice.get("finish_reason"), usage=resp.get("usage"),
+                          content_chars=len(content), reasoning_chars=len(rc), t0=t0, model_id=model_id)
+            return content, model_id
         data = json.dumps(payload).encode("utf-8")
         req = urllib.request.Request(url, data=data, headers=_headers(api_key))
-        parts, think, t0 = [], 0, time.monotonic()
+        parts, think = [], 0
+        finish_reason, usage, deadline_hit = None, None, False
         with urllib.request.urlopen(req, timeout=timeout) as r:
             for raw in r:                               # SSE: one "data: {...}" line per token chunk
                 if time.monotonic() - t0 > deadline:    # hard wall-clock cap -> never hang
+                    deadline_hit = True
                     break
                 line = raw.decode("utf-8", "ignore").strip()
                 if not line.startswith("data:"):
@@ -136,16 +207,21 @@ def chat(messages, *, endpoint=DEFAULT_ENDPOINT, model_id=None, max_tokens=4000,
                     obj = json.loads(d)
                 except json.JSONDecodeError:
                     continue
-                delta = (obj.get("choices") or [{}])[0].get("delta", {})
+                if isinstance(obj.get("usage"), dict):    # the include_usage tail chunk (choices: [])
+                    usage = obj["usage"]
+                choice = (obj.get("choices") or [{}])[0]
+                if choice.get("finish_reason"):         # non-null exactly once, on the closing chunk
+                    finish_reason = choice["finish_reason"]
+                delta = choice.get("delta") or {}
                 if delta.get("content"):
                     parts.append(delta["content"])
                 rc = delta.get("reasoning_content") or delta.get("reasoning")
                 if rc:
                     think += len(rc)                    # think-phase tokens (reasoning models)
-        if isinstance(stats, dict):
-            stats["reasoning_chars"] = think
-            stats["content_chars"] = sum(len(p) for p in parts)
-        return "".join(parts), model_id
+        content = "".join(parts)
+        _finish_stats(st, finish_reason=finish_reason, usage=usage, content_chars=len(content),
+                      reasoning_chars=think, t0=t0, model_id=model_id, deadline_hit=deadline_hit)
+        return content, model_id
     except urllib.error.HTTPError as e:
         body = ""
         try:
@@ -153,28 +229,57 @@ def chat(messages, *, endpoint=DEFAULT_ENDPOINT, model_id=None, max_tokens=4000,
         except Exception:
             pass
         low = body.lower()
+        common = dict(endpoint=endpoint, model_id=model_id, max_tokens=max_tokens, timeout=timeout,
+                      deadline=deadline, stats=stats, api_key=api_key)
         if e.code == 400 and _token_field == "max_tokens" and "max_completion_tokens" in low:
             # OpenAI's GPT-5 family: `max_tokens` is rejected in favour of `max_completion_tokens`
-            return chat(messages, endpoint=endpoint, model_id=model_id, max_tokens=max_tokens,
-                        temperature=temperature, stream=stream, timeout=timeout, deadline=deadline,
-                        stats=stats, api_key=api_key, _folded=_folded,
-                        _token_field="max_completion_tokens")
+            return chat(messages, temperature=temperature, stream=stream, _folded=_folded,
+                        _token_field="max_completion_tokens", _stream_usage=_stream_usage,
+                        _temp_dropped=_temp_dropped, **common)
         if e.code == 400 and temperature is not None and "temperature" in low:
             # some newer models (e.g. Claude opus-4-8 via the OpenAI-compat endpoint) reject the
-            # `temperature` field outright -> retry without it
-            return chat(messages, endpoint=endpoint, model_id=model_id, max_tokens=max_tokens,
-                        temperature=None, stream=stream, timeout=timeout, deadline=deadline,
-                        stats=stats, api_key=api_key, _folded=_folded, _token_field=_token_field)
+            # `temperature` field outright -> retry without it (recorded as temperature_dropped)
+            return chat(messages, temperature=None, stream=stream, _folded=_folded,
+                        _token_field=_token_field, _stream_usage=_stream_usage, _temp_dropped=True, **common)
+        if e.code == 400 and want_usage and "stream_options" in low:
+            # a compat endpoint that rejects stream_options outright -> same call without it
+            # (checked BEFORE the plain "stream" fallback, whose substring this message also matches)
+            return chat(messages, temperature=temperature, stream=stream, _folded=_folded,
+                        _token_field=_token_field, _stream_usage=False, _temp_dropped=_temp_dropped, **common)
         if e.code == 400 and stream and "stream" in low:
             # some orgs/models require verification before streaming -> fall back to a single POST
-            return chat(messages, endpoint=endpoint, model_id=model_id, max_tokens=max_tokens,
-                        temperature=temperature, stream=False, timeout=timeout, deadline=deadline,
-                        stats=stats, api_key=api_key, _folded=_folded, _token_field=_token_field)
+            return chat(messages, temperature=temperature, stream=False, _folded=_folded,
+                        _token_field=_token_field, _stream_usage=_stream_usage, _temp_dropped=_temp_dropped, **common)
         if e.code == 400 and not _folded and any(m.get("role") == "system" for m in messages):
-            return chat(_fold_system(messages), endpoint=endpoint, model_id=model_id, max_tokens=max_tokens,
-                        temperature=temperature, stream=stream, timeout=timeout, deadline=deadline,
-                        stats=stats, api_key=api_key, _folded=True, _token_field=_token_field)
+            return chat(_fold_system(messages), temperature=temperature, stream=stream, _folded=True,
+                        _token_field=_token_field, _stream_usage=_stream_usage, _temp_dropped=_temp_dropped, **common)
         raise urllib.error.HTTPError(e.url, e.code, f"{e.reason}: {body[:300]}", e.headers, None)
+
+
+# ---------------- answer bookkeeping shared by every live_* module ----------------
+def prompt_fingerprint(messages) -> dict:
+    """sha256 + size of the exact prompt sent (the messages list, canonically serialised) so a run
+    record can prove which packet a graded answer came from."""
+    blob = json.dumps(messages, sort_keys=True, ensure_ascii=False, default=str)
+    chars = sum(len(m.get("content") or "") for m in messages)
+    return {"sha256": hashlib.sha256(blob.encode("utf-8")).hexdigest(), "chars": chars,
+            "tokens_approx": chars // 4}
+
+
+def finalize_answer(out: dict, *, model_id, content, stats, prompt, retries, t0) -> dict:
+    """attach the `_`-prefixed provenance every driver strips from answer.json but the run record
+    keeps: model id, raw completion, prompt fingerprint, the chat() stats of the completion that was
+    actually parsed, parse-retry count, wall time. Graders skip `_` keys, so this is grade-neutral."""
+    out["_model_id"] = model_id
+    out["_raw"] = content
+    out["_prompt_tokens_approx"] = prompt["tokens_approx"]
+    out["_reasoning_chars"] = (stats or {}).get("reasoning_chars") or 0
+    out["_stats"] = dict(stats or {})
+    out["_prompt"] = dict(prompt)
+    out["_retries"] = retries
+    out["_elapsed_s"] = round(time.monotonic() - t0, 3)
+    out.setdefault("_parse_status", "ok")
+    return out
 
 
 # ---------------- fetch the press release text ----------------
@@ -369,16 +474,22 @@ def parse_answer(content: str) -> dict:
     # repair ladder: plain -> base repairs -> inner-quote escape + base repairs.
     # The escape stage fixes pretty-printed answers quoting filing text ('the "Buffer"') but can
     # corrupt COMPACT multi-pair lines, so it is an alternative branch, never always-on.
-    for fix in (lambda x: x, _repair_json, lambda x: _repair_json(_escape_inner_quotes(x))):
+    # `_parse_status` (ok | repaired) rides along for the run record: "ok" means the completion was
+    # valid JSON as sent; "repaired" means a repair stage or the truncation salvage was needed.
+    for i, fix in enumerate((lambda x: x, _repair_json, lambda x: _repair_json(_escape_inner_quotes(x)))):
         try:
-            return json.loads(fix(s))
+            out = json.loads(fix(s))
         except json.JSONDecodeError:
-            pass
+            continue
+        if isinstance(out, dict):
+            out["_parse_status"] = "ok" if i == 0 else "repaired"
+        return out
     # truncated stream (deadline/length/degeneration cut): keep the complete prefix
     for fix in (lambda x: x, _escape_inner_quotes):
         try:
             out = salvage_json(fix(s))
             out["_salvaged"] = True
+            out["_parse_status"] = "repaired"
             return out
         except json.JSONDecodeError:
             continue
@@ -390,8 +501,10 @@ def answer(case, *, endpoint=DEFAULT_ENDPOINT, model_id=None, max_tokens=4000, w
     text = fetch_release_text(case)
     tenq = fetch_tenq_slice(case) if with_tenq else ""
     msgs = build_messages(case, text, tenq)
-    approx_tok = sum(len(m["content"]) for m in msgs) // 4
-    content, used = chat(msgs, endpoint=endpoint, model_id=model_id, max_tokens=max_tokens)
+    prompt = prompt_fingerprint(msgs)
+    approx_tok = prompt["tokens_approx"]
+    stats, retries, t0 = {}, 0, time.monotonic()
+    content, used = chat(msgs, endpoint=endpoint, model_id=model_id, max_tokens=max_tokens, stats=stats)
     if not content.strip():
         raise RuntimeError(
             f"Model returned an EMPTY completion (prompt ~{approx_tok:,} tokens). This almost always "
@@ -404,8 +517,8 @@ def answer(case, *, endpoint=DEFAULT_ENDPOINT, model_id=None, max_tokens=4000, w
         # one retry with a terse reminder
         msgs.append({"role": "assistant", "content": content[:2000]})
         msgs.append({"role": "user", "content": "That was not valid JSON. Return ONLY the JSON object."})
-        content, used = chat(msgs, endpoint=endpoint, model_id=model_id, max_tokens=max_tokens)
+        stats, retries = {}, 1                   # the stats of the completion actually parsed
+        content, used = chat(msgs, endpoint=endpoint, model_id=model_id, max_tokens=max_tokens, stats=stats)
         out = parse_answer(content)
-    out["_model_id"] = used
-    out["_raw"] = content
-    return out
+    return finalize_answer(out, model_id=used, content=content, stats=stats, prompt=prompt,
+                           retries=retries, t0=t0)

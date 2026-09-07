@@ -105,6 +105,27 @@ suite — the 35 attacker findings plus the live-wave false fires, 59 checks —
 `harness/gaming_review_eval6.py` and runs inside `python -m harness selftest`, so a grader change
 that reopens any of them fails the selftest.
 
+*Round six (2026-09-06/07, an external review of the grader, every claim reproduced before acting):*
+four ways a wrong answer could still score 1.000/AllPass — a decision string carrying both an
+approval and a refusal ("SETTLE; escalate the shortfall separately", credited as the refusal because
+the break-family root was tested first; eval #4), an affirm-and-release *action* under a MISMATCHED
+decision (eval #5; the action text was only checked for presence), a wrong amount carried only in
+the action prose ("Pay $68,000", structured amount empty or even correct; this eval), and a
+"verbatim" quote with its two dates swapped (the citation check was bag-of-words overlap at 0.5).
+Fixes: contradictory instructions score the D1 checkpoint zero (no gate — nothing was committed);
+an unnegated affirm/release action fires `GATE.MATCH` regardless of the decision enum; prose money
+figures in process/elect rows are tested against `permissible_amounts` (quoted offer terms and
+negated comparisons excused); the citation check is now piece-wise verbatim against the cited
+document (ellipses and sentence reordering allowed, altered text not). **All 48 answers here and all
+48 on evals #3–#5 re-grade identically** (the 96 committed profiles regenerate byte-for-byte; the
+one candidate cell, GPT-5.5's Zoetis quote, stitches two sentences that both exist in the filing and
+passes the piece-wise standard — noted, not penalized). The regression suite is now 79 checks here
+plus 24 for evals #4–#5 and 23 for the judge; all run inside `python -m harness selftest`. The same
+review found the earnings suite's unhandled criteria were credited on presence (fixed, fail-closed;
+see the eval-1 record) and that the live client never read `finish_reason`/`usage` (fixed, with a
+per-run `run.json`). This round moved no published score — the first round in the series that did
+not, in either direction.
+
 ## Scope notes
 
 - One run per model per case; scores are point-in-time for the model versions named.

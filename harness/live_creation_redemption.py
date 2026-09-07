@@ -21,7 +21,8 @@ from __future__ import annotations
 import copy
 import json
 import os
-from .live import DEFAULT_ENDPOINT, chat, parse_answer, resolve_key
+import time
+from .live import finalize_answer, prompt_fingerprint, DEFAULT_ENDPOINT, chat, parse_answer, resolve_key
 
 
 # ---------------- the packet (order + PCF + delivery + probe; all in the case) ----------------
@@ -137,8 +138,9 @@ def build_messages(case, packet: str):
 def answer(case, *, endpoint=DEFAULT_ENDPOINT, model_id=None, api_key=None, max_tokens=8000, deadline=600):
     packet = build_packet(case)
     msgs = build_messages(case, packet)
-    approx_tok = sum(len(m["content"]) for m in msgs) // 4
-    stats = {}
+    prompt = prompt_fingerprint(msgs)
+    approx_tok = prompt["tokens_approx"]
+    stats, retries, t0 = {}, 0, time.monotonic()
     key = resolve_key(endpoint, api_key)
     content, used = chat(msgs, endpoint=endpoint, model_id=model_id, max_tokens=max_tokens,
                          deadline=deadline, timeout=300, stats=stats, api_key=key)
@@ -154,19 +156,18 @@ def answer(case, *, endpoint=DEFAULT_ENDPOINT, model_id=None, api_key=None, max_
         first_raw = content
         msgs.append({"role": "assistant", "content": content[:2000]})
         msgs.append({"role": "user", "content": "That was not valid JSON. Return ONLY the JSON object."})
+        first_stats, stats, retries = dict(stats), {}, 1
         try:
             content, used = chat(msgs, endpoint=endpoint, model_id=model_id, max_tokens=max_tokens,
-                                 deadline=deadline, timeout=300, api_key=key)
+                                 deadline=deadline, timeout=300, stats=stats, api_key=key)
             out = parse_answer(content)
         except Exception as e:
             err = RuntimeError(f"unparseable model JSON and the retry failed too: {e}")
             err.raw = first_raw
+            err.stats = first_stats             # finish_reason/usage of the failed attempt
             raise err from e
-    out["_model_id"] = used
-    out["_raw"] = content
-    out["_prompt_tokens_approx"] = approx_tok
-    out["_reasoning_chars"] = stats.get("reasoning_chars", 0)
-    return out
+    return finalize_answer(out, model_id=used, content=content, stats=stats, prompt=prompt,
+                           retries=retries, t0=t0)
 
 
 # ---------------- schema round-trip (the offline alignment proof) ----------------

@@ -63,6 +63,8 @@ Then the live models found the rest. This has happened on five of the six evalua
 
 Every fix raised scores. None of them touched the small model's failure. It was real before the fixes and real after them.
 
+Then, after the runs, an outside review of the grader found four more ways a wrong answer could have passed: an instruction that said settle and escalate in the same breath, an action to release a trade under a decision that said it did not match, a wrong amount carried only in the prose of the instruction, and a "verbatim" quote with two dates swapped. None of the forty-eight answers had done any of them, so no score moved. All four are now regression checks too.
+
 
 Where the human belongs, revised
 
@@ -175,6 +177,10 @@ FACT ANCHORS (verified by the three-reviewer pass 2026-08-26 - not part of the a
   Live waves: ~15 fixes, all false fires; "settle accepted tender shares" is
   verbatim from Haiku's odd-lot answer; ACCT-7712 was the four-digit
   identifier. Grader-bug rounds logged on evals 1, 2, 3, 5, 6 (not 4).
+- Round six (external review, Sep 6-7 2026): the four gaps named in the new paragraph
+  are verbatim from the reproduced attacks (evals #4, #5, #6, #6); 96-answer scan + profiles
+  regeneration byte-identical = "no score moved"; regression suite now 79 + 24 + 23 checks in
+  selftest. See outputs/eval6-live/TAXONOMY.md 'Round six'.
 - Paper on SSRN covers the FIRST FIVE evaluations; eval 6 is post-paper.
 - Attribution wall: "I argued", "in my evaluation work", "I would put",
   "I would build the review around" - owned opinion; no desk claims; no

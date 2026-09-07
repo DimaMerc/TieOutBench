@@ -23,7 +23,7 @@ Eval-specific knowledge lives in suite modules (harness/suites/*), which expose:
   make(case, variant) -> dict  +  VARIANTS         (oracle + designed-flaw model answers)
 
 Generic fallback order (identical to the original eval-#1 flow):
-  refusal-checkpoint placeholder -> suite.handle -> penalties -> judge/entailment -> default-present.
+  refusal-checkpoint placeholder -> suite.handle -> penalties -> judge/entailment -> unhandled (=0).
 
 Returns: dict atom_id -> Verdict, plus (R, G) for the refusal headline.
 """
@@ -114,12 +114,21 @@ def grade(atoms, model, gold, rubric, suite, mode="mock", judge_fn=None):
             else:
                 verdicts[a.id] = Verdict(suite.judge_mock(a, model, gold), a.grader, "mock")
         else:
-            # default for unhandled deterministic positives: credit only when the model actually
-            # produced content for the checkpoint — an empty output earns nothing
-            present = bool(model.get(a.checkpoint))
-            verdicts[a.id] = Verdict(1.0 if present else 0.0, "deterministic",
-                                     "default-present" if present else "default-absent")
+            # FAIL CLOSED (2026-09-06 grader review): a positive deterministic atom that no suite
+            # handler grades scores ZERO with provenance "unhandled". The old "default-present"
+            # fallback credited any non-empty checkpoint — 18 earnings atoms (14% of the positive
+            # points) were earned by a {"junk": "x"} answer. Credit must come from a real check;
+            # `unhandled_atoms()` lets the selftest assert no case leaks through here.
+            verdicts[a.id] = Verdict(0.0, "deterministic", "unhandled")
 
     # ---- refusal: bucket -> R, G -> LLMC_beta (fills the refusal checkpoint's atoms) ----
     R, G = suite.refusal(verdicts, model, gold, tol)
     return verdicts, (R, G)
+
+
+def unhandled_atoms(atoms, verdicts) -> list[str]:
+    """ids of positive atoms that fell through to the fail-closed fallback (no suite handler graded
+    them). The selftest asserts this is empty for every case: an unhandled atom is a grader gap,
+    not a model failure, and must be fixed in the suite module rather than credited by default."""
+    return [a.id for a in atoms
+            if a.points > 0 and a.id in verdicts and verdicts[a.id].note == "unhandled"]

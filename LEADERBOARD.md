@@ -240,8 +240,16 @@ replication is the honest next step before calling it task-level. [Taxonomy](out
   Gemini 32k); its cases share one finalized prompt contract (Sonnet's first batch drove one
   prompt clarification and was fully re-run under the final prompt before any other model ran).
   Its live batches surfaced grader-contract gaps in two waves — all false fires on correct
-  answers, all fixed and re-verified against the 53-check gaming-review regression suite —
+  answers, all fixed and re-verified against the gaming-review regression suite —
   logged in the [eval-6 taxonomy](outputs/eval6-live/TAXONOMY.md).
+- **Grader hardening, round six (Sep 2026).** An external review of the grader found four ways a
+  wrong answer could still score AllPass (a settle-and-escalate decision credited as the refusal;
+  an affirm-and-release action under a MISMATCHED decision; a wrong amount carried only in the
+  action prose; a "verbatim" quote with two dates swapped). All four are fixed and now sit in the
+  regression suite (79 eval-6 checks + 24 for evals #4–#5 + 23 for the judge, all inside
+  `python -m harness selftest`). **No published cell moved**: all 96 committed frontier answers
+  re-grade identically and the profiles regenerate byte-for-byte. Details in the
+  [eval-6 taxonomy](outputs/eval6-live/TAXONOMY.md) ("Round six").
 
 ## What's next
 
