@@ -82,5 +82,5 @@ Two natural extensions, in order: a sixth eval in the operational core (corporat
 processing, in design), and then a purpose-built ODD workflow eval — the questionnaire above
 turned into gold cases and gates of its own. If you run diligence on managers using AI, or you're
 a manager preparing to answer these questions with artifacts instead of narrative, the harness
-and method here are open — [the technical report](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7243025)
+and method here are open — [the technical report](https://doi.org/10.2139/ssrn.7243025)
 documents the full methodology.

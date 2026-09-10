@@ -1,23 +1,23 @@
 DRIVER POST for the cross-vendor article (feed post; publish runbook at bottom)
 ===========================================================================
 
-One of the models in my study scored 0.322 and tripped six separate auto-fail gates on a valuation task.
+One of the models in my study scored 0.322 and tripped six auto-fail gates on a valuation task.
 
 Given a bigger token budget, the same model on the same task scored 0.951 and tripped nothing.
 
-The difference wasn't the model. It was me.
+The difference was not the model. It was my harness.
 
-I'd spent six weeks publishing evals where every frontier model came from one vendor - and saying so, in every article, because a benchmark that has only met one family of models hasn't really been tested. This summer I finally added two more vendors. Eight models, three companies, same gold cases, same rubrics.
+For six weeks I published evals where every frontier model came from one vendor, and said so in every article, because a benchmark that has only met one family of models has not been tested. This summer I added two more vendors: eight models, three companies, same gold cases, same rubrics.
 
-The harness broke three times before it produced a single comparable number.
+The harness broke three times before it produced a comparable number.
 
-The dangerous one: modern models "think" before answering, and vendors disagree about whether that thinking comes out of your answer budget. On one endpoint it's free. On another it isn't. So a budget that was generous for every model I'd tested was quietly starving the new ones on my longest case - and a starved model doesn't throw an error. It just gives you a worse answer. Which is exactly what you're looking for when you benchmark, so you write it down and move on.
+The one that mattered: modern models "think" before answering, and vendors disagree about whether that thinking comes out of your answer budget. On one endpoint it does not. On another it does. A budget that was enough for every model I had tested was too small for the new ones on my longest case. A starved model does not return an error. It returns a worse answer, which is what you are looking for when you benchmark, so you record it and move on.
 
-Four scores. All plausible. All wrong.
+Four scores, all plausible, all wrong.
 
-The rule I'd offer anyone comparing models to decide what to deploy: before you ask which model won, prove your harness gave them the same test. Mine didn't. Twice. And I built it.
+If you are comparing models to decide what to deploy: before you ask which model won, check that your harness gave them the same test. Mine did not, twice, and I built it.
 
-Article in the first comment - including what survived the fix, and a cheap, fast model that landed a valuation one cent from the gold answer.
+Article in the first comment, including what survived the fix and a small, fast model that landed a valuation one cent from the gold answer.
 
 
 ===========================================================================
@@ -42,7 +42,7 @@ REFRESH (Aug 2026 - what changed since the July verification, so the piece
 stays accurate on publish day):
 - The consolidated technical report is now on SSRN (abstract 7243025, posted
   Aug 12 2026). Add it to the FIRST COMMENT alongside the article link and
-  evals.finance: https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7243025
+  evals.finance: https://doi.org/10.2139/ssrn.7243025 (DOI registered 2026-09-09; use this form)
 - The repo was renamed finance-llm-evals -> TieOutBench (old links redirect).
   Any repo link you paste: https://github.com/DimaMerc/TieOutBench
 - Eval #6 (corporate actions) has since run on the same eight models. The
@@ -58,3 +58,5 @@ stays accurate on publish day):
   ANCHORS (time words, go/no-go, false alarm, "all but one", the one-line small-tier
   exception, TieOutBench in the closing line). DOI 10.2139/ssrn.7243025 NOT resolved as
   of Sep 2 (doi.org returns 404) - the first comment uses the abstract URL.
+- 2026-09-10 plain-prose pass on the post body (same rule as the article): no fragment
+  triplets, no "quietly", "It was me" -> "It was my harness". Facts unchanged.

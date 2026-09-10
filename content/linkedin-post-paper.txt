@@ -22,7 +22,7 @@ The report (TieOutBench) is my attempt at an independent measurement: the method
 ===========================================================================
 FIRST COMMENT (post immediately after publishing):
 
-The report: https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7243025
+The report: https://doi.org/10.2139/ssrn.7243025
 Everything runnable: https://evals.finance (repo, leaderboard, per-checkpoint
 capability profiles for all eight models)
 
@@ -37,8 +37,8 @@ PUBLISH RUNBOOK (not part of the post):
    title + three stat tiles). The opening line was deliberately held back from
    comments all summer so it lands here first.
 4. Facts: paper = TieOutBench v1, SSRN abstract 7243025 (posted Aug 2026,
-   status distributed; DOI pending 10.2139/ssrn.7243025 - add when it
-   resolves); covers the FIRST FIVE evals, 14 gold cases; the 8 models x 3
+   status distributed; DOI 10.2139/ssrn.7243025 registered 2026-09-09,
+   first comment uses the DOI link); covers the FIRST FIVE evals, 14 gold cases; the 8 models x 3
    vendors grid is evals #3-#5 (evals #1-#2 ran on local open-weight models),
    which is why the body says "ran the valuation and the two back-office
    controls". Do not say "six evals" - eval #6 is the next post. "within 3

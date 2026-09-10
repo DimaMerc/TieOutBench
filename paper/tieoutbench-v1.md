@@ -6,11 +6,12 @@
 MBA, PMP · Independent · Greater Boston
 [evals.finance](https://evals.finance) · welt.management.solutions@gmail.com
 
-*Version 1 — August 2026. This is a technical report on a working artifact, written in the
+*Version 1.1 — September 2026 (v1 posted August 2026; v1.1 adds the DOI and the post-publication
+grader corrections recorded in §9, item 8 — no other result changes). This is a technical report on a working artifact, written in the
 spirit of an honest v0: the caveats are stated next to the results they bound, and everything
 reported here is reproducible from the accompanying repository,
 [github.com/DimaMerc/TieOutBench](https://github.com/DimaMerc/TieOutBench). Posted on SSRN:
-[papers.ssrn.com/abstract=7243025](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7243025).*
+[papers.ssrn.com/abstract=7243025](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7243025) · DOI [10.2139/ssrn.7243025](https://doi.org/10.2139/ssrn.7243025).*
 
 *Case gold answers — including the McDonald's and NVIDIA fair values and the KOCT snapshot
 arithmetic — are grading references computed under stated, dated case assumptions. They are not

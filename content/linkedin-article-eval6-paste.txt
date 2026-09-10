@@ -112,7 +112,7 @@ FORMATTING NOTES (do these by hand in the LinkedIn editor - not part of the arti
 
 6. Links inside article bodies are fine on LinkedIn, so the repo URL and
    evals.finance stay inline. Add the SSRN link inline at "is on SSRN" if you
-   want it clickable: https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7243025
+   want it clickable: https://doi.org/10.2139/ssrn.7243025
 
 7. Timing words: "Last month" (the custodian quote, Aug 18) and "A month ago I
    argued" (the trust-the-call post, Aug 26) are correct for Sep 22-23. If it

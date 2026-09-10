@@ -2,7 +2,7 @@
 
 **POSTED (2026-08): abstract ID 7243025 —
 https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7243025 — status DISTRIBUTED.
-DOI pending registration (will be 10.2139/ssrn.7243025); when it resolves, add it to
+DOI 10.2139/ssrn.7243025 registered 2026-09-09 (Crossref indexed; https://doi.org/10.2139/ssrn.7243025 resolves). Added to
 docs/index.html, README, and the paper front matter in the next rebuild.**
 
 Everything to paste into the SSRN submission form. The PDF to upload:

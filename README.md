@@ -78,7 +78,7 @@ in [`outputs/`](outputs/), consolidated in [`LEADERBOARD.md`](LEADERBOARD.md).
 
 > 📄 **Prefer prose?** The consolidated technical report is at
 > [evals.finance/paper.pdf](https://evals.finance/paper.pdf) and on
-> [SSRN (abstract 7243025)](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7243025);
+> [SSRN (abstract 7243025)](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7243025), DOI [10.2139/ssrn.7243025](https://doi.org/10.2139/ssrn.7243025);
 > source in [`paper/`](paper/). Each eval also has a plain-language write-up in
 > [`content/`](content/).
 

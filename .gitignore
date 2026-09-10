@@ -32,3 +32,6 @@ env/
 
 # Internal Claude Code handoff/strategy doc -- kept local, NOT published (contains private notes)
 CLAUDE.md
+
+# dataset snapshots for Mendeley/Zenodo are archives of the repo itself - never commit them
+paper/mendeley/*.zip

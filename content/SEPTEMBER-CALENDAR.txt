@@ -46,8 +46,7 @@ Wed Sep 9 (preferred) or Thu Sep 10   CROSS-VENDOR ARTICLE + DRIVER POST
 Tue Sep 15 or Wed Sep 16      PAPER ANNOUNCEMENT POST
 -------------------------------------------------------------------------------------------
   File:   content/linkedin-post-paper.txt   Image: assets/post-paper.png (square)
-  First comment: SSRN link (DOI form if 10.2139/ssrn.7243025 has resolved - not yet as of
-  Sep 2, doi.org returns 404; re-check that morning) + evals.finance.
+  First comment: the DOI link https://doi.org/10.2139/ssrn.7243025 (registered Sep 9) + evals.finance.
   Opens with the line held back all summer: "AI doesn't just make right answers faster.
   It makes wrong ones more convincing." Says FIVE evaluations (the paper's scope) - eval #6
   is next week's post, on purpose.
