@@ -5,6 +5,14 @@ https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7243025 — status DISTRIBUT
 DOI 10.2139/ssrn.7243025 registered 2026-09-09 (Crossref indexed; https://doi.org/10.2139/ssrn.7243025 resolves). Added to
 docs/index.html, README, and the paper front matter in the next rebuild.**
 
+**DATASET (2026-09-14): the paper-era repository snapshot is on Mendeley Data, DOI 10.17632/m5wfrnhdsp
+(version 2 = 10.17632/m5wfrnhdsp.2; the unversioned DOI always resolves to the latest). SSRN has no dataset
+field, so it is carried two ways: the last line of the SSRN abstract and the v1.1 front matter.
+Abstract line to paste in the next SSRN revision (with the v1.1 PDF):**
+
+    Data and code snapshot: https://doi.org/10.17632/m5wfrnhdsp
+
+
 Everything to paste into the SSRN submission form. The PDF to upload:
 `paper/tieoutbench-v1.pdf` (identical to the canonical copy at `docs/paper.pdf` /
 evals.finance/paper.pdf).

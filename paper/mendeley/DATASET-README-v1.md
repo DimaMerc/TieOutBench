@@ -1,4 +1,5 @@
 TieOutBench v1 — evaluation suite, gold cases, and graded model runs (paper snapshot)
+PUBLISHED 2026-09-14 on Mendeley Data: DOI 10.17632/m5wfrnhdsp (version 2 = 10.17632/m5wfrnhdsp.2)
 
 DESCRIPTION (paste into the dataset form)
 
