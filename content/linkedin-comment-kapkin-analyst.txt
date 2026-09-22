@@ -1,0 +1,14 @@
+COMMENT on Alexei Kapkin's post "What will the next-generation equity analyst look like?" (2026-09-13;
+seen 2026-09-17). Rules: one comment, no link, no repo mention; answer Q1 (+Q3) from evidence;
+"in my own evaluation work" = the wall. Link only if he asks how the measuring is done.
+===========================================================================
+
+MAIN (~100 words):
+On the first question: the analyst, for a practical reason. In my own evaluation work the hard part is never the tooling. It is writing down what correct work looks like, step by step: which source governs, which number has to tie to which. Only the domain expert can write that, and once it is written, the quants and the models both have something to be measured against. On the third: the models I test get credit for saying a figure cannot be determined from the documents. The ones tuned for confidence guess instead. I suspect the same trade-off holds for analysts.
+
+SHORT (~55 words):
+On the first question, the analyst, for a practical reason: the hard part is writing down what correct work looks like, which source governs, which number ties to which. Only the domain expert can write that; then both the quants and the models have something to be measured against. The tooling follows.
+
+FACTS: "credit for saying a figure cannot be determined" = the calibrated-refusal checkpoint (E6/D2)
+across the suite; "tuned for confidence guess instead" = the refusal-probe results (fabrication
+gate fires on invented figures). No desk or analyst claim made.

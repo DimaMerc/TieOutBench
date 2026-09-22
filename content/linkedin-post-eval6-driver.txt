@@ -1,5 +1,6 @@
 DRIVER POST for the eval-#6 article (feed post; publish runbook at bottom)
 VERIFIED 2026-08-26: three-reviewer pass (fact / overclaim / editor) - all fixes applied.
+RE-VERIFIED 2026-09-22 (publish day): numbers unchanged against outputs/eval6-live; "the payment booked" -> "the amount booked" (it is an accrual booking).
 ===========================================================================
 
 I ran eight AI models on a corrected dividend. One of them read it exactly the way a careful analyst would - and booked the wrong number.
@@ -14,7 +15,7 @@ I have now run eight frontier models through six cases built on four real corpor
 
 Thirty-two runs passed every check with nothing to flag. One mid-tier model passed all six cases perfectly - the first perfect score from a live model in this series.
 
-And one of the least expensive models of the eight did what I described above, which is the exact failure I built the evaluation to catch: the right explanation wrapped around the wrong number, and the payment booked.
+And one of the least expensive models of the eight did what I described above, which is the exact failure I built the evaluation to catch: the right explanation wrapped around the wrong number, and the amount booked.
 
 Where the human review belongs is a question I keep coming back to, and this changed my answer a little. The article has the two smaller failures that repeated across models, what it took to make the grader trustworthy, and where I would put the human now. Link in the first comment.
 

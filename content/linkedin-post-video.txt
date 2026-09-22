@@ -1,0 +1,29 @@
+FEED POST - the YouTube video (v17, 88.5 s). Drafted by him 2026-09-16; edits: "payment" -> "booking"
+(verb must match the action row), Sonnet fact added to paragraph 4, link moved to first comment.
+Slot: Sep 24-25 (Boston AI Week core week, two days after the eval-6 article). Upload the MP4
+NATIVELY to LinkedIn; YouTube link + evals.finance + AI-likeness disclosure in the first comment.
+===========================================================================
+
+Can AI replace a financial analyst?
+
+I built TieOutBench to test the work we would hand one.
+
+In one valuation test, a model calculated a discount rate of 12.62% and entered 12.31% as its final answer. In a corporate-actions test, a model found the corrected dividend notice and still proposed booking $8,500 when the correct amount was $6,800.
+
+Other results were much stronger. One model passed all six corporate-actions cases with nothing to flag. The interesting part is seeing where the work holds up and where it still needs checking.
+
+This 90-second video walks through the evidence.
+
+===========================================================================
+FIRST COMMENT:
+
+Full video with captions and chapters: https://www.youtube.com/watch?v=pVaVhQz432c
+Cases, rubrics, and every recorded run: https://evals.finance
+The presenter footage is an AI-animated version of my own photo, narrated with a clone of my own recorded voice reading my script.
+
+===========================================================================
+FACTS: 12.62% / 12.31 = GPT-5.4, nvda-fy2026-dcf, E5 derivation vs answer field (unnamed here).
+$8,500 vs $6,800 = GPT-5.4-mini, bry-dividend-2024, action "book dividend receivable" (unnamed).
+"all six ... nothing to flag" = Claude Sonnet 4.6, 6/6 AllPass on eval 6. Video length 88.53 s.
+YouTube side (must be done before this posts): altered-content box ticked, disclosure line in
+the description, SSRN link as https://doi.org/10.2139/ssrn.7243025, chapters re-timed for v17.
