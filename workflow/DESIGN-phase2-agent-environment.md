@@ -332,9 +332,9 @@ Decision one's second half: Claude Opus 4.8 reviewing every maker's saved work p
 (`--reviewer-model`; cells under `checker-fixed/`, the reviewer's usage recorded per cell). The
 verdicts improved (13 correct ledgers rejected instead of 20, 33 approved instead of 26, the same
 two wrong ledgers caught and missed) and the arm finished worse than self-review, 25 AllPass
-against 27, because ten of the thirteen false rejections over-ruled the calibrated refusal on the
-net-cash probe ("a U.S. fund's dividend from a U.S. corporation is not subject to withholding; no
-schedule is missing") and every maker complied. The two review protocols fail in opposite
+against 27, because ten of the thirteen false rejections over-ruled a calibrated refusal (nine on
+the net-cash probe: "a U.S. fund's dividend from a U.S. corporation is not subject to
+withholding"; one on the tender's fee probe) and every maker complied. The two review protocols fail in opposite
 directions: self-review rejects correct bookings for reasons the store does not support; the
 strong reviewer uses its authority to assert what the store does not say. The reviewer prompt
 carried the tie-out instruction and not the desk's control rules the maker's prompt carries (the

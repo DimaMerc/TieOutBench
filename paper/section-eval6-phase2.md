@@ -160,7 +160,8 @@ because the record date lies a day after the desk date. The makers complied with
 and the revisions introduced four gates and five missing or held bookings: a split's entitlement
 basis moved to the dividend's record date after the reviewer conflated the two events; the net-cash
 probe answered as equal to the gross because the store holds no withholding document; correct
-tender receivables un-booked and held "pending the authoritative pay date." AllPass fell from 35
+tender receivables un-booked and held (in one maker's words, "pending a payment-date source").
+AllPass fell from 35
 to 27 with the same models as makers.
 
 **A stronger fixed reviewer was better on the verdicts and worse on the probe** (Figure 9,
@@ -169,9 +170,10 @@ approved instead of 26, the same two wrong ledgers were caught and missed, and 4
 came through correct. The arm still finished with 25 clean cells and 14 gates. Ten of the 13
 false rejections carried the same finding, in the reviewer's words on one cell: "MEGA is a U.S.
 ETF and NVIDIA Corporation is a U.S. issuer; a U.S. fund's dividend from a U.S. corporation is not
-subject to withholding. No withholding schedule is 'missing'." It instructed the makers to replace
-the NOT_DETERMINABLE answer and the escalation with a computed net of $1,800 (and once, "no fees,
-$0" on the tender's letter-of-transmittal probe); every maker complied, and `GATE.FABRICATION`
+subject to withholding. No withholding schedule is 'missing' because none is needed". It
+instructed the makers to replace the NOT_DETERMINABLE answer and the escalation with a computed
+net of $1,800 on nine split cells (and once, "no fees deducted / $0" on the tender's
+letter-of-transmittal probe); every maker complied, and `GATE.FABRICATION`
 fired ten times on worksheets that had been calibrated before the review. The store never states
 the fund's domicile or tax status. The two review protocols fail in opposite directions:
 self-review rejects correct bookings for reasons the store does not support; the strong reviewer
@@ -205,8 +207,8 @@ above.
 | Booked right, wrote wrong | correct ledger under a worksheet with three gates | small | `DATES`,`SCALE`,`FABRICATION` | `outputs/eval6-agent/tools/gpt-5.4-mini/mega-split-2024/` |
 | Form field left empty | election deadline null on both tenders, ledgers right | small | `DATES` | `outputs/eval6-agent/tools/claude-haiku-4-5-20251001/mnst-tender-2024*/` |
 | Reviewer false alarm, executed | maker moved the split's basis date to the dividend's record date | small | `DATES` | `outputs/eval6-agent/checker/claude-haiku-4-5-20251001/mega-split-2024/` |
-| Reviewer demand the store cannot meet | "pay date unsupported" led the maker to un-book a correct receivable | flagship | `ledger_missing_required`, `ledger_overescalate` | `outputs/eval6-agent/checker/gpt-5.6-sol/mnst-tender-2024/` |
-| Reviewer over-rules a refusal | "U.S. fund, no withholding, net = gross" executed by every maker | all tiers | `FABRICATION` x10 | `outputs/eval6-agent/checker-fixed/*/mega-split-2024*/` |
+| Reviewer demand the store cannot meet | "The booked pay_date of 2024-06-10 is unsupported" led the maker to un-book a correct receivable | flagship | `ledger_missing_required`, `ledger_overescalate` | `outputs/eval6-agent/checker/gpt-5.6-sol/mnst-tender-2024/` |
+| Reviewer over-rules a refusal | a U.S. fund, so no withholding and the net equals the gross (nine cells); no fees on the tender (one); executed by every maker | all tiers | `FABRICATION` x10 | `outputs/eval6-agent/checker-fixed/*/mega-split-2024*/`, `checker-fixed/gemini-3.6-flash/mnst-tender-2024/` |
 | Reviewer rejects with no discrepancy | findings say "no discrepancy" three times; verdict reject | small | (revision emptied the ledger) | `outputs/eval6-agent/checker/gpt-5.4-mini/mega-split-2024/prior/` |
 
 ## 9 (addition). Limitations
