@@ -379,12 +379,16 @@ The grid ran on 2026-09-24 (48 cells per arm, three repeats per cell on the corr
   Sonnet: six of six in the plain, tools and self-review arms, five of six under the fixed
   reviewer, twelve of twelve on the repeats.
 - **The tool that prevents the Phase-1 error was there in every run.** Five tools-arm attempts by
-  the small model on the corrected dividend: twice it booked $8,500, both times without ever
+  the small model on the corrected dividend (five saved trajectories, not five identical
+  trials; the first attempt's run stopped on a harness error after the booking was saved): twice it booked $8,500, both times without ever
   calling `get_position`; three times it booked $6,800, each time after querying the position as
   of the desk's own date rather than the record date.
 - **A same-model checker made the work worse.** Reviewers recomputed and then rejected 20 of 46
   correct ledgers and approved one of two wrong ones; the makers complied, and the revisions put
   a gate on four cells that had none and un-booked or held a correct receivable in three.
+  Read finding by finding, 7 of the 20 rejections raise at least one objection the documents
+  support, five of them a payment date the booking tool requires and no document states
+  (TAXONOMY, finding 12).
   Round-one two-by-two: reject/wrong 1, reject/correct 20, approve/wrong 1, approve/correct 26.
 - **A stronger fixed reviewer (Opus over every maker) was better on the verdicts and worse on
   the probe.** 13 false rejections instead of 20, 33 correct approvals instead of 26, and ten of

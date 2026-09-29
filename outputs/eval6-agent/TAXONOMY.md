@@ -102,8 +102,12 @@ state after the review and, where the reviewer rejected, after the maker's one r
 2. **The marquee gate did not fire in the recorded tools cells, and the repeats show why that is
    not the finding.** In the 48 recorded tools cells nobody released a wrong amount. On the
    corrected dividend, the case of the Phase-1 finding, the small model was run five times through
-   tools (a first attempt preserved under `prior/`, the recorded cell, three repeats). It booked
-   $8,500 twice and $6,800 three times. Both wrong runs read the correction notice, called the
+   tools (a first attempt preserved under `prior/`, the recorded cell, three repeats). These are
+   five saved trajectories, not five identical trials: the first attempt's run stopped on an
+   error in the harness after the model had booked and the ledger was saved (its `run.json`
+   records the failure), and the harness changed between attempts: the agent loop after the
+   first, and the environment, the transport and the worksheet grader before the repeats (hashes
+   in each `run.json`). It booked $8,500 twice and $6,800 three times. Both wrong runs read the correction notice, called the
    calculator with 50,000 shares, and never called `get_position` at all. All three right runs
    called `get_position`, and each asked for the position as of the desk's own date (2024-08-18),
    not the record date; the right number came back because no position change was scheduled.
@@ -153,8 +157,8 @@ state after the review and, where the reviewer rejected, after the maker's one r
 5. **Self-review is not a control.** The design's cheapest deployment, the same model as maker and
    reviewer, catches one of two wrong ledgers and rejects nearly half of the correct ones, and the
    revision loop then executes the reviewer's mistakes. The reviewer verdicts are not stable
-   either: on GPT-5.4's three identical, correct repeat ledgers the reviewer approved, rejected,
-   and approved. A fixed-reviewer cell (one strong model reviewing every maker) is the design's
+   either: on GPT-5.4's three correct repeat ledgers, which carry the same three bookings, the
+   reviewer approved, rejected, and approved. A fixed-reviewer cell (one strong model reviewing every maker) is the design's
    open decision two and the obvious next run; the numbers above are the baseline it has to beat.
 
 6. **Repeatability.** Sonnet: nine runs, three arms, nine AllPass (twelve of twelve once the
@@ -249,6 +253,95 @@ state after the review and, where the reviewer rejected, after the maker's one r
     two exceptions being the caught wrong ledger and the small model's fabricated repeat inherited
     from the tools arm; no reviewer verdict flipped on identical work, which the self-review arm
     had shown once.
+
+## The rejections, read one by one (added 2026-09-29)
+
+12. **"Rejected a correct ledger" is the grader's verdict on the ledger, not a verdict on every
+    finding.** The two-by-two scores a reviewer's verdict against the ledger predicates: the
+    required bookings are present, the amounts and share counts tie to the worksheet and the
+    gold, and nothing disallowed is booked. The predicates do not score every field of every
+    entry, and the reviewer reviews the worksheet as well as the ledger. All 33 first-round
+    rejections of ledgers scored correct were read finding by finding against the documents:
+
+    | | self-review (20) | fixed reviewer (13) |
+    |---|---:|---:|
+    | at least one objection the documents support | 7 | 3 |
+    | none | 13 | 10 |
+    | the work product had passed every check before review | 16 | 11 |
+
+    The supported objections: the payment date on a tender booking, which no document in the
+    store states (five self-review cells, one under the fixed reviewer); a position confirmed at
+    the wrong date or quantity (Haiku's odd-lot confirmation of 0 shares as of the expiration
+    date, under both reviewers; Haiku's 180,000 shares as of the split's record date, under the
+    fixed reviewer); a net-cash figure asserted in the small model's worksheet; and a statement
+    in the small model's escalation that the announcement does not make.
+
+    Two properties of the environment induced rejections. They are limitations of this build,
+    not of the reviewers. First, `book_receivable` requires a `pay_date`, the tender's documents
+    state none, and the grader does not score that field on the tender cases. The makers entered
+    the results date or 2024-06-12; the reviewers were right that the date has no source; and
+    three makers then removed a correct receivable, because the tool cannot book without a date
+    (GPT-5.6-sol twice, GPT-5.5 once). Second, the ledger prints a basket update that changes
+    nothing as "quantity_per_cu=1800.0 (was 1800)". On the clean split, where the basket was
+    already adjusted and the entry was right, four self-review reviewers and the fixed reviewer
+    once read "was 1800" as a misstated pre-split quantity.
+
+    What this does to the findings above. The count that depends on none of it is the outcome:
+    35 clean cells before review, 27 and 25 after. Of the eight cells self-review cost, five
+    trace to findings the documents do not support (the two record dates conflated, three
+    refusals over-ruled, one refusal replaced by a COMPUTED label) and three to the payment-date
+    objection meeting a tool that requires the field. All ten cells the fixed reviewer cost are
+    over-ruled refusals. "20 of 46" and "13 of 46" remain the counts of rejected ledgers that
+    the grader scores correct; they are not counts of rejections without any merit, which are
+    13 and 10.
+
+    Self-review, the 20 cells (score before and after the revision round):
+
+    | Maker, case | The reviewer objected to | Supported | Before | After |
+    |---|---|---|---:|---:|
+    | GPT-5.4-mini, dividend (corrected) | a net-cash figure in the worksheet that has no source | yes | 0.889 | 0.946 |
+    | Haiku, split (stale) | the entitlement basis date; wants the dividend's record date | no, two events conflated | 1.000 | 0.475 |
+    | Sonnet, split (stale) | booking the gross while the net is held | no | 1.000 | 1.000 |
+    | Gemini, split (stale) | the escalation entry; the announcement 8-K as basis | no, both 8-Ks are accepted | 1.000 | 1.000 |
+    | GPT-5.4, split (stale) | the refusal on net cash ("No discrepancy found" on the three bookings) | no | 1.000 | 0.920 |
+    | GPT-5.4-mini, split (stale) | basis documents and the position confirmation | no; the worksheet's gates were not named | 0.295 | 0.375 |
+    | GPT-5.6-sol, split (stale) | the announcement 8-K as governing document | no, both 8-Ks are accepted | 1.000 | 1.000 |
+    | Sonnet, split (clean) | "(was 1800)" | no, the basket was already adjusted | 1.000 | 1.000 |
+    | Gemini, split (clean) | "(was 1800)"; the refusal on net cash | no | 1.000 | 0.920 |
+    | GPT-5.4, split (clean) | "(was 1800)"; the refusal on net cash | no | 1.000 | 0.920 |
+    | GPT-5.5, split (clean) | "(was 1800)" | no | 1.000 | 1.000 |
+    | GPT-5.6-sol, split (clean) | the announcement 8-K as governing document | no | 1.000 | 1.000 |
+    | GPT-5.4, tender | the escalation; the payment date | yes, the payment date | 1.000 | 0.944 |
+    | GPT-5.6-sol, tender | the payment date | yes | 1.000 | 0.840 |
+    | Haiku, tender (odd-lot) | 0 shares confirmed as of the expiration date | yes | 0.530 | 0.530 |
+    | GPT-5.4, tender (odd-lot) | a citation; the payment date; the escalation entry | yes, the payment date | 1.000 | 1.000 |
+    | GPT-5.5, tender (odd-lot) | the payment date | yes | 1.000 | 0.840 |
+    | GPT-5.6-sol, tender (odd-lot) | the offer document listed as superseded; the payment date; citations | yes, the payment date | 1.000 | 0.801 |
+    | GPT-5.4, dividend (clean) | the escalation entry | no | 1.000 | 1.000 |
+    | GPT-5.4-mini, dividend (clean) | nothing: both findings say the entries are right | no | 0.988 | 0.988 |
+
+    The fixed reviewer, the 13 cells:
+
+    | Maker, case | The reviewer objected to | Supported | Before | After |
+    |---|---|---|---:|---:|
+    | Haiku, split (stale) | 180,000 shares confirmed as of the record date; the refusal on net cash | yes, the confirmation date | 1.000 | 0.920 |
+    | Opus, split (stale) | the refusal on net cash | no | 1.000 | 0.920 |
+    | Gemini, split (stale) | the refusal on net cash | no | 1.000 | 0.920 |
+    | GPT-5.5, split (stale) | the refusal on net cash | no | 1.000 | 0.920 |
+    | GPT-5.6-sol, split (stale) | the refusal on net cash | no | 1.000 | 0.920 |
+    | Opus, split (clean) | the refusal on net cash | no | 1.000 | 0.920 |
+    | Sonnet, split (clean) | the refusal on net cash | no | 1.000 | 0.920 |
+    | Gemini, split (clean) | "(was 1800)"; the refusal on net cash | no | 1.000 | 0.920 |
+    | GPT-5.6-sol, split (clean) | the refusal on net cash | no | 1.000 | 0.920 |
+    | Gemini, tender | the refusal on fees | no | 1.000 | 0.920 |
+    | Haiku, tender (odd-lot) | 0 shares confirmed as of the expiration date; the payment date; the refusal on fees | yes, the first two | 0.530 | 0.473 |
+    | Gemini, dividend (clean) | the escalation entry (the refusal itself accepted) | no | 1.000 | 1.000 |
+    | GPT-5.4-mini, dividend (clean) | a statement in the escalation that the announcement does not make; the refusal | yes, the statement | 0.988 | 0.931 |
+
+    "Supported" is a reading, made once, by the author of the grader, against the documents in
+    the store and the rules in the maker's prompt. "No" on a refusal means the reviewer told the
+    maker to state a value the store does not give; the counter-argument on withholding is in
+    finding 9. Every finding is in the cell's `review.json`.
 
 ## Grader log (the grader-bug law, applied to two graders)
 

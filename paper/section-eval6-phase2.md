@@ -187,7 +187,7 @@ fixed reviewer. The review round moved the worksheet, and mostly moved it the wr
 partial in every repeat of every arm, a stable one-item loss rather than noise. Haiku and Gemini:
 the same 0.983 in every repeat with tools or a reviewer; in the plain arm Haiku was clean twice
 and Gemini scored 0.948 once. GPT-5.4: three clean tools runs where the plain arm gave one. The small model: both sides of the finding
-in the tools arm. Reviewer verdicts on identical correct work were not stable under self-review
+in the tools arm. Reviewer verdicts on correct work with the same bookings were not stable under self-review
 (GPT-5.4's reviewer: approve, reject, approve) and were under the fixed reviewer (every correct
 repeat ledger approved; the one wrong one caught and re-booked).
 
@@ -239,6 +239,24 @@ above.
     pinned by regression checks; all 48 committed Phase-1 answers re-grade identically on gated
     score, ungated score, gates and checkpoints, and one diagnostic category rollup moved
     (GPT-5.4-mini, corrected dividend, calibration from -0.385 to +0.077).
+
+13. **"Correct ledger" is the grader's definition, and the environment induced some rejections.**
+    The reviewer two-by-two scores verdicts against the ledger predicates (required bookings
+    present, amounts and share counts tie, nothing disallowed), not against every field, and the
+    reviewer also reads the worksheet. Read finding by finding, 7 of the 20 self-review rejections
+    and 3 of the fixed reviewer's 13 raise at least one objection the documents support. Five of
+    the seven are the tender's payment date: `book_receivable` requires the field, no document
+    states the date, and the grader does not score it; three makers then removed a correct
+    receivable because the tool cannot book without a date. Four more self-review rejections
+    objected to "(was 1800)", the environment's rendering of a basket update that changes nothing.
+    The outcome counts (35, 27, 25) do not depend on the reading; three of the eight cells
+    self-review cost trace to the payment-date field. The per-cell table is in
+    `outputs/eval6-agent/TAXONOMY.md`, finding 12.
+14. **Five saved trajectories, not five trials.** The small model's five tools attempts on the
+    corrected dividend are the first attempt (its run stopped on a harness error after the ledger
+    was saved), the grid cell and three repeats, and the harness changed between attempts (the
+    agent loop after the first; the environment, the transport and the worksheet grader before
+    the repeats; hashes in each `run.json`).
 
 ## 10 (replacement of the eval #6 bullet, and additions)
 

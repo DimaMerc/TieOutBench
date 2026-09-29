@@ -99,13 +99,17 @@ on what was booked. AllPass per model, of six cases:
 - **Tools helped the middle tier and hurt the small one.** GPT-5.4 four to six, GPT-5.6-sol five
   to six, Opus four to five; Haiku three to two, and GPT-5.4-mini's split cases collapsed.
 - **The marquee gate did not fire in the recorded tools cells, and the repeats say why that is
-  not the result.** Five tools-arm attempts by the small model on the corrected dividend: two
+  not the result.** Five tools-arm attempts by the small model on the corrected dividend (five saved
+  trajectories, not five identical trials; the first stopped on a harness error after the
+  booking was saved): two
   booked $8,500 without ever calling `get_position`; three booked $6,800 after querying the
   position as of the desk's date rather than the record date. The tool was there in every run.
 - **The checker made the work worse.** Reviewers recomputed (48 of 48 queried the position) and
   then rejected 20 of 46 correct ledgers and approved one of two wrong ones; the makers complied
   and the revisions put a gate on four cells that had none and un-booked or held a correct
-  receivable in three. Round-one two-by-two: reject/wrong 1, reject/correct 20, approve/wrong 1,
+  receivable in three. Read finding by finding, 7 of the 20 rejections raise at least one
+  objection the documents support, five of them a payment date the booking tool requires and
+  no document states (TAXONOMY, finding 12). Round-one two-by-two: reject/wrong 1, reject/correct 20, approve/wrong 1,
   approve/correct 26.
 - **A stronger fixed reviewer was better on the verdicts and worse on the probe.** Opus
   reviewing every maker: 13 correct ledgers rejected instead of 20, 33 approved instead of 26,
