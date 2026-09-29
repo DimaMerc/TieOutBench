@@ -1,0 +1,87 @@
+########################################################################
+  EPISODE bry-dividend-2024   arm=checker   model=gpt-5.4
+########################################################################
+
+--- WORKSHEET (the submitted worksheet through the unchanged Phase-1 grader) ---
+========================================================================
+  CASE bry-dividend-2024    model=checker:gpt-5.4    judge=mock
+========================================================================
+  CaseScore (gated, headline) : 0.964
+  CaseScore (ungated)         : 0.964
+  GAP (ungated - gated)       : 0.000
+  AllPass                     : 0
+  D2 calibration (R,G->F_b)   : R=1.00 G=0.50 -> 0.556
+  Gates fired                 : none
+
+  Checkpoint vector (which step failed):
+    cp   W      ungated  gated   raw
+    P1   0.100  1.000   1.000  +1.00
+    P2   0.120  1.000   1.000  +1.00
+    E1   0.100  1.000   1.000  +1.00
+    E2   0.080  1.000   1.000  +1.00
+    C1   0.140  1.000   1.000  +1.00
+    C2   0.120  1.000   1.000  +1.00
+    C3   0.100  1.000   1.000  +1.00
+    D1   0.160  1.000   1.000  +1.00
+    D2   0.080  0.556   0.556  +0.56
+
+  Category rollup (diagnostic -- what KIND of error):
+    extraction   +1.000  ####################
+    numerical    +1.000  ####################
+    entailment   +1.000  ####################
+    reasoning    +1.000  ####################
+    calibration  +0.692  ##############
+    structure    +1.000  ####################
+========================================================================
+
+--- TERMINAL STATE (worksheet + the ledger rendered into D1 rows; ledger predicates applied) ---
+========================================================================
+  CASE bry-dividend-2024    model=checker:gpt-5.4    judge=mock
+========================================================================
+  CaseScore (gated, headline) : 0.964
+  CaseScore (ungated)         : 0.964
+  GAP (ungated - gated)       : 0.000
+  AllPass                     : 0
+  D2 calibration (R,G->F_b)   : R=1.00 G=0.50 -> 0.556
+  Gates fired                 : none
+
+  Checkpoint vector (which step failed):
+    cp   W      ungated  gated   raw
+    P1   0.100  1.000   1.000  +1.00
+    P2   0.120  1.000   1.000  +1.00
+    E1   0.100  1.000   1.000  +1.00
+    E2   0.080  1.000   1.000  +1.00
+    C1   0.140  1.000   1.000  +1.00
+    C2   0.120  1.000   1.000  +1.00
+    C3   0.100  1.000   1.000  +1.00
+    D1   0.160  1.000   1.000  +1.00
+    D2   0.080  0.556   0.556  +0.56
+
+  Category rollup (diagnostic -- what KIND of error):
+    extraction   +1.000  ####################
+    numerical    +1.000  ####################
+    entailment   +1.000  ####################
+    reasoning    +1.000  ####################
+    calibration  +0.692  ##############
+    structure    +1.000  ####################
+========================================================================
+
+--- LEDGER ---
+L4: book_receivable amount=$6,800.00 pay_date=2024-08-30 shares=40000.0 rate=0.17 basis_doc=bry-8k-20240813 memo='BRY mandatory dividend on corrected terms; record date 2024-08-23, pay date 2024-08-30'
+L5: confirm_position ticker=BRY shares=40000.0 as_of=2024-08-23 basis_doc=bry-8k-20240813
+  booked entries: 2   GATE.ELECT on the ledger: False   gold match: True   flags: none   correct: True
+  consistency L4: booked=6800.0 worksheet=6800.0 ok=True
+  gold L4 book_receivable: ok=True  {'permissible': [6800.0, 4800.0, 2000.0], 'pay_date_ok': True, 'basis_superseded': False}
+  gold L5 confirm_position: ok=True  {'as_of_is_basis_date': True}
+
+--- TRAJECTORY (reported, not scored) ---
+  maker: turns=11 tool_calls=14 errors=0 counts={'list_documents': 1, 'read_document': 3, 'get_position': 2, 'calculate': 1, 'book_receivable': 2, 'confirm_position': 2, 'escalate': 1, 'submit_worksheet': 2}
+  governing read before first action: True   docs read: ['acct7712-position-20240816', 'bry-8k-20240809', 'bry-8k-20240813']   superseded read: ['bry-8k-20240809']   distractors read: []
+  position dates queried: ['2024-08-23', '2024-08-18']   basis date queried: True   superseded date queried: False   projected: 1   query errors: 0
+  calculate used: True (1): ['40000*0.17']
+
+--- REVIEW (checker arm) ---
+  round 1: verdict=reject recomputed=True tools={'list_documents': 1, 'read_document': 2, 'get_position': 1, 'calculate': 1, 'review_verdict': 1} ledger_shown_correct=True
+    - L3 escalate is not an event-supported ledger action. The governing document bry-8k-20240813 describes only a mandatory cash dividend of $0.17 per share payable 2024-08-30 to holders of record 2024-08-23; it does not provide for any withholding-tax documentation workflow or a separate 'determine and book net dividend cash after withholding' action. The tied-out entries are L1 book_receivable $6,800.00 on 40,000 shares with pay date 2024-08-30 based on bry-8k-20240813, and L2 confirm_position 40,000 shares as of 2024-08-23 based on bry-8k-20240813.
+  round 2: verdict=approve recomputed=True tools={'list_documents': 1, 'read_document': 2, 'get_position': 1, 'calculate': 1, 'review_verdict': 1} ledger_shown_correct=True
+########################################################################

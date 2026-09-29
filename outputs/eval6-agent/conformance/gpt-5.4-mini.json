@@ -1,0 +1,13 @@
+{
+  "endpoint": "api.openai.com",
+  "model_id": "gpt-5.4-mini",
+  "token": "conformance-3ca99c",
+  "tested_at": "2026-09-24T15:58:55Z",
+  "native": {
+    "tool_call": true,
+    "final": true,
+    "detail": "DONE conformance-3ca99c"
+  },
+  "text": null,
+  "tool_transport": "native"
+}

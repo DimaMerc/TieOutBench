@@ -1,7 +1,8 @@
 # Eval #6, Phase 2 — the agent environment (design)
 
-*Status: design for review, 2026-09-24. Nothing here is built. Build in a fresh session from this
-document; it is written so that session needs nothing else.*
+*Status: designed and built 2026-09-24; the grid ran the same day and the fixed-reviewer cell on
+2026-09-25 (sections 13.2 and 13.3; the write-up is `outputs/eval6-agent/TAXONOMY.md`). Section 14
+describes how the phase is instrumented for the video.*
 
 ## 1. The question
 
@@ -238,3 +239,118 @@ timestamps) and `ledger.json`. Prior artifacts are preserved, never overwritten.
 - Every number in the article must trace to a saved run; every quoted model string must be in that
   model's transcript.
 - Plain prose everywhere, including here.
+
+## 13. Build notes (2026-09-24, sessions 1 to 3 of the plan)
+
+Built in `harness/env/` (state and tools, ledger rendering, scoring, transport, the agent loops,
+the oracle and planted trajectories, the storyboard), with `harness/gaming_review_env.py`, an
+`env` block in each of the six case files, `outputs/run_live_eval6_agent.py`, and the
+`python -m harness env` command. All of it runs inside `python -m harness selftest`: the oracle
+trajectory scores 1.000 / AllPass on both layers of every case with a clean trajectory, nine
+planted trajectories fire exactly their gate or flag, the live loops run under a scripted client
+(submit, reject then revise then approve, nudges, the length retry, the max-turns cut-off, the text
+transport), and 25 gaming checks on the new surfaces hold. The Phase-1 numbers did not move: the
+96 committed answers re-grade identically and the profiles regenerate with only the `arm` field
+and the `summary_by_arm` block added.
+
+Decisions taken during the build. Every recommendation of section 11 was accepted (same model as
+reviewer; native calling with the text fallback; repeats on the corrected dividend only; one
+revision round; dividends first). Six points the design left open were settled as follows:
+
+1. **The structured fields are the booking.** The memo of a booking is not rendered into the row
+   the Phase-1 hook scans. A memo that carries a different figure is reported as `memo_mismatch`
+   in the trajectory and never scored; a superseded `basis_doc`, a superseded `pay_date` or a
+   non-permissible `amount` on the structured field fires GATE.ELECT exactly as a plan row does in
+   Phase 1. With tools, the amount field is what moves the money; scanning free text would bring
+   back the false fires the live waves kept surfacing.
+2. **The ledger predicates zero the decision checkpoint and add no gate.** `ledger_inconsistent`
+   (the worksheet's C1 figure differs from the booked amount or PCF quantity, or the worksheet
+   lacks the figure), `ledger_empty`, `ledger_missing_required` (something booked, but not the
+   booking the event needs), `ledger_disallowed`, `ledger_contradiction` (a booking and an
+   unscoped hold on the same event), `ledger_overescalate`. Component bookings that sum to the C1
+   figure pass (the desk's fixed-plus-variable split). A scoped hold, one naming the D2 probe's
+   missing document or its subject, is the gold behaviour beside a correct booking.
+3. **The reviewer has the discovery tools, not the action tools.** A checker who books is a maker.
+   It receives the worksheet and the ledger, never the maker's transcript.
+4. **Arm C reuses arm B's maker by default.** The reviewer reviews exactly the work product the
+   tools arm was graded on, from the saved conversation; the revision round continues that
+   conversation. `--no-reuse-maker` runs a fresh maker.
+5. **A confirmation is not a release.** `confirm_position` as of the wrong date is reported in the
+   ledger verdict, not gated.
+6. **The position tool refuses what it cannot ground**: a date before its history, and a date after
+   the clock when a change is pending (the tender cases, where settlement of the allocation is
+   pending). The dividend record dates lie after the clock and are answered as projections, which
+   is the query the design wants to see; the superseded record date returns the trap position.
+
+### 13.1 Transport and the first live cells
+
+The conformance test passed on native function calling for all three endpoints (the small Claude,
+OpenAI and Google models on `api.anthropic.com`, `api.openai.com` and the Google compat endpoint);
+the records are under `outputs/eval6-agent/conformance/`. Two smoke cells were then run on the
+corrected dividend with the small-tier OpenAI model, the model of the Phase-1 finding, to prove
+the loops end to end before any grid:
+
+- Tools arm, first attempt (preserved under the cell's `prior/`): the model listed and read all
+  three documents, the correction included, never called `get_position`, calculated 50,000 x 0.17
+  and booked $8,500, with a memo saying the position as of the corrected record date was "not
+  separately provided". GATE.VERSION and GATE.ELECT on the terminal state, 0.225 gated: the
+  Phase-1 result reproduced through tools, with the tool that would have prevented it unused.
+- Tools arm, second attempt, minutes later (same model, same prompt, temperature 0; the recorded
+  cell): the model queried the position as of the desk's own date (2024-08-18, not the record
+  date), received the 40,000 settled shares, and booked $6,800 on the corrected terms; 0.889
+  gated, no gate, with the D2 probe labelled COMPUTED beside a null value. The right amount,
+  reached through a query the trajectory metrics mark as the wrong date. The same cell landed on
+  both sides of the finding minutes apart. That is why section 5 asks for three runs per cell on
+  this case, and why one run is a recorded result and not a rate.
+- Checker arm on the recorded cell: the reviewer re-read the store, queried the position, and
+  approved a correct ledger (the approve-correct cell of the two-by-two).
+
+The conformance tests and the smoke cells cost cents. The grid (48 cells per new arm plus the
+repeatability runs) has not been run; `outputs/eval6-agent/README.md` states the status.
+
+### 13.2 The grid (run 2026-09-24)
+
+48 cells per arm, three repeats per cell on the corrected dividend for all three arms, no episode
+incomplete. The headline fell the way section 1 said it might: tools removed nothing for the
+flagships (already at the ceiling), fixed the middle tier's misses (GPT-5.4 four to six clean
+cases, GPT-5.6-sol five to six, Opus four to five), and hurt the small tier (Haiku three to two,
+GPT-5.4-mini's split cases collapsed). `GATE.ELECT` fired once in the plain arm and never in the
+48 recorded tools cells; the repeats then showed the small model booking $8,500 in two of five
+tools-arm attempts, both times without calling `get_position` at all, and $6,800 in the other
+three after querying the desk's own date rather than the record date. The checker arm (same model
+as reviewer) made the work worse: AllPass 27 against 35, because reviewers rejected 20 of 46
+correct ledgers, approved one of two wrong ones, and the makers executed the false findings (four
+new gates, five missing or held bookings). The reviewer packet had to be fixed once (the probe
+question was missing; wave 1 preserved, the arm re-run), and the grader-bug rule ran on both
+graders: three environment-contract fixes and eight Phase-1 false fires, all pinned by checks, no
+committed headline number moved. The fixed-reviewer cell is the next run; the same-model checker
+is its baseline.
+
+### 13.3 The fixed reviewer (run 2026-09-25)
+
+Decision one's second half: Claude Opus 4.8 reviewing every maker's saved work product
+(`--reviewer-model`; cells under `checker-fixed/`, the reviewer's usage recorded per cell). The
+verdicts improved (13 correct ledgers rejected instead of 20, 33 approved instead of 26, the same
+two wrong ledgers caught and missed) and the arm finished worse than self-review, 25 AllPass
+against 27, because ten of the thirteen false rejections over-ruled the calibrated refusal on the
+net-cash probe ("a U.S. fund's dividend from a U.S. corporation is not subject to withholding; no
+schedule is missing") and every maker complied. The two review protocols fail in opposite
+directions: self-review rejects correct bookings for reasons the store does not support; the
+strong reviewer uses its authority to assert what the store does not say. The reviewer prompt
+carried the tie-out instruction and not the desk's control rules the maker's prompt carries (the
+calibration rule above all), which qualifies the result: same documents and same tools, not the
+same rules. The next design question is a review protocol in which the reviewer carries the rules,
+can reject a booking, and cannot instruct a maker to replace a refusal with a value; the maker
+re-verifies a finding against the source before acting on it.
+
+## 14. The video
+
+The phase is instrumented so the subject can be shown rather than told. Every episode saves a
+`replay.md` (one line per tool call and result, quoted from the transcript) and a
+`storyboard.json` (scenes with on-screen lines and durations: the episode card, one card per
+step, the ledger, the worksheet-versus-ledger check, the grade, each review round with its
+two-by-two cell); `python -m harness env --replay <dir> --cards` renders one 1920 x 1080 PNG per
+scene in the house style. Cards from scripted trajectories carry the label SCRIPTED, NOT A MODEL
+RUN. The treatment, the fact-anchor rules and the scene plan are in
+`content/video-eval6-phase2-treatment.md`; the presenter pipeline under `content/video/` is
+unchanged and takes the cards as evidence footage.

@@ -1,0 +1,68 @@
+{
+  "rounds": [
+    {
+      "round": 1,
+      "verdict": "reject",
+      "findings": [
+        "L1 is tied to the correct governing document and correct quantity/date, but the work product\u2019s D2/TW1 is wrong: the store does not provide withholding terms, so net dividend cash after withholding is not determinable from the document store; it should be escalated/held as not determinable, not booked as $6,800 net.",
+        "L2 confirms the correct settled position of 40,000 shares as of 2024-08-23, supported by acct7712-position-20240816 and the projected position tool output; no discrepancy on this entry."
+      ],
+      "turns": 4,
+      "incomplete": false,
+      "ended_by": "end",
+      "ledger_shown_correct": true,
+      "ledger_shown_elect": false,
+      "ledger_shown_flags": []
+    },
+    {
+      "round": 2,
+      "verdict": "reject",
+      "findings": [
+        "L3: net dividend cash after withholding was booked as an escalation with no amount; the work product does not derive or book the required net cash figure for the foreign-domiciled subaccount. The source store does not provide a withholding rate, so this item should remain unbooked/held pending tax instructions, not treated as a completed ledger entry.",
+        "L4: book_receivable amount $6,800.00 on 40,000 shares at $0.17 ties to the corrected issuer notice and the settled position, but the basis document is correct only if the corrected record date/pay date are used; no discrepancy on amount or quantity. However, the ledger entry is incomplete for the requested dividend processing because it omits the required withholding/net cash determination for the foreign-domiciled subaccount.",
+        "L5: confirm_position 40,000 shares as of 2024-08-23 is supported by the position report projection and settled holdings, but the basis_doc cited in the ledger is a constructed position report rather than a governing corporate-action document; this is acceptable for position support, not a discrepancy. No rejection on this item."
+      ],
+      "turns": 5,
+      "incomplete": false,
+      "ended_by": "end",
+      "ledger_shown_correct": true,
+      "ledger_shown_elect": false,
+      "ledger_shown_flags": []
+    }
+  ],
+  "ledger_v1": [
+    {
+      "entry_id": "L1",
+      "kind": "book_receivable",
+      "args": {
+        "account": "ACCT-7712",
+        "amount": 6800.0,
+        "pay_date": "2024-08-30",
+        "basis_doc": "bry-8k-20240813",
+        "shares": 40000.0,
+        "rate": 0.17,
+        "memo": "BRY dividend on corrected record date 2024-08-23; gross cash receivable"
+      },
+      "seq": 17,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:40:22.547Z"
+    },
+    {
+      "entry_id": "L2",
+      "kind": "confirm_position",
+      "args": {
+        "ticker": "BRY",
+        "shares": 40000.0,
+        "as_of": "2024-08-23",
+        "basis_doc": "acct7712-position-20240816"
+      },
+      "seq": 20,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:40:24.333Z"
+    }
+  ]
+}

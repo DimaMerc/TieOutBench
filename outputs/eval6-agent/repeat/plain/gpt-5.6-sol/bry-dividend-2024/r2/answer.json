@@ -1,0 +1,113 @@
+{
+  "P1": {
+    "issuer": "Berry Corporation",
+    "security": {
+      "ticker": "BRY"
+    },
+    "event_type": "mandatory",
+    "governing_doc": "bry-8k-20240813",
+    "superseded_docs": [
+      "bry-8k-20240809"
+    ]
+  },
+  "P2": {
+    "dates": {
+      "declared": "2024-08-09",
+      "corrected": "2024-08-13",
+      "record_date": "2024-08-23",
+      "pay_date": "2024-08-30"
+    },
+    "entitlement_basis": "record_date",
+    "entitlement_basis_date": "2024-08-23",
+    "election_deadline": null
+  },
+  "E1": {
+    "terms": {
+      "rate_total": 0.17,
+      "rate_fixed": 0.12,
+      "rate_variable": 0.05,
+      "record_date": "2024-08-23",
+      "pay_date": "2024-08-30"
+    },
+    "citation": {
+      "document": "bry-8k-20240813",
+      "locator": "body, sole paragraph",
+      "verbatim": "The press release issued August 9, 2024 was changed only to correct the record date and payment date for the dividends on its outstanding common stock. The dividend amounts have not changed. The dividends will be payable on August 30, 2024 to all stockholders of record as of the close of business on August 23, 2024, not payable on August 20, 2024 to all stockholders of record on August 12, 2024 as previously disclosed."
+    }
+  },
+  "E2": {
+    "position": {
+      "shares_20240812": 50000,
+      "shares_settled_current": 40000
+    },
+    "basis_shares": 40000
+  },
+  "C1": {
+    "entitlement": {
+      "eligible_shares": 40000,
+      "rate": 0.17,
+      "gross_cash": 6800
+    },
+    "cil": {
+      "applicable": false,
+      "amount": null
+    }
+  },
+  "C2": {
+    "election_required": false,
+    "options": null,
+    "default_option": null,
+    "economics": "Mandatory cash dividend of 0.17 per eligible share"
+  },
+  "C3": {
+    "impact": {
+      "gross_cash": 6800
+    },
+    "changes": [
+      {
+        "what": "BRY eligible-share quantity for the dividend event",
+        "where": "ACCT-7712 corporate-actions entitlement ledger",
+        "old": 50000,
+        "new": 40000
+      },
+      {
+        "what": "BRY gross dividend cash projection",
+        "where": "ACCT-7712 projected-cash ledger",
+        "old": 8500,
+        "new": 6800
+      },
+      {
+        "what": "BRY dividend projected payment date",
+        "where": "ACCT-7712 corporate-actions event calendar",
+        "old": "2024-08-20",
+        "new": "2024-08-30"
+      }
+    ]
+  },
+  "D1": {
+    "decision": "Process the mandatory dividend on the corrected record-date and payment-date terms using 40000 projected record-date shares; no election is available. Accrue gross cash but hold net-cash release until withholding is determined.",
+    "actions": [
+      {
+        "action": "Accrue the corrected mandatory gross dividend and hold net settlement pending withholding determination",
+        "option": null,
+        "quantity": 40000,
+        "amount": 6800,
+        "by_date": "2024-08-30",
+        "basis_doc": "bry-8k-20240813"
+      }
+    ]
+  },
+  "D2": {
+    "probe": {
+      "label": "NOT_DETERMINABLE",
+      "value": null,
+      "derivation": "Missing ACCT-7712 beneficial-owner withholding certificate, such as Form W-8BEN or W-8BEN-E as applicable, and applicable treaty-withholding-rate documentation. Escalate for tax documentation and hold only the net-cash calculation and release; do not invent a withholding rate."
+    },
+    "twins": [
+      {
+        "id": "TW1",
+        "value": 6800
+      }
+    ]
+  }
+}

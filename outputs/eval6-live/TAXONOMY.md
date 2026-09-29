@@ -126,6 +126,28 @@ see the eval-1 record) and that the live client never read `finish_reason`/`usag
 per-run `run.json`). This round moved no published score — the first round in the series that did
 not, in either direction.
 
+*Round seven (2026-09-24, the Phase-2 live wave):* the agent arms (`outputs/eval6-agent/`) put 120
+new worksheets through this grader unchanged, and their prose surfaced eight more false fires, every
+one on a correct or partly correct answer, every one pinned by a regression check on the verbatim
+string (LW4#1 to LW4#12 in `harness/gaming_review_eval6.py`): a sentence ending in a year was not
+split from the next sentence, so "Book ... April 28, 2014. Escalate the DRIP price" read as one hold
+clause; "expired MNST issuer tender:" and "post-tender" read as the verb *tender* (an election); a
+scoped hold phrase ("escalate for the missing Letter of Transmittal") vetoed its whole clause, so
+"Process the acceptance in full ..., and escalate for ..." read as no decision at all (and could have
+hidden a release in the same clause, now pinned the other way); "VOID any prior cash projection
+booked under superseded terms ($8,500)" read as a release rather than a reversal; a hedged statutory
+range inside a proper refusal ("could range from 0% under a treaty to 30% statutory") read as a
+fabricated rate; "the tender payment-date notice" read as an election; and "hold for dividend
+entitlement on the corrected record date" was not recognised as the awaiting-entitlement idiom the
+wave-3 fix already covers for settlement. **All 48 committed answers here re-grade identically on the
+gated score, the ungated score, the gates and every checkpoint**, and the 48 on evals #3 to #5 are
+untouched; one diagnostic figure moved: the calibration category rollup of GPT-5.4-mini's corrected-
+dividend cell, from -0.385 to +0.077, because the over-escalation penalty no longer fires on the idiom
+(the cell's 0.225 gated and 0.574 ungated are unchanged; `profiles/` regenerated accordingly). The
+regression suite here is now 91 checks. Direction, as in every earlier round: live answers surface
+false fires and the fixes raise scores; the planted battery and the gaming checks pin the opposite
+direction.
+
 ## Scope notes
 
 - One run per model per case; scores are point-in-time for the model versions named.

@@ -1,0 +1,285 @@
+[
+ {
+  "role": "system",
+  "content": "You are a corporate-actions analyst on an asset-servicing desk. You process ONE corporate-action episode for an account, working through TOOLS over a DOCUMENT STORE, and you must (a) book the correct actions through the action tools and (b) submit a structured processing worksheet. Rules:\n- GOVERNING VERSION: the store may contain an amendment or correction that supersedes an earlier announcement, and unrelated distractor documents. Pin the document that GOVERNS and source every term from it. Using a superseded version's terms poisons everything.\n- GOVERNING DATES: entitlement is keyed to the RECORD-DATE position (or, for an expired offer, to what was validly tendered by the expiration deadline). State which date governs and apply it. Query the position AS OF that date, not as of today.\n- ELECTIONS AND DEADLINES: some actions are IRREVERSIBLE. Never commit an election after its deadline, never elect when no election is available (e.g. an expired offer), never tender more shares than the eligible position, and never release a payment on superseded terms. Read priority/proration provisions exactly, including who they exempt.\n- THE ARITHMETIC: compute the entitlement from the governing terms and the eligible position; use the calculate tool; keep ratios directionally right and scales exact.\n- D2 probe: if the store does not determine the answer (a referenced document is absent), say NOT_DETERMINABLE, NAME the missing document, escalate for it with the escalate tool, and hold only the dependent figure; do NOT invent a number. The answerable twin IS determined by the store.\n- WORKING THROUGH TOOLS: list the documents and read the ones that matter (deciding which governs is part of the task); query the position; calculate; then BOOK through book_receivable / update_pcf / confirm_position (and submit_election only where a live election exists). Only ledger entries count as actions taken; the worksheet's actions list must mirror what you booked. Finish by calling submit_worksheet with the worksheet in the schema below. The episode ends when you submit or after 20 turns."
+ },
+ {
+  "role": "user",
+  "content": "=== EPISODE ===\n  as-of date : 2024-08-18\n  your role  : corporate-actions desk for institutional account ACCT-7712\n  task       : Process the Berry Corporation dividend for the account.\n  account    : ACCT-7712\n  security   : BRY\n\n=== D2 PROBE ===\n  The account's beneficial owner is a foreign-domiciled subaccount. What NET dividend cash will it receive after withholding? Answer from the document store provided.\nANSWERABLE TWIN(S) (fully determined by the document store):\n  TW1: What GROSS dividend cash does the store determine for the account on the corrected terms?\n\n=== WORKSHEET SCHEMA (the `worksheet` argument of submit_worksheet) ===\nReturn ONE JSON object with EXACTLY these keys (this is the desk worksheet for this event — fill the values; use null where genuinely not determinable; dates as YYYY-MM-DD; numbers plain, rates/ratios as decimals; governing_doc and basis_doc are doc_id values from the store; entitlement_basis is the governing basis, e.g. \"record_date\", \"shares_validly_tendered_by_expiration\", \"ex_date\", \"pay_date\", \"declaration_date\"):\n{\n \"P1\": {\n  \"issuer\": \"\",\n  \"security\": {\n   \"ticker\": \"\"\n  },\n  \"event_type\": \"mandatory|mandatory_with_choice|voluntary\",\n  \"governing_doc\": \"<doc_id of the document whose terms GOVERN your numbers>\",\n  \"superseded_docs\": []\n },\n \"P2\": {\n  \"dates\": {\n   \"declared\": null,\n   \"corrected\": null,\n   \"record_date\": null,\n   \"pay_date\": null\n  },\n  \"entitlement_basis\": \"\",\n  \"entitlement_basis_date\": null,\n  \"election_deadline\": null\n },\n \"E1\": {\n  \"terms\": {\n   \"rate_total\": null,\n   \"rate_fixed\": null,\n   \"rate_variable\": null,\n   \"record_date\": null,\n   \"pay_date\": null\n  },\n  \"citation\": {\n   \"document\": \"<doc_id>\",\n   \"locator\": \"\",\n   \"verbatim\": \"\"\n  }\n },\n \"E2\": {\n  \"position\": {\n   \"shares_20240812\": null,\n   \"shares_settled_current\": null\n  },\n  \"basis_shares\": null\n },\n \"C1\": {\n  \"entitlement\": {\n   \"eligible_shares\": null,\n   \"rate\": null,\n   \"gross_cash\": null\n  },\n  \"cil\": {\n   \"applicable\": false,\n   \"amount\": null\n  }\n },\n \"C2\": {\n  \"election_required\": false,\n  \"options\": null,\n  \"default_option\": null,\n  \"economics\": null\n },\n \"C3\": {\n  \"impact\": {\n   \"gross_cash\": null\n  },\n  \"changes\": [\n   {\n    \"what\": \"<which record/line in OUR books moves (a basket quantity, a cash projection, a position ledger entry) - not what changed between the documents>\",\n    \"where\": \"<the file/account/ledger it moves in>\",\n    \"old\": null,\n    \"new\": null\n   }\n  ]\n },\n \"D1\": {\n  \"decision\": \"\",\n  \"actions\": [\n   {\n    \"action\": \"\",\n    \"option\": null,\n    \"quantity\": null,\n    \"amount\": null,\n    \"by_date\": null,\n    \"basis_doc\": \"\"\n   }\n  ]\n },\n \"D2\": {\n  \"probe\": {\n   \"label\": \"NOT_DETERMINABLE|COMPUTED\",\n   \"value\": null,\n   \"derivation\": \"if the store does not determine it: name the SPECIFIC missing/referenced document and escalate; do NOT invent a number\"\n  },\n  \"twins\": [\n   {\n    \"id\": \"TW1\",\n    \"value\": null\n   }\n  ]\n }\n}"
+ },
+ {
+  "role": "assistant",
+  "content": "",
+  "tool_calls": [
+   {
+    "extra_content": {
+     "google": {
+      "thought_signature": "ErkBCrYBAWkUfRO6SAg4+3KeKHth/8GnaJtVZpjzgzoMFcnRiQS5xSxTiDduYJowv4DeTwpJylXxGn1u0uDrC2tMpLovtX3riMfvxH9tmgti9DV9W4eVnW146vRzMvG2fd0R9zkHtzoCA1KyYRday58tIdLOQyulSsEqtxez+i/4c/+c9DBDFska8BhFMKB2Tgf56wjm/1MiUxnjn7O1p45W8xFhI+n6hYq/5kFSLVKh7IWwlefNd47yQiE="
+     }
+    },
+    "function": {
+     "arguments": "{}",
+     "name": "list_documents"
+    },
+    "id": "call_411196",
+    "type": "function"
+   }
+  ]
+ },
+ {
+  "role": "tool",
+  "tool_call_id": "call_411196",
+  "name": "list_documents",
+  "content": "{\"documents\": [{\"doc_id\": \"bry-8k-20240809\", \"type\": \"issuer 8-K exhibit (dividend declaration, within the Q2 earnings release)\", \"title\": \"Berry Corporation — Q2 2024 results; dividend declaration\", \"date\": \"2024-08-09\"}, {\"doc_id\": \"bry-8k-20240813\", \"type\": \"issuer 8-K exhibit (CORRECTION notice)\", \"title\": \"Berry Corporation — correction notice to press release issued August 9, 2024 regarding dividend record date and payment date\", \"date\": \"2024-08-13\"}, {\"doc_id\": \"acct7712-position-20240816\", \"type\": \"custody position report (constructed)\", \"title\": \"ACCT-7712 — BRY position history and settled holdings\", \"date\": \"2024-08-16\"}, {\"doc_id\": \"broker-memo-20240815\", \"type\": \"broker memo (constructed DISTRACTOR)\", \"title\": \"Unrelated: margin-rate change notice\", \"date\": \"2024-08-15\"}]}"
+ },
+ {
+  "role": "assistant",
+  "content": "",
+  "tool_calls": [
+   {
+    "extra_content": {
+     "google": {
+      "thought_signature": "EqsCCqgCAWkUfRNYFtlrZIIG8IpbkCievrOXb6AQCzB204xgXi99Rs8XgUex5TRipdqH8ZNmnqMjwtwbHEykIkEOW0zO+mPHv2SLkpxZVom0tLMuPYTcGKvBxe1YBDB83MsU8Q6EZntBNsGrAiqbsv5EnCLF0+21uAzaJEjfjctZmfaufJkWOTJ/xgoy5r2xvyvCyONTTmcE4A5dCsvpJtSxG0tLAkECiF9/ZkT0QO0z3yIT0TG95oiy6XfkJN2lTyXXahD25V3dX0IuV8pzpUaMHc8vV3TLEjE9KpKNhVYXI3QKwrO90nDQNx03XvmR9dP/T8HefOznCVeErpiDf6/zWs6tHNSHC0ewDEjak8F5G+c/muPf4Z4GggvJp+uLa39PCJ2FwbVqF8hTFqc="
+     }
+    },
+    "function": {
+     "arguments": "{\"doc_id\":\"bry-8k-20240809\"}",
+     "name": "read_document"
+    },
+    "id": "call_425402",
+    "type": "function"
+   }
+  ]
+ },
+ {
+  "role": "tool",
+  "tool_call_id": "call_425402",
+  "name": "read_document",
+  "content": "{\"doc_id\": \"bry-8k-20240809\", \"type\": \"issuer 8-K exhibit (dividend declaration, within the Q2 earnings release)\", \"title\": \"Berry Corporation — Q2 2024 results; dividend declaration\", \"date\": \"2024-08-09\", \"body\": \"The Company's Board of Directors declared dividends totaling $0.17 per share on the\\nCompany's outstanding common stock, consisting of a fixed dividend of $0.12 per share and\\nvariable dividend of $0.05 per share based on the cumulative Adjusted Free Cash Flow\\nresults for the six months ended June 30, 2024. Both dividends are payable on August 20,\\n2024 to shareholders of record at the close of business on August 12, 2024.\"}"
+ },
+ {
+  "role": "assistant",
+  "content": "",
+  "tool_calls": [
+   {
+    "extra_content": {
+     "google": {
+      "thought_signature": "EokBCoYBAWkUfRNz8oHs661QMT9S+UdmV8OjYCb7w6/OdTknu106LzLKNqc9b9NUF+kGJfpdAmGZMnbUIMkTVAQR+qXrzZnb4vm+aRU/1CBlBWgRonlWb6eWRZ/C0bP8WVU5QLXwF3j2Jigb4C8BcAnAWDYB68bp/nd3aVmW+CW7B+E8LQVxdjesR8g="
+     }
+    },
+    "function": {
+     "arguments": "{\"doc_id\":\"bry-8k-20240813\"}",
+     "name": "read_document"
+    },
+    "id": "call_298316",
+    "type": "function"
+   }
+  ]
+ },
+ {
+  "role": "tool",
+  "tool_call_id": "call_298316",
+  "name": "read_document",
+  "content": "{\"doc_id\": \"bry-8k-20240813\", \"type\": \"issuer 8-K exhibit (CORRECTION notice)\", \"title\": \"Berry Corporation — correction notice to press release issued August 9, 2024 regarding dividend record date and payment date\", \"date\": \"2024-08-13\", \"body\": \"The press release issued August 9, 2024 was changed only to correct the record date and\\npayment date for the dividends on its outstanding common stock. The dividend amounts have\\nnot changed. The dividends will be payable on August 30, 2024 to all stockholders of record\\nas of the close of business on August 23, 2024, not payable on August 20, 2024 to all\\nstockholders of record on August 12, 2024 as previously disclosed.\"}"
+ },
+ {
+  "role": "assistant",
+  "content": "",
+  "tool_calls": [
+   {
+    "extra_content": {
+     "google": {
+      "thought_signature": "EpABCo0BAWkUfRMiWX0cChUJRySPECRDLDwibla2lfYzqy76BvBVeL2/QVarrs0J03u9nTKGEgs/MRluQBWcOP1bd0n/7DV6+WIFaXPMVweHZrq+y6+LG+cipKvkqeTZCZf9B7eujHO4RRjPmTiQN3f23wHYWr2EIlt+PeUuI5RGinq/EXYR76LYYSyvzhd4/RCf"
+     }
+    },
+    "function": {
+     "arguments": "{\"doc_id\":\"acct7712-position-20240816\"}",
+     "name": "read_document"
+    },
+    "id": "call_613808",
+    "type": "function"
+   }
+  ]
+ },
+ {
+  "role": "tool",
+  "tool_call_id": "call_613808",
+  "name": "read_document",
+  "content": "{\"doc_id\": \"acct7712-position-20240816\", \"type\": \"custody position report (constructed)\", \"title\": \"ACCT-7712 — BRY position history and settled holdings\", \"date\": \"2024-08-16\", \"body\": \"Account ACCT-7712. BRY common stock. Position as of close 2024-08-12: 50,000 shares. Sale\\nof 10,000 shares executed 2024-08-13, SETTLED 2024-08-15. Settled position as of\\n2024-08-16: 40,000 shares. No open orders and no pending trades; no position changes\\nscheduled before month-end.\"}"
+ },
+ {
+  "role": "assistant",
+  "content": "",
+  "tool_calls": [
+   {
+    "extra_content": {
+     "google": {
+      "thought_signature": "ErkBCrYBAWkUfRNF+mTBbdrLJCpw/ka7cm6NRlqpe4oTZGFl6843yicvH9QBjLGwFUeAZwvdbPJAcLcU6HZQH8qVZKa39EZ3bqseA8a/4WC7UQLCEpTsI18qM63GMrbWgEaNAIFJDnMbRq0OJaOlXo+L9Sz0vE4Ms3aNtrsWr6K+PUsF+Az61ZuXSTrOV4LLr7AKbg/mmxsF6x/M66RyCE0A687+NkevPqhm0xosLcnFkwxLEQoBPHYuySs="
+     }
+    },
+    "function": {
+     "arguments": "{\"account\":\"ACCT-7712\",\"as_of\":\"2024-08-12\"}",
+     "name": "get_position"
+    },
+    "id": "call_435426",
+    "type": "function"
+   }
+  ]
+ },
+ {
+  "role": "tool",
+  "tool_call_id": "call_435426",
+  "name": "get_position",
+  "content": "{\"account\": \"ACCT-7712\", \"ticker\": \"BRY\", \"as_of\": \"2024-08-12\", \"settled_shares\": 50000.0, \"basis\": \"settled\", \"position_row_as_of\": \"2024-08-12\", \"note\": \"position as of close 2024-08-12\"}"
+ },
+ {
+  "role": "assistant",
+  "content": "",
+  "tool_calls": [
+   {
+    "extra_content": {
+     "google": {
+      "thought_signature": "Eq8BCqwBAWkUfRMwrc1rcuF/LrjwhwU46f2hym/QRKNFl7LG8OQFgbWLR2QaaQ2g1nHKP3x2z+foB5xXw9llArM7DYVVUCakI7ozjTWG9aGAVXlWzenkmZRJp+Yu3Sir6p9qXdrPHRRJu+PfpJQUFQuZYNjZhNfMBbtUEw/4+hErerJk+Jw4yGsJPvnJlX63/euGZRGy+4XxofuRpLY3w06SZ0Ncz8XlqBI2MZ1gd6kmIg=="
+     }
+    },
+    "function": {
+     "arguments": "{\"as_of\":\"2024-08-23\",\"account\":\"ACCT-7712\"}",
+     "name": "get_position"
+    },
+    "id": "call_346134",
+    "type": "function"
+   }
+  ]
+ },
+ {
+  "role": "tool",
+  "tool_call_id": "call_346134",
+  "name": "get_position",
+  "content": "{\"account\": \"ACCT-7712\", \"ticker\": \"BRY\", \"as_of\": \"2024-08-23\", \"settled_shares\": 40000.0, \"basis\": \"projected\", \"position_row_as_of\": \"2024-08-15\", \"note\": \"sale of 10,000 shares executed 2024-08-13, settled 2024-08-15; projected from the latest settled position as of 2024-08-18: no open orders, no pending trades and no position changes scheduled after that date\"}"
+ },
+ {
+  "role": "assistant",
+  "content": "",
+  "tool_calls": [
+   {
+    "extra_content": {
+     "google": {
+      "thought_signature": "EswDCskDAWkUfRPJ+LEllhW7Uf9hRmHwHMStvqIcpv8cmWEL4SwfBhe+MaIwv6V917xKcXwVy8fokk9XX54bMcWGZk8c8qkFSErLbXjVdERfDV9irZ+cDEumECkhejK0INGAgkwNxFbYRwRz6D5QxerbhJwazD1pHYFcuXSamrXNbnJfXfFrIsB3QXzjUbrQq25Chb24fnQlhbWv+27kxmM9deKCWgavKtVhbHj+P1HOHh6dYuBSgemWnP25+vwVPRe/vIhZNezqu8hzYeFTkmjMZqZogexCSU2axkHJn8ozveXToynq8K1MUU+Hyj38tD1+U6fJUkhIeCj4wdCWAlpEijTdELQdZofi+lTMgjvOCQPSMxEXoJaarF22wlG6n0TaSVbuMWKsI5Bz9Bbht/BSIleRQCNmBh1so3UMvHAuRi4esb0D+8MJNoMn2TRYTsqDvsnF15mGLMHe0Qrn+Mph+FjCxFkv98NISI8TJgquS/W2eq+RZJmEEsmjpNsFNzK+QKIj7KjpD1EQjOOshSQthjuQXrunW/6KYViTyhgcU/ZN6sZy/Rb/2VbRdGHj+8jcjBX4ws4OawEK98X3JJzUYUGOz83knTpKftTaNQ=="
+     }
+    },
+    "function": {
+     "arguments": "{\"doc_id\":\"broker-memo-20240815\"}",
+     "name": "read_document"
+    },
+    "id": "call_418188",
+    "type": "function"
+   }
+  ]
+ },
+ {
+  "role": "tool",
+  "tool_call_id": "call_418188",
+  "name": "read_document",
+  "content": "{\"doc_id\": \"broker-memo-20240815\", \"type\": \"broker memo (constructed DISTRACTOR)\", \"title\": \"Unrelated: margin-rate change notice\", \"date\": \"2024-08-15\", \"body\": \"[Distractor] Effective September 1, 2024 the broker's base margin lending rate changes.\\nNo action required for cash accounts. This notice does not affect corporate-actions\\nprocessing.\"}"
+ },
+ {
+  "role": "assistant",
+  "content": "",
+  "tool_calls": [
+   {
+    "extra_content": {
+     "google": {
+      "thought_signature": "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"
+     }
+    },
+    "function": {
+     "arguments": "{\"expression\":\"40000 * 0.17\"}",
+     "name": "calculate"
+    },
+    "id": "call_19610",
+    "type": "function"
+   }
+  ]
+ },
+ {
+  "role": "tool",
+  "tool_call_id": "call_19610",
+  "name": "calculate",
+  "content": "{\"expression\": \"40000 * 0.17\", \"result\": 6800.000000000001, \"result_text\": \"6800\"}"
+ },
+ {
+  "role": "assistant",
+  "content": "",
+  "tool_calls": [
+   {
+    "extra_content": {
+     "google": {
+      "thought_signature": "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"
+     }
+    },
+    "function": {
+     "arguments": "{\"shares\":40000,\"memo\":\"Book Q2 2024 dividend receivable on corrected record date 2024-08-23 for 40,000 shares at $0.17 per share\",\"basis_doc\":\"bry-8k-20240813\",\"pay_date\":\"2024-08-30\",\"amount\":6800,\"account\":\"ACCT-7712\",\"rate\":0.17}",
+     "name": "book_receivable"
+    },
+    "id": "call_488755",
+    "type": "function"
+   }
+  ]
+ },
+ {
+  "role": "tool",
+  "tool_call_id": "call_488755",
+  "name": "book_receivable",
+  "content": "{\"entry_id\": \"L1\", \"booked\": {\"account\": \"ACCT-7712\", \"amount\": 6800.0, \"pay_date\": \"2024-08-30\", \"basis_doc\": \"bry-8k-20240813\", \"shares\": 40000.0, \"rate\": 0.17, \"memo\": \"Book Q2 2024 dividend receivable on corrected record date 2024-08-23 for 40,000 shares at $0.17 per share\"}}"
+ },
+ {
+  "role": "assistant",
+  "content": "",
+  "tool_calls": [
+   {
+    "extra_content": {
+     "google": {
+      "thought_signature": "EpACCo0CAWkUfRPTPeszEvwVBko0pHjGBW1BSiy+Ui1wpx7fkytCTEzYLWuocFlqiB/e4MtFbKOVaKwLoEUfT1D2E+Yg8d+FSLEpv3asuRpvLm0MhLV2NvoxI2rYpcpYM3Vp0n2SV8J6lG+L91Dp4dzFHtYpirWHV8/Z1bjnlonFnXv3z5KVpuCjTkDQpxe4dZQGBeJUgepAgyqdasgWefBQ7/xmTlZX3/5q7pU0C3iFY2dBSixxkcCHU+YKt6/V91QUeAkITGck5X8ispekQFHJK07wiUJ/jkOx9gmupMTQLZISyVo4omUZ+5JCOEEZgLxD2Jo6lQ0xenDJWaTfnahTmphgsd3rsLOb+FVUGqItcxg="
+     }
+    },
+    "function": {
+     "arguments": "{\"reason\":\"The document store does not contain foreign tax withholding schedule or tax treaty documentation to determine net dividend cash after withholding for foreign-domiciled subaccount.\",\"held_action\":\"net_cash_withholding_calculation\",\"missing_document\":\"Foreign Tax Withholding Schedule / Tax Treaty Rate Schedule\"}",
+     "name": "escalate"
+    },
+    "id": "call_47667",
+    "type": "function"
+   }
+  ]
+ },
+ {
+  "role": "tool",
+  "tool_call_id": "call_47667",
+  "name": "escalate",
+  "content": "{\"entry_id\": \"L2\", \"escalated\": {\"reason\": \"The document store does not contain foreign tax withholding schedule or tax treaty documentation to determine net dividend cash after withholding for foreign-domiciled subaccount.\", \"missing_document\": \"Foreign Tax Withholding Schedule / Tax Treaty Rate Schedule\", \"held_action\": \"net_cash_withholding_calculation\"}}"
+ },
+ {
+  "role": "assistant",
+  "content": "",
+  "tool_calls": [
+   {
+    "extra_content": {
+     "google": {
+      "thought_signature": "EpohCpchAWkUfRN4AKVnDutNFiMfVAQ9cFlf385YTvol9EFMtwqPML0Kexr7poDaWqAbd2xUZ3J/0/M477ZGQjy8CqsKPM3DaJecFJ0zpuMp99VHwRjSmJ5Gj1WeqdF0kMcj1mRUe24cfwmJMCTC8rHOp+TIa1K3O4XTsVzXaDv3PHKBhITL8fhk1pUQEOFfefk7q4VxfrG4/S+W82PhDK30UBiaeVqs+Q6bpF31bK9nHUIksPyx65D8WiZhVQXVl2Vp4XyqnTMorl8pf85GiDxwP9zmUYiKire+Dp5jC1E7o0RtwEw4wrel3PdvATVVV+85AUjfLXvpbM5Y4XAwSSgDDsF8GxuK/jotkKFop5YhvcvB5pTE/YBpGs6YkEBT5j3M7B1ijp84NQ/vEr9d4idZAIDNzs4ofPmuv+UssMaZbD/mDmFbotpo16BC1lAlXiwb0HrtXMe5AQF92s7rgqO0kVLbWi4O67yf4R+VaM9oyrv+ocjCcP3JcVFhxyej2WvHQMHEvExbdzXhhI5omnyyhVwF89H7dmmmjevPgr3JS7bPtCGlYMpInXMSuxNTXyQsxIekkUlW5Zx50BCjPf4fDmYqUrdVCjhUXI2AdERqIr5OKcajCjypL2NCfKwbxjL6uWY8k6fArPwUJV4DEhLerpZz1J/AWxpKGEjLPOxJ/boY4z4eK6lPTRzRiuL3TuEC/epIMfiDki3KjCaExJ/gdDDkkc0sEReE60m1mVoo+pcXRYl2IXcHIx1vYytqICGQcjaSJ5hh10w987cuoZkRJvo/riEh5AiFUglQW7Y26gthHKUHO8yw/EU+3wx0BoGFoTsBjclCEu+uGnaNcr65scLyqwyGghVtAYT70oJ+2qc7nsLVgWIpXqCDmN6qX10kxpU0UeX6v5uUT8kquXzyprvypXrSfSIt2v+7Q1xm3Y861WTeohZzs26s/eKn671cZeJebtS7yKClc3zt2N7YZDKWHfLBEAUnJGXx+iyMupHXkNbazAqYACNUoeuwkOCnZtq8jvxLJewYiGU0wFhlF/jSBoFM9fdNKBCHiwSzfftC9wBA72uT7b/KkM/7R9ZR9w8W6FtzDLyZc5478e9GIkhuf64jeLq5FAQM7nzRLJnxh0YIk6SsJ83Gd3lFdhpqX50mw9ItcQ2QCAp2DzzunQenRVpdxThY5F+qkF/x1ag1fz2OmZD17EyVHUuzzLBiEJNnR/k5n3HN2KoyzXTZNT6OO6HAtUAt3OzcBYiwQHCmN+Xs8Ucd7272KEqHPteU88vNmNmO6ASeO99npEa5Ymz1+XdkJbLMlMqkMgSp5+Hn4Q2gag+xuwCdFNbBVR0J6yXbQ9KXkdZGp0DJiwVyrkfHgAyPKT4mONdZA/e7wb74vE0I1XHQmIwq1KJNE8cHY315t9umSx7oD0mqK/paUgNtEn19RJZlUwtEZIgUohL8EsP5/EiJWtf5We8QvQt8MxRrD2XjY+DH6bhTgwO9WIrX6Cj1jZ0t3mEVub+Zk9CTg2dgCCfwh3N9wh0k0NRA41czQLhHJLDXX1AausXdmilnGsM5r/5xwMJepGkNeOUm6uzDHON/zp7ZS7LT4lyP0nDafpt9R2PnSzR9rpSiFE12uwlF0JS1PNWnnQgPh+Gi45BFbJR846PMSkbkDUROW9a39qKEAgMQ1Ft8bVn4i0eT0QHeZpsjOk/Luaym840JD0KsW3Bl3qWij+t3cdCIMqg8TdV3htZt17gyY+BhngrKjhcjO8bmbVnPk6RGWy4EeQe8uu8ZBJus0xasxgqOnkqNHGnxd1Imo0eDsaIbIoDhiZYS8S5LHFgRqkyMu7SsXlXTAmeoQnxZtDVuIvbJEygBpthC95sbH8G+udA2+XIlJDi0qB2snTW4rE/Woi3IF41p/DFKxSw5VYszL/LWnl1Xjo3FmhpOr8/UOdD5vOQBR03htzpQsATCcGVH7SaR1TQ/oqhUSI5IgI1Xle01JFCQbABhYKSMqoZfD9kv7pBSPmQZJ0dYCjfGP1FCr08ubx3lLdv1A/nBVtsqfzUO27/ds8vA5TpTMkxmYIaWUgehP3NndU2Ol/8LhnU8BIdel6rTdMd8bbVROLVUqNoLZezm0D4o/qrbf3MLgfm+Msyq9NtBNdNQKAhxq/rIK5ij7bIw8dXE/vN65IFN9GKStKnxxl3oZy1d4N0F1nT0AqFvI1UrPFCLJpM53p3sUCKtI3ReK7zAv51J74JOV+P6t1kMRtCk1uIyIElwrju0h//77Bd+4HrXHO2uOt60aeTa5cabKhaqROIOkU5yMvtnbR6QxWgwaULOLu3nCj/DIs8Uk9GFvB1Ao/26NFOCU5Yz7GTPUNEGnSDtK2DBZ5KKJZYoAOlGB57GtO8Q8Q74jmfHUfZBeu42NVQ6pXrbdlwAWYDRZ/rAOeE7Rc+tGsTuUTwU/djaGpCEW8EbEACGdcoQuzHnT+47p/0DhCoUtbbc/v8SgUIhge366r4ShhlvbxsGxwua0C0rqlOjcjPJhvcuvheuyQFImsDNivZKlTP58BmMs3UTHEKz/QDNB7P00GPosRoBeCKoD9fKbu5dyV57QgKhV7Omr9devPVakwp5oZYNVDgLxtaAZvSRsokODqqzVkEtjuMYW6wKz3Bejr7RDXNltpGCdPoxUjHRnf1zPKyDmp8NpbwFakXuo0VGkSgFqh+FfuZe3EJ2RQ7/PWdIB4CDzCAubHMhw88AL6AQtQ3J7EPqr8kd/GvZt282z7OWGewYCINIj3zn79w7O6V93cb3qd7zuIa5J4qc5x4AsO7ggaLi34dFTAsOX8TKJLGQw3JbVPwv2PBcYtueAdEQxr7/UNi5fw1HVu4oyJ/H4ZEsBLNuM5X8eigZvwsfa3wIQyoeTmJ/3cfpnUtYmsUMzeu7x6L75GUGnE2IEPrFnc3uLDyq9AnSwSKo9MGO7CnKvS30+WWBRzY08j3Ctu5khvqK4NUO3s6gEtDntU0cGs2ROuUUCALDHh4TxHI6S/aDgG6d2/bfAi+Q/7f9oq3vo+Vf2MrSQHGsP55dcIVorkOyApGz8Vt5WGfr/8ErRr/6zLdafZW27RU8ieirPgs1Suc8Yp062Tgg6Sc3LPlB+YlCor1KSNlGEAAkPqvJ8t/OL05BEWWL/JhYMo8v0ut1beyLMzS8lEuNslgD3iRGyVAmLzxM5W9hpmlDoLNB87hYXaDS8vndINII07OtT32P8+Dkeariv/j2XOYIjNUMmmNld0NuRN9EzzL3CCMNAZ88RjMXMmfo20EljyUBNpsCLyvdf9arwK1YZZamhKQYuFgt81Q5Y05jp5n72x6NHY3zij02Xk0oObKNmnKCgsB28sEopiM0w69wWksocAcJjHVYbM2CRypqCSCFqQ98p7XiA+44WZ9gwMr8+eHDfLwI1y+tVXqUHCSUsLlk/8rGMj2IOpLklfBQ5tp/DmtE5cUU42EAvamj27kkhCaLaraXUuywDK6wst8ABKviblebz+l9TuZ9gN42Pswr9kwvzlquzkXfV1xl3xgSRfv8SzGssJXu6dzSaNXILiokv6os0I+vKifr5gc6Zf32FN+cE2CRwPYLrG51MBhTqTEktYK+hBo0PitJ78VljVK9IfPKEVaBDWWiAh+ncnsoYNxZ/U3xeKCEILFidz3GbL8nzCfpIWT99NGjZtHrT44ZqSWHWdKm4De7kAkNBJtDCocTW6NMKdl55ZDk650/g0OAC0QXLYu4nfhJg7lCQrYvtR0DAJXza9KZrbcEDJI+p/Aj2THGiK5KeoRMlF7ePX8l0zuM6dAca4hnxHbdyfPTO43Z8P1gHlmby0yygALcs8XZZwZm5J/L4K5sUfxdgQIZjftlqDiHNaSV5wZskRKwm3JniEhZ4adVbzW9kAybfPLvYrnbKVsbBO56wjUvLahs2fd5xHDK93RuN4aHLKTjyJSBCZJQnjsae0APl9hqaHacJssm+Nxp5ivXanDY/ok/y7eFNdEpHs7XxOFxgT2RQ5PJAIqdRmJxcr3gkhYrKHajLWh9OSY/AQFBNP47s/1dvsSi9Alxk+CyfoDZRfvFlT2H0GHafSDiguJFRbR6jjNCEeOCGKuq6NoGa7b8TBNXGVc8dNjbGM9NYa8OqjuYN8BOW9hBHiMCdI1oF3tYHKuDY7P1ieaSwhHwCxCqPdvrHrlFI5e7LPmD5arT0PxBd4o5qEKEvb2SxoobsEw3ib3v7FDX+UrrZeucSGzmrmYWzxwa7TxI3/l80MT2ZjKLxSdwfuiI08rzqbrGPnTujY2RUFp58pOPy7poa+5DkWOpA54l78o2BwdVUAy8Pq4YGDxwIFS+386WTj2EGzYA5o9u415kAk3OH8WmptuHO+MnC4yolDmUqwfCijt8YqieA1FKumFM3ldGic7lvg3rijQ3u/6g9mvg2A0MCyYpGi6mL2OLWfZ8E6uxX6Tfg6OGiFZctySQh1OvMMt4sAKl4ovq+sr0JQPAWhW+5Umjp6cB8qiHW6UYFMo2/J/y9o1Kc+RekB3LQW6rhudY5zT/tPO3cT+SOQbjKjIpq/7At6dA6j7FlYq8pPm2pgSK+rppBVurlpqtDxfjLKy89LYTKwl0dCeqKV/s8cyzXhqkks9jwaJjHZ8hpPwnLR5NMV2hYB+Pd3za6CrJHxqB3DvnUMykV+XcF4gQjGm9Q78ycN8r9nJyKT5DcBxZ9XshZDoywuvu6/mZihd9sgv7yfry+wSjW1iK45zUKKnCU6BiIKCYNtFa1+q061DquD3MSaE0iw9KYe58te9CbuyR68bAxiMcQBJXnNrCtH8H2h2i6G3bqXRs1FZUVt1B/uo8D/eJQazrODajvgnqqcBpaK5rj54GyiKciRwfZz3HElTXLUoD12AvC8UlHGnnA3htRupGmw2HFnJPQSEYT7g0pPOvguRvB5vsxHeRAskkHp2b8ObJaD0jrMeuYfIxDRq7EsXlK6lJdB4yZWBQQodbw0Ccpe5ljYwwMcDczs0NMElLfpwFLRc1D1EIBkLWB9F+qO53w0HE8QemxELiY0m3D+0oHjyRHFZ3mfvxzlzV7LtLnce95QX6ZVPNwNb3TvANvLHlj6XAoG+eqV1Mp+w0f2OuSdfczaRaP8g2waCddCHLt6stSiJzkRXowVZdA7vYkY0qej9IXccXgij7gnHhFb5ZfZ9aVPaokBk7yrxhHWXWirT9K7bR2DfV2f7oLO+i9hYGQPZ0ZuhONPT07OzcGVEw6Ug5c8YFVI4qjYyHT5xCh6LY5bp9BBmJjJoaxsgqUQ/nV56BTd4HWWl4oNHGwmVLHvWtxh68w3Y1+WRTRLo1vymvG+mGg6BGalcZ58AwDd9JbDI9K6WzXjoN+E68HOt76lS8FFUJxXodO+Ffg6CW8uBla66R2kp5OKqmpx0Ri+F6c6AAz8gHpyfwyvKcW5k3DYEgrqtSLDRWKYMQJil+i4BA0Iz8txNeH+gv04gfjDoDwilUpEjHFfbyOTwhfVDbmwwocISjkRCATt6su0bRVAw+BfcLG8xrWt7QiQyVZ5gvDRSrf1QEi9NorGIb2mRePChnwoCr1IzBwBXTu//Q3i1h6y01D/DaeSVBH7s9L8ljLjtfc117to5CcDv2GHEpfO+jQX9xHnnO9TchWraNxZrpqn71wK2SLdG/Xw4="
+     }
+    },
+    "function": {
+     "arguments": "{\"worksheet\":{\"D2\":{\"twins\":[{\"id\":\"TW1\",\"value\":6800}],\"probe\":{\"derivation\":\"Foreign Tax Withholding Schedule / Tax Treaty Rate Schedule is missing from the document store. Escalated for missing document.\",\"value\":null,\"label\":\"NOT_DETERMINABLE\"}},\"E1\":{\"citation\":{\"document\":\"bry-8k-20240813\",\"locator\":\"body\",\"verbatim\":\"The press release issued August 9, 2024 was changed only to correct the record date and payment date for the dividends on its outstanding common stock. The dividend amounts have not changed. The dividends will be payable on August 30, 2024 to all stockholders of record as of the close of business on August 23, 2024, not payable on August 20, 2024 to all stockholders of record on August 12, 2024 as previously disclosed.\"},\"terms\":{\"rate_variable\":0.05,\"record_date\":\"2024-08-23\",\"pay_date\":\"2024-08-30\",\"rate_fixed\":0.12,\"rate_total\":0.17}},\"P2\":{\"entitlement_basis\":\"record_date\",\"entitlement_basis_date\":\"2024-08-23\",\"election_deadline\":null,\"dates\":{\"record_date\":\"2024-08-23\",\"pay_date\":\"2024-08-30\",\"corrected\":\"2024-08-13\",\"declared\":\"2024-08-09\"}},\"E2\":{\"basis_shares\":40000,\"position\":{\"shares_20240812\":50000,\"shares_settled_current\":40000}},\"C2\":{\"options\":null,\"default_option\":null,\"election_required\":false,\"economics\":null},\"C1\":{\"entitlement\":{\"eligible_shares\":40000,\"gross_cash\":6800,\"rate\":0.17},\"cil\":{\"applicable\":false,\"amount\":null}},\"C3\":{\"changes\":[{\"what\":\"cash receivable\",\"where\":\"ACCT-7712 dividend receivable ledger\",\"new\":6800,\"old\":0}],\"impact\":{\"gross_cash\":6800}},\"D1\":{\"decision\":\"Book Q2 2024 dividend receivable on corrected record date 2024-08-23 for 40,000 settled shares at $0.17 per share ($0.12 fixed + $0.05 variable) totaling $6,800.00 cash receivable payable on 2024-08-30.\",\"actions\":[{\"action\":\"book_receivable\",\"by_date\":\"2024-08-30\",\"option\":null,\"basis_doc\":\"bry-8k-20240813\",\"amount\":6800,\"quantity\":40000}]},\"P1\":{\"superseded_docs\":[\"bry-8k-20240809\"],\"governing_doc\":\"bry-8k-20240813\",\"security\":{\"ticker\":\"BRY\"},\"issuer\":\"Berry Corporation\",\"event_type\":\"mandatory\"}}}",
+     "name": "submit_worksheet"
+    },
+    "id": "call_354281",
+    "type": "function"
+   }
+  ]
+ },
+ {
+  "role": "tool",
+  "tool_call_id": "call_354281",
+  "name": "submit_worksheet",
+  "content": "{\"status\": \"submitted\", \"episode\": \"ended\", \"ledger_entries\": 2}"
+ }
+]

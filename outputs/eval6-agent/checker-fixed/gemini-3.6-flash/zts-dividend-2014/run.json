@@ -1,0 +1,209 @@
+{
+  "schema": "tieoutbench.run/1",
+  "run_id": "20260924T235129Z-4b8a5d",
+  "written_at": "2026-09-24T23:52:17Z",
+  "arm": "checker-fixed",
+  "suite": "corporate-actions",
+  "model_id": "gemini-3.6-flash",
+  "endpoint": "generativelanguage.googleapis.com",
+  "request": {
+    "max_tokens": 32000,
+    "temperature": 0.0,
+    "stream": false,
+    "tool_transport": "native",
+    "max_turns": 20,
+    "deadline_s": 900
+  },
+  "conformance": {
+    "tool_transport": "native",
+    "tested_at": "2026-09-24T15:58:13Z"
+  },
+  "loop": {
+    "maker_round1": {
+      "turns": 10,
+      "incomplete": false,
+      "ended_by": "end",
+      "elapsed_s": null
+    },
+    "review_round1": {
+      "round": 1,
+      "verdict": "reject",
+      "findings": [
+        "Entry L2 (escalate, held_action='reinvest_dividend_cash'): commits/holds an action the event does not allow. This is a mandatory cash dividend (per governing doc zts-8k-20140327: $0.072 per share paid June 2, 2014). No governing document offers a dividend-reinvestment option or election for this event, and the worksheet's own C2 records election_required=false / options=null. There is no reinvestment action to perform or hold; the missing 'Dividend Reinvestment Plan Prospectus' is not part of this event's terms. L2 should not be booked at all (no reinvest_dividend_cash action is available); the only correct booking is the cash receivable. The D2 probe reinvestment price is correctly NOT_DETERMINABLE, but that should not result in holding a reinvestment action for a cash-only mandatory event.",
+        "L1 book_receivable is otherwise correct and ties out to source: governing doc zts-8k-20140327 (correctly supersedes zts-8k-20140326, which had record date April 27), 25,000 settled shares as of record date 2014-04-28, rate $0.072, gross cash 25,000 x 0.072 = $1,800.00, pay date 2014-06-02. No defect in L1."
+      ],
+      "turns": 4,
+      "incomplete": false,
+      "ended_by": "end",
+      "ledger_shown_correct": true,
+      "ledger_shown_elect": false,
+      "ledger_shown_flags": []
+    },
+    "revised": true,
+    "maker_round2": {
+      "turns": 2,
+      "incomplete": false,
+      "ended_by": "end",
+      "elapsed_s": 8.0
+    },
+    "review_round2": {
+      "round": 2,
+      "verdict": "approve",
+      "findings": [],
+      "turns": 4,
+      "incomplete": false,
+      "ended_by": "end",
+      "ledger_shown_correct": true,
+      "ledger_shown_elect": false,
+      "ledger_shown_flags": []
+    }
+  },
+  "usage_total": {
+    "prompt_tokens": 22598,
+    "completion_tokens": 722,
+    "total_tokens": 24175
+  },
+  "chat_calls": 2,
+  "transient_retries": 0,
+  "last_finish_reason": "tool_calls",
+  "incomplete": false,
+  "reused_maker_from": "outputs/eval6-agent/tools/gemini-3.6-flash/zts-dividend-2014",
+  "reviewer": {
+    "model_id": "claude-opus-4-8",
+    "endpoint": "api.anthropic.com",
+    "tool_transport": "native",
+    "max_tokens": 8000,
+    "usage_total": {
+      "prompt_tokens": 29394,
+      "completion_tokens": 2717,
+      "total_tokens": 32111
+    },
+    "chat_calls": 8,
+    "transient_retries": 0
+  },
+  "case": {
+    "case_id": "zts-dividend-2014",
+    "path": "cases/zts-dividend-2014.case.yaml",
+    "sha256": "b9e6719fcd42bb7f2d2391f27b861014d3219d070740d6a9902173699961f8ac"
+  },
+  "rubric": {
+    "path": "rubric/criteria-corporate-actions.yaml",
+    "sha256": "81d0498cd0f16bef5aaf8e2569e4963771c55f330332fccda87a161329cb59b6"
+  },
+  "grader_version": "93b2efa",
+  "grader_tree_dirty": true,
+  "harness_hashes": {
+    "harness/graders.py": "4ce46f1ed091fa4e95dd471b7900be5464ced9a5c952d32ca7e8160243caa65b",
+    "harness/scoring.py": "c31e1901303253cf8b4ac600998ae130fb6111b32e5b99dd16029151db1dd1a8",
+    "harness/suites/corporate_actions.py": "f7b05b87e497cc4bb51849596a7b2891311d67d73e3fde5ba8b30b3a7bd99c22",
+    "harness/env/state.py": "ede4e582823945c77ba3c6631c0c3c704f2c8db2db58169a453a1aaee73fabc1",
+    "harness/env/scoring.py": "c60a98ff4d0cf6463f5b244b85fad9562a27edffd188a1adaf3efe2bde9c8d04",
+    "harness/env/agent.py": "d5d6b293408d287dce85cae6ec0ffbf5dd26fd2872bca637fe66f13c1e9a0d8d",
+    "harness/env/transport.py": "764a24ac1c3858f90fa5542ec428f7fa7b9433afd5a194806ccb78163f6153ca"
+  },
+  "prior_dir": null,
+  "score": {
+    "worksheet": {
+      "gated": 1.0,
+      "ungated": 1.0,
+      "gap": 0.0,
+      "allpass": 1,
+      "gates": [],
+      "flags": []
+    },
+    "terminal": {
+      "gated": 1.0,
+      "ungated": 1.0,
+      "gap": 0.0,
+      "allpass": 1,
+      "gates": [],
+      "flags": []
+    },
+    "ledger": {
+      "correct": true,
+      "elect_fired": false,
+      "gold_ok": true,
+      "flags": [],
+      "n_booked": 1
+    },
+    "review": {
+      "rounds": [
+        {
+          "round": 1,
+          "verdict": "reject",
+          "ledger_shown_correct": true,
+          "incomplete": false
+        },
+        {
+          "round": 2,
+          "verdict": "approve",
+          "ledger_shown_correct": true,
+          "incomplete": false
+        }
+      ],
+      "recomputed": {
+        "1": true,
+        "2": true
+      }
+    }
+  },
+  "score_at_run": {
+    "worksheet": {
+      "gated": 1.0,
+      "ungated": 1.0,
+      "gap": 0.0,
+      "allpass": 1,
+      "gates": [],
+      "flags": []
+    },
+    "terminal": {
+      "gated": 1.0,
+      "ungated": 1.0,
+      "gap": 0.0,
+      "allpass": 1,
+      "gates": [],
+      "flags": []
+    },
+    "ledger": {
+      "correct": true,
+      "elect_fired": false,
+      "gold_ok": true,
+      "flags": [],
+      "n_booked": 1
+    },
+    "trajectory": {
+      "n_turns": 12,
+      "n_tool_calls": 12,
+      "n_tool_errors": 0,
+      "governing_read_before_first_action": true,
+      "position_dates_queried": [
+        "2014-04-28"
+      ],
+      "basis_date_queried": true,
+      "superseded_date_queried": false,
+      "calculate_used": true
+    },
+    "review": {
+      "rounds": [
+        {
+          "round": 1,
+          "verdict": "reject",
+          "ledger_shown_correct": true,
+          "incomplete": false
+        },
+        {
+          "round": 2,
+          "verdict": "approve",
+          "ledger_shown_correct": true,
+          "incomplete": false
+        }
+      ],
+      "recomputed": {
+        "1": true,
+        "2": true
+      }
+    }
+  },
+  "rescored_at": "2026-09-25T00:10:16Z",
+  "grader_version_rescore": "93b2efa"
+}

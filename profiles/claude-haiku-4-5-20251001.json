@@ -6,12 +6,14 @@
     "One run per model per case; scores are point-in-time for the model versions named. This grid does not rank models and reports no single blended number per model on purpose.",
     "Completion budgets differed by vendor where required for parity (GPT DCF runs 32k, Gemini 32k throughout, Claude 12-16k on DCF, 8k elsewhere); see LEADERBOARD.md 'Scope notes'.",
     "The NVDA DCF runs used the case-hardened v2 system prompt; the MCD runs predate it. Cross-case comparisons on the netting-convention and grid-geometry behaviors are hedged in outputs/eval3-live/nvda-fy2026-dcf/TAXONOMY.md.",
-    "gates_fired lists auto-fail conditions that collapsed the gated score; an empty list plus a high gated score is the deployable signal, a high UNGATED score alone is not."
+    "gates_fired lists auto-fail conditions that collapsed the gated score; an empty list plus a high gated score is the deployable signal, a high UNGATED score alone is not.",
+    "Rows carry an `arm` field. `plain` is the single-prompt run (every eval; the Phase-1 form of eval #6). `tools` and `checker` are eval #6 Phase-2 agent-environment runs scored on the terminal state (worksheet + ledger); their `worksheet_score_gated` is the arm-comparable number and `ledger` records what was booked. `summary` counts the plain arm only."
   ],
   "runs": [
     {
       "allpass": 0,
       "answer": "outputs/eval3-live/claude-haiku-4-5-20251001/answer.json",
+      "arm": "plain",
       "case": "cases/mcd-fy2025-dcf.case.yaml",
       "case_id": "mcd-fy2025-dcf",
       "categories": {
@@ -133,6 +135,7 @@
     {
       "allpass": 0,
       "answer": "outputs/eval3-live/nvda-fy2026-dcf/claude-haiku-4-5-20251001/answer.json",
+      "arm": "plain",
       "case": "cases/nvda-fy2026-dcf.case.yaml",
       "case_id": "nvda-fy2026-dcf",
       "categories": {
@@ -252,6 +255,7 @@
     {
       "allpass": 0,
       "answer": "outputs/eval4-live/claude-haiku-4-5-20251001/grin-create-2026/answer.json",
+      "arm": "plain",
       "case": "cases/grin-create-2026.case.yaml",
       "case_id": "grin-create-2026",
       "categories": {
@@ -323,6 +327,7 @@
     {
       "allpass": 0,
       "answer": "outputs/eval4-live/claude-haiku-4-5-20251001/grin-create-2026-clean/answer.json",
+      "arm": "plain",
       "case": "cases/grin-create-2026-clean.case.yaml",
       "case_id": "grin-create-2026-clean",
       "categories": {
@@ -392,6 +397,7 @@
     {
       "allpass": 0,
       "answer": "outputs/eval5-live/claude-haiku-4-5-20251001/irs-confirm-2026/answer.json",
+      "arm": "plain",
       "case": "cases/irs-confirm-2026.case.yaml",
       "case_id": "irs-confirm-2026",
       "categories": {
@@ -461,6 +467,7 @@
     {
       "allpass": 0,
       "answer": "outputs/eval5-live/claude-haiku-4-5-20251001/irs-confirm-2026-clean/answer.json",
+      "arm": "plain",
       "case": "cases/irs-confirm-2026-clean.case.yaml",
       "case_id": "irs-confirm-2026-clean",
       "categories": {
@@ -530,6 +537,7 @@
     {
       "allpass": 0,
       "answer": "outputs/eval6-live/claude-haiku-4-5-20251001/bry-dividend-2024/answer.json",
+      "arm": "plain",
       "case": "cases/bry-dividend-2024.case.yaml",
       "case_id": "bry-dividend-2024",
       "categories": {
@@ -604,6 +612,7 @@
     {
       "allpass": 1,
       "answer": "outputs/eval6-live/claude-haiku-4-5-20251001/mega-split-2024/answer.json",
+      "arm": "plain",
       "case": "cases/mega-split-2024.case.yaml",
       "case_id": "mega-split-2024",
       "categories": {
@@ -678,6 +687,7 @@
     {
       "allpass": 0,
       "answer": "outputs/eval6-live/claude-haiku-4-5-20251001/mega-split-2024-clean/answer.json",
+      "arm": "plain",
       "case": "cases/mega-split-2024-clean.case.yaml",
       "case_id": "mega-split-2024-clean",
       "categories": {
@@ -752,6 +762,7 @@
     {
       "allpass": 1,
       "answer": "outputs/eval6-live/claude-haiku-4-5-20251001/mnst-tender-2024/answer.json",
+      "arm": "plain",
       "case": "cases/mnst-tender-2024.case.yaml",
       "case_id": "mnst-tender-2024",
       "categories": {
@@ -826,6 +837,7 @@
     {
       "allpass": 0,
       "answer": "outputs/eval6-live/claude-haiku-4-5-20251001/mnst-tender-2024-oddlot/answer.json",
+      "arm": "plain",
       "case": "cases/mnst-tender-2024-oddlot.case.yaml",
       "case_id": "mnst-tender-2024-oddlot",
       "categories": {
@@ -900,6 +912,7 @@
     {
       "allpass": 1,
       "answer": "outputs/eval6-live/claude-haiku-4-5-20251001/zts-dividend-2014/answer.json",
+      "arm": "plain",
       "case": "cases/zts-dividend-2014.case.yaml",
       "case_id": "zts-dividend-2014",
       "categories": {
@@ -970,6 +983,1680 @@
       "score_gated": 1.0,
       "score_ungated": 1.0,
       "suite": "corporate-actions"
+    },
+    {
+      "allpass": 0,
+      "answer": "outputs/eval6-agent/checker/claude-haiku-4-5-20251001/bry-dividend-2024/answer.json",
+      "arm": "checker",
+      "case": "cases/bry-dividend-2024.case.yaml",
+      "case_id": "bry-dividend-2024",
+      "categories": {
+        "calibration": 1.0,
+        "entailment": 1.0,
+        "extraction": 1.0,
+        "numerical": 1.0,
+        "reasoning": 0.9333,
+        "structure": 1.0
+      },
+      "checkpoints": {
+        "C1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.14
+        },
+        "C2": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.12
+        },
+        "C3": {
+          "gated": 0.8333,
+          "ungated": 0.8333,
+          "weight": 0.1
+        },
+        "D1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.16
+        },
+        "D2": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.08
+        },
+        "E1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.1
+        },
+        "E2": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.08
+        },
+        "P1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.1
+        },
+        "P2": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.12
+        }
+      },
+      "eval": 6,
+      "gap": 0.0,
+      "gates_fired": [],
+      "headline_flags": [],
+      "incomplete": false,
+      "ledger": {
+        "correct": true,
+        "elect_fired": false,
+        "flags": [],
+        "gold_ok": true,
+        "n_booked": 1
+      },
+      "refusal": {
+        "checkpoint": "D2",
+        "f_beta": 1.0,
+        "groundedness": 1.0,
+        "recall": 1.0
+      },
+      "review": [
+        {
+          "ledger_shown_correct": true,
+          "round": 1,
+          "verdict": "approve"
+        }
+      ],
+      "score_gated": 0.9833,
+      "score_ungated": 0.9833,
+      "suite": "corporate-actions",
+      "worksheet_allpass": 0,
+      "worksheet_score_gated": 0.9833
+    },
+    {
+      "allpass": 0,
+      "answer": "outputs/eval6-agent/checker/claude-haiku-4-5-20251001/mega-split-2024/answer.json",
+      "arm": "checker",
+      "case": "cases/mega-split-2024.case.yaml",
+      "case_id": "mega-split-2024",
+      "categories": {
+        "calibration": 1.0,
+        "entailment": 1.0,
+        "extraction": 0.881,
+        "numerical": 0.9,
+        "reasoning": 0.8333,
+        "structure": 1.0
+      },
+      "checkpoints": {
+        "C1": {
+          "gated": 0.0,
+          "ungated": 1.0,
+          "weight": 0.14
+        },
+        "C2": {
+          "gated": 0.0,
+          "ungated": 1.0,
+          "weight": 0.12
+        },
+        "C3": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.1
+        },
+        "D1": {
+          "gated": 0.0,
+          "ungated": 1.0,
+          "weight": 0.16
+        },
+        "D2": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.08
+        },
+        "E1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.1
+        },
+        "E2": {
+          "gated": 0.625,
+          "ungated": 0.625,
+          "weight": 0.08
+        },
+        "P1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.1
+        },
+        "P2": {
+          "gated": 0.375,
+          "ungated": 0.375,
+          "weight": 0.12
+        }
+      },
+      "eval": 6,
+      "gap": 0.42,
+      "gates_fired": [
+        "GATE.DATES"
+      ],
+      "headline_flags": [],
+      "incomplete": false,
+      "ledger": {
+        "correct": true,
+        "elect_fired": false,
+        "flags": [],
+        "gold_ok": true,
+        "n_booked": 3
+      },
+      "refusal": {
+        "checkpoint": "D2",
+        "f_beta": 1.0,
+        "groundedness": 1.0,
+        "recall": 1.0
+      },
+      "review": [
+        {
+          "ledger_shown_correct": true,
+          "round": 1,
+          "verdict": "reject"
+        },
+        {
+          "ledger_shown_correct": true,
+          "round": 2,
+          "verdict": "approve"
+        }
+      ],
+      "score_gated": 0.475,
+      "score_ungated": 0.895,
+      "suite": "corporate-actions",
+      "worksheet_allpass": 0,
+      "worksheet_score_gated": 0.475
+    },
+    {
+      "allpass": 0,
+      "answer": "outputs/eval6-agent/checker/claude-haiku-4-5-20251001/mega-split-2024-clean/answer.json",
+      "arm": "checker",
+      "case": "cases/mega-split-2024-clean.case.yaml",
+      "case_id": "mega-split-2024-clean",
+      "categories": {
+        "calibration": 1.0,
+        "entailment": 1.0,
+        "extraction": 1.0,
+        "numerical": 1.0,
+        "reasoning": 1.0,
+        "structure": 1.0
+      },
+      "checkpoints": {
+        "C1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.14
+        },
+        "C2": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.12
+        },
+        "C3": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.1
+        },
+        "D1": {
+          "gated": 0.0,
+          "ungated": 1.0,
+          "weight": 0.16
+        },
+        "D2": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.08
+        },
+        "E1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.1
+        },
+        "E2": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.08
+        },
+        "P1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.1
+        },
+        "P2": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.12
+        }
+      },
+      "eval": 6,
+      "gap": 0.16,
+      "gates_fired": [],
+      "headline_flags": [
+        "ledger_missing_required"
+      ],
+      "incomplete": false,
+      "ledger": {
+        "correct": false,
+        "elect_fired": false,
+        "flags": [
+          "ledger_missing_required"
+        ],
+        "gold_ok": true,
+        "n_booked": 1
+      },
+      "refusal": {
+        "checkpoint": "D2",
+        "f_beta": 1.0,
+        "groundedness": 1.0,
+        "recall": 1.0
+      },
+      "review": [
+        {
+          "ledger_shown_correct": false,
+          "round": 1,
+          "verdict": "approve"
+        }
+      ],
+      "score_gated": 0.84,
+      "score_ungated": 1.0,
+      "suite": "corporate-actions",
+      "worksheet_allpass": 1,
+      "worksheet_score_gated": 1.0
+    },
+    {
+      "allpass": 0,
+      "answer": "outputs/eval6-agent/checker/claude-haiku-4-5-20251001/mnst-tender-2024/answer.json",
+      "arm": "checker",
+      "case": "cases/mnst-tender-2024.case.yaml",
+      "case_id": "mnst-tender-2024",
+      "categories": {
+        "calibration": 1.0,
+        "entailment": 1.0,
+        "extraction": 1.0,
+        "numerical": 1.0,
+        "reasoning": 0.8333,
+        "structure": 1.0
+      },
+      "checkpoints": {
+        "C1": {
+          "gated": 0.0,
+          "ungated": 1.0,
+          "weight": 0.14
+        },
+        "C2": {
+          "gated": 0.0,
+          "ungated": 1.0,
+          "weight": 0.12
+        },
+        "C3": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.1
+        },
+        "D1": {
+          "gated": 0.0,
+          "ungated": 1.0,
+          "weight": 0.16
+        },
+        "D2": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.08
+        },
+        "E1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.1
+        },
+        "E2": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.08
+        },
+        "P1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.1
+        },
+        "P2": {
+          "gated": 0.5833,
+          "ungated": 0.5833,
+          "weight": 0.12
+        }
+      },
+      "eval": 6,
+      "gap": 0.42,
+      "gates_fired": [
+        "GATE.DATES"
+      ],
+      "headline_flags": [],
+      "incomplete": false,
+      "ledger": {
+        "correct": true,
+        "elect_fired": false,
+        "flags": [],
+        "gold_ok": true,
+        "n_booked": 2
+      },
+      "refusal": {
+        "checkpoint": "D2",
+        "f_beta": 1.0,
+        "groundedness": 1.0,
+        "recall": 1.0
+      },
+      "review": [
+        {
+          "ledger_shown_correct": true,
+          "round": 1,
+          "verdict": "approve"
+        }
+      ],
+      "score_gated": 0.53,
+      "score_ungated": 0.95,
+      "suite": "corporate-actions",
+      "worksheet_allpass": 0,
+      "worksheet_score_gated": 0.53
+    },
+    {
+      "allpass": 0,
+      "answer": "outputs/eval6-agent/checker/claude-haiku-4-5-20251001/mnst-tender-2024-oddlot/answer.json",
+      "arm": "checker",
+      "case": "cases/mnst-tender-2024-oddlot.case.yaml",
+      "case_id": "mnst-tender-2024-oddlot",
+      "categories": {
+        "calibration": 1.0,
+        "entailment": 1.0,
+        "extraction": 1.0,
+        "numerical": 1.0,
+        "reasoning": 0.8333,
+        "structure": 1.0
+      },
+      "checkpoints": {
+        "C1": {
+          "gated": 0.0,
+          "ungated": 1.0,
+          "weight": 0.14
+        },
+        "C2": {
+          "gated": 0.0,
+          "ungated": 1.0,
+          "weight": 0.12
+        },
+        "C3": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.1
+        },
+        "D1": {
+          "gated": 0.0,
+          "ungated": 1.0,
+          "weight": 0.16
+        },
+        "D2": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.08
+        },
+        "E1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.1
+        },
+        "E2": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.08
+        },
+        "P1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.1
+        },
+        "P2": {
+          "gated": 0.5833,
+          "ungated": 0.5833,
+          "weight": 0.12
+        }
+      },
+      "eval": 6,
+      "gap": 0.42,
+      "gates_fired": [
+        "GATE.DATES"
+      ],
+      "headline_flags": [],
+      "incomplete": false,
+      "ledger": {
+        "correct": true,
+        "elect_fired": false,
+        "flags": [],
+        "gold_ok": true,
+        "n_booked": 2
+      },
+      "refusal": {
+        "checkpoint": "D2",
+        "f_beta": 1.0,
+        "groundedness": 1.0,
+        "recall": 1.0
+      },
+      "review": [
+        {
+          "ledger_shown_correct": true,
+          "round": 1,
+          "verdict": "reject"
+        },
+        {
+          "ledger_shown_correct": true,
+          "round": 2,
+          "verdict": "approve"
+        }
+      ],
+      "score_gated": 0.53,
+      "score_ungated": 0.95,
+      "suite": "corporate-actions",
+      "worksheet_allpass": 0,
+      "worksheet_score_gated": 0.53
+    },
+    {
+      "allpass": 1,
+      "answer": "outputs/eval6-agent/checker/claude-haiku-4-5-20251001/zts-dividend-2014/answer.json",
+      "arm": "checker",
+      "case": "cases/zts-dividend-2014.case.yaml",
+      "case_id": "zts-dividend-2014",
+      "categories": {
+        "calibration": 1.0,
+        "entailment": 1.0,
+        "extraction": 1.0,
+        "numerical": 1.0,
+        "reasoning": 1.0,
+        "structure": 1.0
+      },
+      "checkpoints": {
+        "C1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.14
+        },
+        "C2": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.12
+        },
+        "C3": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.1
+        },
+        "D1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.16
+        },
+        "D2": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.08
+        },
+        "E1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.1
+        },
+        "E2": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.08
+        },
+        "P1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.1
+        },
+        "P2": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.12
+        }
+      },
+      "eval": 6,
+      "gap": 0.0,
+      "gates_fired": [],
+      "headline_flags": [],
+      "incomplete": false,
+      "ledger": {
+        "correct": true,
+        "elect_fired": false,
+        "flags": [],
+        "gold_ok": true,
+        "n_booked": 1
+      },
+      "refusal": {
+        "checkpoint": "D2",
+        "f_beta": 1.0,
+        "groundedness": 1.0,
+        "recall": 1.0
+      },
+      "review": [
+        {
+          "ledger_shown_correct": true,
+          "round": 1,
+          "verdict": "approve"
+        }
+      ],
+      "score_gated": 1.0,
+      "score_ungated": 1.0,
+      "suite": "corporate-actions",
+      "worksheet_allpass": 1,
+      "worksheet_score_gated": 1.0
+    },
+    {
+      "allpass": 0,
+      "answer": "outputs/eval6-agent/checker-fixed/claude-haiku-4-5-20251001/bry-dividend-2024/answer.json",
+      "arm": "checker-fixed",
+      "case": "cases/bry-dividend-2024.case.yaml",
+      "case_id": "bry-dividend-2024",
+      "categories": {
+        "calibration": 1.0,
+        "entailment": 1.0,
+        "extraction": 1.0,
+        "numerical": 1.0,
+        "reasoning": 0.9333,
+        "structure": 1.0
+      },
+      "checkpoints": {
+        "C1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.14
+        },
+        "C2": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.12
+        },
+        "C3": {
+          "gated": 0.8333,
+          "ungated": 0.8333,
+          "weight": 0.1
+        },
+        "D1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.16
+        },
+        "D2": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.08
+        },
+        "E1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.1
+        },
+        "E2": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.08
+        },
+        "P1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.1
+        },
+        "P2": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.12
+        }
+      },
+      "eval": 6,
+      "gap": 0.0,
+      "gates_fired": [],
+      "headline_flags": [],
+      "incomplete": false,
+      "ledger": {
+        "correct": true,
+        "elect_fired": false,
+        "flags": [],
+        "gold_ok": true,
+        "n_booked": 1
+      },
+      "refusal": {
+        "checkpoint": "D2",
+        "f_beta": 1.0,
+        "groundedness": 1.0,
+        "recall": 1.0
+      },
+      "review": [
+        {
+          "ledger_shown_correct": true,
+          "round": 1,
+          "verdict": "approve"
+        }
+      ],
+      "score_gated": 0.9833,
+      "score_ungated": 0.9833,
+      "suite": "corporate-actions",
+      "worksheet_allpass": 0,
+      "worksheet_score_gated": 0.9833
+    },
+    {
+      "allpass": 0,
+      "answer": "outputs/eval6-agent/checker-fixed/claude-haiku-4-5-20251001/mega-split-2024/answer.json",
+      "arm": "checker-fixed",
+      "case": "cases/mega-split-2024.case.yaml",
+      "case_id": "mega-split-2024",
+      "categories": {
+        "calibration": -0.3077,
+        "entailment": 1.0,
+        "extraction": 1.0,
+        "numerical": 1.0,
+        "reasoning": 1.0,
+        "structure": 1.0
+      },
+      "checkpoints": {
+        "C1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.14
+        },
+        "C2": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.12
+        },
+        "C3": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.1
+        },
+        "D1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.16
+        },
+        "D2": {
+          "gated": 0.0,
+          "ungated": 0.0,
+          "weight": 0.08
+        },
+        "E1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.1
+        },
+        "E2": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.08
+        },
+        "P1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.1
+        },
+        "P2": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.12
+        }
+      },
+      "eval": 6,
+      "gap": 0.0,
+      "gates_fired": [
+        "GATE.FABRICATION"
+      ],
+      "headline_flags": [],
+      "incomplete": false,
+      "ledger": {
+        "correct": true,
+        "elect_fired": false,
+        "flags": [],
+        "gold_ok": true,
+        "n_booked": 3
+      },
+      "refusal": {
+        "checkpoint": "D2",
+        "f_beta": 0.0,
+        "groundedness": 0.0,
+        "recall": 1.0
+      },
+      "review": [
+        {
+          "ledger_shown_correct": true,
+          "round": 1,
+          "verdict": "reject"
+        },
+        {
+          "ledger_shown_correct": true,
+          "round": 2,
+          "verdict": "approve"
+        }
+      ],
+      "score_gated": 0.92,
+      "score_ungated": 0.92,
+      "suite": "corporate-actions",
+      "worksheet_allpass": 0,
+      "worksheet_score_gated": 0.92
+    },
+    {
+      "allpass": 0,
+      "answer": "outputs/eval6-agent/checker-fixed/claude-haiku-4-5-20251001/mega-split-2024-clean/answer.json",
+      "arm": "checker-fixed",
+      "case": "cases/mega-split-2024-clean.case.yaml",
+      "case_id": "mega-split-2024-clean",
+      "categories": {
+        "calibration": 1.0,
+        "entailment": 1.0,
+        "extraction": 1.0,
+        "numerical": 1.0,
+        "reasoning": 1.0,
+        "structure": 1.0
+      },
+      "checkpoints": {
+        "C1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.14
+        },
+        "C2": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.12
+        },
+        "C3": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.1
+        },
+        "D1": {
+          "gated": 0.0,
+          "ungated": 1.0,
+          "weight": 0.16
+        },
+        "D2": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.08
+        },
+        "E1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.1
+        },
+        "E2": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.08
+        },
+        "P1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.1
+        },
+        "P2": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.12
+        }
+      },
+      "eval": 6,
+      "gap": 0.16,
+      "gates_fired": [],
+      "headline_flags": [
+        "ledger_missing_required"
+      ],
+      "incomplete": false,
+      "ledger": {
+        "correct": false,
+        "elect_fired": false,
+        "flags": [
+          "ledger_missing_required"
+        ],
+        "gold_ok": true,
+        "n_booked": 1
+      },
+      "refusal": {
+        "checkpoint": "D2",
+        "f_beta": 1.0,
+        "groundedness": 1.0,
+        "recall": 1.0
+      },
+      "review": [
+        {
+          "ledger_shown_correct": false,
+          "round": 1,
+          "verdict": "approve"
+        }
+      ],
+      "score_gated": 0.84,
+      "score_ungated": 1.0,
+      "suite": "corporate-actions",
+      "worksheet_allpass": 1,
+      "worksheet_score_gated": 1.0
+    },
+    {
+      "allpass": 0,
+      "answer": "outputs/eval6-agent/checker-fixed/claude-haiku-4-5-20251001/mnst-tender-2024/answer.json",
+      "arm": "checker-fixed",
+      "case": "cases/mnst-tender-2024.case.yaml",
+      "case_id": "mnst-tender-2024",
+      "categories": {
+        "calibration": 1.0,
+        "entailment": 1.0,
+        "extraction": 1.0,
+        "numerical": 1.0,
+        "reasoning": 0.8333,
+        "structure": 1.0
+      },
+      "checkpoints": {
+        "C1": {
+          "gated": 0.0,
+          "ungated": 1.0,
+          "weight": 0.14
+        },
+        "C2": {
+          "gated": 0.0,
+          "ungated": 1.0,
+          "weight": 0.12
+        },
+        "C3": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.1
+        },
+        "D1": {
+          "gated": 0.0,
+          "ungated": 1.0,
+          "weight": 0.16
+        },
+        "D2": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.08
+        },
+        "E1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.1
+        },
+        "E2": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.08
+        },
+        "P1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.1
+        },
+        "P2": {
+          "gated": 0.5833,
+          "ungated": 0.5833,
+          "weight": 0.12
+        }
+      },
+      "eval": 6,
+      "gap": 0.42,
+      "gates_fired": [
+        "GATE.DATES"
+      ],
+      "headline_flags": [],
+      "incomplete": false,
+      "ledger": {
+        "correct": true,
+        "elect_fired": false,
+        "flags": [],
+        "gold_ok": true,
+        "n_booked": 2
+      },
+      "refusal": {
+        "checkpoint": "D2",
+        "f_beta": 1.0,
+        "groundedness": 1.0,
+        "recall": 1.0
+      },
+      "review": [
+        {
+          "ledger_shown_correct": true,
+          "round": 1,
+          "verdict": "approve"
+        }
+      ],
+      "score_gated": 0.53,
+      "score_ungated": 0.95,
+      "suite": "corporate-actions",
+      "worksheet_allpass": 0,
+      "worksheet_score_gated": 0.53
+    },
+    {
+      "allpass": 0,
+      "answer": "outputs/eval6-agent/checker-fixed/claude-haiku-4-5-20251001/mnst-tender-2024-oddlot/answer.json",
+      "arm": "checker-fixed",
+      "case": "cases/mnst-tender-2024-oddlot.case.yaml",
+      "case_id": "mnst-tender-2024-oddlot",
+      "categories": {
+        "calibration": 0.3077,
+        "entailment": 1.0,
+        "extraction": 1.0,
+        "numerical": 1.0,
+        "reasoning": 0.8333,
+        "structure": 1.0
+      },
+      "checkpoints": {
+        "C1": {
+          "gated": 0.0,
+          "ungated": 1.0,
+          "weight": 0.14
+        },
+        "C2": {
+          "gated": 0.0,
+          "ungated": 1.0,
+          "weight": 0.12
+        },
+        "C3": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.1
+        },
+        "D1": {
+          "gated": 0.0,
+          "ungated": 1.0,
+          "weight": 0.16
+        },
+        "D2": {
+          "gated": 0.2941,
+          "ungated": 0.2941,
+          "weight": 0.08
+        },
+        "E1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.1
+        },
+        "E2": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.08
+        },
+        "P1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.1
+        },
+        "P2": {
+          "gated": 0.5833,
+          "ungated": 0.5833,
+          "weight": 0.12
+        }
+      },
+      "eval": 6,
+      "gap": 0.42,
+      "gates_fired": [
+        "GATE.DATES"
+      ],
+      "headline_flags": [
+        "ledger_missing_required",
+        "ledger_overescalate"
+      ],
+      "incomplete": false,
+      "ledger": {
+        "correct": false,
+        "elect_fired": false,
+        "flags": [
+          "ledger_missing_required",
+          "ledger_overescalate"
+        ],
+        "gold_ok": false,
+        "n_booked": 1
+      },
+      "refusal": {
+        "checkpoint": "D2",
+        "f_beta": 0.2941,
+        "groundedness": 0.25,
+        "recall": 1.0
+      },
+      "review": [
+        {
+          "ledger_shown_correct": true,
+          "round": 1,
+          "verdict": "reject"
+        },
+        {
+          "ledger_shown_correct": false,
+          "round": 2,
+          "verdict": "approve"
+        }
+      ],
+      "score_gated": 0.4735,
+      "score_ungated": 0.8935,
+      "suite": "corporate-actions",
+      "worksheet_allpass": 0,
+      "worksheet_score_gated": 0.4735
+    },
+    {
+      "allpass": 1,
+      "answer": "outputs/eval6-agent/checker-fixed/claude-haiku-4-5-20251001/zts-dividend-2014/answer.json",
+      "arm": "checker-fixed",
+      "case": "cases/zts-dividend-2014.case.yaml",
+      "case_id": "zts-dividend-2014",
+      "categories": {
+        "calibration": 1.0,
+        "entailment": 1.0,
+        "extraction": 1.0,
+        "numerical": 1.0,
+        "reasoning": 1.0,
+        "structure": 1.0
+      },
+      "checkpoints": {
+        "C1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.14
+        },
+        "C2": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.12
+        },
+        "C3": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.1
+        },
+        "D1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.16
+        },
+        "D2": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.08
+        },
+        "E1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.1
+        },
+        "E2": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.08
+        },
+        "P1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.1
+        },
+        "P2": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.12
+        }
+      },
+      "eval": 6,
+      "gap": 0.0,
+      "gates_fired": [],
+      "headline_flags": [],
+      "incomplete": false,
+      "ledger": {
+        "correct": true,
+        "elect_fired": false,
+        "flags": [],
+        "gold_ok": true,
+        "n_booked": 1
+      },
+      "refusal": {
+        "checkpoint": "D2",
+        "f_beta": 1.0,
+        "groundedness": 1.0,
+        "recall": 1.0
+      },
+      "review": [
+        {
+          "ledger_shown_correct": true,
+          "round": 1,
+          "verdict": "approve"
+        }
+      ],
+      "score_gated": 1.0,
+      "score_ungated": 1.0,
+      "suite": "corporate-actions",
+      "worksheet_allpass": 1,
+      "worksheet_score_gated": 1.0
+    },
+    {
+      "allpass": 0,
+      "answer": "outputs/eval6-agent/tools/claude-haiku-4-5-20251001/bry-dividend-2024/answer.json",
+      "arm": "tools",
+      "case": "cases/bry-dividend-2024.case.yaml",
+      "case_id": "bry-dividend-2024",
+      "categories": {
+        "calibration": 1.0,
+        "entailment": 1.0,
+        "extraction": 1.0,
+        "numerical": 1.0,
+        "reasoning": 0.9333,
+        "structure": 1.0
+      },
+      "checkpoints": {
+        "C1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.14
+        },
+        "C2": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.12
+        },
+        "C3": {
+          "gated": 0.8333,
+          "ungated": 0.8333,
+          "weight": 0.1
+        },
+        "D1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.16
+        },
+        "D2": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.08
+        },
+        "E1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.1
+        },
+        "E2": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.08
+        },
+        "P1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.1
+        },
+        "P2": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.12
+        }
+      },
+      "eval": 6,
+      "gap": 0.0,
+      "gates_fired": [],
+      "headline_flags": [],
+      "incomplete": false,
+      "ledger": {
+        "correct": true,
+        "elect_fired": false,
+        "flags": [],
+        "gold_ok": true,
+        "n_booked": 1
+      },
+      "refusal": {
+        "checkpoint": "D2",
+        "f_beta": 1.0,
+        "groundedness": 1.0,
+        "recall": 1.0
+      },
+      "review": null,
+      "score_gated": 0.9833,
+      "score_ungated": 0.9833,
+      "suite": "corporate-actions",
+      "worksheet_allpass": 0,
+      "worksheet_score_gated": 0.9833
+    },
+    {
+      "allpass": 1,
+      "answer": "outputs/eval6-agent/tools/claude-haiku-4-5-20251001/mega-split-2024/answer.json",
+      "arm": "tools",
+      "case": "cases/mega-split-2024.case.yaml",
+      "case_id": "mega-split-2024",
+      "categories": {
+        "calibration": 1.0,
+        "entailment": 1.0,
+        "extraction": 1.0,
+        "numerical": 1.0,
+        "reasoning": 1.0,
+        "structure": 1.0
+      },
+      "checkpoints": {
+        "C1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.14
+        },
+        "C2": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.12
+        },
+        "C3": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.1
+        },
+        "D1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.16
+        },
+        "D2": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.08
+        },
+        "E1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.1
+        },
+        "E2": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.08
+        },
+        "P1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.1
+        },
+        "P2": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.12
+        }
+      },
+      "eval": 6,
+      "gap": 0.0,
+      "gates_fired": [],
+      "headline_flags": [],
+      "incomplete": false,
+      "ledger": {
+        "correct": true,
+        "elect_fired": false,
+        "flags": [],
+        "gold_ok": true,
+        "n_booked": 3
+      },
+      "refusal": {
+        "checkpoint": "D2",
+        "f_beta": 1.0,
+        "groundedness": 1.0,
+        "recall": 1.0
+      },
+      "review": null,
+      "score_gated": 1.0,
+      "score_ungated": 1.0,
+      "suite": "corporate-actions",
+      "worksheet_allpass": 1,
+      "worksheet_score_gated": 1.0
+    },
+    {
+      "allpass": 0,
+      "answer": "outputs/eval6-agent/tools/claude-haiku-4-5-20251001/mega-split-2024-clean/answer.json",
+      "arm": "tools",
+      "case": "cases/mega-split-2024-clean.case.yaml",
+      "case_id": "mega-split-2024-clean",
+      "categories": {
+        "calibration": 1.0,
+        "entailment": 1.0,
+        "extraction": 1.0,
+        "numerical": 1.0,
+        "reasoning": 1.0,
+        "structure": 1.0
+      },
+      "checkpoints": {
+        "C1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.14
+        },
+        "C2": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.12
+        },
+        "C3": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.1
+        },
+        "D1": {
+          "gated": 0.0,
+          "ungated": 1.0,
+          "weight": 0.16
+        },
+        "D2": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.08
+        },
+        "E1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.1
+        },
+        "E2": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.08
+        },
+        "P1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.1
+        },
+        "P2": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.12
+        }
+      },
+      "eval": 6,
+      "gap": 0.16,
+      "gates_fired": [],
+      "headline_flags": [
+        "ledger_missing_required"
+      ],
+      "incomplete": false,
+      "ledger": {
+        "correct": false,
+        "elect_fired": false,
+        "flags": [
+          "ledger_missing_required"
+        ],
+        "gold_ok": true,
+        "n_booked": 1
+      },
+      "refusal": {
+        "checkpoint": "D2",
+        "f_beta": 1.0,
+        "groundedness": 1.0,
+        "recall": 1.0
+      },
+      "review": null,
+      "score_gated": 0.84,
+      "score_ungated": 1.0,
+      "suite": "corporate-actions",
+      "worksheet_allpass": 1,
+      "worksheet_score_gated": 1.0
+    },
+    {
+      "allpass": 0,
+      "answer": "outputs/eval6-agent/tools/claude-haiku-4-5-20251001/mnst-tender-2024/answer.json",
+      "arm": "tools",
+      "case": "cases/mnst-tender-2024.case.yaml",
+      "case_id": "mnst-tender-2024",
+      "categories": {
+        "calibration": 1.0,
+        "entailment": 1.0,
+        "extraction": 1.0,
+        "numerical": 1.0,
+        "reasoning": 0.8333,
+        "structure": 1.0
+      },
+      "checkpoints": {
+        "C1": {
+          "gated": 0.0,
+          "ungated": 1.0,
+          "weight": 0.14
+        },
+        "C2": {
+          "gated": 0.0,
+          "ungated": 1.0,
+          "weight": 0.12
+        },
+        "C3": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.1
+        },
+        "D1": {
+          "gated": 0.0,
+          "ungated": 1.0,
+          "weight": 0.16
+        },
+        "D2": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.08
+        },
+        "E1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.1
+        },
+        "E2": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.08
+        },
+        "P1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.1
+        },
+        "P2": {
+          "gated": 0.5833,
+          "ungated": 0.5833,
+          "weight": 0.12
+        }
+      },
+      "eval": 6,
+      "gap": 0.42,
+      "gates_fired": [
+        "GATE.DATES"
+      ],
+      "headline_flags": [],
+      "incomplete": false,
+      "ledger": {
+        "correct": true,
+        "elect_fired": false,
+        "flags": [],
+        "gold_ok": true,
+        "n_booked": 2
+      },
+      "refusal": {
+        "checkpoint": "D2",
+        "f_beta": 1.0,
+        "groundedness": 1.0,
+        "recall": 1.0
+      },
+      "review": null,
+      "score_gated": 0.53,
+      "score_ungated": 0.95,
+      "suite": "corporate-actions",
+      "worksheet_allpass": 0,
+      "worksheet_score_gated": 0.53
+    },
+    {
+      "allpass": 0,
+      "answer": "outputs/eval6-agent/tools/claude-haiku-4-5-20251001/mnst-tender-2024-oddlot/answer.json",
+      "arm": "tools",
+      "case": "cases/mnst-tender-2024-oddlot.case.yaml",
+      "case_id": "mnst-tender-2024-oddlot",
+      "categories": {
+        "calibration": 1.0,
+        "entailment": 1.0,
+        "extraction": 1.0,
+        "numerical": 1.0,
+        "reasoning": 0.8333,
+        "structure": 1.0
+      },
+      "checkpoints": {
+        "C1": {
+          "gated": 0.0,
+          "ungated": 1.0,
+          "weight": 0.14
+        },
+        "C2": {
+          "gated": 0.0,
+          "ungated": 1.0,
+          "weight": 0.12
+        },
+        "C3": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.1
+        },
+        "D1": {
+          "gated": 0.0,
+          "ungated": 1.0,
+          "weight": 0.16
+        },
+        "D2": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.08
+        },
+        "E1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.1
+        },
+        "E2": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.08
+        },
+        "P1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.1
+        },
+        "P2": {
+          "gated": 0.5833,
+          "ungated": 0.5833,
+          "weight": 0.12
+        }
+      },
+      "eval": 6,
+      "gap": 0.42,
+      "gates_fired": [
+        "GATE.DATES"
+      ],
+      "headline_flags": [],
+      "incomplete": false,
+      "ledger": {
+        "correct": true,
+        "elect_fired": false,
+        "flags": [],
+        "gold_ok": true,
+        "n_booked": 2
+      },
+      "refusal": {
+        "checkpoint": "D2",
+        "f_beta": 1.0,
+        "groundedness": 1.0,
+        "recall": 1.0
+      },
+      "review": null,
+      "score_gated": 0.53,
+      "score_ungated": 0.95,
+      "suite": "corporate-actions",
+      "worksheet_allpass": 0,
+      "worksheet_score_gated": 0.53
+    },
+    {
+      "allpass": 1,
+      "answer": "outputs/eval6-agent/tools/claude-haiku-4-5-20251001/zts-dividend-2014/answer.json",
+      "arm": "tools",
+      "case": "cases/zts-dividend-2014.case.yaml",
+      "case_id": "zts-dividend-2014",
+      "categories": {
+        "calibration": 1.0,
+        "entailment": 1.0,
+        "extraction": 1.0,
+        "numerical": 1.0,
+        "reasoning": 1.0,
+        "structure": 1.0
+      },
+      "checkpoints": {
+        "C1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.14
+        },
+        "C2": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.12
+        },
+        "C3": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.1
+        },
+        "D1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.16
+        },
+        "D2": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.08
+        },
+        "E1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.1
+        },
+        "E2": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.08
+        },
+        "P1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.1
+        },
+        "P2": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.12
+        }
+      },
+      "eval": 6,
+      "gap": 0.0,
+      "gates_fired": [],
+      "headline_flags": [],
+      "incomplete": false,
+      "ledger": {
+        "correct": true,
+        "elect_fired": false,
+        "flags": [],
+        "gold_ok": true,
+        "n_booked": 1
+      },
+      "refusal": {
+        "checkpoint": "D2",
+        "f_beta": 1.0,
+        "groundedness": 1.0,
+        "recall": 1.0
+      },
+      "review": null,
+      "score_gated": 1.0,
+      "score_ungated": 1.0,
+      "suite": "corporate-actions",
+      "worksheet_allpass": 1,
+      "worksheet_score_gated": 1.0
     }
   ],
   "schema_version": "1.0",
@@ -998,6 +2685,92 @@
       "mnst-tender-2024-oddlot": 0.9833,
       "nvda-fy2026-dcf": 0.7994,
       "zts-dividend-2014": 1.0
+    }
+  },
+  "summary_by_arm": {
+    "checker": {
+      "gates_fired": {
+        "GATE.DATES": [
+          "mega-split-2024",
+          "mnst-tender-2024",
+          "mnst-tender-2024-oddlot"
+        ]
+      },
+      "n_allpass": 1,
+      "n_runs": 6,
+      "score_gated_by_case": {
+        "bry-dividend-2024": 0.9833,
+        "mega-split-2024": 0.475,
+        "mega-split-2024-clean": 0.84,
+        "mnst-tender-2024": 0.53,
+        "mnst-tender-2024-oddlot": 0.53,
+        "zts-dividend-2014": 1.0
+      }
+    },
+    "checker-fixed": {
+      "gates_fired": {
+        "GATE.DATES": [
+          "mnst-tender-2024",
+          "mnst-tender-2024-oddlot"
+        ],
+        "GATE.FABRICATION": [
+          "mega-split-2024"
+        ]
+      },
+      "n_allpass": 1,
+      "n_runs": 6,
+      "score_gated_by_case": {
+        "bry-dividend-2024": 0.9833,
+        "mega-split-2024": 0.92,
+        "mega-split-2024-clean": 0.84,
+        "mnst-tender-2024": 0.53,
+        "mnst-tender-2024-oddlot": 0.4735,
+        "zts-dividend-2014": 1.0
+      }
+    },
+    "plain": {
+      "gates_fired": {
+        "GATE.C1FCF": [
+          "mcd-fy2025-dcf"
+        ],
+        "GATE.SCALE": [
+          "grin-create-2026"
+        ]
+      },
+      "n_allpass": 3,
+      "n_runs": 12,
+      "score_gated_by_case": {
+        "bry-dividend-2024": 0.9833,
+        "grin-create-2026": 0.4962,
+        "grin-create-2026-clean": 0.9829,
+        "irs-confirm-2026": 0.9333,
+        "irs-confirm-2026-clean": 0.98,
+        "mcd-fy2025-dcf": 0.6919,
+        "mega-split-2024": 1.0,
+        "mega-split-2024-clean": 0.8954,
+        "mnst-tender-2024": 1.0,
+        "mnst-tender-2024-oddlot": 0.9833,
+        "nvda-fy2026-dcf": 0.7994,
+        "zts-dividend-2014": 1.0
+      }
+    },
+    "tools": {
+      "gates_fired": {
+        "GATE.DATES": [
+          "mnst-tender-2024",
+          "mnst-tender-2024-oddlot"
+        ]
+      },
+      "n_allpass": 2,
+      "n_runs": 6,
+      "score_gated_by_case": {
+        "bry-dividend-2024": 0.9833,
+        "mega-split-2024": 1.0,
+        "mega-split-2024-clean": 0.84,
+        "mnst-tender-2024": 0.53,
+        "mnst-tender-2024-oddlot": 0.53,
+        "zts-dividend-2014": 1.0
+      }
     }
   },
   "vendor": "anthropic"

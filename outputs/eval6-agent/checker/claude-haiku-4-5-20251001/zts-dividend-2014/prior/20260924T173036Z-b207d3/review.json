@@ -1,0 +1,49 @@
+{
+  "rounds": [
+    {
+      "round": 1,
+      "verdict": "approve",
+      "findings": [],
+      "turns": 5,
+      "incomplete": false,
+      "ended_by": "end",
+      "ledger_shown_correct": true,
+      "ledger_shown_elect": false,
+      "ledger_shown_flags": []
+    }
+  ],
+  "ledger_v1": [
+    {
+      "entry_id": "L1",
+      "kind": "escalate",
+      "args": {
+        "reason": "The D2 probe asks for the reinvestment price at which the June 2 dividend payment will be reinvested under the account's DRIP participation. The governing dividend announcement (zts-8k-20140327) does not specify a reinvestment price or mechanism. The document store does not contain a DRIP plan document, prospectus, or pricing formula that would determine this figure.",
+        "missing_document": "Zoetis Dividend Reinvestment Plan (DRIP) document or prospectus specifying the reinvestment price formula for the June 2, 2014 dividend payment",
+        "held_action": "Booking of dividend reinvestment at the specified reinvestment price"
+      },
+      "seq": 18,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:22:30.970Z"
+    },
+    {
+      "entry_id": "L2",
+      "kind": "book_receivable",
+      "args": {
+        "account": "ACCT-2101",
+        "amount": 1800.0,
+        "pay_date": "2014-06-02",
+        "basis_doc": "zts-8k-20140327",
+        "shares": 25000.0,
+        "rate": 0.072,
+        "memo": "Zoetis Q2 2014 dividend: $0.072/share on 25,000 shares, record date 2014-04-28, payable 2014-06-02"
+      },
+      "seq": 21,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:22:34.049Z"
+    }
+  ]
+}

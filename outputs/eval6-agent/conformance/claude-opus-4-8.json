@@ -1,0 +1,13 @@
+{
+  "endpoint": "api.anthropic.com",
+  "model_id": "claude-opus-4-8",
+  "token": "conformance-858618",
+  "tested_at": "2026-09-24T17:12:22Z",
+  "native": {
+    "tool_call": true,
+    "final": true,
+    "detail": "DONE conformance-858618"
+  },
+  "text": null,
+  "tool_transport": "native"
+}

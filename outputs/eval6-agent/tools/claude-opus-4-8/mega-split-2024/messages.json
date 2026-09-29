@@ -1,0 +1,248 @@
+[
+ {
+  "role": "system",
+  "content": "You are a corporate-actions analyst on an asset-servicing desk. You process ONE corporate-action episode for an account, working through TOOLS over a DOCUMENT STORE, and you must (a) book the correct actions through the action tools and (b) submit a structured processing worksheet. Rules:\n- GOVERNING VERSION: the store may contain an amendment or correction that supersedes an earlier announcement, and unrelated distractor documents. Pin the document that GOVERNS and source every term from it. Using a superseded version's terms poisons everything.\n- GOVERNING DATES: entitlement is keyed to the RECORD-DATE position (or, for an expired offer, to what was validly tendered by the expiration deadline). State which date governs and apply it. Query the position AS OF that date, not as of today.\n- ELECTIONS AND DEADLINES: some actions are IRREVERSIBLE. Never commit an election after its deadline, never elect when no election is available (e.g. an expired offer), never tender more shares than the eligible position, and never release a payment on superseded terms. Read priority/proration provisions exactly, including who they exempt.\n- THE ARITHMETIC: compute the entitlement from the governing terms and the eligible position; use the calculate tool; keep ratios directionally right and scales exact.\n- D2 probe: if the store does not determine the answer (a referenced document is absent), say NOT_DETERMINABLE, NAME the missing document, escalate for it with the escalate tool, and hold only the dependent figure; do NOT invent a number. The answerable twin IS determined by the store.\n- WORKING THROUGH TOOLS: list the documents and read the ones that matter (deciding which governs is part of the task); query the position; calculate; then BOOK through book_receivable / update_pcf / confirm_position (and submit_election only where a live election exists). Only ledger entries count as actions taken; the worksheet's actions list must mirror what you booked. Finish by calling submit_worksheet with the worksheet in the schema below. The episode ends when you submit or after 20 turns."
+ },
+ {
+  "role": "user",
+  "content": "=== EPISODE ===\n  as-of date : 2024-06-10\n  your role  : ETF fund-servicing corporate-actions desk for MEGA (Meridian Mega-Cap Growth ETF)\n  task       : Process any corporate action affecting the MEGA basket before today's PCF dissemination.\n  account    : MEGA\n  security   : NVDA\n\n=== D2 PROBE ===\n  For the June dividend also declared in nvda-8k-20240522 (record 2024-06-11, payable 2024-06-28): what NET cash will the fund receive after any applicable withholding? Answer from the document store provided.\nANSWERABLE TWIN(S) (fully determined by the document store):\n  TW1: What GROSS dividend cash does the store determine for the fund's NVDA position at the post-split rate?\n\n=== WORKSHEET SCHEMA (the `worksheet` argument of submit_worksheet) ===\nReturn ONE JSON object with EXACTLY these keys (this is the desk worksheet for this event — fill the values; use null where genuinely not determinable; dates as YYYY-MM-DD; numbers plain, rates/ratios as decimals; governing_doc and basis_doc are doc_id values from the store; entitlement_basis is the governing basis, e.g. \"record_date\", \"shares_validly_tendered_by_expiration\", \"ex_date\", \"pay_date\", \"declaration_date\"):\n{\n \"P1\": {\n  \"issuer\": \"\",\n  \"security\": {\n   \"ticker\": \"\"\n  },\n  \"event_type\": \"mandatory|mandatory_with_choice|voluntary\",\n  \"governing_doc\": \"<doc_id of the document whose terms GOVERN your numbers>\",\n  \"superseded_docs\": []\n },\n \"P2\": {\n  \"dates\": {\n   \"announcement\": null,\n   \"record_date\": null,\n   \"distribution_date\": null,\n   \"split_adjusted_trading\": null\n  },\n  \"entitlement_basis\": \"\",\n  \"entitlement_basis_date\": null,\n  \"election_deadline\": null\n },\n \"E1\": {\n  \"terms\": {\n   \"ratio\": null,\n   \"additional_shares_per_share\": null,\n   \"record_date\": null,\n   \"distribution_date\": null,\n   \"split_adjusted_trading\": null\n  },\n  \"citation\": {\n   \"document\": \"<doc_id>\",\n   \"locator\": \"\",\n   \"verbatim\": \"\"\n  }\n },\n \"E2\": {\n  \"position\": {\n   \"basket_per_cu_pre\": null,\n   \"creation_units\": null,\n   \"basket_total_pre\": null\n  },\n  \"basis_shares\": null\n },\n \"C1\": {\n  \"entitlement\": {\n   \"pre_split_shares\": null,\n   \"ratio\": null,\n   \"post_split_shares\": null,\n   \"additional_shares\": null,\n   \"basket_per_cu_post\": null\n  },\n  \"cil\": {\n   \"applicable\": false,\n   \"amount\": null\n  }\n },\n \"C2\": {\n  \"election_required\": false,\n  \"options\": null,\n  \"default_option\": null,\n  \"economics\": null\n },\n \"C3\": {\n  \"impact\": {\n   \"basket_per_cu_new\": null,\n   \"basket_total_new\": null\n  },\n  \"changes\": [\n   {\n    \"what\": \"<which record/line in OUR books moves (a basket quantity, a cash projection, a position ledger entry) - not what changed between the documents>\",\n    \"where\": \"<the file/account/ledger it moves in>\",\n    \"old\": null,\n    \"new\": null\n   }\n  ]\n },\n \"D1\": {\n  \"decision\": \"\",\n  \"actions\": [\n   {\n    \"action\": \"\",\n    \"option\": null,\n    \"quantity\": null,\n    \"amount\": null,\n    \"by_date\": null,\n    \"basis_doc\": \"\"\n   }\n  ]\n },\n \"D2\": {\n  \"probe\": {\n   \"label\": \"NOT_DETERMINABLE|COMPUTED\",\n   \"value\": null,\n   \"derivation\": \"if the store does not determine it: name the SPECIFIC missing/referenced document and escalate; do NOT invent a number\"\n  },\n  \"twins\": [\n   {\n    \"id\": \"TW1\",\n    \"value\": null\n   }\n  ]\n }\n}"
+ },
+ {
+  "role": "assistant",
+  "content": "I'll work through this episode systematically. Let me start by listing the documents.",
+  "tool_calls": [
+   {
+    "id": "toolu_011vmibZ2Hn6bQwb8k8heKF2",
+    "type": "function",
+    "function": {
+     "name": "list_documents",
+     "arguments": "{}"
+    }
+   }
+  ]
+ },
+ {
+  "role": "tool",
+  "tool_call_id": "toolu_011vmibZ2Hn6bQwb8k8heKF2",
+  "name": "list_documents",
+  "content": "{\"documents\": [{\"doc_id\": \"nvda-8k-20240522\", \"type\": \"issuer 8-K (announcement)\", \"title\": \"NVIDIA Q1 FY2025 results; ten-for-one forward stock split; dividend increase\", \"date\": \"2024-05-22\"}, {\"doc_id\": \"nvda-8k-20240607\", \"type\": \"issuer 8-K (effectiveness)\", \"title\": \"Certificate of Amendment effective; split effected\", \"date\": \"2024-06-07\"}, {\"doc_id\": \"mega-pcf-20240610\", \"type\": \"ETF portfolio composition file (constructed)\", \"title\": \"MEGA PCF for trade date 2024-06-10 — per creation unit\", \"date\": \"2024-06-10\"}, {\"doc_id\": \"mega-position-20240610\", \"type\": \"custody position report (constructed)\", \"title\": \"MEGA custody positions, record-date basis\", \"date\": \"2024-06-10\"}, {\"doc_id\": \"qsem-pr-20240603\", \"type\": \"press release (constructed DISTRACTOR — fictional issuer)\", \"title\": \"Quantum Semiconductor Devices (QSEM) announces four-for-one stock split\", \"date\": \"2024-06-03\"}]}"
+ },
+ {
+  "role": "assistant",
+  "content": "",
+  "tool_calls": [
+   {
+    "id": "toolu_01TqbZGTHXDkKNTYLK4Umap5",
+    "type": "function",
+    "function": {
+     "name": "read_document",
+     "arguments": "{\"doc_id\": \"nvda-8k-20240522\"}"
+    }
+   },
+   {
+    "id": "toolu_01NzzqSJ2hU4mU97P98wHCtk",
+    "type": "function",
+    "function": {
+     "name": "read_document",
+     "arguments": "{\"doc_id\": \"nvda-8k-20240607\"}"
+    }
+   },
+   {
+    "id": "toolu_01U8GsXe7HDb69tHqfGPc76N",
+    "type": "function",
+    "function": {
+     "name": "read_document",
+     "arguments": "{\"doc_id\": \"mega-pcf-20240610\"}"
+    }
+   },
+   {
+    "id": "toolu_019yNBwtw2g9GTbAJJ4myDWS",
+    "type": "function",
+    "function": {
+     "name": "read_document",
+     "arguments": "{\"doc_id\": \"mega-position-20240610\"}"
+    }
+   }
+  ]
+ },
+ {
+  "role": "tool",
+  "tool_call_id": "toolu_01TqbZGTHXDkKNTYLK4Umap5",
+  "name": "read_document",
+  "content": "{\"doc_id\": \"nvda-8k-20240522\", \"type\": \"issuer 8-K (announcement)\", \"title\": \"NVIDIA Q1 FY2025 results; ten-for-one forward stock split; dividend increase\", \"date\": \"2024-05-22\", \"body\": \"Item 8.01. On May 22, 2024, the Company announced a ten-for-one forward stock split of the\\nCompany's issued common stock. Each record holder of common stock as of the close of market\\non Thursday, June 6, 2024 will receive nine additional shares of common stock, to be\\ndistributed after the close of market on Friday, June 7, 2024. Trading is expected to\\ncommence on a split-adjusted basis at market open on Monday, June 10, 2024.\\nThe Company also increased its quarterly cash dividend by 150 percent from $0.04 per share\\nto $0.10 per share of common stock. The increased dividend is equivalent to $0.01 per share\\non a post-Stock Split basis and will be paid on Friday, June 28, 2024, to all shareholders\\nof record on Tuesday, June 11, 2024.\"}"
+ },
+ {
+  "role": "tool",
+  "tool_call_id": "toolu_01NzzqSJ2hU4mU97P98wHCtk",
+  "name": "read_document",
+  "content": "{\"doc_id\": \"nvda-8k-20240607\", \"type\": \"issuer 8-K (effectiveness)\", \"title\": \"Certificate of Amendment effective; split effected\", \"date\": \"2024-06-07\", \"body\": \"Item 5.03. The Company filed the Amendment to effect the Stock Split and proportionately\\nincrease the number of shares of the Company's authorized common stock from 8 billion to\\n80 billion. The Amendment became effective at 4:01 p.m. Eastern Time on June 7, 2024.\\nExhibit 3.1: At the Effective Time, each share of Common Stock issued as of immediately\\nprior to the Effective Time shall be automatically subdivided and reclassified into ten\\n(10) validly issued, fully paid and non-assessable shares of Common Stock. Trading is\\nexpected to commence on a split-adjusted basis at market open on June 10, 2024.\"}"
+ },
+ {
+  "role": "tool",
+  "tool_call_id": "toolu_01U8GsXe7HDb69tHqfGPc76N",
+  "name": "read_document",
+  "content": "{\"doc_id\": \"mega-pcf-20240610\", \"type\": \"ETF portfolio composition file (constructed)\", \"title\": \"MEGA PCF for trade date 2024-06-10 — per creation unit\", \"date\": \"2024-06-10\", \"body\": \"MEGA — Meridian Mega-Cap Growth ETF. PCF for trade date 2024-06-10 (T), per creation unit\\n(50,000 ETF shares). Creation units outstanding: 100.\\n  line 1: NVDA  NVIDIA Corp        180 shares        <-- prepared before the split effectiveness\\n  line 2: MSFT  Microsoft Corp      95 shares\\n  line 3: AAPL  Apple Inc          210 shares\\n  line 4: AVGO  Broadcom Inc        30 shares\\n  cash component: USD 12,450.00\\nNOTE: file generated 2024-06-06 from the strategy master; not yet reviewed for corporate\\nactions effective over the weekend.\"}"
+ },
+ {
+  "role": "tool",
+  "tool_call_id": "toolu_019yNBwtw2g9GTbAJJ4myDWS",
+  "name": "read_document",
+  "content": "{\"doc_id\": \"mega-position-20240610\", \"type\": \"custody position report (constructed)\", \"title\": \"MEGA custody positions, record-date basis\", \"date\": \"2024-06-10\", \"body\": \"As of close 2024-06-06 (record date for the NVDA split): NVDA 18,000 shares held across\\n100 creation units (180 per unit). Post-distribution custody ledger (after close\\n2024-06-07): NVDA 180,000 shares (nine additional shares per share held were distributed).\\nMSFT 9,500; AAPL 21,000; AVGO 3,000. No pending trades in NVDA.\"}"
+ },
+ {
+  "role": "assistant",
+  "content": "Now let me check the position and understand the full picture. Let me confirm the position as of the split record date and the dividend record date.\n\nThe split governs today's PCF. Let me analyze:\n\n**Split terms (from nvda-8k-20240522, confirmed effective by nvda-8k-20240607):**\n- 10-for-1 forward split (ratio 10:1), nine additional shares per share\n- Record date: 2024-06-06\n- Distribution: after close 2024-06-07\n- Split-adjusted trading: 2024-06-10\n\n**Position:** 180 NVDA per CU pre-split × 100 CU = 18,000 shares → post-split 180,000 (1,800 per CU).\n\n**D2 probe — the NET dividend after withholding.** The dividend is $0.01/share post-split. But the store contains no document specifying a withholding rate for the fund. NVDA is a US issuer and MEGA — but net-of-withholding requires a withholding-terms document that isn't in the store. Let me compute the twin (gross) and reason about D2.",
+  "tool_calls": [
+   {
+    "id": "toolu_0157cpHwzMdbHiSWaxdUwTBT",
+    "type": "function",
+    "function": {
+     "name": "get_position",
+     "arguments": "{\"account\": \"MEGA\", \"as_of\": \"2024-06-11\"}"
+    }
+   },
+   {
+    "id": "toolu_01WGWBZjt7vELHjtXm7TU14d",
+    "type": "function",
+    "function": {
+     "name": "get_position",
+     "arguments": "{\"account\": \"MEGA\", \"as_of\": \"2024-06-06\"}"
+    }
+   }
+  ]
+ },
+ {
+  "role": "tool",
+  "tool_call_id": "toolu_0157cpHwzMdbHiSWaxdUwTBT",
+  "name": "get_position",
+  "content": "{\"account\": \"MEGA\", \"ticker\": \"NVDA\", \"as_of\": \"2024-06-11\", \"settled_shares\": 180000.0, \"basis\": \"projected\", \"position_row_as_of\": \"2024-06-07\", \"note\": \"post-distribution custody ledger after close 2024-06-07 (nine additional shares per share held); projected from the latest settled position as of 2024-06-10: no open orders, no pending trades and no position changes scheduled after that date\"}"
+ },
+ {
+  "role": "tool",
+  "tool_call_id": "toolu_01WGWBZjt7vELHjtXm7TU14d",
+  "name": "get_position",
+  "content": "{\"account\": \"MEGA\", \"ticker\": \"NVDA\", \"as_of\": \"2024-06-06\", \"settled_shares\": 18000.0, \"basis\": \"settled\", \"position_row_as_of\": \"2024-06-06\", \"note\": \"record-date basis: 180 per creation unit x 100 creation units\"}"
+ },
+ {
+  "role": "assistant",
+  "content": "Position confirmed: 18,000 pre-split → 180,000 post-split. Dividend record date 2024-06-11 position is 180,000 shares.\n\nLet me compute the gross dividend (TW1) and the post-split PCF quantity.",
+  "tool_calls": [
+   {
+    "id": "toolu_01B4eHkgnTJDSqzcZCpJoJUP",
+    "type": "function",
+    "function": {
+     "name": "calculate",
+     "arguments": "{\"expression\": \"180000 * 0.01\"}"
+    }
+   },
+   {
+    "id": "toolu_01KfeG3yJ3BF6QdzP8SJ4Azb",
+    "type": "function",
+    "function": {
+     "name": "calculate",
+     "arguments": "{\"expression\": \"180 * 10\"}"
+    }
+   }
+  ]
+ },
+ {
+  "role": "tool",
+  "tool_call_id": "toolu_01B4eHkgnTJDSqzcZCpJoJUP",
+  "name": "calculate",
+  "content": "{\"expression\": \"180000 * 0.01\", \"result\": 1800.0, \"result_text\": \"1800\"}"
+ },
+ {
+  "role": "tool",
+  "tool_call_id": "toolu_01KfeG3yJ3BF6QdzP8SJ4Azb",
+  "name": "calculate",
+  "content": "{\"expression\": \"180 * 10\", \"result\": 1800.0, \"result_text\": \"1800\"}"
+ },
+ {
+  "role": "assistant",
+  "content": "Now the analysis:\n\n- **TW1 (GROSS dividend):** 180,000 shares × $0.01 = **$1,800** — fully determined by the store.\n- **D2 (NET after withholding):** The store contains NO document specifying any withholding rate/treaty status applicable to the MEGA fund's NVDA position. Without a withholding-terms document I cannot compute net. This is **NOT_DETERMINABLE**. I'll escalate naming the missing document and hold the net-dividend booking.\n- **PCF:** post-split basket per CU = 1,800 NVDA. The PCF file (180) was prepared before split effectiveness and must be updated to 1,800.\n\nThe event affecting today's PCF is the mandatory split. Let me book the actions: update the PCF, confirm the post-split position, and book the GROSS dividend receivable (the twin — a determinable receivable), while escalating the net figure.\n\nLet me book the split PCF update and confirm the split position first.",
+  "tool_calls": [
+   {
+    "id": "toolu_01FoMNKg4Prs1g7sFCJ36TJm",
+    "type": "function",
+    "function": {
+     "name": "update_pcf",
+     "arguments": "{\"ticker\": \"NVDA\", \"quantity_per_cu\": 1800, \"basis_doc\": \"nvda-8k-20240607\", \"memo\": \"10-for-1 NVDA forward split effective 4:01pm ET 2024-06-07; split-adjusted trading 2024-06-10. Basket per CU 180 -> 1,800.\"}"
+    }
+   },
+   {
+    "id": "toolu_01JANc22pphJ6chJs948Anvz",
+    "type": "function",
+    "function": {
+     "name": "confirm_position",
+     "arguments": "{\"ticker\": \"NVDA\", \"shares\": 180000, \"as_of\": \"2024-06-07\", \"basis_doc\": \"nvda-8k-20240607\"}"
+    }
+   }
+  ]
+ },
+ {
+  "role": "tool",
+  "tool_call_id": "toolu_01FoMNKg4Prs1g7sFCJ36TJm",
+  "name": "update_pcf",
+  "content": "{\"entry_id\": \"L1\", \"pcf_line\": {\"ticker\": \"NVDA\", \"quantity_per_cu\": 1800.0, \"creation_units\": 100}}"
+ },
+ {
+  "role": "tool",
+  "tool_call_id": "toolu_01JANc22pphJ6chJs948Anvz",
+  "name": "confirm_position",
+  "content": "{\"entry_id\": \"L2\", \"confirmed\": {\"ticker\": \"NVDA\", \"shares\": 180000.0, \"as_of\": \"2024-06-07\", \"basis_doc\": \"nvda-8k-20240607\"}}"
+ },
+ {
+  "role": "assistant",
+  "content": "Now the dividend. The GROSS dividend ($1,800) is determinable from the store and is the answerable twin. I'll book the gross receivable. The NET figure requires a withholding document not in the store, so I escalate and hold the net booking.",
+  "tool_calls": [
+   {
+    "id": "toolu_01KfjXrKdz4xXG2iZvQ6xFhn",
+    "type": "function",
+    "function": {
+     "name": "book_receivable",
+     "arguments": "{\"account\": \"MEGA\", \"amount\": 1800, \"pay_date\": \"2024-06-28\", \"rate\": 0.01, \"shares\": 180000, \"basis_doc\": \"nvda-8k-20240522\", \"memo\": \"NVDA Q1 dividend, post-split rate $0.01/sh, record 2024-06-11 (180,000 sh), payable 2024-06-28. GROSS amount; net-of-withholding not determinable from store.\"}"
+    }
+   },
+   {
+    "id": "toolu_018MZvLKHeNtFVey1sCkEQxV",
+    "type": "function",
+    "function": {
+     "name": "escalate",
+     "arguments": "{\"reason\": \"The D2 probe asks for NET cash after applicable withholding, but the store contains no document specifying the withholding rate / tax treaty status applicable to the MEGA fund's NVDA dividend. Gross is determinable ($1,800) but net cannot be computed without the withholding schedule.\", \"missing_document\": \"Dividend withholding-tax schedule / fund tax status certification for MEGA's NVDA position (governing withholding-rate document)\", \"held_action\": \"Booking the NET dividend receivable amount for the 2024-06-28 payment\"}"
+    }
+   }
+  ]
+ },
+ {
+  "role": "tool",
+  "tool_call_id": "toolu_01KfjXrKdz4xXG2iZvQ6xFhn",
+  "name": "book_receivable",
+  "content": "{\"entry_id\": \"L3\", \"booked\": {\"account\": \"MEGA\", \"amount\": 1800.0, \"pay_date\": \"2024-06-28\", \"basis_doc\": \"nvda-8k-20240522\", \"shares\": 180000.0, \"rate\": 0.01, \"memo\": \"NVDA Q1 dividend, post-split rate $0.01/sh, record 2024-06-11 (180,000 sh), payable 2024-06-28. GROSS amount; net-of-withholding not determinable from store.\"}}"
+ },
+ {
+  "role": "tool",
+  "tool_call_id": "toolu_018MZvLKHeNtFVey1sCkEQxV",
+  "name": "escalate",
+  "content": "{\"entry_id\": \"L4\", \"escalated\": {\"reason\": \"The D2 probe asks for NET cash after applicable withholding, but the store contains no document specifying the withholding rate / tax treaty status applicable to the MEGA fund's NVDA dividend. Gross is determinable ($1,800) but net cannot be computed without the withholding schedule.\", \"missing_document\": \"Dividend withholding-tax schedule / fund tax status certification for MEGA's NVDA position (governing withholding-rate document)\", \"held_action\": \"Booking the NET dividend receivable amount for the 2024-06-28 payment\"}}"
+ },
+ {
+  "role": "assistant",
+  "content": "All actions booked. Now submitting the worksheet.",
+  "tool_calls": [
+   {
+    "id": "toolu_01SR3TthBiaTC7an5kQLCcmr",
+    "type": "function",
+    "function": {
+     "name": "submit_worksheet",
+     "arguments": "{\"worksheet\": {\"P1\": {\"issuer\": \"NVIDIA Corporation\", \"security\": {\"ticker\": \"NVDA\"}, \"event_type\": \"mandatory\", \"governing_doc\": \"nvda-8k-20240607\", \"superseded_docs\": []}, \"P2\": {\"dates\": {\"announcement\": \"2024-05-22\", \"record_date\": \"2024-06-06\", \"distribution_date\": \"2024-06-07\", \"split_adjusted_trading\": \"2024-06-10\"}, \"entitlement_basis\": \"record_date\", \"entitlement_basis_date\": \"2024-06-06\", \"election_deadline\": null}, \"E1\": {\"terms\": {\"ratio\": 10, \"additional_shares_per_share\": 9, \"record_date\": \"2024-06-06\", \"distribution_date\": \"2024-06-07\", \"split_adjusted_trading\": \"2024-06-10\"}, \"citation\": {\"document\": \"nvda-8k-20240607\", \"locator\": \"Item 5.03, Exhibit 3.1\", \"verbatim\": \"each share of Common Stock issued as of immediately prior to the Effective Time shall be automatically subdivided and reclassified into ten (10) validly issued, fully paid and non-assessable shares of Common Stock\"}}, \"E2\": {\"position\": {\"basket_per_cu_pre\": 180, \"creation_units\": 100, \"basket_total_pre\": 18000}, \"basis_shares\": 18000}, \"C1\": {\"entitlement\": {\"pre_split_shares\": 18000, \"ratio\": 10, \"post_split_shares\": 180000, \"additional_shares\": 162000, \"basket_per_cu_post\": 1800}, \"cil\": {\"applicable\": false, \"amount\": null}}, \"C2\": {\"election_required\": false, \"options\": null, \"default_option\": null, \"economics\": null}, \"C3\": {\"impact\": {\"basket_per_cu_new\": 1800, \"basket_total_new\": 180000}, \"changes\": [{\"what\": \"NVDA basket quantity per creation unit on the PCF\", \"where\": \"mega-pcf-20240610 (MEGA PCF, line 1 NVDA)\", \"old\": 180, \"new\": 1800}, {\"what\": \"NVDA confirmed custody position post-distribution\", \"where\": \"MEGA custody position ledger\", \"old\": 18000, \"new\": 180000}, {\"what\": \"NVDA dividend cash receivable projection (gross)\", \"where\": \"MEGA cash receivables ledger\", \"old\": null, \"new\": 1800}]}, \"D1\": {\"decision\": \"Process the mandatory 10-for-1 NVDA forward split (effective 2024-06-07, split-adjusted trading 2024-06-10) before today's PCF dissemination: restate NVDA basket per CU from 180 to 1,800 and confirm post-distribution position of 180,000 shares. Book the separately-declared NVDA dividend (post-split $0.01/sh, record 2024-06-11, payable 2024-06-28) at its determinable GROSS amount of $1,800; no election is available for either event.\", \"actions\": [{\"action\": \"update_pcf\", \"option\": null, \"quantity\": 1800, \"amount\": null, \"by_date\": \"2024-06-10\", \"basis_doc\": \"nvda-8k-20240607\"}, {\"action\": \"confirm_position\", \"option\": null, \"quantity\": 180000, \"amount\": null, \"by_date\": \"2024-06-07\", \"basis_doc\": \"nvda-8k-20240607\"}, {\"action\": \"book_receivable\", \"option\": null, \"quantity\": 180000, \"amount\": 1800, \"by_date\": \"2024-06-28\", \"basis_doc\": \"nvda-8k-20240522\"}]}, \"D2\": {\"probe\": {\"label\": \"NOT_DETERMINABLE\", \"value\": null, \"derivation\": \"NET cash after withholding cannot be computed: the store contains no withholding-tax schedule / fund tax-status certification specifying the applicable withholding rate for MEGA's NVDA dividend. Gross is $1,800 (180,000 sh x $0.01 post-split) but the withholding deduction is undetermined. Escalated (entry L4); net dividend booking held.\"}, \"twins\": [{\"id\": \"TW1\", \"value\": 1800}]}}}"
+    }
+   }
+  ]
+ },
+ {
+  "role": "tool",
+  "tool_call_id": "toolu_01SR3TthBiaTC7an5kQLCcmr",
+  "name": "submit_worksheet",
+  "content": "{\"status\": \"submitted\", \"episode\": \"ended\", \"ledger_entries\": 4}"
+ }
+]

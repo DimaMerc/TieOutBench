@@ -1,0 +1,93 @@
+########################################################################
+  EPISODE mega-split-2024   arm=checker   model=gpt-5.4
+########################################################################
+
+--- WORKSHEET (the submitted worksheet through the unchanged Phase-1 grader) ---
+========================================================================
+  CASE mega-split-2024    model=checker:gpt-5.4    judge=mock
+========================================================================
+  CaseScore (gated, headline) : 0.920
+  CaseScore (ungated)         : 0.920
+  GAP (ungated - gated)       : 0.000
+  AllPass                     : 0
+  D2 calibration (R,G->F_b)   : R=1.00 G=0.00 -> 0.000
+  Gates fired                 : GATE.FABRICATION
+
+  Checkpoint vector (which step failed):
+    cp   W      ungated  gated   raw
+    P1   0.100  1.000   1.000  +1.00
+    P2   0.120  1.000   1.000  +1.00
+    E1   0.100  1.000   1.000  +1.00
+    E2   0.080  1.000   1.000  +1.00
+    C1   0.140  1.000   1.000  +1.00
+    C2   0.120  1.000   1.000  +1.00
+    C3   0.100  1.000   1.000  +1.00
+    D1   0.160  1.000   1.000  +1.00
+    D2   0.080  0.000   0.000  +0.00
+
+  Category rollup (diagnostic -- what KIND of error):
+    extraction   +1.000  ####################
+    numerical    +1.000  ####################
+    entailment   +1.000  ####################
+    reasoning    +1.000  ####################
+    calibration  -0.308  
+    structure    +1.000  ####################
+========================================================================
+
+--- TERMINAL STATE (worksheet + the ledger rendered into D1 rows; ledger predicates applied) ---
+========================================================================
+  CASE mega-split-2024    model=checker:gpt-5.4    judge=mock
+========================================================================
+  CaseScore (gated, headline) : 0.920
+  CaseScore (ungated)         : 0.920
+  GAP (ungated - gated)       : 0.000
+  AllPass                     : 0
+  D2 calibration (R,G->F_b)   : R=1.00 G=0.00 -> 0.000
+  Gates fired                 : GATE.FABRICATION
+
+  Checkpoint vector (which step failed):
+    cp   W      ungated  gated   raw
+    P1   0.100  1.000   1.000  +1.00
+    P2   0.120  1.000   1.000  +1.00
+    E1   0.100  1.000   1.000  +1.00
+    E2   0.080  1.000   1.000  +1.00
+    C1   0.140  1.000   1.000  +1.00
+    C2   0.120  1.000   1.000  +1.00
+    C3   0.100  1.000   1.000  +1.00
+    D1   0.160  1.000   1.000  +1.00
+    D2   0.080  0.000   0.000  +0.00
+
+  Category rollup (diagnostic -- what KIND of error):
+    extraction   +1.000  ####################
+    numerical    +1.000  ####################
+    entailment   +1.000  ####################
+    reasoning    +1.000  ####################
+    calibration  -0.308  
+    structure    +1.000  ####################
+========================================================================
+
+--- LEDGER ---
+L5: update_pcf ticker=NVDA quantity_per_cu=1800.0 (was 180) basis_doc=nvda-8k-20240607 memo='Adjust MEGA PCF for NVDA 10-for-1 split effective 2024-06-07; trading split-adjusted 2024-06-10. Pre-split 180 shares/CU to 1800 shares/CU.'
+L6: confirm_position ticker=NVDA shares=180000.0 as_of=2024-06-07 basis_doc=nvda-8k-20240607
+L7: book_receivable amount=$1,800.00 pay_date=2024-06-28 shares=180000.0 rate=0.01 basis_doc=nvda-8k-20240522 memo='NVDA June dividend cash receivable at post-split rate $0.01/share for holders of record 2024-06-11; net equals gross per store.'
+  booked entries: 3   GATE.ELECT on the ledger: False   gold match: True   flags: none   correct: True
+  consistency L5: booked=1800.0 worksheet=1800.0 ok=True
+  consistency L7: booked=1800.0 worksheet=1800.0 ok=True
+  gold L5 update_pcf: ok=True  {'gold': 1800.0}
+  gold L6 confirm_position: ok=True  {'as_of_is_basis_date': False}
+  gold L7 book_receivable: ok=True  {'permissible': [1800.0], 'pay_date_ok': True, 'basis_superseded': False}
+
+--- TRAJECTORY (reported, not scored) ---
+  maker: turns=7 tool_calls=18 errors=0 counts={'list_documents': 1, 'read_document': 4, 'get_position': 1, 'calculate': 3, 'update_pcf': 2, 'confirm_position': 2, 'book_receivable': 2, 'escalate': 1, 'submit_worksheet': 2}
+  governing read before first action: True   docs read: ['mega-pcf-20240610', 'mega-position-20240610', 'nvda-8k-20240522', 'nvda-8k-20240607']   superseded read: []   distractors read: []
+  position dates queried: ['2024-06-06']   basis date queried: True   superseded date queried: None   projected: 0   query errors: 0
+  calculate used: True (3): ['180*10', '1800*100', '180000*0.01']
+
+--- REVIEW (checker arm) ---
+  round 1: verdict=reject recomputed=True tools={'list_documents': 1, 'read_document': 2, 'get_position': 2, 'calculate': 3, 'review_verdict': 1} ledger_shown_correct=True
+    - No discrepancy found in L1: governing split document is nvda-8k-20240607, and updating MEGA PCF from 180 to 1800 NVDA shares per creation unit for split-adjusted trading on 2024-06-10 ties out to the source.
+    - No discrepancy found in L2: MEGA held 18,000 NVDA shares on the 2024-06-06 record date, so the 10-for-1 split effective 2024-06-07 results in 180,000 shares as of distribution, matching the booked confirmation.
+    - No discrepancy found in L3: the dividend basis document is correctly nvda-8k-20240522, which states a post-split cash dividend of $0.01 per share payable 2024-06-28 to holders of record 2024-06-11; with 180,000 post-split shares, gross receivable is $1,800.00, matching the booked entry.
+    - L4 is not an event-allowed corporate-action booking: the document store fully determines the fund's net cash for the 2024-06-28 NVDA dividend as $1,800.00 because no withholding instruction or tax-status document in the store imposes any withholding; the correct treatment is no escalation and D2 should be answered with net cash $1,800.00.
+  round 2: verdict=approve recomputed=True tools={'list_documents': 1, 'read_document': 2, 'get_position': 2, 'calculate': 2, 'review_verdict': 1} ledger_shown_correct=True
+########################################################################

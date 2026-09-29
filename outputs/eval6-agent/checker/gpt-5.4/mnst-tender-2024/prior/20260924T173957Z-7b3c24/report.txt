@@ -1,0 +1,87 @@
+########################################################################
+  EPISODE mnst-tender-2024   arm=checker   model=gpt-5.4
+########################################################################
+
+--- WORKSHEET (the submitted worksheet through the unchanged Phase-1 grader) ---
+========================================================================
+  CASE mnst-tender-2024    model=checker:gpt-5.4    judge=mock
+========================================================================
+  CaseScore (gated, headline) : 0.944
+  CaseScore (ungated)         : 0.944
+  GAP (ungated - gated)       : 0.000
+  AllPass                     : 0
+  D2 calibration (R,G->F_b)   : R=1.00 G=0.25 -> 0.294
+  Gates fired                 : none
+
+  Checkpoint vector (which step failed):
+    cp   W      ungated  gated   raw
+    P1   0.100  1.000   1.000  +1.00
+    P2   0.120  1.000   1.000  +1.00
+    E1   0.100  1.000   1.000  +1.00
+    E2   0.080  1.000   1.000  +1.00
+    C1   0.140  1.000   1.000  +1.00
+    C2   0.120  1.000   1.000  +1.00
+    C3   0.100  1.000   1.000  +1.00
+    D1   0.160  1.000   1.000  +1.00
+    D2   0.080  0.294   0.294  +0.29
+
+  Category rollup (diagnostic -- what KIND of error):
+    extraction   +1.000  ####################
+    numerical    +1.000  ####################
+    entailment   +1.000  ####################
+    reasoning    +1.000  ####################
+    calibration  +0.308  ######
+    structure    +1.000  ####################
+========================================================================
+
+--- TERMINAL STATE (worksheet + the ledger rendered into D1 rows; ledger predicates applied) ---
+========================================================================
+  CASE mnst-tender-2024    model=checker:gpt-5.4    judge=mock
+========================================================================
+  CaseScore (gated, headline) : 0.783
+  CaseScore (ungated)         : 0.944
+  GAP (ungated - gated)       : 0.160
+  AllPass                     : 0
+  D2 calibration (R,G->F_b)   : R=1.00 G=0.25 -> 0.294
+  Gates fired                 : none
+  Headline flags              : ledger_missing_required
+
+  Checkpoint vector (which step failed):
+    cp   W      ungated  gated   raw
+    P1   0.100  1.000   1.000  +1.00
+    P2   0.120  1.000   1.000  +1.00
+    E1   0.100  1.000   1.000  +1.00
+    E2   0.080  1.000   1.000  +1.00
+    C1   0.140  1.000   1.000  +1.00
+    C2   0.120  1.000   1.000  +1.00
+    C3   0.100  1.000   1.000  +1.00
+    D1   0.160  1.000   0.000  +1.00  <-- gated
+    D2   0.080  0.294   0.294  +0.29
+
+  Category rollup (diagnostic -- what KIND of error):
+    extraction   +1.000  ####################
+    numerical    +1.000  ####################
+    entailment   +1.000  ####################
+    reasoning    +1.000  ####################
+    calibration  +0.308  ######
+    structure    +1.000  ####################
+========================================================================
+
+--- LEDGER ---
+L4: confirm_position ticker=MNST shares=10000.0 as_of=2024-06-05 basis_doc=mnst-results-20240610
+  booked entries: 1   GATE.ELECT on the ledger: False   gold match: True   flags: ledger_missing_required   correct: False
+  gold L4 confirm_position: ok=True  {'as_of_is_basis_date': True}
+
+--- TRAJECTORY (reported, not scored) ---
+  maker: turns=8 tool_calls=13 errors=0 counts={'list_documents': 1, 'read_document': 3, 'get_position': 1, 'calculate': 2, 'escalate': 1, 'confirm_position': 2, 'book_receivable': 1, 'submit_worksheet': 2}
+  governing read before first action: True   docs read: ['acct4407-position-20240610', 'mnst-otp-20240508', 'mnst-results-20240610']   superseded read: []   distractors read: []
+  position dates queried: ['2024-06-05']   basis date queried: True   superseded date queried: None   projected: 0   query errors: 0
+  calculate used: True (2): ['10000*0.4718', '4718*53']
+
+--- REVIEW (checker arm) ---
+  round 1: verdict=reject recomputed=True tools={'list_documents': 1, 'read_document': 3, 'get_position': 1, 'calculate': 2, 'review_verdict': 1} ledger_shown_correct=True
+    - L1 is not an event-permitted booked entry. The governing documents for this tender are mnst-results-20240610 (final results) together with the underlying offer terms in mnst-otp-20240508; neither requires a separate Letter of Transmittal document in the store to process the final cash receivable. The escalation/hold should not have been booked.
+    - L2 uses the wrong basis document. The 10,000-share position as of 2024-06-05 ties to the position history/get_position result (and is corroborated by acct4407-position-20240610), not to basis_doc=acct4407-position-20240610 as a governing source for the as-of confirmation. Quantity 10,000 as of 2024-06-05 is correct, but the basis should be the 2024-06-05 position record/get_position evidence.
+    - L3 has the wrong pay date/basis date. The governing final-results press release mnst-results-20240610 announces the final purchase price and proration factor, supporting 4,718 accepted shares and gross proceeds of $250,054, but it does not state a cash payment date of 2024-06-10. The receivable amount is correct, but the pay_date should not be booked as 2024-06-10 absent source support; it should be left unstated/await actual payment settlement evidence.
+  round 2: verdict=approve recomputed=True tools={'list_documents': 1, 'read_document': 3, 'get_position': 1, 'calculate': 2, 'review_verdict': 1} ledger_shown_correct=False
+########################################################################

@@ -1,0 +1,112 @@
+{
+  "E1": {
+    "terms": {
+      "odd_lot_threshold": 100,
+      "shares_accepted_total": 56603773,
+      "final_price": 53,
+      "shares_tendered_total": 119018767,
+      "proration_factor": 0.4718
+    },
+    "citation": {
+      "document": "mnst-results-20240610",
+      "locator": "Paragraph 1",
+      "verbatim": "Monster accepted for purchase a total of 56,603,773 shares of its common stock at the final purchase price of $53.00 per share, for an aggregate purchase price of approximately $3.0 billion. Because the number of shares tendered would have exceeded the aggregate purchase price of the tender offer, shares were accepted for purchase on a pro rata basis, except for tenders of \"odd lots,\" which will be accepted in full. Monster has been informed by the depositary that the final proration factor for the tender offer is approximately 47.18%."
+    }
+  },
+  "P2": {
+    "entitlement_basis_date": "2024-06-05",
+    "dates": {
+      "offer_commenced": "2024-05-08",
+      "results_announced": "2024-06-10",
+      "expiration": "2024-06-05"
+    },
+    "election_deadline": "2024-06-05",
+    "entitlement_basis": "shares_validly_tendered_by_expiration"
+  },
+  "C2": {
+    "election_required": false,
+    "economics": {
+      "odd_lot_exception": true,
+      "factor_used": 1,
+      "proration_applies": false
+    },
+    "options": null,
+    "default_option": null
+  },
+  "C1": {
+    "cil": {
+      "amount": null,
+      "applicable": false
+    },
+    "entitlement": {
+      "accepted_shares": 87,
+      "residual_shares": 0,
+      "shares_tendered": 87,
+      "gross_proceeds": 4611,
+      "final_price": 53
+    }
+  },
+  "E2": {
+    "basis_shares": 87,
+    "position": {
+      "shares_tendered": 87,
+      "shares_held": 87
+    }
+  },
+  "D1": {
+    "actions": [
+      {
+        "quantity": 87,
+        "by_date": "2024-06-10",
+        "action": "book_receivable",
+        "option": null,
+        "amount": 4611,
+        "basis_doc": "mnst-results-20240610"
+      }
+    ],
+    "decision": "Process tender offer acceptance in full (87 shares at $53.00/share = $4,611.00 gross proceeds) under the odd-lot preference."
+  },
+  "P1": {
+    "issuer": "Monster Beverage Corporation",
+    "superseded_docs": [],
+    "event_type": "voluntary",
+    "security": {
+      "ticker": "MNST"
+    },
+    "governing_doc": "mnst-results-20240610"
+  },
+  "D2": {
+    "probe": {
+      "label": "NOT_DETERMINABLE",
+      "derivation": "The Letter of Transmittal is not present in the document store.",
+      "value": null
+    },
+    "twins": [
+      {
+        "id": "TW1",
+        "value": 4611
+      }
+    ]
+  },
+  "C3": {
+    "impact": {
+      "accepted_shares": 87,
+      "gross_proceeds": 4611,
+      "residual_shares": 0
+    },
+    "changes": [
+      {
+        "where": "ACCT-0093 cash ledger",
+        "old": 0,
+        "what": "cash receivable for tender proceeds",
+        "new": 4611
+      },
+      {
+        "what": "MNST share position held pending tender results",
+        "new": 0,
+        "old": 87,
+        "where": "ACCT-0093 custody position ledger"
+      }
+    ]
+  }
+}

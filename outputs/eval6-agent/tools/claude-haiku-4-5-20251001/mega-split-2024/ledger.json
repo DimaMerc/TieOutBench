@@ -1,0 +1,69 @@
+{
+  "clock": "2024-06-10",
+  "entries": [
+    {
+      "entry_id": "L1",
+      "kind": "book_receivable",
+      "args": {
+        "account": "MEGA",
+        "amount": 1800.0,
+        "pay_date": "2024-06-28",
+        "basis_doc": "nvda-8k-20240522",
+        "shares": 180000.0,
+        "rate": 0.01,
+        "memo": "NVDA June 2024 dividend at post-split rate $0.01/share on 180,000 shares"
+      },
+      "seq": 22,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:24:11.001Z"
+    },
+    {
+      "entry_id": "L2",
+      "kind": "update_pcf",
+      "args": {
+        "ticker": "NVDA",
+        "quantity_per_cu": 1800.0,
+        "previous_quantity_per_cu": 180,
+        "basis_doc": "nvda-8k-20240607",
+        "memo": "NVDA 10-for-1 stock split effective 2024-06-07; PCF updated from 180 to 1800 shares per creation unit"
+      },
+      "seq": 25,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:24:13.505Z"
+    },
+    {
+      "entry_id": "L3",
+      "kind": "confirm_position",
+      "args": {
+        "ticker": "NVDA",
+        "shares": 180000.0,
+        "as_of": "2024-06-06",
+        "basis_doc": "nvda-8k-20240522"
+      },
+      "seq": 28,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:24:15.317Z"
+    },
+    {
+      "entry_id": "L4",
+      "kind": "escalate",
+      "args": {
+        "reason": "The D2 probe asks for NET cash after withholding tax, but the store does not contain any document specifying NVDA dividend withholding tax rates or amounts. The 8-K (nvda-8k-20240522) only states the gross dividend rate of $0.01 per share post-split. Withholding tax treatment depends on fund domicile, shareholder status, and tax treaty provisions not provided in the store.",
+        "missing_document": "NVDA dividend withholding tax schedule or fund tax treatment memo",
+        "held_action": "D2 probe net cash calculation"
+      },
+      "seq": 31,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:24:20.118Z"
+    }
+  ],
+  "frozen": {}
+}

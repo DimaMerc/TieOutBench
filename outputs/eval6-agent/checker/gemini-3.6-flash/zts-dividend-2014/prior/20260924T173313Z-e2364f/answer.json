@@ -1,0 +1,98 @@
+{
+  "D1": {
+    "actions": [
+      {
+        "action": "book_receivable",
+        "by_date": "2014-06-02",
+        "basis_doc": "zts-8k-20140327",
+        "option": null,
+        "amount": 1800,
+        "quantity": 25000
+      }
+    ],
+    "decision": "book_receivable"
+  },
+  "C2": {
+    "default_option": null,
+    "economics": null,
+    "options": null,
+    "election_required": false
+  },
+  "D2": {
+    "probe": {
+      "derivation": "The document store provided does not contain a Dividend Reinvestment Plan (DRIP) document, prospectus, or reinvestment price information for the June 2, 2014 dividend payment.",
+      "value": null,
+      "label": "NOT_DETERMINABLE"
+    },
+    "twins": [
+      {
+        "value": 1800,
+        "id": "TW1"
+      }
+    ]
+  },
+  "C3": {
+    "impact": {
+      "gross_cash": 1800
+    },
+    "changes": [
+      {
+        "old": 0,
+        "new": 1800,
+        "where": "ACCT-2101 ledger",
+        "what": "cash receivable"
+      }
+    ]
+  },
+  "E2": {
+    "basis_shares": 25000,
+    "position": {
+      "shares_settled": 25000
+    }
+  },
+  "P2": {
+    "dates": {
+      "pay_date": "2014-06-02",
+      "record_date": "2014-04-28",
+      "corrected": "2014-03-27",
+      "declared": "2014-03-26"
+    },
+    "entitlement_basis": "record_date",
+    "election_deadline": null,
+    "entitlement_basis_date": "2014-04-28"
+  },
+  "E1": {
+    "citation": {
+      "verbatim": "The dividend is to be paid on June 2, 2014 to holders of record on April 28, 2014.",
+      "document": "zts-8k-20140327",
+      "locator": "First paragraph"
+    },
+    "terms": {
+      "rate": 0.072,
+      "pay_date": "2014-06-02",
+      "record_date": "2014-04-28"
+    }
+  },
+  "P1": {
+    "superseded_docs": [
+      "zts-8k-20140326"
+    ],
+    "issuer": "Zoetis Inc.",
+    "security": {
+      "ticker": "ZTS"
+    },
+    "governing_doc": "zts-8k-20140327",
+    "event_type": "mandatory"
+  },
+  "C1": {
+    "cil": {
+      "applicable": false,
+      "amount": null
+    },
+    "entitlement": {
+      "gross_cash": 1800,
+      "rate": 0.072,
+      "eligible_shares": 25000
+    }
+  }
+}

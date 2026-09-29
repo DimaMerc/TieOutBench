@@ -1,0 +1,13 @@
+{
+  "endpoint": "api.anthropic.com",
+  "model_id": "claude-haiku-4-5-20251001",
+  "token": "conformance-e172b3",
+  "tested_at": "2026-09-24T15:58:11Z",
+  "native": {
+    "tool_call": true,
+    "final": true,
+    "detail": "DONE conformance-e172b3"
+  },
+  "text": null,
+  "tool_transport": "native"
+}

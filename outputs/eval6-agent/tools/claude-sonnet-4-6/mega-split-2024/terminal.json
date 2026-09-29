@@ -1,0 +1,149 @@
+{
+  "P1": {
+    "issuer": "NVIDIA Corporation",
+    "security": {
+      "ticker": "NVDA"
+    },
+    "event_type": "mandatory",
+    "governing_doc": "nvda-8k-20240607",
+    "superseded_docs": []
+  },
+  "P2": {
+    "dates": {
+      "announcement": "2024-05-22",
+      "record_date": "2024-06-06",
+      "distribution_date": "2024-06-07",
+      "split_adjusted_trading": "2024-06-10"
+    },
+    "entitlement_basis": "record_date",
+    "entitlement_basis_date": "2024-06-06",
+    "election_deadline": null
+  },
+  "E1": {
+    "terms": {
+      "ratio": 10,
+      "additional_shares_per_share": 9,
+      "record_date": "2024-06-06",
+      "distribution_date": "2024-06-07",
+      "split_adjusted_trading": "2024-06-10"
+    },
+    "citation": {
+      "document": "nvda-8k-20240607",
+      "locator": "Item 5.03 / Exhibit 3.1",
+      "verbatim": "At the Effective Time, each share of Common Stock issued as of immediately prior to the Effective Time shall be automatically subdivided and reclassified into ten (10) validly issued, fully paid and non-assessable shares of Common Stock."
+    }
+  },
+  "E2": {
+    "position": {
+      "basket_per_cu_pre": 180,
+      "creation_units": 100,
+      "basket_total_pre": 18000
+    },
+    "basis_shares": 18000
+  },
+  "C1": {
+    "entitlement": {
+      "pre_split_shares": 18000,
+      "ratio": 10,
+      "post_split_shares": 180000,
+      "additional_shares": 162000,
+      "basket_per_cu_post": 1800
+    },
+    "cil": {
+      "applicable": false,
+      "amount": null
+    }
+  },
+  "C2": {
+    "election_required": false,
+    "options": null,
+    "default_option": null,
+    "economics": null
+  },
+  "C3": {
+    "impact": {
+      "basket_per_cu_new": 1800,
+      "basket_total_new": 180000
+    },
+    "changes": [
+      {
+        "what": "NVDA shares per creation unit in the PCF basket line",
+        "where": "MEGA PCF (mega-pcf-20240610)",
+        "old": 180,
+        "new": 1800
+      },
+      {
+        "what": "NVDA total basket shares across all creation units",
+        "where": "MEGA custody / position ledger",
+        "old": 18000,
+        "new": 180000
+      },
+      {
+        "what": "NVDA dividend cash receivable projection (gross, $0.01/share post-split on 180,000 shares)",
+        "where": "MEGA cash projection / receivables ledger",
+        "old": null,
+        "new": 1800.0
+      }
+    ]
+  },
+  "D1": {
+    "decision": "Mandatory 10-for-1 forward stock split effective 2024-06-07. PCF updated from 180 to 1,800 NVDA shares per creation unit. Post-split position confirmed at 180,000 shares. Gross dividend receivable of $1,800.00 booked at $0.01/share post-split (record 2024-06-11, pay 2024-06-28). Net-of-withholding booking escalated pending withholding rate document.",
+    "actions": [
+      {
+        "_entry": "L1",
+        "_kind": "update_pcf",
+        "action": "update PCF NVDA quantity per creation unit to 1,800",
+        "quantity": 1800.0,
+        "basis_doc": "nvda-8k-20240607",
+        "by_date": null,
+        "amount": null,
+        "option": null
+      },
+      {
+        "_entry": "L2",
+        "_kind": "escalate",
+        "action": "escalate and hold: Book net dividend receivable for MEGA NVDA June 2024 dividend after withholding",
+        "note": "missing document: MEGA withholding tax rate / tax-exempt status document for NVDA dividend (e.g., IRS Form W-9 or fund tax-status certification confirming 0% or applicable withholding rate on U.S. domestic equity dividends)",
+        "by_date": null,
+        "basis_doc": null,
+        "amount": null,
+        "option": null,
+        "quantity": null
+      },
+      {
+        "_entry": "L3",
+        "_kind": "book_receivable",
+        "action": "book receivable of $1,800.00",
+        "amount": 1800.0,
+        "by_date": "2024-06-28",
+        "basis_doc": "nvda-8k-20240522",
+        "quantity": 180000.0,
+        "option": null
+      },
+      {
+        "_entry": "L4",
+        "_kind": "confirm_position",
+        "action": "confirm position of 180,000 NVDA shares",
+        "quantity": 180000.0,
+        "basis_doc": "nvda-8k-20240607",
+        "by_date": null,
+        "as_of": "2024-06-07",
+        "amount": null,
+        "option": null
+      }
+    ]
+  },
+  "D2": {
+    "probe": {
+      "label": "NOT_DETERMINABLE",
+      "value": null,
+      "derivation": "The store determines the gross dividend at $0.01/share post-split on 180,000 shares = $1,800.00 gross. However, the applicable withholding rate on MEGA's NVDA dividend is not present in the document store. The specific missing document is: 'MEGA withholding tax rate / tax-exempt status document for NVDA dividend (e.g., IRS Form W-9 or fund tax-status certification confirming applicable withholding rate on U.S. domestic equity dividends)'. Escalated; net-of-withholding booking held."
+    },
+    "twins": [
+      {
+        "id": "TW1",
+        "value": 1800.0
+      }
+    ]
+  }
+}

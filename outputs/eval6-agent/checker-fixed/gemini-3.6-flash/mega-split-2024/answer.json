@@ -1,0 +1,131 @@
+{
+  "C1": {
+    "cil": {
+      "applicable": false,
+      "amount": null
+    },
+    "entitlement": {
+      "post_split_shares": 180000,
+      "basket_per_cu_post": 1800,
+      "ratio": 10,
+      "pre_split_shares": 18000,
+      "additional_shares": 162000
+    }
+  },
+  "C3": {
+    "changes": [
+      {
+        "where": "MEGA Portfolio Composition File (PCF)",
+        "old": 180,
+        "new": 1800,
+        "what": "NVDA quantity per creation unit"
+      },
+      {
+        "old": 18000,
+        "what": "NVDA settled share position",
+        "new": 180000,
+        "where": "Custody position ledger"
+      },
+      {
+        "old": 0,
+        "new": 1800,
+        "what": "NVDA cash dividend receivable",
+        "where": "MEGA cash receivable ledger"
+      }
+    ],
+    "impact": {
+      "basket_total_new": 180000,
+      "basket_per_cu_new": 1800
+    }
+  },
+  "E1": {
+    "citation": {
+      "verbatim": "On May 22, 2024, the Company announced a ten-for-one forward stock split of the Company's issued common stock. Each record holder of common stock as of the close of market on Thursday, June 6, 2024 will receive nine additional shares of common stock, to be distributed after the close of market on Friday, June 7, 2024. Trading is expected to commence on a split-adjusted basis at market open on Monday, June 10, 2024.",
+      "document": "nvda-8k-20240522",
+      "locator": "Item 8.01"
+    },
+    "terms": {
+      "additional_shares_per_share": 9,
+      "distribution_date": "2024-06-07",
+      "split_adjusted_trading": "2024-06-10",
+      "record_date": "2024-06-06",
+      "ratio": 10
+    }
+  },
+  "P2": {
+    "dates": {
+      "split_adjusted_trading": "2024-06-10",
+      "record_date": "2024-06-06",
+      "announcement": "2024-05-22",
+      "distribution_date": "2024-06-07"
+    },
+    "entitlement_basis": "record_date",
+    "election_deadline": null,
+    "entitlement_basis_date": "2024-06-06"
+  },
+  "P1": {
+    "issuer": "NVIDIA Corporation",
+    "event_type": "mandatory",
+    "security": {
+      "ticker": "NVDA"
+    },
+    "superseded_docs": [],
+    "governing_doc": "nvda-8k-20240522"
+  },
+  "C2": {
+    "default_option": null,
+    "election_required": false,
+    "options": null,
+    "economics": null
+  },
+  "D1": {
+    "actions": [
+      {
+        "quantity": 1800,
+        "option": null,
+        "action": "update_pcf",
+        "amount": null,
+        "basis_doc": "nvda-8k-20240522",
+        "by_date": "2024-06-10"
+      },
+      {
+        "option": null,
+        "action": "confirm_position",
+        "basis_doc": "nvda-8k-20240522",
+        "amount": null,
+        "by_date": "2024-06-10",
+        "quantity": 180000
+      },
+      {
+        "option": null,
+        "amount": 1800,
+        "action": "book_receivable",
+        "by_date": "2024-06-28",
+        "basis_doc": "nvda-8k-20240522",
+        "quantity": 180000
+      }
+    ],
+    "decision": "Update PCF for trade date 2024-06-10 to reflect post-split NVDA quantity of 1,800 shares per creation unit, confirm post-split custody position of 180,000 shares, and book $1,800 dividend receivable for the June 28 dividend."
+  },
+  "D2": {
+    "probe": {
+      "label": "COMPUTED",
+      "value": 1800,
+      "derivation": "180,000 post-split shares * $0.01 per share post-split rate = $1,800.00 net dividend cash (0% withholding for U.S.-domiciled ETF on U.S. issuer dividend)."
+    },
+    "twins": [
+      {
+        "id": "TW1",
+        "value": 1800
+      }
+    ]
+  },
+  "E2": {
+    "position": {
+      "creation_units": 100,
+      "basket_total_pre": 18000,
+      "basket_per_cu_pre": 180
+    },
+    "basis_shares": 18000
+  }
+}

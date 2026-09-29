@@ -1,0 +1,84 @@
+########################################################################
+  EPISODE bry-dividend-2024   arm=tools   model=gpt-5.4-mini
+########################################################################
+
+--- WORKSHEET (the submitted worksheet through the unchanged Phase-1 grader) ---
+========================================================================
+  CASE bry-dividend-2024    model=tools:gpt-5.4-mini    judge=mock
+========================================================================
+  CaseScore (gated, headline) : 0.212
+  CaseScore (ungated)         : 0.640
+  GAP (ungated - gated)       : 0.428
+  AllPass                     : 0
+  D2 calibration (R,G->F_b)   : R=0.00 G=0.25 -> 0.000
+  Gates fired                 : GATE.VERSION, GATE.ELECT
+  Headline flags              : elect_override_fired
+
+  Checkpoint vector (which step failed):
+    cp   W      ungated  gated   raw
+    P1   0.100  0.545   0.545  +0.55
+    P2   0.120  0.896   0.896  +0.90
+    E1   0.100  1.000   0.000  +1.00  <-- gated
+    E2   0.080  0.625   0.625  +0.62
+    C1   0.140  0.686   0.000  +0.69  <-- gated
+    C2   0.120  1.000   0.000  +1.00  <-- gated
+    C3   0.100  0.500   0.000  +0.50  <-- gated
+    D1   0.160  0.385   0.000  +0.38  <-- gated
+    D2   0.080  0.000   0.000  +0.00
+
+  Category rollup (diagnostic -- what KIND of error):
+    extraction   +0.940  ###################
+    numerical    +0.522  ##########
+    entailment   +1.000  ####################
+    reasoning    +0.833  #################
+    calibration  -0.615  
+    structure    +1.000  ####################
+========================================================================
+
+--- TERMINAL STATE (worksheet + the ledger rendered into D1 rows; ledger predicates applied) ---
+========================================================================
+  CASE bry-dividend-2024    model=tools:gpt-5.4-mini    judge=mock
+========================================================================
+  CaseScore (gated, headline) : 0.212
+  CaseScore (ungated)         : 0.640
+  GAP (ungated - gated)       : 0.428
+  AllPass                     : 0
+  D2 calibration (R,G->F_b)   : R=0.00 G=0.25 -> 0.000
+  Gates fired                 : GATE.VERSION, GATE.ELECT
+  Headline flags              : elect_override_fired, ledger_wrong_amount
+
+  Checkpoint vector (which step failed):
+    cp   W      ungated  gated   raw
+    P1   0.100  0.545   0.545  +0.55
+    P2   0.120  0.896   0.896  +0.90
+    E1   0.100  1.000   0.000  +1.00  <-- gated
+    E2   0.080  0.625   0.625  +0.62
+    C1   0.140  0.686   0.000  +0.69  <-- gated
+    C2   0.120  1.000   0.000  +1.00  <-- gated
+    C3   0.100  0.500   0.000  +0.50  <-- gated
+    D1   0.160  0.385   0.000  +0.38  <-- gated
+    D2   0.080  0.000   0.000  +0.00
+
+  Category rollup (diagnostic -- what KIND of error):
+    extraction   +0.940  ###################
+    numerical    +0.522  ##########
+    entailment   +1.000  ####################
+    reasoning    +0.833  #################
+    calibration  -0.615  
+    structure    +1.000  ####################
+========================================================================
+
+--- LEDGER ---
+L1: book_receivable amount=$8,500.00 pay_date=2024-08-30 shares=50000.0 rate=0.17 basis_doc=bry-8k-20240813 memo='Berry Corporation dividend on corrected terms; record date 2024-08-23, based on position as of 2024-08-12 per account history and no pending changes before month-end.'
+L2: confirm_position ticker=BRY shares=50000.0 as_of=2024-08-23 basis_doc=acct7712-position-20240816
+  booked entries: 2   GATE.ELECT on the ledger: True   gold match: False   flags: ledger_wrong_amount   correct: False
+  consistency L1: booked=8500.0 worksheet=8500.0 ok=True
+  gold L1 book_receivable: ok=False  {'permissible': [6800.0, 4800.0, 2000.0], 'pay_date_ok': True, 'basis_superseded': False}
+  gold L2 confirm_position: ok=False  {'as_of_is_basis_date': True}
+
+--- TRAJECTORY (reported, not scored) ---
+  maker: turns=6 tool_calls=8 errors=0 counts={'list_documents': 1, 'read_document': 3, 'calculate': 1, 'book_receivable': 1, 'confirm_position': 1, 'submit_worksheet': 1}
+  governing read before first action: True   docs read: ['acct7712-position-20240816', 'bry-8k-20240809', 'bry-8k-20240813']   superseded read: ['bry-8k-20240809']   distractors read: []
+  position dates queried: []   basis date queried: False   superseded date queried: False   projected: 0   query errors: 0
+  calculate used: True (1): ['50000*0.17']
+########################################################################

@@ -1,0 +1,55 @@
+{
+  "clock": "2024-06-10",
+  "entries": [
+    {
+      "entry_id": "L1",
+      "kind": "confirm_position",
+      "args": {
+        "ticker": "NVDA",
+        "shares": 180000.0,
+        "as_of": "2024-06-10",
+        "basis_doc": "mega-position-20240610"
+      },
+      "seq": 19,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:25:02.934Z"
+    },
+    {
+      "entry_id": "L2",
+      "kind": "update_pcf",
+      "args": {
+        "ticker": "NVDA",
+        "quantity_per_cu": 1800.0,
+        "previous_quantity_per_cu": 180,
+        "basis_doc": "nvda-8k-20240522",
+        "memo": "Adjust NVDA PCF quantity per creation unit for 10-for-1 split effective before 2024-06-10 dissemination."
+      },
+      "seq": 22,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:25:04.252Z"
+    },
+    {
+      "entry_id": "L3",
+      "kind": "book_receivable",
+      "args": {
+        "account": "MEGA",
+        "amount": 1800.0,
+        "pay_date": "2024-06-28",
+        "basis_doc": "nvda-8k-20240522",
+        "shares": 180000.0,
+        "rate": 0.01,
+        "memo": "NVDA quarterly cash dividend at post-split rate of $0.01 per share on 180,000 shares."
+      },
+      "seq": 25,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:25:05.778Z"
+    }
+  ],
+  "frozen": {}
+}

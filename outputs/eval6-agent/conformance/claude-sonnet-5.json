@@ -1,0 +1,13 @@
+{
+  "endpoint": "api.anthropic.com",
+  "model_id": "claude-sonnet-5",
+  "token": "conformance-d234ea",
+  "tested_at": "2026-09-25T00:45:14Z",
+  "native": {
+    "tool_call": true,
+    "final": true,
+    "detail": "DONE conformance-d234ea"
+  },
+  "text": null,
+  "tool_transport": "native"
+}

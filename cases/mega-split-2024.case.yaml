@@ -114,6 +114,26 @@ documents:
       [Fictional distractor] QSEM announced a four-for-one forward stock split with a record date
       of June 14, 2024 and distribution on June 21, 2024. QSEM is NOT a MEGA basket constituent.
 
+# ----------------------------------------------------------------------------- ENVIRONMENT (Phase 2: the tool arm's state; NOT shown to the model)
+env:
+  # Authored from mega-position-20240610 and mega-pcf-20240610 and nothing else. The clock is
+  # 2024-06-10; the record-date row (2024-06-06) and the post-distribution row (after close
+  # 2024-06-07) are both before it. The PCF line is the record the update tool changes.
+  account: MEGA
+  ticker: NVDA
+  positions:
+    - { as_of: "2024-06-06", settled_shares: 18000,
+        note: "record-date basis: 180 per creation unit x 100 creation units" }
+    - { as_of: "2024-06-07", settled_shares: 180000,
+        note: "post-distribution custody ledger after close 2024-06-07 (nine additional shares per share held)" }
+  pending_after_clock: none        # "No pending trades in NVDA"
+  pcf: { quantity_per_cu: 180, creation_units: 100 }   # the stale line the tool arm must update
+  # the same 8-K declares the June dividend; booking its GROSS on the post-split position is
+  # legitimate desk work (the D2 twin), so a receivable is allowed and checked against it
+  actions_allowed: [update_pcf, confirm_position, book_receivable, escalate]
+  permissible_receivables: [1800.00]   # 180,000 post-split shares x $0.01 (== 18,000 x $0.10)
+  receivable_pay_date: "2024-06-28"
+
 # ----------------------------------------------------------------------------- PROBE (D2 INPUT — shown to the model)
 probe:
   question: "For the June dividend also declared in nvda-8k-20240522 (record 2024-06-11, payable
@@ -252,3 +272,5 @@ verification:
                0001045810-24-000144 (retrieved 2026-08-18); fractional shares are not addressed in
                either filing (a whole-ratio subdivision of whole record positions produces none).
                MEGA, its PCF, and the position report are constructed (disclosed above)."
+  env: "positions transcribed from mega-position-20240610 (18,000 as of close 2024-06-06; 180,000
+       after close 2024-06-07); PCF line 1 (180 per creation unit, 100 units) from mega-pcf-20240610."

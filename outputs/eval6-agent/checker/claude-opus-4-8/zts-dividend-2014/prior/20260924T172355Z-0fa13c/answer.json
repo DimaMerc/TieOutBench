@@ -1,0 +1,106 @@
+{
+  "P1": {
+    "issuer": "Zoetis Inc.",
+    "security": {
+      "ticker": "ZTS"
+    },
+    "event_type": "mandatory",
+    "governing_doc": "zts-8k-20140327",
+    "superseded_docs": [
+      "zts-8k-20140326"
+    ]
+  },
+  "P2": {
+    "dates": {
+      "declared": "2014-03-26",
+      "corrected": "2014-03-27",
+      "record_date": "2014-04-28",
+      "pay_date": "2014-06-02"
+    },
+    "entitlement_basis": "record_date",
+    "entitlement_basis_date": "2014-04-28",
+    "election_deadline": null
+  },
+  "E1": {
+    "terms": {
+      "rate": 0.072,
+      "record_date": "2014-04-28",
+      "pay_date": "2014-06-02"
+    },
+    "citation": {
+      "document": "zts-8k-20140327",
+      "locator": "Corrected release, first paragraph, second sentence",
+      "verbatim": "The Board of Directors of Zoetis Inc. (NYSE:ZTS) declared a second quarter dividend payable to holders of the company's common stock of $0.072 per share. The dividend is to be paid on June 2, 2014 to holders of record on April 28, 2014."
+    }
+  },
+  "E2": {
+    "position": {
+      "shares_settled": 25000
+    },
+    "basis_shares": 25000
+  },
+  "C1": {
+    "entitlement": {
+      "eligible_shares": 25000,
+      "rate": 0.072,
+      "gross_cash": 1800
+    },
+    "cil": {
+      "applicable": false,
+      "amount": null
+    }
+  },
+  "C2": {
+    "election_required": false,
+    "options": null,
+    "default_option": null,
+    "economics": null
+  },
+  "C3": {
+    "impact": {
+      "gross_cash": 1800
+    },
+    "changes": [
+      {
+        "what": "cash receivable projection for the ZTS Q2 2014 cash dividend",
+        "where": "ACCT-2101 cash ledger",
+        "old": null,
+        "new": 1800
+      }
+    ]
+  },
+  "D1": {
+    "decision": "Plain mandatory cash dividend. Book gross cash dividend receivable of $1,800.00 for ACCT-2101 on 25,000 record-date shares at $0.072/share, payable 2014-06-02, on the corrected release terms (record date 2014-04-28, superseding the 2014-04-27 record date in the original release). Confirm the 25,000-share record-date position. No election and no DRIP/reinvestment feature exists for this event; no escalation.",
+    "actions": [
+      {
+        "action": "book_receivable",
+        "option": null,
+        "quantity": 25000,
+        "amount": 1800,
+        "by_date": "2014-06-02",
+        "basis_doc": "zts-8k-20140327"
+      },
+      {
+        "action": "confirm_position",
+        "option": null,
+        "quantity": 25000,
+        "amount": null,
+        "by_date": "2014-04-28",
+        "basis_doc": "zts-8k-20140327"
+      }
+    ]
+  },
+  "D2": {
+    "probe": {
+      "label": "NOT_DETERMINABLE",
+      "value": null,
+      "derivation": "No document in the store establishes any DRIP participation for ACCT-2101 or any reinvestment feature of this event. The governing release (zts-8k-20140327) and its predecessor declare only a cash dividend ($0.072/share) payable 2014-06-02; the position report mentions no reinvestment. There is therefore no reinvestment price determinable from the store; no number is invented and no escalation is warranted."
+    },
+    "twins": [
+      {
+        "id": "TW1",
+        "value": 1800
+      }
+    ]
+  }
+}

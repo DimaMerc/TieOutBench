@@ -1,0 +1,131 @@
+{
+  "P1": {
+    "issuer": "Monster Beverage Corporation",
+    "security": {
+      "ticker": "MNST"
+    },
+    "event_type": "voluntary",
+    "governing_doc": "mnst-results-20240610",
+    "superseded_docs": [
+      "mnst-otp-20240508"
+    ]
+  },
+  "P2": {
+    "dates": {
+      "offer_commenced": "2024-05-08",
+      "expiration": "2024-06-05",
+      "results_announced": "2024-06-10"
+    },
+    "entitlement_basis": "shares_validly_tendered_by_expiration",
+    "entitlement_basis_date": "2024-06-05",
+    "election_deadline": "2024-06-05"
+  },
+  "E1": {
+    "terms": {
+      "price_range_low": 53,
+      "price_range_high": 60,
+      "final_price": 53,
+      "aggregate_cap": 3000000000,
+      "shares_tendered_total": 119018767,
+      "shares_accepted_total": 56603773,
+      "proration_factor": 0.4718,
+      "odd_lot_threshold": 100
+    },
+    "citation": {
+      "document": "mnst-results-20240610",
+      "locator": "body",
+      "verbatim": "A total of 119,018,767 shares ... accepted for purchase a total of 56,603,773 shares ... final proration factor ... approximately 47.18%."
+    }
+  },
+  "E2": {
+    "position": {
+      "shares_held": 10000,
+      "shares_tendered": 10000
+    },
+    "basis_shares": 10000
+  },
+  "C1": {
+    "entitlement": {
+      "shares_tendered": 10000,
+      "proration_factor": 0.4718,
+      "accepted_shares": 4718,
+      "final_price": 53,
+      "gross_proceeds": 250054,
+      "residual_shares": 5282
+    },
+    "cil": {
+      "applicable": false,
+      "amount": null
+    }
+  },
+  "C2": {
+    "election_required": false,
+    "options": null,
+    "default_option": null,
+    "economics": {
+      "proration_applies": true,
+      "factor_used": 0.4718,
+      "odd_lot_exception": false
+    }
+  },
+  "C3": {
+    "impact": {
+      "accepted_shares": 4718,
+      "gross_proceeds": 250054,
+      "residual_shares": 5282
+    },
+    "changes": [
+      {
+        "what": "cash receivable for tender proceeds",
+        "where": "ACCT-4407 cash ledger",
+        "old": null,
+        "new": 250054
+      },
+      {
+        "what": "MNST position quantity",
+        "where": "ACCT-4407 custody position",
+        "old": 10000,
+        "new": 5282
+      }
+    ]
+  },
+  "D1": {
+    "decision": "accept tender proceeds for pro rata accepted shares; retain residual shares",
+    "actions": [
+      {
+        "_entry": "L1",
+        "_kind": "book_receivable",
+        "action": "book receivable of $250,054.00",
+        "amount": 250054.0,
+        "by_date": "2024-06-10",
+        "basis_doc": "mnst-results-20240610",
+        "quantity": 4718.0,
+        "option": null
+      },
+      {
+        "_entry": "L2",
+        "_kind": "confirm_position",
+        "action": "confirm position of 5,282 MNST shares",
+        "quantity": 5282.0,
+        "basis_doc": "mnst-results-20240610",
+        "by_date": null,
+        "as_of": "2024-06-10",
+        "amount": null,
+        "option": null
+      }
+    ]
+  },
+  "D2": {
+    "probe": {
+      "label": "COMPUTED",
+      "value": "No fees or charges are disclosed in the store documents provided; the tender proceeds are stated gross at the final purchase price, with no deduction specified.",
+      "derivation": "The store does not contain a Letter of Transmittal document. The governing tender results and offer excerpt do not state any fees or charges deducted from proceeds."
+    },
+    "twins": [
+      {
+        "id": "TW1",
+        "value": 250054
+      }
+    ]
+  }
+}

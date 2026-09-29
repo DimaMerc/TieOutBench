@@ -1,0 +1,90 @@
+########################################################################
+  EPISODE zts-dividend-2014   arm=checker   model=gpt-5.4-mini
+########################################################################
+
+--- WORKSHEET (the submitted worksheet through the unchanged Phase-1 grader) ---
+========================================================================
+  CASE zts-dividend-2014    model=checker:gpt-5.4-mini    judge=mock
+========================================================================
+  CaseScore (gated, headline) : 0.988
+  CaseScore (ungated)         : 0.988
+  GAP (ungated - gated)       : 0.000
+  AllPass                     : 0
+  D2 calibration (R,G->F_b)   : R=1.00 G=1.00 -> 1.000
+  Gates fired                 : none
+
+  Checkpoint vector (which step failed):
+    cp   W      ungated  gated   raw
+    P1   0.100  1.000   1.000  +1.00
+    P2   0.120  0.896   0.896  +0.90
+    E1   0.100  1.000   1.000  +1.00
+    E2   0.080  1.000   1.000  +1.00
+    C1   0.140  1.000   1.000  +1.00
+    C2   0.120  1.000   1.000  +1.00
+    C3   0.100  1.000   1.000  +1.00
+    D1   0.160  1.000   1.000  +1.00
+    D2   0.080  1.000   1.000  +1.00
+
+  Category rollup (diagnostic -- what KIND of error):
+    extraction   +0.940  ###################
+    numerical    +1.000  ####################
+    entailment   +1.000  ####################
+    reasoning    +1.000  ####################
+    calibration  +1.000  ####################
+    structure    +1.000  ####################
+========================================================================
+
+--- TERMINAL STATE (worksheet + the ledger rendered into D1 rows; ledger predicates applied) ---
+========================================================================
+  CASE zts-dividend-2014    model=checker:gpt-5.4-mini    judge=mock
+========================================================================
+  CaseScore (gated, headline) : 0.988
+  CaseScore (ungated)         : 0.988
+  GAP (ungated - gated)       : 0.000
+  AllPass                     : 0
+  D2 calibration (R,G->F_b)   : R=1.00 G=1.00 -> 1.000
+  Gates fired                 : none
+
+  Checkpoint vector (which step failed):
+    cp   W      ungated  gated   raw
+    P1   0.100  1.000   1.000  +1.00
+    P2   0.120  0.896   0.896  +0.90
+    E1   0.100  1.000   1.000  +1.00
+    E2   0.080  1.000   1.000  +1.00
+    C1   0.140  1.000   1.000  +1.00
+    C2   0.120  1.000   1.000  +1.00
+    C3   0.100  1.000   1.000  +1.00
+    D1   0.160  1.000   1.000  +1.00
+    D2   0.080  1.000   1.000  +1.00
+
+  Category rollup (diagnostic -- what KIND of error):
+    extraction   +0.940  ###################
+    numerical    +1.000  ####################
+    entailment   +1.000  ####################
+    reasoning    +1.000  ####################
+    calibration  +1.000  ####################
+    structure    +1.000  ####################
+========================================================================
+
+--- LEDGER ---
+L3: book_receivable amount=$1,800.00 pay_date=2014-06-02 shares=25000.0 rate=0.072 basis_doc=zts-8k-20140327 memo='Zoetis Q2 2014 dividend; corrected record date 2014-04-28; DRIP participant, reinvestment price not stated in store'
+L4: escalate missing_document='DRIP pricing / dividend reinvestment plan document for Zoetis Q2 2014 dividend' held_action='reinvestment price for the June 2 payment' reason='The governing dividend announcement states the account participates in dividend reinvestment, but the store still does not provide the DRIP pricing document needed to determine the reinvestment price for the June 2 payment.'
+  booked entries: 1   GATE.ELECT on the ledger: False   gold match: True   flags: none   correct: True
+  consistency L3: booked=1800.0 worksheet=1800.0 ok=True
+  gold L3 book_receivable: ok=True  {'permissible': [1800.0], 'pay_date_ok': True, 'basis_superseded': False}
+  gold L4 escalate: ok=True  {'scoped': True}
+
+--- TRAJECTORY (reported, not scored) ---
+  maker: turns=12 tool_calls=15 errors=0 counts={'list_documents': 2, 'read_document': 3, 'get_position': 2, 'calculate': 2, 'book_receivable': 2, 'escalate': 2, 'submit_worksheet': 2}
+  governing read before first action: True   docs read: ['zts-8k-20140326', 'zts-8k-20140327']   superseded read: ['zts-8k-20140326']   distractors read: []
+  position dates queried: ['2014-03-31', '2014-04-28']   basis date queried: True   superseded date queried: False   projected: 1   query errors: 0
+  calculate used: True (2): ['25000*0.072', '25000*0.072']
+
+--- REVIEW (checker arm) ---
+  round 1: verdict=reject recomputed=True tools={'list_documents': 1, 'read_document': 2, 'get_position': 1, 'calculate': 1, 'review_verdict': 1} ledger_shown_correct=True
+    - L1: The booked receivable amount is correct at $1,800.00, but the memo cites the correcting release while the basis_doc is correct; no discrepancy on amount, shares, rate, pay date, or governing document.
+    - L2: The escalation is appropriate because the store does not provide any DRIP pricing document, so the reinvestment price for the June 2 payment cannot be determined from the available documents.
+  round 2: verdict=reject recomputed=True tools={'list_documents': 1, 'read_document': 2, 'get_position': 1, 'calculate': 1, 'review_verdict': 1} ledger_shown_correct=True
+    - L4: escalation for the reinvestment price is not supported as a booked ledger entry because the store does not provide any DRIP pricing document; this should remain unbooked/held, not entered as a ledger action.
+    - D2/TW1: the work product states TW1 as 1800, but the twin is the gross dividend cash; the correct value is $1,800.00 (25,000 shares × $0.072), which ties to the governing corrected 2014-03-27 announcement and the 2014-04-01 settled position.
+########################################################################

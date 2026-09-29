@@ -1,0 +1,82 @@
+########################################################################
+  EPISODE bry-dividend-2024   arm=tools   model=claude-haiku-4-5-20251001
+########################################################################
+
+--- WORKSHEET (the submitted worksheet through the unchanged Phase-1 grader) ---
+========================================================================
+  CASE bry-dividend-2024    model=tools:claude-haiku-4-5-20251001    judge=mock
+========================================================================
+  CaseScore (gated, headline) : 0.983
+  CaseScore (ungated)         : 0.983
+  GAP (ungated - gated)       : 0.000
+  AllPass                     : 0
+  D2 calibration (R,G->F_b)   : R=1.00 G=1.00 -> 1.000
+  Gates fired                 : none
+
+  Checkpoint vector (which step failed):
+    cp   W      ungated  gated   raw
+    P1   0.100  1.000   1.000  +1.00
+    P2   0.120  1.000   1.000  +1.00
+    E1   0.100  1.000   1.000  +1.00
+    E2   0.080  1.000   1.000  +1.00
+    C1   0.140  1.000   1.000  +1.00
+    C2   0.120  1.000   1.000  +1.00
+    C3   0.100  0.833   0.833  +0.83
+    D1   0.160  1.000   1.000  +1.00
+    D2   0.080  1.000   1.000  +1.00
+
+  Category rollup (diagnostic -- what KIND of error):
+    extraction   +1.000  ####################
+    numerical    +1.000  ####################
+    entailment   +1.000  ####################
+    reasoning    +0.933  ###################
+    calibration  +1.000  ####################
+    structure    +1.000  ####################
+========================================================================
+
+--- TERMINAL STATE (worksheet + the ledger rendered into D1 rows; ledger predicates applied) ---
+========================================================================
+  CASE bry-dividend-2024    model=tools:claude-haiku-4-5-20251001    judge=mock
+========================================================================
+  CaseScore (gated, headline) : 0.983
+  CaseScore (ungated)         : 0.983
+  GAP (ungated - gated)       : 0.000
+  AllPass                     : 0
+  D2 calibration (R,G->F_b)   : R=1.00 G=1.00 -> 1.000
+  Gates fired                 : none
+
+  Checkpoint vector (which step failed):
+    cp   W      ungated  gated   raw
+    P1   0.100  1.000   1.000  +1.00
+    P2   0.120  1.000   1.000  +1.00
+    E1   0.100  1.000   1.000  +1.00
+    E2   0.080  1.000   1.000  +1.00
+    C1   0.140  1.000   1.000  +1.00
+    C2   0.120  1.000   1.000  +1.00
+    C3   0.100  0.833   0.833  +0.83
+    D1   0.160  1.000   1.000  +1.00
+    D2   0.080  1.000   1.000  +1.00
+
+  Category rollup (diagnostic -- what KIND of error):
+    extraction   +1.000  ####################
+    numerical    +1.000  ####################
+    entailment   +1.000  ####################
+    reasoning    +0.933  ###################
+    calibration  +1.000  ####################
+    structure    +1.000  ####################
+========================================================================
+
+--- LEDGER ---
+L1: escalate missing_document='Withholding tax rate or account tax status documentation for ACCT-7712 (foreign-domiciled subaccount)' held_action='Determination of net dividend cash after withholding' reason='The D2 probe requires the net dividend cash after withholding for a foreign-domiciled subaccount. The store provides the gross dividend amount ($6,800 on 40,000 shares at $0.17/share) but does not contain any withholding tax rate, tax treaty documentation, or account tax status/withholding instructions needed to compute the net amount.'
+L2: book_receivable amount=$6,800.00 pay_date=2024-08-30 shares=40000.0 rate=0.17 basis_doc=bry-8k-20240813 memo='Berry Corporation Q2 2024 dividend: $0.12 fixed + $0.05 variable per share, record date 2024-08-23, payment date 2024-08-30'
+  booked entries: 1   GATE.ELECT on the ledger: False   gold match: True   flags: none   correct: True
+  consistency L2: booked=6800.0 worksheet=6800.0 ok=True
+  gold L1 escalate: ok=True  {'scoped': True}
+  gold L2 book_receivable: ok=True  {'permissible': [6800.0, 4800.0, 2000.0], 'pay_date_ok': True, 'basis_superseded': False}
+
+--- TRAJECTORY (reported, not scored) ---
+  maker: turns=7 tool_calls=9 errors=0 counts={'list_documents': 1, 'read_document': 3, 'get_position': 1, 'calculate': 1, 'escalate': 1, 'book_receivable': 1, 'submit_worksheet': 1}
+  governing read before first action: True   docs read: ['acct7712-position-20240816', 'bry-8k-20240809', 'bry-8k-20240813']   superseded read: ['bry-8k-20240809']   distractors read: []
+  position dates queried: ['2024-08-23']   basis date queried: True   superseded date queried: False   projected: 1   query errors: 0
+  calculate used: True (1): ['40000 * 0.17']
+########################################################################

@@ -1,0 +1,63 @@
+{
+  "rounds": [
+    {
+      "round": 1,
+      "verdict": "reject",
+      "findings": [
+        "Entry L2 (escalate, held_action='reinvest_dividend_cash'): commits/holds an action the event does not allow. This is a mandatory cash dividend (per governing doc zts-8k-20140327: $0.072 per share paid June 2, 2014). No governing document offers a dividend-reinvestment option or election for this event, and the worksheet's own C2 records election_required=false / options=null. There is no reinvestment action to perform or hold; the missing 'Dividend Reinvestment Plan Prospectus' is not part of this event's terms. L2 should not be booked at all (no reinvest_dividend_cash action is available); the only correct booking is the cash receivable. The D2 probe reinvestment price is correctly NOT_DETERMINABLE, but that should not result in holding a reinvestment action for a cash-only mandatory event.",
+        "L1 book_receivable is otherwise correct and ties out to source: governing doc zts-8k-20140327 (correctly supersedes zts-8k-20140326, which had record date April 27), 25,000 settled shares as of record date 2014-04-28, rate $0.072, gross cash 25,000 x 0.072 = $1,800.00, pay date 2014-06-02. No defect in L1."
+      ],
+      "turns": 4,
+      "incomplete": false,
+      "ended_by": "end",
+      "ledger_shown_correct": true,
+      "ledger_shown_elect": false,
+      "ledger_shown_flags": []
+    },
+    {
+      "round": 2,
+      "verdict": "approve",
+      "findings": [],
+      "turns": 4,
+      "incomplete": false,
+      "ended_by": "end",
+      "ledger_shown_correct": true,
+      "ledger_shown_elect": false,
+      "ledger_shown_flags": []
+    }
+  ],
+  "ledger_v1": [
+    {
+      "entry_id": "L1",
+      "kind": "book_receivable",
+      "args": {
+        "account": "ACCT-2101",
+        "amount": 1800.0,
+        "pay_date": "2014-06-02",
+        "basis_doc": "zts-8k-20140327",
+        "shares": 25000.0,
+        "rate": 0.072,
+        "memo": "Second quarter 2014 cash dividend receivable ($0.072 per share on 25,000 shares)"
+      },
+      "seq": 25,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:24:24.646Z"
+    },
+    {
+      "entry_id": "L2",
+      "kind": "escalate",
+      "args": {
+        "reason": "The document store does not contain the Dividend Reinvestment Plan (DRIP) terms or prospectus specifying the reinvestment price for the June 2, 2014 payment.",
+        "missing_document": "Zoetis Dividend Reinvestment Plan Prospectus",
+        "held_action": "reinvest_dividend_cash"
+      },
+      "seq": 28,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:24:27.059Z"
+    }
+  ]
+}

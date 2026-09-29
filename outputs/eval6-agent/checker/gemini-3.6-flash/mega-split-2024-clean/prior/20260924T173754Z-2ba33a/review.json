@@ -1,0 +1,80 @@
+{
+  "rounds": [
+    {
+      "round": 1,
+      "verdict": "reject",
+      "findings": [
+        "L1 cites 'nvda-8k-20240522' as the basis document, but the effective stock split is governed by 'nvda-8k-20240607' (Certificate of Amendment effective June 7, 2024); basis_doc should be 'nvda-8k-20240607'.",
+        "L2 specifies '(was 1800)' for the pre-split quantity per creation unit, but the pre-split basket quantity was 180 shares per CU; it should state '(was 180)'. Additionally, basis_doc should be 'nvda-8k-20240607'.",
+        "L3 escalates for a missing tax withholding schedule to book a net dividend receivable, but the NVDA cash dividend record date is June 11, 2024 (pay date June 28, 2024), which is after today's as-of date (2024-06-10); no dividend receivable action or tax schedule escalation is valid on June 10, 2024, so entry L3 should be removed."
+      ],
+      "turns": 11,
+      "incomplete": false,
+      "ended_by": "end",
+      "ledger_shown_correct": true,
+      "ledger_shown_elect": false,
+      "ledger_shown_flags": []
+    },
+    {
+      "round": 2,
+      "verdict": "reject",
+      "findings": [
+        "Entry L5 (update_pcf) incorrectly specifies the prior basket quantity per creation unit as '(was 1800)'; it should be '(was 180)'.",
+        "Entry L4 (confirm_position) incorrectly lists 'as_of=2024-06-07'; per worksheet D1 and today's episode date for PCF dissemination, 'as_of' should be '2024-06-10'."
+      ],
+      "turns": 9,
+      "incomplete": false,
+      "ended_by": "end",
+      "ledger_shown_correct": true,
+      "ledger_shown_elect": false,
+      "ledger_shown_flags": []
+    }
+  ],
+  "ledger_v1": [
+    {
+      "entry_id": "L1",
+      "kind": "confirm_position",
+      "args": {
+        "ticker": "NVDA",
+        "shares": 180000.0,
+        "as_of": "2024-06-07",
+        "basis_doc": "nvda-8k-20240522"
+      },
+      "seq": 31,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:28:04.651Z"
+    },
+    {
+      "entry_id": "L2",
+      "kind": "update_pcf",
+      "args": {
+        "ticker": "NVDA",
+        "quantity_per_cu": 1800.0,
+        "previous_quantity_per_cu": 1800,
+        "basis_doc": "nvda-8k-20240522",
+        "memo": "Update NVDA basket quantity per CU to 1,800 shares post 10-for-1 split"
+      },
+      "seq": 34,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:28:07.155Z"
+    },
+    {
+      "entry_id": "L3",
+      "kind": "escalate",
+      "args": {
+        "reason": "The document store does not contain tax withholding rate documentation or tax treaty schedule to determine net dividend cash after withholding.",
+        "missing_document": "tax_withholding_schedule",
+        "held_action": "book_net_dividend_receivable"
+      },
+      "seq": 37,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:28:10.513Z"
+    }
+  ]
+}

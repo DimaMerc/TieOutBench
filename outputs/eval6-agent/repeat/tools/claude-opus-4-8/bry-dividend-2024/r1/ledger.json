@@ -1,0 +1,54 @@
+{
+  "clock": "2024-08-18",
+  "entries": [
+    {
+      "entry_id": "L1",
+      "kind": "book_receivable",
+      "args": {
+        "account": "ACCT-7712",
+        "amount": 6800.0,
+        "pay_date": "2024-08-30",
+        "basis_doc": "bry-8k-20240813",
+        "shares": 40000.0,
+        "rate": 0.17,
+        "memo": "BRY dividend $0.17/sh ($0.12 fixed + $0.05 variable) on corrected terms; record date 2024-08-23; 40,000 shares eligible."
+      },
+      "seq": 20,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:32:04.849Z"
+    },
+    {
+      "entry_id": "L2",
+      "kind": "confirm_position",
+      "args": {
+        "ticker": "BRY",
+        "shares": 40000.0,
+        "as_of": "2024-08-23",
+        "basis_doc": "bry-8k-20240813"
+      },
+      "seq": 22,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:32:04.849Z"
+    },
+    {
+      "entry_id": "L3",
+      "kind": "escalate",
+      "args": {
+        "reason": "D2 probe asks for NET dividend cash to a foreign-domiciled subaccount after withholding, but the store contains no withholding-tax / treaty-rate document determining the applicable withholding rate for this beneficial owner. Gross is determined ($6,800) but net is not.",
+        "missing_document": "Applicable withholding-tax rate / tax treaty (Form W-8/withholding schedule) for the foreign-domiciled beneficial owner",
+        "held_action": "Booking of net dividend cash (withholding amount) for the foreign subaccount"
+      },
+      "seq": 24,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:32:04.849Z"
+    }
+  ],
+  "frozen": {},
+  "frozen_worksheets": {}
+}

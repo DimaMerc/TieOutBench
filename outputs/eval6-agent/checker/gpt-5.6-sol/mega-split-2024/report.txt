@@ -1,0 +1,94 @@
+########################################################################
+  EPISODE mega-split-2024   arm=checker   model=gpt-5.6-sol
+########################################################################
+
+--- WORKSHEET (the submitted worksheet through the unchanged Phase-1 grader) ---
+========================================================================
+  CASE mega-split-2024    model=checker:gpt-5.6-sol    judge=mock
+========================================================================
+  CaseScore (gated, headline) : 1.000
+  CaseScore (ungated)         : 1.000
+  GAP (ungated - gated)       : 0.000
+  AllPass                     : 1
+  D2 calibration (R,G->F_b)   : R=1.00 G=1.00 -> 1.000
+  Gates fired                 : none
+
+  Checkpoint vector (which step failed):
+    cp   W      ungated  gated   raw
+    P1   0.100  1.000   1.000  +1.00
+    P2   0.120  1.000   1.000  +1.00
+    E1   0.100  1.000   1.000  +1.00
+    E2   0.080  1.000   1.000  +1.00
+    C1   0.140  1.000   1.000  +1.00
+    C2   0.120  1.000   1.000  +1.00
+    C3   0.100  1.000   1.000  +1.00
+    D1   0.160  1.000   1.000  +1.00
+    D2   0.080  1.000   1.000  +1.00
+
+  Category rollup (diagnostic -- what KIND of error):
+    extraction   +1.000  ####################
+    numerical    +1.000  ####################
+    entailment   +1.000  ####################
+    reasoning    +1.000  ####################
+    calibration  +1.000  ####################
+    structure    +1.000  ####################
+========================================================================
+
+--- TERMINAL STATE (worksheet + the ledger rendered into D1 rows; ledger predicates applied) ---
+========================================================================
+  CASE mega-split-2024    model=checker:gpt-5.6-sol    judge=mock
+========================================================================
+  CaseScore (gated, headline) : 1.000
+  CaseScore (ungated)         : 1.000
+  GAP (ungated - gated)       : 0.000
+  AllPass                     : 1
+  D2 calibration (R,G->F_b)   : R=1.00 G=1.00 -> 1.000
+  Gates fired                 : none
+
+  Checkpoint vector (which step failed):
+    cp   W      ungated  gated   raw
+    P1   0.100  1.000   1.000  +1.00
+    P2   0.120  1.000   1.000  +1.00
+    E1   0.100  1.000   1.000  +1.00
+    E2   0.080  1.000   1.000  +1.00
+    C1   0.140  1.000   1.000  +1.00
+    C2   0.120  1.000   1.000  +1.00
+    C3   0.100  1.000   1.000  +1.00
+    D1   0.160  1.000   1.000  +1.00
+    D2   0.080  1.000   1.000  +1.00
+
+  Category rollup (diagnostic -- what KIND of error):
+    extraction   +1.000  ####################
+    numerical    +1.000  ####################
+    entailment   +1.000  ####################
+    reasoning    +1.000  ####################
+    calibration  +1.000  ####################
+    structure    +1.000  ####################
+========================================================================
+
+--- LEDGER ---
+L5: update_pcf ticker=NVDA quantity_per_cu=1800.0 (was 180) basis_doc=nvda-8k-20240607 memo='Split-effectiveness filing confirms each share was subdivided into ten shares effective 2024-06-07; update the 2024-06-10 PCF from 180 to 1,800 NVDA shares per creation unit. May 22 announcement supports the entitlement dates.'
+L6: confirm_position ticker=NVDA shares=180000.0 as_of=2024-06-07 basis_doc=nvda-8k-20240607
+L7: book_receivable amount=$1,800.00 pay_date=2024-06-28 shares=180000.0 rate=0.01 basis_doc=nvda-8k-20240522 memo='Gross June dividend receivable based on the declared post-split rate and projected 2024-06-11 record-date position. Withholding adjustment and net cash are held pending MEGA tax/withholding documentation.'
+L8: escalate missing_document='MEGA account tax/withholding profile and applicable withholding-rate documentation for the NVDA June dividend' held_action='Determine and book the withholding adjustment / net June dividend cash' reason='The May 22 dividend declaration determines gross cash, but the store contains no MEGA account tax/withholding profile or applicable withholding-rate documentation. Applicable withholding and net dividend cash are therefore not determinable. Hold only the withholding adjustment/net figure.'
+  booked entries: 3   GATE.ELECT on the ledger: False   gold match: True   flags: none   correct: True
+  consistency L5: booked=1800.0 worksheet=1800.0 ok=True
+  consistency L7: booked=1800.0 worksheet=1800.0 ok=True
+  gold L5 update_pcf: ok=True  {'gold': 1800.0}
+  gold L6 confirm_position: ok=True  {'as_of_is_basis_date': False}
+  gold L7 book_receivable: ok=True  {'permissible': [1800.0], 'pay_date_ok': True, 'basis_superseded': False}
+  gold L8 escalate: ok=True  {'scoped': True}
+
+--- TRAJECTORY (reported, not scored) ---
+  maker: turns=10 tool_calls=32 errors=0 counts={'list_documents': 2, 'read_document': 8, 'get_position': 4, 'calculate': 8, 'update_pcf': 2, 'confirm_position': 2, 'book_receivable': 2, 'escalate': 2, 'submit_worksheet': 2}
+  governing read before first action: True   docs read: ['mega-pcf-20240610', 'mega-position-20240610', 'nvda-8k-20240522', 'nvda-8k-20240607']   superseded read: []   distractors read: []
+  position dates queried: ['2024-06-06', '2024-06-11', '2024-06-06', '2024-06-11']   basis date queried: True   superseded date queried: None   projected: 2   query errors: 0
+  calculate used: True (8): ['18000*10', '18000*9', '180*10', '180000*0.01', '18000*10', '18000*9', '180*10', '180000*0.01']
+
+--- REVIEW (checker arm) ---
+  round 1: verdict=reject recomputed=True tools={'list_documents': 1, 'read_document': 4, 'get_position': 3, 'calculate': 5, 'review_verdict': 1} ledger_shown_correct=True
+    - {"entry": "P1 / governing_doc", "what_is_wrong": "The worksheet identifies the May 22 announcement as the sole governing split document and omits the June 7 issuer 8-K confirming that the amendment became effective and that each share was actually subdivided into ten shares. For processing on June 10, the effectiveness filing governs whether the split was effected; the May 22 filing remains the source for the dividend and announced entitlement dates.", "what_it_should_be": "Use nvda-8k-20240607 as the governing effectiveness document for the split, with nvda-8k-20240522 as the supporting announcement and governing dividend declaration."}
+    - {"entry": "L1", "what_is_wrong": "The quantity is correct at 1,800 NVDA shares per creation unit, but the entry cites only nvda-8k-20240522, which merely said split-adjusted trading was expected. It does not cite the June 7 filing establishing effectiveness.", "what_it_should_be": "Retain quantity_per_cu=1800 and the June 10 PCF date, but use nvda-8k-20240607 as the split-effectiveness basis document (the May 22 announcement may be retained as supporting terms)."}
+    - {"entry": "L2", "what_is_wrong": "The confirmed position of 180,000 shares as of June 7 is numerically correct, but its sole basis document is the May 22 announcement rather than the June 7 effectiveness filing. The position re-derives as 18,000 record-date shares multiplied by 10, or 180,000 shares.", "what_it_should_be": "Retain shares=180000 as_of=2024-06-07, but cite nvda-8k-20240607 as the issuer effectiveness basis, supported by the record-date position."}
+  round 2: verdict=approve recomputed=True tools={'list_documents': 1, 'read_document': 4, 'get_position': 3, 'calculate': 4, 'review_verdict': 1} ledger_shown_correct=True
+########################################################################

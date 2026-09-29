@@ -1,0 +1,311 @@
+{
+  "clock": "2014-04-01",
+  "entries": [
+    {
+      "entry_id": "L1",
+      "kind": "book_receivable",
+      "args": {
+        "account": "ACCT-2101",
+        "amount": 1800.0,
+        "pay_date": "2014-06-02",
+        "basis_doc": "zts-8k-20140327",
+        "shares": 25000.0,
+        "rate": 0.072,
+        "memo": "Second quarter 2014 cash dividend receivable ($0.072 per share on 25,000 shares)"
+      },
+      "seq": 25,
+      "agent": "maker",
+      "round": 1,
+      "voided": true,
+      "t": "2026-09-24T17:24:24.646Z",
+      "voided_round": 1
+    },
+    {
+      "entry_id": "L2",
+      "kind": "escalate",
+      "args": {
+        "reason": "The document store does not contain the Dividend Reinvestment Plan (DRIP) terms or prospectus specifying the reinvestment price for the June 2, 2014 payment.",
+        "missing_document": "Zoetis Dividend Reinvestment Plan Prospectus",
+        "held_action": "reinvest_dividend_cash"
+      },
+      "seq": 28,
+      "agent": "maker",
+      "round": 1,
+      "voided": true,
+      "t": "2026-09-24T17:24:27.059Z",
+      "voided_round": 1
+    },
+    {
+      "entry_id": "L3",
+      "kind": "book_receivable",
+      "args": {
+        "account": "ACCT-2101",
+        "amount": 1800.0,
+        "pay_date": "2014-06-02",
+        "basis_doc": "zts-8k-20140327",
+        "shares": 25000.0,
+        "rate": 0.072,
+        "memo": "Second quarter 2014 cash dividend receivable ($0.072 per share on 25,000 shares)"
+      },
+      "seq": 58,
+      "agent": "maker",
+      "round": 2,
+      "voided": false,
+      "t": "2026-09-24T23:51:57.069Z"
+    }
+  ],
+  "frozen": {
+    "ledger_v1": [
+      {
+        "entry_id": "L1",
+        "kind": "book_receivable",
+        "args": {
+          "account": "ACCT-2101",
+          "amount": 1800.0,
+          "pay_date": "2014-06-02",
+          "basis_doc": "zts-8k-20140327",
+          "shares": 25000.0,
+          "rate": 0.072,
+          "memo": "Second quarter 2014 cash dividend receivable ($0.072 per share on 25,000 shares)"
+        },
+        "seq": 25,
+        "agent": "maker",
+        "round": 1,
+        "voided": false,
+        "t": "2026-09-24T17:24:24.646Z"
+      },
+      {
+        "entry_id": "L2",
+        "kind": "escalate",
+        "args": {
+          "reason": "The document store does not contain the Dividend Reinvestment Plan (DRIP) terms or prospectus specifying the reinvestment price for the June 2, 2014 payment.",
+          "missing_document": "Zoetis Dividend Reinvestment Plan Prospectus",
+          "held_action": "reinvest_dividend_cash"
+        },
+        "seq": 28,
+        "agent": "maker",
+        "round": 1,
+        "voided": false,
+        "t": "2026-09-24T17:24:27.059Z"
+      }
+    ],
+    "ledger_v2": [
+      {
+        "entry_id": "L3",
+        "kind": "book_receivable",
+        "args": {
+          "account": "ACCT-2101",
+          "amount": 1800.0,
+          "pay_date": "2014-06-02",
+          "basis_doc": "zts-8k-20140327",
+          "shares": 25000.0,
+          "rate": 0.072,
+          "memo": "Second quarter 2014 cash dividend receivable ($0.072 per share on 25,000 shares)"
+        },
+        "seq": 58,
+        "agent": "maker",
+        "round": 2,
+        "voided": false,
+        "t": "2026-09-24T23:51:57.069Z"
+      }
+    ]
+  },
+  "frozen_worksheets": {
+    "ledger_v1": {
+      "E1": {
+        "terms": {
+          "record_date": "2014-04-28",
+          "rate": 0.072,
+          "pay_date": "2014-06-02"
+        },
+        "citation": {
+          "verbatim": "The dividend is to be paid on June 2, 2014 to holders of record on April 28, 2014.",
+          "document": "zts-8k-20140327",
+          "locator": "First paragraph"
+        }
+      },
+      "C3": {
+        "impact": {
+          "gross_cash": 1800
+        },
+        "changes": [
+          {
+            "what": "cash receivable",
+            "old": 0,
+            "new": 1800,
+            "where": "ACCT-2101 ledger"
+          }
+        ]
+      },
+      "E2": {
+        "position": {
+          "shares_settled": 25000
+        },
+        "basis_shares": 25000
+      },
+      "D1": {
+        "decision": "book_receivable",
+        "actions": [
+          {
+            "quantity": 25000,
+            "action": "book_receivable",
+            "basis_doc": "zts-8k-20140327",
+            "option": null,
+            "by_date": "2014-06-02",
+            "amount": 1800
+          }
+        ]
+      },
+      "P2": {
+        "entitlement_basis": "record_date",
+        "entitlement_basis_date": "2014-04-28",
+        "election_deadline": null,
+        "dates": {
+          "record_date": "2014-04-28",
+          "corrected": "2014-03-27",
+          "declared": "2014-03-26",
+          "pay_date": "2014-06-02"
+        }
+      },
+      "C2": {
+        "election_required": false,
+        "options": null,
+        "economics": null,
+        "default_option": null
+      },
+      "C1": {
+        "cil": {
+          "amount": null,
+          "applicable": false
+        },
+        "entitlement": {
+          "eligible_shares": 25000,
+          "gross_cash": 1800,
+          "rate": 0.072
+        }
+      },
+      "D2": {
+        "probe": {
+          "label": "NOT_DETERMINABLE",
+          "derivation": "The document store does not contain the Zoetis Dividend Reinvestment Plan Prospectus specifying the reinvestment pricing formula or price for the June 2, 2014 dividend payment. Escalated missing document Zoetis Dividend Reinvestment Plan Prospectus to desk supervisor.",
+          "value": null
+        },
+        "twins": [
+          {
+            "id": "TW1",
+            "value": 1800
+          }
+        ]
+      },
+      "P1": {
+        "security": {
+          "ticker": "ZTS"
+        },
+        "event_type": "mandatory",
+        "issuer": "Zoetis Inc.",
+        "governing_doc": "zts-8k-20140327",
+        "superseded_docs": [
+          "zts-8k-20140326"
+        ]
+      }
+    },
+    "ledger_v2": {
+      "C2": {
+        "options": null,
+        "election_required": false,
+        "default_option": null,
+        "economics": null
+      },
+      "C3": {
+        "impact": {
+          "gross_cash": 1800
+        },
+        "changes": [
+          {
+            "new": 1800,
+            "where": "ACCT-2101 ledger",
+            "what": "cash receivable",
+            "old": 0
+          }
+        ]
+      },
+      "E1": {
+        "citation": {
+          "locator": "First paragraph",
+          "document": "zts-8k-20140327",
+          "verbatim": "The dividend is to be paid on June 2, 2014 to holders of record on April 28, 2014."
+        },
+        "terms": {
+          "rate": 0.072,
+          "pay_date": "2014-06-02",
+          "record_date": "2014-04-28"
+        }
+      },
+      "P1": {
+        "event_type": "mandatory",
+        "governing_doc": "zts-8k-20140327",
+        "superseded_docs": [
+          "zts-8k-20140326"
+        ],
+        "security": {
+          "ticker": "ZTS"
+        },
+        "issuer": "Zoetis Inc."
+      },
+      "E2": {
+        "position": {
+          "shares_settled": 25000
+        },
+        "basis_shares": 25000
+      },
+      "D1": {
+        "actions": [
+          {
+            "option": null,
+            "by_date": "2014-06-02",
+            "quantity": 25000,
+            "amount": 1800,
+            "action": "book_receivable",
+            "basis_doc": "zts-8k-20140327"
+          }
+        ],
+        "decision": "book_receivable"
+      },
+      "D2": {
+        "probe": {
+          "derivation": "The document store contains no Dividend Reinvestment Plan (DRIP) prospectus or document specifying a DRIP reinvestment price for the June 2, 2014 payment.",
+          "label": "NOT_DETERMINABLE",
+          "value": null
+        },
+        "twins": [
+          {
+            "id": "TW1",
+            "value": 1800
+          }
+        ]
+      },
+      "C1": {
+        "cil": {
+          "applicable": false,
+          "amount": null
+        },
+        "entitlement": {
+          "rate": 0.072,
+          "gross_cash": 1800,
+          "eligible_shares": 25000
+        }
+      },
+      "P2": {
+        "entitlement_basis_date": "2014-04-28",
+        "election_deadline": null,
+        "dates": {
+          "record_date": "2014-04-28",
+          "declared": "2014-03-26",
+          "pay_date": "2014-06-02",
+          "corrected": "2014-03-27"
+        },
+        "entitlement_basis": "record_date"
+      }
+    }
+  }
+}

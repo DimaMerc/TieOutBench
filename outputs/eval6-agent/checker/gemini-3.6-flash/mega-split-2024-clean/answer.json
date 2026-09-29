@@ -1,0 +1,111 @@
+{
+  "C3": {
+    "impact": {
+      "basket_total_new": 180000,
+      "basket_per_cu_new": 1800
+    },
+    "changes": [
+      {
+        "what": "basket quantity per creation unit for NVDA",
+        "where": "MEGA portfolio composition file (PCF)",
+        "new": 1800,
+        "old": 180
+      }
+    ]
+  },
+  "P1": {
+    "superseded_docs": [],
+    "security": {
+      "ticker": "NVDA"
+    },
+    "issuer": "NVIDIA Corporation",
+    "event_type": "mandatory",
+    "governing_doc": "nvda-8k-20240607"
+  },
+  "C2": {
+    "default_option": null,
+    "election_required": false,
+    "economics": null,
+    "options": null
+  },
+  "D1": {
+    "actions": [
+      {
+        "amount": null,
+        "quantity": 180000,
+        "by_date": "2024-06-10",
+        "option": null,
+        "basis_doc": "nvda-8k-20240607",
+        "action": "confirm_position"
+      },
+      {
+        "option": null,
+        "basis_doc": "nvda-8k-20240607",
+        "action": "update_pcf",
+        "amount": null,
+        "by_date": "2024-06-10",
+        "quantity": 1800
+      }
+    ],
+    "decision": "Confirmed post-split NVDA position of 180,000 shares as of 2024-06-07 and updated PCF quantity per creation unit to 1,800 shares (was 180) effective 2024-06-10 following the 10-for-1 forward stock split."
+  },
+  "E1": {
+    "citation": {
+      "locator": "Item 5.03",
+      "document": "nvda-8k-20240607",
+      "verbatim": "The Company filed the Amendment to effect the Stock Split. The Amendment became effective at 4:01 p.m. Eastern Time on June 7, 2024. Exhibit 3.1: At the Effective Time, each share of Common Stock issued as of immediately prior to the Effective Time shall be automatically subdivided and reclassified into ten (10) validly issued, fully paid and non-assessable shares of Common Stock. Trading is expected to commence on a split-adjusted basis at market open on June 10, 2024."
+    },
+    "terms": {
+      "distribution_date": "2024-06-07",
+      "split_adjusted_trading": "2024-06-10",
+      "additional_shares_per_share": 9,
+      "record_date": "2024-06-06",
+      "ratio": 10
+    }
+  },
+  "E2": {
+    "position": {
+      "creation_units": 100,
+      "basket_total_pre": 18000,
+      "basket_per_cu_pre": 180
+    },
+    "basis_shares": 18000
+  },
+  "P2": {
+    "entitlement_basis": "record_date",
+    "dates": {
+      "announcement": "2024-05-22",
+      "record_date": "2024-06-06",
+      "distribution_date": "2024-06-07",
+      "split_adjusted_trading": "2024-06-10"
+    },
+    "entitlement_basis_date": "2024-06-06",
+    "election_deadline": null
+  },
+  "D2": {
+    "twins": [
+      {
+        "value": 1800,
+        "id": "TW1"
+      }
+    ],
+    "probe": {
+      "derivation": "No foreign withholding tax applies to a US domestic ETF holding US equities (0% withholding rate). Net dividend cash equals gross dividend cash: 180,000 post-split shares x $0.01 per share = $1,800.00.",
+      "label": "COMPUTED",
+      "value": 1800
+    }
+  },
+  "C1": {
+    "entitlement": {
+      "ratio": 10,
+      "additional_shares": 162000,
+      "post_split_shares": 180000,
+      "basket_per_cu_post": 1800,
+      "pre_split_shares": 18000
+    },
+    "cil": {
+      "amount": null,
+      "applicable": false
+    }
+  }
+}

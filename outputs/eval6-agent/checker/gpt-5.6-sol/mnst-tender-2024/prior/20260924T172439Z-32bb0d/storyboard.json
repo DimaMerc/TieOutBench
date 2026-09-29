@@ -1,0 +1,708 @@
+{
+  "case_id": "mnst-tender-2024",
+  "arm": "checker",
+  "model_id": "gpt-5.6-sol",
+  "scripted": false,
+  "total_s": 166,
+  "scenes": [
+    {
+      "id": "episode",
+      "kind": "title",
+      "title": "mnst-tender-2024 · arm: checker",
+      "lines": [
+        "as of 2024-06-10",
+        "The Monster Beverage tender's final results published this morning. Process the event for the account.",
+        "run: gpt-5.6-sol"
+      ],
+      "duration_s": 4
+    },
+    {
+      "id": "step-1",
+      "kind": "step",
+      "agent": "maker",
+      "round": 1,
+      "tool": "list_documents",
+      "title": "1. list_documents",
+      "lines": [
+        "list_documents()",
+        "4 documents: mnst-otp-20240508, mnst-results-20240610, acct4407-position-20240610, incy-results-20240613"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-2",
+      "kind": "step",
+      "agent": "maker",
+      "round": 1,
+      "tool": "read_document",
+      "title": "2. read_document",
+      "lines": [
+        "read_document(mnst-results-20240610)",
+        "mnst-results-20240610 (issuer press release (final results, SC TO-I/A exhibit), 2024-06-10)"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-3",
+      "kind": "step",
+      "agent": "maker",
+      "round": 1,
+      "tool": "read_document",
+      "title": "3. read_document",
+      "lines": [
+        "read_document(mnst-otp-20240508)",
+        "mnst-otp-20240508 (issuer tender offer (Offer to Purchase, excerpt), 2024-05-08)"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-4",
+      "kind": "step",
+      "agent": "maker",
+      "round": 1,
+      "tool": "read_document",
+      "title": "4. read_document",
+      "lines": [
+        "read_document(acct4407-position-20240610)",
+        "acct4407-position-20240610 (custody position + instruction record (constructed), 2024-06-10)"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-5",
+      "kind": "step",
+      "agent": "maker",
+      "round": 1,
+      "tool": "get_position",
+      "title": "5. get_position",
+      "lines": [
+        "get_position(ACCT-4407, as of 2024-06-05)",
+        "10,000 shares, settled (position row 2024-06-04); tendered 10,000"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-6",
+      "kind": "step",
+      "agent": "maker",
+      "round": 1,
+      "tool": "calculate",
+      "title": "6. calculate",
+      "lines": [
+        "calculate(10000*0.4718)",
+        "= 4718"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-7",
+      "kind": "step",
+      "agent": "maker",
+      "round": 1,
+      "tool": "calculate",
+      "title": "7. calculate",
+      "lines": [
+        "calculate(10000*0.4718*53)",
+        "= 250054"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-8",
+      "kind": "step",
+      "agent": "maker",
+      "round": 1,
+      "tool": "calculate",
+      "title": "8. calculate",
+      "lines": [
+        "calculate(10000-(10000*0.4718))",
+        "= 5282"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-9",
+      "kind": "step",
+      "agent": "maker",
+      "round": 1,
+      "tool": "escalate",
+      "title": "9. escalate",
+      "lines": [
+        "escalate(missing: Monster Beverage tender offer Letter of Transmittal; hold: Determine/book fee deductions and net tender proceeds)",
+        "L1 escalation recorded"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-10",
+      "kind": "step",
+      "agent": "maker",
+      "round": 1,
+      "tool": "book_receivable",
+      "title": "10. book_receivable",
+      "lines": [
+        "book_receivable($250,054.00, pay 2024-06-10, basis mnst-results-20240610, 4718 shares)",
+        "L2 booked $250,054.00 for 2024-06-10 on mnst-results-20240610"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-11",
+      "kind": "step",
+      "agent": "maker",
+      "round": 1,
+      "tool": "confirm_position",
+      "title": "11. confirm_position",
+      "lines": [
+        "confirm_position(5282 MNST as of 2024-06-10)",
+        "L3 confirmed 5282.0 as of 2024-06-10"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-12",
+      "kind": "step",
+      "agent": "maker",
+      "round": 1,
+      "tool": "submit_worksheet",
+      "title": "12. submit_worksheet",
+      "lines": [
+        "submit_worksheet(...)",
+        "worksheet submitted; episode ended (3 ledger entries)"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-13",
+      "kind": "step",
+      "agent": "reviewer",
+      "round": 1,
+      "tool": "list_documents",
+      "title": "13. list_documents  (reviewer, round 1)",
+      "lines": [
+        "list_documents()",
+        "4 documents: mnst-otp-20240508, mnst-results-20240610, acct4407-position-20240610, incy-results-20240613"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-14",
+      "kind": "step",
+      "agent": "reviewer",
+      "round": 1,
+      "tool": "read_document",
+      "title": "14. read_document  (reviewer, round 1)",
+      "lines": [
+        "read_document(mnst-results-20240610)",
+        "mnst-results-20240610 (issuer press release (final results, SC TO-I/A exhibit), 2024-06-10)"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-15",
+      "kind": "step",
+      "agent": "reviewer",
+      "round": 1,
+      "tool": "read_document",
+      "title": "15. read_document  (reviewer, round 1)",
+      "lines": [
+        "read_document(mnst-otp-20240508)",
+        "mnst-otp-20240508 (issuer tender offer (Offer to Purchase, excerpt), 2024-05-08)"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-16",
+      "kind": "step",
+      "agent": "reviewer",
+      "round": 1,
+      "tool": "read_document",
+      "title": "16. read_document  (reviewer, round 1)",
+      "lines": [
+        "read_document(acct4407-position-20240610)",
+        "acct4407-position-20240610 (custody position + instruction record (constructed), 2024-06-10)"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-17",
+      "kind": "step",
+      "agent": "reviewer",
+      "round": 1,
+      "tool": "get_position",
+      "title": "17. get_position  (reviewer, round 1)",
+      "lines": [
+        "get_position(ACCT-4407, as of 2024-06-05)",
+        "10,000 shares, settled (position row 2024-06-04); tendered 10,000"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-18",
+      "kind": "step",
+      "agent": "reviewer",
+      "round": 1,
+      "tool": "get_position",
+      "title": "18. get_position  (reviewer, round 1)",
+      "lines": [
+        "get_position(ACCT-4407, as of 2024-06-10)",
+        "10,000 shares, settled (position row 2024-06-04); tendered 10,000"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-19",
+      "kind": "step",
+      "agent": "reviewer",
+      "round": 1,
+      "tool": "calculate",
+      "title": "19. calculate  (reviewer, round 1)",
+      "lines": [
+        "calculate(10000*0.4718)",
+        "= 4718"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-20",
+      "kind": "step",
+      "agent": "reviewer",
+      "round": 1,
+      "tool": "calculate",
+      "title": "20. calculate  (reviewer, round 1)",
+      "lines": [
+        "calculate(4718*53)",
+        "= 250054"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-21",
+      "kind": "step",
+      "agent": "reviewer",
+      "round": 1,
+      "tool": "calculate",
+      "title": "21. calculate  (reviewer, round 1)",
+      "lines": [
+        "calculate(10000-4718)",
+        "= 5282"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-22",
+      "kind": "step",
+      "agent": "reviewer",
+      "round": 1,
+      "tool": "review_verdict",
+      "title": "22. review_verdict  (reviewer, round 1)",
+      "lines": [
+        "review_verdict(reject, 1 finding(s))",
+        "verdict reject recorded"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-23",
+      "kind": "step",
+      "agent": "maker",
+      "round": 2,
+      "tool": "list_documents",
+      "title": "23. list_documents  (maker, round 2)",
+      "lines": [
+        "list_documents()",
+        "4 documents: mnst-otp-20240508, mnst-results-20240610, acct4407-position-20240610, incy-results-20240613"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-24",
+      "kind": "step",
+      "agent": "maker",
+      "round": 2,
+      "tool": "read_document",
+      "title": "24. read_document  (maker, round 2)",
+      "lines": [
+        "read_document(mnst-results-20240610)",
+        "mnst-results-20240610 (issuer press release (final results, SC TO-I/A exhibit), 2024-06-10)"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-25",
+      "kind": "step",
+      "agent": "maker",
+      "round": 2,
+      "tool": "read_document",
+      "title": "25. read_document  (maker, round 2)",
+      "lines": [
+        "read_document(mnst-otp-20240508)",
+        "mnst-otp-20240508 (issuer tender offer (Offer to Purchase, excerpt), 2024-05-08)"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-26",
+      "kind": "step",
+      "agent": "maker",
+      "round": 2,
+      "tool": "read_document",
+      "title": "26. read_document  (maker, round 2)",
+      "lines": [
+        "read_document(acct4407-position-20240610)",
+        "acct4407-position-20240610 (custody position + instruction record (constructed), 2024-06-10)"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-27",
+      "kind": "step",
+      "agent": "maker",
+      "round": 2,
+      "tool": "get_position",
+      "title": "27. get_position  (maker, round 2)",
+      "lines": [
+        "get_position(ACCT-4407, as of 2024-06-05)",
+        "10,000 shares, settled (position row 2024-06-04); tendered 10,000"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-28",
+      "kind": "step",
+      "agent": "maker",
+      "round": 2,
+      "tool": "calculate",
+      "title": "28. calculate  (maker, round 2)",
+      "lines": [
+        "calculate(10000*0.4718)",
+        "= 4718"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-29",
+      "kind": "step",
+      "agent": "maker",
+      "round": 2,
+      "tool": "calculate",
+      "title": "29. calculate  (maker, round 2)",
+      "lines": [
+        "calculate(4718*53)",
+        "= 250054"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-30",
+      "kind": "step",
+      "agent": "maker",
+      "round": 2,
+      "tool": "calculate",
+      "title": "30. calculate  (maker, round 2)",
+      "lines": [
+        "calculate(10000-4718)",
+        "= 5282"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-31",
+      "kind": "step",
+      "agent": "maker",
+      "round": 2,
+      "tool": "escalate",
+      "title": "31. escalate  (maker, round 2)",
+      "lines": [
+        "escalate(missing: Monster Beverage tender offer payment notice establishing...; hold: Book $250,054 gross tender proceeds receivable)",
+        "L4 escalation recorded"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-32",
+      "kind": "step",
+      "agent": "maker",
+      "round": 2,
+      "tool": "escalate",
+      "title": "32. escalate  (maker, round 2)",
+      "lines": [
+        "escalate(missing: Monster Beverage tender offer Letter of Transmittal; hold: Determine and book fee deductions/net tender proceeds)",
+        "L5 escalation recorded"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-33",
+      "kind": "step",
+      "agent": "maker",
+      "round": 2,
+      "tool": "confirm_position",
+      "title": "33. confirm_position  (maker, round 2)",
+      "lines": [
+        "confirm_position(5282 MNST as of 2024-06-10)",
+        "L6 confirmed 5282.0 as of 2024-06-10"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-34",
+      "kind": "step",
+      "agent": "maker",
+      "round": 2,
+      "tool": "submit_worksheet",
+      "title": "34. submit_worksheet  (maker, round 2)",
+      "lines": [
+        "submit_worksheet(...)",
+        "worksheet submitted; episode ended (3 ledger entries)"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-35",
+      "kind": "step",
+      "agent": "reviewer",
+      "round": 2,
+      "tool": "list_documents",
+      "title": "35. list_documents  (reviewer, round 2)",
+      "lines": [
+        "list_documents()",
+        "4 documents: mnst-otp-20240508, mnst-results-20240610, acct4407-position-20240610, incy-results-20240613"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-36",
+      "kind": "step",
+      "agent": "reviewer",
+      "round": 2,
+      "tool": "read_document",
+      "title": "36. read_document  (reviewer, round 2)",
+      "lines": [
+        "read_document(mnst-results-20240610)",
+        "mnst-results-20240610 (issuer press release (final results, SC TO-I/A exhibit), 2024-06-10)"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-37",
+      "kind": "step",
+      "agent": "reviewer",
+      "round": 2,
+      "tool": "read_document",
+      "title": "37. read_document  (reviewer, round 2)",
+      "lines": [
+        "read_document(mnst-otp-20240508)",
+        "mnst-otp-20240508 (issuer tender offer (Offer to Purchase, excerpt), 2024-05-08)"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-38",
+      "kind": "step",
+      "agent": "reviewer",
+      "round": 2,
+      "tool": "read_document",
+      "title": "38. read_document  (reviewer, round 2)",
+      "lines": [
+        "read_document(acct4407-position-20240610)",
+        "acct4407-position-20240610 (custody position + instruction record (constructed), 2024-06-10)"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-39",
+      "kind": "step",
+      "agent": "reviewer",
+      "round": 2,
+      "tool": "get_position",
+      "title": "39. get_position  (reviewer, round 2)",
+      "lines": [
+        "get_position(ACCT-4407, as of 2024-06-05)",
+        "10,000 shares, settled (position row 2024-06-04); tendered 10,000"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-40",
+      "kind": "step",
+      "agent": "reviewer",
+      "round": 2,
+      "tool": "calculate",
+      "title": "40. calculate  (reviewer, round 2)",
+      "lines": [
+        "calculate(10000*0.4718)",
+        "= 4718"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-41",
+      "kind": "step",
+      "agent": "reviewer",
+      "round": 2,
+      "tool": "calculate",
+      "title": "41. calculate  (reviewer, round 2)",
+      "lines": [
+        "calculate(4718*53)",
+        "= 250054"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-42",
+      "kind": "step",
+      "agent": "reviewer",
+      "round": 2,
+      "tool": "calculate",
+      "title": "42. calculate  (reviewer, round 2)",
+      "lines": [
+        "calculate(10000-4718)",
+        "= 5282"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-43",
+      "kind": "step",
+      "agent": "reviewer",
+      "round": 2,
+      "tool": "get_position",
+      "title": "43. get_position  (reviewer, round 2)",
+      "lines": [
+        "get_position(ACCT-4407, as of 2024-06-10)",
+        "10,000 shares, settled (position row 2024-06-04); tendered 10,000"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-44",
+      "kind": "step",
+      "agent": "reviewer",
+      "round": 2,
+      "tool": "review_verdict",
+      "title": "44. review_verdict  (reviewer, round 2)",
+      "lines": [
+        "review_verdict(approve, 0 finding(s))",
+        "verdict approve recorded"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "ledger",
+      "kind": "ledger",
+      "title": "The ledger (what was booked)",
+      "lines": [
+        "L4: escalate missing_document='Monster Beverage tender offer payment notice establishing the payment date' held_action='Book $250,054 gross tender proceeds receivable' reason='The final-results document determines accepted shares and gross proceeds but provides no payment date. Hold booking of the gross cash receivable until a governing payment notice or other source document supplies the pay date.'",
+        "L5: escalate missing_document='Monster Beverage tender offer Letter of Transmittal' held_action='Determine and book fee deductions/net tender proceeds' reason='The Offer to Purchase references a Letter of Transmittal that is absent from the store. Fees or charges deductible from tender proceeds and therefore net proceeds cannot be determined.'",
+        "L6: confirm_position ticker=MNST shares=5282.0 as_of=2024-06-10 basis_doc=mnst-results-20240610"
+      ],
+      "duration_s": 5
+    },
+    {
+      "id": "tieout",
+      "kind": "check",
+      "title": "Does the worksheet tie to the ledger?",
+      "lines": [
+        "no amount to compare",
+        "GATE.ELECT on the ledger: no",
+        "flags: ledger_missing_required, ledger_overescalate"
+      ],
+      "ok": false,
+      "duration_s": 5
+    },
+    {
+      "id": "grade",
+      "kind": "grade",
+      "title": "The grade",
+      "lines": [
+        "worksheet: 0.983 gated, AllPass 0, gates none",
+        "terminal state: 0.823 gated, AllPass 0, gates none",
+        "flags: ledger_missing_required, ledger_overescalate"
+      ],
+      "ok": false,
+      "duration_s": 5
+    },
+    {
+      "id": "review-1",
+      "kind": "review",
+      "title": "The checker, round 1: rejected a correct ledger",
+      "lines": [
+        "verdict: REJECT",
+        "the ledger it was shown was correct",
+        "the reviewer recomputed (list_documents x1, read_document x3, get_position x2, calculate x3, review_verdict x1)",
+        "- {\"entry\": \"L2\", \"what_is_wrong\": \"The receivable uses 2024-06-10 as the pay date solely because it is the final-results announcement date. The governing final-results document establishes the $53 price, approximately 47.18% proration, and resulting 4,718 accepted shares/$250,054 gross proceeds, but it does not state that payment occurs on 2024-06-10.\", \"what_it_should_be\": \"Retain 4,718 shares and $250,054 gross proceeds, but leave the pay date pending/undetermined until supported by a governing payment notice or other source document; do not book 2024-06-10 as the pay date.\"}"
+      ],
+      "ok": false,
+      "cell": "rejected a correct ledger",
+      "duration_s": 6
+    },
+    {
+      "id": "review-2",
+      "kind": "review",
+      "title": "The checker, round 2: approved a wrong ledger",
+      "lines": [
+        "verdict: APPROVE",
+        "the ledger it was shown was WRONG",
+        "the reviewer recomputed (list_documents x1, read_document x3, get_position x2, calculate x3, review_verdict x1)"
+      ],
+      "ok": false,
+      "cell": "approved a wrong ledger",
+      "duration_s": 6
+    },
+    {
+      "id": "closing",
+      "kind": "title",
+      "title": "Does it tie out?",
+      "lines": [
+        "TieOutBench · evals.finance",
+        "eval #6, phase 2: the agent environment"
+      ],
+      "duration_s": 3
+    }
+  ]
+}

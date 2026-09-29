@@ -1,0 +1,111 @@
+{
+  "E1": {
+    "terms": {
+      "record_date": "2014-04-28",
+      "rate": 0.072,
+      "pay_date": "2014-06-02"
+    },
+    "citation": {
+      "verbatim": "The dividend is to be paid on June 2, 2014 to holders of record on April 28, 2014.",
+      "document": "zts-8k-20140327",
+      "locator": "First paragraph"
+    }
+  },
+  "C3": {
+    "impact": {
+      "gross_cash": 1800
+    },
+    "changes": [
+      {
+        "what": "cash receivable",
+        "old": 0,
+        "new": 1800,
+        "where": "ACCT-2101 ledger"
+      }
+    ]
+  },
+  "E2": {
+    "position": {
+      "shares_settled": 25000
+    },
+    "basis_shares": 25000
+  },
+  "D1": {
+    "decision": "book_receivable",
+    "actions": [
+      {
+        "_entry": "L1",
+        "_kind": "book_receivable",
+        "action": "book receivable of $1,800.00",
+        "amount": 1800.0,
+        "by_date": "2014-06-02",
+        "basis_doc": "zts-8k-20140327",
+        "quantity": 25000.0,
+        "option": null
+      },
+      {
+        "_entry": "L2",
+        "_kind": "escalate",
+        "action": "escalate and hold: reinvest_dividend_cash",
+        "note": "missing document: Zoetis Dividend Reinvestment Plan Prospectus",
+        "by_date": null,
+        "basis_doc": null,
+        "amount": null,
+        "option": null,
+        "quantity": null
+      }
+    ]
+  },
+  "P2": {
+    "entitlement_basis": "record_date",
+    "entitlement_basis_date": "2014-04-28",
+    "election_deadline": null,
+    "dates": {
+      "record_date": "2014-04-28",
+      "corrected": "2014-03-27",
+      "declared": "2014-03-26",
+      "pay_date": "2014-06-02"
+    }
+  },
+  "C2": {
+    "election_required": false,
+    "options": null,
+    "economics": null,
+    "default_option": null
+  },
+  "C1": {
+    "cil": {
+      "amount": null,
+      "applicable": false
+    },
+    "entitlement": {
+      "eligible_shares": 25000,
+      "gross_cash": 1800,
+      "rate": 0.072
+    }
+  },
+  "D2": {
+    "probe": {
+      "label": "NOT_DETERMINABLE",
+      "derivation": "The document store does not contain the Zoetis Dividend Reinvestment Plan Prospectus specifying the reinvestment pricing formula or price for the June 2, 2014 dividend payment. Escalated missing document Zoetis Dividend Reinvestment Plan Prospectus to desk supervisor.",
+      "value": null
+    },
+    "twins": [
+      {
+        "id": "TW1",
+        "value": 1800
+      }
+    ]
+  },
+  "P1": {
+    "security": {
+      "ticker": "ZTS"
+    },
+    "event_type": "mandatory",
+    "issuer": "Zoetis Inc.",
+    "governing_doc": "zts-8k-20140327",
+    "superseded_docs": [
+      "zts-8k-20140326"
+    ]
+  }
+}

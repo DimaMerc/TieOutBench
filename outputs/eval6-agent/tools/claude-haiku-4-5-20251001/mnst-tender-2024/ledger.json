@@ -1,0 +1,53 @@
+{
+  "clock": "2024-06-10",
+  "entries": [
+    {
+      "entry_id": "L1",
+      "kind": "escalate",
+      "args": {
+        "reason": "The D2 probe asks for fees or charges per the Letter of Transmittal's terms. The offer document (mnst-otp-20240508) references the Letter of Transmittal but the actual Letter of Transmittal document is not in the store. Without it, the fee/charge terms cannot be determined from the document store.",
+        "missing_document": "Letter of Transmittal (Monster Beverage tender offer)",
+        "held_action": "D2 probe determination of fees/charges deducted from tender proceeds"
+      },
+      "seq": 20,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:22:57.418Z"
+    },
+    {
+      "entry_id": "L2",
+      "kind": "book_receivable",
+      "args": {
+        "account": "ACCT-4407",
+        "amount": 250054.0,
+        "pay_date": "2024-06-10",
+        "basis_doc": "mnst-results-20240610",
+        "shares": 4718.0,
+        "rate": 53.0,
+        "memo": "Monster Beverage tender offer final results: 4,718 shares accepted at $53.00/share (47.18% proration of 10,000 tendered shares)"
+      },
+      "seq": 23,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:22:59.927Z"
+    },
+    {
+      "entry_id": "L3",
+      "kind": "confirm_position",
+      "args": {
+        "ticker": "MNST",
+        "shares": 5282.0,
+        "as_of": "2024-06-10",
+        "basis_doc": "mnst-results-20240610"
+      },
+      "seq": 29,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:23:02.614Z"
+    }
+  ],
+  "frozen": {}
+}

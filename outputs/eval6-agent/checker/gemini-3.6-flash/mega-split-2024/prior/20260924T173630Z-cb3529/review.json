@@ -1,0 +1,77 @@
+{
+  "rounds": [
+    {
+      "round": 1,
+      "verdict": "reject",
+      "findings": [
+        "Entry L1 rests on superseded announcement document nvda-8k-20240522 instead of the governing effectiveness document nvda-8k-20240607; basis_doc should be nvda-8k-20240607.",
+        "Entry L2 rests on superseded announcement document nvda-8k-20240522 instead of the governing effectiveness document nvda-8k-20240607; basis_doc should be nvda-8k-20240607.",
+        "Entry L3 attempts to escalate for booking a dividend receivable on 2024-06-10, but the dividend record date is 2024-06-11; entry L3 is premature and invalid as of 2024-06-10 and should be removed."
+      ],
+      "turns": 8,
+      "incomplete": false,
+      "ended_by": "end",
+      "ledger_shown_correct": true,
+      "ledger_shown_elect": false,
+      "ledger_shown_flags": []
+    },
+    {
+      "round": 2,
+      "verdict": "approve",
+      "findings": [],
+      "turns": 12,
+      "incomplete": false,
+      "ended_by": "end",
+      "ledger_shown_correct": true,
+      "ledger_shown_elect": false,
+      "ledger_shown_flags": []
+    }
+  ],
+  "ledger_v1": [
+    {
+      "entry_id": "L1",
+      "kind": "update_pcf",
+      "args": {
+        "ticker": "NVDA",
+        "quantity_per_cu": 1800.0,
+        "previous_quantity_per_cu": 180,
+        "basis_doc": "nvda-8k-20240522",
+        "memo": "Update NVDA basket quantity per creation unit for 10-for-1 forward stock split"
+      },
+      "seq": 31,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:27:05.354Z"
+    },
+    {
+      "entry_id": "L2",
+      "kind": "confirm_position",
+      "args": {
+        "ticker": "NVDA",
+        "shares": 180000.0,
+        "as_of": "2024-06-10",
+        "basis_doc": "nvda-8k-20240522"
+      },
+      "seq": 34,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:27:06.602Z"
+    },
+    {
+      "entry_id": "L3",
+      "kind": "escalate",
+      "args": {
+        "reason": "The document store does not contain tax status or withholding tax schedule documentation to calculate net dividend proceeds after tax withholding.",
+        "missing_document": "withholding tax schedule / fund tax profile",
+        "held_action": "book_receivable for June dividend"
+      },
+      "seq": 37,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:27:09.830Z"
+    }
+  ]
+}

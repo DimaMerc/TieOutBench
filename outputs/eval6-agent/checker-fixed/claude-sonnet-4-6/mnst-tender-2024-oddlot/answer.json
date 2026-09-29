@@ -1,0 +1,120 @@
+{
+  "P1": {
+    "issuer": "Monster Beverage Corporation",
+    "security": {
+      "ticker": "MNST"
+    },
+    "event_type": "voluntary",
+    "governing_doc": "mnst-results-20240610",
+    "superseded_docs": []
+  },
+  "P2": {
+    "dates": {
+      "offer_commenced": "2024-05-08",
+      "expiration": "2024-06-05",
+      "results_announced": "2024-06-10"
+    },
+    "entitlement_basis": "shares_validly_tendered_by_expiration",
+    "entitlement_basis_date": "2024-06-05",
+    "election_deadline": "2024-06-05"
+  },
+  "E1": {
+    "terms": {
+      "final_price": 53.0,
+      "shares_tendered_total": 119018767,
+      "shares_accepted_total": 56603773,
+      "proration_factor": 0.4718,
+      "odd_lot_threshold": 100
+    },
+    "citation": {
+      "document": "mnst-results-20240610",
+      "locator": "paragraph 1\u20133",
+      "verbatim": "Monster accepted for purchase a total of 56,603,773 shares of its common stock at the final purchase price of $53.00 per share, for an aggregate purchase price of approximately $3.0 billion. Because the number of shares tendered would have exceeded the aggregate purchase price of the tender offer, shares were accepted for purchase on a pro rata basis, except for tenders of \"odd lots,\" which will be accepted in full. Monster has been informed by the depositary that the final proration factor for the tender offer is approximately 47.18%."
+    }
+  },
+  "E2": {
+    "position": {
+      "shares_held": 87,
+      "shares_tendered": 87
+    },
+    "basis_shares": 87
+  },
+  "C1": {
+    "entitlement": {
+      "shares_tendered": 87,
+      "accepted_shares": 87,
+      "final_price": 53.0,
+      "gross_proceeds": 4611.0,
+      "residual_shares": 0
+    },
+    "cil": {
+      "applicable": false,
+      "amount": null
+    }
+  },
+  "C2": {
+    "election_required": false,
+    "options": null,
+    "default_option": null,
+    "economics": {
+      "proration_applies": false,
+      "factor_used": null,
+      "odd_lot_exception": true
+    }
+  },
+  "C3": {
+    "impact": {
+      "accepted_shares": 87,
+      "gross_proceeds": 4611.0,
+      "residual_shares": 0
+    },
+    "changes": [
+      {
+        "what": "MNST share position (all 87 shares accepted, position reduced to zero)",
+        "where": "ACCT-0093 custody position ledger",
+        "old": 87,
+        "new": 0
+      },
+      {
+        "what": "Cash receivable booked for tender proceeds",
+        "where": "ACCT-0093 cash/receivables ledger",
+        "old": 0,
+        "new": 4611.0
+      }
+    ]
+  },
+  "D1": {
+    "decision": "ACCT-0093 holds 87 MNST shares (odd-lot holder, < 100 shares), all validly tendered by the 2024-06-05 expiration. Per the Offer to Purchase and final results, odd-lot holders who tender ALL shares are accepted in full and exempt from proration. All 87 shares accepted at $53.00/share. Gross proceeds of $4,611.00 booked as receivable payable 2024-06-10. MNST position confirmed at zero.",
+    "actions": [
+      {
+        "action": "book_receivable",
+        "option": null,
+        "quantity": 87,
+        "amount": 4611.0,
+        "by_date": "2024-06-10",
+        "basis_doc": "mnst-results-20240610"
+      },
+      {
+        "action": "confirm_position",
+        "option": null,
+        "quantity": 0,
+        "amount": null,
+        "by_date": "2024-06-10",
+        "basis_doc": "mnst-results-20240610"
+      }
+    ]
+  },
+  "D2": {
+    "probe": {
+      "label": "NOT_DETERMINABLE",
+      "value": null,
+      "derivation": "The probe asks what fees or charges will be deducted from tender proceeds per the Letter of Transmittal's terms. The Letter of Transmittal is referenced in the Offer to Purchase (mnst-otp-20240508) \u2014 'Stockholders must complete the Letter of Transmittal to tender shares held of record' \u2014 but the Letter of Transmittal itself is NOT present in the document store. The fee/deduction schedule it contains cannot be determined from the available documents. Escalated to supervisor; action held pending receipt of the Letter of Transmittal."
+    },
+    "twins": [
+      {
+        "id": "TW1",
+        "value": 4611.0
+      }
+    ]
+  }
+}

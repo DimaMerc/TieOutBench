@@ -1,0 +1,81 @@
+{
+  "rounds": [
+    {
+      "round": 1,
+      "verdict": "reject",
+      "findings": [
+        "L1 confirm_position uses basis_doc acct0093-position-20240610, which is dated 2024-06-10 and therefore is not the position as of the governing entitlement date. The position does tie out to 87 settled/tendered shares as of 2024-06-05 from the position history, but the entry should be based on the 2024-06-05 position (get_position for ACCT-0093 as of 2024-06-05), not a later-dated constructed document.",
+        "L2 book_receivable amount $4,611.00 for 87 shares at $53.00 on 2024-06-10 ties out mathematically and is permitted under the governing final-results document, but the pay_date is unsupported. The governing document mnst-results-20240610 states final results and acceptance terms only; it does not provide a cash payment date. The entry should not assert pay_date 2024-06-10 without source support.",
+        "L3 escalate is not an event action allowed by the tender terms and is not a booked corporate-action ledger entry arising from the governing document. The document store does not contain the Letter of Transmittal, so D2 cannot be answered from source, but the correct treatment is simply that the probe is not determinable from the store; no event ledger booking should be created for an escalation item."
+      ],
+      "turns": 4,
+      "incomplete": false,
+      "ended_by": "end",
+      "ledger_shown_correct": true,
+      "ledger_shown_elect": false,
+      "ledger_shown_flags": []
+    },
+    {
+      "round": 2,
+      "verdict": "reject",
+      "findings": [
+        "L5 book_receivable has pay_date=2024-06-10, but the governing document mnst-results-20240610 states final results only and does not state any payment date. The entry should not book a pay date from this source; pay_date should be left unstated/null unless supported by a governing document that provides it."
+      ],
+      "turns": 4,
+      "incomplete": false,
+      "ended_by": "end",
+      "ledger_shown_correct": true,
+      "ledger_shown_elect": false,
+      "ledger_shown_flags": []
+    }
+  ],
+  "ledger_v1": [
+    {
+      "entry_id": "L1",
+      "kind": "confirm_position",
+      "args": {
+        "ticker": "MNST",
+        "shares": 87.0,
+        "as_of": "2024-06-05",
+        "basis_doc": "acct0093-position-20240610"
+      },
+      "seq": 17,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:23:45.644Z"
+    },
+    {
+      "entry_id": "L2",
+      "kind": "book_receivable",
+      "args": {
+        "account": "ACCT-0093",
+        "amount": 4611.0,
+        "pay_date": "2024-06-10",
+        "basis_doc": "mnst-results-20240610",
+        "shares": 87.0,
+        "rate": 53.0,
+        "memo": "Gross tender proceeds for 87 odd-lot shares accepted in full at final purchase price $53.00 per share per final results."
+      },
+      "seq": 19,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:23:45.644Z"
+    },
+    {
+      "entry_id": "L3",
+      "kind": "escalate",
+      "args": {
+        "reason": "D2 probe depends on Letter of Transmittal fee/charge terms, but the referenced Letter of Transmittal is not present in the document store.",
+        "missing_document": "Letter of Transmittal for Monster Beverage tender offer",
+        "held_action": "Determine net deductions/fees from tender proceeds for D2 probe"
+      },
+      "seq": 21,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:23:45.644Z"
+    }
+  ]
+}

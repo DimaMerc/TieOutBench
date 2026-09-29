@@ -1,0 +1,76 @@
+{
+  "rounds": [
+    {
+      "round": 1,
+      "verdict": "reject",
+      "findings": [
+        "D2 probe / ledger entry L3 (escalate): The maker marked the NET June dividend as NOT_DETERMINABLE and escalated/held the receivable, claiming withholding/tax-status documentation is missing. This is wrong. MEGA is a U.S.-domiciled ETF receiving a U.S.-source dividend from NVDA (a U.S. issuer); no U.S. withholding applies to a U.S. person on a domestic dividend, so the 'applicable withholding' is zero. The probe IS determinable: gross = 180,000 post-split shares (record 2024-06-11, confirmed by position projection with no pending trades) x $0.01 = $1,800, and NET = $1,800. D2.label should be the value 1,800 (not NOT_DETERMINABLE), and the escalate/hold action L3 should not be booked; the net dividend receivable of $1,800 should be recognized instead.",
+        "TW1 gross figure is correct ($1,800 = 180,000 x $0.01); the split figures (18,000 pre / 180,000 post, PCF 180 -> 1,800 per creation unit, mandatory, no election) all tie out to the source \u2014 but the review is rejected solely due to the D2/L3 net-dividend error above."
+      ],
+      "turns": 4,
+      "incomplete": false,
+      "ended_by": "end",
+      "ledger_shown_correct": true,
+      "ledger_shown_elect": false,
+      "ledger_shown_flags": []
+    },
+    {
+      "round": 2,
+      "verdict": "approve",
+      "findings": [],
+      "turns": 4,
+      "incomplete": false,
+      "ended_by": "end",
+      "ledger_shown_correct": true,
+      "ledger_shown_elect": false,
+      "ledger_shown_flags": []
+    }
+  ],
+  "ledger_v1": [
+    {
+      "entry_id": "L1",
+      "kind": "update_pcf",
+      "args": {
+        "ticker": "NVDA",
+        "quantity_per_cu": 1800.0,
+        "previous_quantity_per_cu": 180,
+        "basis_doc": "nvda-8k-20240607",
+        "memo": "Update MEGA PCF NVDA quantity per creation unit for ten-for-one split effective 2024-06-07; split-adjusted trading 2024-06-10. Old PCF line was 180 shares per creation unit."
+      },
+      "seq": 32,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:20:48.219Z"
+    },
+    {
+      "entry_id": "L2",
+      "kind": "confirm_position",
+      "args": {
+        "ticker": "NVDA",
+        "shares": 180000.0,
+        "as_of": "2024-06-10",
+        "basis_doc": "nvda-8k-20240607"
+      },
+      "seq": 34,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:20:48.219Z"
+    },
+    {
+      "entry_id": "L3",
+      "kind": "escalate",
+      "args": {
+        "reason": "The store states the gross NVDA dividend rate and record/pay dates but does not provide any applicable withholding rate or tax-status documentation needed to compute net cash after withholding.",
+        "missing_document": "applicable withholding/tax-status documentation for MEGA's NVDA dividend (withholding rate)",
+        "held_action": "net dividend cash receivable determination/booking"
+      },
+      "seq": 37,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:20:56.798Z"
+    }
+  ]
+}

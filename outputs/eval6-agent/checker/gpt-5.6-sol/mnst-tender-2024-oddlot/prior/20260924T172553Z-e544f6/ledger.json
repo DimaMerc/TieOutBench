@@ -1,0 +1,194 @@
+{
+  "clock": "2024-06-10",
+  "entries": [
+    {
+      "entry_id": "L1",
+      "kind": "escalate",
+      "args": {
+        "reason": "The Offer to Purchase states that stockholders must complete the Letter of Transmittal, but the Letter of Transmittal is absent from the store. Its fee/charge deduction terms are required to determine deductions from tender proceeds. Gross proceeds remain determinable from the final results.",
+        "missing_document": "Monster Beverage tender offer Letter of Transmittal",
+        "held_action": "Determine and apply any fees or charges to derive net tender proceeds"
+      },
+      "seq": 20,
+      "agent": "maker",
+      "round": 1,
+      "voided": true,
+      "t": "2026-09-24T17:14:42.239Z",
+      "voided_round": 1
+    },
+    {
+      "entry_id": "L2",
+      "kind": "book_receivable",
+      "args": {
+        "account": "ACCT-0093",
+        "amount": 4611.0,
+        "pay_date": "2024-06-10",
+        "basis_doc": "mnst-results-20240610",
+        "shares": 87.0,
+        "rate": 53.0,
+        "memo": "Gross tender proceeds for 87 odd-lot shares accepted in full. Any fees or charges and resulting net proceeds are held pending receipt of the Letter of Transmittal."
+      },
+      "seq": 23,
+      "agent": "maker",
+      "round": 1,
+      "voided": true,
+      "t": "2026-09-24T17:15:02.207Z",
+      "voided_round": 1
+    },
+    {
+      "entry_id": "L3",
+      "kind": "confirm_position",
+      "args": {
+        "ticker": "MNST",
+        "shares": 87.0,
+        "as_of": "2024-06-05",
+        "basis_doc": "mnst-results-20240610"
+      },
+      "seq": 25,
+      "agent": "maker",
+      "round": 1,
+      "voided": true,
+      "t": "2026-09-24T17:15:02.207Z",
+      "voided_round": 1
+    },
+    {
+      "entry_id": "L4",
+      "kind": "escalate",
+      "args": {
+        "reason": "The final-results release determines the $4,611 gross receivable but provides no payment date, and no authoritative payment-date source is present. Because book_receivable requires a pay_date, hold only release of the receivable entry pending authoritative payment-date documentation.",
+        "missing_document": "Authoritative Monster Beverage tender payment-date notice",
+        "held_action": "Book the $4,611 gross tender receivable with its authoritative pay date"
+      },
+      "seq": 72,
+      "agent": "maker",
+      "round": 2,
+      "voided": false,
+      "t": "2026-09-24T17:26:28.020Z"
+    },
+    {
+      "entry_id": "L5",
+      "kind": "escalate",
+      "args": {
+        "reason": "The Offer to Purchase refers to the Letter of Transmittal, but that document is absent. Its terms are needed to determine what fees or charges, if any, will be deducted from tender proceeds.",
+        "missing_document": "Monster Beverage tender offer Letter of Transmittal",
+        "held_action": "Determine and apply any fees or charges to net tender proceeds"
+      },
+      "seq": 74,
+      "agent": "maker",
+      "round": 2,
+      "voided": false,
+      "t": "2026-09-24T17:26:28.020Z"
+    },
+    {
+      "entry_id": "L6",
+      "kind": "confirm_position",
+      "args": {
+        "ticker": "MNST",
+        "shares": 87.0,
+        "as_of": "2024-06-05",
+        "basis_doc": "acct0093-position-20240610"
+      },
+      "seq": 77,
+      "agent": "maker",
+      "round": 2,
+      "voided": false,
+      "t": "2026-09-24T17:26:31.276Z"
+    }
+  ],
+  "frozen": {
+    "ledger_v1": [
+      {
+        "entry_id": "L1",
+        "kind": "escalate",
+        "args": {
+          "reason": "The Offer to Purchase states that stockholders must complete the Letter of Transmittal, but the Letter of Transmittal is absent from the store. Its fee/charge deduction terms are required to determine deductions from tender proceeds. Gross proceeds remain determinable from the final results.",
+          "missing_document": "Monster Beverage tender offer Letter of Transmittal",
+          "held_action": "Determine and apply any fees or charges to derive net tender proceeds"
+        },
+        "seq": 20,
+        "agent": "maker",
+        "round": 1,
+        "voided": false,
+        "t": "2026-09-24T17:14:42.239Z"
+      },
+      {
+        "entry_id": "L2",
+        "kind": "book_receivable",
+        "args": {
+          "account": "ACCT-0093",
+          "amount": 4611.0,
+          "pay_date": "2024-06-10",
+          "basis_doc": "mnst-results-20240610",
+          "shares": 87.0,
+          "rate": 53.0,
+          "memo": "Gross tender proceeds for 87 odd-lot shares accepted in full. Any fees or charges and resulting net proceeds are held pending receipt of the Letter of Transmittal."
+        },
+        "seq": 23,
+        "agent": "maker",
+        "round": 1,
+        "voided": false,
+        "t": "2026-09-24T17:15:02.207Z"
+      },
+      {
+        "entry_id": "L3",
+        "kind": "confirm_position",
+        "args": {
+          "ticker": "MNST",
+          "shares": 87.0,
+          "as_of": "2024-06-05",
+          "basis_doc": "mnst-results-20240610"
+        },
+        "seq": 25,
+        "agent": "maker",
+        "round": 1,
+        "voided": false,
+        "t": "2026-09-24T17:15:02.207Z"
+      }
+    ],
+    "ledger_v2": [
+      {
+        "entry_id": "L4",
+        "kind": "escalate",
+        "args": {
+          "reason": "The final-results release determines the $4,611 gross receivable but provides no payment date, and no authoritative payment-date source is present. Because book_receivable requires a pay_date, hold only release of the receivable entry pending authoritative payment-date documentation.",
+          "missing_document": "Authoritative Monster Beverage tender payment-date notice",
+          "held_action": "Book the $4,611 gross tender receivable with its authoritative pay date"
+        },
+        "seq": 72,
+        "agent": "maker",
+        "round": 2,
+        "voided": false,
+        "t": "2026-09-24T17:26:28.020Z"
+      },
+      {
+        "entry_id": "L5",
+        "kind": "escalate",
+        "args": {
+          "reason": "The Offer to Purchase refers to the Letter of Transmittal, but that document is absent. Its terms are needed to determine what fees or charges, if any, will be deducted from tender proceeds.",
+          "missing_document": "Monster Beverage tender offer Letter of Transmittal",
+          "held_action": "Determine and apply any fees or charges to net tender proceeds"
+        },
+        "seq": 74,
+        "agent": "maker",
+        "round": 2,
+        "voided": false,
+        "t": "2026-09-24T17:26:28.020Z"
+      },
+      {
+        "entry_id": "L6",
+        "kind": "confirm_position",
+        "args": {
+          "ticker": "MNST",
+          "shares": 87.0,
+          "as_of": "2024-06-05",
+          "basis_doc": "acct0093-position-20240610"
+        },
+        "seq": 77,
+        "agent": "maker",
+        "round": 2,
+        "voided": false,
+        "t": "2026-09-24T17:26:31.276Z"
+      }
+    ]
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "rounds": [
+    {
+      "round": 1,
+      "verdict": "approve",
+      "findings": [],
+      "turns": 4,
+      "incomplete": false,
+      "ended_by": "end",
+      "ledger_shown_correct": true,
+      "ledger_shown_elect": false,
+      "ledger_shown_flags": []
+    }
+  ],
+  "ledger_v1": [
+    {
+      "entry_id": "L1",
+      "kind": "escalate",
+      "args": {
+        "reason": "The store establishes the corrected gross dividend but contains no beneficial-owner tax documentation or applicable withholding/treaty determination needed to compute the foreign-domiciled subaccount's net cash. Hold only the net-after-withholding figure; gross entitlement processing may proceed.",
+        "missing_document": "Beneficial-owner withholding documentation and applicable tax-rate/treaty determination (e.g., valid Form W-8 and withholding-rate record)",
+        "held_action": "Determine and book net dividend/withholding adjustment"
+      },
+      "seq": 23,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:32:39.148Z"
+    },
+    {
+      "entry_id": "L2",
+      "kind": "confirm_position",
+      "args": {
+        "ticker": "BRY",
+        "shares": 40000.0,
+        "as_of": "2024-08-23",
+        "basis_doc": "bry-8k-20240813"
+      },
+      "seq": 25,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:32:39.148Z"
+    },
+    {
+      "entry_id": "L3",
+      "kind": "book_receivable",
+      "args": {
+        "account": "ACCT-7712",
+        "amount": 6800.0,
+        "pay_date": "2024-08-30",
+        "basis_doc": "bry-8k-20240813",
+        "shares": 40000.0,
+        "rate": 0.17,
+        "memo": "Gross BRY dividend receivable on corrected terms; withholding/net amount held pending beneficial-owner tax documentation and applicable rate determination."
+      },
+      "seq": 27,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:32:39.148Z"
+    }
+  ]
+}

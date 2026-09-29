@@ -1,0 +1,497 @@
+{
+  "case_id": "zts-dividend-2014",
+  "arm": "checker",
+  "model_id": "gpt-5.6-sol",
+  "scripted": false,
+  "total_s": 121,
+  "scenes": [
+    {
+      "id": "episode",
+      "kind": "title",
+      "title": "zts-dividend-2014 · arm: checker",
+      "lines": [
+        "as of 2014-04-01",
+        "Process the Zoetis second-quarter dividend for the account.",
+        "run: gpt-5.6-sol"
+      ],
+      "duration_s": 4
+    },
+    {
+      "id": "step-1",
+      "kind": "step",
+      "agent": "maker",
+      "round": 1,
+      "tool": "list_documents",
+      "title": "1. list_documents",
+      "lines": [
+        "list_documents()",
+        "4 documents: zts-8k-20140326, zts-8k-20140327, acct2101-position-20140331, broker-memo-20140328"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-2",
+      "kind": "step",
+      "agent": "maker",
+      "round": 1,
+      "tool": "read_document",
+      "title": "2. read_document",
+      "lines": [
+        "read_document(zts-8k-20140326)",
+        "zts-8k-20140326 (issuer 8-K exhibit (dividend declaration), 2014-03-26)"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-3",
+      "kind": "step",
+      "agent": "maker",
+      "round": 1,
+      "tool": "read_document",
+      "title": "3. read_document",
+      "lines": [
+        "read_document(zts-8k-20140327)",
+        "zts-8k-20140327 (issuer 8-K exhibit (CORRECTING and REPLACING), 2014-03-27)"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-4",
+      "kind": "step",
+      "agent": "maker",
+      "round": 1,
+      "tool": "read_document",
+      "title": "4. read_document",
+      "lines": [
+        "read_document(acct2101-position-20140331)",
+        "acct2101-position-20140331 (custody position report (constructed), 2014-03-31)"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-5",
+      "kind": "step",
+      "agent": "maker",
+      "round": 1,
+      "tool": "get_position",
+      "title": "5. get_position",
+      "lines": [
+        "get_position(ACCT-2101, as of 2014-04-28)",
+        "25,000 shares, projected (position row 2014-02-14)"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-6",
+      "kind": "step",
+      "agent": "maker",
+      "round": 1,
+      "tool": "calculate",
+      "title": "6. calculate",
+      "lines": [
+        "calculate(25000*0.072)",
+        "= 1800"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-7",
+      "kind": "step",
+      "agent": "maker",
+      "round": 1,
+      "tool": "book_receivable",
+      "title": "7. book_receivable",
+      "lines": [
+        "book_receivable($1,800.00, pay 2014-06-02, basis zts-8k-20140327, 25000 shares)",
+        "L1 booked $1,800.00 for 2014-06-02 on zts-8k-20140327"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-8",
+      "kind": "step",
+      "agent": "maker",
+      "round": 1,
+      "tool": "confirm_position",
+      "title": "8. confirm_position",
+      "lines": [
+        "confirm_position(25000 ZTS as of 2014-04-28)",
+        "L2 confirmed 25000.0 as of 2014-04-28"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-9",
+      "kind": "step",
+      "agent": "maker",
+      "round": 1,
+      "tool": "escalate",
+      "title": "9. escalate",
+      "lines": [
+        "escalate(missing: Zoetis dividend reinvestment plan pricing terms / adminis...; hold: Determine and apply the reinvestment price only; do not hold the gr...)",
+        "L3 escalation recorded"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-10",
+      "kind": "step",
+      "agent": "maker",
+      "round": 1,
+      "tool": "submit_worksheet",
+      "title": "10. submit_worksheet",
+      "lines": [
+        "submit_worksheet(...)",
+        "worksheet submitted; episode ended (3 ledger entries)"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-11",
+      "kind": "step",
+      "agent": "reviewer",
+      "round": 1,
+      "tool": "list_documents",
+      "title": "11. list_documents  (reviewer, round 1)",
+      "lines": [
+        "list_documents()",
+        "4 documents: zts-8k-20140326, zts-8k-20140327, acct2101-position-20140331, broker-memo-20140328"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-12",
+      "kind": "step",
+      "agent": "reviewer",
+      "round": 1,
+      "tool": "read_document",
+      "title": "12. read_document  (reviewer, round 1)",
+      "lines": [
+        "read_document(zts-8k-20140327)",
+        "zts-8k-20140327 (issuer 8-K exhibit (CORRECTING and REPLACING), 2014-03-27)"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-13",
+      "kind": "step",
+      "agent": "reviewer",
+      "round": 1,
+      "tool": "read_document",
+      "title": "13. read_document  (reviewer, round 1)",
+      "lines": [
+        "read_document(zts-8k-20140326)",
+        "zts-8k-20140326 (issuer 8-K exhibit (dividend declaration), 2014-03-26)"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-14",
+      "kind": "step",
+      "agent": "reviewer",
+      "round": 1,
+      "tool": "get_position",
+      "title": "14. get_position  (reviewer, round 1)",
+      "lines": [
+        "get_position(ACCT-2101, as of 2014-04-28)",
+        "25,000 shares, projected (position row 2014-02-14)"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-15",
+      "kind": "step",
+      "agent": "reviewer",
+      "round": 1,
+      "tool": "calculate",
+      "title": "15. calculate  (reviewer, round 1)",
+      "lines": [
+        "calculate(25000*0.072)",
+        "= 1800"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-16",
+      "kind": "step",
+      "agent": "reviewer",
+      "round": 1,
+      "tool": "review_verdict",
+      "title": "16. review_verdict  (reviewer, round 1)",
+      "lines": [
+        "review_verdict(reject, 1 finding(s))",
+        "verdict reject recorded"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-17",
+      "kind": "step",
+      "agent": "maker",
+      "round": 2,
+      "tool": "list_documents",
+      "title": "17. list_documents  (maker, round 2)",
+      "lines": [
+        "list_documents()",
+        "4 documents: zts-8k-20140326, zts-8k-20140327, acct2101-position-20140331, broker-memo-20140328"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-18",
+      "kind": "step",
+      "agent": "maker",
+      "round": 2,
+      "tool": "read_document",
+      "title": "18. read_document  (maker, round 2)",
+      "lines": [
+        "read_document(zts-8k-20140327)",
+        "zts-8k-20140327 (issuer 8-K exhibit (CORRECTING and REPLACING), 2014-03-27)"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-19",
+      "kind": "step",
+      "agent": "maker",
+      "round": 2,
+      "tool": "get_position",
+      "title": "19. get_position  (maker, round 2)",
+      "lines": [
+        "get_position(ACCT-2101, as of 2014-04-28)",
+        "25,000 shares, projected (position row 2014-02-14)"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-20",
+      "kind": "step",
+      "agent": "maker",
+      "round": 2,
+      "tool": "calculate",
+      "title": "20. calculate  (maker, round 2)",
+      "lines": [
+        "calculate(25000*0.072)",
+        "= 1800"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-21",
+      "kind": "step",
+      "agent": "maker",
+      "round": 2,
+      "tool": "book_receivable",
+      "title": "21. book_receivable  (maker, round 2)",
+      "lines": [
+        "book_receivable($1,800.00, pay 2014-06-02, basis zts-8k-20140327, 25000 shares)",
+        "L4 booked $1,800.00 for 2014-06-02 on zts-8k-20140327"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-22",
+      "kind": "step",
+      "agent": "maker",
+      "round": 2,
+      "tool": "confirm_position",
+      "title": "22. confirm_position  (maker, round 2)",
+      "lines": [
+        "confirm_position(25000 ZTS as of 2014-04-28)",
+        "L5 confirmed 25000.0 as of 2014-04-28"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-23",
+      "kind": "step",
+      "agent": "maker",
+      "round": 2,
+      "tool": "submit_worksheet",
+      "title": "23. submit_worksheet  (maker, round 2)",
+      "lines": [
+        "submit_worksheet(...)",
+        "worksheet submitted; episode ended (2 ledger entries)"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-24",
+      "kind": "step",
+      "agent": "reviewer",
+      "round": 2,
+      "tool": "list_documents",
+      "title": "24. list_documents  (reviewer, round 2)",
+      "lines": [
+        "list_documents()",
+        "4 documents: zts-8k-20140326, zts-8k-20140327, acct2101-position-20140331, broker-memo-20140328"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-25",
+      "kind": "step",
+      "agent": "reviewer",
+      "round": 2,
+      "tool": "read_document",
+      "title": "25. read_document  (reviewer, round 2)",
+      "lines": [
+        "read_document(zts-8k-20140327)",
+        "zts-8k-20140327 (issuer 8-K exhibit (CORRECTING and REPLACING), 2014-03-27)"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-26",
+      "kind": "step",
+      "agent": "reviewer",
+      "round": 2,
+      "tool": "read_document",
+      "title": "26. read_document  (reviewer, round 2)",
+      "lines": [
+        "read_document(zts-8k-20140326)",
+        "zts-8k-20140326 (issuer 8-K exhibit (dividend declaration), 2014-03-26)"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-27",
+      "kind": "step",
+      "agent": "reviewer",
+      "round": 2,
+      "tool": "get_position",
+      "title": "27. get_position  (reviewer, round 2)",
+      "lines": [
+        "get_position(ACCT-2101, as of 2014-04-28)",
+        "25,000 shares, projected (position row 2014-02-14)"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-28",
+      "kind": "step",
+      "agent": "reviewer",
+      "round": 2,
+      "tool": "calculate",
+      "title": "28. calculate  (reviewer, round 2)",
+      "lines": [
+        "calculate(25000*0.072)",
+        "= 1800"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-29",
+      "kind": "step",
+      "agent": "reviewer",
+      "round": 2,
+      "tool": "review_verdict",
+      "title": "29. review_verdict  (reviewer, round 2)",
+      "lines": [
+        "review_verdict(approve, 0 finding(s))",
+        "verdict approve recorded"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "ledger",
+      "kind": "ledger",
+      "title": "The ledger (what was booked)",
+      "lines": [
+        "L4: book_receivable amount=$1,800.00 pay_date=2014-06-02 shares=25000.0 rate=0.072 basis_doc=zts-8k-20140327 memo='Zoetis Q2 2014 mandatory gross cash dividend; corrected record date 2014-04-28.'",
+        "L5: confirm_position ticker=ZTS shares=25000.0 as_of=2014-04-28 basis_doc=zts-8k-20140327"
+      ],
+      "duration_s": 5
+    },
+    {
+      "id": "tieout",
+      "kind": "check",
+      "title": "Does the worksheet tie to the ledger?",
+      "lines": [
+        "L4: booked 1800.0 vs worksheet 1800.0 -> ties",
+        "GATE.ELECT on the ledger: no",
+        "flags: none"
+      ],
+      "ok": true,
+      "duration_s": 5
+    },
+    {
+      "id": "grade",
+      "kind": "grade",
+      "title": "The grade",
+      "lines": [
+        "worksheet: 1.000 gated, AllPass 1, gates none",
+        "terminal state: 1.000 gated, AllPass 1, gates none",
+        "flags: none"
+      ],
+      "ok": true,
+      "duration_s": 5
+    },
+    {
+      "id": "review-1",
+      "kind": "review",
+      "title": "The checker, round 1: rejected a correct ledger",
+      "lines": [
+        "verdict: REJECT",
+        "the ledger it was shown was correct",
+        "the reviewer recomputed (list_documents x1, read_document x2, get_position x1, calculate x1, review_verdict x1)",
+        "- {\"entry\": \"L3\", \"what_is_wrong\": \"The governing corrected issuer document provides only a mandatory cash dividend of $0.072 per share and contains no dividend-reinvestment option, election, pricing term, or dependent reinvestment action. Escalating a reinvestment price invents an action not allowed by the event; absence of DRIP documentation is not evidence that DRIP applies.\", \"what_it_should_be\": \"Remove L3 and the corresponding reinvestment escalation/hold from D1 and D2. Process only the mandatory $1,800 cash receivable for 25,000 shares, payable 2014-06-02, based on zts-8k-20140327. L1 and L2 otherwise tie out: the correction supersedes the 2014-03-26 announcement, changes the record date to 2014-04-28, the projected settled position is 25,000 shares, and 25,000 \\u00d7 $0.072 = $1,800.\"}"
+      ],
+      "ok": false,
+      "cell": "rejected a correct ledger",
+      "duration_s": 6
+    },
+    {
+      "id": "review-2",
+      "kind": "review",
+      "title": "The checker, round 2: approved a correct ledger",
+      "lines": [
+        "verdict: APPROVE",
+        "the ledger it was shown was correct",
+        "the reviewer recomputed (list_documents x1, read_document x2, get_position x1, calculate x1, review_verdict x1)"
+      ],
+      "ok": true,
+      "cell": "approved a correct ledger",
+      "duration_s": 6
+    },
+    {
+      "id": "closing",
+      "kind": "title",
+      "title": "Does it tie out?",
+      "lines": [
+        "TieOutBench · evals.finance",
+        "eval #6, phase 2: the agent environment"
+      ],
+      "duration_s": 3
+    }
+  ]
+}

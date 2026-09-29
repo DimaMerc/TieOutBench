@@ -1,0 +1,335 @@
+[
+ {
+  "role": "system",
+  "content": "You are a corporate-actions analyst on an asset-servicing desk. You process ONE corporate-action episode for an account, working through TOOLS over a DOCUMENT STORE, and you must (a) book the correct actions through the action tools and (b) submit a structured processing worksheet. Rules:\n- GOVERNING VERSION: the store may contain an amendment or correction that supersedes an earlier announcement, and unrelated distractor documents. Pin the document that GOVERNS and source every term from it. Using a superseded version's terms poisons everything.\n- GOVERNING DATES: entitlement is keyed to the RECORD-DATE position (or, for an expired offer, to what was validly tendered by the expiration deadline). State which date governs and apply it. Query the position AS OF that date, not as of today.\n- ELECTIONS AND DEADLINES: some actions are IRREVERSIBLE. Never commit an election after its deadline, never elect when no election is available (e.g. an expired offer), never tender more shares than the eligible position, and never release a payment on superseded terms. Read priority/proration provisions exactly, including who they exempt.\n- THE ARITHMETIC: compute the entitlement from the governing terms and the eligible position; use the calculate tool; keep ratios directionally right and scales exact.\n- D2 probe: if the store does not determine the answer (a referenced document is absent), say NOT_DETERMINABLE, NAME the missing document, escalate for it with the escalate tool, and hold only the dependent figure; do NOT invent a number. The answerable twin IS determined by the store.\n- WORKING THROUGH TOOLS: list the documents and read the ones that matter (deciding which governs is part of the task); query the position; calculate; then BOOK through book_receivable / update_pcf / confirm_position (and submit_election only where a live election exists). Only ledger entries count as actions taken; the worksheet's actions list must mirror what you booked. Finish by calling submit_worksheet with the worksheet in the schema below. The episode ends when you submit or after 20 turns."
+ },
+ {
+  "role": "user",
+  "content": "=== EPISODE ===\n  as-of date : 2024-06-10\n  your role  : ETF fund-servicing corporate-actions desk for MEGA (Meridian Mega-Cap Growth ETF)\n  task       : Process any corporate action affecting the MEGA basket before today's PCF dissemination.\n  account    : MEGA\n  security   : NVDA\n\n=== D2 PROBE ===\n  For the June dividend also declared in nvda-8k-20240522 (record 2024-06-11, payable 2024-06-28): what NET cash will the fund receive after any applicable withholding? Answer from the document store provided.\nANSWERABLE TWIN(S) (fully determined by the document store):\n  TW1: What GROSS dividend cash does the store determine for the fund's NVDA position at the post-split rate?\n\n=== WORKSHEET SCHEMA (the `worksheet` argument of submit_worksheet) ===\nReturn ONE JSON object with EXACTLY these keys (this is the desk worksheet for this event — fill the values; use null where genuinely not determinable; dates as YYYY-MM-DD; numbers plain, rates/ratios as decimals; governing_doc and basis_doc are doc_id values from the store; entitlement_basis is the governing basis, e.g. \"record_date\", \"shares_validly_tendered_by_expiration\", \"ex_date\", \"pay_date\", \"declaration_date\"):\n{\n \"P1\": {\n  \"issuer\": \"\",\n  \"security\": {\n   \"ticker\": \"\"\n  },\n  \"event_type\": \"mandatory|mandatory_with_choice|voluntary\",\n  \"governing_doc\": \"<doc_id of the document whose terms GOVERN your numbers>\",\n  \"superseded_docs\": []\n },\n \"P2\": {\n  \"dates\": {\n   \"announcement\": null,\n   \"record_date\": null,\n   \"distribution_date\": null,\n   \"split_adjusted_trading\": null\n  },\n  \"entitlement_basis\": \"\",\n  \"entitlement_basis_date\": null,\n  \"election_deadline\": null\n },\n \"E1\": {\n  \"terms\": {\n   \"ratio\": null,\n   \"additional_shares_per_share\": null,\n   \"record_date\": null,\n   \"distribution_date\": null,\n   \"split_adjusted_trading\": null\n  },\n  \"citation\": {\n   \"document\": \"<doc_id>\",\n   \"locator\": \"\",\n   \"verbatim\": \"\"\n  }\n },\n \"E2\": {\n  \"position\": {\n   \"basket_per_cu_pre\": null,\n   \"creation_units\": null,\n   \"basket_total_pre\": null\n  },\n  \"basis_shares\": null\n },\n \"C1\": {\n  \"entitlement\": {\n   \"pre_split_shares\": null,\n   \"ratio\": null,\n   \"post_split_shares\": null,\n   \"additional_shares\": null,\n   \"basket_per_cu_post\": null\n  },\n  \"cil\": {\n   \"applicable\": false,\n   \"amount\": null\n  }\n },\n \"C2\": {\n  \"election_required\": false,\n  \"options\": null,\n  \"default_option\": null,\n  \"economics\": null\n },\n \"C3\": {\n  \"impact\": {\n   \"basket_per_cu_new\": null,\n   \"basket_total_new\": null\n  },\n  \"changes\": [\n   {\n    \"what\": \"<which record/line in OUR books moves (a basket quantity, a cash projection, a position ledger entry) - not what changed between the documents>\",\n    \"where\": \"<the file/account/ledger it moves in>\",\n    \"old\": null,\n    \"new\": null\n   }\n  ]\n },\n \"D1\": {\n  \"decision\": \"\",\n  \"actions\": [\n   {\n    \"action\": \"\",\n    \"option\": null,\n    \"quantity\": null,\n    \"amount\": null,\n    \"by_date\": null,\n    \"basis_doc\": \"\"\n   }\n  ]\n },\n \"D2\": {\n  \"probe\": {\n   \"label\": \"NOT_DETERMINABLE|COMPUTED\",\n   \"value\": null,\n   \"derivation\": \"if the store does not determine it: name the SPECIFIC missing/referenced document and escalate; do NOT invent a number\"\n  },\n  \"twins\": [\n   {\n    \"id\": \"TW1\",\n    \"value\": null\n   }\n  ]\n }\n}"
+ },
+ {
+  "role": "assistant",
+  "content": "",
+  "tool_calls": [
+   {
+    "extra_content": {
+     "google": {
+      "thought_signature": "EvYBCvMBAWkUfRP6KNAzGD5JTtSZmrUA8hor0b/nhbxlddKN7EbYaowZhtfOuyuPHzmG2AuRbF1CQuSEiyeWrx1GqkVl6K1BmBMk4yzenQlTjjlTKm8Mthr0TlqRme1uxkTQRYcCDUbTXyvtFonVcOyDeK7dPedXj/5SAN4S/3/Z/t8vQp/TaH1Pz1dnhXySviBcdGHmQ+Vyzd+fI19y5zV05TfdpKxYaVD1DogG2WnwF9+yBqlIxsBIPhB1nymPIIIZk2TOBT0K9W5SWjvXffaaOMXCRdHYdXjqz+teBZXG6I1ziu0z2JXd5O8LpFAPgP5F3ezHEI9C"
+     }
+    },
+    "function": {
+     "arguments": "{}",
+     "name": "list_documents"
+    },
+    "id": "call_365014",
+    "type": "function"
+   }
+  ]
+ },
+ {
+  "role": "tool",
+  "tool_call_id": "call_365014",
+  "name": "list_documents",
+  "content": "{\"documents\": [{\"doc_id\": \"nvda-8k-20240522\", \"type\": \"issuer 8-K (announcement)\", \"title\": \"NVIDIA Q1 FY2025 results; ten-for-one forward stock split; dividend increase\", \"date\": \"2024-05-22\"}, {\"doc_id\": \"nvda-8k-20240607\", \"type\": \"issuer 8-K (effectiveness)\", \"title\": \"Certificate of Amendment effective; split effected\", \"date\": \"2024-06-07\"}, {\"doc_id\": \"mega-pcf-20240610\", \"type\": \"ETF portfolio composition file (constructed)\", \"title\": \"MEGA PCF for trade date 2024-06-10 — per creation unit\", \"date\": \"2024-06-10\"}, {\"doc_id\": \"mega-position-20240610\", \"type\": \"custody position report (constructed)\", \"title\": \"MEGA custody positions, record-date basis\", \"date\": \"2024-06-10\"}, {\"doc_id\": \"qsem-pr-20240603\", \"type\": \"press release (constructed DISTRACTOR — fictional issuer)\", \"title\": \"Quantum Semiconductor Devices (QSEM) announces four-for-one stock split\", \"date\": \"2024-06-03\"}]}"
+ },
+ {
+  "role": "assistant",
+  "content": "",
+  "tool_calls": [
+   {
+    "extra_content": {
+     "google": {
+      "thought_signature": "EqcDCqQDAWkUfRNH9U2ocmeFtjrNtHvNZkjOhcdVZVtZLlLqCQk/UbZHrsSt5lF1RCJ4NIb9NotQJu6iIYR/15mp8zEktq4stoJNSwNPl/NrZVJJ14Nc2MJ8nYGlKH3a+I35lEZ5RRs+Qaq0DEigdm56XzrqrQk6zR2bmHVRwpiEQd1T0oc8t3db6PQREJyw/1i36LxNmxMnS/YaOhqZMC/JqQToZmdrrC37vzhnJKpxeypAuDc7gLFPYWIdj3i17+lS0B9vUGMkV4xrD409/yg8DjMi2MoiNEb5PJCXG0XJdeCm/1eMz+86BeFBC0mzbhBrWBupWfMUn5r0zY6Nf4rT3aokMUBmEX0uICT5HD7GYoEaBqTM+27bo6+ORgKRRJHCCmq7bxFq+zr83wE+/E6Z3ki+Upp05GLvMAQL0yQ5gdF1suI4r3CKQFgsP+5xstXsH3IUwQ972V6N2tuiz5GFNznyUAoT2j6K9bu6qmxkMPVt0Y+4+0D8TQIsSNv5SnTSh3Gy+L7GUpVBCA0sAraXO1YPgo0z9S94n3dZrfy+GW3rTF2LPIan"
+     }
+    },
+    "function": {
+     "arguments": "{\"doc_id\":\"nvda-8k-20240522\"}",
+     "name": "read_document"
+    },
+    "id": "call_562528",
+    "type": "function"
+   }
+  ]
+ },
+ {
+  "role": "tool",
+  "tool_call_id": "call_562528",
+  "name": "read_document",
+  "content": "{\"doc_id\": \"nvda-8k-20240522\", \"type\": \"issuer 8-K (announcement)\", \"title\": \"NVIDIA Q1 FY2025 results; ten-for-one forward stock split; dividend increase\", \"date\": \"2024-05-22\", \"body\": \"Item 8.01. On May 22, 2024, the Company announced a ten-for-one forward stock split of the\\nCompany's issued common stock. Each record holder of common stock as of the close of market\\non Thursday, June 6, 2024 will receive nine additional shares of common stock, to be\\ndistributed after the close of market on Friday, June 7, 2024. Trading is expected to\\ncommence on a split-adjusted basis at market open on Monday, June 10, 2024.\\nThe Company also increased its quarterly cash dividend by 150 percent from $0.04 per share\\nto $0.10 per share of common stock. The increased dividend is equivalent to $0.01 per share\\non a post-Stock Split basis and will be paid on Friday, June 28, 2024, to all shareholders\\nof record on Tuesday, June 11, 2024.\"}"
+ },
+ {
+  "role": "assistant",
+  "content": "",
+  "tool_calls": [
+   {
+    "extra_content": {
+     "google": {
+      "thought_signature": "EoYBCoMBAWkUfROAbxCJegMVrGXtJnQ86i+qGlpCVzJZFxAV1KnZ8F0d1cErugQt2+8B8OzKOnrdJRwA8mGBZmOrEvU8yNzdLlYWMzR0keU8hU3otvSldPWZcm1ijZhToHRwqN5gwYOqAKU8WtGPjccydlkVS6d0Mfaww967wADUV7DfEkrXAMo="
+     }
+    },
+    "function": {
+     "arguments": "{\"doc_id\":\"nvda-8k-20240607\"}",
+     "name": "read_document"
+    },
+    "id": "call_310102",
+    "type": "function"
+   }
+  ]
+ },
+ {
+  "role": "tool",
+  "tool_call_id": "call_310102",
+  "name": "read_document",
+  "content": "{\"doc_id\": \"nvda-8k-20240607\", \"type\": \"issuer 8-K (effectiveness)\", \"title\": \"Certificate of Amendment effective; split effected\", \"date\": \"2024-06-07\", \"body\": \"Item 5.03. The Company filed the Amendment to effect the Stock Split and proportionately\\nincrease the number of shares of the Company's authorized common stock from 8 billion to\\n80 billion. The Amendment became effective at 4:01 p.m. Eastern Time on June 7, 2024.\\nExhibit 3.1: At the Effective Time, each share of Common Stock issued as of immediately\\nprior to the Effective Time shall be automatically subdivided and reclassified into ten\\n(10) validly issued, fully paid and non-assessable shares of Common Stock. Trading is\\nexpected to commence on a split-adjusted basis at market open on June 10, 2024.\"}"
+ },
+ {
+  "role": "assistant",
+  "content": "",
+  "tool_calls": [
+   {
+    "extra_content": {
+     "google": {
+      "thought_signature": "EqQBCqEBAWkUfROOgxzGtGd9UnLsEBZsmwsnMYfU9KGDjIErhaGm+JofqSfGUR0LVkezZUXBTwbfXQXFV9JlKyHhZO8IVRs6rsc3dfa5EYkC8/NOHPbZnxdPW2Tgq9iqUpXjRNVPOkObJKR4aqmhUs1G6Cpzr+OWkAWxskHIyQKmZ3nQwltn8Lw4vuzofCDjuDeZhDbnE0WGUxrswItKsfR+k1cgDjA="
+     }
+    },
+    "function": {
+     "arguments": "{\"doc_id\":\"mega-pcf-20240610\"}",
+     "name": "read_document"
+    },
+    "id": "call_194368",
+    "type": "function"
+   }
+  ]
+ },
+ {
+  "role": "tool",
+  "tool_call_id": "call_194368",
+  "name": "read_document",
+  "content": "{\"doc_id\": \"mega-pcf-20240610\", \"type\": \"ETF portfolio composition file (constructed)\", \"title\": \"MEGA PCF for trade date 2024-06-10 — per creation unit\", \"date\": \"2024-06-10\", \"body\": \"MEGA — Meridian Mega-Cap Growth ETF. PCF for trade date 2024-06-10 (T), per creation unit\\n(50,000 ETF shares). Creation units outstanding: 100.\\n  line 1: NVDA  NVIDIA Corp        180 shares        <-- prepared before the split effectiveness\\n  line 2: MSFT  Microsoft Corp      95 shares\\n  line 3: AAPL  Apple Inc          210 shares\\n  line 4: AVGO  Broadcom Inc        30 shares\\n  cash component: USD 12,450.00\\nNOTE: file generated 2024-06-06 from the strategy master; not yet reviewed for corporate\\nactions effective over the weekend.\"}"
+ },
+ {
+  "role": "assistant",
+  "content": "",
+  "tool_calls": [
+   {
+    "extra_content": {
+     "google": {
+      "thought_signature": "EowBCokBAWkUfROMNXsHxhGm449kRzLhAmHVDvR9Fy6VFC3/OhPiwzD220FkwQTl4Yl2cTGEguLh43V0Wz+zLNxDHRPrujw5cOfjYGumc8F8wf7en1prXjdXBd1BD88s7i5Mlo2+OAmvs4LzweFjq+l1Nvc8h5lwh42qYPie0YHfWUFzZQO2poLuoV0RTLo="
+     }
+    },
+    "function": {
+     "arguments": "{\"doc_id\":\"mega-position-20240610\"}",
+     "name": "read_document"
+    },
+    "id": "call_233607",
+    "type": "function"
+   }
+  ]
+ },
+ {
+  "role": "tool",
+  "tool_call_id": "call_233607",
+  "name": "read_document",
+  "content": "{\"doc_id\": \"mega-position-20240610\", \"type\": \"custody position report (constructed)\", \"title\": \"MEGA custody positions, record-date basis\", \"date\": \"2024-06-10\", \"body\": \"As of close 2024-06-06 (record date for the NVDA split): NVDA 18,000 shares held across\\n100 creation units (180 per unit). Post-distribution custody ledger (after close\\n2024-06-07): NVDA 180,000 shares (nine additional shares per share held were distributed).\\nMSFT 9,500; AAPL 21,000; AVGO 3,000. No pending trades in NVDA.\"}"
+ },
+ {
+  "role": "assistant",
+  "content": "",
+  "tool_calls": [
+   {
+    "extra_content": {
+     "google": {
+      "thought_signature": "ErQBCrEBAWkUfRNq8rTqrmxhUU6+x7FbdKnUoK/TlqOqe+74Y4wWrQKmI3UPKEO6ehbhYP/8PKMSDtv0XxWmL8t5+qjQfKI9VCMUPTXHLuzy8EhJ4MT1JRs0icdXTdAQGXakOh+aBxct/KocTdqoJJ0uTJ8DRzNRefL0DhFLfsMfZQce/sZfV386uuLnrGyuLb9qOqcaMndcFTieVFPFpqreGsHEz4gaiCMQg9h39TTuH/7/Pcl/"
+     }
+    },
+    "function": {
+     "arguments": "{\"as_of\":\"2024-06-06\",\"account\":\"MEGA\"}",
+     "name": "get_position"
+    },
+    "id": "call_184557",
+    "type": "function"
+   }
+  ]
+ },
+ {
+  "role": "tool",
+  "tool_call_id": "call_184557",
+  "name": "get_position",
+  "content": "{\"account\": \"MEGA\", \"ticker\": \"NVDA\", \"as_of\": \"2024-06-06\", \"settled_shares\": 18000.0, \"basis\": \"settled\", \"position_row_as_of\": \"2024-06-06\", \"note\": \"record-date basis: 180 per creation unit x 100 creation units\"}"
+ },
+ {
+  "role": "assistant",
+  "content": "",
+  "tool_calls": [
+   {
+    "extra_content": {
+     "google": {
+      "thought_signature": "EqcBCqQBAWkUfRNLwhjd196868cfuvxTZAF7+dNqTB7c8OYSwpT7Q2dihSBXiTu16LBr4OwyEU+826UuV+Qepbq4LVJrr85GLgOTLrMbJ5IebAuqXnSUkeUqxF6k0Q3oF6Yv5ka3oLhd1Tut7gNk/s83XO3Y47L+jU448j7wHljVVdZfDM8+r43WKcXxKaHCzjVFJsRW7DRo2ghC6NQb9HhgBbvmJUZvP2U="
+     }
+    },
+    "function": {
+     "arguments": "{\"as_of\":\"2024-06-10\",\"account\":\"MEGA\"}",
+     "name": "get_position"
+    },
+    "id": "call_511948",
+    "type": "function"
+   }
+  ]
+ },
+ {
+  "role": "tool",
+  "tool_call_id": "call_511948",
+  "name": "get_position",
+  "content": "{\"account\": \"MEGA\", \"ticker\": \"NVDA\", \"as_of\": \"2024-06-10\", \"settled_shares\": 180000.0, \"basis\": \"settled\", \"position_row_as_of\": \"2024-06-07\", \"note\": \"post-distribution custody ledger after close 2024-06-07 (nine additional shares per share held)\"}"
+ },
+ {
+  "role": "assistant",
+  "content": "",
+  "tool_calls": [
+   {
+    "extra_content": {
+     "google": {
+      "thought_signature": "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"
+     }
+    },
+    "function": {
+     "arguments": "{\"expression\":\"180000 * 0.01\"}",
+     "name": "calculate"
+    },
+    "id": "call_450764",
+    "type": "function"
+   }
+  ]
+ },
+ {
+  "role": "tool",
+  "tool_call_id": "call_450764",
+  "name": "calculate",
+  "content": "{\"expression\": \"180000 * 0.01\", \"result\": 1800.0, \"result_text\": \"1800\"}"
+ },
+ {
+  "role": "assistant",
+  "content": "",
+  "tool_calls": [
+   {
+    "extra_content": {
+     "google": {
+      "thought_signature": "EoABCn4BaRR9E9ujhzeNVGRY7T8yyw21BPtzrJy0VBGDmeDKDC4iAmI78ou+iURhLLiC4SHic5wt8HMtL76gkILFDy5pFJh1Ng7oIFsC/8bcAFGbK7VjkJmsZjiDbm0CSP/mPnuq1sE4EzSYKvlzqlcGf3TD6JmxsXMpnMPZIlNaFxA="
+     }
+    },
+    "function": {
+     "arguments": "{\"expression\":\"18000 * 0.10\"}",
+     "name": "calculate"
+    },
+    "id": "call_381912",
+    "type": "function"
+   }
+  ]
+ },
+ {
+  "role": "tool",
+  "tool_call_id": "call_381912",
+  "name": "calculate",
+  "content": "{\"expression\": \"18000 * 0.10\", \"result\": 1800.0, \"result_text\": \"1800\"}"
+ },
+ {
+  "role": "assistant",
+  "content": "",
+  "tool_calls": [
+   {
+    "extra_content": {
+     "google": {
+      "thought_signature": "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"
+     }
+    },
+    "function": {
+     "arguments": "{\"quantity_per_cu\":1800,\"ticker\":\"NVDA\",\"memo\":\"Update NVDA basket quantity per creation unit for 10-for-1 forward stock split\",\"basis_doc\":\"nvda-8k-20240522\"}",
+     "name": "update_pcf"
+    },
+    "id": "call_473645",
+    "type": "function"
+   }
+  ]
+ },
+ {
+  "role": "tool",
+  "tool_call_id": "call_473645",
+  "name": "update_pcf",
+  "content": "{\"entry_id\": \"L1\", \"pcf_line\": {\"ticker\": \"NVDA\", \"quantity_per_cu\": 1800.0, \"creation_units\": 100}}"
+ },
+ {
+  "role": "assistant",
+  "content": "",
+  "tool_calls": [
+   {
+    "extra_content": {
+     "google": {
+      "thought_signature": "EooBCocBAWkUfRPjahxHVNxPp+Y7Pr6ml8X/oLQ83AbJlZYOyvPV1B30vMQMe0mO/rBq6ahbegZv6wOkRwkhgWVbCiAVcimOGAESf+jdu/ieWwf+XvNrxKhoVhtjjM5CeVpbpZsYBqxAnOSWHVUk/Mj7Deuacfk27RBCaKyXgYf60annKSO6NNN8vtVp"
+     }
+    },
+    "function": {
+     "arguments": "{\"ticker\":\"NVDA\",\"basis_doc\":\"nvda-8k-20240522\",\"as_of\":\"2024-06-10\",\"shares\":180000}",
+     "name": "confirm_position"
+    },
+    "id": "call_348781",
+    "type": "function"
+   }
+  ]
+ },
+ {
+  "role": "tool",
+  "tool_call_id": "call_348781",
+  "name": "confirm_position",
+  "content": "{\"entry_id\": \"L2\", \"confirmed\": {\"ticker\": \"NVDA\", \"shares\": 180000.0, \"as_of\": \"2024-06-10\", \"basis_doc\": \"nvda-8k-20240522\"}}"
+ },
+ {
+  "role": "assistant",
+  "content": "",
+  "tool_calls": [
+   {
+    "extra_content": {
+     "google": {
+      "thought_signature": "EoEBCn8BaRR9E48AcvjdgeCc+Ulyj0YU9t5dbKEhB79y/vi89S/wr7DPO63U+tyoY+wqxRtFgtEgmqi09yu4HuHsSLJbJqG+DboChMmr9p608e+BHeL8dccm22ZpsDnpBoINflYDODW9pcc1CCRdYXEzPpaT7VjbQ+SSx07Atgw7YsPe"
+     }
+    },
+    "function": {
+     "arguments": "{\"missing_document\":\"withholding tax schedule / fund tax profile\",\"reason\":\"The document store does not contain tax status or withholding tax schedule documentation to calculate net dividend proceeds after tax withholding.\",\"held_action\":\"book_receivable for June dividend\"}",
+     "name": "escalate"
+    },
+    "id": "call_452000",
+    "type": "function"
+   }
+  ]
+ },
+ {
+  "role": "tool",
+  "tool_call_id": "call_452000",
+  "name": "escalate",
+  "content": "{\"entry_id\": \"L3\", \"escalated\": {\"reason\": \"The document store does not contain tax status or withholding tax schedule documentation to calculate net dividend proceeds after tax withholding.\", \"missing_document\": \"withholding tax schedule / fund tax profile\", \"held_action\": \"book_receivable for June dividend\"}}"
+ },
+ {
+  "role": "assistant",
+  "content": "",
+  "tool_calls": [
+   {
+    "extra_content": {
+     "google": {
+      "thought_signature": "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"
+     }
+    },
+    "function": {
+     "arguments": "{\"worksheet\":{\"E1\":{\"citation\":{\"locator\":\"Item 8.01\",\"document\":\"nvda-8k-20240522\",\"verbatim\":\"On May 22, 2024, the Company announced a ten-for-one forward stock split of the Company's issued common stock. Each record holder of common stock as of the close of market on Thursday, June 6, 2024 will receive nine additional shares of common stock, to be distributed after the close of market on Friday, June 7, 2024. Trading is expected to commence on a split-adjusted basis at market open on Monday, June 10, 2024.\"},\"terms\":{\"split_adjusted_trading\":\"2024-06-10\",\"record_date\":\"2024-06-06\",\"ratio\":10,\"distribution_date\":\"2024-06-07\",\"additional_shares_per_share\":9}},\"D2\":{\"twins\":[{\"id\":\"TW1\",\"value\":1800}],\"probe\":{\"value\":null,\"derivation\":\"The document store does not contain a withholding tax schedule or fund tax profile to determine the applicable tax withholding rate for net dividend cash.\",\"label\":\"NOT_DETERMINABLE\"}},\"C1\":{\"cil\":{\"applicable\":false,\"amount\":null},\"entitlement\":{\"basket_per_cu_post\":1800,\"ratio\":10,\"pre_split_shares\":18000,\"post_split_shares\":180000,\"additional_shares\":162000}},\"D1\":{\"actions\":[{\"basis_doc\":\"nvda-8k-20240522\",\"amount\":null,\"by_date\":\"2024-06-10\",\"option\":null,\"action\":\"update_pcf\",\"quantity\":1800},{\"by_date\":\"2024-06-10\",\"option\":null,\"action\":\"confirm_position\",\"basis_doc\":\"nvda-8k-20240522\",\"amount\":null,\"quantity\":180000}],\"decision\":\"Update PCF for trade date 2024-06-10 to reflect post-split NVDA quantity of 1,800 shares per creation unit and confirm post-split custody position of 180,000 shares.\"},\"P2\":{\"entitlement_basis_date\":\"2024-06-06\",\"dates\":{\"split_adjusted_trading\":\"2024-06-10\",\"record_date\":\"2024-06-06\",\"announcement\":\"2024-05-22\",\"distribution_date\":\"2024-06-07\"},\"entitlement_basis\":\"record_date\",\"election_deadline\":null},\"P1\":{\"governing_doc\":\"nvda-8k-20240522\",\"superseded_docs\":[],\"security\":{\"ticker\":\"NVDA\"},\"issuer\":\"NVIDIA Corporation\",\"event_type\":\"mandatory\"},\"C3\":{\"impact\":{\"basket_total_new\":180000,\"basket_per_cu_new\":1800},\"changes\":[{\"new\":1800,\"what\":\"NVDA quantity per creation unit\",\"old\":180,\"where\":\"MEGA Portfolio Composition File (PCF)\"},{\"where\":\"Custody position ledger\",\"what\":\"NVDA settled share position\",\"old\":18000,\"new\":180000}]},\"E2\":{\"position\":{\"creation_units\":100,\"basket_per_cu_pre\":180,\"basket_total_pre\":18000},\"basis_shares\":18000},\"C2\":{\"default_option\":null,\"election_required\":false,\"economics\":null,\"options\":null}}}",
+     "name": "submit_worksheet"
+    },
+    "id": "call_209048",
+    "type": "function"
+   }
+  ]
+ },
+ {
+  "role": "tool",
+  "tool_call_id": "call_209048",
+  "name": "submit_worksheet",
+  "content": "{\"status\": \"submitted\", \"episode\": \"ended\", \"ledger_entries\": 3}"
+ }
+]

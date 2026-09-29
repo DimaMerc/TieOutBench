@@ -1,0 +1,64 @@
+{
+  "rounds": [
+    {
+      "round": 1,
+      "verdict": "approve",
+      "findings": [],
+      "turns": 4,
+      "incomplete": false,
+      "ended_by": "end",
+      "ledger_shown_correct": true,
+      "ledger_shown_elect": false,
+      "ledger_shown_flags": []
+    }
+  ],
+  "ledger_v1": [
+    {
+      "entry_id": "L1",
+      "kind": "escalate",
+      "args": {
+        "reason": "The D2 probe asks for fees/charges per the Letter of Transmittal's terms. The OTP (mnst-otp-20240508) references the Letter of Transmittal but the store does not contain its full text. Without the complete Letter of Transmittal, the fee terms cannot be determined from the document store.",
+        "missing_document": "Letter of Transmittal (referenced in mnst-otp-20240508 but not provided in full)",
+        "held_action": "Determination of fees/charges to be deducted from tender proceeds"
+      },
+      "seq": 20,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:23:32.493Z"
+    },
+    {
+      "entry_id": "L2",
+      "kind": "book_receivable",
+      "args": {
+        "account": "ACCT-0093",
+        "amount": 4611.0,
+        "pay_date": "2024-06-12",
+        "basis_doc": "mnst-results-20240610",
+        "shares": 87.0,
+        "rate": 53.0,
+        "memo": "Tender offer proceeds: 87 shares accepted at $53.00/share (odd lot exemption from proration)"
+      },
+      "seq": 23,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:23:41.048Z"
+    },
+    {
+      "entry_id": "L3",
+      "kind": "confirm_position",
+      "args": {
+        "ticker": "MNST",
+        "shares": 0.0,
+        "as_of": "2024-06-05",
+        "basis_doc": "mnst-results-20240610"
+      },
+      "seq": 26,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:23:43.299Z"
+    }
+  ]
+}

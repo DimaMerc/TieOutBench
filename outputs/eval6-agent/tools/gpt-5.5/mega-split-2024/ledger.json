@@ -1,0 +1,51 @@
+{
+  "clock": "2024-06-10",
+  "entries": [
+    {
+      "entry_id": "L1",
+      "kind": "update_pcf",
+      "args": {
+        "ticker": "NVDA",
+        "quantity_per_cu": 1800.0,
+        "previous_quantity_per_cu": 180,
+        "basis_doc": "nvda-8k-20240607",
+        "memo": "Update MEGA PCF NVDA quantity per creation unit for ten-for-one split effective 2024-06-07; split-adjusted trading 2024-06-10. Old PCF line was 180 shares per creation unit."
+      },
+      "seq": 32,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:20:48.219Z"
+    },
+    {
+      "entry_id": "L2",
+      "kind": "confirm_position",
+      "args": {
+        "ticker": "NVDA",
+        "shares": 180000.0,
+        "as_of": "2024-06-10",
+        "basis_doc": "nvda-8k-20240607"
+      },
+      "seq": 34,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:20:48.219Z"
+    },
+    {
+      "entry_id": "L3",
+      "kind": "escalate",
+      "args": {
+        "reason": "The store states the gross NVDA dividend rate and record/pay dates but does not provide any applicable withholding rate or tax-status documentation needed to compute net cash after withholding.",
+        "missing_document": "applicable withholding/tax-status documentation for MEGA's NVDA dividend (withholding rate)",
+        "held_action": "net dividend cash receivable determination/booking"
+      },
+      "seq": 37,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:20:56.798Z"
+    }
+  ],
+  "frozen": {}
+}

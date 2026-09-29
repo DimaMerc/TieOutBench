@@ -1,0 +1,114 @@
+{
+  "P1": {
+    "issuer": "Berry Corporation",
+    "security": {
+      "ticker": "BRY"
+    },
+    "event_type": "mandatory",
+    "governing_doc": "bry-8k-20240813",
+    "superseded_docs": [
+      "bry-8k-20240809"
+    ]
+  },
+  "P2": {
+    "dates": {
+      "declared": "2024-08-09",
+      "corrected": "2024-08-13",
+      "record_date": "2024-08-23",
+      "pay_date": "2024-08-30"
+    },
+    "entitlement_basis": "record_date",
+    "entitlement_basis_date": "2024-08-23",
+    "election_deadline": null
+  },
+  "E1": {
+    "terms": {
+      "rate_total": 0.17,
+      "rate_fixed": 0.12,
+      "rate_variable": 0.05,
+      "record_date": "2024-08-23",
+      "pay_date": "2024-08-30"
+    },
+    "citation": {
+      "document": "bry-8k-20240813",
+      "locator": "correction notice to press release issued August 9, 2024",
+      "verbatim": "The dividends will be payable on August 30, 2024 to all stockholders of record as of the close of business on August 23, 2024... The dividend amounts have not changed."
+    }
+  },
+  "E2": {
+    "position": {
+      "shares_20240812": 50000,
+      "shares_settled_current": 40000
+    },
+    "basis_shares": 40000
+  },
+  "C1": {
+    "entitlement": {
+      "eligible_shares": 40000,
+      "rate": 0.17,
+      "gross_cash": 6800
+    },
+    "cil": {
+      "applicable": false,
+      "amount": null
+    }
+  },
+  "C2": {
+    "election_required": false,
+    "options": null,
+    "default_option": null,
+    "economics": null
+  },
+  "C3": {
+    "impact": {
+      "gross_cash": 6800
+    },
+    "changes": [
+      {
+        "what": "Cash receivable ledger entry for dividend",
+        "where": "ACCT-7712 dividend receivable (payable 2024-08-30)",
+        "old": 0,
+        "new": 6800
+      }
+    ]
+  },
+  "D1": {
+    "decision": "Book gross dividend receivable of $6,800.00 (40,000 shares \u00d7 $0.17/share) payable 2024-08-30 based on corrected record date of 2024-08-23",
+    "actions": [
+      {
+        "_entry": "L1",
+        "_kind": "escalate",
+        "action": "escalate and hold: Determination of net dividend cash after withholding",
+        "note": "missing document: Withholding tax rate or account tax status documentation for ACCT-7712 (foreign-domiciled subaccount)",
+        "by_date": null,
+        "basis_doc": null,
+        "amount": null,
+        "option": null,
+        "quantity": null
+      },
+      {
+        "_entry": "L2",
+        "_kind": "book_receivable",
+        "action": "book receivable of $6,800.00",
+        "amount": 6800.0,
+        "by_date": "2024-08-30",
+        "basis_doc": "bry-8k-20240813",
+        "quantity": 40000.0,
+        "option": null
+      }
+    ]
+  },
+  "D2": {
+    "probe": {
+      "label": "NOT_DETERMINABLE",
+      "value": null,
+      "derivation": "The store determines the gross dividend cash ($6,800.00) but does not contain withholding tax rate, tax treaty documentation, or account tax status/withholding instructions required to compute net cash after withholding for the foreign-domiciled subaccount. Missing document: Withholding tax rate or account tax status documentation for ACCT-7712."
+    },
+    "twins": [
+      {
+        "id": "TW1",
+        "value": 6800
+      }
+    ]
+  }
+}

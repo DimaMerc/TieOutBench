@@ -1,0 +1,205 @@
+{
+  "schema": "tieoutbench.run/1",
+  "run_id": "20260924T175449Z-2e6ba9",
+  "written_at": "2026-09-24T17:57:00Z",
+  "arm": "checker",
+  "suite": "corporate-actions",
+  "model_id": "claude-sonnet-4-6",
+  "endpoint": "api.anthropic.com",
+  "request": {
+    "max_tokens": 8000,
+    "temperature": 0.0,
+    "stream": false,
+    "tool_transport": "native",
+    "max_turns": 20,
+    "deadline_s": 900
+  },
+  "conformance": {
+    "tool_transport": "native",
+    "tested_at": "2026-09-24T17:16:51Z"
+  },
+  "loop": {
+    "maker_round1": {
+      "turns": 8,
+      "incomplete": false,
+      "ended_by": "end",
+      "elapsed_s": null
+    },
+    "review_round1": {
+      "round": 1,
+      "verdict": "reject",
+      "findings": [
+        "L1 (update_pcf): The 'was' (old) quantity per creation unit is recorded as 1,800 in the ledger entry ('quantity_per_cu=1800.0 (was 1800)'), implying no change occurred. The pre-split NVDA quantity per creation unit was 180 (18,000 total shares \u00f7 100 creation units, confirmed by get_position as of 2024-06-06 and mega-position-20240610). The entry should read 'quantity_per_cu=1800.0 (was 180)', reflecting the actual change from 180 to 1,800 shares per creation unit. As written, the ledger entry fails to record any change and does not correctly document the corporate action's effect on the PCF basket."
+      ],
+      "turns": 7,
+      "incomplete": false,
+      "ended_by": "end",
+      "ledger_shown_correct": true,
+      "ledger_shown_elect": false,
+      "ledger_shown_flags": []
+    },
+    "revised": true,
+    "maker_round2": {
+      "turns": 5,
+      "incomplete": false,
+      "ended_by": "end",
+      "elapsed_s": 51.5
+    },
+    "review_round2": {
+      "round": 2,
+      "verdict": "reject",
+      "findings": [
+        "L4 \u2014 Unauthorized intermediate 'reset' step: L4 books a reduction of the NVDA PCF quantity from 1,800 to 180 shares/CU, citing mega-pcf-20240610 as the basis document. No governing document (nvda-8k-20240607 or nvda-8k-20240522) authorizes resetting the PCF to a pre-split baseline as an intermediate booking step. mega-pcf-20240610 itself already shows 1,800 shares/CU (the post-split quantity, applied 2024-06-08), so L4 would incorrectly overwrite a correct figure with a wrong one. This entry should not exist.",
+        "L5 \u2014 Internally inconsistent 'was' value: L5 records quantity_per_cu=1800.0 (was 1800), implying no change occurred. If L4 had genuinely executed (setting the PCF to 180), L5's prior value should be 180, not 1800. As written, L5 is a no-op (1800\u21921800) and fails to record the split adjustment as an actual change. The 'was' field should be 180 (the pre-split baseline) for L5 to constitute a valid split-adjustment entry. The two-step L4/L5 construct is self-contradictory and unsupported by any governing document; the correct single entry is: update_pcf NVDA quantity_per_cu=1800 (was 180) basis_doc=nvda-8k-20240607, since the PCF's authoritative pre-split baseline is 180 shares/CU per the record-date position."
+      ],
+      "turns": 4,
+      "incomplete": false,
+      "ended_by": "end",
+      "ledger_shown_correct": false,
+      "ledger_shown_elect": false,
+      "ledger_shown_flags": [
+        "ledger_inconsistent"
+      ]
+    }
+  },
+  "usage_total": {
+    "prompt_tokens": 105815,
+    "completion_tokens": 6545,
+    "total_tokens": 112360
+  },
+  "chat_calls": 16,
+  "transient_retries": 0,
+  "last_finish_reason": "tool_calls",
+  "incomplete": false,
+  "reused_maker_from": "outputs/eval6-agent/tools/claude-sonnet-4-6/mega-split-2024-clean",
+  "case": {
+    "case_id": "mega-split-2024-clean",
+    "path": "cases/mega-split-2024-clean.case.yaml",
+    "sha256": "18e6fc0e3a9fb1b728951e8a9aa41a178443fc2f24ef18a2a9b76a23fc9b8eb2"
+  },
+  "rubric": {
+    "path": "rubric/criteria-corporate-actions.yaml",
+    "sha256": "81d0498cd0f16bef5aaf8e2569e4963771c55f330332fccda87a161329cb59b6"
+  },
+  "grader_version": "93b2efa",
+  "grader_tree_dirty": true,
+  "harness_hashes": {
+    "harness/graders.py": "4ce46f1ed091fa4e95dd471b7900be5464ced9a5c952d32ca7e8160243caa65b",
+    "harness/scoring.py": "c31e1901303253cf8b4ac600998ae130fb6111b32e5b99dd16029151db1dd1a8",
+    "harness/suites/corporate_actions.py": "38d9ccb03ae6f16e393aa28363d658575db9708411cd1bca924454ebdec6d04e",
+    "harness/env/state.py": "ede4e582823945c77ba3c6631c0c3c704f2c8db2db58169a453a1aaee73fabc1",
+    "harness/env/scoring.py": "80353aed8805e7bc77a876f1b6edd486818e752a09d918c94f62e840477161d7",
+    "harness/env/agent.py": "d5d6b293408d287dce85cae6ec0ffbf5dd26fd2872bca637fe66f13c1e9a0d8d",
+    "harness/env/transport.py": "764a24ac1c3858f90fa5542ec428f7fa7b9433afd5a194806ccb78163f6153ca"
+  },
+  "prior_dir": "outputs/eval6-agent/checker/claude-sonnet-4-6/mega-split-2024-clean/prior/20260924T173204Z-446d0b",
+  "score": {
+    "worksheet": {
+      "gated": 1.0,
+      "ungated": 1.0,
+      "gap": 0.0,
+      "allpass": 1,
+      "gates": [],
+      "flags": []
+    },
+    "terminal": {
+      "gated": 1.0,
+      "ungated": 1.0,
+      "gap": 0.0,
+      "allpass": 1,
+      "gates": [],
+      "flags": []
+    },
+    "ledger": {
+      "correct": true,
+      "elect_fired": false,
+      "gold_ok": true,
+      "flags": [],
+      "n_booked": 3
+    },
+    "review": {
+      "rounds": [
+        {
+          "round": 1,
+          "verdict": "reject",
+          "ledger_shown_correct": true,
+          "incomplete": false
+        },
+        {
+          "round": 2,
+          "verdict": "reject",
+          "ledger_shown_correct": true,
+          "incomplete": false
+        }
+      ],
+      "recomputed": {
+        "1": true,
+        "2": true
+      }
+    }
+  },
+  "score_at_run": {
+    "worksheet": {
+      "gated": 1.0,
+      "ungated": 1.0,
+      "gap": 0.0,
+      "allpass": 1,
+      "gates": [],
+      "flags": []
+    },
+    "terminal": {
+      "gated": 0.84,
+      "ungated": 1.0,
+      "gap": 0.16,
+      "allpass": 0,
+      "gates": [],
+      "flags": [
+        "ledger_inconsistent"
+      ]
+    },
+    "ledger": {
+      "correct": false,
+      "elect_fired": false,
+      "gold_ok": false,
+      "flags": [
+        "ledger_inconsistent"
+      ],
+      "n_booked": 3
+    },
+    "trajectory": {
+      "n_turns": 13,
+      "n_tool_calls": 19,
+      "n_tool_errors": 0,
+      "governing_read_before_first_action": true,
+      "position_dates_queried": [
+        "2024-06-10",
+        "2024-06-11"
+      ],
+      "basis_date_queried": false,
+      "superseded_date_queried": null,
+      "calculate_used": true
+    },
+    "review": {
+      "rounds": [
+        {
+          "round": 1,
+          "verdict": "reject",
+          "ledger_shown_correct": true,
+          "incomplete": false
+        },
+        {
+          "round": 2,
+          "verdict": "reject",
+          "ledger_shown_correct": false,
+          "incomplete": false
+        }
+      ],
+      "recomputed": {
+        "1": true,
+        "2": true
+      }
+    }
+  },
+  "rescored_at": "2026-09-25T00:10:20Z",
+  "grader_version_rescore": "93b2efa"
+}

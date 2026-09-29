@@ -1,0 +1,79 @@
+########################################################################
+  EPISODE zts-dividend-2014   arm=tools   model=gemini-3.6-flash   [INCOMPLETE: no worksheet submitted]
+########################################################################
+
+--- WORKSHEET (the submitted worksheet through the unchanged Phase-1 grader) ---
+========================================================================
+  CASE zts-dividend-2014    model=tools:gemini-3.6-flash    judge=mock
+========================================================================
+  CaseScore (gated, headline) : 0.000
+  CaseScore (ungated)         : 0.215
+  GAP (ungated - gated)       : 0.215
+  AllPass                     : 0
+  D2 calibration (R,G->F_b)   : R=0.00 G=0.25 -> 0.000
+  Gates fired                 : GATE.VERSION, GATE.DATES
+
+  Checkpoint vector (which step failed):
+    cp   W      ungated  gated   raw
+    P1   0.100  0.000   0.000  +0.00
+    P2   0.120  0.000   0.000  +0.00
+    E1   0.100  0.000   0.000  -0.44
+    E2   0.080  0.000   0.000  +0.00
+    C1   0.140  0.412   0.000  +0.41  <-- gated
+    C2   0.120  1.000   0.000  +1.00  <-- gated
+    C3   0.100  0.000   0.000  +0.00
+    D1   0.160  0.231   0.000  +0.23  <-- gated
+    D2   0.080  0.000   0.000  +0.00
+
+  Category rollup (diagnostic -- what KIND of error):
+    extraction   -0.190  
+    numerical    +0.433  #########
+    entailment   +0.000  
+    reasoning    +0.267  #####
+    calibration  +0.000  
+    structure    +0.000  
+========================================================================
+
+--- TERMINAL STATE (worksheet + the ledger rendered into D1 rows; ledger predicates applied) ---
+========================================================================
+  CASE zts-dividend-2014    model=tools:gemini-3.6-flash    judge=mock
+========================================================================
+  CaseScore (gated, headline) : 0.000
+  CaseScore (ungated)         : 0.215
+  GAP (ungated - gated)       : 0.215
+  AllPass                     : 0
+  D2 calibration (R,G->F_b)   : R=0.00 G=0.25 -> 0.000
+  Gates fired                 : GATE.VERSION, GATE.DATES
+  Headline flags              : ledger_empty, incomplete
+
+  Checkpoint vector (which step failed):
+    cp   W      ungated  gated   raw
+    P1   0.100  0.000   0.000  +0.00
+    P2   0.120  0.000   0.000  +0.00
+    E1   0.100  0.000   0.000  -0.44
+    E2   0.080  0.000   0.000  +0.00
+    C1   0.140  0.412   0.000  +0.41  <-- gated
+    C2   0.120  1.000   0.000  +1.00  <-- gated
+    C3   0.100  0.000   0.000  +0.00
+    D1   0.160  0.231   0.000  +0.23  <-- gated
+    D2   0.080  0.000   0.000  +0.00
+
+  Category rollup (diagnostic -- what KIND of error):
+    extraction   -0.190  
+    numerical    +0.433  #########
+    entailment   +0.000  
+    reasoning    +0.267  #####
+    calibration  +0.000  
+    structure    +0.000  
+========================================================================
+
+--- LEDGER ---
+(the ledger is empty: no action was booked)
+  booked entries: 0   GATE.ELECT on the ledger: False   gold match: False   flags: ledger_empty   correct: False
+
+--- TRAJECTORY (reported, not scored) ---
+  maker: turns=0 tool_calls=0 errors=0 counts={}
+  governing read before first action: False   docs read: []   superseded read: []   distractors read: []
+  position dates queried: []   basis date queried: False   superseded date queried: False   projected: 0   query errors: 0
+  calculate used: False (0): []
+########################################################################

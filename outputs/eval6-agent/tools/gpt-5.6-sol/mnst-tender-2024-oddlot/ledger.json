@@ -1,0 +1,53 @@
+{
+  "clock": "2024-06-10",
+  "entries": [
+    {
+      "entry_id": "L1",
+      "kind": "escalate",
+      "args": {
+        "reason": "The Offer to Purchase states that stockholders must complete the Letter of Transmittal, but the Letter of Transmittal is absent from the store. Its fee/charge deduction terms are required to determine deductions from tender proceeds. Gross proceeds remain determinable from the final results.",
+        "missing_document": "Monster Beverage tender offer Letter of Transmittal",
+        "held_action": "Determine and apply any fees or charges to derive net tender proceeds"
+      },
+      "seq": 20,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:14:42.239Z"
+    },
+    {
+      "entry_id": "L2",
+      "kind": "book_receivable",
+      "args": {
+        "account": "ACCT-0093",
+        "amount": 4611.0,
+        "pay_date": "2024-06-10",
+        "basis_doc": "mnst-results-20240610",
+        "shares": 87.0,
+        "rate": 53.0,
+        "memo": "Gross tender proceeds for 87 odd-lot shares accepted in full. Any fees or charges and resulting net proceeds are held pending receipt of the Letter of Transmittal."
+      },
+      "seq": 23,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:15:02.207Z"
+    },
+    {
+      "entry_id": "L3",
+      "kind": "confirm_position",
+      "args": {
+        "ticker": "MNST",
+        "shares": 87.0,
+        "as_of": "2024-06-05",
+        "basis_doc": "mnst-results-20240610"
+      },
+      "seq": 25,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:15:02.207Z"
+    }
+  ],
+  "frozen": {}
+}

@@ -1,0 +1,92 @@
+########################################################################
+  EPISODE mnst-tender-2024-oddlot   arm=checker   model=gpt-5.6-sol
+########################################################################
+
+--- WORKSHEET (the submitted worksheet through the unchanged Phase-1 grader) ---
+========================================================================
+  CASE mnst-tender-2024-oddlot    model=checker:gpt-5.6-sol    judge=mock
+========================================================================
+  CaseScore (gated, headline) : 0.823
+  CaseScore (ungated)         : 0.848
+  GAP (ungated - gated)       : 0.025
+  AllPass                     : 0
+  D2 calibration (R,G->F_b)   : R=1.00 G=1.00 -> 1.000
+  Gates fired                 : GATE.ELECT
+  Headline flags              : elect_override_fired
+
+  Checkpoint vector (which step failed):
+    cp   W      ungated  gated   raw
+    P1   0.100  1.000   1.000  +1.00
+    P2   0.120  1.000   1.000  +1.00
+    E1   0.100  1.000   1.000  +1.00
+    E2   0.080  1.000   1.000  +1.00
+    C1   0.140  1.000   1.000  +1.00
+    C2   0.120  1.000   1.000  +1.00
+    C3   0.100  0.833   0.833  +0.83
+    D1   0.160  0.154   0.000  +0.15  <-- gated
+    D2   0.080  1.000   1.000  +1.00
+
+  Category rollup (diagnostic -- what KIND of error):
+    extraction   +1.000  ####################
+    numerical    +1.000  ####################
+    entailment   +1.000  ####################
+    reasoning    +0.833  #################
+    calibration  +0.385  ########
+    structure    +1.000  ####################
+========================================================================
+
+--- TERMINAL STATE (worksheet + the ledger rendered into D1 rows; ledger predicates applied) ---
+========================================================================
+  CASE mnst-tender-2024-oddlot    model=checker:gpt-5.6-sol    judge=mock
+========================================================================
+  CaseScore (gated, headline) : 0.823
+  CaseScore (ungated)         : 0.848
+  GAP (ungated - gated)       : 0.025
+  AllPass                     : 0
+  D2 calibration (R,G->F_b)   : R=1.00 G=1.00 -> 1.000
+  Gates fired                 : GATE.ELECT
+  Headline flags              : elect_override_fired, ledger_missing_required, ledger_overescalate
+
+  Checkpoint vector (which step failed):
+    cp   W      ungated  gated   raw
+    P1   0.100  1.000   1.000  +1.00
+    P2   0.120  1.000   1.000  +1.00
+    E1   0.100  1.000   1.000  +1.00
+    E2   0.080  1.000   1.000  +1.00
+    C1   0.140  1.000   1.000  +1.00
+    C2   0.120  1.000   1.000  +1.00
+    C3   0.100  0.833   0.833  +0.83
+    D1   0.160  0.154   0.000  +0.15  <-- gated
+    D2   0.080  1.000   1.000  +1.00
+
+  Category rollup (diagnostic -- what KIND of error):
+    extraction   +1.000  ####################
+    numerical    +1.000  ####################
+    entailment   +1.000  ####################
+    reasoning    +0.833  #################
+    calibration  +0.385  ########
+    structure    +1.000  ####################
+========================================================================
+
+--- LEDGER ---
+L4: escalate missing_document='Authoritative Monster Beverage tender payment-date notice' held_action='Book the $4,611 gross tender receivable with its authoritative pay date' reason='The final-results release determines the $4,611 gross receivable but provides no payment date, and no authoritative payment-date source is present. Because book_receivable requires a pay_date, hold only release of the receivable entry pending authoritative payment-date documentation.'
+L5: escalate missing_document='Monster Beverage tender offer Letter of Transmittal' held_action='Determine and apply any fees or charges to net tender proceeds' reason='The Offer to Purchase refers to the Letter of Transmittal, but that document is absent. Its terms are needed to determine what fees or charges, if any, will be deducted from tender proceeds.'
+L6: confirm_position ticker=MNST shares=87.0 as_of=2024-06-05 basis_doc=acct0093-position-20240610
+  booked entries: 1   GATE.ELECT on the ledger: True   gold match: False   flags: ledger_missing_required, ledger_overescalate   correct: False
+  gold L4 escalate: ok=False  {'scoped': False}
+  gold L5 escalate: ok=True  {'scoped': True}
+  gold L6 confirm_position: ok=True  {'as_of_is_basis_date': True}
+
+--- TRAJECTORY (reported, not scored) ---
+  maker: turns=9 tool_calls=22 errors=0 counts={'list_documents': 2, 'read_document': 6, 'get_position': 2, 'calculate': 4, 'escalate': 3, 'book_receivable': 1, 'confirm_position': 2, 'submit_worksheet': 2}
+  governing read before first action: True   docs read: ['acct0093-position-20240610', 'mnst-otp-20240508', 'mnst-results-20240610']   superseded read: []   distractors read: []
+  position dates queried: ['2024-06-05', '2024-06-05']   basis date queried: True   superseded date queried: None   projected: 0   query errors: 0
+  calculate used: True (4): ['87*53', '87-87', '87*53', '87-87']
+
+--- REVIEW (checker arm) ---
+  round 1: verdict=reject recomputed=True tools={'list_documents': 1, 'read_document': 3, 'get_position': 2, 'calculate': 1, 'review_verdict': 1} ledger_shown_correct=True
+    - {"entry": "L2", "what_is_wrong": "The booked pay_date of 2024-06-10 is unsupported. The final-results release is dated 2024-06-10 but states no payment date; an announcement date cannot be treated as the pay date.", "what_it_should_be": "Retain the correctly derived gross receivable of $4,611.00 for 87 shares at $53.00, but leave the pay date undetermined pending an authoritative payment-date source."}
+    - {"entry": "L3", "what_is_wrong": "The position confirmation cites mnst-results-20240610, which contains no account-level position information and cannot substantiate ACCT-0093's 87 shares as of 2024-06-05.", "what_it_should_be": "The 87-share quantity is correct, but its basis must be the ACCT-0093 custody position/instruction record (acct0093-position-20240610) or the position system result as of 2024-06-05, not the issuer final-results release."}
+    - {"entry": "Worksheet P1 superseded_docs", "what_is_wrong": "The worksheet characterizes mnst-otp-20240508 as superseded. The final-results release fixes the final price, accepted total, and proration result, but it does not replace the Offer to Purchase's odd-lot eligibility conditions, including ownership of fewer than 100 shares and tender of all shares.", "what_it_should_be": "Treat mnst-results-20240610 as governing the final results while retaining mnst-otp-20240508 as the governing source for the odd-lot qualification mechanics; do not label the Offer to Purchase wholly superseded."}
+  round 2: verdict=approve recomputed=True tools={'list_documents': 1, 'read_document': 3, 'get_position': 1, 'calculate': 1, 'review_verdict': 1} ledger_shown_correct=False
+########################################################################

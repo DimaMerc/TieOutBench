@@ -1,0 +1,217 @@
+{
+  "clock": "2014-04-01",
+  "entries": [
+    {
+      "entry_id": "L1",
+      "kind": "book_receivable",
+      "args": {
+        "account": "ACCT-2101",
+        "amount": 1800.0,
+        "pay_date": "2014-06-02",
+        "basis_doc": "zts-8k-20140327",
+        "shares": 25000.0,
+        "rate": 0.072,
+        "memo": "Zoetis Q2 2014 cash dividend: 25,000 ZTS shares of record on 2014-04-28 at $0.072/share."
+      },
+      "seq": 22,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:18:03.340Z"
+    },
+    {
+      "entry_id": "L2",
+      "kind": "confirm_position",
+      "args": {
+        "ticker": "ZTS",
+        "shares": 25000.0,
+        "as_of": "2014-04-28",
+        "basis_doc": "zts-8k-20140327"
+      },
+      "seq": 24,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:18:03.340Z"
+    },
+    {
+      "entry_id": "L3",
+      "kind": "escalate",
+      "args": {
+        "reason": "The document store determines the cash dividend terms but contains no dividend reinvestment plan/pricing terms establishing the reinvestment price for ACCT-2101's Zoetis June 2, 2014 payment.",
+        "missing_document": "Dividend reinvestment plan/pricing terms applicable to ACCT-2101 for the ZTS dividend payable 2014-06-02",
+        "held_action": "determine dividend reinvestment price"
+      },
+      "seq": 27,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:18:11.820Z"
+    }
+  ],
+  "frozen": {
+    "ledger_v1": [
+      {
+        "entry_id": "L1",
+        "kind": "book_receivable",
+        "args": {
+          "account": "ACCT-2101",
+          "amount": 1800.0,
+          "pay_date": "2014-06-02",
+          "basis_doc": "zts-8k-20140327",
+          "shares": 25000.0,
+          "rate": 0.072,
+          "memo": "Zoetis Q2 2014 cash dividend: 25,000 ZTS shares of record on 2014-04-28 at $0.072/share."
+        },
+        "seq": 22,
+        "agent": "maker",
+        "round": 1,
+        "voided": false,
+        "t": "2026-09-24T17:18:03.340Z"
+      },
+      {
+        "entry_id": "L2",
+        "kind": "confirm_position",
+        "args": {
+          "ticker": "ZTS",
+          "shares": 25000.0,
+          "as_of": "2014-04-28",
+          "basis_doc": "zts-8k-20140327"
+        },
+        "seq": 24,
+        "agent": "maker",
+        "round": 1,
+        "voided": false,
+        "t": "2026-09-24T17:18:03.340Z"
+      },
+      {
+        "entry_id": "L3",
+        "kind": "escalate",
+        "args": {
+          "reason": "The document store determines the cash dividend terms but contains no dividend reinvestment plan/pricing terms establishing the reinvestment price for ACCT-2101's Zoetis June 2, 2014 payment.",
+          "missing_document": "Dividend reinvestment plan/pricing terms applicable to ACCT-2101 for the ZTS dividend payable 2014-06-02",
+          "held_action": "determine dividend reinvestment price"
+        },
+        "seq": 27,
+        "agent": "maker",
+        "round": 1,
+        "voided": false,
+        "t": "2026-09-24T17:18:11.820Z"
+      }
+    ]
+  },
+  "frozen_worksheets": {
+    "ledger_v1": {
+      "P1": {
+        "issuer": "Zoetis Inc.",
+        "security": {
+          "ticker": "ZTS"
+        },
+        "event_type": "mandatory",
+        "governing_doc": "zts-8k-20140327",
+        "superseded_docs": [
+          "zts-8k-20140326"
+        ]
+      },
+      "P2": {
+        "dates": {
+          "declared": "2014-03-26",
+          "corrected": "2014-03-27",
+          "record_date": "2014-04-28",
+          "pay_date": "2014-06-02"
+        },
+        "entitlement_basis": "record_date",
+        "entitlement_basis_date": "2014-04-28",
+        "election_deadline": null
+      },
+      "E1": {
+        "terms": {
+          "rate": 0.072,
+          "record_date": "2014-04-28",
+          "pay_date": "2014-06-02"
+        },
+        "citation": {
+          "document": "zts-8k-20140327",
+          "locator": "corrected release; first paragraph / corrected sentence",
+          "verbatim": "The Board of Directors of Zoetis Inc. (NYSE:ZTS) declared a second quarter dividend payable to holders of the company's common stock of $0.072 per share. The dividend is to be paid on June 2, 2014 to holders of record on April 28, 2014."
+        }
+      },
+      "E2": {
+        "position": {
+          "shares_settled": 25000
+        },
+        "basis_shares": 25000
+      },
+      "C1": {
+        "entitlement": {
+          "eligible_shares": 25000,
+          "rate": 0.072,
+          "gross_cash": 1800
+        },
+        "cil": {
+          "applicable": false,
+          "amount": null
+        }
+      },
+      "C2": {
+        "election_required": false,
+        "options": null,
+        "default_option": null,
+        "economics": null
+      },
+      "C3": {
+        "impact": {
+          "gross_cash": 1800
+        },
+        "changes": [
+          {
+            "what": "cash dividend receivable projection for Zoetis Q2 2014 dividend",
+            "where": "ACCT-2101 cash receivables ledger",
+            "old": null,
+            "new": 1800
+          },
+          {
+            "what": "record-date ZTS share position confirmation",
+            "where": "ZTS position verification ledger",
+            "old": null,
+            "new": 25000
+          }
+        ]
+      },
+      "D1": {
+        "decision": "Process mandatory cash dividend using corrected Zoetis announcement; book gross cash receivable and confirm record-date position. Reinvestment price is not determined by the store and was escalated/held pending the missing reinvestment pricing terms.",
+        "actions": [
+          {
+            "action": "book_receivable",
+            "option": null,
+            "quantity": 25000,
+            "amount": 1800,
+            "by_date": "2014-06-02",
+            "basis_doc": "zts-8k-20140327"
+          },
+          {
+            "action": "confirm_position",
+            "option": null,
+            "quantity": 25000,
+            "amount": null,
+            "by_date": "2014-04-28",
+            "basis_doc": "zts-8k-20140327"
+          }
+        ]
+      },
+      "D2": {
+        "probe": {
+          "label": "NOT_DETERMINABLE",
+          "value": null,
+          "derivation": "The store does not contain the dividend reinvestment plan/pricing terms applicable to ACCT-2101 for the ZTS dividend payable 2014-06-02; escalated for that missing document and held only the reinvestment-price determination."
+        },
+        "twins": [
+          {
+            "id": "TW1",
+            "value": 1800
+          }
+        ]
+      }
+    }
+  }
+}

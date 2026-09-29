@@ -1,0 +1,85 @@
+########################################################################
+  EPISODE mega-split-2024-clean   arm=tools   model=claude-sonnet-4-6
+########################################################################
+
+--- WORKSHEET (the submitted worksheet through the unchanged Phase-1 grader) ---
+========================================================================
+  CASE mega-split-2024-clean    model=tools:claude-sonnet-4-6    judge=mock
+========================================================================
+  CaseScore (gated, headline) : 1.000
+  CaseScore (ungated)         : 1.000
+  GAP (ungated - gated)       : 0.000
+  AllPass                     : 1
+  D2 calibration (R,G->F_b)   : R=1.00 G=1.00 -> 1.000
+  Gates fired                 : none
+
+  Checkpoint vector (which step failed):
+    cp   W      ungated  gated   raw
+    P1   0.100  1.000   1.000  +1.00
+    P2   0.120  1.000   1.000  +1.00
+    E1   0.100  1.000   1.000  +1.00
+    E2   0.080  1.000   1.000  +1.00
+    C1   0.140  1.000   1.000  +1.00
+    C2   0.120  1.000   1.000  +1.00
+    C3   0.100  1.000   1.000  +1.00
+    D1   0.160  1.000   1.000  +1.00
+    D2   0.080  1.000   1.000  +1.00
+
+  Category rollup (diagnostic -- what KIND of error):
+    extraction   +1.000  ####################
+    numerical    +1.000  ####################
+    entailment   +1.000  ####################
+    reasoning    +1.000  ####################
+    calibration  +1.000  ####################
+    structure    +1.000  ####################
+========================================================================
+
+--- TERMINAL STATE (worksheet + the ledger rendered into D1 rows; ledger predicates applied) ---
+========================================================================
+  CASE mega-split-2024-clean    model=tools:claude-sonnet-4-6    judge=mock
+========================================================================
+  CaseScore (gated, headline) : 1.000
+  CaseScore (ungated)         : 1.000
+  GAP (ungated - gated)       : 0.000
+  AllPass                     : 1
+  D2 calibration (R,G->F_b)   : R=1.00 G=1.00 -> 1.000
+  Gates fired                 : none
+
+  Checkpoint vector (which step failed):
+    cp   W      ungated  gated   raw
+    P1   0.100  1.000   1.000  +1.00
+    P2   0.120  1.000   1.000  +1.00
+    E1   0.100  1.000   1.000  +1.00
+    E2   0.080  1.000   1.000  +1.00
+    C1   0.140  1.000   1.000  +1.00
+    C2   0.120  1.000   1.000  +1.00
+    C3   0.100  1.000   1.000  +1.00
+    D1   0.160  1.000   1.000  +1.00
+    D2   0.080  1.000   1.000  +1.00
+
+  Category rollup (diagnostic -- what KIND of error):
+    extraction   +1.000  ####################
+    numerical    +1.000  ####################
+    entailment   +1.000  ####################
+    reasoning    +1.000  ####################
+    calibration  +1.000  ####################
+    structure    +1.000  ####################
+========================================================================
+
+--- LEDGER ---
+L1: update_pcf ticker=NVDA quantity_per_cu=1800.0 (was 1800) basis_doc=nvda-8k-20240607 memo='NVDA 10-for-1 split effective 2024-06-07; post-split quantity confirmed for 2024-06-10 PCF dissemination. Pre-split: 180 shares/CU × 10 = 1,800 shares/CU.'
+L2: book_receivable amount=$1,800.00 pay_date=2024-06-28 shares=180000.0 rate=0.01 basis_doc=nvda-8k-20240522 memo='NVDA quarterly cash dividend at post-split rate $0.01/share; record date 2024-06-11; 180,000 post-split shares projected at record date; gross amount $1,800.00. Net withholding NOT_DETERMINABLE — withholding rate document absent from store.'
+L3: escalate missing_document='MEGA fund withholding/tax-status document (or applicable withholding rate schedule for NVDA dividends paid to MEGA as a domestic ETF) — e.g., a W-9 on file, fund tax classification memo, or custodian withholding instruction confirming 0% or applicable rate' held_action="Booking net (post-withholding) dividend receivable for MEGA's NVDA position payable 2024-06-28" reason="The D2 probe asks for NET dividend cash after applicable withholding on MEGA's NVDA position. The document store contains the gross rate ($0.01/share post-split from nvda-8k-20240522) but contains no withholding tax rate schedule, IRS Form W-8/W-9 classification, or fund tax-status document that would determine the applicable withholding rate. The net amount cannot be computed without this document."
+  booked entries: 2   GATE.ELECT on the ledger: False   gold match: True   flags: none   correct: True
+  consistency L1: booked=1800.0 worksheet=1800.0 ok=True
+  consistency L2: booked=1800.0 worksheet=1800.0 ok=True
+  gold L1 update_pcf: ok=True  {'gold': 1800.0}
+  gold L2 book_receivable: ok=True  {'permissible': [1800.0], 'pay_date_ok': True, 'basis_superseded': False}
+  gold L3 escalate: ok=True  {'scoped': True}
+
+--- TRAJECTORY (reported, not scored) ---
+  maker: turns=8 tool_calls=14 errors=0 counts={'list_documents': 1, 'get_position': 2, 'read_document': 4, 'calculate': 3, 'update_pcf': 1, 'book_receivable': 1, 'escalate': 1, 'submit_worksheet': 1}
+  governing read before first action: True   docs read: ['mega-pcf-20240610', 'mega-position-20240610', 'nvda-8k-20240522', 'nvda-8k-20240607']   superseded read: []   distractors read: []
+  position dates queried: ['2024-06-10', '2024-06-11']   basis date queried: False   superseded date queried: None   projected: 1   query errors: 0
+  calculate used: True (3): ['18000 * 10', '180000 / 100', '180000 * 0.01']
+########################################################################

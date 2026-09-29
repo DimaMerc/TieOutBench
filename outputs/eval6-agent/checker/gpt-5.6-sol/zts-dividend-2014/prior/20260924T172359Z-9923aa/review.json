@@ -1,0 +1,77 @@
+{
+  "rounds": [
+    {
+      "round": 1,
+      "verdict": "reject",
+      "findings": [
+        "{\"entry\": \"L3\", \"what_is_wrong\": \"The governing corrected issuer document provides only a mandatory cash dividend of $0.072 per share and contains no dividend-reinvestment option, election, pricing term, or dependent reinvestment action. Escalating a reinvestment price invents an action not allowed by the event; absence of DRIP documentation is not evidence that DRIP applies.\", \"what_it_should_be\": \"Remove L3 and the corresponding reinvestment escalation/hold from D1 and D2. Process only the mandatory $1,800 cash receivable for 25,000 shares, payable 2014-06-02, based on zts-8k-20140327. L1 and L2 otherwise tie out: the correction supersedes the 2014-03-26 announcement, changes the record date to 2014-04-28, the projected settled position is 25,000 shares, and 25,000 \\u00d7 $0.072 = $1,800.\"}"
+      ],
+      "turns": 4,
+      "incomplete": false,
+      "ended_by": "end",
+      "ledger_shown_correct": true,
+      "ledger_shown_elect": false,
+      "ledger_shown_flags": []
+    },
+    {
+      "round": 2,
+      "verdict": "approve",
+      "findings": [],
+      "turns": 4,
+      "incomplete": false,
+      "ended_by": "end",
+      "ledger_shown_correct": true,
+      "ledger_shown_elect": false,
+      "ledger_shown_flags": []
+    }
+  ],
+  "ledger_v1": [
+    {
+      "entry_id": "L1",
+      "kind": "book_receivable",
+      "args": {
+        "account": "ACCT-2101",
+        "amount": 1800.0,
+        "pay_date": "2014-06-02",
+        "basis_doc": "zts-8k-20140327",
+        "shares": 25000.0,
+        "rate": 0.072,
+        "memo": "Zoetis Q2 2014 gross dividend; entitlement based on corrected 2014-04-28 record date."
+      },
+      "seq": 19,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:13:32.040Z"
+    },
+    {
+      "entry_id": "L2",
+      "kind": "confirm_position",
+      "args": {
+        "ticker": "ZTS",
+        "shares": 25000.0,
+        "as_of": "2014-04-28",
+        "basis_doc": "zts-8k-20140327"
+      },
+      "seq": 21,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:13:32.040Z"
+    },
+    {
+      "entry_id": "L3",
+      "kind": "escalate",
+      "args": {
+        "reason": "The store establishes the gross dividend but contains no dividend-reinvestment plan pricing terms or administrator purchase-price notice determining the reinvestment price for the 2014-06-02 payment.",
+        "missing_document": "Zoetis dividend reinvestment plan pricing terms / administrator purchase-price notice for the 2014-06-02 dividend",
+        "held_action": "Determine and apply the reinvestment price only; do not hold the gross cash-dividend receivable."
+      },
+      "seq": 23,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:13:32.040Z"
+    }
+  ]
+}

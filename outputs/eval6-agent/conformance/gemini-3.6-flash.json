@@ -1,0 +1,13 @@
+{
+  "endpoint": "generativelanguage.googleapis.com",
+  "model_id": "gemini-3.6-flash",
+  "token": "conformance-aacf50",
+  "tested_at": "2026-09-24T15:58:13Z",
+  "native": {
+    "tool_call": true,
+    "final": true,
+    "detail": "DONE conformance-aacf50"
+  },
+  "text": null,
+  "tool_transport": "native"
+}

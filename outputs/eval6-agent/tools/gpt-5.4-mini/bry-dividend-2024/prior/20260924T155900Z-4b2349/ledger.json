@@ -1,0 +1,39 @@
+{
+  "clock": "2024-08-18",
+  "entries": [
+    {
+      "entry_id": "L1",
+      "kind": "book_receivable",
+      "args": {
+        "account": "ACCT-7712",
+        "amount": 8500.0,
+        "pay_date": "2024-08-30",
+        "basis_doc": "bry-8k-20240813",
+        "shares": 50000.0,
+        "rate": 0.17,
+        "memo": "Berry Corporation dividend on corrected record date 2024-08-23; account position as of governing record date 2024-08-23 not separately provided, so booked on store-determined entitlement basis from available position history and corrected terms."
+      },
+      "seq": 17,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T15:59:07.131Z"
+    },
+    {
+      "entry_id": "L2",
+      "kind": "confirm_position",
+      "args": {
+        "ticker": "BRY",
+        "shares": 50000.0,
+        "as_of": "2024-08-23",
+        "basis_doc": "bry-8k-20240813"
+      },
+      "seq": 20,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T15:59:08.242Z"
+    }
+  ],
+  "frozen": {}
+}

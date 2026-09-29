@@ -1,0 +1,95 @@
+########################################################################
+  EPISODE mega-split-2024   arm=checker   model=claude-sonnet-4-6
+########################################################################
+
+--- WORKSHEET (the submitted worksheet through the unchanged Phase-1 grader) ---
+========================================================================
+  CASE mega-split-2024    model=checker:claude-sonnet-4-6    judge=mock
+========================================================================
+  CaseScore (gated, headline) : 1.000
+  CaseScore (ungated)         : 1.000
+  GAP (ungated - gated)       : 0.000
+  AllPass                     : 1
+  D2 calibration (R,G->F_b)   : R=1.00 G=1.00 -> 1.000
+  Gates fired                 : none
+
+  Checkpoint vector (which step failed):
+    cp   W      ungated  gated   raw
+    P1   0.100  1.000   1.000  +1.00
+    P2   0.120  1.000   1.000  +1.00
+    E1   0.100  1.000   1.000  +1.00
+    E2   0.080  1.000   1.000  +1.00
+    C1   0.140  1.000   1.000  +1.00
+    C2   0.120  1.000   1.000  +1.00
+    C3   0.100  1.000   1.000  +1.00
+    D1   0.160  1.000   1.000  +1.00
+    D2   0.080  1.000   1.000  +1.00
+
+  Category rollup (diagnostic -- what KIND of error):
+    extraction   +1.000  ####################
+    numerical    +1.000  ####################
+    entailment   +1.000  ####################
+    reasoning    +1.000  ####################
+    calibration  +1.000  ####################
+    structure    +1.000  ####################
+========================================================================
+
+--- TERMINAL STATE (worksheet + the ledger rendered into D1 rows; ledger predicates applied) ---
+========================================================================
+  CASE mega-split-2024    model=checker:claude-sonnet-4-6    judge=mock
+========================================================================
+  CaseScore (gated, headline) : 1.000
+  CaseScore (ungated)         : 1.000
+  GAP (ungated - gated)       : 0.000
+  AllPass                     : 1
+  D2 calibration (R,G->F_b)   : R=1.00 G=1.00 -> 1.000
+  Gates fired                 : none
+
+  Checkpoint vector (which step failed):
+    cp   W      ungated  gated   raw
+    P1   0.100  1.000   1.000  +1.00
+    P2   0.120  1.000   1.000  +1.00
+    E1   0.100  1.000   1.000  +1.00
+    E2   0.080  1.000   1.000  +1.00
+    C1   0.140  1.000   1.000  +1.00
+    C2   0.120  1.000   1.000  +1.00
+    C3   0.100  1.000   1.000  +1.00
+    D1   0.160  1.000   1.000  +1.00
+    D2   0.080  1.000   1.000  +1.00
+
+  Category rollup (diagnostic -- what KIND of error):
+    extraction   +1.000  ####################
+    numerical    +1.000  ####################
+    entailment   +1.000  ####################
+    reasoning    +1.000  ####################
+    calibration  +1.000  ####################
+    structure    +1.000  ####################
+========================================================================
+
+--- LEDGER ---
+L5: update_pcf ticker=NVDA quantity_per_cu=1800.0 (was 180) basis_doc=nvda-8k-20240607 memo='NVDA 10-for-1 forward split effective 2024-06-07 (record date 2024-06-06, split-adjusted trading 2024-06-10). Pre-split basket: 180 shares/CU; post-split: 1,800 shares/CU across 100 CUs = 180,000 total. PCF corrected for split-adjusted trading commencing today 2024-06-10.'
+L6: confirm_position ticker=NVDA shares=180000.0 as_of=2024-06-07 basis_doc=nvda-8k-20240607
+L7: book_receivable amount=$1,800.00 pay_date=2024-06-28 shares=180000.0 rate=0.01 basis_doc=nvda-8k-20240522 memo='NVDA quarterly cash dividend (gross): $0.01/share post-split rate on 180,000 post-split shares. Entitlement basis: record date 2024-06-11 (projected settled position, no pending trades). Payable 2024-06-28. Booking effective on/after record date 2024-06-11 per nvda-8k-20240522. Net-of-withholding booking held pending withholding rate document (escalated separately).'
+L8: escalate missing_document='MEGA fund withholding tax rate / tax-exempt status document for NVDA dividend (e.g., IRS Form W-9 or fund tax-status certification confirming applicable withholding rate on U.S. domestic equity dividends paid to MEGA)' held_action='Book net-of-withholding dividend receivable for MEGA NVDA June 2024 dividend (record date 2024-06-11, pay date 2024-06-28)' reason="The D2 probe requires the NET dividend cash after applicable withholding on MEGA's NVDA position. The store provides the gross rate ($0.01/share post-split, 180,000 shares = $1,800.00 gross) from nvda-8k-20240522, but contains no withholding tax rate schedule, IRS Form W-9, W-8 series form, or fund tax-status certification establishing the applicable withholding rate on U.S. domestic equity dividends for MEGA. The net figure is not determinable from the document store."
+  booked entries: 3   GATE.ELECT on the ledger: False   gold match: True   flags: none   correct: True
+  consistency L5: booked=1800.0 worksheet=1800.0 ok=True
+  consistency L7: booked=1800.0 worksheet=1800.0 ok=True
+  gold L5 update_pcf: ok=True  {'gold': 1800.0}
+  gold L6 confirm_position: ok=True  {'as_of_is_basis_date': False}
+  gold L7 book_receivable: ok=True  {'permissible': [1800.0], 'pay_date_ok': True, 'basis_superseded': False}
+  gold L8 escalate: ok=True  {'scoped': True}
+
+--- TRAJECTORY (reported, not scored) ---
+  maker: turns=14 tool_calls=24 errors=0 counts={'list_documents': 1, 'get_position': 2, 'read_document': 6, 'calculate': 5, 'update_pcf': 2, 'escalate': 2, 'book_receivable': 2, 'confirm_position': 2, 'submit_worksheet': 2}
+  governing read before first action: True   docs read: ['mega-pcf-20240610', 'mega-position-20240610', 'nvda-8k-20240522', 'nvda-8k-20240607']   superseded read: []   distractors read: []
+  position dates queried: ['2024-06-10', '2024-06-11']   basis date queried: False   superseded date queried: None   projected: 1   query errors: 0
+  calculate used: True (5): ['18000 * 10', '180 * 10', '180000 * 0.01', '180 * 10', '180000 * 0.01']
+
+--- REVIEW (checker arm) ---
+  round 1: verdict=reject recomputed=True tools={'list_documents': 1, 'get_position': 2, 'read_document': 4, 'calculate': 3, 'review_verdict': 1} ledger_shown_correct=False
+    - L3 / D1 book_receivable — premature booking: The NVDA quarterly dividend record date is 2024-06-11 (per nvda-8k-20240522). The desk as-of date is 2024-06-10. MEGA is not yet a shareholder of record for the dividend as of today; the receivable cannot be booked until on or after the record date of 2024-06-11. The entry should be dated no earlier than 2024-06-11, not booked today.
+    - L3 / D1 book_receivable — incorrect dividend record date cited in memo: The memo states 'record date 2024-06-11' correctly per nvda-8k-20240522, but the action is booked with by_date=2024-06-28 (pay date) and processed as of 2024-06-10, before the record date has passed. The booking date must be on or after 2024-06-11 to reflect a valid entitlement.
+    - D1 / D2 — dividend basis document inconsistency: The split actions (update_pcf, confirm_position) correctly cite nvda-8k-20240607 as the governing document, but the book_receivable action and the escalate action both cite nvda-8k-20240522 (the announcement 8-K). The worksheet P1 designates nvda-8k-20240607 as the governing document with no superseded docs listed; the dividend terms (rate, record date, pay date) originate solely from nvda-8k-20240522, which is not listed as a governing or supplementary source in P1. The worksheet should explicitly identify nvda-8k-20240522 as the governing document for the dividend component, or P1 must be updated to reflect both documents and their respective scope.
+  round 2: verdict=approve recomputed=True tools={'list_documents': 1, 'get_position': 3, 'read_document': 4, 'calculate': 3, 'review_verdict': 1} ledger_shown_correct=True
+    - No discrepancies found. All ledger entries tie out to source documents and independently verified figures: (1) L5 update_pcf: 1,800 shares/CU correctly derived from 18,000 pre-split shares ÷ 100 CUs × 10-for-1 ratio, governed by nvda-8k-20240607. (2) L6 confirm_position: 180,000 post-split shares confirmed by position system as of 2024-06-07 (18,000 × 10). (3) L7 book_receivable: $1,800.00 gross dividend correctly derived from 180,000 post-split shares × $0.01/share post-split rate, record date 2024-06-11, pay date 2024-06-28, governed by nvda-8k-20240522. (4) L8 escalate: correctly held net-of-withholding booking; no withholding rate document present in store. Governing document identification is correct (nvda-8k-20240607 for split, nvda-8k-20240522 for dividend); no supersession issues; QSEM distractor correctly ignored.
+########################################################################

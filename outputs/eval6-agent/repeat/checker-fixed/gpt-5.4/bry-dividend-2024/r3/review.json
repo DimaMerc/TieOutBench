@@ -1,0 +1,64 @@
+{
+  "rounds": [
+    {
+      "round": 1,
+      "verdict": "approve",
+      "findings": [],
+      "turns": 4,
+      "incomplete": false,
+      "ended_by": "end",
+      "ledger_shown_correct": true,
+      "ledger_shown_elect": false,
+      "ledger_shown_flags": []
+    }
+  ],
+  "ledger_v1": [
+    {
+      "entry_id": "L1",
+      "kind": "confirm_position",
+      "args": {
+        "ticker": "BRY",
+        "shares": 40000.0,
+        "as_of": "2024-08-23",
+        "basis_doc": "bry-8k-20240813"
+      },
+      "seq": 21,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:39:41.144Z"
+    },
+    {
+      "entry_id": "L2",
+      "kind": "book_receivable",
+      "args": {
+        "account": "ACCT-7712",
+        "amount": 6800.0,
+        "pay_date": "2024-08-30",
+        "basis_doc": "bry-8k-20240813",
+        "shares": 40000.0,
+        "rate": 0.17,
+        "memo": "Berry Corp corrected dividend terms: $0.17/share payable 2024-08-30 to holders of record 2024-08-23"
+      },
+      "seq": 24,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:39:42.773Z"
+    },
+    {
+      "entry_id": "L3",
+      "kind": "escalate",
+      "args": {
+        "reason": "Net dividend cash for a foreign-domiciled beneficial owner depends on the applicable withholding tax rate/documentation, which is not provided in the store; only gross dividend terms are determined.",
+        "missing_document": "withholding tax documentation / applicable tax rate instruction for the foreign-domiciled subaccount (e.g., W-8 or tax withholding profile)",
+        "held_action": "determine and book net dividend cash after withholding"
+      },
+      "seq": 27,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:39:44.653Z"
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "clock": "2024-06-10",
+  "entries": [
+    {
+      "entry_id": "L1",
+      "kind": "book_receivable",
+      "args": {
+        "account": "ACCT-0093",
+        "amount": 4611.0,
+        "pay_date": "2024-06-10",
+        "basis_doc": "mnst-results-20240610",
+        "shares": 87.0,
+        "rate": 53.0,
+        "memo": "Tender proceeds: 87 odd-lot shares accepted in full at final price $53.00; no proration (odd-lot preference). GROSS proceeds; any LoT fees not determinable."
+      },
+      "seq": 19,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:14:39.732Z"
+    },
+    {
+      "entry_id": "L2",
+      "kind": "confirm_position",
+      "args": {
+        "ticker": "MNST",
+        "shares": 87.0,
+        "as_of": "2024-06-05",
+        "basis_doc": "mnst-results-20240610"
+      },
+      "seq": 21,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:14:39.732Z"
+    },
+    {
+      "entry_id": "L3",
+      "kind": "escalate",
+      "args": {
+        "reason": "The D2 probe asks what fees/charges the Letter of Transmittal deducts from the account's tender proceeds. The Offer to Purchase requires holders to complete the Letter of Transmittal, but that document is absent from the store, so the fee/charge terms cannot be sourced. Holding only the net-of-fee figure; gross proceeds ($4,611.00) are determined and booked.",
+        "missing_document": "Letter of Transmittal for the Monster Beverage tender offer",
+        "held_action": "Determination/booking of any fee or charge deduction (net proceeds figure) from the account's tender proceeds"
+      },
+      "seq": 23,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:14:39.732Z"
+    }
+  ],
+  "frozen": {}
+}

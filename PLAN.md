@@ -436,3 +436,56 @@ Design doc + build status: `workflow/corporate-actions-analysis.md` (decisions a
 - [x] LEADERBOARD eval-6 section + honest-negatives refinement; profiles/ regenerated (96 runs,
       evals #3-#6; published eval-3-5 numbers still reproduce byte-for-byte).
 - [x] README threading + finalize workflow/corporate-actions-analysis.md; committed 2026-08-18 (5c078d9).
+
+## Phase 6 — The agent environment (eval #6, Phase 2)  ✅ built 2026-09-24; the grid is NOT run
+Design + build notes: `workflow/DESIGN-phase2-agent-environment.md` (§1-12 design, §13 build
+notes, §14 the video). Three arms on the same six cases and eight models: plain (the 48 Phase-1
+runs), tools, checker (maker-checker with one revision round). Deterministic grader unchanged.
+- [x] `harness/env/`: Episode (store, clock, ledger, transcript); ten tools with fixed signatures;
+      ledger -> D1 rows (structured fields only; the memo is commentary); three scoring layers
+      (worksheet through the unchanged grader / terminal state = worksheet + ledger rows through
+      the same grader + ledger predicates that zero D1 / trajectory metrics reported only);
+      native tool calling on the non-streaming path + text-protocol fallback + per-endpoint
+      conformance test; maker and reviewer loops; scripted oracle + 9 planted trajectories;
+      storyboard (replay.md, storyboard.json, PNG cards). `env` blocks in the six case files.
+- [x] Selftest: oracle 1.000/AllPass on both layers x 6 cases; planted trajectories each fire
+      exactly their gate/flag; the loops under a scripted client; 25 environment gaming checks
+      (`harness/gaming_review_env.py`). Phase-1 numbers unchanged (96 answers re-grade
+      identically); profiles regenerate with the `arm` field + `summary_by_arm` only.
+- [x] Conformance: native function calling passes on all three endpoints (records under
+      `outputs/eval6-agent/conformance/`). Two smoke cells on bry-dividend-2024 with GPT-5.4-mini:
+      attempt 1 read the correction, never called get_position, booked $8,500 (both gates, 0.225;
+      preserved under prior/); attempt 2 queried the position as of the desk's date (not the
+      record date) and booked $6,800 (0.889, no gate); the checker queried the record date and
+      approved the correct ledger. Same cell, both sides of the finding, minutes apart.
+- [x] **Arm B live, 48 cells (2026-09-24):** AllPass 35 vs 32 plain; GATE.ELECT 0; ledgers correct
+      46/48; tools helped the mid tier (GPT-5.4 4->6, GPT-5.6-sol 5->6, Opus 4->5) and hurt the small
+      tier (Haiku 3->2 with DATES on both tenders, ledgers right; mini reversed the clean basket
+      1,800->180 and booked $180). Grader-bug rule: 3 env-contract fixes (split-case dividend
+      receivable allowed + permissible_receivables; no-op update counts as the check; PCF line =
+      last update) + 8 Phase-1 false fires (LW4#1-13, 92 checks) - no committed headline number moved.
+- [x] **Arm C live, 48 cells + repeats (2026-09-24), TWO WAVES:** wave 1's reviewer packet lacked
+      the D2 probe (19 of 28 rejections objected to the escalation) -> packet fixed, arm re-run with
+      the same reused makers (wave 1 preserved under prior/ and repeat/checker-wave1/). Wave 2:
+      AllPass 27 (worse than tools); two-by-two reject/wrong 1, reject/correct 20, approve/wrong 1,
+      approve/correct 26; 21 revisions introduced 4 gates + 5 missing/held bookings. Repeats (3 per
+      cell, 3 arms, corrected dividend, 72 runs): Sonnet 9/9 AP; mini booked $8,500 in 2 of 5 tools
+      attempts, never calling get_position in either; plain repeats never re-booked $8,500.
+- [x] `outputs/eval6-agent/TAXONOMY.md`, `summary.json` + `summarize.py`, LEADERBOARD Phase-2
+      section, README, design doc S13.2, profiles with `arm` rows, video treatment anchors.
+- [x] **Fixed-reviewer cell (2026-09-25):** Opus reviews every maker's saved work product
+      (`--reviewer-model claude-opus-4-8` -> outputs/eval6-agent/checker-fixed/, 48 cells + 24
+      repeats). Two-by-two 1/13/1/33 (self-review 1/20/1/26): better verdicts; AllPass 25 (worse):
+      10 of 13 false rejections over-ruled the NOT_DETERMINABLE withholding/fee answer ("U.S. fund,
+      no withholding, net = gross") and every maker complied -> GATE.FABRICATION x10. Ledgers
+      correct 46/48. GPT-5.4 6/6 under the fixed reviewer.
+- [x] **Paper-ready (2026-09-25):** `paper/section-eval6-phase2.md` (drop-in drafts for v1.2:
+      §4.6/§4.7 eval + environment, §6.6/§6.7 results with T6-T8, §8/§9/§10/§11 additions),
+      `paper/figures/make_figures_phase2.py` -> f8-phase2-arms, f9-phase2-two-by-two,
+      f10-phase2-per-model (from summary.json, paper palette), OUTLINE v1.2 block, Mendeley v3
+      snapshot note. Every quoted number cross-checked against summary.json by script.
+- [ ] Article + post + video from the treatment. Next run (cheap: reviewer turns only): the
+      reviewer prompt carries the desk rules (the calibration rule, what a hold is for, which
+      documents govern), the reviewer may reject a booking but not instruct a value for a refusal,
+      and the maker re-verifies each finding against the source before acting. Both review arms
+      are its baselines.

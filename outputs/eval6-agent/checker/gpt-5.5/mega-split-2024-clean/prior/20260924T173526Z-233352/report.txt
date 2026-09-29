@@ -1,0 +1,89 @@
+########################################################################
+  EPISODE mega-split-2024-clean   arm=checker   model=gpt-5.5
+########################################################################
+
+--- WORKSHEET (the submitted worksheet through the unchanged Phase-1 grader) ---
+========================================================================
+  CASE mega-split-2024-clean    model=checker:gpt-5.5    judge=mock
+========================================================================
+  CaseScore (gated, headline) : 1.000
+  CaseScore (ungated)         : 1.000
+  GAP (ungated - gated)       : 0.000
+  AllPass                     : 1
+  D2 calibration (R,G->F_b)   : R=1.00 G=1.00 -> 1.000
+  Gates fired                 : none
+
+  Checkpoint vector (which step failed):
+    cp   W      ungated  gated   raw
+    P1   0.100  1.000   1.000  +1.00
+    P2   0.120  1.000   1.000  +1.00
+    E1   0.100  1.000   1.000  +1.00
+    E2   0.080  1.000   1.000  +1.00
+    C1   0.140  1.000   1.000  +1.00
+    C2   0.120  1.000   1.000  +1.00
+    C3   0.100  1.000   1.000  +1.00
+    D1   0.160  1.000   1.000  +1.00
+    D2   0.080  1.000   1.000  +1.00
+
+  Category rollup (diagnostic -- what KIND of error):
+    extraction   +1.000  ####################
+    numerical    +1.000  ####################
+    entailment   +1.000  ####################
+    reasoning    +1.000  ####################
+    calibration  +1.000  ####################
+    structure    +1.000  ####################
+========================================================================
+
+--- TERMINAL STATE (worksheet + the ledger rendered into D1 rows; ledger predicates applied) ---
+========================================================================
+  CASE mega-split-2024-clean    model=checker:gpt-5.5    judge=mock
+========================================================================
+  CaseScore (gated, headline) : 1.000
+  CaseScore (ungated)         : 1.000
+  GAP (ungated - gated)       : 0.000
+  AllPass                     : 1
+  D2 calibration (R,G->F_b)   : R=1.00 G=1.00 -> 1.000
+  Gates fired                 : none
+
+  Checkpoint vector (which step failed):
+    cp   W      ungated  gated   raw
+    P1   0.100  1.000   1.000  +1.00
+    P2   0.120  1.000   1.000  +1.00
+    E1   0.100  1.000   1.000  +1.00
+    E2   0.080  1.000   1.000  +1.00
+    C1   0.140  1.000   1.000  +1.00
+    C2   0.120  1.000   1.000  +1.00
+    C3   0.100  1.000   1.000  +1.00
+    D1   0.160  1.000   1.000  +1.00
+    D2   0.080  1.000   1.000  +1.00
+
+  Category rollup (diagnostic -- what KIND of error):
+    extraction   +1.000  ####################
+    numerical    +1.000  ####################
+    entailment   +1.000  ####################
+    reasoning    +1.000  ####################
+    calibration  +1.000  ####################
+    structure    +1.000  ####################
+========================================================================
+
+--- LEDGER ---
+L4: update_pcf ticker=NVDA quantity_per_cu=1800.0 (was 1800) basis_doc=nvda-8k-20240607 memo='Correct NVDA PCF quantity per creation unit for 10-for-1 split: prior/pre-split 180 per CU (18,000 shares / 100 CUs); new/post-split 1,800 per CU for 2024-06-10 dissemination.'
+L5: confirm_position ticker=NVDA shares=180000.0 as_of=2024-06-07 basis_doc=nvda-8k-20240607
+L6: escalate missing_document='MEGA applicable withholding tax status/rate documentation for NVIDIA dividend' held_action='book net dividend cash receivable for NVDA June 2024 dividend' reason="The NVIDIA dividend announcement provides the gross post-split dividend rate and dates, but the document store lacks MEGA's applicable withholding tax status/rate documentation needed to determine net cash after withholding."
+  booked entries: 2   GATE.ELECT on the ledger: False   gold match: True   flags: none   correct: True
+  consistency L4: booked=1800.0 worksheet=1800.0 ok=True
+  gold L4 update_pcf: ok=True  {'gold': 1800.0}
+  gold L5 confirm_position: ok=True  {'as_of_is_basis_date': False}
+  gold L6 escalate: ok=True  {'scoped': True}
+
+--- TRAJECTORY (reported, not scored) ---
+  maker: turns=14 tool_calls=31 errors=0 counts={'list_documents': 2, 'read_document': 8, 'get_position': 4, 'calculate': 9, 'update_pcf': 2, 'confirm_position': 2, 'escalate': 2, 'submit_worksheet': 2}
+  governing read before first action: True   docs read: ['mega-pcf-20240610', 'mega-position-20240610', 'nvda-8k-20240522', 'nvda-8k-20240607']   superseded read: []   distractors read: []
+  position dates queried: ['2024-06-06', '2024-06-11', '2024-06-06', '2024-06-11']   basis date queried: True   superseded date queried: None   projected: 2   query errors: 0
+  calculate used: True (9): ['18000*10', '18000*9', '180000/100', '180000*0.01', '18000/100', '18000*10', '18000*9', '180000/100', '180000*0.01']
+
+--- REVIEW (checker arm) ---
+  round 1: verdict=reject recomputed=True tools={'list_documents': 1, 'read_document': 4, 'get_position': 4, 'calculate': 5, 'review_verdict': 1} ledger_shown_correct=True
+    - L1 update_pcf contains an incorrect prior quantity: it books NVDA quantity_per_cu=1,800 but states “was 1,800.” The pre-split MEGA NVDA position was 18,000 shares across 100 creation units, i.e. 180 shares per creation unit; after the 10-for-1 split it should be 1,800 per creation unit. L1 should therefore show old/prior quantity 180 and new quantity 1,800.
+  round 2: verdict=approve recomputed=True tools={'list_documents': 1, 'read_document': 4, 'get_position': 4, 'calculate': 4, 'review_verdict': 1} ledger_shown_correct=True
+########################################################################

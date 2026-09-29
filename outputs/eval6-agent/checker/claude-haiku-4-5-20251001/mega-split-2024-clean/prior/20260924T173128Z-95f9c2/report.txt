@@ -1,0 +1,86 @@
+########################################################################
+  EPISODE mega-split-2024-clean   arm=checker   model=claude-haiku-4-5-20251001
+########################################################################
+
+--- WORKSHEET (the submitted worksheet through the unchanged Phase-1 grader) ---
+========================================================================
+  CASE mega-split-2024-clean    model=checker:claude-haiku-4-5-20251001    judge=mock
+========================================================================
+  CaseScore (gated, headline) : 0.275
+  CaseScore (ungated)         : 0.642
+  GAP (ungated - gated)       : 0.367
+  AllPass                     : 0
+  D2 calibration (R,G->F_b)   : R=1.00 G=1.00 -> 1.000
+  Gates fired                 : GATE.DATES
+
+  Checkpoint vector (which step failed):
+    cp   W      ungated  gated   raw
+    P1   0.100  1.000   1.000  +1.00
+    P2   0.120  0.375   0.375  +0.38
+    E1   0.100  0.000   0.000  -0.22
+    E2   0.080  0.000   0.000  +0.00
+    C1   0.140  0.624   0.000  +0.62  <-- gated
+    C2   0.120  1.000   0.000  +1.00  <-- gated
+    C3   0.100  0.500   0.500  +0.50
+    D1   0.160  1.000   0.000  +1.00  <-- gated
+    D2   0.080  1.000   1.000  +1.00
+
+  Category rollup (diagnostic -- what KIND of error):
+    extraction   +0.119  ##
+    numerical    +0.487  ##########
+    entailment   +1.000  ####################
+    reasoning    +0.833  #################
+    calibration  +1.000  ####################
+    structure    +1.000  ####################
+========================================================================
+
+--- TERMINAL STATE (worksheet + the ledger rendered into D1 rows; ledger predicates applied) ---
+========================================================================
+  CASE mega-split-2024-clean    model=checker:claude-haiku-4-5-20251001    judge=mock
+========================================================================
+  CaseScore (gated, headline) : 0.275
+  CaseScore (ungated)         : 0.642
+  GAP (ungated - gated)       : 0.367
+  AllPass                     : 0
+  D2 calibration (R,G->F_b)   : R=1.00 G=1.00 -> 1.000
+  Gates fired                 : GATE.DATES
+  Headline flags              : ledger_missing_required
+
+  Checkpoint vector (which step failed):
+    cp   W      ungated  gated   raw
+    P1   0.100  1.000   1.000  +1.00
+    P2   0.120  0.375   0.375  +0.38
+    E1   0.100  0.000   0.000  -0.22
+    E2   0.080  0.000   0.000  +0.00
+    C1   0.140  0.624   0.000  +0.62  <-- gated
+    C2   0.120  1.000   0.000  +1.00  <-- gated
+    C3   0.100  0.500   0.500  +0.50
+    D1   0.160  1.000   0.000  +1.00  <-- gated
+    D2   0.080  1.000   1.000  +1.00
+
+  Category rollup (diagnostic -- what KIND of error):
+    extraction   +0.119  ##
+    numerical    +0.487  ##########
+    entailment   +1.000  ####################
+    reasoning    +0.833  #################
+    calibration  +1.000  ####################
+    structure    +1.000  ####################
+========================================================================
+
+--- LEDGER ---
+L3: book_receivable amount=$1,800.00 pay_date=2024-06-28 shares=180000.0 rate=0.01 basis_doc=nvda-8k-20240522 memo='NVDA June 2024 dividend at post-split rate; record date 2024-06-11'
+  booked entries: 1   GATE.ELECT on the ledger: False   gold match: True   flags: ledger_missing_required   correct: False
+  consistency L3: booked=1800.0 worksheet=1800.0 ok=True
+  gold L3 book_receivable: ok=True  {'permissible': [1800.0], 'pay_date_ok': True, 'basis_superseded': False}
+
+--- TRAJECTORY (reported, not scored) ---
+  maker: turns=9 tool_calls=12 errors=0 counts={'list_documents': 1, 'read_document': 4, 'get_position': 1, 'calculate': 1, 'book_receivable': 2, 'escalate': 1, 'submit_worksheet': 2}
+  governing read before first action: True   docs read: ['mega-pcf-20240610', 'mega-position-20240610', 'nvda-8k-20240522', 'nvda-8k-20240607']   superseded read: []   distractors read: []
+  position dates queried: ['2024-06-11']   basis date queried: False   superseded date queried: None   projected: 1   query errors: 0
+  calculate used: True (1): ['180000 * 0.01']
+
+--- REVIEW (checker arm) ---
+  round 1: verdict=reject recomputed=True tools={'list_documents': 1, 'get_position': 2, 'read_document': 1, 'calculate': 2, 'review_verdict': 1} ledger_shown_correct=False
+    - Worksheet P2 entitlement_basis_date error: Listed as 2024-06-06 (stock split record date) but should be 2024-06-11 (dividend record date per nvda-8k-20240522 Item 8.01: 'will be paid on Friday, June 28, 2024, to all shareholders of record on Tuesday, June 11, 2024'). The ledger entry L1 correctly applies the post-split quantity (180,000 shares) and amount ($1,800), which is only valid for the June 11 record date, not June 6.
+  round 2: verdict=approve recomputed=True tools={'list_documents': 1, 'get_position': 1, 'read_document': 3, 'calculate': 1, 'review_verdict': 1} ledger_shown_correct=False
+########################################################################

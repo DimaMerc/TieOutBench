@@ -1,0 +1,227 @@
+{
+  "schema": "tieoutbench.run/1",
+  "run_id": "20260924T172553Z-e544f6",
+  "written_at": "2026-09-24T17:26:59Z",
+  "arm": "checker",
+  "suite": "corporate-actions",
+  "model_id": "gpt-5.6-sol",
+  "endpoint": "api.openai.com",
+  "request": {
+    "max_tokens": 32000,
+    "temperature": 0.0,
+    "stream": false,
+    "tool_transport": "text",
+    "max_turns": 20,
+    "deadline_s": 900
+  },
+  "conformance": {
+    "tool_transport": "text",
+    "tested_at": "2026-09-24T17:12:25Z"
+  },
+  "loop": {
+    "maker_round1": {
+      "turns": 5,
+      "incomplete": false,
+      "ended_by": "end",
+      "elapsed_s": null
+    },
+    "review_round1": {
+      "round": 1,
+      "verdict": "reject",
+      "findings": [
+        "{\"entry\": \"L2\", \"what_is_wrong\": \"The booked pay_date of 2024-06-10 is unsupported. The final-results release is dated 2024-06-10 but states no payment date; an announcement date cannot be treated as the pay date.\", \"what_it_should_be\": \"Retain the correctly derived gross receivable of $4,611.00 for 87 shares at $53.00, but leave the pay date undetermined pending an authoritative payment-date source.\"}",
+        "{\"entry\": \"L3\", \"what_is_wrong\": \"The position confirmation cites mnst-results-20240610, which contains no account-level position information and cannot substantiate ACCT-0093's 87 shares as of 2024-06-05.\", \"what_it_should_be\": \"The 87-share quantity is correct, but its basis must be the ACCT-0093 custody position/instruction record (acct0093-position-20240610) or the position system result as of 2024-06-05, not the issuer final-results release.\"}",
+        "{\"entry\": \"Worksheet P1 superseded_docs\", \"what_is_wrong\": \"The worksheet characterizes mnst-otp-20240508 as superseded. The final-results release fixes the final price, accepted total, and proration result, but it does not replace the Offer to Purchase's odd-lot eligibility conditions, including ownership of fewer than 100 shares and tender of all shares.\", \"what_it_should_be\": \"Treat mnst-results-20240610 as governing the final results while retaining mnst-otp-20240508 as the governing source for the odd-lot qualification mechanics; do not label the Offer to Purchase wholly superseded.\"}"
+      ],
+      "turns": 4,
+      "incomplete": false,
+      "ended_by": "end",
+      "ledger_shown_correct": true,
+      "ledger_shown_elect": false,
+      "ledger_shown_flags": []
+    },
+    "revised": true,
+    "maker_round2": {
+      "turns": 4,
+      "incomplete": false,
+      "ended_by": "end",
+      "elapsed_s": 26.1
+    },
+    "review_round2": {
+      "round": 2,
+      "verdict": "approve",
+      "findings": [],
+      "turns": 4,
+      "incomplete": false,
+      "ended_by": "end",
+      "ledger_shown_correct": false,
+      "ledger_shown_elect": true,
+      "ledger_shown_flags": [
+        "ledger_missing_required",
+        "ledger_contradiction"
+      ]
+    }
+  },
+  "usage_total": {
+    "prompt_tokens": 48318,
+    "completion_tokens": 3990,
+    "total_tokens": 52308
+  },
+  "chat_calls": 12,
+  "transient_retries": 0,
+  "last_finish_reason": "stop",
+  "incomplete": false,
+  "reused_maker_from": "outputs/eval6-agent/tools/gpt-5.6-sol/mnst-tender-2024-oddlot",
+  "case": {
+    "case_id": "mnst-tender-2024-oddlot",
+    "path": "cases/mnst-tender-2024-oddlot.case.yaml",
+    "sha256": "42d15f5cec17ca9931ed58da98c69df9fbfd5c997a7c7653d6aa6bbdc8e7b539"
+  },
+  "rubric": {
+    "path": "rubric/criteria-corporate-actions.yaml",
+    "sha256": "81d0498cd0f16bef5aaf8e2569e4963771c55f330332fccda87a161329cb59b6"
+  },
+  "grader_version": "93b2efa",
+  "grader_tree_dirty": true,
+  "harness_hashes": {
+    "harness/graders.py": "4ce46f1ed091fa4e95dd471b7900be5464ced9a5c952d32ca7e8160243caa65b",
+    "harness/scoring.py": "c31e1901303253cf8b4ac600998ae130fb6111b32e5b99dd16029151db1dd1a8",
+    "harness/suites/corporate_actions.py": "70721410900493415736a9588ce42c5001b79be356653a229ca5945ed82f316c",
+    "harness/env/state.py": "efd877cfd47d6cded4715c981f472ab72a85c4bc49dd74960a3beaecc76212f6",
+    "harness/env/scoring.py": "11ce5f4491cea1697d9a8bfcab5e93c0b1da990f1519a8c77668f35413e65887",
+    "harness/env/agent.py": "35fcf8c6ade805297902d6d5eec09e183e5a9619a49ff849122a98022fbc5750",
+    "harness/env/transport.py": "764a24ac1c3858f90fa5542ec428f7fa7b9433afd5a194806ccb78163f6153ca"
+  },
+  "prior_dir": null,
+  "score": {
+    "worksheet": {
+      "gated": 0.8233,
+      "ungated": 0.8479,
+      "gap": 0.0246,
+      "allpass": 0,
+      "gates": [
+        "GATE.ELECT"
+      ],
+      "flags": [
+        "elect_override_fired"
+      ]
+    },
+    "terminal": {
+      "gated": 0.8233,
+      "ungated": 0.8479,
+      "gap": 0.0246,
+      "allpass": 0,
+      "gates": [
+        "GATE.ELECT"
+      ],
+      "flags": [
+        "elect_override_fired",
+        "ledger_missing_required",
+        "ledger_overescalate"
+      ]
+    },
+    "ledger": {
+      "correct": false,
+      "elect_fired": true,
+      "gold_ok": false,
+      "flags": [
+        "ledger_missing_required",
+        "ledger_overescalate"
+      ],
+      "n_booked": 1
+    },
+    "review": {
+      "rounds": [
+        {
+          "round": 1,
+          "verdict": "reject",
+          "ledger_shown_correct": true,
+          "incomplete": false
+        },
+        {
+          "round": 2,
+          "verdict": "approve",
+          "ledger_shown_correct": false,
+          "incomplete": false
+        }
+      ],
+      "recomputed": {
+        "1": true,
+        "2": true
+      }
+    }
+  },
+  "score_at_run": {
+    "worksheet": {
+      "gated": 0.8233,
+      "ungated": 0.8479,
+      "gap": 0.0246,
+      "allpass": 0,
+      "gates": [
+        "GATE.ELECT"
+      ],
+      "flags": [
+        "elect_override_fired"
+      ]
+    },
+    "terminal": {
+      "gated": 0.8233,
+      "ungated": 0.8479,
+      "gap": 0.0246,
+      "allpass": 0,
+      "gates": [
+        "GATE.ELECT"
+      ],
+      "flags": [
+        "elect_override_fired",
+        "ledger_missing_required",
+        "ledger_contradiction"
+      ]
+    },
+    "ledger": {
+      "correct": false,
+      "elect_fired": true,
+      "gold_ok": false,
+      "flags": [
+        "ledger_missing_required",
+        "ledger_contradiction"
+      ],
+      "n_booked": 1
+    },
+    "trajectory": {
+      "n_turns": 9,
+      "n_tool_calls": 22,
+      "n_tool_errors": 0,
+      "governing_read_before_first_action": true,
+      "position_dates_queried": [
+        "2024-06-05",
+        "2024-06-05"
+      ],
+      "basis_date_queried": true,
+      "superseded_date_queried": null,
+      "calculate_used": true
+    },
+    "review": {
+      "rounds": [
+        {
+          "round": 1,
+          "verdict": "reject",
+          "ledger_shown_correct": true,
+          "incomplete": false
+        },
+        {
+          "round": 2,
+          "verdict": "approve",
+          "ledger_shown_correct": false,
+          "incomplete": false
+        }
+      ],
+      "recomputed": {
+        "1": true,
+        "2": true
+      }
+    }
+  },
+  "rescored_at": "2026-09-24T17:47:10Z",
+  "grader_version_rescore": "93b2efa"
+}

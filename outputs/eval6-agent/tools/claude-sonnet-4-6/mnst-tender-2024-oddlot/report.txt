@@ -1,0 +1,84 @@
+########################################################################
+  EPISODE mnst-tender-2024-oddlot   arm=tools   model=claude-sonnet-4-6
+########################################################################
+
+--- WORKSHEET (the submitted worksheet through the unchanged Phase-1 grader) ---
+========================================================================
+  CASE mnst-tender-2024-oddlot    model=tools:claude-sonnet-4-6    judge=mock
+========================================================================
+  CaseScore (gated, headline) : 1.000
+  CaseScore (ungated)         : 1.000
+  GAP (ungated - gated)       : 0.000
+  AllPass                     : 1
+  D2 calibration (R,G->F_b)   : R=1.00 G=1.00 -> 1.000
+  Gates fired                 : none
+
+  Checkpoint vector (which step failed):
+    cp   W      ungated  gated   raw
+    P1   0.100  1.000   1.000  +1.00
+    P2   0.120  1.000   1.000  +1.00
+    E1   0.100  1.000   1.000  +1.00
+    E2   0.080  1.000   1.000  +1.00
+    C1   0.140  1.000   1.000  +1.00
+    C2   0.120  1.000   1.000  +1.00
+    C3   0.100  1.000   1.000  +1.00
+    D1   0.160  1.000   1.000  +1.00
+    D2   0.080  1.000   1.000  +1.00
+
+  Category rollup (diagnostic -- what KIND of error):
+    extraction   +1.000  ####################
+    numerical    +1.000  ####################
+    entailment   +1.000  ####################
+    reasoning    +1.000  ####################
+    calibration  +1.000  ####################
+    structure    +1.000  ####################
+========================================================================
+
+--- TERMINAL STATE (worksheet + the ledger rendered into D1 rows; ledger predicates applied) ---
+========================================================================
+  CASE mnst-tender-2024-oddlot    model=tools:claude-sonnet-4-6    judge=mock
+========================================================================
+  CaseScore (gated, headline) : 1.000
+  CaseScore (ungated)         : 1.000
+  GAP (ungated - gated)       : 0.000
+  AllPass                     : 1
+  D2 calibration (R,G->F_b)   : R=1.00 G=1.00 -> 1.000
+  Gates fired                 : none
+
+  Checkpoint vector (which step failed):
+    cp   W      ungated  gated   raw
+    P1   0.100  1.000   1.000  +1.00
+    P2   0.120  1.000   1.000  +1.00
+    E1   0.100  1.000   1.000  +1.00
+    E2   0.080  1.000   1.000  +1.00
+    C1   0.140  1.000   1.000  +1.00
+    C2   0.120  1.000   1.000  +1.00
+    C3   0.100  1.000   1.000  +1.00
+    D1   0.160  1.000   1.000  +1.00
+    D2   0.080  1.000   1.000  +1.00
+
+  Category rollup (diagnostic -- what KIND of error):
+    extraction   +1.000  ####################
+    numerical    +1.000  ####################
+    entailment   +1.000  ####################
+    reasoning    +1.000  ####################
+    calibration  +1.000  ####################
+    structure    +1.000  ####################
+========================================================================
+
+--- LEDGER ---
+L1: book_receivable amount=$4,611.00 pay_date=2024-06-10 shares=87.0 rate=53.0 basis_doc=mnst-results-20240610 memo='MNST tender offer final results: 87 shares accepted in full (odd-lot holder, all shares tendered, exempt from proration) at final purchase price of $53.00/share. Gross proceeds $4,611.00.'
+L2: confirm_position ticker=MNST shares=0.0 as_of=2024-06-10 basis_doc=mnst-results-20240610
+L3: escalate missing_document='Monster Beverage Corporation Letter of Transmittal (the transmittal document referenced in mnst-otp-20240508 that governs fees and charges deducted from tender proceeds)' held_action='Determination of fees or charges deductible from ACCT-0093 tender proceeds per Letter of Transmittal terms' reason="The D2 probe asks what fees or charges will be deducted from tender proceeds per the Letter of Transmittal's terms. The Letter of Transmittal is referenced in the Offer to Purchase (mnst-otp-20240508) but is not present in the document store. Without it, the fee/deduction terms cannot be determined."
+  booked entries: 2   GATE.ELECT on the ledger: False   gold match: True   flags: none   correct: True
+  consistency L1: booked=4611.0 worksheet=4611.0 ok=True
+  gold L1 book_receivable: ok=True  {'permissible': [4611.0], 'basis_superseded': False}
+  gold L2 confirm_position: ok=True  {'as_of_is_basis_date': False}
+  gold L3 escalate: ok=True  {'scoped': True}
+
+--- TRAJECTORY (reported, not scored) ---
+  maker: turns=7 tool_calls=10 errors=0 counts={'list_documents': 1, 'get_position': 1, 'read_document': 3, 'calculate': 1, 'book_receivable': 1, 'confirm_position': 1, 'escalate': 1, 'submit_worksheet': 1}
+  governing read before first action: True   docs read: ['acct0093-position-20240610', 'mnst-otp-20240508', 'mnst-results-20240610']   superseded read: []   distractors read: []
+  position dates queried: ['2024-06-10']   basis date queried: False   superseded date queried: None   projected: 0   query errors: 0
+  calculate used: True (1): ['87 * 53.00']
+########################################################################

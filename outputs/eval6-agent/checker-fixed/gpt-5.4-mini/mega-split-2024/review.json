@@ -1,0 +1,70 @@
+{
+  "rounds": [
+    {
+      "round": 1,
+      "verdict": "approve",
+      "findings": [
+        "All three booked ledger entries tie out to source. L1 (confirm_position 180,000 shares as_of 2024-06-10) matches mega-position-20240610 post-distribution custody ledger (18,000 pre-split x10 = 180,000). L2 (update_pcf to 1,800/CU, was 180) matches the 10-for-1 split terms in nvda-8k-20240522 (180 x 10 = 1,800); the PCF file mega-pcf-20240610 was generated 2024-06-06 pre-split and correctly needs this adjustment. L3 (book_receivable $1,800, pay 2024-06-28, 180,000 shares x $0.01 post-split rate) matches the dividend declared in nvda-8k-20240522 (record 2024-06-11, payable 2024-06-28, $0.10 pre-split = $0.01 post-split); the June 11 record-date entitlement is determinable because the settled position is 180,000 with no pending NVDA trades. No withholding applies to a US fund on this US-source dividend, so net = gross = $1,800; D2/TW1 = $1,800 both correct.",
+        "NON-BLOCKING (not booked): Worksheet C1 is internally inconsistent and would be wrong if used \u2014 it reports post_split_shares=1,800,000 and additional_shares=1,620,000 by applying the x10 ratio to a base of 180,000 that is ALREADY post-split (double-count). Correct post-split total is 180,000 (18,000 pre-split x 10). E2 also mislabels basis_shares/pre_split_shares as 180,000 when the pre-split holding was 18,000. These errors did not propagate to any booked ledger entry (L1 correctly used 180,000), so they do not block approval, but the worksheet should be corrected.",
+        "NON-BLOCKING (labeling): P1 marks nvda-8k-20240607 as 'superseded'. It is not superseded; it is the effectiveness 8-K confirming the same 10-for-1 split. Both documents agree on terms, so no economic impact."
+      ],
+      "turns": 4,
+      "incomplete": false,
+      "ended_by": "end",
+      "ledger_shown_correct": true,
+      "ledger_shown_elect": false,
+      "ledger_shown_flags": []
+    }
+  ],
+  "ledger_v1": [
+    {
+      "entry_id": "L1",
+      "kind": "confirm_position",
+      "args": {
+        "ticker": "NVDA",
+        "shares": 180000.0,
+        "as_of": "2024-06-10",
+        "basis_doc": "mega-position-20240610"
+      },
+      "seq": 19,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:25:02.934Z"
+    },
+    {
+      "entry_id": "L2",
+      "kind": "update_pcf",
+      "args": {
+        "ticker": "NVDA",
+        "quantity_per_cu": 1800.0,
+        "previous_quantity_per_cu": 180,
+        "basis_doc": "nvda-8k-20240522",
+        "memo": "Adjust NVDA PCF quantity per creation unit for 10-for-1 split effective before 2024-06-10 dissemination."
+      },
+      "seq": 22,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:25:04.252Z"
+    },
+    {
+      "entry_id": "L3",
+      "kind": "book_receivable",
+      "args": {
+        "account": "MEGA",
+        "amount": 1800.0,
+        "pay_date": "2024-06-28",
+        "basis_doc": "nvda-8k-20240522",
+        "shares": 180000.0,
+        "rate": 0.01,
+        "memo": "NVDA quarterly cash dividend at post-split rate of $0.01 per share on 180,000 shares."
+      },
+      "seq": 25,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:25:05.778Z"
+    }
+  ]
+}

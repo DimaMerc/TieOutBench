@@ -1,0 +1,176 @@
+{
+  "clock": "2024-08-18",
+  "entries": [
+    {
+      "entry_id": "L1",
+      "kind": "escalate",
+      "args": {
+        "reason": "The D2 probe requires the net dividend cash after withholding for a foreign-domiciled subaccount. The store provides the gross dividend amount ($6,800 on 40,000 shares at $0.17/share) but does not contain any withholding tax rate, tax treaty documentation, or account tax status/withholding instructions needed to compute the net amount.",
+        "missing_document": "Withholding tax rate or account tax status documentation for ACCT-7712 (foreign-domiciled subaccount)",
+        "held_action": "Determination of net dividend cash after withholding"
+      },
+      "seq": 20,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:38:10.374Z"
+    },
+    {
+      "entry_id": "L2",
+      "kind": "book_receivable",
+      "args": {
+        "account": "ACCT-7712",
+        "amount": 6800.0,
+        "pay_date": "2024-08-30",
+        "basis_doc": "bry-8k-20240813",
+        "shares": 40000.0,
+        "rate": 0.17,
+        "memo": "Berry Corporation Q2 2024 dividend: $0.12 fixed + $0.05 variable per share, record date 2024-08-23, payment date 2024-08-30"
+      },
+      "seq": 23,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:38:13.702Z"
+    }
+  ],
+  "frozen": {
+    "ledger_v1": [
+      {
+        "entry_id": "L1",
+        "kind": "escalate",
+        "args": {
+          "reason": "The D2 probe requires the net dividend cash after withholding for a foreign-domiciled subaccount. The store provides the gross dividend amount ($6,800 on 40,000 shares at $0.17/share) but does not contain any withholding tax rate, tax treaty documentation, or account tax status/withholding instructions needed to compute the net amount.",
+          "missing_document": "Withholding tax rate or account tax status documentation for ACCT-7712 (foreign-domiciled subaccount)",
+          "held_action": "Determination of net dividend cash after withholding"
+        },
+        "seq": 20,
+        "agent": "maker",
+        "round": 1,
+        "voided": false,
+        "t": "2026-09-24T17:38:10.374Z"
+      },
+      {
+        "entry_id": "L2",
+        "kind": "book_receivable",
+        "args": {
+          "account": "ACCT-7712",
+          "amount": 6800.0,
+          "pay_date": "2024-08-30",
+          "basis_doc": "bry-8k-20240813",
+          "shares": 40000.0,
+          "rate": 0.17,
+          "memo": "Berry Corporation Q2 2024 dividend: $0.12 fixed + $0.05 variable per share, record date 2024-08-23, payment date 2024-08-30"
+        },
+        "seq": 23,
+        "agent": "maker",
+        "round": 1,
+        "voided": false,
+        "t": "2026-09-24T17:38:13.702Z"
+      }
+    ]
+  },
+  "frozen_worksheets": {
+    "ledger_v1": {
+      "P1": {
+        "issuer": "Berry Corporation",
+        "security": {
+          "ticker": "BRY"
+        },
+        "event_type": "mandatory",
+        "governing_doc": "bry-8k-20240813",
+        "superseded_docs": [
+          "bry-8k-20240809"
+        ]
+      },
+      "P2": {
+        "dates": {
+          "declared": "2024-08-09",
+          "corrected": "2024-08-13",
+          "record_date": "2024-08-23",
+          "pay_date": "2024-08-30"
+        },
+        "entitlement_basis": "record_date",
+        "entitlement_basis_date": "2024-08-23",
+        "election_deadline": null
+      },
+      "E1": {
+        "terms": {
+          "rate_total": 0.17,
+          "rate_fixed": 0.12,
+          "rate_variable": 0.05,
+          "record_date": "2024-08-23",
+          "pay_date": "2024-08-30"
+        },
+        "citation": {
+          "document": "bry-8k-20240813",
+          "locator": "correction notice to press release issued August 9, 2024",
+          "verbatim": "The dividends will be payable on August 30, 2024 to all stockholders of record as of the close of business on August 23, 2024... The dividend amounts have not changed."
+        }
+      },
+      "E2": {
+        "position": {
+          "shares_20240812": 50000,
+          "shares_settled_current": 40000
+        },
+        "basis_shares": 40000
+      },
+      "C1": {
+        "entitlement": {
+          "eligible_shares": 40000,
+          "rate": 0.17,
+          "gross_cash": 6800
+        },
+        "cil": {
+          "applicable": false,
+          "amount": null
+        }
+      },
+      "C2": {
+        "election_required": false,
+        "options": null,
+        "default_option": null,
+        "economics": null
+      },
+      "C3": {
+        "impact": {
+          "gross_cash": 6800
+        },
+        "changes": [
+          {
+            "what": "Cash receivable ledger entry for dividend",
+            "where": "ACCT-7712 dividend receivable (payable 2024-08-30)",
+            "old": 0,
+            "new": 6800
+          }
+        ]
+      },
+      "D1": {
+        "decision": "Book gross dividend receivable of $6,800.00 (40,000 shares \u00d7 $0.17/share) payable 2024-08-30 based on corrected record date of 2024-08-23",
+        "actions": [
+          {
+            "action": "book_receivable",
+            "option": null,
+            "quantity": 40000,
+            "amount": 6800,
+            "by_date": "2024-08-30",
+            "basis_doc": "bry-8k-20240813"
+          }
+        ]
+      },
+      "D2": {
+        "probe": {
+          "label": "NOT_DETERMINABLE",
+          "value": null,
+          "derivation": "The store determines the gross dividend cash ($6,800.00) but does not contain withholding tax rate, tax treaty documentation, or account tax status/withholding instructions required to compute net cash after withholding for the foreign-domiciled subaccount. Missing document: Withholding tax rate or account tax status documentation for ACCT-7712."
+        },
+        "twins": [
+          {
+            "id": "TW1",
+            "value": 6800
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,394 @@
+{
+  "clock": "2024-08-18",
+  "entries": [
+    {
+      "entry_id": "L1",
+      "kind": "escalate",
+      "args": {
+        "reason": "The document store does not contain tax documentation or a withholding tax schedule specifying the withholding tax rate for foreign-domiciled subaccounts to compute net dividend cash.",
+        "missing_document": "Foreign Tax Withholding Schedule / Form W-8BEN",
+        "held_action": "booking_net_dividend_receivable"
+      },
+      "seq": 28,
+      "agent": "maker",
+      "round": 1,
+      "voided": true,
+      "t": "2026-09-24T17:23:46.510Z",
+      "voided_round": 1
+    },
+    {
+      "entry_id": "L2",
+      "kind": "book_receivable",
+      "args": {
+        "account": "ACCT-7712",
+        "amount": 6800.0,
+        "pay_date": "2024-08-30",
+        "basis_doc": "bry-8k-20240813",
+        "shares": 40000.0,
+        "rate": 0.17,
+        "memo": "Book gross cash dividend receivable of $0.17 per share on 40,000 shares payable 2024-08-30"
+      },
+      "seq": 31,
+      "agent": "maker",
+      "round": 1,
+      "voided": true,
+      "t": "2026-09-24T17:23:48.758Z",
+      "voided_round": 1
+    },
+    {
+      "entry_id": "L3",
+      "kind": "confirm_position",
+      "args": {
+        "ticker": "BRY",
+        "shares": 40000.0,
+        "as_of": "2024-08-23",
+        "basis_doc": "acct7712-position-20240816"
+      },
+      "seq": 34,
+      "agent": "maker",
+      "round": 1,
+      "voided": true,
+      "t": "2026-09-24T17:23:50.318Z",
+      "voided_round": 1
+    },
+    {
+      "entry_id": "L4",
+      "kind": "book_receivable",
+      "args": {
+        "account": "ACCT-7712",
+        "amount": 6800.0,
+        "pay_date": "2024-08-30",
+        "basis_doc": "bry-8k-20240813",
+        "shares": 40000.0,
+        "rate": 0.17,
+        "memo": "Book gross cash dividend receivable of $0.17 per share on 40,000 shares payable 2024-08-30"
+      },
+      "seq": 73,
+      "agent": "maker",
+      "round": 2,
+      "voided": false,
+      "t": "2026-09-24T17:32:43.155Z"
+    },
+    {
+      "entry_id": "L5",
+      "kind": "confirm_position",
+      "args": {
+        "ticker": "BRY",
+        "shares": 40000.0,
+        "as_of": "2024-08-23",
+        "basis_doc": "acct7712-position-20240816"
+      },
+      "seq": 76,
+      "agent": "maker",
+      "round": 2,
+      "voided": false,
+      "t": "2026-09-24T17:32:44.640Z"
+    }
+  ],
+  "frozen": {
+    "ledger_v1": [
+      {
+        "entry_id": "L1",
+        "kind": "escalate",
+        "args": {
+          "reason": "The document store does not contain tax documentation or a withholding tax schedule specifying the withholding tax rate for foreign-domiciled subaccounts to compute net dividend cash.",
+          "missing_document": "Foreign Tax Withholding Schedule / Form W-8BEN",
+          "held_action": "booking_net_dividend_receivable"
+        },
+        "seq": 28,
+        "agent": "maker",
+        "round": 1,
+        "voided": false,
+        "t": "2026-09-24T17:23:46.510Z"
+      },
+      {
+        "entry_id": "L2",
+        "kind": "book_receivable",
+        "args": {
+          "account": "ACCT-7712",
+          "amount": 6800.0,
+          "pay_date": "2024-08-30",
+          "basis_doc": "bry-8k-20240813",
+          "shares": 40000.0,
+          "rate": 0.17,
+          "memo": "Book gross cash dividend receivable of $0.17 per share on 40,000 shares payable 2024-08-30"
+        },
+        "seq": 31,
+        "agent": "maker",
+        "round": 1,
+        "voided": false,
+        "t": "2026-09-24T17:23:48.758Z"
+      },
+      {
+        "entry_id": "L3",
+        "kind": "confirm_position",
+        "args": {
+          "ticker": "BRY",
+          "shares": 40000.0,
+          "as_of": "2024-08-23",
+          "basis_doc": "acct7712-position-20240816"
+        },
+        "seq": 34,
+        "agent": "maker",
+        "round": 1,
+        "voided": false,
+        "t": "2026-09-24T17:23:50.318Z"
+      }
+    ],
+    "ledger_v2": [
+      {
+        "entry_id": "L4",
+        "kind": "book_receivable",
+        "args": {
+          "account": "ACCT-7712",
+          "amount": 6800.0,
+          "pay_date": "2024-08-30",
+          "basis_doc": "bry-8k-20240813",
+          "shares": 40000.0,
+          "rate": 0.17,
+          "memo": "Book gross cash dividend receivable of $0.17 per share on 40,000 shares payable 2024-08-30"
+        },
+        "seq": 73,
+        "agent": "maker",
+        "round": 2,
+        "voided": false,
+        "t": "2026-09-24T17:32:43.155Z"
+      },
+      {
+        "entry_id": "L5",
+        "kind": "confirm_position",
+        "args": {
+          "ticker": "BRY",
+          "shares": 40000.0,
+          "as_of": "2024-08-23",
+          "basis_doc": "acct7712-position-20240816"
+        },
+        "seq": 76,
+        "agent": "maker",
+        "round": 2,
+        "voided": false,
+        "t": "2026-09-24T17:32:44.640Z"
+      }
+    ]
+  },
+  "frozen_worksheets": {
+    "ledger_v1": {
+      "P1": {
+        "issuer": "Berry Corporation",
+        "superseded_docs": [
+          "bry-8k-20240809"
+        ],
+        "event_type": "mandatory",
+        "governing_doc": "bry-8k-20240813",
+        "security": {
+          "ticker": "BRY"
+        }
+      },
+      "E2": {
+        "basis_shares": 40000,
+        "position": {
+          "shares_settled_current": 40000,
+          "shares_20240812": 50000
+        }
+      },
+      "E1": {
+        "citation": {
+          "locator": "body",
+          "verbatim": "The dividends will be payable on August 30, 2024 to all stockholders of record as of the close of business on August 23, 2024, not payable on August 20, 2024 to all stockholders of record on August 12, 2024 as previously disclosed.",
+          "document": "bry-8k-20240813"
+        },
+        "terms": {
+          "record_date": "2024-08-23",
+          "pay_date": "2024-08-30",
+          "rate_variable": 0.05,
+          "rate_fixed": 0.12,
+          "rate_total": 0.17
+        }
+      },
+      "C3": {
+        "impact": {
+          "gross_cash": 6800
+        },
+        "changes": [
+          {
+            "new": 6800,
+            "what": "cash receivable",
+            "old": 0,
+            "where": "ACCT-7712 ledger"
+          }
+        ]
+      },
+      "D2": {
+        "probe": {
+          "value": null,
+          "label": "NOT_DETERMINABLE",
+          "derivation": "The document store does not contain a tax withholding schedule or tax documentation (such as Form W-8BEN or tax certification schedule) specifying the withholding tax rate for foreign-domiciled subaccounts."
+        },
+        "twins": [
+          {
+            "id": "TW1",
+            "value": 6800
+          }
+        ]
+      },
+      "C2": {
+        "options": null,
+        "economics": null,
+        "election_required": false,
+        "default_option": null
+      },
+      "P2": {
+        "dates": {
+          "corrected": "2024-08-13",
+          "pay_date": "2024-08-30",
+          "record_date": "2024-08-23",
+          "declared": "2024-08-09"
+        },
+        "entitlement_basis_date": "2024-08-23",
+        "entitlement_basis": "record_date",
+        "election_deadline": null
+      },
+      "C1": {
+        "cil": {
+          "applicable": false,
+          "amount": null
+        },
+        "entitlement": {
+          "eligible_shares": 40000,
+          "rate": 0.17,
+          "gross_cash": 6800
+        }
+      },
+      "D1": {
+        "actions": [
+          {
+            "basis_doc": "bry-8k-20240813",
+            "by_date": "2024-08-30",
+            "quantity": 40000,
+            "action": "book_receivable",
+            "amount": 6800,
+            "option": null
+          },
+          {
+            "by_date": "2024-08-23",
+            "basis_doc": "acct7712-position-20240816",
+            "action": "confirm_position",
+            "quantity": 40000,
+            "amount": null,
+            "option": null
+          }
+        ],
+        "decision": "book_receivable"
+      }
+    },
+    "ledger_v2": {
+      "E2": {
+        "basis_shares": 40000,
+        "position": {
+          "shares_20240812": 50000,
+          "shares_settled_current": 40000
+        }
+      },
+      "E1": {
+        "terms": {
+          "rate_variable": 0.05,
+          "rate_total": 0.17,
+          "record_date": "2024-08-23",
+          "pay_date": "2024-08-30",
+          "rate_fixed": 0.12
+        },
+        "citation": {
+          "verbatim": "The dividends will be payable on August 30, 2024 to all stockholders of record as of the close of business on August 23, 2024, not payable on August 20, 2024 to all stockholders of record on August 12, 2024 as previously disclosed.",
+          "locator": "body",
+          "document": "bry-8k-20240813"
+        }
+      },
+      "D1": {
+        "decision": "book_receivable",
+        "actions": [
+          {
+            "basis_doc": "bry-8k-20240813",
+            "action": "book_receivable",
+            "by_date": "2024-08-30",
+            "option": null,
+            "amount": 6800,
+            "quantity": 40000
+          },
+          {
+            "amount": null,
+            "basis_doc": "acct7712-position-20240816",
+            "by_date": "2024-08-23",
+            "quantity": 40000,
+            "action": "confirm_position",
+            "option": null
+          }
+        ]
+      },
+      "C1": {
+        "entitlement": {
+          "rate": 0.17,
+          "eligible_shares": 40000,
+          "gross_cash": 6800
+        },
+        "cil": {
+          "applicable": false,
+          "amount": null
+        }
+      },
+      "D2": {
+        "twins": [
+          {
+            "value": 6800,
+            "id": "TW1"
+          }
+        ],
+        "probe": {
+          "value": null,
+          "derivation": "The document store does not contain tax withholding schedules or tax documentation specifying tax withholding rates for foreign-domiciled subaccounts.",
+          "label": "NOT_DETERMINABLE"
+        }
+      },
+      "C2": {
+        "default_option": null,
+        "options": null,
+        "economics": null,
+        "election_required": false
+      },
+      "C3": {
+        "impact": {
+          "gross_cash": 6800
+        },
+        "changes": [
+          {
+            "new": 6800,
+            "what": "cash receivable",
+            "where": "ACCT-7712 ledger",
+            "old": 0
+          }
+        ]
+      },
+      "P2": {
+        "entitlement_basis": "record_date",
+        "election_deadline": null,
+        "dates": {
+          "corrected": "2024-08-13",
+          "declared": "2024-08-09",
+          "record_date": "2024-08-23",
+          "pay_date": "2024-08-30"
+        },
+        "entitlement_basis_date": "2024-08-23"
+      },
+      "P1": {
+        "issuer": "Berry Corporation",
+        "event_type": "mandatory",
+        "security": {
+          "ticker": "BRY"
+        },
+        "governing_doc": "bry-8k-20240813",
+        "superseded_docs": [
+          "bry-8k-20240809"
+        ]
+      }
+    }
+  }
+}

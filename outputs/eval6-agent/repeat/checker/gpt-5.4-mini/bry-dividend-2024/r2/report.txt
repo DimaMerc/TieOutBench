@@ -1,0 +1,93 @@
+########################################################################
+  EPISODE bry-dividend-2024   arm=checker   model=gpt-5.4-mini
+########################################################################
+
+--- WORKSHEET (the submitted worksheet through the unchanged Phase-1 grader) ---
+========================================================================
+  CASE bry-dividend-2024    model=checker:gpt-5.4-mini    judge=mock
+========================================================================
+  CaseScore (gated, headline) : 0.882
+  CaseScore (ungated)         : 0.882
+  GAP (ungated - gated)       : 0.000
+  AllPass                     : 0
+  D2 calibration (R,G->F_b)   : R=0.00 G=1.00 -> 0.000
+  Gates fired                 : none
+
+  Checkpoint vector (which step failed):
+    cp   W      ungated  gated   raw
+    P1   0.100  1.000   1.000  +1.00
+    P2   0.120  0.896   0.896  +0.90
+    E1   0.100  1.000   1.000  +1.00
+    E2   0.080  0.688   0.688  +0.69
+    C1   0.140  1.000   1.000  +1.00
+    C2   0.120  1.000   1.000  +1.00
+    C3   0.100  1.000   1.000  +1.00
+    D1   0.160  1.000   1.000  +1.00
+    D2   0.080  0.000   0.000  +0.00
+
+  Category rollup (diagnostic -- what KIND of error):
+    extraction   +0.821  ################
+    numerical    +1.000  ####################
+    entailment   +1.000  ####################
+    reasoning    +1.000  ####################
+    calibration  +0.692  ##############
+    structure    +1.000  ####################
+========================================================================
+
+--- TERMINAL STATE (worksheet + the ledger rendered into D1 rows; ledger predicates applied) ---
+========================================================================
+  CASE bry-dividend-2024    model=checker:gpt-5.4-mini    judge=mock
+========================================================================
+  CaseScore (gated, headline) : 0.882
+  CaseScore (ungated)         : 0.882
+  GAP (ungated - gated)       : 0.000
+  AllPass                     : 0
+  D2 calibration (R,G->F_b)   : R=0.00 G=1.00 -> 0.000
+  Gates fired                 : none
+
+  Checkpoint vector (which step failed):
+    cp   W      ungated  gated   raw
+    P1   0.100  1.000   1.000  +1.00
+    P2   0.120  0.896   0.896  +0.90
+    E1   0.100  1.000   1.000  +1.00
+    E2   0.080  0.688   0.688  +0.69
+    C1   0.140  1.000   1.000  +1.00
+    C2   0.120  1.000   1.000  +1.00
+    C3   0.100  1.000   1.000  +1.00
+    D1   0.160  1.000   1.000  +1.00
+    D2   0.080  0.000   0.000  +0.00
+
+  Category rollup (diagnostic -- what KIND of error):
+    extraction   +0.821  ################
+    numerical    +1.000  ####################
+    entailment   +1.000  ####################
+    reasoning    +1.000  ####################
+    calibration  +0.692  ##############
+    structure    +1.000  ####################
+========================================================================
+
+--- LEDGER ---
+L3: escalate missing_document='tax withholding schedule / account tax profile for ACCT-7712' held_action='net dividend cash after withholding for BRY dividend' reason='The document store determines the gross BRY dividend on corrected terms, but does not provide the withholding rate or tax treaty terms needed to compute net cash for the foreign-domiciled subaccount.'
+L4: book_receivable amount=$6,800.00 pay_date=2024-08-30 shares=40000.0 rate=0.17 basis_doc=bry-8k-20240813 memo='BRY dividend on corrected record date 2024-08-23; gross cash receivable only, net withholding not determinable from store'
+L5: confirm_position ticker=BRY shares=40000.0 as_of=2024-08-23 basis_doc=acct7712-position-20240816
+  booked entries: 2   GATE.ELECT on the ledger: False   gold match: True   flags: none   correct: True
+  consistency L4: booked=6800.0 worksheet=6800.0 ok=True
+  gold L3 escalate: ok=True  {'scoped': True}
+  gold L4 book_receivable: ok=True  {'permissible': [6800.0, 4800.0, 2000.0], 'pay_date_ok': True, 'basis_superseded': False}
+  gold L5 confirm_position: ok=True  {'as_of_is_basis_date': True}
+
+--- TRAJECTORY (reported, not scored) ---
+  maker: turns=14 tool_calls=16 errors=0 counts={'list_documents': 2, 'read_document': 3, 'get_position': 2, 'calculate': 2, 'book_receivable': 2, 'confirm_position': 2, 'submit_worksheet': 2, 'escalate': 1}
+  governing read before first action: True   docs read: ['bry-8k-20240809', 'bry-8k-20240813']   superseded read: ['bry-8k-20240809']   distractors read: []
+  position dates queried: ['2024-08-18', '2024-08-23']   basis date queried: True   superseded date queried: False   projected: 1   query errors: 0
+  calculate used: True (2): ['40000*0.17', '40000*0.17']
+
+--- REVIEW (checker arm) ---
+  round 1: verdict=reject recomputed=True tools={'list_documents': 1, 'read_document': 3, 'get_position': 1, 'calculate': 1, 'review_verdict': 1} ledger_shown_correct=True
+    - L1 is tied to the correct governing document and correct quantity/date, but the work product’s D2/TW1 is wrong: the store does not provide withholding terms, so net dividend cash after withholding is not determinable from the document store; it should be escalated/held as not determinable, not booked as $6,800 net.
+    - L2 confirms the correct settled position of 40,000 shares as of 2024-08-23, supported by acct7712-position-20240816 and the projected position tool output; no discrepancy on this entry.
+  round 2: verdict=reject recomputed=True tools={'list_documents': 1, 'get_position': 1, 'read_document': 3, 'review_verdict': 1} ledger_shown_correct=True
+    - L3: net dividend cash after withholding was booked as an escalation with no amount; the work product does not derive or book the required net cash figure for the foreign-domiciled subaccount. The source store does not provide a withholding rate, so this item should remain unbooked/held pending tax instructions, not treated as a completed ledger entry.
+    - L4: book_receivable amount $6,800.00 on 40,000 shares at $0.17 ties to the corrected issuer notice and the settled position, but the basis document is correct only if the corrected record date/pay date are used; no discrepancy on amount or quantity. However, the ledger entry is incomplete for the requested dividend processing because it omits the required withholding/net cash determination for the foreign-domiciled subaccount.
+    - L5: confirm_position 40,000 shares as of 2024-08-23 is supported by the position report projection and settled holdings, but the basis_doc cited in the ledger is a constructed position report rather than a governing corporate-action document; this is acceptable for position support, not a discrepancy. No rejection on this item.
+########################################################################

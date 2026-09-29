@@ -1,0 +1,13 @@
+{
+  "endpoint": "generativelanguage.googleapis.com",
+  "model_id": "gemini-3.8-flash",
+  "token": "conformance-d37bbe",
+  "tested_at": "2026-09-25T00:45:22Z",
+  "native": {
+    "tool_call": true,
+    "final": true,
+    "detail": "DONE conformance-d37bbe"
+  },
+  "text": null,
+  "tool_transport": "native"
+}

@@ -1,0 +1,176 @@
+{
+  "case_id": "zts-dividend-2014",
+  "arm": "tools",
+  "model_id": "gpt-5.4-mini",
+  "scripted": false,
+  "total_s": 46,
+  "scenes": [
+    {
+      "id": "episode",
+      "kind": "title",
+      "title": "zts-dividend-2014 · arm: tools",
+      "lines": [
+        "as of 2014-04-01",
+        "Process the Zoetis second-quarter dividend for the account.",
+        "run: gpt-5.4-mini"
+      ],
+      "duration_s": 4
+    },
+    {
+      "id": "step-1",
+      "kind": "step",
+      "agent": "maker",
+      "round": 1,
+      "tool": "list_documents",
+      "title": "1. list_documents",
+      "lines": [
+        "list_documents()",
+        "4 documents: zts-8k-20140326, zts-8k-20140327, acct2101-position-20140331, broker-memo-20140328"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-2",
+      "kind": "step",
+      "agent": "maker",
+      "round": 1,
+      "tool": "read_document",
+      "title": "2. read_document",
+      "lines": [
+        "read_document(zts-8k-20140326)",
+        "zts-8k-20140326 (issuer 8-K exhibit (dividend declaration), 2014-03-26)"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-3",
+      "kind": "step",
+      "agent": "maker",
+      "round": 1,
+      "tool": "read_document",
+      "title": "3. read_document",
+      "lines": [
+        "read_document(zts-8k-20140327)",
+        "zts-8k-20140327 (issuer 8-K exhibit (CORRECTING and REPLACING), 2014-03-27)"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-4",
+      "kind": "step",
+      "agent": "maker",
+      "round": 1,
+      "tool": "get_position",
+      "title": "4. get_position",
+      "lines": [
+        "get_position(ACCT-2101, as of 2014-03-31)",
+        "25,000 shares, settled (position row 2014-02-14)"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-5",
+      "kind": "step",
+      "agent": "maker",
+      "round": 1,
+      "tool": "calculate",
+      "title": "5. calculate",
+      "lines": [
+        "calculate(25000*0.072)",
+        "= 1800"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-6",
+      "kind": "step",
+      "agent": "maker",
+      "round": 1,
+      "tool": "book_receivable",
+      "title": "6. book_receivable",
+      "lines": [
+        "book_receivable($1,800.00, pay 2014-06-02, basis zts-8k-20140327, 25000 shares)",
+        "L1 booked $1,800.00 for 2014-06-02 on zts-8k-20140327"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-7",
+      "kind": "step",
+      "agent": "maker",
+      "round": 1,
+      "tool": "escalate",
+      "title": "7. escalate",
+      "lines": [
+        "escalate(missing: DRIP pricing / dividend reinvestment plan document for Zo...; hold: reinvestment price for the June 2 payment)",
+        "L2 escalation recorded"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-8",
+      "kind": "step",
+      "agent": "maker",
+      "round": 1,
+      "tool": "submit_worksheet",
+      "title": "8. submit_worksheet",
+      "lines": [
+        "submit_worksheet(...)",
+        "worksheet submitted; episode ended (2 ledger entries)"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "ledger",
+      "kind": "ledger",
+      "title": "The ledger (what was booked)",
+      "lines": [
+        "L1: book_receivable amount=$1,800.00 pay_date=2014-06-02 shares=25000.0 rate=0.072 basis_doc=zts-8k-20140327 memo='Zoetis Q2 2014 dividend; record date 2014-04-28 per correcting release; DRIP participant, reinvestment price not stated in store'",
+        "L2: escalate missing_document='DRIP pricing / dividend reinvestment plan document for Zoetis Q2 2014 dividend' held_action='reinvestment price for the June 2 payment' reason='The governing dividend announcement states the account participates in dividend reinvestment, but the store does not provide the reinvestment price for the June 2 payment. This dependent figure cannot be determined from the available documents.'"
+      ],
+      "duration_s": 5
+    },
+    {
+      "id": "tieout",
+      "kind": "check",
+      "title": "Does the worksheet tie to the ledger?",
+      "lines": [
+        "L1: booked 1800.0 vs worksheet 1800.0 -> ties",
+        "GATE.ELECT on the ledger: no",
+        "flags: none"
+      ],
+      "ok": true,
+      "duration_s": 5
+    },
+    {
+      "id": "grade",
+      "kind": "grade",
+      "title": "The grade",
+      "lines": [
+        "worksheet: 0.988 gated, AllPass 0, gates none",
+        "terminal state: 0.988 gated, AllPass 0, gates none",
+        "flags: none"
+      ],
+      "ok": false,
+      "duration_s": 5
+    },
+    {
+      "id": "closing",
+      "kind": "title",
+      "title": "Does it tie out?",
+      "lines": [
+        "TieOutBench · evals.finance",
+        "eval #6, phase 2: the agent environment"
+      ],
+      "duration_s": 3
+    }
+  ]
+}

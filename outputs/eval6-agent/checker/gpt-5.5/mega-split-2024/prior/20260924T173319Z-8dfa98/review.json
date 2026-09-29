@@ -1,0 +1,76 @@
+{
+  "rounds": [
+    {
+      "round": 1,
+      "verdict": "reject",
+      "findings": [
+        "Worksheet P1/E1/P2 identify nvda-8k-20240522 as the governing document and use a 2024-06-06 record-date entitlement basis. For the split entries being booked on 2024-06-10, the governing effectiveness document is nvda-8k-20240607: the amendment became effective at 4:01 p.m. ET on 2024-06-07 and each share issued immediately prior to the effective time was subdivided into ten shares. The booked split actions should be supported by nvda-8k-20240607/effective-time basis, not the prior announcement as the governing split source.",
+        "L3 (escalate held net dividend cash receivable) has no basis_doc in the booked ledger entry. If the dividend hold/escalation is retained, its basis should be nvda-8k-20240522, which is the document that states the $0.01 post-split dividend, 2024-06-11 record date, and 2024-06-28 pay date; the split effectiveness document does not contain those dividend terms."
+      ],
+      "turns": 5,
+      "incomplete": false,
+      "ended_by": "end",
+      "ledger_shown_correct": true,
+      "ledger_shown_elect": false,
+      "ledger_shown_flags": []
+    },
+    {
+      "round": 2,
+      "verdict": "approve",
+      "findings": [],
+      "turns": 4,
+      "incomplete": false,
+      "ended_by": "end",
+      "ledger_shown_correct": true,
+      "ledger_shown_elect": false,
+      "ledger_shown_flags": []
+    }
+  ],
+  "ledger_v1": [
+    {
+      "entry_id": "L1",
+      "kind": "update_pcf",
+      "args": {
+        "ticker": "NVDA",
+        "quantity_per_cu": 1800.0,
+        "previous_quantity_per_cu": 180,
+        "basis_doc": "nvda-8k-20240607",
+        "memo": "Update MEGA PCF NVDA quantity per creation unit for ten-for-one split effective 2024-06-07; split-adjusted trading 2024-06-10. Old PCF line was 180 shares per creation unit."
+      },
+      "seq": 32,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:20:48.219Z"
+    },
+    {
+      "entry_id": "L2",
+      "kind": "confirm_position",
+      "args": {
+        "ticker": "NVDA",
+        "shares": 180000.0,
+        "as_of": "2024-06-10",
+        "basis_doc": "nvda-8k-20240607"
+      },
+      "seq": 34,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:20:48.219Z"
+    },
+    {
+      "entry_id": "L3",
+      "kind": "escalate",
+      "args": {
+        "reason": "The store states the gross NVDA dividend rate and record/pay dates but does not provide any applicable withholding rate or tax-status documentation needed to compute net cash after withholding.",
+        "missing_document": "applicable withholding/tax-status documentation for MEGA's NVDA dividend (withholding rate)",
+        "held_action": "net dividend cash receivable determination/booking"
+      },
+      "seq": 37,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:20:56.798Z"
+    }
+  ]
+}

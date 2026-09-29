@@ -1,0 +1,478 @@
+{
+  "clock": "2024-06-10",
+  "entries": [
+    {
+      "entry_id": "L1",
+      "kind": "book_receivable",
+      "args": {
+        "account": "MEGA",
+        "amount": 180.0,
+        "pay_date": "2024-06-28",
+        "basis_doc": "nvda-8k-20240522",
+        "shares": 18000.0,
+        "rate": 0.01,
+        "memo": "NVDA quarterly cash dividend at post-split rate; record date 2024-06-11; payable 2024-06-28"
+      },
+      "seq": 22,
+      "agent": "maker",
+      "round": 1,
+      "voided": true,
+      "t": "2026-09-24T17:25:18.475Z",
+      "voided_round": 1
+    },
+    {
+      "entry_id": "L2",
+      "kind": "confirm_position",
+      "args": {
+        "ticker": "NVDA",
+        "shares": 18000.0,
+        "as_of": "2024-06-06",
+        "basis_doc": "mega-position-20240610"
+      },
+      "seq": 24,
+      "agent": "maker",
+      "round": 1,
+      "voided": true,
+      "t": "2026-09-24T17:25:18.475Z",
+      "voided_round": 1
+    },
+    {
+      "entry_id": "L3",
+      "kind": "update_pcf",
+      "args": {
+        "ticker": "NVDA",
+        "quantity_per_cu": 180.0,
+        "previous_quantity_per_cu": 1800,
+        "basis_doc": "mega-pcf-20240610",
+        "memo": "NVDA split-adjusted basket quantity per creation unit"
+      },
+      "seq": 26,
+      "agent": "maker",
+      "round": 1,
+      "voided": true,
+      "t": "2026-09-24T17:25:18.475Z",
+      "voided_round": 1
+    },
+    {
+      "entry_id": "L4",
+      "kind": "book_receivable",
+      "args": {
+        "account": "MEGA",
+        "amount": 1800.0,
+        "pay_date": "2024-06-28",
+        "basis_doc": "nvda-8k-20240522",
+        "shares": 180000.0,
+        "rate": 0.01,
+        "memo": "NVDA quarterly cash dividend at post-split rate; record date 2024-06-11; payable 2024-06-28"
+      },
+      "seq": 60,
+      "agent": "maker",
+      "round": 2,
+      "voided": false,
+      "t": "2026-09-24T18:05:19.222Z"
+    },
+    {
+      "entry_id": "L5",
+      "kind": "confirm_position",
+      "args": {
+        "ticker": "NVDA",
+        "shares": 180000.0,
+        "as_of": "2024-06-11",
+        "basis_doc": "mega-position-20240610"
+      },
+      "seq": 62,
+      "agent": "maker",
+      "round": 2,
+      "voided": false,
+      "t": "2026-09-24T18:05:19.222Z"
+    },
+    {
+      "entry_id": "L6",
+      "kind": "update_pcf",
+      "args": {
+        "ticker": "NVDA",
+        "quantity_per_cu": 1800.0,
+        "previous_quantity_per_cu": 1800,
+        "basis_doc": "mega-pcf-20240610",
+        "memo": "NVDA split-adjusted basket quantity per creation unit"
+      },
+      "seq": 64,
+      "agent": "maker",
+      "round": 2,
+      "voided": false,
+      "t": "2026-09-24T18:05:19.222Z"
+    }
+  ],
+  "frozen": {
+    "ledger_v1": [
+      {
+        "entry_id": "L1",
+        "kind": "book_receivable",
+        "args": {
+          "account": "MEGA",
+          "amount": 180.0,
+          "pay_date": "2024-06-28",
+          "basis_doc": "nvda-8k-20240522",
+          "shares": 18000.0,
+          "rate": 0.01,
+          "memo": "NVDA quarterly cash dividend at post-split rate; record date 2024-06-11; payable 2024-06-28"
+        },
+        "seq": 22,
+        "agent": "maker",
+        "round": 1,
+        "voided": false,
+        "t": "2026-09-24T17:25:18.475Z"
+      },
+      {
+        "entry_id": "L2",
+        "kind": "confirm_position",
+        "args": {
+          "ticker": "NVDA",
+          "shares": 18000.0,
+          "as_of": "2024-06-06",
+          "basis_doc": "mega-position-20240610"
+        },
+        "seq": 24,
+        "agent": "maker",
+        "round": 1,
+        "voided": false,
+        "t": "2026-09-24T17:25:18.475Z"
+      },
+      {
+        "entry_id": "L3",
+        "kind": "update_pcf",
+        "args": {
+          "ticker": "NVDA",
+          "quantity_per_cu": 180.0,
+          "previous_quantity_per_cu": 1800,
+          "basis_doc": "mega-pcf-20240610",
+          "memo": "NVDA split-adjusted basket quantity per creation unit"
+        },
+        "seq": 26,
+        "agent": "maker",
+        "round": 1,
+        "voided": false,
+        "t": "2026-09-24T17:25:18.475Z"
+      }
+    ],
+    "ledger_v2": [
+      {
+        "entry_id": "L4",
+        "kind": "book_receivable",
+        "args": {
+          "account": "MEGA",
+          "amount": 1800.0,
+          "pay_date": "2024-06-28",
+          "basis_doc": "nvda-8k-20240522",
+          "shares": 180000.0,
+          "rate": 0.01,
+          "memo": "NVDA quarterly cash dividend at post-split rate; record date 2024-06-11; payable 2024-06-28"
+        },
+        "seq": 60,
+        "agent": "maker",
+        "round": 2,
+        "voided": false,
+        "t": "2026-09-24T18:05:19.222Z"
+      },
+      {
+        "entry_id": "L5",
+        "kind": "confirm_position",
+        "args": {
+          "ticker": "NVDA",
+          "shares": 180000.0,
+          "as_of": "2024-06-11",
+          "basis_doc": "mega-position-20240610"
+        },
+        "seq": 62,
+        "agent": "maker",
+        "round": 2,
+        "voided": false,
+        "t": "2026-09-24T18:05:19.222Z"
+      },
+      {
+        "entry_id": "L6",
+        "kind": "update_pcf",
+        "args": {
+          "ticker": "NVDA",
+          "quantity_per_cu": 1800.0,
+          "previous_quantity_per_cu": 1800,
+          "basis_doc": "mega-pcf-20240610",
+          "memo": "NVDA split-adjusted basket quantity per creation unit"
+        },
+        "seq": 64,
+        "agent": "maker",
+        "round": 2,
+        "voided": false,
+        "t": "2026-09-24T18:05:19.222Z"
+      }
+    ]
+  },
+  "frozen_worksheets": {
+    "ledger_v1": {
+      "P1": {
+        "issuer": "NVIDIA",
+        "security": {
+          "ticker": "NVDA"
+        },
+        "event_type": "mandatory",
+        "governing_doc": "nvda-8k-20240522",
+        "superseded_docs": [
+          "nvda-8k-20240607"
+        ]
+      },
+      "P2": {
+        "dates": {
+          "announcement": "2024-05-22",
+          "record_date": "2024-06-11",
+          "distribution_date": "2024-06-28",
+          "split_adjusted_trading": "2024-06-10"
+        },
+        "entitlement_basis": "record_date",
+        "entitlement_basis_date": "2024-06-11",
+        "election_deadline": null
+      },
+      "E1": {
+        "terms": {
+          "ratio": 10,
+          "additional_shares_per_share": 9,
+          "record_date": "2024-06-06",
+          "distribution_date": "2024-06-07",
+          "split_adjusted_trading": "2024-06-10"
+        },
+        "citation": {
+          "document": "nvda-8k-20240522",
+          "locator": "Item 8.01",
+          "verbatim": "Each record holder of common stock as of the close of market on Thursday, June 6, 2024 will receive nine additional shares of common stock, to be distributed after the close of market on Friday, June 7, 2024. Trading is expected to commence on a split-adjusted basis at market open on Monday, June 10, 2024."
+        }
+      },
+      "E2": {
+        "position": {
+          "basket_per_cu_pre": 180,
+          "creation_units": 100,
+          "basket_total_pre": 18000
+        },
+        "basis_shares": 18000
+      },
+      "C1": {
+        "entitlement": {
+          "pre_split_shares": 18000,
+          "ratio": 10,
+          "post_split_shares": 180000,
+          "additional_shares": 162000,
+          "basket_per_cu_post": 1800
+        },
+        "cil": {
+          "applicable": false,
+          "amount": null
+        }
+      },
+      "C2": {
+        "election_required": false,
+        "options": null,
+        "default_option": null,
+        "economics": null
+      },
+      "C3": {
+        "impact": {
+          "basket_per_cu_new": 1800,
+          "basket_total_new": 180000
+        },
+        "changes": [
+          {
+            "what": "NVDA basket quantity per creation unit",
+            "where": "MEGA PCF",
+            "old": 180,
+            "new": 1800
+          },
+          {
+            "what": "NVDA position ledger entry",
+            "where": "MEGA custody position record",
+            "old": 18000,
+            "new": 180000
+          },
+          {
+            "what": "NVDA cash projection",
+            "where": "MEGA receivables ledger",
+            "old": null,
+            "new": 180
+          }
+        ]
+      },
+      "D1": {
+        "decision": "book dividend receivable and confirm split-adjusted position; update PCF",
+        "actions": [
+          {
+            "action": "book_receivable",
+            "option": null,
+            "quantity": 18000,
+            "amount": 180,
+            "by_date": "2024-06-28",
+            "basis_doc": "nvda-8k-20240522"
+          },
+          {
+            "action": "confirm_position",
+            "option": null,
+            "quantity": 18000,
+            "amount": null,
+            "by_date": "2024-06-06",
+            "basis_doc": "mega-position-20240610"
+          },
+          {
+            "action": "update_pcf",
+            "option": null,
+            "quantity": 180,
+            "amount": null,
+            "by_date": null,
+            "basis_doc": "mega-pcf-20240610"
+          }
+        ]
+      },
+      "D2": {
+        "probe": {
+          "label": "COMPUTED",
+          "value": 180,
+          "derivation": "NVDA dividend is $0.01 per post-split share per nvda-8k-20240522; MEGA held 18,000 shares as of the June 11 record date basis in the store, so gross cash = 18,000 x 0.01 = 180. The store does not provide any withholding rate, so net cash is not determinable from the provided documents."
+        },
+        "twins": [
+          {
+            "id": "TW1",
+            "value": 180
+          }
+        ]
+      }
+    },
+    "ledger_v2": {
+      "P1": {
+        "issuer": "NVIDIA",
+        "security": {
+          "ticker": "NVDA"
+        },
+        "event_type": "mandatory",
+        "governing_doc": "nvda-8k-20240522",
+        "superseded_docs": [
+          "nvda-8k-20240607"
+        ]
+      },
+      "P2": {
+        "dates": {
+          "announcement": "2024-05-22",
+          "record_date": "2024-06-11",
+          "distribution_date": "2024-06-28",
+          "split_adjusted_trading": "2024-06-10"
+        },
+        "entitlement_basis": "record_date",
+        "entitlement_basis_date": "2024-06-11",
+        "election_deadline": null
+      },
+      "E1": {
+        "terms": {
+          "ratio": 10,
+          "additional_shares_per_share": 9,
+          "record_date": "2024-06-06",
+          "distribution_date": "2024-06-07",
+          "split_adjusted_trading": "2024-06-10"
+        },
+        "citation": {
+          "document": "nvda-8k-20240522",
+          "locator": "Item 8.01",
+          "verbatim": "Each record holder of common stock as of the close of market on Thursday, June 6, 2024 will receive nine additional shares of common stock, to be distributed after the close of market on Friday, June 7, 2024. Trading is expected to commence on a split-adjusted basis at market open on Monday, June 10, 2024."
+        }
+      },
+      "E2": {
+        "position": {
+          "basket_per_cu_pre": 180,
+          "creation_units": 100,
+          "basket_total_pre": 18000
+        },
+        "basis_shares": 180000
+      },
+      "C1": {
+        "entitlement": {
+          "pre_split_shares": 180000,
+          "ratio": 10,
+          "post_split_shares": 1800000,
+          "additional_shares": 1620000,
+          "basket_per_cu_post": 1800
+        },
+        "cil": {
+          "applicable": false,
+          "amount": null
+        }
+      },
+      "C2": {
+        "election_required": false,
+        "options": null,
+        "default_option": null,
+        "economics": null
+      },
+      "C3": {
+        "impact": {
+          "basket_per_cu_new": 1800,
+          "basket_total_new": 180000
+        },
+        "changes": [
+          {
+            "what": "NVDA basket quantity per creation unit",
+            "where": "MEGA PCF",
+            "old": 180,
+            "new": 1800
+          },
+          {
+            "what": "NVDA position ledger entry",
+            "where": "MEGA custody position record",
+            "old": 18000,
+            "new": 180000
+          },
+          {
+            "what": "NVDA cash projection",
+            "where": "MEGA receivables ledger",
+            "old": null,
+            "new": 1800
+          }
+        ]
+      },
+      "D1": {
+        "decision": "book dividend receivable and confirm split-adjusted position; update PCF",
+        "actions": [
+          {
+            "action": "book_receivable",
+            "option": null,
+            "quantity": 180000,
+            "amount": 1800,
+            "by_date": "2024-06-28",
+            "basis_doc": "nvda-8k-20240522"
+          },
+          {
+            "action": "confirm_position",
+            "option": null,
+            "quantity": 180000,
+            "amount": null,
+            "by_date": "2024-06-11",
+            "basis_doc": "mega-position-20240610"
+          },
+          {
+            "action": "update_pcf",
+            "option": null,
+            "quantity": 1800,
+            "amount": null,
+            "by_date": null,
+            "basis_doc": "mega-pcf-20240610"
+          }
+        ]
+      },
+      "D2": {
+        "probe": {
+          "label": "COMPUTED",
+          "value": 1800,
+          "derivation": "NVDA dividend is $0.01 per post-split share per nvda-8k-20240522; MEGA held 180,000 shares as of the June 11 record date basis in the store, so gross cash = 180,000 x 0.01 = 1,800. The store does not provide any withholding rate, so net cash is not determinable from the provided documents."
+        },
+        "twins": [
+          {
+            "id": "TW1",
+            "value": 1800
+          }
+        ]
+      }
+    }
+  }
+}

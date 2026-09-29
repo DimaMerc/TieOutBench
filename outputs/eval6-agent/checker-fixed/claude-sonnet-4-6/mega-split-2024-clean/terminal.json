@@ -1,0 +1,127 @@
+{
+  "P1": {
+    "issuer": "NVIDIA Corporation",
+    "security": {
+      "ticker": "NVDA"
+    },
+    "event_type": "mandatory",
+    "governing_doc": "nvda-8k-20240607",
+    "superseded_docs": []
+  },
+  "P2": {
+    "dates": {
+      "announcement": "2024-05-22",
+      "record_date": "2024-06-06",
+      "distribution_date": "2024-06-07",
+      "split_adjusted_trading": "2024-06-10"
+    },
+    "entitlement_basis": "record_date",
+    "entitlement_basis_date": "2024-06-06",
+    "election_deadline": null
+  },
+  "E1": {
+    "terms": {
+      "ratio": 10,
+      "additional_shares_per_share": 9,
+      "record_date": "2024-06-06",
+      "distribution_date": "2024-06-07",
+      "split_adjusted_trading": "2024-06-10"
+    },
+    "citation": {
+      "document": "nvda-8k-20240607",
+      "locator": "Item 5.03 / Exhibit 3.1",
+      "verbatim": "At the Effective Time, each share of Common Stock issued as of immediately prior to the Effective Time shall be automatically subdivided and reclassified into ten (10) validly issued, fully paid and non-assessable shares of Common Stock."
+    }
+  },
+  "E2": {
+    "position": {
+      "basket_per_cu_pre": 180,
+      "creation_units": 100,
+      "basket_total_pre": 18000
+    },
+    "basis_shares": 18000
+  },
+  "C1": {
+    "entitlement": {
+      "pre_split_shares": 18000,
+      "ratio": 10,
+      "post_split_shares": 180000,
+      "additional_shares": 162000,
+      "basket_per_cu_post": 1800
+    },
+    "cil": {
+      "applicable": false,
+      "amount": null
+    }
+  },
+  "C2": {
+    "election_required": false,
+    "options": null,
+    "default_option": null,
+    "economics": null
+  },
+  "C3": {
+    "impact": {
+      "basket_per_cu_new": 1800,
+      "basket_total_new": 180000
+    },
+    "changes": [
+      {
+        "what": "NVDA shares per creation unit in the PCF basket",
+        "where": "MEGA PCF (mega-pcf-20240610)",
+        "old": 180,
+        "new": 1800
+      },
+      {
+        "what": "NVDA total custody position across all creation units",
+        "where": "MEGA custody position ledger",
+        "old": 18000,
+        "new": 180000
+      },
+      {
+        "what": "NVDA dividend cash receivable (net = gross at 0% withholding)",
+        "where": "MEGA cash projection / receivables ledger",
+        "old": null,
+        "new": 1800.0
+      }
+    ]
+  },
+  "D1": {
+    "decision": "Mandatory 10-for-1 forward stock split effective 2024-06-07. No election required. PCF updated to 1,800 NVDA shares per creation unit for 2024-06-10 dissemination. Net dividend receivable of $1,800.00 booked at post-split rate $0.01/share on 180,000 projected record-date (2024-06-11) shares, payable 2024-06-28. MEGA is a US-domiciled ETF receiving a US-source dividend; withholding = 0%, so NET = GROSS = $1,800.00.",
+    "actions": [
+      {
+        "_entry": "L4",
+        "_kind": "update_pcf",
+        "action": "update PCF NVDA quantity per creation unit to 1,800",
+        "quantity": 1800.0,
+        "basis_doc": "nvda-8k-20240607",
+        "by_date": null,
+        "amount": null,
+        "option": null
+      },
+      {
+        "_entry": "L5",
+        "_kind": "book_receivable",
+        "action": "book receivable of $1,800.00",
+        "amount": 1800.0,
+        "by_date": "2024-06-28",
+        "basis_doc": "nvda-8k-20240522",
+        "quantity": 180000.0,
+        "option": null
+      }
+    ]
+  },
+  "D2": {
+    "probe": {
+      "label": "COMPUTED",
+      "value": 1800.0,
+      "derivation": "MEGA is a US-domiciled ETF (USD PCF, US-listed basket) receiving a US-source dividend from NVIDIA (a US issuer). Domestic-to-domestic dividend withholding under US tax law = 0%. Therefore NET = GROSS = 180,000 post-split shares (projected record-date 2024-06-11 position) \u00d7 $0.01 post-split rate (per nvda-8k-20240522) = $1,800.00. No external withholding-rate document is required."
+    },
+    "twins": [
+      {
+        "id": "TW1",
+        "value": 1800.0
+      }
+    ]
+  }
+}

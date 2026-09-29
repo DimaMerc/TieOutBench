@@ -1,0 +1,190 @@
+{
+  "case_id": "mnst-tender-2024-oddlot",
+  "arm": "tools",
+  "model_id": "gemini-3.6-flash",
+  "scripted": false,
+  "total_s": 49,
+  "scenes": [
+    {
+      "id": "episode",
+      "kind": "title",
+      "title": "mnst-tender-2024-oddlot · arm: tools",
+      "lines": [
+        "as of 2024-06-10",
+        "The Monster Beverage tender's final results published this morning. Process the event for the account.",
+        "run: gemini-3.6-flash"
+      ],
+      "duration_s": 4
+    },
+    {
+      "id": "step-1",
+      "kind": "step",
+      "agent": "maker",
+      "round": 1,
+      "tool": "list_documents",
+      "title": "1. list_documents",
+      "lines": [
+        "list_documents()",
+        "4 documents: mnst-otp-20240508, mnst-results-20240610, acct0093-position-20240610, incy-results-20240613"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-2",
+      "kind": "step",
+      "agent": "maker",
+      "round": 1,
+      "tool": "read_document",
+      "title": "2. read_document",
+      "lines": [
+        "read_document(mnst-otp-20240508)",
+        "mnst-otp-20240508 (issuer tender offer (Offer to Purchase, excerpt), 2024-05-08)"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-3",
+      "kind": "step",
+      "agent": "maker",
+      "round": 1,
+      "tool": "read_document",
+      "title": "3. read_document",
+      "lines": [
+        "read_document(mnst-results-20240610)",
+        "mnst-results-20240610 (issuer press release (final results, SC TO-I/A exhibit), 2024-06-10)"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-4",
+      "kind": "step",
+      "agent": "maker",
+      "round": 1,
+      "tool": "read_document",
+      "title": "4. read_document",
+      "lines": [
+        "read_document(acct0093-position-20240610)",
+        "acct0093-position-20240610 (custody position + instruction record (constructed), 2024-06-10)"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-5",
+      "kind": "step",
+      "agent": "maker",
+      "round": 1,
+      "tool": "get_position",
+      "title": "5. get_position",
+      "lines": [
+        "get_position(ACCT-0093, as of 2024-06-10)",
+        "87 shares, settled (position row 2024-06-03); tendered 87"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-6",
+      "kind": "step",
+      "agent": "maker",
+      "round": 1,
+      "tool": "calculate",
+      "title": "6. calculate",
+      "lines": [
+        "calculate(87 * 53)",
+        "= 4611"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-7",
+      "kind": "step",
+      "agent": "maker",
+      "round": 1,
+      "tool": "book_receivable",
+      "title": "7. book_receivable",
+      "lines": [
+        "book_receivable($4,611.00, pay 2024-06-10, basis mnst-results-20240610, 87 shares)",
+        "L1 booked $4,611.00 for 2024-06-10 on mnst-results-20240610"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-8",
+      "kind": "step",
+      "agent": "maker",
+      "round": 1,
+      "tool": "escalate",
+      "title": "8. escalate",
+      "lines": [
+        "escalate(missing: Letter of Transmittal; hold: booking_net_proceeds_after_fees)",
+        "L2 escalation recorded"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-9",
+      "kind": "step",
+      "agent": "maker",
+      "round": 1,
+      "tool": "submit_worksheet",
+      "title": "9. submit_worksheet",
+      "lines": [
+        "submit_worksheet(...)",
+        "worksheet submitted; episode ended (2 ledger entries)"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "ledger",
+      "kind": "ledger",
+      "title": "The ledger (what was booked)",
+      "lines": [
+        "L1: book_receivable amount=$4,611.00 pay_date=2024-06-10 shares=87.0 rate=53.0 basis_doc=mnst-results-20240610 memo='Gross tender proceeds for 87 accepted shares at $53.00 per share (odd lot preference applied)'",
+        "L2: escalate missing_document='Letter of Transmittal' held_action='booking_net_proceeds_after_fees' reason='The Letter of Transmittal referenced in the Offer to Purchase is missing from the document store, preventing determination of any fees or charges to be deducted from tender proceeds.'"
+      ],
+      "duration_s": 5
+    },
+    {
+      "id": "tieout",
+      "kind": "check",
+      "title": "Does the worksheet tie to the ledger?",
+      "lines": [
+        "L1: booked 4611.0 vs worksheet 4611.0 -> ties",
+        "GATE.ELECT on the ledger: no",
+        "flags: none"
+      ],
+      "ok": true,
+      "duration_s": 5
+    },
+    {
+      "id": "grade",
+      "kind": "grade",
+      "title": "The grade",
+      "lines": [
+        "worksheet: 1.000 gated, AllPass 1, gates none",
+        "terminal state: 1.000 gated, AllPass 1, gates none",
+        "flags: none"
+      ],
+      "ok": true,
+      "duration_s": 5
+    },
+    {
+      "id": "closing",
+      "kind": "title",
+      "title": "Does it tie out?",
+      "lines": [
+        "TieOutBench · evals.finance",
+        "eval #6, phase 2: the agent environment"
+      ],
+      "duration_s": 3
+    }
+  ]
+}

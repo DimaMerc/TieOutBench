@@ -1,0 +1,498 @@
+{
+  "case_id": "mega-split-2024",
+  "arm": "checker",
+  "model_id": "gpt-5.5",
+  "scripted": false,
+  "total_s": 118,
+  "scenes": [
+    {
+      "id": "episode",
+      "kind": "title",
+      "title": "mega-split-2024 · arm: checker",
+      "lines": [
+        "as of 2024-06-10",
+        "Process any corporate action affecting the MEGA basket before today's PCF dissemination.",
+        "run: gpt-5.5"
+      ],
+      "duration_s": 4
+    },
+    {
+      "id": "step-1",
+      "kind": "step",
+      "agent": "maker",
+      "round": 1,
+      "tool": "list_documents",
+      "title": "1. list_documents",
+      "lines": [
+        "list_documents()",
+        "5 documents: nvda-8k-20240522, nvda-8k-20240607, mega-pcf-20240610, mega-position-20240610, qsem-pr-20240603"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-2",
+      "kind": "step",
+      "agent": "maker",
+      "round": 1,
+      "tool": "read_document",
+      "title": "2. read_document",
+      "lines": [
+        "read_document(nvda-8k-20240522)",
+        "nvda-8k-20240522 (issuer 8-K (announcement), 2024-05-22)"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-3",
+      "kind": "step",
+      "agent": "maker",
+      "round": 1,
+      "tool": "read_document",
+      "title": "3. read_document",
+      "lines": [
+        "read_document(nvda-8k-20240607)",
+        "nvda-8k-20240607 (issuer 8-K (effectiveness), 2024-06-07)"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-4",
+      "kind": "step",
+      "agent": "maker",
+      "round": 1,
+      "tool": "read_document",
+      "title": "4. read_document",
+      "lines": [
+        "read_document(mega-pcf-20240610)",
+        "mega-pcf-20240610 (ETF portfolio composition file (constructed), 2024-06-10)"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-5",
+      "kind": "step",
+      "agent": "maker",
+      "round": 1,
+      "tool": "read_document",
+      "title": "5. read_document",
+      "lines": [
+        "read_document(mega-position-20240610)",
+        "mega-position-20240610 (custody position report (constructed), 2024-06-10)"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-6",
+      "kind": "step",
+      "agent": "maker",
+      "round": 1,
+      "tool": "get_position",
+      "title": "6. get_position",
+      "lines": [
+        "get_position(MEGA, as of 2024-06-06)",
+        "18,000 shares, settled (position row 2024-06-06)"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-7",
+      "kind": "step",
+      "agent": "maker",
+      "round": 1,
+      "tool": "calculate",
+      "title": "7. calculate",
+      "lines": [
+        "calculate(18000*10)",
+        "= 180000"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-8",
+      "kind": "step",
+      "agent": "maker",
+      "round": 1,
+      "tool": "calculate",
+      "title": "8. calculate",
+      "lines": [
+        "calculate(18000*9)",
+        "= 162000"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-9",
+      "kind": "step",
+      "agent": "maker",
+      "round": 1,
+      "tool": "calculate",
+      "title": "9. calculate",
+      "lines": [
+        "calculate(180*10)",
+        "= 1800"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-10",
+      "kind": "step",
+      "agent": "maker",
+      "round": 1,
+      "tool": "calculate",
+      "title": "10. calculate",
+      "lines": [
+        "calculate(1800*100)",
+        "= 180000"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-11",
+      "kind": "step",
+      "agent": "maker",
+      "round": 1,
+      "tool": "get_position",
+      "title": "11. get_position",
+      "lines": [
+        "get_position(MEGA, as of 2024-06-11)",
+        "180,000 shares, projected (position row 2024-06-07)"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-12",
+      "kind": "step",
+      "agent": "maker",
+      "round": 1,
+      "tool": "calculate",
+      "title": "12. calculate",
+      "lines": [
+        "calculate(180000*0.01)",
+        "= 1800"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-13",
+      "kind": "step",
+      "agent": "maker",
+      "round": 1,
+      "tool": "update_pcf",
+      "title": "13. update_pcf",
+      "lines": [
+        "update_pcf(NVDA -> 1800 per creation unit, basis nvda-8k-20240607)",
+        "L1 PCF line: 1800.0 per creation unit"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-14",
+      "kind": "step",
+      "agent": "maker",
+      "round": 1,
+      "tool": "confirm_position",
+      "title": "14. confirm_position",
+      "lines": [
+        "confirm_position(180000 NVDA as of 2024-06-10)",
+        "L2 confirmed 180000.0 as of 2024-06-10"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-15",
+      "kind": "step",
+      "agent": "maker",
+      "round": 1,
+      "tool": "escalate",
+      "title": "15. escalate",
+      "lines": [
+        "escalate(missing: applicable withholding/tax-status documentation for MEGA'...; hold: net dividend cash receivable determination/booking)",
+        "L3 escalation recorded"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-16",
+      "kind": "step",
+      "agent": "maker",
+      "round": 1,
+      "tool": "submit_worksheet",
+      "title": "16. submit_worksheet",
+      "lines": [
+        "submit_worksheet(...)",
+        "worksheet submitted; episode ended (3 ledger entries)"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-17",
+      "kind": "step",
+      "agent": "reviewer",
+      "round": 1,
+      "tool": "list_documents",
+      "title": "17. list_documents  (reviewer, round 1)",
+      "lines": [
+        "list_documents()",
+        "5 documents: nvda-8k-20240522, nvda-8k-20240607, mega-pcf-20240610, mega-position-20240610, qsem-pr-20240603"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-18",
+      "kind": "step",
+      "agent": "reviewer",
+      "round": 1,
+      "tool": "read_document",
+      "title": "18. read_document  (reviewer, round 1)",
+      "lines": [
+        "read_document(nvda-8k-20240522)",
+        "nvda-8k-20240522 (issuer 8-K (announcement), 2024-05-22)"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-19",
+      "kind": "step",
+      "agent": "reviewer",
+      "round": 1,
+      "tool": "read_document",
+      "title": "19. read_document  (reviewer, round 1)",
+      "lines": [
+        "read_document(nvda-8k-20240607)",
+        "nvda-8k-20240607 (issuer 8-K (effectiveness), 2024-06-07)"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-20",
+      "kind": "step",
+      "agent": "reviewer",
+      "round": 1,
+      "tool": "read_document",
+      "title": "20. read_document  (reviewer, round 1)",
+      "lines": [
+        "read_document(mega-pcf-20240610)",
+        "mega-pcf-20240610 (ETF portfolio composition file (constructed), 2024-06-10)"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-21",
+      "kind": "step",
+      "agent": "reviewer",
+      "round": 1,
+      "tool": "read_document",
+      "title": "21. read_document  (reviewer, round 1)",
+      "lines": [
+        "read_document(mega-position-20240610)",
+        "mega-position-20240610 (custody position report (constructed), 2024-06-10)"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-22",
+      "kind": "step",
+      "agent": "reviewer",
+      "round": 1,
+      "tool": "get_position",
+      "title": "22. get_position  (reviewer, round 1)",
+      "lines": [
+        "get_position(MEGA, as of 2024-06-06)",
+        "18,000 shares, settled (position row 2024-06-06)"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-23",
+      "kind": "step",
+      "agent": "reviewer",
+      "round": 1,
+      "tool": "get_position",
+      "title": "23. get_position  (reviewer, round 1)",
+      "lines": [
+        "get_position(MEGA, as of 2024-06-10)",
+        "180,000 shares, settled (position row 2024-06-07)"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-24",
+      "kind": "step",
+      "agent": "reviewer",
+      "round": 1,
+      "tool": "get_position",
+      "title": "24. get_position  (reviewer, round 1)",
+      "lines": [
+        "get_position(MEGA, as of 2024-06-11)",
+        "180,000 shares, projected (position row 2024-06-07)"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-25",
+      "kind": "step",
+      "agent": "reviewer",
+      "round": 1,
+      "tool": "calculate",
+      "title": "25. calculate  (reviewer, round 1)",
+      "lines": [
+        "calculate(18000*10)",
+        "= 180000"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-26",
+      "kind": "step",
+      "agent": "reviewer",
+      "round": 1,
+      "tool": "calculate",
+      "title": "26. calculate  (reviewer, round 1)",
+      "lines": [
+        "calculate(18000*9)",
+        "= 162000"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-27",
+      "kind": "step",
+      "agent": "reviewer",
+      "round": 1,
+      "tool": "calculate",
+      "title": "27. calculate  (reviewer, round 1)",
+      "lines": [
+        "calculate(180000/100)",
+        "= 1800"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-28",
+      "kind": "step",
+      "agent": "reviewer",
+      "round": 1,
+      "tool": "calculate",
+      "title": "28. calculate  (reviewer, round 1)",
+      "lines": [
+        "calculate(180000*0.01)",
+        "= 1800"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-29",
+      "kind": "step",
+      "agent": "reviewer",
+      "round": 1,
+      "tool": "get_position",
+      "title": "29. get_position  (reviewer, round 1)",
+      "lines": [
+        "get_position(MEGA, as of 2024-06-07)",
+        "180,000 shares, settled (position row 2024-06-07)"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-30",
+      "kind": "step",
+      "agent": "reviewer",
+      "round": 1,
+      "tool": "review_verdict",
+      "title": "30. review_verdict  (reviewer, round 1)",
+      "lines": [
+        "review_verdict(approve, 0 finding(s))",
+        "verdict approve recorded"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "ledger",
+      "kind": "ledger",
+      "title": "The ledger (what was booked)",
+      "lines": [
+        "L1: update_pcf ticker=NVDA quantity_per_cu=1800.0 (was 180) basis_doc=nvda-8k-20240607 memo='Update MEGA PCF NVDA quantity per creation unit for ten-for-one split effective 2024-06-07; split-adjusted trading 2024-06-10. Old PCF line was 180 shares per creation unit.'",
+        "L2: confirm_position ticker=NVDA shares=180000.0 as_of=2024-06-10 basis_doc=nvda-8k-20240607",
+        "L3: escalate missing_document=\"applicable withholding/tax-status documentation for MEGA's NVDA dividend (withholding rate)\" held_action='net dividend cash receivable determination/booking' reason='The store states the gross NVDA dividend rate and record/pay dates but does not provide any applicable withholding rate or tax-status documentation needed to compute net cash after withholding.'"
+      ],
+      "duration_s": 5
+    },
+    {
+      "id": "tieout",
+      "kind": "check",
+      "title": "Does the worksheet tie to the ledger?",
+      "lines": [
+        "L1: booked 1800.0 vs worksheet 1800.0 -> ties",
+        "GATE.ELECT on the ledger: no",
+        "flags: none"
+      ],
+      "ok": true,
+      "duration_s": 5
+    },
+    {
+      "id": "grade",
+      "kind": "grade",
+      "title": "The grade",
+      "lines": [
+        "worksheet: 1.000 gated, AllPass 1, gates none",
+        "terminal state: 1.000 gated, AllPass 1, gates none",
+        "flags: none"
+      ],
+      "ok": true,
+      "duration_s": 5
+    },
+    {
+      "id": "review-1",
+      "kind": "review",
+      "title": "The checker, round 1: approved a correct ledger",
+      "lines": [
+        "verdict: APPROVE",
+        "the ledger it was shown was correct",
+        "the reviewer recomputed (list_documents x1, read_document x4, get_position x4, calculate x4, review_verdict x1)"
+      ],
+      "ok": true,
+      "cell": "approved a correct ledger",
+      "duration_s": 6
+    },
+    {
+      "id": "closing",
+      "kind": "title",
+      "title": "Does it tie out?",
+      "lines": [
+        "TieOutBench · evals.finance",
+        "eval #6, phase 2: the agent environment"
+      ],
+      "duration_s": 3
+    }
+  ]
+}

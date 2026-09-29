@@ -1,0 +1,38 @@
+{
+  "clock": "2014-04-01",
+  "entries": [
+    {
+      "entry_id": "L1",
+      "kind": "book_receivable",
+      "args": {
+        "account": "ACCT-2101",
+        "amount": 1800.0,
+        "pay_date": "2014-06-02",
+        "basis_doc": "zts-8k-20140327",
+        "shares": 25000.0,
+        "rate": 0.072,
+        "memo": "ZTS Q2 2014 dividend; record date 2014-04-28; $0.072/share \u00d7 25,000 shares; governing doc is corrected 8-K (zts-8k-20140327), superseding original (zts-8k-20140326)"
+      },
+      "seq": 22,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:18:08.718Z"
+    },
+    {
+      "entry_id": "L2",
+      "kind": "escalate",
+      "args": {
+        "reason": "The account participates in dividend reinvestment. The reinvestment price for the June 2, 2014 ZTS dividend payment is set by the DRIP plan administrator (typically based on market price on or around the pay date) and is not contained in any document in the store. No DRIP plan document, plan administrator notice, or reinvestment price confirmation is present.",
+        "missing_document": "ZTS DRIP plan administrator notice / reinvestment price confirmation for the June 2, 2014 dividend payment",
+        "held_action": "Determine and apply the DRIP reinvestment price for the June 2, 2014 ZTS dividend payment for ACCT-2101"
+      },
+      "seq": 24,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:18:08.718Z"
+    }
+  ],
+  "frozen": {}
+}

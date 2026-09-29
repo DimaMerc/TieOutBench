@@ -1,0 +1,126 @@
+{
+  "P1": {
+    "issuer": "Monster Beverage Corporation",
+    "security": {
+      "ticker": "MNST"
+    },
+    "event_type": "voluntary",
+    "governing_doc": "mnst-results-20240610",
+    "superseded_docs": [
+      "mnst-otp-20240508"
+    ]
+  },
+  "P2": {
+    "dates": {
+      "offer_commenced": "2024-05-08",
+      "expiration": "2024-06-05",
+      "results_announced": "2024-06-10"
+    },
+    "entitlement_basis": "shares_validly_tendered_by_expiration",
+    "entitlement_basis_date": "2024-06-05",
+    "election_deadline": "2024-06-05"
+  },
+  "E1": {
+    "terms": {
+      "price_range_low": 53,
+      "price_range_high": 60,
+      "final_price": 53,
+      "aggregate_cap": 3000000000,
+      "shares_tendered_total": 119018767,
+      "shares_accepted_total": 56603773,
+      "proration_factor": 0.4718,
+      "odd_lot_threshold": 100
+    },
+    "citation": {
+      "document": "mnst-results-20240610",
+      "locator": "entire press release excerpt",
+      "verbatim": "The tender offer expired at 11:59 p.m., New York City time, on June 5, 2024. A total of 119,018,767 shares of Monster's common stock were validly tendered and not validly withdrawn at the final purchase price of $53.00 per share or as purchase price tenders, which includes shares that were tendered through notice of guaranteed delivery. Monster accepted for purchase a total of 56,603,773 shares of its common stock, representing approximately 5.4% of the shares issued and outstanding immediately prior to the completion of the purchase, at the final purchase price of $53.00 per share, for an aggregate purchase price of approximately $3.0 billion. Because the number of shares tendered would have exceeded the aggregate purchase price of the tender offer, shares were accepted for purchase on a pro rata basis, except for tenders of \"odd lots,\" which will be accepted in full. Monster has been informed by the depositary that the final proration factor for the tender offer is approximately 47.18%."
+    }
+  },
+  "E2": {
+    "position": {
+      "shares_held": 10000,
+      "shares_tendered": 10000
+    },
+    "basis_shares": 10000
+  },
+  "C1": {
+    "entitlement": {
+      "shares_tendered": 10000,
+      "proration_factor": 0.4718,
+      "accepted_shares": 4718,
+      "final_price": 53,
+      "gross_proceeds": 250054,
+      "residual_shares": 5282
+    },
+    "cil": {
+      "applicable": false,
+      "amount": null
+    }
+  },
+  "C2": {
+    "election_required": false,
+    "options": null,
+    "default_option": null,
+    "economics": {
+      "proration_applies": true,
+      "factor_used": 0.4718,
+      "odd_lot_exception": "Not applicable; account is institutional and not an odd-lot holder."
+    }
+  },
+  "C3": {
+    "impact": {
+      "accepted_shares": 4718,
+      "gross_proceeds": 250054,
+      "residual_shares": 5282
+    },
+    "changes": [
+      {
+        "what": "MNST share position confirmation",
+        "where": "position verification ledger",
+        "old": null,
+        "new": 10000
+      },
+      {
+        "what": "Tender proceeds cash receivable",
+        "where": "cash receivable ledger for ACCT-4407",
+        "old": null,
+        "new": 250054
+      }
+    ]
+  },
+  "D1": {
+    "decision": "Process final tender results using governing final-results announcement; no live election remains because the offer expired on 2024-06-05 and the account had already validly tendered all 10,000 shares by expiration.",
+    "actions": [
+      {
+        "action": "confirm_position",
+        "option": null,
+        "quantity": 10000,
+        "amount": null,
+        "by_date": "2024-06-05",
+        "basis_doc": "acct4407-position-20240610"
+      },
+      {
+        "action": "book_receivable",
+        "option": null,
+        "quantity": 4718,
+        "amount": 250054,
+        "by_date": "2024-06-10",
+        "basis_doc": "mnst-results-20240610"
+      }
+    ]
+  },
+  "D2": {
+    "probe": {
+      "label": "NOT_DETERMINABLE",
+      "value": null,
+      "derivation": "Missing referenced document: Letter of Transmittal for Monster Beverage tender offer. Escalated and held only the D2 fee/charge deduction determination from tender proceeds."
+    },
+    "twins": [
+      {
+        "id": "TW1",
+        "value": 250054
+      }
+    ]
+  }
+}

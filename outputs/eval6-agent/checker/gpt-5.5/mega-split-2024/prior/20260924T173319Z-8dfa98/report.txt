@@ -1,0 +1,90 @@
+########################################################################
+  EPISODE mega-split-2024   arm=checker   model=gpt-5.5
+########################################################################
+
+--- WORKSHEET (the submitted worksheet through the unchanged Phase-1 grader) ---
+========================================================================
+  CASE mega-split-2024    model=checker:gpt-5.5    judge=mock
+========================================================================
+  CaseScore (gated, headline) : 0.489
+  CaseScore (ungated)         : 0.909
+  GAP (ungated - gated)       : 0.420
+  AllPass                     : 0
+  D2 calibration (R,G->F_b)   : R=1.00 G=1.00 -> 1.000
+  Gates fired                 : GATE.DATES
+
+  Checkpoint vector (which step failed):
+    cp   W      ungated  gated   raw
+    P1   0.100  1.000   1.000  +1.00
+    P2   0.120  0.375   0.375  +0.38
+    E1   0.100  0.844   0.844  +0.84
+    E2   0.080  1.000   1.000  +1.00
+    C1   0.140  1.000   0.000  +1.00  <-- gated
+    C2   0.120  1.000   0.000  +1.00  <-- gated
+    C3   0.100  1.000   1.000  +1.00
+    D1   0.160  1.000   0.000  +1.00  <-- gated
+    D2   0.080  1.000   1.000  +1.00
+
+  Category rollup (diagnostic -- what KIND of error):
+    extraction   +0.814  ################
+    numerical    +1.000  ####################
+    entailment   +1.000  ####################
+    reasoning    +0.833  #################
+    calibration  +1.000  ####################
+    structure    +1.000  ####################
+========================================================================
+
+--- TERMINAL STATE (worksheet + the ledger rendered into D1 rows; ledger predicates applied) ---
+========================================================================
+  CASE mega-split-2024    model=checker:gpt-5.5    judge=mock
+========================================================================
+  CaseScore (gated, headline) : 0.489
+  CaseScore (ungated)         : 0.909
+  GAP (ungated - gated)       : 0.420
+  AllPass                     : 0
+  D2 calibration (R,G->F_b)   : R=1.00 G=1.00 -> 1.000
+  Gates fired                 : GATE.DATES
+
+  Checkpoint vector (which step failed):
+    cp   W      ungated  gated   raw
+    P1   0.100  1.000   1.000  +1.00
+    P2   0.120  0.375   0.375  +0.38
+    E1   0.100  0.844   0.844  +0.84
+    E2   0.080  1.000   1.000  +1.00
+    C1   0.140  1.000   0.000  +1.00  <-- gated
+    C2   0.120  1.000   0.000  +1.00  <-- gated
+    C3   0.100  1.000   1.000  +1.00
+    D1   0.160  1.000   0.000  +1.00  <-- gated
+    D2   0.080  1.000   1.000  +1.00
+
+  Category rollup (diagnostic -- what KIND of error):
+    extraction   +0.814  ################
+    numerical    +1.000  ####################
+    entailment   +1.000  ####################
+    reasoning    +0.833  #################
+    calibration  +1.000  ####################
+    structure    +1.000  ####################
+========================================================================
+
+--- LEDGER ---
+L4: update_pcf ticker=NVDA quantity_per_cu=1800.0 (was 180) basis_doc=nvda-8k-20240607 memo='Ten-for-one subdivision effective 4:01 p.m. ET 2024-06-07; update MEGA 2024-06-10 PCF NVDA line from 180 to 1,800 per creation unit for split-adjusted trading.'
+L5: confirm_position ticker=NVDA shares=180000.0 as_of=2024-06-10 basis_doc=nvda-8k-20240607
+L6: escalate missing_document="applicable withholding/tax-status documentation for MEGA's NVDA dividend (withholding rate)" held_action='net dividend cash receivable determination/booking based on nvda-8k-20240522' reason='Basis document for dividend terms: nvda-8k-20240522 states $0.01 per share post-split dividend, record date 2024-06-11 and payable 2024-06-28. The store does not provide the applicable withholding rate/tax-status documentation needed to compute net cash after withholding.'
+  booked entries: 2   GATE.ELECT on the ledger: False   gold match: True   flags: none   correct: True
+  consistency L4: booked=1800.0 worksheet=1800.0 ok=True
+  gold L4 update_pcf: ok=True  {'gold': 1800.0}
+  gold L5 confirm_position: ok=True  {'as_of_is_basis_date': False}
+  gold L6 escalate: ok=True  {'scoped': True}
+
+--- TRAJECTORY (reported, not scored) ---
+  maker: turns=13 tool_calls=32 errors=0 counts={'list_documents': 2, 'read_document': 8, 'get_position': 5, 'calculate': 9, 'update_pcf': 2, 'confirm_position': 2, 'escalate': 2, 'submit_worksheet': 2}
+  governing read before first action: True   docs read: ['mega-pcf-20240610', 'mega-position-20240610', 'nvda-8k-20240522', 'nvda-8k-20240607']   superseded read: []   distractors read: []
+  position dates queried: ['2024-06-06', '2024-06-11', '2024-06-07', '2024-06-11', '2024-06-06']   basis date queried: True   superseded date queried: None   projected: 2   query errors: 0
+  calculate used: True (9): ['18000*10', '18000*9', '180*10', '1800*100', '180000*0.01', '18000*10', '18000*9', '180*10', '180000*0.01']
+
+--- REVIEW (checker arm) ---
+  round 1: verdict=reject recomputed=True tools={'list_documents': 1, 'read_document': 4, 'get_position': 4, 'calculate': 3, 'review_verdict': 1} ledger_shown_correct=True
+    - Worksheet P1/E1/P2 identify nvda-8k-20240522 as the governing document and use a 2024-06-06 record-date entitlement basis. For the split entries being booked on 2024-06-10, the governing effectiveness document is nvda-8k-20240607: the amendment became effective at 4:01 p.m. ET on 2024-06-07 and each share issued immediately prior to the effective time was subdivided into ten shares. The booked split actions should be supported by nvda-8k-20240607/effective-time basis, not the prior announcement as the governing split source.
+    - L3 (escalate held net dividend cash receivable) has no basis_doc in the booked ledger entry. If the dividend hold/escalation is retained, its basis should be nvda-8k-20240522, which is the document that states the $0.01 post-split dividend, 2024-06-11 record date, and 2024-06-28 pay date; the split effectiveness document does not contain those dividend terms.
+  round 2: verdict=approve recomputed=True tools={'list_documents': 1, 'read_document': 4, 'get_position': 4, 'calculate': 4, 'review_verdict': 1} ledger_shown_correct=True
+########################################################################

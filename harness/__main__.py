@@ -8,6 +8,9 @@ harness/__main__.py — CLI.
   python -m harness suite [--model oracle]     # score every case in cases/ (both suites)
   python -m harness selftest                   # per-suite regression invariants
   python -m harness profiles                   # rebuild profiles/ from the committed live runs
+  python -m harness env --oracle [--case X]    # eval #6 phase 2: the scripted oracle through the tool environment
+  python -m harness env --planted NAME         # a planted trajectory (superseded_position, expired_election, ...)
+  python -m harness env --replay DIR [--cards] # the video pack (replay.md, storyboard.json, PNG cards) for a saved episode
 
 `--judge mock` (default, offline/no-API) grades the entailment/judge/refusal atoms heuristically;
 `--judge llm` is the (spend-incurring) live swap. The deterministic core + all gating are exact in
@@ -444,6 +447,166 @@ def _selftest_corporate_actions(p, name):
     return failures
 
 
+def _selftest_env():
+    """eval #6 Phase 2 invariants: the scripted oracle scores 1.000/AllPass on both layers of every
+    corporate-actions case with a clean trajectory; every planted trajectory fires exactly its gate
+    or flag; each case's env block is transcribed from its own position document; the environment
+    gaming checks hold."""
+    from .env import run_oracle, run_planted, PLANTED, score_episode
+    failures = []
+    for p in _cases():
+        case = load_case(p)
+        if suite_of(case) != "corporate-actions":
+            continue
+        name = os.path.basename(p).replace(".case.yaml", "")
+        env = case.get("env") or {}
+        if not env:
+            failures.append(f"{name}: no env block")
+            continue
+        # env-block lint: the account and every position row must be in a position/basket document
+        docs = " ".join(str(d.get("body") or "") + " " + str(d.get("title") or "")
+                        for d in (case.get("documents") or []) if isinstance(d, dict)
+                        and ("position" in str(d.get("type") or "").lower()
+                             or "composition" in str(d.get("type") or "").lower()))
+        flat = docs.replace(",", "")
+        if str(env.get("account")) not in docs:
+            failures.append(f"{name}: env.account {env.get('account')!r} not in a position document")
+        for r in env.get("positions") or []:
+            n = int(r.get("settled_shares"))
+            if f"{n:,}" not in docs and str(n) not in flat:
+                failures.append(f"{name}: env position {n} (as of {r.get('as_of')}) not in a position document")
+        if env.get("pcf"):
+            q = int(env["pcf"].get("quantity_per_cu"))
+            if f"{q:,}" not in docs and str(q) not in flat:
+                failures.append(f"{name}: env.pcf quantity {q} not in the basket document")
+        try:
+            s = score_episode(run_oracle(p))
+        except Exception as e:
+            failures.append(f"{name}: env oracle crashed: {type(e).__name__}: {e}")
+            continue
+        w, t, l, tr = s["worksheet"], s["terminal"], s["ledger"], s["trajectory"]["maker"]
+        if not (w["allpass"] == 1 and abs(w["gated"] - 1.0) < 1e-6 and t["allpass"] == 1
+                and abs(t["gated"] - 1.0) < 1e-6 and l["correct"] and not t["gates"] and not t["flags"]):
+            failures.append(f"{name}: env oracle expected 1.000/AllPass on both layers, got "
+                            f"worksheet={w['gated']}/{w['allpass']} terminal={t['gated']}/{t['allpass']} "
+                            f"gates={t['gates']} flags={t['flags']} ledger={l['flags']}")
+        if not (tr["governing_read_before_first_action"] and tr["n_tool_errors"] == 0 and tr["calculate_used"]):
+            failures.append(f"{name}: env oracle trajectory not clean: {tr}")
+    want = {
+        "superseded_position": lambda s: {"GATE.VERSION", "GATE.ELECT"} <= set(s["terminal"]["gates"])
+                               and s["ledger"]["elect_fired"]
+                               and s["trajectory"]["maker"]["superseded_date_queried"] is True,
+        "book_without_correction": lambda s: {"GATE.VERSION", "GATE.ELECT"} <= set(s["terminal"]["gates"])
+                                   and s["trajectory"]["maker"]["governing_read_before_first_action"] is False,
+        "expired_election": lambda s: "GATE.ELECT" in s["terminal"]["gates"]
+                            and "GATE.ELECT" not in s["worksheet"]["gates"],
+        "naive_proration": lambda s: "GATE.ELECT" in s["terminal"]["gates"] and not s["worksheet"]["gates"],
+        "derive_right_book_wrong": lambda s: "GATE.ELECT" in s["terminal"]["gates"]
+                                   and "ledger_inconsistent" in s["terminal"]["flags"]
+                                   and s["worksheet"]["allpass"] == 1,
+        "over_escalate": lambda s: "ledger_overescalate" in s["terminal"]["flags"] and not s["terminal"]["gates"]
+                         and s["terminal"]["checkpoints"]["D1"]["gated"] == 0.0,
+        "double_adjust": lambda s: "GATE.SCALE" in s["terminal"]["gates"] and s["ledger"]["correct"] is False,
+        "reviewer_approves_wrong": lambda s: "GATE.ELECT" in s["terminal"]["gates"] and s["review"]
+                                   and s["review"]["rounds"][0]["verdict"] == "approve"
+                                   and s["review"]["rounds"][0]["ledger_shown_correct"] is False,
+        "reviewer_rejects_then_fixed": lambda s: s["terminal"]["allpass"] == 1 and s["review"]
+                                       and [(r["verdict"], r["ledger_shown_correct"]) for r in s["review"]["rounds"]]
+                                       == [("reject", False), ("approve", True)],
+    }
+    for nm in PLANTED:
+        try:
+            s = score_episode(run_planted(nm))
+            ok = want[nm](s)
+        except Exception as e:
+            failures.append(f"env planted {nm}: crashed: {type(e).__name__}: {e}")
+            continue
+        if not ok:
+            failures.append(f"env planted {nm}: expectation not met: terminal gates={s['terminal']['gates']} "
+                            f"flags={s['terminal']['flags']} ledger={s['ledger']['flags']}")
+    # the live loops themselves, driven by a scripted client (no network): the maker loop ends on
+    # submit_worksheet with the messages history intact; the checker protocol records the review,
+    # voids on a reject, runs the revision and the second review; a content-only model is nudged
+    # then cut off; a length-cut turn is retried once then cut off
+    try:
+        failures += _selftest_env_loops()
+    except Exception as e:
+        failures.append(f"env loops: crashed: {type(e).__name__}: {e}")
+    from . import gaming_review_env as _gre
+    failures += [f"gaming-review-env: {nm}" for nm in _gre.run()]
+    return failures
+
+
+def _selftest_env_loops():
+    import json as _json
+    from .env.state import Episode
+    from .env.transport import ScriptedClient
+    from .env.agent import run_maker, run_checker
+    from .env.scoring import score_episode
+    from .live_corporate_actions import oracle_to_schema
+    failures = []
+    p = os.path.join(CASES_DIR, "bry-dividend-2024.case.yaml")
+    ws = oracle_to_schema(load_case(p))
+    good = [[{"name": "list_documents", "arguments": {}}, {"name": "read_document", "arguments": {"doc_id": "bry-8k-20240813"}}],
+            [{"name": "get_position", "arguments": {"account": "ACCT-7712", "as_of": "2024-08-23"}}],
+            [{"name": "calculate", "arguments": {"expression": "40000 * 0.17"}}],
+            [{"name": "book_receivable", "arguments": {"account": "ACCT-7712", "amount": 6800, "pay_date": "2024-08-30",
+                                                      "basis_doc": "bry-8k-20240813", "shares": 40000, "rate": 0.17}},
+             {"name": "escalate", "arguments": {"reason": "no tax notice", "missing_document": "the withholding notice",
+                                                "held_action": "only the net-cash figure"}}],
+            [{"name": "submit_worksheet", "arguments": {"worksheet": ws}}]]
+    bad = [good[0], [{"name": "get_position", "arguments": {"account": "ACCT-7712", "as_of": "2024-08-12"}}],
+           [{"name": "book_receivable", "arguments": {"account": "ACCT-7712", "amount": 8500, "pay_date": "2024-08-30",
+                                                     "basis_doc": "bry-8k-20240813", "shares": 50000, "rate": 0.17}}],
+           [{"name": "submit_worksheet", "arguments": {"worksheet": ws}}]]
+    # 1. the maker loop on a good script
+    ep = Episode(p, arm="tools", model_id="scripted")
+    m = run_maker(ep, ScriptedClient(good))
+    s = score_episode(ep)
+    if not (ep.submitted and not m["incomplete"] and m["turns"] == 5 and s["terminal"]["allpass"] == 1
+            and len(m["messages"]) >= 2 + 5 + 7 and _json.dumps(m["messages"], default=str)):
+        failures.append(f"env loop maker: expected 5 turns, submitted, AllPass; got turns={m['turns']} incomplete={m['incomplete']} "
+                        f"terminal={s['terminal']['gated']} gates={s['terminal']['gates']}")
+    # 2. the checker protocol: wrong maker, reviewer rejects, maker fixes, reviewer approves
+    ep = Episode(p, arm="checker", model_id="scripted")
+    maker = ScriptedClient(bad + good)          # round 1 uses the bad script; the revision the good one
+    reviewer = ScriptedClient([[{"name": "get_position", "arguments": {"account": "ACCT-7712", "as_of": "2024-08-23"}}],
+                               [{"name": "review_verdict", "arguments": {"verdict": "reject", "findings": ["L1 books 8,500; 6,800 is due"]}}],
+                               [{"name": "calculate", "arguments": {"expression": "40000 * 0.17"}}],
+                               [{"name": "review_verdict", "arguments": {"verdict": "approve", "findings": []}}]])
+    c = run_checker(ep, maker, reviewer)
+    s = score_episode(ep)
+    rounds = [(r["verdict"], r["ledger_shown_correct"]) for r in ep.reviews]
+    if not (c["revised"] and rounds == [("reject", False), ("approve", True)] and s["terminal"]["allpass"] == 1
+            and ep.frozen.get("ledger_v1") and all(e["voided"] for e in ep.frozen["ledger_v1"] or []) is False
+            and any(e.get("voided") for e in ep.ledger) and s["review"]["recomputed"] == {"1": True, "2": True}):
+        failures.append(f"env loop checker: expected reject->fix->approve; got revised={c['revised']} rounds={rounds} "
+                        f"terminal={s['terminal']['gated']} flags={s['terminal']['flags']}")
+    # 3. a content-only model: nudged twice, then cut off as incomplete
+    ep = Episode(p, arm="tools", model_id="scripted")
+    m = run_maker(ep, ScriptedClient(["I would read the documents.", "Still thinking.", "Done."]))
+    if not (m["incomplete"] and m["ended_by"] == "no_tool_calls" and not ep.submitted):
+        failures.append(f"env loop nudge: expected incomplete/no_tool_calls, got {m}")
+    # 4. a length-cut turn is retried once, then the episode is incomplete
+    ep = Episode(p, arm="tools", model_id="scripted")
+    m = run_maker(ep, ScriptedClient([{"finish_reason": "length"}, {"finish_reason": "length"}, good[0]]))
+    if not (m["incomplete"] and m["ended_by"] == "length" and m["turns"] == 2):
+        failures.append(f"env loop length: expected incomplete/length after 2 turns, got {m}")
+    # 5. the max-turns cut-off
+    ep = Episode(p, arm="tools", model_id="scripted")
+    m = run_maker(ep, ScriptedClient([good[0]] * 30), max_turns=4)
+    if not (m["incomplete"] and m["ended_by"] == "max_turns" and m["turns"] == 4):
+        failures.append(f"env loop max_turns: expected incomplete/max_turns at 4, got {m}")
+    # 6. the text transport: results go back as a user message, the history stays role-alternating
+    ep = Episode(p, arm="tools", model_id="scripted")
+    m = run_maker(ep, ScriptedClient(good, transport="text"))
+    roles = [x["role"] for x in m["messages"]]
+    if not (ep.submitted and roles[:2] == ["system", "user"] and "tool" not in roles and roles[-1] == "user"
+            and "TOOLS." in m["messages"][0]["content"]):
+        failures.append(f"env loop text transport: unexpected history roles {roles}")
+    return failures
+
+
 def cmd_selftest(_):
     """Regression guard, per suite: oracle must AllPass at 1.0; the gate tiers must open the
     expected GAPs; eval #2 adds the free-lunch headline flag, eval #3 the false-precision flag,
@@ -481,6 +644,8 @@ def cmd_selftest(_):
         u = _gr1._grade(name, _suites.for_case(case).make(case, "oracle")).unhandled
         if u:
             failures.append(f"{name}: unhandled criteria (no suite handler): {', '.join(u)}")
+    # eval #6 Phase 2: the agent environment (oracle + planted trajectories + gaming checks)
+    failures += _selftest_env()
     if failures:
         print("SELFTEST FAILED:")
         for f in failures:
@@ -496,7 +661,9 @@ def cmd_selftest(_):
           f"confirmation-matching cases x oracle/affirm_match/scale_slip/direction_flip/"
           f"materiality_blind/fabricate_probe/false_mismatch + {n1.get('corporate-actions', 0)} "
           f"corporate-actions cases x oracle/version_slip/date_slip/scale_slip/elect_commit/"
-          f"proration_naive/fabricate_probe/over_escalate invariants hold.")
+          f"proration_naive/fabricate_probe/over_escalate invariants hold; eval-6 Phase-2 environment: "
+          f"oracle 1.000/AllPass on both layers x {n1.get('corporate-actions', 0)} cases, 9 planted trajectories, "
+          f"environment gaming checks.")
 
 
 def cmd_demo(_):
@@ -524,6 +691,45 @@ def cmd_profiles(_):
     print(f"\n{len(built)} models, {n_runs} runs -> {len(written)} files under profiles/")
 
 
+def cmd_env(a):
+    """eval #6 Phase 2: run the scripted oracle or a planted trajectory through the tool environment
+    and print the episode report; or build the video pack for a saved episode directory."""
+    from .env import run_oracle, run_planted, PLANTED, score_episode, render_episode_report
+    from .env.state import Episode
+    from .env.storyboard import write_pack, replay_lines
+    if a.list:
+        print("planted trajectories:")
+        for nm, (case, fn) in PLANTED.items():
+            print(f"  {nm:<28} {case:<26} {(fn.__doc__ or '').strip()}")
+        return
+    if a.replay:
+        ep = Episode.load(a.replay)
+        scored = score_episode(ep)
+        print(render_episode_report(ep, scored))
+        paths = write_pack(a.replay, a.out, ep=ep, scored=scored, cards=a.cards)
+        print(f"\n[env] replay -> {paths['replay']}\n[env] storyboard -> {paths['storyboard']}"
+              + (f"\n[env] {len(paths['cards'])} cards -> {os.path.dirname(paths['cards'][0])}" if paths["cards"] else ""))
+        return
+    eps = []
+    if a.planted:
+        eps.append(run_planted(a.planted, _resolve(a.case) if a.case else None))
+    else:
+        paths = [_resolve(a.case)] if a.case else [p for p in _cases() if suite_of(load_case(p)) == "corporate-actions"]
+        eps += [run_oracle(p) for p in paths]
+    for ep in eps:
+        scored = score_episode(ep)
+        print(render_episode_report(ep, scored))
+        if a.verbose:
+            print("\n".join(replay_lines(ep)))
+        if a.save:
+            outdir = os.path.join(a.save, ep.case["case_id"] + ("-" + a.planted if a.planted else "-oracle"))
+            ep.save(outdir)
+            with open(os.path.join(outdir, "report.txt"), "w", encoding="utf-8", newline="\n") as fh:
+                fh.write(render_episode_report(ep, scored))
+            paths = write_pack(outdir, ep=ep, scored=scored, cards=a.cards)
+            print(f"[env] saved -> {outdir}" + (f" ({len(paths['cards'])} cards)" if paths["cards"] else ""))
+
+
 def main():
     ap = argparse.ArgumentParser(prog="harness", description="TieOutBench scoring harness")
     sub = ap.add_subparsers(dest="cmd", required=True)
@@ -547,6 +753,17 @@ def main():
     d = sub.add_parser("demo"); d.set_defaults(fn=cmd_demo)
     sub.add_parser("selftest").set_defaults(fn=cmd_selftest)
     sub.add_parser("profiles").set_defaults(fn=cmd_profiles)
+    e = sub.add_parser("env", help="eval #6 phase 2: the agent environment (offline)")
+    e.add_argument("--case", default=None)
+    e.add_argument("--oracle", action="store_true", help="the scripted oracle (the default)")
+    e.add_argument("--planted", default=None, help="a planted trajectory name (see --list)")
+    e.add_argument("--list", action="store_true")
+    e.add_argument("--replay", default=None, help="a saved episode directory")
+    e.add_argument("--out", default=None, help="where the replay pack goes (default: the episode directory)")
+    e.add_argument("--cards", action="store_true", help="also render the PNG cards")
+    e.add_argument("--save", default=None, help="save the oracle/planted episode(s) under this directory")
+    e.add_argument("--verbose", action="store_true", help="print the step-by-step replay")
+    e.set_defaults(fn=cmd_env)
     args = ap.parse_args()
     args.fn(args)
 

@@ -1,0 +1,72 @@
+{
+  "schema": "tieoutbench.run/1",
+  "run_id": "20260924T173639Z-0fdff5",
+  "written_at": "2026-09-24T17:37:03Z",
+  "suite": "corporate-actions",
+  "model_id": "claude-sonnet-4-6",
+  "endpoint": "api.anthropic.com",
+  "request": {
+    "max_tokens_field": "max_tokens",
+    "max_tokens": 8000,
+    "temperature": 0.0,
+    "temperature_dropped": false,
+    "stream": true,
+    "stream_usage_requested": true,
+    "system_folded": false
+  },
+  "usage": {
+    "completion_tokens": 1528,
+    "prompt_tokens": 1992,
+    "total_tokens": 3520
+  },
+  "finish_reason": "stop",
+  "deadline_hit": false,
+  "elapsed_s": 23.828,
+  "chat_elapsed_s": 23.828,
+  "content_chars": 4358,
+  "reasoning_chars": 0,
+  "prompt": {
+    "sha256": "dfe193ef03ad9c13487b636cf8efdb8b67dc0d4ed406c766b3c48064bb04e969",
+    "chars": 6573,
+    "tokens_approx": 1643
+  },
+  "case": {
+    "case_id": "bry-dividend-2024",
+    "path": "cases/bry-dividend-2024.case.yaml",
+    "sha256": "b0af79e186fe1d6059424dacd4f0b257afc01a4117a7104b4ca3be2ecf719e48"
+  },
+  "rubric": {
+    "path": "rubric/criteria-corporate-actions.yaml",
+    "sha256": "81d0498cd0f16bef5aaf8e2569e4963771c55f330332fccda87a161329cb59b6"
+  },
+  "grader_version": "93b2efa",
+  "grader_tree_dirty": true,
+  "harness_hashes": {
+    "harness/graders.py": "4ce46f1ed091fa4e95dd471b7900be5464ced9a5c952d32ca7e8160243caa65b",
+    "harness/scoring.py": "c31e1901303253cf8b4ac600998ae130fb6111b32e5b99dd16029151db1dd1a8",
+    "harness/suites/corporate_actions.py": "e79ee0256d0bdb037436698f5ac1be1c460178711992f1e93452a3fcc870ce86",
+    "harness/live_corporate_actions.py": "3e03413eff3e0f0c523ee2570e28a8771400b898d08c50f87efd55bc572ca24a"
+  },
+  "raw_sha256": "353e428074a202116f0b6cc61cdb5e090d8ffb80172bb230881c303ba6da9fac",
+  "raw_chars": 4358,
+  "parse": {
+    "status": "ok",
+    "salvaged": false,
+    "retries": 0
+  },
+  "judge": "mock",
+  "arm": "plain",
+  "prior_dir": null,
+  "score": {
+    "gated": 0.84,
+    "ungated": 0.9015,
+    "gap": 0.0615,
+    "allpass": 0,
+    "gates": [
+      "GATE.ELECT"
+    ],
+    "flags": [
+      "elect_override_fired"
+    ]
+  }
+}

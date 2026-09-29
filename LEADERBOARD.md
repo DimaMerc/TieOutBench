@@ -73,6 +73,54 @@ gate, calibrated refusal perfect).
   model borrowing their values is the expected minimum, not a finding.) Full traces:
   [`outputs/eval6-live/`](outputs/eval6-live/) and its [taxonomy](outputs/eval6-live/TAXONOMY.md).
 
+### Eval #6, Phase 2 — the agent environment (tools, and a checker)
+
+The same six cases, eight models and grader, run three ways on 2026-09-24: **plain** (the Phase-1
+grid above), **tools** (no store in the prompt; the model lists and reads documents, queries the
+position as of a date, calculates, and books through action tools, then submits the worksheet),
+**checker** (the tools arm's work product reviewed by a second agent of the same model with the
+discovery tools; one revision round), and **checker-fixed** (the same work products reviewed by
+Claude Opus 4.8 for every maker; run 2026-09-25). The worksheet is graded by the unchanged Phase-1
+grader; the ledger is rendered into action rows and graded by the same code, so `GATE.ELECT` fires
+on what was booked. AllPass per model, of six cases:
+
+| Model (maker) | plain | tools | checker | checker-fixed | Notes |
+|---|---:|---:|---:|---:|---|
+| Claude Opus 4.8 | 4 | 5 | 5 | 3 | the same 0.983 partial on the corrected dividend in every arm and every repeat; two `FABRICATION` under the fixed reviewer (its own model) |
+| **Claude Sonnet 4.6** | **6** | **6** | **6** | 5 | twelve of twelve on the repeats across four arms |
+| Claude Haiku 4.5 | 3 | 2 | 1 | 1 | `GATE.DATES` on both tenders with tools (deadline field left empty; ledgers right); reviewer-induced errors in both review arms |
+| GPT-5.6-sol | 5 | 6 | 4 | 4 | text protocol (the compat endpoint refuses function tools for it); correct receivables un-booked after false rejections (self-review); two `FABRICATION` (fixed) |
+| GPT-5.5 | 5 | 5 | 4 | 4 | one receivable un-booked (self-review); one `FABRICATION` (fixed) |
+| GPT-5.4 | 4 | 6 | 3 | **6** | two `FABRICATION` after self-review revisions; clean under the fixed reviewer |
+| GPT-5.4-mini | 0 | 0 | 0 | 0 | tools: reversed the clean basket (1,800 to 180) and booked $180; wrong on the stale basket's worksheet with a correct ledger |
+| Gemini 3.6 Flash | 5 | 5 | 4 | 2 | one `FABRICATION` (self-review); three (fixed) |
+| **All 48 cells** | **32** | **35** | **27** | **25** | gates fired: 2, 4, 8, 14; `GATE.ELECT`: 1, 0, 0, 0; ledgers correct: n/a, 46, 44, 46 |
+
+- **Tools helped the middle tier and hurt the small one.** GPT-5.4 four to six, GPT-5.6-sol five
+  to six, Opus four to five; Haiku three to two, and GPT-5.4-mini's split cases collapsed.
+- **The marquee gate did not fire in the recorded tools cells, and the repeats say why that is
+  not the result.** Five tools-arm attempts by the small model on the corrected dividend: two
+  booked $8,500 without ever calling `get_position`; three booked $6,800 after querying the
+  position as of the desk's date rather than the record date. The tool was there in every run.
+- **The checker made the work worse.** Reviewers recomputed (48 of 48 queried the position) and
+  then rejected 20 of 46 correct ledgers and approved one of two wrong ones; the makers complied
+  and the revisions introduced four gates and five missing or held bookings. Round-one two-by-two:
+  reject/wrong 1, reject/correct 20, approve/wrong 1, approve/correct 26.
+- **A stronger fixed reviewer was better on the verdicts and worse on the probe.** Opus
+  reviewing every maker: 13 correct ledgers rejected instead of 20, 33 approved instead of 26,
+  the same two wrong ledgers caught and missed, 46 of 48 ledgers correct. Ten of its thirteen
+  false rejections said the fund is U.S.-domiciled, so no withholding applies and the net equals
+  the gross; every maker complied, and `GATE.FABRICATION` fired ten times on worksheets that had
+  refused the net-cash probe correctly before the review. AllPass 25. Round-one two-by-two:
+  reject/wrong 1, reject/correct 13, approve/wrong 1, approve/correct 33.
+- **Transport.** Native function calling on all three compat endpoints for seven models; GPT-5.6-sol
+  on the text protocol (disclosed per cell in `run.json`), six of six with tools.
+- Repeats (three per cell, corrected dividend, all arms), the trajectory rates, and the grader log
+  (six environment-contract fixes, a reviewer-packet fix with the arm re-run, and eight Phase-1
+  false fires pinned by regression checks; no committed Phase-1 headline number moved) are in
+  [`outputs/eval6-agent/TAXONOMY.md`](outputs/eval6-agent/TAXONOMY.md). Artifacts:
+  [`outputs/eval6-agent/`](outputs/eval6-agent/).
+
 ### The methodology finding — every vendor meters the budget differently
 
 The cross-vendor runs broke the harness three separate times, and every breakage would have
@@ -250,10 +298,18 @@ replication is the honest next step before calling it task-level. [Taxonomy](out
   `python -m harness selftest`). **No published cell moved**: all 96 committed frontier answers
   re-grade identically and the profiles regenerate byte-for-byte. Details in the
   [eval-6 taxonomy](outputs/eval6-live/TAXONOMY.md) ("Round six").
+- **Round seven (2026-09-24, the Phase-2 live wave).** 120 agent-arm worksheets through the
+  eval-6 grader surfaced eight more false fires on correct prose (a year-terminated sentence, four
+  noun uses of "tender", a scoped hold vetoing its clause, "VOID" as a release, a hedged range as
+  a fabrication, the "hold for entitlement" idiom), all pinned by checks LW4#1 to LW4#13 (92 checks
+  now). All 48 committed eval-6 answers re-grade identically on gated score, ungated score, gates and
+  checkpoints; one diagnostic category rollup moved (GPT-5.4-mini, corrected dividend, calibration
+  -0.385 to +0.077) and `profiles/` was regenerated. Profile rows now carry an `arm` field.
 
 ## What's next
 
 Frontier runs on evals #1–#2 (still open-weight only); a Gemini pro-tier model once Google ships
-one current; the ETF-swap pair live; the eval-6 Phase-2 tool-loop form (the same gates as
-terminal-state reward — the RL-environment build); and the ODD workflow eval sketched in
+one current; the ETF-swap pair live; a review protocol for eval-6 Phase 2 that a reviewer cannot use to
+over-rule a calibrated refusal (the two review arms above are its baselines); and the ODD workflow
+eval sketched in
 [`ODD.md`](ODD.md).

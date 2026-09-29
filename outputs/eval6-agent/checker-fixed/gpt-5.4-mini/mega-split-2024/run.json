@@ -1,0 +1,193 @@
+{
+  "schema": "tieoutbench.run/1",
+  "run_id": "20260925T000635Z-0fd689",
+  "written_at": "2026-09-25T00:07:24Z",
+  "arm": "checker-fixed",
+  "suite": "corporate-actions",
+  "model_id": "gpt-5.4-mini",
+  "endpoint": "api.openai.com",
+  "request": {
+    "max_tokens": 32000,
+    "temperature": 0.0,
+    "stream": false,
+    "tool_transport": "native",
+    "max_turns": 20,
+    "deadline_s": 900
+  },
+  "conformance": {
+    "tool_transport": "native",
+    "tested_at": "2026-09-24T15:58:55Z"
+  },
+  "loop": {
+    "maker_round1": {
+      "turns": 7,
+      "incomplete": false,
+      "ended_by": "end",
+      "elapsed_s": null
+    },
+    "review_round1": {
+      "round": 1,
+      "verdict": "approve",
+      "findings": [
+        "All three booked ledger entries tie out to source. L1 (confirm_position 180,000 shares as_of 2024-06-10) matches mega-position-20240610 post-distribution custody ledger (18,000 pre-split x10 = 180,000). L2 (update_pcf to 1,800/CU, was 180) matches the 10-for-1 split terms in nvda-8k-20240522 (180 x 10 = 1,800); the PCF file mega-pcf-20240610 was generated 2024-06-06 pre-split and correctly needs this adjustment. L3 (book_receivable $1,800, pay 2024-06-28, 180,000 shares x $0.01 post-split rate) matches the dividend declared in nvda-8k-20240522 (record 2024-06-11, payable 2024-06-28, $0.10 pre-split = $0.01 post-split); the June 11 record-date entitlement is determinable because the settled position is 180,000 with no pending NVDA trades. No withholding applies to a US fund on this US-source dividend, so net = gross = $1,800; D2/TW1 = $1,800 both correct.",
+        "NON-BLOCKING (not booked): Worksheet C1 is internally inconsistent and would be wrong if used \u2014 it reports post_split_shares=1,800,000 and additional_shares=1,620,000 by applying the x10 ratio to a base of 180,000 that is ALREADY post-split (double-count). Correct post-split total is 180,000 (18,000 pre-split x 10). E2 also mislabels basis_shares/pre_split_shares as 180,000 when the pre-split holding was 18,000. These errors did not propagate to any booked ledger entry (L1 correctly used 180,000), so they do not block approval, but the worksheet should be corrected.",
+        "NON-BLOCKING (labeling): P1 marks nvda-8k-20240607 as 'superseded'. It is not superseded; it is the effectiveness 8-K confirming the same 10-for-1 split. Both documents agree on terms, so no economic impact."
+      ],
+      "turns": 4,
+      "incomplete": false,
+      "ended_by": "end",
+      "ledger_shown_correct": true,
+      "ledger_shown_elect": false,
+      "ledger_shown_flags": []
+    },
+    "revised": false
+  },
+  "usage_total": {
+    "prompt_tokens": 0,
+    "completion_tokens": 0,
+    "total_tokens": 0
+  },
+  "chat_calls": 0,
+  "transient_retries": 0,
+  "last_finish_reason": "tool_calls",
+  "incomplete": false,
+  "reused_maker_from": "outputs/eval6-agent/tools/gpt-5.4-mini/mega-split-2024",
+  "reviewer": {
+    "model_id": "claude-opus-4-8",
+    "endpoint": "api.anthropic.com",
+    "tool_transport": "native",
+    "max_tokens": 8000,
+    "usage_total": {
+      "prompt_tokens": 18856,
+      "completion_tokens": 3450,
+      "total_tokens": 22306
+    },
+    "chat_calls": 4,
+    "transient_retries": 0
+  },
+  "case": {
+    "case_id": "mega-split-2024",
+    "path": "cases/mega-split-2024.case.yaml",
+    "sha256": "696d097e2baf78d92e5e881a6e812883f12a3762698b1aaa0ebbddd7736088b5"
+  },
+  "rubric": {
+    "path": "rubric/criteria-corporate-actions.yaml",
+    "sha256": "81d0498cd0f16bef5aaf8e2569e4963771c55f330332fccda87a161329cb59b6"
+  },
+  "grader_version": "93b2efa",
+  "grader_tree_dirty": true,
+  "harness_hashes": {
+    "harness/graders.py": "4ce46f1ed091fa4e95dd471b7900be5464ced9a5c952d32ca7e8160243caa65b",
+    "harness/scoring.py": "c31e1901303253cf8b4ac600998ae130fb6111b32e5b99dd16029151db1dd1a8",
+    "harness/suites/corporate_actions.py": "f7b05b87e497cc4bb51849596a7b2891311d67d73e3fde5ba8b30b3a7bd99c22",
+    "harness/env/state.py": "ede4e582823945c77ba3c6631c0c3c704f2c8db2db58169a453a1aaee73fabc1",
+    "harness/env/scoring.py": "c60a98ff4d0cf6463f5b244b85fad9562a27edffd188a1adaf3efe2bde9c8d04",
+    "harness/env/agent.py": "d5d6b293408d287dce85cae6ec0ffbf5dd26fd2872bca637fe66f13c1e9a0d8d",
+    "harness/env/transport.py": "764a24ac1c3858f90fa5542ec428f7fa7b9433afd5a194806ccb78163f6153ca"
+  },
+  "prior_dir": null,
+  "score": {
+    "worksheet": {
+      "gated": 0.295,
+      "ungated": 0.7425,
+      "gap": 0.4475,
+      "allpass": 0,
+      "gates": [
+        "GATE.DATES",
+        "GATE.SCALE",
+        "GATE.FABRICATION"
+      ],
+      "flags": []
+    },
+    "terminal": {
+      "gated": 0.295,
+      "ungated": 0.7425,
+      "gap": 0.4475,
+      "allpass": 0,
+      "gates": [
+        "GATE.DATES",
+        "GATE.SCALE",
+        "GATE.FABRICATION"
+      ],
+      "flags": []
+    },
+    "ledger": {
+      "correct": true,
+      "elect_fired": false,
+      "gold_ok": true,
+      "flags": [],
+      "n_booked": 3
+    },
+    "review": {
+      "rounds": [
+        {
+          "round": 1,
+          "verdict": "approve",
+          "ledger_shown_correct": true,
+          "incomplete": false
+        }
+      ],
+      "recomputed": {
+        "1": true
+      }
+    }
+  },
+  "score_at_run": {
+    "worksheet": {
+      "gated": 0.295,
+      "ungated": 0.7425,
+      "gap": 0.4475,
+      "allpass": 0,
+      "gates": [
+        "GATE.DATES",
+        "GATE.SCALE",
+        "GATE.FABRICATION"
+      ],
+      "flags": []
+    },
+    "terminal": {
+      "gated": 0.295,
+      "ungated": 0.7425,
+      "gap": 0.4475,
+      "allpass": 0,
+      "gates": [
+        "GATE.DATES",
+        "GATE.SCALE",
+        "GATE.FABRICATION"
+      ],
+      "flags": []
+    },
+    "ledger": {
+      "correct": true,
+      "elect_fired": false,
+      "gold_ok": true,
+      "flags": [],
+      "n_booked": 3
+    },
+    "trajectory": {
+      "n_turns": 7,
+      "n_tool_calls": 10,
+      "n_tool_errors": 0,
+      "governing_read_before_first_action": true,
+      "position_dates_queried": [],
+      "basis_date_queried": false,
+      "superseded_date_queried": null,
+      "calculate_used": true
+    },
+    "review": {
+      "rounds": [
+        {
+          "round": 1,
+          "verdict": "approve",
+          "ledger_shown_correct": true,
+          "incomplete": false
+        }
+      ],
+      "recomputed": {
+        "1": true
+      }
+    }
+  },
+  "rescored_at": "2026-09-25T00:10:17Z",
+  "grader_version_rescore": "93b2efa"
+}

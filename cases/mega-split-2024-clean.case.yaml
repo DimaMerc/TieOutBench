@@ -90,6 +90,24 @@ documents:
       [Fictional distractor] QSEM announced a four-for-one forward stock split with a record date
       of June 14, 2024 and distribution on June 21, 2024. QSEM is NOT a MEGA basket constituent.
 
+# ----------------------------------------------------------------------------- ENVIRONMENT (Phase 2: the tool arm's state; NOT shown to the model)
+env:
+  # Authored from mega-position-20240610 and mega-pcf-20240610 (the already-adjusted file).
+  account: MEGA
+  ticker: NVDA
+  positions:
+    - { as_of: "2024-06-06", settled_shares: 18000,
+        note: "record-date basis: 180 per creation unit x 100 creation units" }
+    - { as_of: "2024-06-07", settled_shares: 180000,
+        note: "post-distribution custody ledger after close 2024-06-07 (nine additional shares per share held)" }
+  pending_after_clock: none        # "No pending trades in NVDA"
+  pcf: { quantity_per_cu: 1800, creation_units: 100 }  # already post-split: the right update is none
+  # a confirmation OR a no-op update to the same 1,800 records that the line was checked; the
+  # June dividend's GROSS may be booked (the D2 twin) and is checked against it
+  actions_allowed: [update_pcf, confirm_position, book_receivable, escalate]
+  permissible_receivables: [1800.00]   # 180,000 post-split shares x $0.01
+  receivable_pay_date: "2024-06-28"
+
 # ----------------------------------------------------------------------------- PROBE (D2 INPUT — shown to the model)
 probe:
   question: "For the June dividend also declared in nvda-8k-20240522 (record 2024-06-11, payable
@@ -219,3 +237,5 @@ verification:
   provenance: "identical to mega-split-2024 (EDGAR accessions 0001045810-24-000113 /
                0001045810-24-000144, retrieved 2026-08-18); the PCF here reflects the split
                already applied — the case exists to catch double adjustment and over-escalation."
+  env: "positions transcribed from mega-position-20240610 (18,000 as of close 2024-06-06; 180,000
+       after close 2024-06-07); PCF line 1 (1,800 per creation unit, 100 units) from mega-pcf-20240610."

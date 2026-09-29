@@ -1,0 +1,51 @@
+{
+  "rounds": [
+    {
+      "round": 1,
+      "verdict": "approve",
+      "findings": [],
+      "turns": 4,
+      "incomplete": false,
+      "ended_by": "end",
+      "ledger_shown_correct": false,
+      "ledger_shown_elect": false,
+      "ledger_shown_flags": [
+        "ledger_missing_required"
+      ]
+    }
+  ],
+  "ledger_v1": [
+    {
+      "entry_id": "L1",
+      "kind": "book_receivable",
+      "args": {
+        "account": "MEGA",
+        "amount": 1800.0,
+        "pay_date": "2024-06-28",
+        "basis_doc": "nvda-8k-20240522",
+        "shares": 180000.0,
+        "rate": 0.01,
+        "memo": "NVDA June 2024 dividend at post-split rate; record date 2024-06-11"
+      },
+      "seq": 22,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:24:47.481Z"
+    },
+    {
+      "entry_id": "L2",
+      "kind": "escalate",
+      "args": {
+        "reason": "The D2 probe asks for NET cash after applicable withholding, but the document store (nvda-8k-20240522) does not specify any withholding rate, tax treatment, or net amount. Only the gross dividend rate ($0.01 per post-split share) is stated. To determine net cash, we need a document specifying the withholding rate or net payment amount applicable to MEGA's NVDA dividend.",
+        "missing_document": "NVDA dividend withholding schedule or tax treatment document for June 2024 dividend",
+        "held_action": "D2 probe net cash calculation"
+      },
+      "seq": 25,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:24:51.535Z"
+    }
+  ]
+}

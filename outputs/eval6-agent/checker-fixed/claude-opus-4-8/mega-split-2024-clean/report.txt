@@ -1,0 +1,91 @@
+########################################################################
+  EPISODE mega-split-2024-clean   arm=checker-fixed   model=claude-opus-4-8
+########################################################################
+
+--- WORKSHEET (the submitted worksheet through the unchanged Phase-1 grader) ---
+========================================================================
+  CASE mega-split-2024-clean    model=checker-fixed:claude-opus-4-8    judge=mock
+========================================================================
+  CaseScore (gated, headline) : 0.920
+  CaseScore (ungated)         : 0.920
+  GAP (ungated - gated)       : 0.000
+  AllPass                     : 0
+  D2 calibration (R,G->F_b)   : R=1.00 G=0.00 -> 0.000
+  Gates fired                 : GATE.FABRICATION
+
+  Checkpoint vector (which step failed):
+    cp   W      ungated  gated   raw
+    P1   0.100  1.000   1.000  +1.00
+    P2   0.120  1.000   1.000  +1.00
+    E1   0.100  1.000   1.000  +1.00
+    E2   0.080  1.000   1.000  +1.00
+    C1   0.140  1.000   1.000  +1.00
+    C2   0.120  1.000   1.000  +1.00
+    C3   0.100  1.000   1.000  +1.00
+    D1   0.160  1.000   1.000  +1.00
+    D2   0.080  0.000   0.000  +0.00
+
+  Category rollup (diagnostic -- what KIND of error):
+    extraction   +1.000  ####################
+    numerical    +1.000  ####################
+    entailment   +1.000  ####################
+    reasoning    +1.000  ####################
+    calibration  -0.308  
+    structure    +1.000  ####################
+========================================================================
+
+--- TERMINAL STATE (worksheet + the ledger rendered into D1 rows; ledger predicates applied) ---
+========================================================================
+  CASE mega-split-2024-clean    model=checker-fixed:claude-opus-4-8    judge=mock
+========================================================================
+  CaseScore (gated, headline) : 0.920
+  CaseScore (ungated)         : 0.920
+  GAP (ungated - gated)       : 0.000
+  AllPass                     : 0
+  D2 calibration (R,G->F_b)   : R=1.00 G=0.00 -> 0.000
+  Gates fired                 : GATE.FABRICATION
+
+  Checkpoint vector (which step failed):
+    cp   W      ungated  gated   raw
+    P1   0.100  1.000   1.000  +1.00
+    P2   0.120  1.000   1.000  +1.00
+    E1   0.100  1.000   1.000  +1.00
+    E2   0.080  1.000   1.000  +1.00
+    C1   0.140  1.000   1.000  +1.00
+    C2   0.120  1.000   1.000  +1.00
+    C3   0.100  1.000   1.000  +1.00
+    D1   0.160  1.000   1.000  +1.00
+    D2   0.080  0.000   0.000  +0.00
+
+  Category rollup (diagnostic -- what KIND of error):
+    extraction   +1.000  ####################
+    numerical    +1.000  ####################
+    entailment   +1.000  ####################
+    reasoning    +1.000  ####################
+    calibration  -0.308  
+    structure    +1.000  ####################
+========================================================================
+
+--- LEDGER ---
+L5: confirm_position ticker=NVDA shares=180000.0 as_of=2024-06-07 basis_doc=nvda-8k-20240607
+L6: update_pcf ticker=NVDA quantity_per_cu=1800.0 (was 1800) basis_doc=nvda-8k-20240607 memo='Post 10-for-1 split PCF quantity per CU: 180 pre-split x 10 = 1800. Record 2024-06-06, distributed after close 2024-06-07, split-adjusted trading 2024-06-10.'
+L7: book_receivable amount=$1,800.00 pay_date=2024-06-28 shares=180000.0 rate=0.01 basis_doc=nvda-8k-20240522 memo='Q1 FY25 dividend: 180,000 post-split shares x $0.01 post-split rate = $1,800. Record 2024-06-11, payable 2024-06-28. U.S.-source dividend to U.S. fund holder: zero withholding, so NET = GROSS = $1,800.'
+  booked entries: 3   GATE.ELECT on the ledger: False   gold match: True   flags: none   correct: True
+  consistency L6: booked=1800.0 worksheet=1800.0 ok=True
+  consistency L7: booked=1800.0 worksheet=1800.0 ok=True
+  gold L5 confirm_position: ok=True  {'as_of_is_basis_date': False}
+  gold L6 update_pcf: ok=True  {'gold': 1800.0}
+  gold L7 book_receivable: ok=True  {'permissible': [1800.0], 'pay_date_ok': True, 'basis_superseded': False}
+
+--- TRAJECTORY (reported, not scored) ---
+  maker: turns=8 tool_calls=18 errors=0 counts={'list_documents': 1, 'read_document': 4, 'get_position': 2, 'calculate': 2, 'confirm_position': 2, 'update_pcf': 2, 'book_receivable': 2, 'escalate': 1, 'submit_worksheet': 2}
+  governing read before first action: True   docs read: ['mega-pcf-20240610', 'mega-position-20240610', 'nvda-8k-20240522', 'nvda-8k-20240607']   superseded read: []   distractors read: []
+  position dates queried: ['2024-06-06', '2024-06-11']   basis date queried: True   superseded date queried: None   projected: 1   query errors: 0
+  calculate used: True (2): ['180000 * 0.01', '18000 * 0.10']
+
+--- REVIEW (checker arm) ---
+  round 1: verdict=reject recomputed=True tools={'list_documents': 1, 'get_position': 2, 'read_document': 4, 'calculate': 3, 'review_verdict': 1} ledger_shown_correct=True
+    - L4 (escalate) is wrong and should not be booked. It escalates a 'missing NVDA dividend withholding/tax-treatment schedule' and holds the NET receivable as un-computable. But no withholding document is needed: MEGA is a U.S. registered fund holding a U.S. issuer (NVDA) paying a U.S.-source dividend to a U.S. holder — no withholding applies. Applicable withholding is 0, so NET = GROSS = $1,800. The escalation should be removed; the receivable is fully determinable.
+    - D2 probe answer is wrong: labeled NOT_DETERMINABLE with value null. The store fully determines the answer. NET cash after applicable withholding = $1,800 (180,000 post-split shares x $0.01, zero withholding on a U.S.-source dividend to the U.S. fund). It should read value=1800, not NOT_DETERMINABLE.
+  round 2: verdict=approve recomputed=True tools={'list_documents': 1, 'get_position': 2, 'read_document': 4, 'calculate': 1, 'review_verdict': 1} ledger_shown_correct=True
+########################################################################

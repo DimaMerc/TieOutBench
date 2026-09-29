@@ -1,0 +1,54 @@
+{
+  "clock": "2024-08-18",
+  "entries": [
+    {
+      "entry_id": "L1",
+      "kind": "book_receivable",
+      "args": {
+        "account": "ACCT-7712",
+        "amount": 6800.0,
+        "pay_date": "2024-08-30",
+        "basis_doc": "bry-8k-20240813",
+        "shares": 40000.0,
+        "rate": 0.17,
+        "memo": "BRY corrected dividend terms: $0.17/share payable 2024-08-30 to holders of record 2024-08-23"
+      },
+      "seq": 22,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:39:28.282Z"
+    },
+    {
+      "entry_id": "L2",
+      "kind": "confirm_position",
+      "args": {
+        "ticker": "BRY",
+        "shares": 40000.0,
+        "as_of": "2024-08-23",
+        "basis_doc": "bry-8k-20240813"
+      },
+      "seq": 25,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:39:29.292Z"
+    },
+    {
+      "entry_id": "L3",
+      "kind": "escalate",
+      "args": {
+        "reason": "Net dividend cash for a foreign-domiciled beneficial owner depends on the applicable withholding tax rate/documentation, which is not provided in the store.",
+        "missing_document": "withholding tax documentation or tax rate instruction for the foreign-domiciled beneficial owner subaccount",
+        "held_action": "determine and book net dividend cash after withholding"
+      },
+      "seq": 28,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:39:30.996Z"
+    }
+  ],
+  "frozen": {},
+  "frozen_worksheets": {}
+}

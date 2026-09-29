@@ -1,0 +1,198 @@
+{
+  "schema": "tieoutbench.run/1",
+  "run_id": "20260924T175800Z-b1741d",
+  "written_at": "2026-09-24T18:00:39Z",
+  "arm": "checker",
+  "suite": "corporate-actions",
+  "model_id": "gpt-5.5",
+  "endpoint": "api.openai.com",
+  "request": {
+    "max_tokens": 32000,
+    "temperature": 0.0,
+    "stream": false,
+    "tool_transport": "native",
+    "max_turns": 20,
+    "deadline_s": 900
+  },
+  "conformance": {
+    "tool_transport": "native",
+    "tested_at": "2026-09-24T17:16:56Z"
+  },
+  "loop": {
+    "maker_round1": {
+      "turns": 7,
+      "incomplete": false,
+      "ended_by": "end",
+      "elapsed_s": null
+    },
+    "review_round1": {
+      "round": 1,
+      "verdict": "reject",
+      "findings": [
+        "L1 records the prior PCF quantity as 'was 1800'. The source position/PCF basis is 18,000 NVDA shares over 100 creation units before the split, i.e. 180 shares per creation unit; after the 10-for-1 split it should be 1,800 per creation unit. L1 should show quantity_per_cu=1800 with prior quantity 180, not prior quantity 1800."
+      ],
+      "turns": 5,
+      "incomplete": false,
+      "ended_by": "end",
+      "ledger_shown_correct": true,
+      "ledger_shown_elect": false,
+      "ledger_shown_flags": []
+    },
+    "revised": true,
+    "maker_round2": {
+      "turns": 7,
+      "incomplete": false,
+      "ended_by": "end",
+      "elapsed_s": 62.9
+    },
+    "review_round2": {
+      "round": 2,
+      "verdict": "approve",
+      "findings": [],
+      "turns": 5,
+      "incomplete": false,
+      "ended_by": "end",
+      "ledger_shown_correct": true,
+      "ledger_shown_elect": false,
+      "ledger_shown_flags": []
+    }
+  },
+  "usage_total": {
+    "prompt_tokens": 78765,
+    "completion_tokens": 12157,
+    "total_tokens": 90922
+  },
+  "chat_calls": 17,
+  "transient_retries": 0,
+  "last_finish_reason": "tool_calls",
+  "incomplete": false,
+  "reused_maker_from": "outputs/eval6-agent/tools/gpt-5.5/mega-split-2024-clean",
+  "case": {
+    "case_id": "mega-split-2024-clean",
+    "path": "cases/mega-split-2024-clean.case.yaml",
+    "sha256": "18e6fc0e3a9fb1b728951e8a9aa41a178443fc2f24ef18a2a9b76a23fc9b8eb2"
+  },
+  "rubric": {
+    "path": "rubric/criteria-corporate-actions.yaml",
+    "sha256": "81d0498cd0f16bef5aaf8e2569e4963771c55f330332fccda87a161329cb59b6"
+  },
+  "grader_version": "93b2efa",
+  "grader_tree_dirty": true,
+  "harness_hashes": {
+    "harness/graders.py": "4ce46f1ed091fa4e95dd471b7900be5464ced9a5c952d32ca7e8160243caa65b",
+    "harness/scoring.py": "c31e1901303253cf8b4ac600998ae130fb6111b32e5b99dd16029151db1dd1a8",
+    "harness/suites/corporate_actions.py": "38d9ccb03ae6f16e393aa28363d658575db9708411cd1bca924454ebdec6d04e",
+    "harness/env/state.py": "ede4e582823945c77ba3c6631c0c3c704f2c8db2db58169a453a1aaee73fabc1",
+    "harness/env/scoring.py": "80353aed8805e7bc77a876f1b6edd486818e752a09d918c94f62e840477161d7",
+    "harness/env/agent.py": "d5d6b293408d287dce85cae6ec0ffbf5dd26fd2872bca637fe66f13c1e9a0d8d",
+    "harness/env/transport.py": "764a24ac1c3858f90fa5542ec428f7fa7b9433afd5a194806ccb78163f6153ca"
+  },
+  "prior_dir": "outputs/eval6-agent/checker/gpt-5.5/mega-split-2024-clean/prior/20260924T173526Z-233352",
+  "score": {
+    "worksheet": {
+      "gated": 1.0,
+      "ungated": 1.0,
+      "gap": 0.0,
+      "allpass": 1,
+      "gates": [],
+      "flags": []
+    },
+    "terminal": {
+      "gated": 1.0,
+      "ungated": 1.0,
+      "gap": 0.0,
+      "allpass": 1,
+      "gates": [],
+      "flags": []
+    },
+    "ledger": {
+      "correct": true,
+      "elect_fired": false,
+      "gold_ok": true,
+      "flags": [],
+      "n_booked": 2
+    },
+    "review": {
+      "rounds": [
+        {
+          "round": 1,
+          "verdict": "reject",
+          "ledger_shown_correct": true,
+          "incomplete": false
+        },
+        {
+          "round": 2,
+          "verdict": "approve",
+          "ledger_shown_correct": true,
+          "incomplete": false
+        }
+      ],
+      "recomputed": {
+        "1": true,
+        "2": true
+      }
+    }
+  },
+  "score_at_run": {
+    "worksheet": {
+      "gated": 1.0,
+      "ungated": 1.0,
+      "gap": 0.0,
+      "allpass": 1,
+      "gates": [],
+      "flags": []
+    },
+    "terminal": {
+      "gated": 1.0,
+      "ungated": 1.0,
+      "gap": 0.0,
+      "allpass": 1,
+      "gates": [],
+      "flags": []
+    },
+    "ledger": {
+      "correct": true,
+      "elect_fired": false,
+      "gold_ok": true,
+      "flags": [],
+      "n_booked": 2
+    },
+    "trajectory": {
+      "n_turns": 14,
+      "n_tool_calls": 31,
+      "n_tool_errors": 0,
+      "governing_read_before_first_action": true,
+      "position_dates_queried": [
+        "2024-06-06",
+        "2024-06-11",
+        "2024-06-06",
+        "2024-06-11"
+      ],
+      "basis_date_queried": true,
+      "superseded_date_queried": null,
+      "calculate_used": true
+    },
+    "review": {
+      "rounds": [
+        {
+          "round": 1,
+          "verdict": "reject",
+          "ledger_shown_correct": true,
+          "incomplete": false
+        },
+        {
+          "round": 2,
+          "verdict": "approve",
+          "ledger_shown_correct": true,
+          "incomplete": false
+        }
+      ],
+      "recomputed": {
+        "1": true,
+        "2": true
+      }
+    }
+  },
+  "rescored_at": "2026-09-25T00:10:22Z",
+  "grader_version_rescore": "93b2efa"
+}

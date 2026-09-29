@@ -1,0 +1,64 @@
+{
+  "rounds": [
+    {
+      "round": 1,
+      "verdict": "approve",
+      "findings": [],
+      "turns": 4,
+      "incomplete": false,
+      "ended_by": "end",
+      "ledger_shown_correct": true,
+      "ledger_shown_elect": false,
+      "ledger_shown_flags": []
+    }
+  ],
+  "ledger_v1": [
+    {
+      "entry_id": "L1",
+      "kind": "book_receivable",
+      "args": {
+        "account": "ACCT-2101",
+        "amount": 1800.0,
+        "pay_date": "2014-06-02",
+        "basis_doc": "zts-8k-20140327",
+        "shares": 25000.0,
+        "rate": 0.072,
+        "memo": "ZTS Q2 2014 dividend, record date 2014-04-28 (corrected release), $0.072/sh on 25,000 shares."
+      },
+      "seq": 19,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:13:16.464Z"
+    },
+    {
+      "entry_id": "L2",
+      "kind": "confirm_position",
+      "args": {
+        "ticker": "ZTS",
+        "shares": 25000.0,
+        "as_of": "2014-04-28",
+        "basis_doc": "zts-8k-20140327"
+      },
+      "seq": 21,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:13:16.464Z"
+    },
+    {
+      "entry_id": "L3",
+      "kind": "escalate",
+      "args": {
+        "reason": "The account participates in dividend reinvestment but no document in the store specifies the reinvestment/purchase price for the June 2, 2014 payment.",
+        "missing_document": "Zoetis dividend reinvestment plan (DRIP) reinvestment price notice for the 2014-06-02 payment",
+        "held_action": "Determination of the DRIP reinvestment price"
+      },
+      "seq": 23,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:13:16.464Z"
+    }
+  ]
+}

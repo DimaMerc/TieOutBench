@@ -1,0 +1,237 @@
+{
+  "clock": "2024-06-10",
+  "entries": [
+    {
+      "entry_id": "L1",
+      "kind": "escalate",
+      "args": {
+        "reason": "The Offer to Purchase requires use of the Letter of Transmittal, but that referenced document is absent from the store. Any fees or charges deductible from tender proceeds therefore cannot be determined. Gross proceeds remain processable from the final-results terms; hold only fee deductions and the resulting net-proceeds figure.",
+        "missing_document": "Monster Beverage tender offer Letter of Transmittal",
+        "held_action": "Determine/book fee deductions and net tender proceeds"
+      },
+      "seq": 22,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:14:00.538Z"
+    },
+    {
+      "entry_id": "L2",
+      "kind": "book_receivable",
+      "args": {
+        "account": "ACCT-4407",
+        "amount": 250054.0,
+        "pay_date": "2024-06-10",
+        "basis_doc": "mnst-results-20240610",
+        "shares": 4718.0,
+        "rate": 53.0,
+        "memo": "Gross tender proceeds recognized on final-results date; fees/net proceeds held pending missing Letter of Transmittal."
+      },
+      "seq": 25,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:14:10.346Z"
+    },
+    {
+      "entry_id": "L3",
+      "kind": "confirm_position",
+      "args": {
+        "ticker": "MNST",
+        "shares": 5282.0,
+        "as_of": "2024-06-10",
+        "basis_doc": "mnst-results-20240610"
+      },
+      "seq": 27,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:14:10.346Z"
+    }
+  ],
+  "frozen": {
+    "ledger_v1": [
+      {
+        "entry_id": "L1",
+        "kind": "escalate",
+        "args": {
+          "reason": "The Offer to Purchase requires use of the Letter of Transmittal, but that referenced document is absent from the store. Any fees or charges deductible from tender proceeds therefore cannot be determined. Gross proceeds remain processable from the final-results terms; hold only fee deductions and the resulting net-proceeds figure.",
+          "missing_document": "Monster Beverage tender offer Letter of Transmittal",
+          "held_action": "Determine/book fee deductions and net tender proceeds"
+        },
+        "seq": 22,
+        "agent": "maker",
+        "round": 1,
+        "voided": false,
+        "t": "2026-09-24T17:14:00.538Z"
+      },
+      {
+        "entry_id": "L2",
+        "kind": "book_receivable",
+        "args": {
+          "account": "ACCT-4407",
+          "amount": 250054.0,
+          "pay_date": "2024-06-10",
+          "basis_doc": "mnst-results-20240610",
+          "shares": 4718.0,
+          "rate": 53.0,
+          "memo": "Gross tender proceeds recognized on final-results date; fees/net proceeds held pending missing Letter of Transmittal."
+        },
+        "seq": 25,
+        "agent": "maker",
+        "round": 1,
+        "voided": false,
+        "t": "2026-09-24T17:14:10.346Z"
+      },
+      {
+        "entry_id": "L3",
+        "kind": "confirm_position",
+        "args": {
+          "ticker": "MNST",
+          "shares": 5282.0,
+          "as_of": "2024-06-10",
+          "basis_doc": "mnst-results-20240610"
+        },
+        "seq": 27,
+        "agent": "maker",
+        "round": 1,
+        "voided": false,
+        "t": "2026-09-24T17:14:10.346Z"
+      }
+    ]
+  },
+  "frozen_worksheets": {
+    "ledger_v1": {
+      "P1": {
+        "issuer": "Monster Beverage Corporation",
+        "security": {
+          "ticker": "MNST"
+        },
+        "event_type": "voluntary",
+        "governing_doc": "mnst-results-20240610",
+        "superseded_docs": []
+      },
+      "P2": {
+        "dates": {
+          "offer_commenced": "2024-05-08",
+          "expiration": "2024-06-05",
+          "results_announced": "2024-06-10"
+        },
+        "entitlement_basis": "shares_validly_tendered_by_expiration",
+        "entitlement_basis_date": "2024-06-05",
+        "election_deadline": "2024-06-05"
+      },
+      "E1": {
+        "terms": {
+          "price_range_low": 53,
+          "price_range_high": 60,
+          "final_price": 53,
+          "aggregate_cap": 3000000000,
+          "shares_tendered_total": 119018767,
+          "shares_accepted_total": 56603773,
+          "proration_factor": 0.4718,
+          "odd_lot_threshold": 100
+        },
+        "citation": {
+          "document": "mnst-results-20240610",
+          "locator": "Final-results press release, sole paragraph",
+          "verbatim": "Monster accepted for purchase a total of 56,603,773 shares of its common stock... at the final purchase price of $53.00 per share, for an aggregate purchase price of approximately $3.0 billion... shares were accepted for purchase on a pro rata basis, except for tenders of \"odd lots,\" which will be accepted in full. Monster has been informed by the depositary that the final proration factor for the tender offer is approximately 47.18%."
+        }
+      },
+      "E2": {
+        "position": {
+          "shares_held": 10000,
+          "shares_tendered": 10000
+        },
+        "basis_shares": 10000
+      },
+      "C1": {
+        "entitlement": {
+          "shares_tendered": 10000,
+          "proration_factor": 0.4718,
+          "accepted_shares": 4718,
+          "final_price": 53,
+          "gross_proceeds": 250054,
+          "residual_shares": 5282
+        },
+        "cil": {
+          "applicable": false,
+          "amount": null
+        }
+      },
+      "C2": {
+        "election_required": false,
+        "options": null,
+        "default_option": null,
+        "economics": {
+          "proration_applies": true,
+          "factor_used": 0.4718,
+          "odd_lot_exception": false
+        }
+      },
+      "C3": {
+        "impact": {
+          "accepted_shares": 4718,
+          "gross_proceeds": 250054,
+          "residual_shares": 5282
+        },
+        "changes": [
+          {
+            "what": "MNST tender cash receivable",
+            "where": "ACCT-4407 cash projection ledger",
+            "old": 0,
+            "new": 250054
+          },
+          {
+            "what": "MNST residual share position",
+            "where": "MNST position ledger",
+            "old": 10000,
+            "new": 5282
+          }
+        ]
+      },
+      "D1": {
+        "decision": "Process the expired offer from the 10,000 shares validly tendered by the deadline; apply the final approximately 47.18% proration because this institutional account is not an odd-lot holder. Book gross proceeds and confirm the residual position. Do not submit a new election after expiration. Escalate and hold only fee deductions/net proceeds pending the missing Letter of Transmittal.",
+        "actions": [
+          {
+            "action": "Escalate missing Letter of Transmittal and hold fee deductions/net tender proceeds",
+            "option": null,
+            "quantity": null,
+            "amount": null,
+            "by_date": "2024-06-10",
+            "basis_doc": "mnst-otp-20240508"
+          },
+          {
+            "action": "Book gross tender proceeds receivable",
+            "option": null,
+            "quantity": 4718,
+            "amount": 250054,
+            "by_date": "2024-06-10",
+            "basis_doc": "mnst-results-20240610"
+          },
+          {
+            "action": "Confirm residual MNST position",
+            "option": null,
+            "quantity": 5282,
+            "amount": null,
+            "by_date": "2024-06-10",
+            "basis_doc": "mnst-results-20240610"
+          }
+        ]
+      },
+      "D2": {
+        "probe": {
+          "label": "NOT_DETERMINABLE",
+          "value": null,
+          "derivation": "The Offer to Purchase states that stockholders must complete the referenced Letter of Transmittal, but the Monster Beverage tender offer Letter of Transmittal is absent from the store. Therefore, fees or charges deductible from proceeds cannot be determined; the missing document was escalated and only fee deductions/net proceeds were held."
+        },
+        "twins": [
+          {
+            "id": "TW1",
+            "value": 250054
+          }
+        ]
+      }
+    }
+  }
+}

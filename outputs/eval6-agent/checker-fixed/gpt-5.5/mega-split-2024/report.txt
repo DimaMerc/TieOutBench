@@ -1,0 +1,91 @@
+########################################################################
+  EPISODE mega-split-2024   arm=checker-fixed   model=gpt-5.5
+########################################################################
+
+--- WORKSHEET (the submitted worksheet through the unchanged Phase-1 grader) ---
+========================================================================
+  CASE mega-split-2024    model=checker-fixed:gpt-5.5    judge=mock
+========================================================================
+  CaseScore (gated, headline) : 0.920
+  CaseScore (ungated)         : 0.920
+  GAP (ungated - gated)       : 0.000
+  AllPass                     : 0
+  D2 calibration (R,G->F_b)   : R=1.00 G=0.00 -> 0.000
+  Gates fired                 : GATE.FABRICATION
+
+  Checkpoint vector (which step failed):
+    cp   W      ungated  gated   raw
+    P1   0.100  1.000   1.000  +1.00
+    P2   0.120  1.000   1.000  +1.00
+    E1   0.100  1.000   1.000  +1.00
+    E2   0.080  1.000   1.000  +1.00
+    C1   0.140  1.000   1.000  +1.00
+    C2   0.120  1.000   1.000  +1.00
+    C3   0.100  1.000   1.000  +1.00
+    D1   0.160  1.000   1.000  +1.00
+    D2   0.080  0.000   0.000  +0.00
+
+  Category rollup (diagnostic -- what KIND of error):
+    extraction   +1.000  ####################
+    numerical    +1.000  ####################
+    entailment   +1.000  ####################
+    reasoning    +1.000  ####################
+    calibration  -0.308  
+    structure    +1.000  ####################
+========================================================================
+
+--- TERMINAL STATE (worksheet + the ledger rendered into D1 rows; ledger predicates applied) ---
+========================================================================
+  CASE mega-split-2024    model=checker-fixed:gpt-5.5    judge=mock
+========================================================================
+  CaseScore (gated, headline) : 0.920
+  CaseScore (ungated)         : 0.920
+  GAP (ungated - gated)       : 0.000
+  AllPass                     : 0
+  D2 calibration (R,G->F_b)   : R=1.00 G=0.00 -> 0.000
+  Gates fired                 : GATE.FABRICATION
+
+  Checkpoint vector (which step failed):
+    cp   W      ungated  gated   raw
+    P1   0.100  1.000   1.000  +1.00
+    P2   0.120  1.000   1.000  +1.00
+    E1   0.100  1.000   1.000  +1.00
+    E2   0.080  1.000   1.000  +1.00
+    C1   0.140  1.000   1.000  +1.00
+    C2   0.120  1.000   1.000  +1.00
+    C3   0.100  1.000   1.000  +1.00
+    D1   0.160  1.000   1.000  +1.00
+    D2   0.080  0.000   0.000  +0.00
+
+  Category rollup (diagnostic -- what KIND of error):
+    extraction   +1.000  ####################
+    numerical    +1.000  ####################
+    entailment   +1.000  ####################
+    reasoning    +1.000  ####################
+    calibration  -0.308  
+    structure    +1.000  ####################
+========================================================================
+
+--- LEDGER ---
+L4: update_pcf ticker=NVDA quantity_per_cu=1800.0 (was 180) basis_doc=nvda-8k-20240607 memo='Update MEGA PCF NVDA quantity per creation unit for ten-for-one stock split effective 2024-06-07; split-adjusted trading begins 2024-06-10. Old PCF line was 180 shares per creation unit.'
+L5: confirm_position ticker=NVDA shares=180000.0 as_of=2024-06-10 basis_doc=nvda-8k-20240607
+L6: book_receivable amount=$1,800.00 pay_date=2024-06-28 shares=180000.0 rate=0.01 basis_doc=nvda-8k-20240522 memo='NVDA June quarterly dividend: record 2024-06-11, payable 2024-06-28, post-split rate $0.01/share. MEGA is a U.S.-domiciled ETF receiving a U.S.-source dividend from a U.S. issuer; applicable withholding is zero, so net equals gross.'
+  booked entries: 3   GATE.ELECT on the ledger: False   gold match: True   flags: none   correct: True
+  consistency L4: booked=1800.0 worksheet=1800.0 ok=True
+  consistency L6: booked=1800.0 worksheet=1800.0 ok=True
+  gold L4 update_pcf: ok=True  {'gold': 1800.0}
+  gold L5 confirm_position: ok=True  {'as_of_is_basis_date': False}
+  gold L6 book_receivable: ok=True  {'permissible': [1800.0], 'pay_date_ok': True, 'basis_superseded': False}
+
+--- TRAJECTORY (reported, not scored) ---
+  maker: turns=12 tool_calls=31 errors=0 counts={'list_documents': 2, 'read_document': 8, 'get_position': 4, 'calculate': 9, 'update_pcf': 2, 'confirm_position': 2, 'escalate': 1, 'submit_worksheet': 2, 'book_receivable': 1}
+  governing read before first action: True   docs read: ['mega-pcf-20240610', 'mega-position-20240610', 'nvda-8k-20240522', 'nvda-8k-20240607']   superseded read: []   distractors read: []
+  position dates queried: ['2024-06-06', '2024-06-11', '2024-06-06', '2024-06-11']   basis date queried: True   superseded date queried: None   projected: 2   query errors: 0
+  calculate used: True (9): ['18000*10', '18000*9', '180*10', '1800*100', '180000*0.01', '18000*10', '18000*9', '180*10', '180000*0.01']
+
+--- REVIEW (checker arm) ---
+  round 1: verdict=reject recomputed=True tools={'list_documents': 1, 'get_position': 2, 'read_document': 4, 'calculate': 1, 'review_verdict': 1} ledger_shown_correct=True
+    - D2 probe / ledger entry L3 (escalate): The maker marked the NET June dividend as NOT_DETERMINABLE and escalated/held the receivable, claiming withholding/tax-status documentation is missing. This is wrong. MEGA is a U.S.-domiciled ETF receiving a U.S.-source dividend from NVDA (a U.S. issuer); no U.S. withholding applies to a U.S. person on a domestic dividend, so the 'applicable withholding' is zero. The probe IS determinable: gross = 180,000 post-split shares (record 2024-06-11, confirmed by position projection with no pending trades) x $0.01 = $1,800, and NET = $1,800. D2.label should be the value 1,800 (not NOT_DETERMINABLE), and the escalate/hold action L3 should not be booked; the net dividend receivable of $1,800 should be recognized instead.
+    - TW1 gross figure is correct ($1,800 = 180,000 x $0.01); the split figures (18,000 pre / 180,000 post, PCF 180 -> 1,800 per creation unit, mandatory, no election) all tie out to the source — but the review is rejected solely due to the D2/L3 net-dividend error above.
+  round 2: verdict=approve recomputed=True tools={'list_documents': 1, 'get_position': 2, 'read_document': 4, 'calculate': 2, 'review_verdict': 1} ledger_shown_correct=True
+########################################################################

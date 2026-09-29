@@ -6,12 +6,14 @@
     "One run per model per case; scores are point-in-time for the model versions named. This grid does not rank models and reports no single blended number per model on purpose.",
     "Completion budgets differed by vendor where required for parity (GPT DCF runs 32k, Gemini 32k throughout, Claude 12-16k on DCF, 8k elsewhere); see LEADERBOARD.md 'Scope notes'.",
     "The NVDA DCF runs used the case-hardened v2 system prompt; the MCD runs predate it. Cross-case comparisons on the netting-convention and grid-geometry behaviors are hedged in outputs/eval3-live/nvda-fy2026-dcf/TAXONOMY.md.",
-    "gates_fired lists auto-fail conditions that collapsed the gated score; an empty list plus a high gated score is the deployable signal, a high UNGATED score alone is not."
+    "gates_fired lists auto-fail conditions that collapsed the gated score; an empty list plus a high gated score is the deployable signal, a high UNGATED score alone is not.",
+    "Rows carry an `arm` field. `plain` is the single-prompt run (every eval; the Phase-1 form of eval #6). `tools` and `checker` are eval #6 Phase-2 agent-environment runs scored on the terminal state (worksheet + ledger); their `worksheet_score_gated` is the arm-comparable number and `ledger` records what was booked. `summary` counts the plain arm only."
   ],
   "runs": [
     {
       "allpass": 0,
       "answer": "outputs/eval3-live/gpt-5.4-mini/answer.json",
+      "arm": "plain",
       "case": "cases/mcd-fy2025-dcf.case.yaml",
       "case_id": "mcd-fy2025-dcf",
       "categories": {
@@ -135,6 +137,7 @@
     {
       "allpass": 0,
       "answer": "outputs/eval3-live/nvda-fy2026-dcf/gpt-5.4-mini/answer.json",
+      "arm": "plain",
       "case": "cases/nvda-fy2026-dcf.case.yaml",
       "case_id": "nvda-fy2026-dcf",
       "categories": {
@@ -256,6 +259,7 @@
     {
       "allpass": 0,
       "answer": "outputs/eval4-live/gpt-5.4-mini/grin-create-2026/answer.json",
+      "arm": "plain",
       "case": "cases/grin-create-2026.case.yaml",
       "case_id": "grin-create-2026",
       "categories": {
@@ -325,6 +329,7 @@
     {
       "allpass": 0,
       "answer": "outputs/eval4-live/gpt-5.4-mini/grin-create-2026-clean/answer.json",
+      "arm": "plain",
       "case": "cases/grin-create-2026-clean.case.yaml",
       "case_id": "grin-create-2026-clean",
       "categories": {
@@ -394,6 +399,7 @@
     {
       "allpass": 0,
       "answer": "outputs/eval5-live/gpt-5.4-mini/irs-confirm-2026/answer.json",
+      "arm": "plain",
       "case": "cases/irs-confirm-2026.case.yaml",
       "case_id": "irs-confirm-2026",
       "categories": {
@@ -463,6 +469,7 @@
     {
       "allpass": 0,
       "answer": "outputs/eval5-live/gpt-5.4-mini/irs-confirm-2026-clean/answer.json",
+      "arm": "plain",
       "case": "cases/irs-confirm-2026-clean.case.yaml",
       "case_id": "irs-confirm-2026-clean",
       "categories": {
@@ -532,10 +539,11 @@
     {
       "allpass": 0,
       "answer": "outputs/eval6-live/gpt-5.4-mini/bry-dividend-2024/answer.json",
+      "arm": "plain",
       "case": "cases/bry-dividend-2024.case.yaml",
       "case_id": "bry-dividend-2024",
       "categories": {
-        "calibration": -0.3846,
+        "calibration": 0.0769,
         "entailment": 1.0,
         "extraction": 1.0,
         "numerical": 0.5222,
@@ -611,6 +619,7 @@
     {
       "allpass": 0,
       "answer": "outputs/eval6-live/gpt-5.4-mini/mega-split-2024/answer.json",
+      "arm": "plain",
       "case": "cases/mega-split-2024.case.yaml",
       "case_id": "mega-split-2024",
       "categories": {
@@ -685,6 +694,7 @@
     {
       "allpass": 0,
       "answer": "outputs/eval6-live/gpt-5.4-mini/mega-split-2024-clean/answer.json",
+      "arm": "plain",
       "case": "cases/mega-split-2024-clean.case.yaml",
       "case_id": "mega-split-2024-clean",
       "categories": {
@@ -761,6 +771,7 @@
     {
       "allpass": 0,
       "answer": "outputs/eval6-live/gpt-5.4-mini/mnst-tender-2024/answer.json",
+      "arm": "plain",
       "case": "cases/mnst-tender-2024.case.yaml",
       "case_id": "mnst-tender-2024",
       "categories": {
@@ -835,6 +846,7 @@
     {
       "allpass": 0,
       "answer": "outputs/eval6-live/gpt-5.4-mini/mnst-tender-2024-oddlot/answer.json",
+      "arm": "plain",
       "case": "cases/mnst-tender-2024-oddlot.case.yaml",
       "case_id": "mnst-tender-2024-oddlot",
       "categories": {
@@ -909,6 +921,7 @@
     {
       "allpass": 0,
       "answer": "outputs/eval6-live/gpt-5.4-mini/zts-dividend-2014/answer.json",
+      "arm": "plain",
       "case": "cases/zts-dividend-2014.case.yaml",
       "case_id": "zts-dividend-2014",
       "categories": {
@@ -979,6 +992,1683 @@
       "score_gated": 0.8275,
       "score_ungated": 0.8275,
       "suite": "corporate-actions"
+    },
+    {
+      "allpass": 0,
+      "answer": "outputs/eval6-agent/checker/gpt-5.4-mini/bry-dividend-2024/answer.json",
+      "arm": "checker",
+      "case": "cases/bry-dividend-2024.case.yaml",
+      "case_id": "bry-dividend-2024",
+      "categories": {
+        "calibration": 1.0,
+        "entailment": 1.0,
+        "extraction": 0.8214,
+        "numerical": 1.0,
+        "reasoning": 0.9333,
+        "structure": 1.0
+      },
+      "checkpoints": {
+        "C1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.14
+        },
+        "C2": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.12
+        },
+        "C3": {
+          "gated": 0.8333,
+          "ungated": 0.8333,
+          "weight": 0.1
+        },
+        "D1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.16
+        },
+        "D2": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.08
+        },
+        "E1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.1
+        },
+        "E2": {
+          "gated": 0.6875,
+          "ungated": 0.6875,
+          "weight": 0.08
+        },
+        "P1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.1
+        },
+        "P2": {
+          "gated": 0.8958,
+          "ungated": 0.8958,
+          "weight": 0.12
+        }
+      },
+      "eval": 6,
+      "gap": 0.0,
+      "gates_fired": [],
+      "headline_flags": [],
+      "incomplete": false,
+      "ledger": {
+        "correct": true,
+        "elect_fired": false,
+        "flags": [],
+        "gold_ok": true,
+        "n_booked": 1
+      },
+      "refusal": {
+        "checkpoint": "D2",
+        "f_beta": 1.0,
+        "groundedness": 1.0,
+        "recall": 1.0
+      },
+      "review": [
+        {
+          "ledger_shown_correct": true,
+          "round": 1,
+          "verdict": "reject"
+        },
+        {
+          "ledger_shown_correct": true,
+          "round": 2,
+          "verdict": "reject"
+        }
+      ],
+      "score_gated": 0.9458,
+      "score_ungated": 0.9458,
+      "suite": "corporate-actions",
+      "worksheet_allpass": 0,
+      "worksheet_score_gated": 0.9458
+    },
+    {
+      "allpass": 0,
+      "answer": "outputs/eval6-agent/checker/gpt-5.4-mini/mega-split-2024/answer.json",
+      "arm": "checker",
+      "case": "cases/mega-split-2024.case.yaml",
+      "case_id": "mega-split-2024",
+      "categories": {
+        "calibration": 1.0,
+        "entailment": 1.0,
+        "extraction": 0.881,
+        "numerical": 0.6067,
+        "reasoning": 0.8333,
+        "structure": 1.0
+      },
+      "checkpoints": {
+        "C1": {
+          "gated": 0.0,
+          "ungated": 0.4824,
+          "weight": 0.14
+        },
+        "C2": {
+          "gated": 0.0,
+          "ungated": 1.0,
+          "weight": 0.12
+        },
+        "C3": {
+          "gated": 0.0,
+          "ungated": 1.0,
+          "weight": 0.1
+        },
+        "D1": {
+          "gated": 0.0,
+          "ungated": 1.0,
+          "weight": 0.16
+        },
+        "D2": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.08
+        },
+        "E1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.1
+        },
+        "E2": {
+          "gated": 0.625,
+          "ungated": 0.625,
+          "weight": 0.08
+        },
+        "P1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.1
+        },
+        "P2": {
+          "gated": 0.375,
+          "ungated": 0.375,
+          "weight": 0.12
+        }
+      },
+      "eval": 6,
+      "gap": 0.4475,
+      "gates_fired": [
+        "GATE.DATES",
+        "GATE.SCALE"
+      ],
+      "headline_flags": [],
+      "incomplete": false,
+      "ledger": {
+        "correct": true,
+        "elect_fired": false,
+        "flags": [],
+        "gold_ok": true,
+        "n_booked": 2
+      },
+      "refusal": {
+        "checkpoint": "D2",
+        "f_beta": 1.0,
+        "groundedness": 1.0,
+        "recall": 1.0
+      },
+      "review": [
+        {
+          "ledger_shown_correct": true,
+          "round": 1,
+          "verdict": "reject"
+        },
+        {
+          "ledger_shown_correct": true,
+          "round": 2,
+          "verdict": "reject"
+        }
+      ],
+      "score_gated": 0.375,
+      "score_ungated": 0.8225,
+      "suite": "corporate-actions",
+      "worksheet_allpass": 0,
+      "worksheet_score_gated": 0.375
+    },
+    {
+      "allpass": 0,
+      "answer": "outputs/eval6-agent/checker/gpt-5.4-mini/mega-split-2024-clean/answer.json",
+      "arm": "checker",
+      "case": "cases/mega-split-2024-clean.case.yaml",
+      "case_id": "mega-split-2024-clean",
+      "categories": {
+        "calibration": -0.3077,
+        "entailment": 1.0,
+        "extraction": 0.881,
+        "numerical": 0.6067,
+        "reasoning": 0.8333,
+        "structure": 1.0
+      },
+      "checkpoints": {
+        "C1": {
+          "gated": 0.0,
+          "ungated": 0.4824,
+          "weight": 0.14
+        },
+        "C2": {
+          "gated": 0.0,
+          "ungated": 1.0,
+          "weight": 0.12
+        },
+        "C3": {
+          "gated": 0.0,
+          "ungated": 1.0,
+          "weight": 0.1
+        },
+        "D1": {
+          "gated": 0.0,
+          "ungated": 1.0,
+          "weight": 0.16
+        },
+        "D2": {
+          "gated": 0.0,
+          "ungated": 0.0,
+          "weight": 0.08
+        },
+        "E1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.1
+        },
+        "E2": {
+          "gated": 0.625,
+          "ungated": 0.625,
+          "weight": 0.08
+        },
+        "P1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.1
+        },
+        "P2": {
+          "gated": 0.375,
+          "ungated": 0.375,
+          "weight": 0.12
+        }
+      },
+      "eval": 6,
+      "gap": 0.4475,
+      "gates_fired": [
+        "GATE.DATES",
+        "GATE.SCALE",
+        "GATE.FABRICATION"
+      ],
+      "headline_flags": [],
+      "incomplete": false,
+      "ledger": {
+        "correct": true,
+        "elect_fired": false,
+        "flags": [],
+        "gold_ok": true,
+        "n_booked": 3
+      },
+      "refusal": {
+        "checkpoint": "D2",
+        "f_beta": 0.0,
+        "groundedness": 0.0,
+        "recall": 1.0
+      },
+      "review": [
+        {
+          "ledger_shown_correct": false,
+          "round": 1,
+          "verdict": "reject"
+        },
+        {
+          "ledger_shown_correct": true,
+          "round": 2,
+          "verdict": "reject"
+        }
+      ],
+      "score_gated": 0.295,
+      "score_ungated": 0.7425,
+      "suite": "corporate-actions",
+      "worksheet_allpass": 0,
+      "worksheet_score_gated": 0.295
+    },
+    {
+      "allpass": 0,
+      "answer": "outputs/eval6-agent/checker/gpt-5.4-mini/mnst-tender-2024/answer.json",
+      "arm": "checker",
+      "case": "cases/mnst-tender-2024.case.yaml",
+      "case_id": "mnst-tender-2024",
+      "categories": {
+        "calibration": 0.3077,
+        "entailment": 0.0,
+        "extraction": 1.0,
+        "numerical": 1.0,
+        "reasoning": 1.0,
+        "structure": 1.0
+      },
+      "checkpoints": {
+        "C1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.14
+        },
+        "C2": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.12
+        },
+        "C3": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.1
+        },
+        "D1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.16
+        },
+        "D2": {
+          "gated": 0.2941,
+          "ungated": 0.2941,
+          "weight": 0.08
+        },
+        "E1": {
+          "gated": 0.7778,
+          "ungated": 0.7778,
+          "weight": 0.1
+        },
+        "E2": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.08
+        },
+        "P1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.1
+        },
+        "P2": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.12
+        }
+      },
+      "eval": 6,
+      "gap": 0.0,
+      "gates_fired": [],
+      "headline_flags": [],
+      "incomplete": false,
+      "ledger": {
+        "correct": true,
+        "elect_fired": false,
+        "flags": [],
+        "gold_ok": true,
+        "n_booked": 2
+      },
+      "refusal": {
+        "checkpoint": "D2",
+        "f_beta": 0.2941,
+        "groundedness": 0.25,
+        "recall": 1.0
+      },
+      "review": [
+        {
+          "ledger_shown_correct": true,
+          "round": 1,
+          "verdict": "approve"
+        }
+      ],
+      "score_gated": 0.9213,
+      "score_ungated": 0.9213,
+      "suite": "corporate-actions",
+      "worksheet_allpass": 0,
+      "worksheet_score_gated": 0.9213
+    },
+    {
+      "allpass": 0,
+      "answer": "outputs/eval6-agent/checker/gpt-5.4-mini/mnst-tender-2024-oddlot/answer.json",
+      "arm": "checker",
+      "case": "cases/mnst-tender-2024-oddlot.case.yaml",
+      "case_id": "mnst-tender-2024-oddlot",
+      "categories": {
+        "calibration": 0.3077,
+        "entailment": 0.0,
+        "extraction": 1.0,
+        "numerical": 1.0,
+        "reasoning": 1.0,
+        "structure": 1.0
+      },
+      "checkpoints": {
+        "C1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.14
+        },
+        "C2": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.12
+        },
+        "C3": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.1
+        },
+        "D1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.16
+        },
+        "D2": {
+          "gated": 0.2941,
+          "ungated": 0.2941,
+          "weight": 0.08
+        },
+        "E1": {
+          "gated": 0.7778,
+          "ungated": 0.7778,
+          "weight": 0.1
+        },
+        "E2": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.08
+        },
+        "P1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.1
+        },
+        "P2": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.12
+        }
+      },
+      "eval": 6,
+      "gap": 0.0,
+      "gates_fired": [],
+      "headline_flags": [],
+      "incomplete": false,
+      "ledger": {
+        "correct": true,
+        "elect_fired": false,
+        "flags": [],
+        "gold_ok": true,
+        "n_booked": 2
+      },
+      "refusal": {
+        "checkpoint": "D2",
+        "f_beta": 0.2941,
+        "groundedness": 0.25,
+        "recall": 1.0
+      },
+      "review": [
+        {
+          "ledger_shown_correct": true,
+          "round": 1,
+          "verdict": "approve"
+        }
+      ],
+      "score_gated": 0.9213,
+      "score_ungated": 0.9213,
+      "suite": "corporate-actions",
+      "worksheet_allpass": 0,
+      "worksheet_score_gated": 0.9213
+    },
+    {
+      "allpass": 0,
+      "answer": "outputs/eval6-agent/checker/gpt-5.4-mini/zts-dividend-2014/answer.json",
+      "arm": "checker",
+      "case": "cases/zts-dividend-2014.case.yaml",
+      "case_id": "zts-dividend-2014",
+      "categories": {
+        "calibration": 1.0,
+        "entailment": 1.0,
+        "extraction": 0.9405,
+        "numerical": 1.0,
+        "reasoning": 1.0,
+        "structure": 1.0
+      },
+      "checkpoints": {
+        "C1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.14
+        },
+        "C2": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.12
+        },
+        "C3": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.1
+        },
+        "D1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.16
+        },
+        "D2": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.08
+        },
+        "E1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.1
+        },
+        "E2": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.08
+        },
+        "P1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.1
+        },
+        "P2": {
+          "gated": 0.8958,
+          "ungated": 0.8958,
+          "weight": 0.12
+        }
+      },
+      "eval": 6,
+      "gap": 0.0,
+      "gates_fired": [],
+      "headline_flags": [],
+      "incomplete": false,
+      "ledger": {
+        "correct": true,
+        "elect_fired": false,
+        "flags": [],
+        "gold_ok": true,
+        "n_booked": 1
+      },
+      "refusal": {
+        "checkpoint": "D2",
+        "f_beta": 1.0,
+        "groundedness": 1.0,
+        "recall": 1.0
+      },
+      "review": [
+        {
+          "ledger_shown_correct": true,
+          "round": 1,
+          "verdict": "reject"
+        },
+        {
+          "ledger_shown_correct": true,
+          "round": 2,
+          "verdict": "reject"
+        }
+      ],
+      "score_gated": 0.9875,
+      "score_ungated": 0.9875,
+      "suite": "corporate-actions",
+      "worksheet_allpass": 0,
+      "worksheet_score_gated": 0.9875
+    },
+    {
+      "allpass": 0,
+      "answer": "outputs/eval6-agent/checker-fixed/gpt-5.4-mini/bry-dividend-2024/answer.json",
+      "arm": "checker-fixed",
+      "case": "cases/bry-dividend-2024.case.yaml",
+      "case_id": "bry-dividend-2024",
+      "categories": {
+        "calibration": 0.3077,
+        "entailment": 1.0,
+        "extraction": 0.8214,
+        "numerical": 1.0,
+        "reasoning": 0.9333,
+        "structure": 1.0
+      },
+      "checkpoints": {
+        "C1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.14
+        },
+        "C2": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.12
+        },
+        "C3": {
+          "gated": 0.8333,
+          "ungated": 0.8333,
+          "weight": 0.1
+        },
+        "D1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.16
+        },
+        "D2": {
+          "gated": 0.2941,
+          "ungated": 0.2941,
+          "weight": 0.08
+        },
+        "E1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.1
+        },
+        "E2": {
+          "gated": 0.6875,
+          "ungated": 0.6875,
+          "weight": 0.08
+        },
+        "P1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.1
+        },
+        "P2": {
+          "gated": 0.8958,
+          "ungated": 0.8958,
+          "weight": 0.12
+        }
+      },
+      "eval": 6,
+      "gap": 0.0,
+      "gates_fired": [],
+      "headline_flags": [],
+      "incomplete": false,
+      "ledger": {
+        "correct": true,
+        "elect_fired": false,
+        "flags": [],
+        "gold_ok": true,
+        "n_booked": 1
+      },
+      "refusal": {
+        "checkpoint": "D2",
+        "f_beta": 0.2941,
+        "groundedness": 0.25,
+        "recall": 1.0
+      },
+      "review": [
+        {
+          "ledger_shown_correct": true,
+          "round": 1,
+          "verdict": "approve"
+        }
+      ],
+      "score_gated": 0.8894,
+      "score_ungated": 0.8894,
+      "suite": "corporate-actions",
+      "worksheet_allpass": 0,
+      "worksheet_score_gated": 0.8894
+    },
+    {
+      "allpass": 0,
+      "answer": "outputs/eval6-agent/checker-fixed/gpt-5.4-mini/mega-split-2024/answer.json",
+      "arm": "checker-fixed",
+      "case": "cases/mega-split-2024.case.yaml",
+      "case_id": "mega-split-2024",
+      "categories": {
+        "calibration": -0.3077,
+        "entailment": 1.0,
+        "extraction": 0.881,
+        "numerical": 0.6067,
+        "reasoning": 0.8333,
+        "structure": 1.0
+      },
+      "checkpoints": {
+        "C1": {
+          "gated": 0.0,
+          "ungated": 0.4824,
+          "weight": 0.14
+        },
+        "C2": {
+          "gated": 0.0,
+          "ungated": 1.0,
+          "weight": 0.12
+        },
+        "C3": {
+          "gated": 0.0,
+          "ungated": 1.0,
+          "weight": 0.1
+        },
+        "D1": {
+          "gated": 0.0,
+          "ungated": 1.0,
+          "weight": 0.16
+        },
+        "D2": {
+          "gated": 0.0,
+          "ungated": 0.0,
+          "weight": 0.08
+        },
+        "E1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.1
+        },
+        "E2": {
+          "gated": 0.625,
+          "ungated": 0.625,
+          "weight": 0.08
+        },
+        "P1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.1
+        },
+        "P2": {
+          "gated": 0.375,
+          "ungated": 0.375,
+          "weight": 0.12
+        }
+      },
+      "eval": 6,
+      "gap": 0.4475,
+      "gates_fired": [
+        "GATE.DATES",
+        "GATE.SCALE",
+        "GATE.FABRICATION"
+      ],
+      "headline_flags": [],
+      "incomplete": false,
+      "ledger": {
+        "correct": true,
+        "elect_fired": false,
+        "flags": [],
+        "gold_ok": true,
+        "n_booked": 3
+      },
+      "refusal": {
+        "checkpoint": "D2",
+        "f_beta": 0.0,
+        "groundedness": 0.0,
+        "recall": 1.0
+      },
+      "review": [
+        {
+          "ledger_shown_correct": true,
+          "round": 1,
+          "verdict": "approve"
+        }
+      ],
+      "score_gated": 0.295,
+      "score_ungated": 0.7425,
+      "suite": "corporate-actions",
+      "worksheet_allpass": 0,
+      "worksheet_score_gated": 0.295
+    },
+    {
+      "allpass": 0,
+      "answer": "outputs/eval6-agent/checker-fixed/gpt-5.4-mini/mega-split-2024-clean/answer.json",
+      "arm": "checker-fixed",
+      "case": "cases/mega-split-2024-clean.case.yaml",
+      "case_id": "mega-split-2024-clean",
+      "categories": {
+        "calibration": -0.3077,
+        "entailment": 1.0,
+        "extraction": 0.881,
+        "numerical": 0.9,
+        "reasoning": 0.8333,
+        "structure": 1.0
+      },
+      "checkpoints": {
+        "C1": {
+          "gated": 0.0,
+          "ungated": 1.0,
+          "weight": 0.14
+        },
+        "C2": {
+          "gated": 0.0,
+          "ungated": 1.0,
+          "weight": 0.12
+        },
+        "C3": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.1
+        },
+        "D1": {
+          "gated": 0.0,
+          "ungated": 1.0,
+          "weight": 0.16
+        },
+        "D2": {
+          "gated": 0.0,
+          "ungated": 0.0,
+          "weight": 0.08
+        },
+        "E1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.1
+        },
+        "E2": {
+          "gated": 0.625,
+          "ungated": 0.625,
+          "weight": 0.08
+        },
+        "P1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.1
+        },
+        "P2": {
+          "gated": 0.375,
+          "ungated": 0.375,
+          "weight": 0.12
+        }
+      },
+      "eval": 6,
+      "gap": 0.42,
+      "gates_fired": [
+        "GATE.DATES",
+        "GATE.FABRICATION"
+      ],
+      "headline_flags": [],
+      "incomplete": false,
+      "ledger": {
+        "correct": true,
+        "elect_fired": false,
+        "flags": [],
+        "gold_ok": true,
+        "n_booked": 3
+      },
+      "refusal": {
+        "checkpoint": "D2",
+        "f_beta": 0.0,
+        "groundedness": 0.0,
+        "recall": 1.0
+      },
+      "review": [
+        {
+          "ledger_shown_correct": false,
+          "round": 1,
+          "verdict": "reject"
+        },
+        {
+          "ledger_shown_correct": true,
+          "round": 2,
+          "verdict": "approve"
+        }
+      ],
+      "score_gated": 0.395,
+      "score_ungated": 0.815,
+      "suite": "corporate-actions",
+      "worksheet_allpass": 0,
+      "worksheet_score_gated": 0.395
+    },
+    {
+      "allpass": 0,
+      "answer": "outputs/eval6-agent/checker-fixed/gpt-5.4-mini/mnst-tender-2024/answer.json",
+      "arm": "checker-fixed",
+      "case": "cases/mnst-tender-2024.case.yaml",
+      "case_id": "mnst-tender-2024",
+      "categories": {
+        "calibration": 0.3077,
+        "entailment": 0.0,
+        "extraction": 1.0,
+        "numerical": 1.0,
+        "reasoning": 1.0,
+        "structure": 1.0
+      },
+      "checkpoints": {
+        "C1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.14
+        },
+        "C2": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.12
+        },
+        "C3": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.1
+        },
+        "D1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.16
+        },
+        "D2": {
+          "gated": 0.2941,
+          "ungated": 0.2941,
+          "weight": 0.08
+        },
+        "E1": {
+          "gated": 0.7778,
+          "ungated": 0.7778,
+          "weight": 0.1
+        },
+        "E2": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.08
+        },
+        "P1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.1
+        },
+        "P2": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.12
+        }
+      },
+      "eval": 6,
+      "gap": 0.0,
+      "gates_fired": [],
+      "headline_flags": [],
+      "incomplete": false,
+      "ledger": {
+        "correct": true,
+        "elect_fired": false,
+        "flags": [],
+        "gold_ok": true,
+        "n_booked": 2
+      },
+      "refusal": {
+        "checkpoint": "D2",
+        "f_beta": 0.2941,
+        "groundedness": 0.25,
+        "recall": 1.0
+      },
+      "review": [
+        {
+          "ledger_shown_correct": true,
+          "round": 1,
+          "verdict": "approve"
+        }
+      ],
+      "score_gated": 0.9213,
+      "score_ungated": 0.9213,
+      "suite": "corporate-actions",
+      "worksheet_allpass": 0,
+      "worksheet_score_gated": 0.9213
+    },
+    {
+      "allpass": 0,
+      "answer": "outputs/eval6-agent/checker-fixed/gpt-5.4-mini/mnst-tender-2024-oddlot/answer.json",
+      "arm": "checker-fixed",
+      "case": "cases/mnst-tender-2024-oddlot.case.yaml",
+      "case_id": "mnst-tender-2024-oddlot",
+      "categories": {
+        "calibration": 0.3077,
+        "entailment": 0.0,
+        "extraction": 1.0,
+        "numerical": 1.0,
+        "reasoning": 1.0,
+        "structure": 1.0
+      },
+      "checkpoints": {
+        "C1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.14
+        },
+        "C2": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.12
+        },
+        "C3": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.1
+        },
+        "D1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.16
+        },
+        "D2": {
+          "gated": 0.2941,
+          "ungated": 0.2941,
+          "weight": 0.08
+        },
+        "E1": {
+          "gated": 0.7778,
+          "ungated": 0.7778,
+          "weight": 0.1
+        },
+        "E2": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.08
+        },
+        "P1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.1
+        },
+        "P2": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.12
+        }
+      },
+      "eval": 6,
+      "gap": 0.0,
+      "gates_fired": [],
+      "headline_flags": [],
+      "incomplete": false,
+      "ledger": {
+        "correct": true,
+        "elect_fired": false,
+        "flags": [],
+        "gold_ok": true,
+        "n_booked": 2
+      },
+      "refusal": {
+        "checkpoint": "D2",
+        "f_beta": 0.2941,
+        "groundedness": 0.25,
+        "recall": 1.0
+      },
+      "review": [
+        {
+          "ledger_shown_correct": true,
+          "round": 1,
+          "verdict": "approve"
+        }
+      ],
+      "score_gated": 0.9213,
+      "score_ungated": 0.9213,
+      "suite": "corporate-actions",
+      "worksheet_allpass": 0,
+      "worksheet_score_gated": 0.9213
+    },
+    {
+      "allpass": 0,
+      "answer": "outputs/eval6-agent/checker-fixed/gpt-5.4-mini/zts-dividend-2014/answer.json",
+      "arm": "checker-fixed",
+      "case": "cases/zts-dividend-2014.case.yaml",
+      "case_id": "zts-dividend-2014",
+      "categories": {
+        "calibration": 0.3077,
+        "entailment": 1.0,
+        "extraction": 0.9405,
+        "numerical": 1.0,
+        "reasoning": 1.0,
+        "structure": 1.0
+      },
+      "checkpoints": {
+        "C1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.14
+        },
+        "C2": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.12
+        },
+        "C3": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.1
+        },
+        "D1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.16
+        },
+        "D2": {
+          "gated": 0.2941,
+          "ungated": 0.2941,
+          "weight": 0.08
+        },
+        "E1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.1
+        },
+        "E2": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.08
+        },
+        "P1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.1
+        },
+        "P2": {
+          "gated": 0.8958,
+          "ungated": 0.8958,
+          "weight": 0.12
+        }
+      },
+      "eval": 6,
+      "gap": 0.0,
+      "gates_fired": [],
+      "headline_flags": [],
+      "incomplete": false,
+      "ledger": {
+        "correct": true,
+        "elect_fired": false,
+        "flags": [],
+        "gold_ok": true,
+        "n_booked": 1
+      },
+      "refusal": {
+        "checkpoint": "D2",
+        "f_beta": 0.2941,
+        "groundedness": 0.25,
+        "recall": 1.0
+      },
+      "review": [
+        {
+          "ledger_shown_correct": true,
+          "round": 1,
+          "verdict": "reject"
+        },
+        {
+          "ledger_shown_correct": true,
+          "round": 2,
+          "verdict": "approve"
+        }
+      ],
+      "score_gated": 0.931,
+      "score_ungated": 0.931,
+      "suite": "corporate-actions",
+      "worksheet_allpass": 0,
+      "worksheet_score_gated": 0.931
+    },
+    {
+      "allpass": 0,
+      "answer": "outputs/eval6-agent/tools/gpt-5.4-mini/bry-dividend-2024/answer.json",
+      "arm": "tools",
+      "case": "cases/bry-dividend-2024.case.yaml",
+      "case_id": "bry-dividend-2024",
+      "categories": {
+        "calibration": 0.3077,
+        "entailment": 1.0,
+        "extraction": 0.8214,
+        "numerical": 1.0,
+        "reasoning": 0.9333,
+        "structure": 1.0
+      },
+      "checkpoints": {
+        "C1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.14
+        },
+        "C2": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.12
+        },
+        "C3": {
+          "gated": 0.8333,
+          "ungated": 0.8333,
+          "weight": 0.1
+        },
+        "D1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.16
+        },
+        "D2": {
+          "gated": 0.2941,
+          "ungated": 0.2941,
+          "weight": 0.08
+        },
+        "E1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.1
+        },
+        "E2": {
+          "gated": 0.6875,
+          "ungated": 0.6875,
+          "weight": 0.08
+        },
+        "P1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.1
+        },
+        "P2": {
+          "gated": 0.8958,
+          "ungated": 0.8958,
+          "weight": 0.12
+        }
+      },
+      "eval": 6,
+      "gap": 0.0,
+      "gates_fired": [],
+      "headline_flags": [],
+      "incomplete": false,
+      "ledger": {
+        "correct": true,
+        "elect_fired": false,
+        "flags": [],
+        "gold_ok": true,
+        "n_booked": 1
+      },
+      "refusal": {
+        "checkpoint": "D2",
+        "f_beta": 0.2941,
+        "groundedness": 0.25,
+        "recall": 1.0
+      },
+      "review": null,
+      "score_gated": 0.8894,
+      "score_ungated": 0.8894,
+      "suite": "corporate-actions",
+      "worksheet_allpass": 0,
+      "worksheet_score_gated": 0.8894
+    },
+    {
+      "allpass": 0,
+      "answer": "outputs/eval6-agent/tools/gpt-5.4-mini/mega-split-2024/answer.json",
+      "arm": "tools",
+      "case": "cases/mega-split-2024.case.yaml",
+      "case_id": "mega-split-2024",
+      "categories": {
+        "calibration": -0.3077,
+        "entailment": 1.0,
+        "extraction": 0.881,
+        "numerical": 0.6067,
+        "reasoning": 0.8333,
+        "structure": 1.0
+      },
+      "checkpoints": {
+        "C1": {
+          "gated": 0.0,
+          "ungated": 0.4824,
+          "weight": 0.14
+        },
+        "C2": {
+          "gated": 0.0,
+          "ungated": 1.0,
+          "weight": 0.12
+        },
+        "C3": {
+          "gated": 0.0,
+          "ungated": 1.0,
+          "weight": 0.1
+        },
+        "D1": {
+          "gated": 0.0,
+          "ungated": 1.0,
+          "weight": 0.16
+        },
+        "D2": {
+          "gated": 0.0,
+          "ungated": 0.0,
+          "weight": 0.08
+        },
+        "E1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.1
+        },
+        "E2": {
+          "gated": 0.625,
+          "ungated": 0.625,
+          "weight": 0.08
+        },
+        "P1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.1
+        },
+        "P2": {
+          "gated": 0.375,
+          "ungated": 0.375,
+          "weight": 0.12
+        }
+      },
+      "eval": 6,
+      "gap": 0.4475,
+      "gates_fired": [
+        "GATE.DATES",
+        "GATE.SCALE",
+        "GATE.FABRICATION"
+      ],
+      "headline_flags": [],
+      "incomplete": false,
+      "ledger": {
+        "correct": true,
+        "elect_fired": false,
+        "flags": [],
+        "gold_ok": true,
+        "n_booked": 3
+      },
+      "refusal": {
+        "checkpoint": "D2",
+        "f_beta": 0.0,
+        "groundedness": 0.0,
+        "recall": 1.0
+      },
+      "review": null,
+      "score_gated": 0.295,
+      "score_ungated": 0.7425,
+      "suite": "corporate-actions",
+      "worksheet_allpass": 0,
+      "worksheet_score_gated": 0.295
+    },
+    {
+      "allpass": 0,
+      "answer": "outputs/eval6-agent/tools/gpt-5.4-mini/mega-split-2024-clean/answer.json",
+      "arm": "tools",
+      "case": "cases/mega-split-2024-clean.case.yaml",
+      "case_id": "mega-split-2024-clean",
+      "categories": {
+        "calibration": -0.6154,
+        "entailment": 1.0,
+        "extraction": 0.881,
+        "numerical": 1.0,
+        "reasoning": 0.8333,
+        "structure": 1.0
+      },
+      "checkpoints": {
+        "C1": {
+          "gated": 0.0,
+          "ungated": 1.0,
+          "weight": 0.14
+        },
+        "C2": {
+          "gated": 0.0,
+          "ungated": 1.0,
+          "weight": 0.12
+        },
+        "C3": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.1
+        },
+        "D1": {
+          "gated": 0.0,
+          "ungated": 1.0,
+          "weight": 0.16
+        },
+        "D2": {
+          "gated": 0.0,
+          "ungated": 0.0,
+          "weight": 0.08
+        },
+        "E1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.1
+        },
+        "E2": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.08
+        },
+        "P1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.1
+        },
+        "P2": {
+          "gated": 0.375,
+          "ungated": 0.375,
+          "weight": 0.12
+        }
+      },
+      "eval": 6,
+      "gap": 0.42,
+      "gates_fired": [
+        "GATE.DATES",
+        "GATE.FABRICATION"
+      ],
+      "headline_flags": [
+        "ledger_inconsistent",
+        "ledger_wrong_amount"
+      ],
+      "incomplete": false,
+      "ledger": {
+        "correct": false,
+        "elect_fired": false,
+        "flags": [
+          "ledger_inconsistent",
+          "ledger_wrong_amount"
+        ],
+        "gold_ok": false,
+        "n_booked": 3
+      },
+      "refusal": {
+        "checkpoint": "D2",
+        "f_beta": 0.0,
+        "groundedness": 0.0,
+        "recall": 0.0
+      },
+      "review": null,
+      "score_gated": 0.425,
+      "score_ungated": 0.845,
+      "suite": "corporate-actions",
+      "worksheet_allpass": 0,
+      "worksheet_score_gated": 0.425
+    },
+    {
+      "allpass": 0,
+      "answer": "outputs/eval6-agent/tools/gpt-5.4-mini/mnst-tender-2024/answer.json",
+      "arm": "tools",
+      "case": "cases/mnst-tender-2024.case.yaml",
+      "case_id": "mnst-tender-2024",
+      "categories": {
+        "calibration": 0.3077,
+        "entailment": 0.0,
+        "extraction": 1.0,
+        "numerical": 1.0,
+        "reasoning": 1.0,
+        "structure": 1.0
+      },
+      "checkpoints": {
+        "C1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.14
+        },
+        "C2": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.12
+        },
+        "C3": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.1
+        },
+        "D1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.16
+        },
+        "D2": {
+          "gated": 0.2941,
+          "ungated": 0.2941,
+          "weight": 0.08
+        },
+        "E1": {
+          "gated": 0.7778,
+          "ungated": 0.7778,
+          "weight": 0.1
+        },
+        "E2": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.08
+        },
+        "P1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.1
+        },
+        "P2": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.12
+        }
+      },
+      "eval": 6,
+      "gap": 0.0,
+      "gates_fired": [],
+      "headline_flags": [],
+      "incomplete": false,
+      "ledger": {
+        "correct": true,
+        "elect_fired": false,
+        "flags": [],
+        "gold_ok": true,
+        "n_booked": 2
+      },
+      "refusal": {
+        "checkpoint": "D2",
+        "f_beta": 0.2941,
+        "groundedness": 0.25,
+        "recall": 1.0
+      },
+      "review": null,
+      "score_gated": 0.9213,
+      "score_ungated": 0.9213,
+      "suite": "corporate-actions",
+      "worksheet_allpass": 0,
+      "worksheet_score_gated": 0.9213
+    },
+    {
+      "allpass": 0,
+      "answer": "outputs/eval6-agent/tools/gpt-5.4-mini/mnst-tender-2024-oddlot/answer.json",
+      "arm": "tools",
+      "case": "cases/mnst-tender-2024-oddlot.case.yaml",
+      "case_id": "mnst-tender-2024-oddlot",
+      "categories": {
+        "calibration": 0.3077,
+        "entailment": 0.0,
+        "extraction": 1.0,
+        "numerical": 1.0,
+        "reasoning": 1.0,
+        "structure": 1.0
+      },
+      "checkpoints": {
+        "C1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.14
+        },
+        "C2": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.12
+        },
+        "C3": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.1
+        },
+        "D1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.16
+        },
+        "D2": {
+          "gated": 0.2941,
+          "ungated": 0.2941,
+          "weight": 0.08
+        },
+        "E1": {
+          "gated": 0.7778,
+          "ungated": 0.7778,
+          "weight": 0.1
+        },
+        "E2": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.08
+        },
+        "P1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.1
+        },
+        "P2": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.12
+        }
+      },
+      "eval": 6,
+      "gap": 0.0,
+      "gates_fired": [],
+      "headline_flags": [],
+      "incomplete": false,
+      "ledger": {
+        "correct": true,
+        "elect_fired": false,
+        "flags": [],
+        "gold_ok": true,
+        "n_booked": 2
+      },
+      "refusal": {
+        "checkpoint": "D2",
+        "f_beta": 0.2941,
+        "groundedness": 0.25,
+        "recall": 1.0
+      },
+      "review": null,
+      "score_gated": 0.9213,
+      "score_ungated": 0.9213,
+      "suite": "corporate-actions",
+      "worksheet_allpass": 0,
+      "worksheet_score_gated": 0.9213
+    },
+    {
+      "allpass": 0,
+      "answer": "outputs/eval6-agent/tools/gpt-5.4-mini/zts-dividend-2014/answer.json",
+      "arm": "tools",
+      "case": "cases/zts-dividend-2014.case.yaml",
+      "case_id": "zts-dividend-2014",
+      "categories": {
+        "calibration": 1.0,
+        "entailment": 1.0,
+        "extraction": 0.9405,
+        "numerical": 1.0,
+        "reasoning": 1.0,
+        "structure": 1.0
+      },
+      "checkpoints": {
+        "C1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.14
+        },
+        "C2": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.12
+        },
+        "C3": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.1
+        },
+        "D1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.16
+        },
+        "D2": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.08
+        },
+        "E1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.1
+        },
+        "E2": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.08
+        },
+        "P1": {
+          "gated": 1.0,
+          "ungated": 1.0,
+          "weight": 0.1
+        },
+        "P2": {
+          "gated": 0.8958,
+          "ungated": 0.8958,
+          "weight": 0.12
+        }
+      },
+      "eval": 6,
+      "gap": 0.0,
+      "gates_fired": [],
+      "headline_flags": [],
+      "incomplete": false,
+      "ledger": {
+        "correct": true,
+        "elect_fired": false,
+        "flags": [],
+        "gold_ok": true,
+        "n_booked": 1
+      },
+      "refusal": {
+        "checkpoint": "D2",
+        "f_beta": 1.0,
+        "groundedness": 1.0,
+        "recall": 1.0
+      },
+      "review": null,
+      "score_gated": 0.9875,
+      "score_ungated": 0.9875,
+      "suite": "corporate-actions",
+      "worksheet_allpass": 0,
+      "worksheet_score_gated": 0.9875
     }
   ],
   "schema_version": "1.0",
@@ -1016,6 +2706,118 @@
       "mnst-tender-2024-oddlot": 0.9564,
       "nvda-fy2026-dcf": 0.6502,
       "zts-dividend-2014": 0.8275
+    }
+  },
+  "summary_by_arm": {
+    "checker": {
+      "gates_fired": {
+        "GATE.DATES": [
+          "mega-split-2024",
+          "mega-split-2024-clean"
+        ],
+        "GATE.FABRICATION": [
+          "mega-split-2024-clean"
+        ],
+        "GATE.SCALE": [
+          "mega-split-2024",
+          "mega-split-2024-clean"
+        ]
+      },
+      "n_allpass": 0,
+      "n_runs": 6,
+      "score_gated_by_case": {
+        "bry-dividend-2024": 0.9458,
+        "mega-split-2024": 0.375,
+        "mega-split-2024-clean": 0.295,
+        "mnst-tender-2024": 0.9213,
+        "mnst-tender-2024-oddlot": 0.9213,
+        "zts-dividend-2014": 0.9875
+      }
+    },
+    "checker-fixed": {
+      "gates_fired": {
+        "GATE.DATES": [
+          "mega-split-2024",
+          "mega-split-2024-clean"
+        ],
+        "GATE.FABRICATION": [
+          "mega-split-2024",
+          "mega-split-2024-clean"
+        ],
+        "GATE.SCALE": [
+          "mega-split-2024"
+        ]
+      },
+      "n_allpass": 0,
+      "n_runs": 6,
+      "score_gated_by_case": {
+        "bry-dividend-2024": 0.8894,
+        "mega-split-2024": 0.295,
+        "mega-split-2024-clean": 0.395,
+        "mnst-tender-2024": 0.9213,
+        "mnst-tender-2024-oddlot": 0.9213,
+        "zts-dividend-2014": 0.931
+      }
+    },
+    "plain": {
+      "gates_fired": {
+        "GATE.BRIDGE": [
+          "nvda-fy2026-dcf"
+        ],
+        "GATE.ELECT": [
+          "bry-dividend-2024"
+        ],
+        "GATE.FABRICATION": [
+          "mega-split-2024-clean"
+        ],
+        "GATE.FALSEPRECISION": [
+          "mcd-fy2025-dcf"
+        ],
+        "GATE.VERSION": [
+          "bry-dividend-2024"
+        ]
+      },
+      "n_allpass": 0,
+      "n_runs": 12,
+      "score_gated_by_case": {
+        "bry-dividend-2024": 0.2245,
+        "grin-create-2026": 0.7135,
+        "grin-create-2026-clean": 0.9829,
+        "irs-confirm-2026": 0.9333,
+        "irs-confirm-2026-clean": 0.98,
+        "mcd-fy2025-dcf": 0.631,
+        "mega-split-2024": 0.84,
+        "mega-split-2024-clean": 0.92,
+        "mnst-tender-2024": 0.9015,
+        "mnst-tender-2024-oddlot": 0.9564,
+        "nvda-fy2026-dcf": 0.6502,
+        "zts-dividend-2014": 0.8275
+      }
+    },
+    "tools": {
+      "gates_fired": {
+        "GATE.DATES": [
+          "mega-split-2024",
+          "mega-split-2024-clean"
+        ],
+        "GATE.FABRICATION": [
+          "mega-split-2024",
+          "mega-split-2024-clean"
+        ],
+        "GATE.SCALE": [
+          "mega-split-2024"
+        ]
+      },
+      "n_allpass": 0,
+      "n_runs": 6,
+      "score_gated_by_case": {
+        "bry-dividend-2024": 0.8894,
+        "mega-split-2024": 0.295,
+        "mega-split-2024-clean": 0.425,
+        "mnst-tender-2024": 0.9213,
+        "mnst-tender-2024-oddlot": 0.9213,
+        "zts-dividend-2014": 0.9875
+      }
     }
   },
   "vendor": "openai"

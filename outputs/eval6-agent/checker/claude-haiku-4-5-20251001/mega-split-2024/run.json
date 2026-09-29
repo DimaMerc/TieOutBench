@@ -1,0 +1,203 @@
+{
+  "schema": "tieoutbench.run/1",
+  "run_id": "20260924T175934Z-5d8855",
+  "written_at": "2026-09-24T18:00:26Z",
+  "arm": "checker",
+  "suite": "corporate-actions",
+  "model_id": "claude-haiku-4-5-20251001",
+  "endpoint": "api.anthropic.com",
+  "request": {
+    "max_tokens": 8000,
+    "temperature": 0.0,
+    "stream": false,
+    "tool_transport": "native",
+    "max_turns": 20,
+    "deadline_s": 900
+  },
+  "conformance": {
+    "tool_transport": "native",
+    "tested_at": "2026-09-24T15:58:11Z"
+  },
+  "loop": {
+    "maker_round1": {
+      "turns": 9,
+      "incomplete": false,
+      "ended_by": "end",
+      "elapsed_s": null
+    },
+    "review_round1": {
+      "round": 1,
+      "verdict": "reject",
+      "findings": [
+        "L1 (book_receivable): Dividend record date is incorrect. The 8-K (nvda-8k-20240522) specifies the dividend record date as Tuesday, June 11, 2024, not June 6, 2024. June 6 is the stock split record date. The dividend entitlement basis should be 2024-06-11, and the worksheet section P2 'entitlement_basis_date' should be corrected from 2024-06-06 to 2024-06-11. The dividend amount of $1,800 is correct (180,000 post-split shares \u00d7 $0.01), but the record date for dividend entitlement is wrong."
+      ],
+      "turns": 5,
+      "incomplete": false,
+      "ended_by": "end",
+      "ledger_shown_correct": true,
+      "ledger_shown_elect": false,
+      "ledger_shown_flags": []
+    },
+    "revised": true,
+    "maker_round2": {
+      "turns": 4,
+      "incomplete": false,
+      "ended_by": "end",
+      "elapsed_s": 20.7
+    },
+    "review_round2": {
+      "round": 2,
+      "verdict": "approve",
+      "findings": [],
+      "turns": 5,
+      "incomplete": false,
+      "ended_by": "end",
+      "ledger_shown_correct": true,
+      "ledger_shown_elect": false,
+      "ledger_shown_flags": []
+    }
+  },
+  "usage_total": {
+    "prompt_tokens": 79205,
+    "completion_tokens": 4583,
+    "total_tokens": 83788
+  },
+  "chat_calls": 14,
+  "transient_retries": 0,
+  "last_finish_reason": "tool_calls",
+  "incomplete": false,
+  "reused_maker_from": "outputs/eval6-agent/tools/claude-haiku-4-5-20251001/mega-split-2024",
+  "case": {
+    "case_id": "mega-split-2024",
+    "path": "cases/mega-split-2024.case.yaml",
+    "sha256": "696d097e2baf78d92e5e881a6e812883f12a3762698b1aaa0ebbddd7736088b5"
+  },
+  "rubric": {
+    "path": "rubric/criteria-corporate-actions.yaml",
+    "sha256": "81d0498cd0f16bef5aaf8e2569e4963771c55f330332fccda87a161329cb59b6"
+  },
+  "grader_version": "93b2efa",
+  "grader_tree_dirty": true,
+  "harness_hashes": {
+    "harness/graders.py": "4ce46f1ed091fa4e95dd471b7900be5464ced9a5c952d32ca7e8160243caa65b",
+    "harness/scoring.py": "c31e1901303253cf8b4ac600998ae130fb6111b32e5b99dd16029151db1dd1a8",
+    "harness/suites/corporate_actions.py": "38d9ccb03ae6f16e393aa28363d658575db9708411cd1bca924454ebdec6d04e",
+    "harness/env/state.py": "ede4e582823945c77ba3c6631c0c3c704f2c8db2db58169a453a1aaee73fabc1",
+    "harness/env/scoring.py": "80353aed8805e7bc77a876f1b6edd486818e752a09d918c94f62e840477161d7",
+    "harness/env/agent.py": "d5d6b293408d287dce85cae6ec0ffbf5dd26fd2872bca637fe66f13c1e9a0d8d",
+    "harness/env/transport.py": "764a24ac1c3858f90fa5542ec428f7fa7b9433afd5a194806ccb78163f6153ca"
+  },
+  "prior_dir": "outputs/eval6-agent/checker/claude-haiku-4-5-20251001/mega-split-2024/prior/20260924T173116Z-757533",
+  "score": {
+    "worksheet": {
+      "gated": 0.475,
+      "ungated": 0.895,
+      "gap": 0.42,
+      "allpass": 0,
+      "gates": [
+        "GATE.DATES"
+      ],
+      "flags": []
+    },
+    "terminal": {
+      "gated": 0.475,
+      "ungated": 0.895,
+      "gap": 0.42,
+      "allpass": 0,
+      "gates": [
+        "GATE.DATES"
+      ],
+      "flags": []
+    },
+    "ledger": {
+      "correct": true,
+      "elect_fired": false,
+      "gold_ok": true,
+      "flags": [],
+      "n_booked": 3
+    },
+    "review": {
+      "rounds": [
+        {
+          "round": 1,
+          "verdict": "reject",
+          "ledger_shown_correct": true,
+          "incomplete": false
+        },
+        {
+          "round": 2,
+          "verdict": "approve",
+          "ledger_shown_correct": true,
+          "incomplete": false
+        }
+      ],
+      "recomputed": {
+        "1": true,
+        "2": true
+      }
+    }
+  },
+  "score_at_run": {
+    "worksheet": {
+      "gated": 0.475,
+      "ungated": 0.895,
+      "gap": 0.42,
+      "allpass": 0,
+      "gates": [
+        "GATE.DATES"
+      ],
+      "flags": []
+    },
+    "terminal": {
+      "gated": 0.475,
+      "ungated": 0.895,
+      "gap": 0.42,
+      "allpass": 0,
+      "gates": [
+        "GATE.DATES"
+      ],
+      "flags": []
+    },
+    "ledger": {
+      "correct": true,
+      "elect_fired": false,
+      "gold_ok": true,
+      "flags": [],
+      "n_booked": 3
+    },
+    "trajectory": {
+      "n_turns": 13,
+      "n_tool_calls": 16,
+      "n_tool_errors": 0,
+      "governing_read_before_first_action": true,
+      "position_dates_queried": [
+        "2024-06-11"
+      ],
+      "basis_date_queried": false,
+      "superseded_date_queried": null,
+      "calculate_used": true
+    },
+    "review": {
+      "rounds": [
+        {
+          "round": 1,
+          "verdict": "reject",
+          "ledger_shown_correct": true,
+          "incomplete": false
+        },
+        {
+          "round": 2,
+          "verdict": "approve",
+          "ledger_shown_correct": true,
+          "incomplete": false
+        }
+      ],
+      "recomputed": {
+        "1": true,
+        "2": true
+      }
+    }
+  },
+  "rescored_at": "2026-09-25T00:10:19Z",
+  "grader_version_rescore": "93b2efa"
+}

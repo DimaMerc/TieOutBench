@@ -98,6 +98,21 @@ documents:
       No action required for cash accounts. This notice does not affect corporate-actions
       processing.
 
+# ----------------------------------------------------------------------------- ENVIRONMENT (Phase 2: the tool arm's state; NOT shown to the model)
+env:
+  # Authored from acct7712-position-20240816 and nothing else (verification.env below ties each row
+  # to that document). The clock is episode.as_of (2024-08-18); the corrected record date 2024-08-23
+  # lies AFTER it, so the right query is a projection ("no position changes scheduled before
+  # month-end"); a query as of the superseded 2024-08-12 returns the 50,000-share trap.
+  account: ACCT-7712
+  ticker: BRY
+  positions:
+    - { as_of: "2024-08-12", settled_shares: 50000, note: "position as of close 2024-08-12" }
+    - { as_of: "2024-08-15", settled_shares: 40000,
+        note: "sale of 10,000 shares executed 2024-08-13, settled 2024-08-15" }
+  pending_after_clock: none        # "no open orders and no pending trades; no position changes scheduled before month-end"
+  actions_allowed: [book_receivable, confirm_position, escalate]
+
 # ----------------------------------------------------------------------------- PROBE (D2 INPUT — shown to the model)
 probe:
   question: "The account's beneficial owner is a foreign-domiciled subaccount. What NET dividend
@@ -235,3 +250,5 @@ verification:
   provenance: "both announcement versions verified against EDGAR accessions 0001705873-24-000046
                and 0001705873-24-000052 (retrieved 2026-08-18); the account and position report
                are constructed (disclosed above)."
+  env: "positions transcribed from acct7712-position-20240816: 50,000 as of close 2024-08-12;
+       40,000 settled as of 2024-08-15 (sale of 10,000 executed 2024-08-13); no pending changes."

@@ -1,0 +1,93 @@
+########################################################################
+  EPISODE mega-split-2024   arm=checker   model=gpt-5.4-mini
+########################################################################
+
+--- WORKSHEET (the submitted worksheet through the unchanged Phase-1 grader) ---
+========================================================================
+  CASE mega-split-2024    model=checker:gpt-5.4-mini    judge=mock
+========================================================================
+  CaseScore (gated, headline) : 0.375
+  CaseScore (ungated)         : 0.823
+  GAP (ungated - gated)       : 0.448
+  AllPass                     : 0
+  D2 calibration (R,G->F_b)   : R=1.00 G=1.00 -> 1.000
+  Gates fired                 : GATE.DATES, GATE.SCALE
+
+  Checkpoint vector (which step failed):
+    cp   W      ungated  gated   raw
+    P1   0.100  1.000   1.000  +1.00
+    P2   0.120  0.375   0.375  +0.38
+    E1   0.100  1.000   1.000  +1.00
+    E2   0.080  0.625   0.625  +0.62
+    C1   0.140  0.482   0.000  +0.48  <-- gated
+    C2   0.120  1.000   0.000  +1.00  <-- gated
+    C3   0.100  1.000   0.000  +1.00  <-- gated
+    D1   0.160  1.000   0.000  +1.00  <-- gated
+    D2   0.080  1.000   1.000  +1.00
+
+  Category rollup (diagnostic -- what KIND of error):
+    extraction   +0.881  ##################
+    numerical    +0.607  ############
+    entailment   +1.000  ####################
+    reasoning    +0.833  #################
+    calibration  +1.000  ####################
+    structure    +1.000  ####################
+========================================================================
+
+--- TERMINAL STATE (worksheet + the ledger rendered into D1 rows; ledger predicates applied) ---
+========================================================================
+  CASE mega-split-2024    model=checker:gpt-5.4-mini    judge=mock
+========================================================================
+  CaseScore (gated, headline) : 0.375
+  CaseScore (ungated)         : 0.823
+  GAP (ungated - gated)       : 0.448
+  AllPass                     : 0
+  D2 calibration (R,G->F_b)   : R=1.00 G=1.00 -> 1.000
+  Gates fired                 : GATE.DATES, GATE.SCALE
+
+  Checkpoint vector (which step failed):
+    cp   W      ungated  gated   raw
+    P1   0.100  1.000   1.000  +1.00
+    P2   0.120  0.375   0.375  +0.38
+    E1   0.100  1.000   1.000  +1.00
+    E2   0.080  0.625   0.625  +0.62
+    C1   0.140  0.482   0.000  +0.48  <-- gated
+    C2   0.120  1.000   0.000  +1.00  <-- gated
+    C3   0.100  1.000   0.000  +1.00  <-- gated
+    D1   0.160  1.000   0.000  +1.00  <-- gated
+    D2   0.080  1.000   1.000  +1.00
+
+  Category rollup (diagnostic -- what KIND of error):
+    extraction   +0.881  ##################
+    numerical    +0.607  ############
+    entailment   +1.000  ####################
+    reasoning    +0.833  #################
+    calibration  +1.000  ####################
+    structure    +1.000  ####################
+========================================================================
+
+--- LEDGER ---
+L4: update_pcf ticker=NVDA quantity_per_cu=1800.0 (was 180) basis_doc=nvda-8k-20240607 memo='Split-effected NVDA quantity per creation unit for 2024-06-10 PCF dissemination.'
+L5: book_receivable amount=$1,800.00 pay_date=2024-06-28 shares=180000.0 rate=0.01 basis_doc=nvda-8k-20240522 memo='Gross NVDA dividend receivable at post-split rate; withholding not determinable from store.'
+  booked entries: 2   GATE.ELECT on the ledger: False   gold match: True   flags: none   correct: True
+  consistency L4: booked=1800.0 worksheet=1800.0 ok=True
+  consistency L5: booked=1800.0 worksheet=1800.0 ok=True
+  gold L4 update_pcf: ok=True  {'gold': 1800.0}
+  gold L5 book_receivable: ok=True  {'permissible': [1800.0], 'pay_date_ok': True, 'basis_superseded': False}
+
+--- TRAJECTORY (reported, not scored) ---
+  maker: turns=13 tool_calls=18 errors=0 counts={'list_documents': 2, 'read_document': 6, 'calculate': 2, 'confirm_position': 1, 'update_pcf': 2, 'book_receivable': 2, 'submit_worksheet': 2, 'get_position': 1}
+  governing read before first action: True   docs read: ['mega-pcf-20240610', 'mega-position-20240610', 'nvda-8k-20240522', 'nvda-8k-20240607']   superseded read: []   distractors read: []
+  position dates queried: ['2024-06-10']   basis date queried: False   superseded date queried: None   projected: 0   query errors: 0
+  calculate used: True (2): ['180000*0.01', '180000*0.01']
+
+--- REVIEW (checker arm) ---
+  round 1: verdict=reject recomputed=True tools={'list_documents': 1, 'get_position': 1, 'read_document': 2, 'calculate': 1, 'review_verdict': 1} ledger_shown_correct=True
+    - L3 is wrong on the basis document: the dividend is governed by nvda-8k-20240522, but the work product treats the split-adjusted dividend as if it were determined from the split announcement alone; the correct basis is the May 22 8-K, which states the $0.01 post-split dividend payable 2024-06-28 to holders of record 2024-06-11.
+    - L3 is wrong on the amount if booked as a net receivable: the store provides no withholding terms, so net cash after withholding is not determinable from the documents; only the gross dividend receivable of $1,800.00 is supported.
+    - L1 is not a valid action for this episode as booked: the position as of 2024-06-10 is already 180,000 settled shares per the position report, so there is no additional confirm_position booking to make from the corporate action source.
+    - L2 is directionally correct on the split-adjusted PCF quantity, but its basis should be tied to the split-effectiveness document nvda-8k-20240607 for the effective split, not solely to the May 22 announcement; the governing split document is the June 7 effectiveness filing superseding the announcement for the split mechanics.
+  round 2: verdict=reject recomputed=True tools={'list_documents': 1, 'get_position': 1, 'read_document': 3, 'calculate': 1, 'review_verdict': 1} ledger_shown_correct=True
+    - L4 update_pcf is based on the superseded pre-split PCF file mega-pcf-20240610 / pre-split quantity 180; governing split document nvda-8k-20240607 requires 1,800 NVDA per creation unit, so the booked quantity is correct only if tied to the split document, but the ledger basis_doc is acceptable; no discrepancy on amount because this is a quantity-only update.
+    - L5 book_receivable amount $1,800.00 is correct for 180,000 shares at the post-split dividend rate of $0.01 per share, but the entry cites basis_doc nvda-8k-20240522, which is superseded for the split mechanics by nvda-8k-20240607; the dividend terms remain from nvda-8k-20240522, so the basis should reflect the dividend announcement for cash and the split document for the post-split share count. No withholding can be booked because the store provides no withholding terms, so the ledger should not imply a net amount.
+########################################################################

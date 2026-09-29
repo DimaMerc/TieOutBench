@@ -1,0 +1,95 @@
+{
+  "rounds": [
+    {
+      "round": 1,
+      "verdict": "reject",
+      "findings": [
+        "{\"entry\": \"P1 / governing_doc\", \"what_is_wrong\": \"The worksheet identifies the May 22 announcement as the sole governing split document and omits the June 7 issuer 8-K confirming that the amendment became effective and that each share was actually subdivided into ten shares. For processing on June 10, the effectiveness filing governs whether the split was effected; the May 22 filing remains the source for the dividend and announced entitlement dates.\", \"what_it_should_be\": \"Use nvda-8k-20240607 as the governing effectiveness document for the split, with nvda-8k-20240522 as the supporting announcement and governing dividend declaration.\"}",
+        "{\"entry\": \"L1\", \"what_is_wrong\": \"The quantity is correct at 1,800 NVDA shares per creation unit, but the entry cites only nvda-8k-20240522, which merely said split-adjusted trading was expected. It does not cite the June 7 filing establishing effectiveness.\", \"what_it_should_be\": \"Retain quantity_per_cu=1800 and the June 10 PCF date, but use nvda-8k-20240607 as the split-effectiveness basis document (the May 22 announcement may be retained as supporting terms).\"}",
+        "{\"entry\": \"L2\", \"what_is_wrong\": \"The confirmed position of 180,000 shares as of June 7 is numerically correct, but its sole basis document is the May 22 announcement rather than the June 7 effectiveness filing. The position re-derives as 18,000 record-date shares multiplied by 10, or 180,000 shares.\", \"what_it_should_be\": \"Retain shares=180000 as_of=2024-06-07, but cite nvda-8k-20240607 as the issuer effectiveness basis, supported by the record-date position.\"}"
+      ],
+      "turns": 5,
+      "incomplete": false,
+      "ended_by": "end",
+      "ledger_shown_correct": true,
+      "ledger_shown_elect": false,
+      "ledger_shown_flags": []
+    },
+    {
+      "round": 2,
+      "verdict": "approve",
+      "findings": [],
+      "turns": 4,
+      "incomplete": false,
+      "ended_by": "end",
+      "ledger_shown_correct": true,
+      "ledger_shown_elect": false,
+      "ledger_shown_flags": []
+    }
+  ],
+  "ledger_v1": [
+    {
+      "entry_id": "L1",
+      "kind": "update_pcf",
+      "args": {
+        "ticker": "NVDA",
+        "quantity_per_cu": 1800.0,
+        "previous_quantity_per_cu": 180,
+        "basis_doc": "nvda-8k-20240522",
+        "memo": "Ten-for-one forward split effective for split-adjusted trading on 2024-06-10; update pre-split PCF quantity from 180 to 1,800 shares per creation unit."
+      },
+      "seq": 30,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:15:51.009Z"
+    },
+    {
+      "entry_id": "L2",
+      "kind": "confirm_position",
+      "args": {
+        "ticker": "NVDA",
+        "shares": 180000.0,
+        "as_of": "2024-06-07",
+        "basis_doc": "nvda-8k-20240522"
+      },
+      "seq": 32,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:15:51.009Z"
+    },
+    {
+      "entry_id": "L3",
+      "kind": "book_receivable",
+      "args": {
+        "account": "MEGA",
+        "amount": 1800.0,
+        "pay_date": "2024-06-28",
+        "basis_doc": "nvda-8k-20240522",
+        "shares": 180000.0,
+        "rate": 0.01,
+        "memo": "Gross June dividend receivable at post-split rate; withholding and net cash remain undetermined pending account tax/withholding documentation."
+      },
+      "seq": 34,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:15:51.009Z"
+    },
+    {
+      "entry_id": "L4",
+      "kind": "escalate",
+      "args": {
+        "reason": "The store determines the gross June dividend but contains no MEGA account tax/withholding profile or applicable withholding-rate documentation. Therefore the applicable withholding and net dividend cash cannot be determined. Hold only the net dividend figure/withholding adjustment; the gross receivable is booked.",
+        "missing_document": "MEGA account tax/withholding profile and applicable withholding-rate documentation for the NVDA dividend",
+        "held_action": "Determine and book the withholding adjustment / net June dividend cash receivable"
+      },
+      "seq": 36,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:15:51.009Z"
+    }
+  ]
+}

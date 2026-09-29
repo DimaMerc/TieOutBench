@@ -1,0 +1,200 @@
+{
+  "schema": "tieoutbench.run/1",
+  "run_id": "20260924T175207Z-e1cb9c",
+  "written_at": "2026-09-24T17:53:36Z",
+  "arm": "checker",
+  "suite": "corporate-actions",
+  "model_id": "gpt-5.6-sol",
+  "endpoint": "api.openai.com",
+  "request": {
+    "max_tokens": 32000,
+    "temperature": 0.0,
+    "stream": false,
+    "tool_transport": "text",
+    "max_turns": 20,
+    "deadline_s": 900
+  },
+  "conformance": {
+    "tool_transport": "text",
+    "tested_at": "2026-09-24T17:12:25Z"
+  },
+  "loop": {
+    "maker_round1": {
+      "turns": 5,
+      "incomplete": false,
+      "ended_by": "end",
+      "elapsed_s": null
+    },
+    "review_round1": {
+      "round": 1,
+      "verdict": "reject",
+      "findings": [
+        "{\"entry\": \"WORKSHEET P1/D1\", \"what_is_wrong\": \"The work product designates the May 22 announcement as the governing split document and lists no later governing document. By the June 10 processing date, the June 7 effectiveness 8-K documents that the amendment became effective at 4:01 p.m. ET and that each pre-effective share was automatically subdivided into ten shares.\", \"what_it_should_be\": \"Use nvda-8k-20240607 as the governing basis for effectuating the split. The May 22 8-K remains supporting source material for the announced record/distribution dates and separately governs the June dividend terms.\"}",
+        "{\"entry\": \"L1\", \"what_is_wrong\": \"The quantity of 1,800 NVDA shares per creation unit is correct, but the booked entry cites nvda-8k-20240522 rather than the effectiveness document governing the effected split as of the June 10 PCF date.\", \"what_it_should_be\": \"Maintain 1,800 shares per creation unit for 2024-06-10, based on nvda-8k-20240607. Derivation: 180 pre-split shares per CU multiplied by 10 equals 1,800.\"}",
+        "{\"entry\": \"L2\", \"what_is_wrong\": \"The confirmed 180,000-share quantity and June 7 as-of date are correct, but the entry cites the May 22 announcement rather than the June 7 effectiveness 8-K under which the shares were automatically subdivided.\", \"what_it_should_be\": \"Confirm 180,000 NVDA shares as of 2024-06-07 with nvda-8k-20240607 as the governing basis. Derivation: 18,000 shares multiplied by 10 equals 180,000.\"}"
+      ],
+      "turns": 4,
+      "incomplete": false,
+      "ended_by": "end",
+      "ledger_shown_correct": true,
+      "ledger_shown_elect": false,
+      "ledger_shown_flags": []
+    },
+    "revised": true,
+    "maker_round2": {
+      "turns": 4,
+      "incomplete": false,
+      "ended_by": "end",
+      "elapsed_s": 40.1
+    },
+    "review_round2": {
+      "round": 2,
+      "verdict": "approve",
+      "findings": [],
+      "turns": 4,
+      "incomplete": false,
+      "ended_by": "end",
+      "ledger_shown_correct": true,
+      "ledger_shown_elect": false,
+      "ledger_shown_flags": []
+    }
+  },
+  "usage_total": {
+    "prompt_tokens": 50413,
+    "completion_tokens": 5038,
+    "total_tokens": 55451
+  },
+  "chat_calls": 12,
+  "transient_retries": 0,
+  "last_finish_reason": "stop",
+  "incomplete": false,
+  "reused_maker_from": "outputs/eval6-agent/tools/gpt-5.6-sol/mega-split-2024-clean",
+  "case": {
+    "case_id": "mega-split-2024-clean",
+    "path": "cases/mega-split-2024-clean.case.yaml",
+    "sha256": "18e6fc0e3a9fb1b728951e8a9aa41a178443fc2f24ef18a2a9b76a23fc9b8eb2"
+  },
+  "rubric": {
+    "path": "rubric/criteria-corporate-actions.yaml",
+    "sha256": "81d0498cd0f16bef5aaf8e2569e4963771c55f330332fccda87a161329cb59b6"
+  },
+  "grader_version": "93b2efa",
+  "grader_tree_dirty": true,
+  "harness_hashes": {
+    "harness/graders.py": "4ce46f1ed091fa4e95dd471b7900be5464ced9a5c952d32ca7e8160243caa65b",
+    "harness/scoring.py": "c31e1901303253cf8b4ac600998ae130fb6111b32e5b99dd16029151db1dd1a8",
+    "harness/suites/corporate_actions.py": "38d9ccb03ae6f16e393aa28363d658575db9708411cd1bca924454ebdec6d04e",
+    "harness/env/state.py": "ede4e582823945c77ba3c6631c0c3c704f2c8db2db58169a453a1aaee73fabc1",
+    "harness/env/scoring.py": "80353aed8805e7bc77a876f1b6edd486818e752a09d918c94f62e840477161d7",
+    "harness/env/agent.py": "d5d6b293408d287dce85cae6ec0ffbf5dd26fd2872bca637fe66f13c1e9a0d8d",
+    "harness/env/transport.py": "764a24ac1c3858f90fa5542ec428f7fa7b9433afd5a194806ccb78163f6153ca"
+  },
+  "prior_dir": "outputs/eval6-agent/checker/gpt-5.6-sol/mega-split-2024-clean/prior/20260924T172816Z-064426",
+  "score": {
+    "worksheet": {
+      "gated": 1.0,
+      "ungated": 1.0,
+      "gap": 0.0,
+      "allpass": 1,
+      "gates": [],
+      "flags": []
+    },
+    "terminal": {
+      "gated": 1.0,
+      "ungated": 1.0,
+      "gap": 0.0,
+      "allpass": 1,
+      "gates": [],
+      "flags": []
+    },
+    "ledger": {
+      "correct": true,
+      "elect_fired": false,
+      "gold_ok": true,
+      "flags": [],
+      "n_booked": 2
+    },
+    "review": {
+      "rounds": [
+        {
+          "round": 1,
+          "verdict": "reject",
+          "ledger_shown_correct": true,
+          "incomplete": false
+        },
+        {
+          "round": 2,
+          "verdict": "approve",
+          "ledger_shown_correct": true,
+          "incomplete": false
+        }
+      ],
+      "recomputed": {
+        "1": true,
+        "2": true
+      }
+    }
+  },
+  "score_at_run": {
+    "worksheet": {
+      "gated": 1.0,
+      "ungated": 1.0,
+      "gap": 0.0,
+      "allpass": 1,
+      "gates": [],
+      "flags": []
+    },
+    "terminal": {
+      "gated": 1.0,
+      "ungated": 1.0,
+      "gap": 0.0,
+      "allpass": 1,
+      "gates": [],
+      "flags": []
+    },
+    "ledger": {
+      "correct": true,
+      "elect_fired": false,
+      "gold_ok": true,
+      "flags": [],
+      "n_booked": 2
+    },
+    "trajectory": {
+      "n_turns": 9,
+      "n_tool_calls": 28,
+      "n_tool_errors": 0,
+      "governing_read_before_first_action": true,
+      "position_dates_queried": [
+        "2024-06-06",
+        "2024-06-11",
+        "2024-06-06",
+        "2024-06-11"
+      ],
+      "basis_date_queried": true,
+      "superseded_date_queried": null,
+      "calculate_used": true
+    },
+    "review": {
+      "rounds": [
+        {
+          "round": 1,
+          "verdict": "reject",
+          "ledger_shown_correct": true,
+          "incomplete": false
+        },
+        {
+          "round": 2,
+          "verdict": "approve",
+          "ledger_shown_correct": true,
+          "incomplete": false
+        }
+      ],
+      "recomputed": {
+        "1": true,
+        "2": true
+      }
+    }
+  },
+  "rescored_at": "2026-09-25T00:10:23Z",
+  "grader_version_rescore": "93b2efa"
+}

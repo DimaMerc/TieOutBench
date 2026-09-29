@@ -1,0 +1,64 @@
+{
+  "rounds": [
+    {
+      "round": 1,
+      "verdict": "reject",
+      "findings": [
+        "L2 (escalate): The escalation of a DRIP reinvestment price determination has no basis in any document in the store. No document \u2014 neither the governing 8-K (zts-8k-20140327), nor any account instruction, nor any issuer DRIP notice \u2014 establishes that ACCT-2101 participates in a dividend reinvestment plan or that a DRIP election is available for this event. The event is a mandatory cash dividend with no election feature. L2 should be removed entirely; the only correct action is the cash receivable booking in L1."
+      ],
+      "turns": 4,
+      "incomplete": false,
+      "ended_by": "end",
+      "ledger_shown_correct": true,
+      "ledger_shown_elect": false,
+      "ledger_shown_flags": []
+    },
+    {
+      "round": 2,
+      "verdict": "approve",
+      "findings": [
+        "No discrepancies found. All elements of ledger entry L3 tie out to the governing document (zts-8k-20140327): rate $0.072/share, record date 2014-04-28, pay date 2014-06-02, settled position 25,000 shares, gross cash $1,800.00 (25,000 \u00d7 $0.072). The original 8-K (zts-8k-20140326, record date April 27) is correctly identified as superseded. The broker memo is correctly treated as a distractor. No election feature exists; mandatory cash dividend booking is the correct and only permissible action."
+      ],
+      "turns": 4,
+      "incomplete": false,
+      "ended_by": "end",
+      "ledger_shown_correct": true,
+      "ledger_shown_elect": false,
+      "ledger_shown_flags": []
+    }
+  ],
+  "ledger_v1": [
+    {
+      "entry_id": "L1",
+      "kind": "book_receivable",
+      "args": {
+        "account": "ACCT-2101",
+        "amount": 1800.0,
+        "pay_date": "2014-06-02",
+        "basis_doc": "zts-8k-20140327",
+        "shares": 25000.0,
+        "rate": 0.072,
+        "memo": "ZTS Q2 2014 dividend; record date 2014-04-28; $0.072/share \u00d7 25,000 shares; governing doc is corrected 8-K (zts-8k-20140327), superseding original (zts-8k-20140326)"
+      },
+      "seq": 22,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:18:08.718Z"
+    },
+    {
+      "entry_id": "L2",
+      "kind": "escalate",
+      "args": {
+        "reason": "The account participates in dividend reinvestment. The reinvestment price for the June 2, 2014 ZTS dividend payment is set by the DRIP plan administrator (typically based on market price on or around the pay date) and is not contained in any document in the store. No DRIP plan document, plan administrator notice, or reinvestment price confirmation is present.",
+        "missing_document": "ZTS DRIP plan administrator notice / reinvestment price confirmation for the June 2, 2014 dividend payment",
+        "held_action": "Determine and apply the DRIP reinvestment price for the June 2, 2014 ZTS dividend payment for ACCT-2101"
+      },
+      "seq": 24,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:18:08.718Z"
+    }
+  ]
+}

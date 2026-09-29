@@ -1,0 +1,163 @@
+{
+  "schema": "tieoutbench.run/1",
+  "run_id": "20260924T173556Z-296684",
+  "written_at": "2026-09-24T17:36:13Z",
+  "arm": "checker",
+  "suite": "corporate-actions",
+  "model_id": "claude-opus-4-8",
+  "endpoint": "api.anthropic.com",
+  "request": {
+    "max_tokens": 8000,
+    "temperature": 0.0,
+    "stream": false,
+    "tool_transport": "native",
+    "max_turns": 20,
+    "deadline_s": 900
+  },
+  "conformance": {
+    "tool_transport": "native",
+    "tested_at": "2026-09-24T17:12:22Z"
+  },
+  "loop": {
+    "maker_round1": {
+      "turns": 6,
+      "incomplete": false,
+      "ended_by": "end",
+      "elapsed_s": null
+    },
+    "review_round1": {
+      "round": 1,
+      "verdict": "approve",
+      "findings": [],
+      "turns": 4,
+      "incomplete": false,
+      "ended_by": "end",
+      "ledger_shown_correct": true,
+      "ledger_shown_elect": false,
+      "ledger_shown_flags": []
+    },
+    "revised": false
+  },
+  "usage_total": {
+    "prompt_tokens": 16115,
+    "completion_tokens": 1016,
+    "total_tokens": 17131
+  },
+  "chat_calls": 4,
+  "transient_retries": 0,
+  "last_finish_reason": "tool_calls",
+  "incomplete": false,
+  "reused_maker_from": "outputs/eval6-agent/repeat/tools/claude-opus-4-8/bry-dividend-2024/r3",
+  "case": {
+    "case_id": "bry-dividend-2024",
+    "path": "cases/bry-dividend-2024.case.yaml",
+    "sha256": "b0af79e186fe1d6059424dacd4f0b257afc01a4117a7104b4ca3be2ecf719e48"
+  },
+  "rubric": {
+    "path": "rubric/criteria-corporate-actions.yaml",
+    "sha256": "81d0498cd0f16bef5aaf8e2569e4963771c55f330332fccda87a161329cb59b6"
+  },
+  "grader_version": "93b2efa",
+  "grader_tree_dirty": true,
+  "harness_hashes": {
+    "harness/graders.py": "4ce46f1ed091fa4e95dd471b7900be5464ced9a5c952d32ca7e8160243caa65b",
+    "harness/scoring.py": "c31e1901303253cf8b4ac600998ae130fb6111b32e5b99dd16029151db1dd1a8",
+    "harness/suites/corporate_actions.py": "e79ee0256d0bdb037436698f5ac1be1c460178711992f1e93452a3fcc870ce86",
+    "harness/env/state.py": "ede4e582823945c77ba3c6631c0c3c704f2c8db2db58169a453a1aaee73fabc1",
+    "harness/env/scoring.py": "15601303d0fa36216b00933e48b7fa577564def0fac1453927ca1441f1d777af",
+    "harness/env/agent.py": "35fcf8c6ade805297902d6d5eec09e183e5a9619a49ff849122a98022fbc5750",
+    "harness/env/transport.py": "764a24ac1c3858f90fa5542ec428f7fa7b9433afd5a194806ccb78163f6153ca"
+  },
+  "prior_dir": null,
+  "score": {
+    "worksheet": {
+      "gated": 0.9833,
+      "ungated": 0.9833,
+      "gap": 0.0,
+      "allpass": 0,
+      "gates": [],
+      "flags": []
+    },
+    "terminal": {
+      "gated": 0.9833,
+      "ungated": 0.9833,
+      "gap": 0.0,
+      "allpass": 0,
+      "gates": [],
+      "flags": []
+    },
+    "ledger": {
+      "correct": true,
+      "elect_fired": false,
+      "gold_ok": true,
+      "flags": [],
+      "n_booked": 2
+    },
+    "review": {
+      "rounds": [
+        {
+          "round": 1,
+          "verdict": "approve",
+          "ledger_shown_correct": true,
+          "incomplete": false
+        }
+      ],
+      "recomputed": {
+        "1": true
+      }
+    }
+  },
+  "score_at_run": {
+    "worksheet": {
+      "gated": 0.9833,
+      "ungated": 0.9833,
+      "gap": 0.0,
+      "allpass": 0,
+      "gates": [],
+      "flags": []
+    },
+    "terminal": {
+      "gated": 0.9833,
+      "ungated": 0.9833,
+      "gap": 0.0,
+      "allpass": 0,
+      "gates": [],
+      "flags": []
+    },
+    "ledger": {
+      "correct": true,
+      "elect_fired": false,
+      "gold_ok": true,
+      "flags": [],
+      "n_booked": 2
+    },
+    "trajectory": {
+      "n_turns": 6,
+      "n_tool_calls": 11,
+      "n_tool_errors": 0,
+      "governing_read_before_first_action": true,
+      "position_dates_queried": [
+        "2024-08-23",
+        "2024-08-12"
+      ],
+      "basis_date_queried": true,
+      "superseded_date_queried": true,
+      "calculate_used": true
+    },
+    "review": {
+      "rounds": [
+        {
+          "round": 1,
+          "verdict": "approve",
+          "ledger_shown_correct": true,
+          "incomplete": false
+        }
+      ],
+      "recomputed": {
+        "1": true
+      }
+    }
+  },
+  "rescored_at": "2026-09-24T17:42:52Z",
+  "grader_version_rescore": "93b2efa"
+}

@@ -1,0 +1,93 @@
+########################################################################
+  EPISODE mnst-tender-2024-oddlot   arm=checker-fixed   model=claude-haiku-4-5-20251001
+########################################################################
+
+--- WORKSHEET (the submitted worksheet through the unchanged Phase-1 grader) ---
+========================================================================
+  CASE mnst-tender-2024-oddlot    model=checker-fixed:claude-haiku-4-5-20251001    judge=mock
+========================================================================
+  CaseScore (gated, headline) : 0.473
+  CaseScore (ungated)         : 0.893
+  GAP (ungated - gated)       : 0.420
+  AllPass                     : 0
+  D2 calibration (R,G->F_b)   : R=1.00 G=0.25 -> 0.294
+  Gates fired                 : GATE.DATES
+
+  Checkpoint vector (which step failed):
+    cp   W      ungated  gated   raw
+    P1   0.100  1.000   1.000  +1.00
+    P2   0.120  0.583   0.583  +0.58
+    E1   0.100  1.000   1.000  +1.00
+    E2   0.080  1.000   1.000  +1.00
+    C1   0.140  1.000   0.000  +1.00  <-- gated
+    C2   0.120  1.000   0.000  +1.00  <-- gated
+    C3   0.100  1.000   1.000  +1.00
+    D1   0.160  1.000   0.000  +1.00  <-- gated
+    D2   0.080  0.294   0.294  +0.29
+
+  Category rollup (diagnostic -- what KIND of error):
+    extraction   +1.000  ####################
+    numerical    +1.000  ####################
+    entailment   +1.000  ####################
+    reasoning    +0.833  #################
+    calibration  +0.308  ######
+    structure    +1.000  ####################
+========================================================================
+
+--- TERMINAL STATE (worksheet + the ledger rendered into D1 rows; ledger predicates applied) ---
+========================================================================
+  CASE mnst-tender-2024-oddlot    model=checker-fixed:claude-haiku-4-5-20251001    judge=mock
+========================================================================
+  CaseScore (gated, headline) : 0.473
+  CaseScore (ungated)         : 0.893
+  GAP (ungated - gated)       : 0.420
+  AllPass                     : 0
+  D2 calibration (R,G->F_b)   : R=1.00 G=0.25 -> 0.294
+  Gates fired                 : GATE.DATES
+  Headline flags              : ledger_missing_required, ledger_overescalate
+
+  Checkpoint vector (which step failed):
+    cp   W      ungated  gated   raw
+    P1   0.100  1.000   1.000  +1.00
+    P2   0.120  0.583   0.583  +0.58
+    E1   0.100  1.000   1.000  +1.00
+    E2   0.080  1.000   1.000  +1.00
+    C1   0.140  1.000   0.000  +1.00  <-- gated
+    C2   0.120  1.000   0.000  +1.00  <-- gated
+    C3   0.100  1.000   1.000  +1.00
+    D1   0.160  1.000   0.000  +1.00  <-- gated
+    D2   0.080  0.294   0.294  +0.29
+
+  Category rollup (diagnostic -- what KIND of error):
+    extraction   +1.000  ####################
+    numerical    +1.000  ####################
+    entailment   +1.000  ####################
+    reasoning    +0.833  #################
+    calibration  +0.308  ######
+    structure    +1.000  ####################
+========================================================================
+
+--- LEDGER ---
+L4: escalate missing_document='Settlement instruction or payment notice specifying the payment date for tender proceeds' held_action='book_receivable for tender proceeds (amount $4,611.00 is determinable; pay_date is not)' reason='The book_receivable action requires a pay_date. Neither the Offer to Purchase (mnst-otp-20240508) nor the final results announcement (mnst-results-20240610) specifies the payment/settlement date for tender proceeds. A settlement instruction or payment notice document is required to determine the pay_date.'
+L5: confirm_position ticker=MNST shares=87.0 as_of=2024-06-10 basis_doc=mnst-results-20240610
+  booked entries: 1   GATE.ELECT on the ledger: False   gold match: False   flags: ledger_missing_required, ledger_overescalate   correct: False
+  gold L4 escalate: ok=False  {'scoped': False}
+  gold L5 confirm_position: ok=True  {'as_of_is_basis_date': False}
+
+--- TRAJECTORY (reported, not scored) ---
+  maker: turns=11 tool_calls=13 errors=0 counts={'list_documents': 1, 'read_document': 3, 'get_position': 1, 'calculate': 1, 'escalate': 2, 'book_receivable': 1, 'confirm_position': 2, 'submit_worksheet': 2}
+  governing read before first action: True   docs read: ['acct0093-position-20240610', 'mnst-otp-20240508', 'mnst-results-20240610']   superseded read: []   distractors read: []
+  position dates queried: ['2024-06-05']   basis date queried: True   superseded date queried: None   projected: 0   query errors: 0
+  calculate used: True (1): ['87 * 53.00']
+
+--- REVIEW (checker arm) ---
+  round 1: verdict=reject recomputed=True tools={'list_documents': 1, 'get_position': 2, 'read_document': 3, 'calculate': 1, 'review_verdict': 1} ledger_shown_correct=True
+    - L3 (confirm_position): quantity/timing wrong. The entry confirms MNST position at 0 shares as_of 2024-06-05. The position record shows 87 settled shares held at the depositary both as of 2024-06-05 and as of the 2024-06-10 as-of date (shares are held pending purchase settlement, not removed at the expiration date). As of the expiration date 2024-06-05 the position was 87, not 0. The position should be shown as 87 as of the as-of date, with the tendered/accepted 87 removed only upon settlement of the purchase, not backdated to the 2024-06-05 expiration.
+    - L2 (book_receivable): pay_date 2024-06-12 is not supported by any document in the store. Neither the final results release (mnst-results-20240610) nor the Offer to Purchase excerpt states a payment/settlement date. The pay date is fabricated; it cannot be tied to the source and should not be booked as 2024-06-12 absent a document stating it.
+    - D2 probe / L1 (escalate): the escalation is incorrect. The probe is answerable from the document store. Neither the Offer to Purchase excerpt (mnst-otp-20240508) nor the results release states that any fees or charges are deducted from tender proceeds. The store supports the answer that no fees/charges are deducted from the account's proceeds; declaring NOT_DETERMINABLE and escalating a 'missing Letter of Transmittal' is not warranted by the store's contents.
+  round 2: verdict=approve recomputed=True tools={'list_documents': 1, 'get_position': 2, 'read_document': 3, 'calculate': 1, 'review_verdict': 1} ledger_shown_correct=False
+    - L5 (confirm_position): Ties out. Account is a settled odd-lot holder of 87 MNST shares (<100) that validly tendered ALL 87 shares as purchase-price tenders before the 2024-06-05 expiration. Under the Offer to Purchase priority terms, odd-lot tenders of all shares are accepted in full and are not subject to the 47.18% proration. Governing doc (mnst-results-20240610) and quantity (87) are correct.
+    - L4 (escalate book_receivable): Correct hold. Gross proceeds = 87 x $53.00 = $4,611.00 is determinable, but neither the Offer to Purchase (mnst-otp-20240508) nor the final results (mnst-results-20240610) states a payment/settlement date, so booking a receivable with a pay_date is not supportable from the store. Escalation is the right action.
+    - TW1 (gross proceeds): $4,611.00 verified (87 x $53.00). Correct.
+    - ADVISORY (not a booked entry): D2 probe answer 'No fees or charges are deducted' is labeled COMPUTED but is not actually determinable from the store. The probe asks specifically about the Letter of Transmittal's terms, and no Letter of Transmittal is present in the document store (only an OTP excerpt, the results release, and the position record). Concluding 'no fees' from the silence of documents that are not the governing LoT is inference, not evidence; this probe should be escalated as undetermined rather than answered COMPUTED. This does not affect any booked ledger entry, so it does not change the verdict on the ledger.
+########################################################################

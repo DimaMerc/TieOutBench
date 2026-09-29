@@ -1,0 +1,38 @@
+{
+  "clock": "2014-04-01",
+  "entries": [
+    {
+      "entry_id": "L1",
+      "kind": "book_receivable",
+      "args": {
+        "account": "ACCT-2101",
+        "amount": 1800.0,
+        "pay_date": "2014-06-02",
+        "basis_doc": "zts-8k-20140327",
+        "shares": 25000.0,
+        "rate": 0.072,
+        "memo": "Zoetis Q2 2014 dividend; record date 2014-04-28 per correcting release; DRIP participant, reinvestment price not stated in store"
+      },
+      "seq": 17,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:24:26.783Z"
+    },
+    {
+      "entry_id": "L2",
+      "kind": "escalate",
+      "args": {
+        "reason": "The governing dividend announcement states the account participates in dividend reinvestment, but the store does not provide the reinvestment price for the June 2 payment. This dependent figure cannot be determined from the available documents.",
+        "missing_document": "DRIP pricing / dividend reinvestment plan document for Zoetis Q2 2014 dividend",
+        "held_action": "reinvestment price for the June 2 payment"
+      },
+      "seq": 20,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:24:28.443Z"
+    }
+  ],
+  "frozen": {}
+}

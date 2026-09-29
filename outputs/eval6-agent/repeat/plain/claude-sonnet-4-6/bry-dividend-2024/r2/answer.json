@@ -1,0 +1,129 @@
+{
+  "P1": {
+    "issuer": "Berry Corporation",
+    "security": {
+      "ticker": "BRY"
+    },
+    "event_type": "mandatory",
+    "governing_doc": "bry-8k-20240813",
+    "superseded_docs": [
+      "bry-8k-20240809"
+    ]
+  },
+  "P2": {
+    "dates": {
+      "declared": "2024-08-09",
+      "corrected": "2024-08-13",
+      "record_date": "2024-08-23",
+      "pay_date": "2024-08-30"
+    },
+    "entitlement_basis": "record_date",
+    "entitlement_basis_date": "2024-08-23",
+    "election_deadline": null
+  },
+  "E1": {
+    "terms": {
+      "rate_total": 0.17,
+      "rate_fixed": 0.12,
+      "rate_variable": 0.05,
+      "record_date": "2024-08-23",
+      "pay_date": "2024-08-30"
+    },
+    "citation": {
+      "document": "bry-8k-20240813",
+      "locator": "body, paragraph 1",
+      "verbatim": "The dividend amounts have not changed. The dividends will be payable on August 30, 2024 to all stockholders of record as of the close of business on August 23, 2024, not payable on August 20, 2024 to all stockholders of record on August 12, 2024 as previously disclosed."
+    }
+  },
+  "E2": {
+    "position": {
+      "shares_20240812": 50000,
+      "shares_settled_current": 40000
+    },
+    "basis_shares": 40000
+  },
+  "C1": {
+    "entitlement": {
+      "eligible_shares": 40000,
+      "rate": 0.17,
+      "gross_cash": 6800.0
+    },
+    "cil": {
+      "applicable": false,
+      "amount": null
+    }
+  },
+  "C2": {
+    "election_required": false,
+    "options": null,
+    "default_option": "cash",
+    "economics": null
+  },
+  "C3": {
+    "impact": {
+      "gross_cash": 6800.0
+    },
+    "changes": [
+      {
+        "what": "dividend cash entitlement projection (gross)",
+        "where": "corporate-actions pending-payments ledger / ACCT-7712",
+        "old": 8500.0,
+        "new": 6800.0
+      },
+      {
+        "what": "record-date snapshot used for entitlement",
+        "where": "corporate-actions event record / BRY dividend 2024",
+        "old": "2024-08-12",
+        "new": "2024-08-23"
+      },
+      {
+        "what": "pay-date cash projection entry",
+        "where": "cash-projection / ACCT-7712",
+        "old": "2024-08-20",
+        "new": "2024-08-30"
+      }
+    ]
+  },
+  "D1": {
+    "decision": "No election required. Mandatory cash dividend. Update event record to corrected terms (record date 2024-08-23, pay date 2024-08-30, rate $0.17/share). Eligible position is 40,000 settled shares as of record date. Book gross cash entitlement of $6,800.00 for payment on 2024-08-30. Void any prior booking based on superseded 2024-08-09 terms.",
+    "actions": [
+      {
+        "action": "UPDATE event record: replace superseded record date and pay date with corrected dates; confirm dividend rate unchanged at $0.17/share",
+        "option": null,
+        "quantity": null,
+        "amount": null,
+        "by_date": "2024-08-18",
+        "basis_doc": "bry-8k-20240813"
+      },
+      {
+        "action": "VOID any prior cash projection booked under superseded terms (record date 2024-08-12, pay date 2024-08-20, 50,000 shares, $8,500.00)",
+        "option": null,
+        "quantity": null,
+        "amount": 8500.0,
+        "by_date": "2024-08-18",
+        "basis_doc": "bry-8k-20240813"
+      },
+      {
+        "action": "BOOK gross dividend cash entitlement for ACCT-7712 based on 40,000 settled shares at $0.17/share = $6,800.00, payable 2024-08-30",
+        "option": null,
+        "quantity": 40000,
+        "amount": 6800.0,
+        "by_date": "2024-08-30",
+        "basis_doc": "bry-8k-20240813"
+      }
+    ]
+  },
+  "D2": {
+    "probe": {
+      "label": "NOT_DETERMINABLE",
+      "value": null,
+      "derivation": "The applicable withholding tax rate for the foreign-domiciled beneficial owner of ACCT-7712 cannot be determined from the document store. The required document \u2014 a W-8BEN / W-8BEN-E or equivalent tax-status certification for the subaccount, or a tax-treaty rate schedule applicable to the owner's domicile \u2014 is absent from the store. No withholding rate has been provided or can be inferred. Escalate to tax/withholding operations team with the subaccount's domicile and tax certification on file before pay date 2024-08-30. Hold net-cash release pending resolution; gross entitlement of $6,800.00 is confirmed."
+    },
+    "twins": [
+      {
+        "id": "TW1",
+        "value": 6800.0
+      }
+    ]
+  }
+}

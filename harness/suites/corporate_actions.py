@@ -215,12 +215,20 @@ _TENDER_OFFER_RE = re.compile(r"\btender offer(?:'s)?s?\b|\bpurchase price tende
 _TENDER_NOUN_RE = re.compile(
     r"\b(?:the |this |odd-?lot |a )?tender(?:s)?(?=\s+(?:was|were|is|are|has|have|had|accepted|"
     r"acceptance|expired|expire[sd]?|results?|proceeds|process(?:ing)?|cash|share(?:s)?|suspense|"
-    r"position(?:s)?|receivable|settlement|allocation|action|instruction record))", re.IGNORECASE)
+    r"position(?:s)?|receivable|settlement|allocation|action|instruction record|"
+    # adjectival uses ("the tender payment-date notice", "tender price", "tender materials"): the
+    # Phase-2 live wave, 2026-09-24
+    r"pay(?:ment)?(?:-date)?|price|terms|deadline|expiration|notice|documents?|materials?|period|offer|"
+    r"basis|dates?|record))",
+    re.IGNORECASE)
 # "hold for settlement / payment / entitlement" is the custody idiom for AWAITING a mechanical
 # step, not an escalation of the event
 _HOLD_IDIOM_RE = re.compile(
-    r"\bhold (?:for|pending|until) (?:settlement|final settlement|pay(?:ment)?(?: date)?|"
+    r"\bhold (?:for|pending|until) (?:the )?(?:[a-z-]+ ){0,2}(?:settlement|final settlement|pay(?:ment)?(?: date)?|"
     r"value date|entitlement|receipt|credit)\b", re.IGNORECASE)
+# (up to two modifiers between the preposition and the noun: "hold for dividend entitlement on the
+# corrected record date" is the same idiom as "hold for entitlement" — the Phase-2 plain-arm repeats,
+# 2026-09-24; no committed cell moves, the idiom's clause still carries no processing verb)
 _NEG_ELECT_RE = re.compile(
     r"\b(?:do not|don't|no|not|cannot|can't|will not|won't|never|without)\b[^.;]{0,30}?"
     r"\b(?:re-?tender(?:s|ing)?|tender(?:s|ing)?|elect(?:ions?|ing)?|submit(?:ting)?|"
@@ -256,8 +264,12 @@ _PROCESS_RE = re.compile(
 
 
 def _clauses(s: str):
-    # split on ';', sentence periods, and ' - ' — but never on the '.' inside a number (53.00)
-    return [c for c in re.split(r";|\s-\s|(?<!\d)\.(?!\d)", s) if c.strip()]
+    # split on ';', sentence periods, and ' - ' — but never on the '.' inside a number (53.00). A
+    # period that ends a sentence right after a digit ("...record date of April 28, 2014. Escalate
+    # the DRIP price") still splits when the next sentence starts with a capital letter, otherwise
+    # the booking clause and the escalation clause merge and the merged clause reads as a hold
+    # (Phase-2 live wave, 2026-09-24).
+    return [c for c in re.split(r";|\s-\s|(?<!\d)\.(?!\d)|\.(?=\s+[A-Z])", s) if c.strip()]
 
 
 # a generic/descriptive relative clause quoting the offer's RULE ("holders who tender all their
@@ -270,18 +282,29 @@ _GENERIC_TENDER_RE = re.compile(r"\b(?:who|that)\s+(?:validly\s+|properly\s+)?te
 _TENDER_NOUN2_RE = re.compile(
     r"\b(?:the|this|that|an?|expired|final|closed|completed|current)\s+"
     r"(?:expired\s+|final\s+|closed\s+|completed\s+)?tender(?:s)?\b", re.IGNORECASE)
+# "issuer tender" / "self-tender" / "post-tender" / "pre-tender" (the event as a noun or an
+# adjective) and "tender" followed by punctuation ("...of expired MNST issuer tender: no new
+# election...", "confirm position at 0 shares post-tender") — a tender VERB takes an object
+# (Phase-2 live wave, 2026-09-24)
+_TENDER_NOUN3_RE = re.compile(
+    r"\b(?:issuer|self|post|pre)-?\s*tender(?:s)?\b|\btender(?:s)?(?=\s*[:;,)\]])", re.IGNORECASE)
 
 
 def _clause_class(clause: str) -> str | None:
     c = _TENDER_OFFER_RE.sub(" ", clause)
     c = _TENDER_NOUN_RE.sub(" ", c)
     c = _TENDER_NOUN2_RE.sub(" ", c)
+    c = _TENDER_NOUN3_RE.sub(" ", c)
     c = _GENERIC_TENDER_RE.sub(" ", c)
     c = _HOLD_IDIOM_RE.sub(" settling ", c)     # neutral: "awaiting" would re-trigger _HOLD_RE
     c = _NEG_PRORATION_RE.sub(" ", c)
     c = _NEG_ELECT_RE.sub(" ", c)
-    if _SCOPED_HOLD_RE.search(c):
-        return None                      # a D2-scoped partial hold: ignore the clause
+    # a D2-scoped partial hold ("hold only the net figure pending the tax notice", "escalate for
+    # the missing Letter of Transmittal") is removed as a PHRASE, not as the whole clause: the
+    # rest of the clause keeps its class. Vetoing the whole clause read "Process the acceptance
+    # in full ..., and escalate for the missing Letter of Transmittal" as no decision at all
+    # (Phase-2 live wave, 2026-09-24), and would have hidden a release riding in the same clause.
+    c = _SCOPED_HOLD_RE.sub(" ", c)
     if _ELECT_RE.search(c):
         return "elect"
     if _HOLD_RE.search(c) or _NEG_PROCESS_RE.search(c):
@@ -412,7 +435,7 @@ def _superseded_hits(model, gold) -> bool:
 _OFFER_DIRECTED_RE = re.compile(
     r"\b(?:into the offer|for (?:supplemental )?purchase|supplemental|late acceptance|"
     r"re-?instruct)\b", re.IGNORECASE)
-_REMEDIATION_RE = re.compile(r"\b(?:revers|back(?:ing)? out|cancel|unwind|write[- ]off)", re.IGNORECASE)
+_REMEDIATION_RE = re.compile(r"\b(?:revers|back(?:ing)? out|cancel|unwind|write[- ]off|void)", re.IGNORECASE)
 _CONTRAST_RE = re.compile(r"\b(?:not\b|instead|rather than|no longer|supersede|corrected|correction)",
                           re.IGNORECASE)
 _STALE_SCHEDULE_RE = re.compile(r"\b(?:original|prior|previous)\s+(?:schedule|terms|dates?|record)\b",
@@ -983,7 +1006,7 @@ _SPELLED_PCT_RE = re.compile(
     r"\b(?:one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thir(?:teen|ty)|"
     r"four(?:teen|ty)|fif(?:teen|ty)|sixt(?:een|y)|sevent(?:een|y)|eight(?:een|y)|"
     r"nine(?:teen|ty)|twenty|hundred)(?:[- ][a-z]+)?\s+percent\b", re.IGNORECASE)
-_HEDGE_RE = re.compile(r"\b(?:would|if\b|unless|cannot be confirmed|may\b|were\b|hypothetic|"
+_HEDGE_RE = re.compile(r"\b(?:would|could|might|if\b|unless|cannot be confirmed|may\b|were\b|hypothetic|"
                        r"illustrat|in principle)", re.IGNORECASE)
 _ISO_DATE_RE = re.compile(r"\b\d{4}-\d{2}-\d{2}\b")
 _YEAR_RE = re.compile(r"\b(?:19|20)\d{2}\b")

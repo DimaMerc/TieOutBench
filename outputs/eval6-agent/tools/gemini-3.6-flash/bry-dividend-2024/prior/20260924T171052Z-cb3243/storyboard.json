@@ -1,0 +1,63 @@
+{
+  "case_id": "bry-dividend-2024",
+  "arm": "tools",
+  "model_id": "gemini-3.6-flash",
+  "scripted": false,
+  "total_s": 22,
+  "scenes": [
+    {
+      "id": "episode",
+      "kind": "title",
+      "title": "bry-dividend-2024 · arm: tools",
+      "lines": [
+        "as of 2024-08-18",
+        "Process the Berry Corporation dividend for the account.",
+        "run: gemini-3.6-flash"
+      ],
+      "duration_s": 4
+    },
+    {
+      "id": "ledger",
+      "kind": "ledger",
+      "title": "The ledger (what was booked)",
+      "lines": [
+        "(the ledger is empty: no action was booked)"
+      ],
+      "duration_s": 5
+    },
+    {
+      "id": "tieout",
+      "kind": "check",
+      "title": "Does the worksheet tie to the ledger?",
+      "lines": [
+        "no amount to compare",
+        "GATE.ELECT on the ledger: no",
+        "flags: ledger_empty"
+      ],
+      "ok": false,
+      "duration_s": 5
+    },
+    {
+      "id": "grade",
+      "kind": "grade",
+      "title": "The grade",
+      "lines": [
+        "worksheet: 0.000 gated, AllPass 0, gates GATE.VERSION, GATE.DATES",
+        "terminal state: 0.000 gated, AllPass 0, gates GATE.VERSION, GATE.DATES",
+        "flags: ledger_empty, incomplete"
+      ],
+      "ok": false,
+      "duration_s": 5
+    },
+    {
+      "id": "closing",
+      "kind": "title",
+      "title": "Does it tie out?",
+      "lines": [
+        "TieOutBench · evals.finance",
+        "eval #6, phase 2: the agent environment"
+      ],
+      "duration_s": 3
+    }
+  ]
+}

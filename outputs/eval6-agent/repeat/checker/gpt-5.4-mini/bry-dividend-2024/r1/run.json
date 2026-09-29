@@ -1,0 +1,204 @@
+{
+  "schema": "tieoutbench.run/1",
+  "run_id": "20260924T180531Z-eff0aa",
+  "written_at": "2026-09-24T18:05:54Z",
+  "arm": "checker",
+  "suite": "corporate-actions",
+  "model_id": "gpt-5.4-mini",
+  "endpoint": "api.openai.com",
+  "request": {
+    "max_tokens": 32000,
+    "temperature": 0.0,
+    "stream": false,
+    "tool_transport": "native",
+    "max_turns": 20,
+    "deadline_s": 900
+  },
+  "conformance": {
+    "tool_transport": "native",
+    "tested_at": "2026-09-24T15:58:55Z"
+  },
+  "loop": {
+    "maker_round1": {
+      "turns": 6,
+      "incomplete": false,
+      "ended_by": "end",
+      "elapsed_s": null
+    },
+    "review_round1": {
+      "round": 1,
+      "verdict": "reject",
+      "findings": [
+        "L1: booked on the corrected document but used 50,000 shares; the governing record-date position is 40,000 settled shares as of 2024-08-23, so gross receivable should be $6,800.00 (40,000 \u00d7 $0.17), not $8,500.00.",
+        "L1: memo says the basis was position as of 2024-08-12, but the governing correction sets entitlement by record date 2024-08-23; the entry should be based on the 2024-08-23 record-date position, not the earlier date.",
+        "L2: confirm_position shows 50,000 shares as of 2024-08-23, but the position tool returns 40,000 settled shares as of that date; the entry should confirm 40,000 shares, not 50,000.",
+        "D2/TW1: the work product states gross dividend cash is $8,500, but on the corrected terms and record-date position it should be $6,800.00.",
+        "D2 probe: net dividend cash for a foreign-domiciled subaccount cannot be determined from the store because no withholding rate/document is provided; any implied net amount would be unsupported."
+      ],
+      "turns": 3,
+      "incomplete": false,
+      "ended_by": "end",
+      "ledger_shown_correct": false,
+      "ledger_shown_elect": true,
+      "ledger_shown_flags": [
+        "ledger_wrong_amount"
+      ]
+    },
+    "revised": true,
+    "maker_round2": {
+      "turns": 6,
+      "incomplete": false,
+      "ended_by": "end",
+      "elapsed_s": 12.5
+    },
+    "review_round2": {
+      "round": 2,
+      "verdict": "reject",
+      "findings": [
+        "L3: gross dividend amount ties to 40,000 shares at $0.17 and pay date 2024-08-30, but the basis document is incomplete for entitlement because the governing document is the corrected 2024-08-13 notice superseding the 2024-08-09 announcement; the entry should explicitly rest on bry-8k-20240813 as the governing source and the amount is $6,800.00.",
+        "L4: confirm_position is supported by the position report; no discrepancy found."
+      ],
+      "turns": 4,
+      "incomplete": false,
+      "ended_by": "end",
+      "ledger_shown_correct": true,
+      "ledger_shown_elect": false,
+      "ledger_shown_flags": []
+    }
+  },
+  "usage_total": {
+    "prompt_tokens": 44764,
+    "completion_tokens": 1528,
+    "total_tokens": 46292
+  },
+  "chat_calls": 13,
+  "transient_retries": 0,
+  "last_finish_reason": "tool_calls",
+  "incomplete": false,
+  "reused_maker_from": "outputs/eval6-agent/repeat/tools/gpt-5.4-mini/bry-dividend-2024/r1",
+  "case": {
+    "case_id": "bry-dividend-2024",
+    "path": "cases/bry-dividend-2024.case.yaml",
+    "sha256": "b0af79e186fe1d6059424dacd4f0b257afc01a4117a7104b4ca3be2ecf719e48"
+  },
+  "rubric": {
+    "path": "rubric/criteria-corporate-actions.yaml",
+    "sha256": "81d0498cd0f16bef5aaf8e2569e4963771c55f330332fccda87a161329cb59b6"
+  },
+  "grader_version": "93b2efa",
+  "grader_tree_dirty": true,
+  "harness_hashes": {
+    "harness/graders.py": "4ce46f1ed091fa4e95dd471b7900be5464ced9a5c952d32ca7e8160243caa65b",
+    "harness/scoring.py": "c31e1901303253cf8b4ac600998ae130fb6111b32e5b99dd16029151db1dd1a8",
+    "harness/suites/corporate_actions.py": "38d9ccb03ae6f16e393aa28363d658575db9708411cd1bca924454ebdec6d04e",
+    "harness/env/state.py": "ede4e582823945c77ba3c6631c0c3c704f2c8db2db58169a453a1aaee73fabc1",
+    "harness/env/scoring.py": "80353aed8805e7bc77a876f1b6edd486818e752a09d918c94f62e840477161d7",
+    "harness/env/agent.py": "d5d6b293408d287dce85cae6ec0ffbf5dd26fd2872bca637fe66f13c1e9a0d8d",
+    "harness/env/transport.py": "764a24ac1c3858f90fa5542ec428f7fa7b9433afd5a194806ccb78163f6153ca"
+  },
+  "prior_dir": null,
+  "score": {
+    "worksheet": {
+      "gated": 0.9875,
+      "ungated": 0.9875,
+      "gap": 0.0,
+      "allpass": 0,
+      "gates": [],
+      "flags": []
+    },
+    "terminal": {
+      "gated": 0.9875,
+      "ungated": 0.9875,
+      "gap": 0.0,
+      "allpass": 0,
+      "gates": [],
+      "flags": []
+    },
+    "ledger": {
+      "correct": true,
+      "elect_fired": false,
+      "gold_ok": true,
+      "flags": [],
+      "n_booked": 2
+    },
+    "review": {
+      "rounds": [
+        {
+          "round": 1,
+          "verdict": "reject",
+          "ledger_shown_correct": false,
+          "incomplete": false
+        },
+        {
+          "round": 2,
+          "verdict": "reject",
+          "ledger_shown_correct": true,
+          "incomplete": false
+        }
+      ],
+      "recomputed": {
+        "1": true,
+        "2": true
+      }
+    }
+  },
+  "score_at_run": {
+    "worksheet": {
+      "gated": 0.9875,
+      "ungated": 0.9875,
+      "gap": 0.0,
+      "allpass": 0,
+      "gates": [],
+      "flags": []
+    },
+    "terminal": {
+      "gated": 0.9875,
+      "ungated": 0.9875,
+      "gap": 0.0,
+      "allpass": 0,
+      "gates": [],
+      "flags": []
+    },
+    "ledger": {
+      "correct": true,
+      "elect_fired": false,
+      "gold_ok": true,
+      "flags": [],
+      "n_booked": 2
+    },
+    "trajectory": {
+      "n_turns": 12,
+      "n_tool_calls": 14,
+      "n_tool_errors": 0,
+      "governing_read_before_first_action": true,
+      "position_dates_queried": [
+        "2024-08-23"
+      ],
+      "basis_date_queried": true,
+      "superseded_date_queried": false,
+      "calculate_used": true
+    },
+    "review": {
+      "rounds": [
+        {
+          "round": 1,
+          "verdict": "reject",
+          "ledger_shown_correct": false,
+          "incomplete": false
+        },
+        {
+          "round": 2,
+          "verdict": "reject",
+          "ledger_shown_correct": true,
+          "incomplete": false
+        }
+      ],
+      "recomputed": {
+        "1": true,
+        "2": true
+      }
+    }
+  },
+  "rescored_at": "2026-09-25T00:10:26Z",
+  "grader_version_rescore": "93b2efa"
+}

@@ -1,0 +1,226 @@
+{
+  "schema": "tieoutbench.run/1",
+  "run_id": "20260924T174151Z-a8b4d9",
+  "written_at": "2026-09-24T17:42:08Z",
+  "arm": "checker",
+  "suite": "corporate-actions",
+  "model_id": "gpt-5.4-mini",
+  "endpoint": "api.openai.com",
+  "request": {
+    "max_tokens": 32000,
+    "temperature": 0.0,
+    "stream": false,
+    "tool_transport": "native",
+    "max_turns": 20,
+    "deadline_s": 900
+  },
+  "conformance": {
+    "tool_transport": "native",
+    "tested_at": "2026-09-24T15:58:55Z"
+  },
+  "loop": {
+    "maker_round1": {
+      "turns": 7,
+      "incomplete": false,
+      "ended_by": "end",
+      "elapsed_s": null
+    },
+    "review_round1": {
+      "round": 1,
+      "verdict": "reject",
+      "findings": [
+        "L1 confirm_position is supported by the governing documents and position as of 2024-06-10; no discrepancy.",
+        "L2 update_pcf is supported by the governing document nvda-8k-20240522 and the split-adjusted quantity per creation unit is 1,800 from 180 \u00d7 10; no discrepancy.",
+        "L3 book_receivable is supported by the governing document nvda-8k-20240522 and the settled position of 180,000 shares as of 2024-06-10; gross dividend receivable is $1,800.00 at $0.01 per post-split share payable 2024-06-28; no discrepancy."
+      ],
+      "turns": 5,
+      "incomplete": false,
+      "ended_by": "end",
+      "ledger_shown_correct": true,
+      "ledger_shown_elect": false,
+      "ledger_shown_flags": []
+    },
+    "revised": true,
+    "maker_round2": {
+      "turns": 1,
+      "incomplete": false,
+      "ended_by": "end",
+      "elapsed_s": 4.1
+    },
+    "review_round2": {
+      "round": 2,
+      "verdict": "reject",
+      "findings": [
+        "D1 / confirm_position: quantity is wrong. The governing position as of 2024-06-10 is 180,000 NVDA shares, but the work product books 180,000 as if it were a new action entry; the ledger is empty so no booking exists to tie out. If booked, it should be a position confirmation only, not a cash or share movement.",
+        "D1 / update_pcf: quantity is wrong. The PCF should reflect 1,800 NVDA shares per creation unit after the 10-for-1 split (180 x 10), based on the governing 2024-05-22 announcement and confirmed by the 2024-06-07 effectiveness filing. The work product\u2019s 1,800 is correct, but there is no booked ledger entry to verify; no discrepancy in source, only absence of booking.",
+        "D1 / book_receivable: amount is wrong if treated as a booked receivable because the ledger is empty. The governing dividend is $0.01 per post-split share payable on 2024-06-28 to holders of record on 2024-06-11; on 180,000 shares the gross receivable is $1,800.00. Since no entry was booked, there is nothing to approve; if booked, it should be 180,000 shares and $1,800.00 with pay date 2024-06-28 and basis doc nvda-8k-20240522.",
+        "Supersession: the 2024-06-07 effectiveness filing supersedes the earlier split timing in the 2024-05-22 announcement for split effectiveness, so any split-related basis should rely on nvda-8k-20240607 for the split becoming effective, while the dividend terms remain from nvda-8k-20240522."
+      ],
+      "turns": 4,
+      "incomplete": false,
+      "ended_by": "end",
+      "ledger_shown_correct": false,
+      "ledger_shown_elect": false,
+      "ledger_shown_flags": [
+        "ledger_empty"
+      ]
+    }
+  },
+  "usage_total": {
+    "prompt_tokens": 28169,
+    "completion_tokens": 1595,
+    "total_tokens": 29764
+  },
+  "chat_calls": 10,
+  "transient_retries": 0,
+  "last_finish_reason": "tool_calls",
+  "incomplete": false,
+  "reused_maker_from": "outputs/eval6-agent/tools/gpt-5.4-mini/mega-split-2024",
+  "case": {
+    "case_id": "mega-split-2024",
+    "path": "cases/mega-split-2024.case.yaml",
+    "sha256": "696d097e2baf78d92e5e881a6e812883f12a3762698b1aaa0ebbddd7736088b5"
+  },
+  "rubric": {
+    "path": "rubric/criteria-corporate-actions.yaml",
+    "sha256": "81d0498cd0f16bef5aaf8e2569e4963771c55f330332fccda87a161329cb59b6"
+  },
+  "grader_version": "93b2efa",
+  "grader_tree_dirty": true,
+  "harness_hashes": {
+    "harness/graders.py": "4ce46f1ed091fa4e95dd471b7900be5464ced9a5c952d32ca7e8160243caa65b",
+    "harness/scoring.py": "c31e1901303253cf8b4ac600998ae130fb6111b32e5b99dd16029151db1dd1a8",
+    "harness/suites/corporate_actions.py": "e79ee0256d0bdb037436698f5ac1be1c460178711992f1e93452a3fcc870ce86",
+    "harness/env/state.py": "ede4e582823945c77ba3c6631c0c3c704f2c8db2db58169a453a1aaee73fabc1",
+    "harness/env/scoring.py": "15601303d0fa36216b00933e48b7fa577564def0fac1453927ca1441f1d777af",
+    "harness/env/agent.py": "35fcf8c6ade805297902d6d5eec09e183e5a9619a49ff849122a98022fbc5750",
+    "harness/env/transport.py": "764a24ac1c3858f90fa5542ec428f7fa7b9433afd5a194806ccb78163f6153ca"
+  },
+  "prior_dir": null,
+  "score": {
+    "worksheet": {
+      "gated": 0.295,
+      "ungated": 0.7425,
+      "gap": 0.4475,
+      "allpass": 0,
+      "gates": [
+        "GATE.DATES",
+        "GATE.SCALE",
+        "GATE.FABRICATION"
+      ],
+      "flags": []
+    },
+    "terminal": {
+      "gated": 0.295,
+      "ungated": 0.7179,
+      "gap": 0.4229,
+      "allpass": 0,
+      "gates": [
+        "GATE.DATES",
+        "GATE.SCALE",
+        "GATE.FABRICATION"
+      ],
+      "flags": [
+        "ledger_empty"
+      ]
+    },
+    "ledger": {
+      "correct": false,
+      "elect_fired": false,
+      "gold_ok": false,
+      "flags": [
+        "ledger_empty"
+      ],
+      "n_booked": 0
+    },
+    "review": {
+      "rounds": [
+        {
+          "round": 1,
+          "verdict": "reject",
+          "ledger_shown_correct": true,
+          "incomplete": false
+        },
+        {
+          "round": 2,
+          "verdict": "reject",
+          "ledger_shown_correct": false,
+          "incomplete": false
+        }
+      ],
+      "recomputed": {
+        "1": true,
+        "2": true
+      }
+    }
+  },
+  "score_at_run": {
+    "worksheet": {
+      "gated": 0.295,
+      "ungated": 0.7425,
+      "gap": 0.4475,
+      "allpass": 0,
+      "gates": [
+        "GATE.DATES",
+        "GATE.SCALE",
+        "GATE.FABRICATION"
+      ],
+      "flags": []
+    },
+    "terminal": {
+      "gated": 0.295,
+      "ungated": 0.7179,
+      "gap": 0.4229,
+      "allpass": 0,
+      "gates": [
+        "GATE.DATES",
+        "GATE.SCALE",
+        "GATE.FABRICATION"
+      ],
+      "flags": [
+        "ledger_empty"
+      ]
+    },
+    "ledger": {
+      "correct": false,
+      "elect_fired": false,
+      "gold_ok": false,
+      "flags": [
+        "ledger_empty"
+      ],
+      "n_booked": 0
+    },
+    "trajectory": {
+      "n_turns": 8,
+      "n_tool_calls": 11,
+      "n_tool_errors": 0,
+      "governing_read_before_first_action": true,
+      "position_dates_queried": [],
+      "basis_date_queried": false,
+      "superseded_date_queried": null,
+      "calculate_used": true
+    },
+    "review": {
+      "rounds": [
+        {
+          "round": 1,
+          "verdict": "reject",
+          "ledger_shown_correct": true,
+          "incomplete": false
+        },
+        {
+          "round": 2,
+          "verdict": "reject",
+          "ledger_shown_correct": false,
+          "incomplete": false
+        }
+      ],
+      "recomputed": {
+        "1": true,
+        "2": true
+      }
+    }
+  },
+  "rescored_at": "2026-09-24T17:47:08Z",
+  "grader_version_rescore": "93b2efa"
+}

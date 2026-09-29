@@ -1,0 +1,260 @@
+[
+ {
+  "role": "system",
+  "content": "You are a corporate-actions analyst on an asset-servicing desk. You process ONE corporate-action episode for an account, working through TOOLS over a DOCUMENT STORE, and you must (a) book the correct actions through the action tools and (b) submit a structured processing worksheet. Rules:\n- GOVERNING VERSION: the store may contain an amendment or correction that supersedes an earlier announcement, and unrelated distractor documents. Pin the document that GOVERNS and source every term from it. Using a superseded version's terms poisons everything.\n- GOVERNING DATES: entitlement is keyed to the RECORD-DATE position (or, for an expired offer, to what was validly tendered by the expiration deadline). State which date governs and apply it. Query the position AS OF that date, not as of today.\n- ELECTIONS AND DEADLINES: some actions are IRREVERSIBLE. Never commit an election after its deadline, never elect when no election is available (e.g. an expired offer), never tender more shares than the eligible position, and never release a payment on superseded terms. Read priority/proration provisions exactly, including who they exempt.\n- THE ARITHMETIC: compute the entitlement from the governing terms and the eligible position; use the calculate tool; keep ratios directionally right and scales exact.\n- D2 probe: if the store does not determine the answer (a referenced document is absent), say NOT_DETERMINABLE, NAME the missing document, escalate for it with the escalate tool, and hold only the dependent figure; do NOT invent a number. The answerable twin IS determined by the store.\n- WORKING THROUGH TOOLS: list the documents and read the ones that matter (deciding which governs is part of the task); query the position; calculate; then BOOK through book_receivable / update_pcf / confirm_position (and submit_election only where a live election exists). Only ledger entries count as actions taken; the worksheet's actions list must mirror what you booked. Finish by calling submit_worksheet with the worksheet in the schema below. The episode ends when you submit or after 20 turns."
+ },
+ {
+  "role": "user",
+  "content": "=== EPISODE ===\n  as-of date : 2014-04-01\n  your role  : corporate-actions desk for institutional account ACCT-2101\n  task       : Process the Zoetis second-quarter dividend for the account.\n  account    : ACCT-2101\n  security   : ZTS\n\n=== D2 PROBE ===\n  The account participates in dividend reinvestment. At what reinvestment price will the June 2 payment be reinvested? Answer from the document store provided.\nANSWERABLE TWIN(S) (fully determined by the document store):\n  TW1: What GROSS dividend cash does the store determine for the account?\n\n=== WORKSHEET SCHEMA (the `worksheet` argument of submit_worksheet) ===\nReturn ONE JSON object with EXACTLY these keys (this is the desk worksheet for this event — fill the values; use null where genuinely not determinable; dates as YYYY-MM-DD; numbers plain, rates/ratios as decimals; governing_doc and basis_doc are doc_id values from the store; entitlement_basis is the governing basis, e.g. \"record_date\", \"shares_validly_tendered_by_expiration\", \"ex_date\", \"pay_date\", \"declaration_date\"):\n{\n \"P1\": {\n  \"issuer\": \"\",\n  \"security\": {\n   \"ticker\": \"\"\n  },\n  \"event_type\": \"mandatory|mandatory_with_choice|voluntary\",\n  \"governing_doc\": \"<doc_id of the document whose terms GOVERN your numbers>\",\n  \"superseded_docs\": []\n },\n \"P2\": {\n  \"dates\": {\n   \"declared\": null,\n   \"corrected\": null,\n   \"record_date\": null,\n   \"pay_date\": null\n  },\n  \"entitlement_basis\": \"\",\n  \"entitlement_basis_date\": null,\n  \"election_deadline\": null\n },\n \"E1\": {\n  \"terms\": {\n   \"rate\": null,\n   \"record_date\": null,\n   \"pay_date\": null\n  },\n  \"citation\": {\n   \"document\": \"<doc_id>\",\n   \"locator\": \"\",\n   \"verbatim\": \"\"\n  }\n },\n \"E2\": {\n  \"position\": {\n   \"shares_settled\": null\n  },\n  \"basis_shares\": null\n },\n \"C1\": {\n  \"entitlement\": {\n   \"eligible_shares\": null,\n   \"rate\": null,\n   \"gross_cash\": null\n  },\n  \"cil\": {\n   \"applicable\": false,\n   \"amount\": null\n  }\n },\n \"C2\": {\n  \"election_required\": false,\n  \"options\": null,\n  \"default_option\": null,\n  \"economics\": null\n },\n \"C3\": {\n  \"impact\": {\n   \"gross_cash\": null\n  },\n  \"changes\": [\n   {\n    \"what\": \"<which record/line in OUR books moves (a basket quantity, a cash projection, a position ledger entry) - not what changed between the documents>\",\n    \"where\": \"<the file/account/ledger it moves in>\",\n    \"old\": null,\n    \"new\": null\n   }\n  ]\n },\n \"D1\": {\n  \"decision\": \"\",\n  \"actions\": [\n   {\n    \"action\": \"\",\n    \"option\": null,\n    \"quantity\": null,\n    \"amount\": null,\n    \"by_date\": null,\n    \"basis_doc\": \"\"\n   }\n  ]\n },\n \"D2\": {\n  \"probe\": {\n   \"label\": \"NOT_DETERMINABLE|COMPUTED\",\n   \"value\": null,\n   \"derivation\": \"if the store does not determine it: name the SPECIFIC missing/referenced document and escalate; do NOT invent a number\"\n  },\n  \"twins\": [\n   {\n    \"id\": \"TW1\",\n    \"value\": null\n   }\n  ]\n }\n}"
+ },
+ {
+  "role": "assistant",
+  "content": "",
+  "tool_calls": [
+   {
+    "extra_content": {
+     "google": {
+      "thought_signature": "EocCCoQCAWkUfROknamE83Den+kbKZ1Ya7YISn2HZtovrGJRgTI+PE5oU8bxW5waCLe1opFqd8MyfjjkClPzvyAGte98RxCVnSJyRuOKpoASrMp4WXNzBmab0CWL5VQ1t9WJkW7TrzIWQsgei+m6QqgQRAxdGpJUZiZuofVGby7z9pf22rXhI67ZV6Iwj2dnzJ/+KR+9Tr90yc6Z0qZpazR826Xj9DbQFv3yhVahu47KThtRk0/566Dd1EhOiyi+dr2j+1BWbKq97xUSxpmBWPaZUvIwJ1dqvbYEZFB0z7sjQmvpB2BtA5t/2koy9lSfYy4hXzLjZz7NX3gvGWf57q1hFlpH38rJiUo="
+     }
+    },
+    "function": {
+     "arguments": "{}",
+     "name": "list_documents"
+    },
+    "id": "call_166994",
+    "type": "function"
+   }
+  ]
+ },
+ {
+  "role": "tool",
+  "tool_call_id": "call_166994",
+  "name": "list_documents",
+  "content": "{\"documents\": [{\"doc_id\": \"zts-8k-20140326\", \"type\": \"issuer 8-K exhibit (dividend declaration)\", \"title\": \"Zoetis declares second quarter 2014 dividend\", \"date\": \"2014-03-26\"}, {\"doc_id\": \"zts-8k-20140327\", \"type\": \"issuer 8-K exhibit (CORRECTING and REPLACING)\", \"title\": \"CORRECTING and REPLACING — Zoetis declares second quarter 2014 dividend\", \"date\": \"2014-03-27\"}, {\"doc_id\": \"acct2101-position-20140331\", \"type\": \"custody position report (constructed)\", \"title\": \"ACCT-2101 — ZTS settled holdings\", \"date\": \"2014-03-31\"}, {\"doc_id\": \"broker-memo-20140328\", \"type\": \"broker memo (constructed DISTRACTOR)\", \"title\": \"Unrelated: proxy-season mailing schedule\", \"date\": \"2014-03-28\"}]}"
+ },
+ {
+  "role": "assistant",
+  "content": "",
+  "tool_calls": [
+   {
+    "extra_content": {
+     "google": {
+      "thought_signature": "Ep0CCpoCAWkUfRPO+dcN09VgszLcNk291Y+r5eXDYhizTuZ8G5OwSFRIGjIIyKB4592Fs+szRqi+y0RtQi7IrolIlWlro/macGOOYV7HMaJb/VpEMVNFFnuhBhntKjaGVIdeJtPo18/EpZobNMrsq5b3DSTIx3vWS9aUu0zyTc8hw0yMiT2/hq1lRQ+YDzP0pphUOEu6QRg/Um6W9tsZ4Ct6YQHVSzjdqOhHkjSvnfLrmYQs9rxyYxewLsSq8+7ek5BGOahij/dhams0pcAo22FRp78u8pHxCBW34JyHpbWhPyTxA6Bj9oPvQTme5/yPEBe96e/p0/kjXRiKiBstm4laVEtrX5zpE4icz/EZWNrzlQCqYYldsjINlOQDK2j9"
+     }
+    },
+    "function": {
+     "arguments": "{\"doc_id\":\"zts-8k-20140326\"}",
+     "name": "read_document"
+    },
+    "id": "call_145808",
+    "type": "function"
+   }
+  ]
+ },
+ {
+  "role": "tool",
+  "tool_call_id": "call_145808",
+  "name": "read_document",
+  "content": "{\"doc_id\": \"zts-8k-20140326\", \"type\": \"issuer 8-K exhibit (dividend declaration)\", \"title\": \"Zoetis declares second quarter 2014 dividend\", \"date\": \"2014-03-26\", \"body\": \"The Board of Directors of Zoetis Inc. (NYSE:ZTS) declared a second quarter dividend payable\\nto holders of the company's common stock of $0.072 per share. The dividend is to be paid on\\nJune 2, 2014 to holders of record on April 27, 2014.\"}"
+ },
+ {
+  "role": "assistant",
+  "content": "",
+  "tool_calls": [
+   {
+    "extra_content": {
+     "google": {
+      "thought_signature": "EoUBCoIBAWkUfRP7CldAWQcacq9M1/3cZT4meth4WlCxkMm+RrXo0CV01ubzbUR9C0JWyjGOzyAQtd8uN6eLMNRzg825B+y9s4ftnvn+EZS9bKalXH56jBXm9seJVm3loE1xczrVzxu/ZNCQrT8MN9Adei2WHTDhsR73/NdJVhv2aG2hzMf06w=="
+     }
+    },
+    "function": {
+     "arguments": "{\"doc_id\":\"zts-8k-20140327\"}",
+     "name": "read_document"
+    },
+    "id": "call_505641",
+    "type": "function"
+   }
+  ]
+ },
+ {
+  "role": "tool",
+  "tool_call_id": "call_505641",
+  "name": "read_document",
+  "content": "{\"doc_id\": \"zts-8k-20140327\", \"type\": \"issuer 8-K exhibit (CORRECTING and REPLACING)\", \"title\": \"CORRECTING and REPLACING — Zoetis declares second quarter 2014 dividend\", \"date\": \"2014-03-27\", \"body\": \"First paragraph, second sentence of release should read: The dividend is to be paid on\\nJune 2, 2014 to holders of record on April 28, 2014 (instead of: The dividend is to be paid\\non June 2, 2014 to holders of record on April 27, 2014). The corrected release reads: The\\nBoard of Directors of Zoetis Inc. (NYSE:ZTS) declared a second quarter dividend payable to\\nholders of the company's common stock of $0.072 per share. The dividend is to be paid on\\nJune 2, 2014 to holders of record on April 28, 2014.\"}"
+ },
+ {
+  "role": "assistant",
+  "content": "",
+  "tool_calls": [
+   {
+    "extra_content": {
+     "google": {
+      "thought_signature": "EqsBCqgBAWkUfRNFfI8a40Chr0fS/ebhZzX19GIMtX9G1pXI/iMqnT1y06Ua52hFY7zs20dRZZ+OZ+ygkEMv7C3VnsrAATkJ4bq6fFUtfuNbdFzDRxRl3aWGZbzuSwDKu9JTx+NrMBMuVEFkNIBeEfTEMRyG/EEYyUbIWj/wFp5i/cJkyOSzSI9wXtUN8Iy3GEiHte7dXf4mArqH1MoBY9BkrvLBaU5TwmI9YD5+"
+     }
+    },
+    "function": {
+     "arguments": "{\"doc_id\":\"acct2101-position-20140331\"}",
+     "name": "read_document"
+    },
+    "id": "call_64016",
+    "type": "function"
+   }
+  ]
+ },
+ {
+  "role": "tool",
+  "tool_call_id": "call_64016",
+  "name": "read_document",
+  "content": "{\"doc_id\": \"acct2101-position-20140331\", \"type\": \"custody position report (constructed)\", \"title\": \"ACCT-2101 — ZTS settled holdings\", \"date\": \"2014-03-31\", \"body\": \"Account ACCT-2101. ZTS common stock: 25,000 shares, settled. Position stable since\\n2014-02-14; no open orders and no pending trades; no position changes scheduled through\\nJune 2014.\"}"
+ },
+ {
+  "role": "assistant",
+  "content": "",
+  "tool_calls": [
+   {
+    "extra_content": {
+     "google": {
+      "thought_signature": "EtMBCtABAWkUfRNZqzwP9Cj1orwty2JcsEdC/dmGASFbLyKX+Wl6YE2Fzp/tmslSzNMF1wDA+nUwBns6/abKr7FBS8Tu/LVQU6SRcIuGNQLAPyWcXcapImI9ohcg/2Q1uFRqol/pcbfLiyiJcKQN4wjySkLsN4KNQCJpuBLLiKRn7OjJuYekGVnsSX3JUNDn3U7f2SXvgBnAnwDAmn0B+VwdQZ4GjzdAzET0toh/yEH4K24jVQqMoCGqx33FWJwPQURPGL02akJptEWsmvJ5pUxtzyVNmg=="
+     }
+    },
+    "function": {
+     "arguments": "{\"doc_id\":\"broker-memo-20140328\"}",
+     "name": "read_document"
+    },
+    "id": "call_419711",
+    "type": "function"
+   }
+  ]
+ },
+ {
+  "role": "tool",
+  "tool_call_id": "call_419711",
+  "name": "read_document",
+  "content": "{\"doc_id\": \"broker-memo-20140328\", \"type\": \"broker memo (constructed DISTRACTOR)\", \"title\": \"Unrelated: proxy-season mailing schedule\", \"date\": \"2014-03-28\", \"body\": \"[Distractor] Annual-meeting proxy materials mail in April. No corporate-actions processing\\nimpact for cash dividends.\"}"
+ },
+ {
+  "role": "assistant",
+  "content": "",
+  "tool_calls": [
+   {
+    "extra_content": {
+     "google": {
+      "thought_signature": "ErEBCq4BAWkUfRNSac+TDYnBfkjsDDZNpv66RaK73fydCNApf60dntpKN3JyZL8HI/U/49CnaKKZQhtCxxCxlqtPYAfJzrDPkhcckBBDPcy/frYC4vkevqOXCad8+YdoTKiGUUu9YF6jTVK53xpOTEWG8DNsMZSgu+gVbnRH8Wi8YdY/kAPO1jkTOtTlsWXnv/Cd4Yqx3MUYtnHbyZixJ4Wdflr+6fsWU+DBBwPYoLWBD1Av"
+     }
+    },
+    "function": {
+     "arguments": "{\"as_of\":\"2014-04-28\",\"account\":\"ACCT-2101\"}",
+     "name": "get_position"
+    },
+    "id": "call_443615",
+    "type": "function"
+   }
+  ]
+ },
+ {
+  "role": "tool",
+  "tool_call_id": "call_443615",
+  "name": "get_position",
+  "content": "{\"account\": \"ACCT-2101\", \"ticker\": \"ZTS\", \"as_of\": \"2014-04-28\", \"settled_shares\": 25000.0, \"basis\": \"projected\", \"position_row_as_of\": \"2014-02-14\", \"note\": \"25,000 shares settled; position stable since 2014-02-14; projected from the latest settled position as of 2014-04-01: no open orders, no pending trades and no position changes scheduled after that date\"}"
+ },
+ {
+  "role": "assistant",
+  "content": "",
+  "tool_calls": [
+   {
+    "extra_content": {
+     "google": {
+      "thought_signature": "EpsKCpgKAWkUfRNvur6m5Eg/nLjqD/MTMyPh1AiwlmdFx9HX5eMzCB6Tt4IBQgk9gZbhr5pciqawP4T95va96tazuaERCUQr1hD6W0sal3NhGD5BqcV94gugF/oq1ausVjGGnDob1/lfb+Rh/b8Klu0CxgvUmfpBCS2axSDEtJoNZazWy3XsqH7O5z1ar2dUiDhdDrmY5Bd8BUEaf2S0VPNgnOQqZiEUIvEj4BHp8bYqJUmhaTy4YOVDhl18eAgtfEUTzM5fmDoCEdzwqPQpFLc2odWTfBiZbGRf9UIaAKobB//4h5RcrhgmTTxZEckl2je3sGKvOtJzXWEKKc+w0NeuIO8ht72/jqeKtH/uSJ8guHbT/ezs3SPTVVO/QINIhWHl4qhBDqeRik7IxKQy5DOB3ZkTTyc4VJyTSObL0OqhhF1UmgnDc4FXR5S0C5ToywiHTWrVXVsFMP9MQ2tCwC4mFkn68bgH/5ZOJL4v0l/bXvKATY1TKojJEJREGvhIAbiQgksHBu/tRqIvExWKVUiUJg+biNG1a/8Sv4omNZgQTkhyHEzmEJJfpnAZLtrmli8oxKe0ZaLW2+W2k8wM1rWCjaqRplgQpVDC9BCZdQhAky2s5DbLqTjbgxc2KtSG76HlougdliAHeFr/a5BHNEOZDhIIyLBnlk1fusU9xuYKiyQZFILakn4MHhV6avmmpqdYePBBA3ilfopDCMzKoJiUMw9PLODahujQIo8HqzFj0kSvE0aPJDXfdumx0JVp6JkW9a3sX+RUZyGXf+Onbdg8hks50ULDa+FcyGjAsauTjGOmE3TFrjvn4SnIlATp3JKGfZLG+VMFZUqTlJ+4gIMEtGXHXoW6ViVXFs7goRdz1ORIYwsfENgwaIYMlrUW9dRs2YQjrU+GcIZsVoDLroCE23QhOIzEsiFb1JK/Cz0TYDeeruFa6DwPdICsxK5DjotuvpwaLpn0lMYUFtnZzFtM5XF6/yCLrn5FBznvOm5+YQsxr+WR+b5+jFdDsVPygyUJMaTGL+FcYyLsGrPD7W2ujzahOGTeOCUQHiXbNta/jJXfCzdzCTnNjacVfFalS97tznPQ4Yy6usTgZHzGUutX4qwToeMtidla0HW4qCcw/WJZuHX2YTeekIuxdxh4dyb6pzp85e+0mMtQo29Cq1yDrEzZ0Z5HfYsvAmXBADMN/CEXx/JyZYsXWHE5BRzmRU6mebbNwpU636xsnHsOsVXnEOE5c+axgsCl02YTd9ImLS1IFi+QTpw8xvn7CSV1qmU2pchuASA4aFw3F8nNrN5x8b4HcDVd14j0Qds2mDJ+SO6gGRLBZh0tsx9NUagVo/QEUeW3ulFXfMMGcuzu+oqTgvQd1uHA4D1qVfeAeUTmOKjcwPWBDLPBmKCnkbeAtk6gqMmbdV6n2mJudVVA7/8DIEJKTX35L57nbRHj6y8mopVaYEJcehxaADMY5t+65eCJXPhh9JYJTo9AsZN48aE3gF+e8cdYXGQvfV5BYiWYyMqp26O3zPJaL6t38ViQP2fE3kAQFQBt6R4gssdZ6KlbozQQLnTxwVxCelP4+nPW7SuPrDCOgg5aZc8IOmrcj6ClaE/Qdq2FkDgvK0rptNzGHrpxZ5H/5rDH3guS6xChvH/HiYRaaYcjKeAsBgEIg/Qfr+c3Ty9YZ4GDYSQ/4J62FC1FVz39HE43ldokyONMCEEMkSQeT2S5cG48vWcKqM/PMPWfNcm0QSmXfts="
+     }
+    },
+    "function": {
+     "arguments": "{\"expression\":\"25000 * 0.072\"}",
+     "name": "calculate"
+    },
+    "id": "call_395744",
+    "type": "function"
+   }
+  ]
+ },
+ {
+  "role": "tool",
+  "tool_call_id": "call_395744",
+  "name": "calculate",
+  "content": "{\"expression\": \"25000 * 0.072\", \"result\": 1799.9999999999998, \"result_text\": \"1800\"}"
+ },
+ {
+  "role": "assistant",
+  "content": "",
+  "tool_calls": [
+   {
+    "extra_content": {
+     "google": {
+      "thought_signature": "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"
+     }
+    },
+    "function": {
+     "arguments": "{\"shares\":25000,\"pay_date\":\"2014-06-02\",\"account\":\"ACCT-2101\",\"basis_doc\":\"zts-8k-20140327\",\"amount\":1800,\"memo\":\"Second quarter 2014 cash dividend receivable ($0.072 per share on 25,000 shares)\",\"rate\":0.072}",
+     "name": "book_receivable"
+    },
+    "id": "call_349508",
+    "type": "function"
+   }
+  ]
+ },
+ {
+  "role": "tool",
+  "tool_call_id": "call_349508",
+  "name": "book_receivable",
+  "content": "{\"entry_id\": \"L1\", \"booked\": {\"account\": \"ACCT-2101\", \"amount\": 1800.0, \"pay_date\": \"2014-06-02\", \"basis_doc\": \"zts-8k-20140327\", \"shares\": 25000.0, \"rate\": 0.072, \"memo\": \"Second quarter 2014 cash dividend receivable ($0.072 per share on 25,000 shares)\"}}"
+ },
+ {
+  "role": "assistant",
+  "content": "",
+  "tool_calls": [
+   {
+    "extra_content": {
+     "google": {
+      "thought_signature": "EucECuQEAWkUfRNLknUs+xp54MwjY/qr6WQc031eDVVtNZiuugRN7gdsm+iMcbi7FQOgxVQb9oL5j3Ru40/4ujrMG25zX4dKd9MVL0GuYWU3OdEGZiW9jXaQumgp2ZOSMDw7EzKvhvFf7dVGCztLJzpldItijZRBrQRnOwnSPT8v1aXDxI7meIwIP4vBGzi3BwxmzaOwTIoxYkBe/Esc6VqV37PIkVO8oiq3UEYtZdNLBC1ZIN3m9KVar0dXD5zaqST5Bmozu4fnSWBLCGLym96PjVMtBCndeSIWdXlXSv1r2R5UbuCzZlVDDOKod1DdGl9hnoOCnGutc6UoHnrZ+BOCD/6bpVrF0jhQsU7TbOfWsGaJ27TUmxDNet1Mj32gGMNTa9GSrcNhdjFokP2O7QjpJaUusf2GQmW/b9omEXTxm1n6TJ3TlmlgqHt2DPenkO0dt8eNA3DfJGs1pkoSBskH5tPyV6MtMExaWMIppzQkEgkVC3NT/GAtDJ0bnGiMtL6t2eG++Rf+zEvt1FMLLw6a5GiumxzcdYSWQj+ztQ32dUqhfpFIjLzkszKbq7u4w55anfUBUrDEE+mlj/dgKgneGqXw+Nf6qgpXM8dGKtBSW8JK6j1r+4Cd3KH/dsa0+n/Z+5+949gKnT14ifw1K+m7ACwssArrBWO8VAdAeZBurxUgJXU/8naBmhxXVEqMFk/PRjlPmASjLmMpYASLCGh5dNECmHuG5pw97GkihJ/pQkIbyByKonZ2Pddj01wBc/K3/xWMch7IMa3NJFF6+QYt2MGhqOP7Kra56aJw1lIASmfzEXCCM8IT"
+     }
+    },
+    "function": {
+     "arguments": "{\"missing_document\":\"Zoetis Dividend Reinvestment Plan Prospectus\",\"held_action\":\"reinvest_dividend_cash\",\"reason\":\"The document store does not contain the Dividend Reinvestment Plan (DRIP) terms or prospectus specifying the reinvestment price for the June 2, 2014 payment.\"}",
+     "name": "escalate"
+    },
+    "id": "call_62997",
+    "type": "function"
+   }
+  ]
+ },
+ {
+  "role": "tool",
+  "tool_call_id": "call_62997",
+  "name": "escalate",
+  "content": "{\"entry_id\": \"L2\", \"escalated\": {\"reason\": \"The document store does not contain the Dividend Reinvestment Plan (DRIP) terms or prospectus specifying the reinvestment price for the June 2, 2014 payment.\", \"missing_document\": \"Zoetis Dividend Reinvestment Plan Prospectus\", \"held_action\": \"reinvest_dividend_cash\"}}"
+ },
+ {
+  "role": "assistant",
+  "content": "",
+  "tool_calls": [
+   {
+    "extra_content": {
+     "google": {
+      "thought_signature": "EuhECuVEAWkUfRPfx3AIq2b1F/UYBwS6U+Ctn70Uf3D9nKqVC0Vl1muVtP5brJVTahKos6amhZ60TSIDK41Y4bL0/djAPpdSJJQELVcjLr1BNCA00+X3Wp8aptyA9lOsOIQA7s5NsKGmAGD/gRBc0VzgOJsV7MF5mqyyT2ocKdEGlOWCnVHwJnYA38n2i7xb+rl0LZhPEhWzeVIwbEO4V5ccD7wrb8gWE0J6M8hklmjsbcN1zhqeQFEIKkgaEbmqhWnYAJwkMrD7YusleUww7atdAE9VNQ5a3W2szCb+AsD0IYEzM1+YnRLHSE/48qbNTCrm0xza+yPxEo8h26D8AmZdrH+LAWYM69WINTTve+R5BxJuAG/KAcwZll2B8Rn/WAG0xXQHaXQOYDetrbpocGMiqR80aXGjAxummFasniFl7KoHM7BJU7OTs8nI1zuLSsK9eO6y61hd68hV0nE49QZj7FlSnSERoyKL1um2uIdTg0UWyNXehLOIF0cFZHZf0miwuUoEi2WZ+F7FTl8hTRbVBETDg9wc6Q32Mh7biMe4WwAT7Xew1YhtNAzNN3tO4uTKrwr/n8d/51P+Liviu4gUQiiQzGjE+NE5+519i/8qp/sHML8c9LCIg88jta0beHyyqW3hYH7nMW9qZB1dn3MsFeGHnwzDiSpDKIHMlNLAllHtoZG5V7PyrPIyeBzodNbVk87RXDSuyPEGo3GP/I+rXaXPdkcygMMeyOg8HEAzJCvG5ml/4YpYNk2zjVYX2RiiHKyKn0GqIvSUQM1vG9tEnCigSD+hAkl3Ib/UB4wEKvP8EdPNJCvpg+5AHBiWxOvcTrcPWI4Ai99t1AqXyiWx6tHXYSW0KRWWagM5dedeuRT8VaHWmAxEqMnIt5ui6f0eTDsr0zfShu4UOlevaaRVjY7BSuV7Z4QU9lgyHOIue0JdJWuudishn0nIx3ZEptkERl+VpjvabSQjqmm9lFcUXyU0f9KJOCJtFFs0D2Wt6xRoFw3ZcyJrDKTANSFgDI5tAZ+QunQqPZCAzszDvIKfGVa/dCMgijFgu87IoHY/nslpj3uq12ZLI//7aU5e+JiTvRVxPtL+9raxKysTPG12fPtBib6n1NLsg6U/ow+vnaKv75uSVcd1kaaKAQ/VqYJJmANNI2HoS5A7N15hQGbUoBf9DghCkd742rOOft4iznn+Uvmf7zWXHf9kfSbRblEesfgPBE61pihD9yYt/8HGJw3SJpmGVGsveErXuaiduiKjCbo0q8aEizVKy2InoATeZXw7LQEtloQ0dLIsEfXNY+gpRmsBF0yg7EhahV4TRi590ONB53gc4LyHZYhXtpdWs9Yffw2ZPeVSg/4GePbGJcMsCEv1GnNO1Rmyp/6yC39kv9LRldQ66vxkv0WTA/Q5VZp+ywy+V8zRAJRFes6zGh61AcZKmFKKji5ntA6jLMyCDlSuqnB16BIsq20FCyHq1YPrMWf4+BWVJYOAATsC1UEtfR3yzpVPJjHPcYqletIGnCYx4bG/KlheY0oe6KlHuT1UA/qnEGAzEYqL4BBRd+RjtiB46CGsKDufO2fbJDBMy38BduVHgXicaO25bezM6pu2EG+ncKYDuJfqvNKLQydiFGH0R1tErwcRCqrVCtTBs/HesqB/+CAVvMMMGICIw+h1uE+/29N175w7guk7hRf1/p05fYeTNDuarqz1/gJHbl3UUfsUB2hZOH6ptqQ/jrxfMFaNwJrVLHMvtZ/6mef8HnhnOGRE/wC6MokzlFzjtfIQ/ywFoLpm5dVW6I37rn5vKDxZOSt0XIdR7K+9R9d+pXEnLoZH1Jnp2iJ6AHahbkSiWADm5SY6T3W5DGQ92sbrdWcJlem79ZfMnAsPYtjz1r6UEImmzMhanR5LzujpFot+EA1ZCHdP1DIiNZzawlQzHjuAmOXQVBPGOt3iqtUufVCMdA7FoLHHE3Q6rxMuO2wvyPOJJRVLPpTXfogqvyg7xIA1Cm+G3WXc98H/THsAXPeT0BAoJMfcXXbrobPCFGbJHxgQDQBJRmd3ZKEtHoRr3OBji5pGZIKXk3BiOWLGiPMyRQ2DS0j/h0RtbbRWYxHs+WNQ91PKqH5ertWz43R0ERO0pZdqCa+BN+wKruKPV+HDc5QrY9X3NXAirbEK2hJEPwpiCGDVcqL5yET1i2DWZYzJaS4BORoMQK7AsLUGZj/A/EXI3/rjA852O3tUui6W2JsFq9tXBf3zrZQa+ZE4UPi6yzvqe7SbUxVsWa98Z5LIJe3Z9kxPeL1zEYvm62gSV6trSaltfZMmlqkLGsMuXdIgM3VQw9Z8I1WRh1a/nVAepBYG0Y8bjIgxAwhqLLaMUnvoYksl4hbl7mcNp7q80Vinzecz6q5idzPhTVII3Jfr2cyYIBONe6CfS/Xwfps3GGFpq+4nbUAZtR/bB/inL54u0bJzMAe+G814ZcY7QQ65Td5JTEZVIt4O+fEelgiG0WEp/gcbel8DIPNdEeKllXEndM3fbBHcw+cSAi837Nqd0jXxn5gB2Dn3r0tbqQduoR0L5TyVh5S06r9l8nlqaIOebbOR6p9dJ0/C376d+w+aWMSr3CvGAn/l6GCfcvgJPBiOkn0g5P9lVa+tDgWIE6VBERBHjX3jLV9y4fNwhTjgpzVVEAxWS7lh1tzOk1VREruCPx3vyb6+nOxVOaAlhzFQTDNOae75F8Uk4EQJLBlFBJ1tkJ6KqUh0Ikc1OrFIeRXRS/Pv5aWB5EK/XU8Drt45qurumMYr+sipNff/c1IOYy6G/XYhjMmiBvowZqlg7IK6Q4mpz9yVNgP0+bb5hRWoUe/ihMcgoZ6e/UuZyRrZCyC+90mt2lHnrr9CRTpfbfu9ignmrhlBsOhUYK9m6i6kdOn7V+XhMwEcYuvKiPGS3shqijZ9NkwWRp8cEe18KAtgz3LHdfpFCM8sA4qGl6RTDm3rroQH3LoOrC6VV7tgep0mXzA6SlJJK+trcAew71ifI75h64bEuuTrIIqP/nl5GuRk38BhkgPcrmiVKGKA4Dz80l+MnVGLPyUi9xnF0gZQmEhut6ozsmAxHzkLVOsKQPCb301AnyDdPBDyglrP0w891loYq8vBACYalZRjjSmwtCwavOmRcekHFQ9cnU1PfGntvHlC2xMUVA69UDA3rgS5PpAtR709PuhRJE2K9P0V7iQnoSS0UKlh9ODyPPHiYjdCBjkoZ+r7sx2hdBWisNgjDNsaqShta0j7ORDENVLoL25bkxNWQm1DqOa55JissD6brJLLn7ALZLtCEa9VHGiuQb/S8JRU27iJlV8gJ9r4ZyDDgkE1OqTXWRWcaQpOKOAf2n6EpGC+P/4Ank0EFI8GEWTwvZnu7ezGG5ahXTlaC2VDf069FZvVnG4k8X7w2K6Ir/9+NSxZViKZ3i4yZQ7FdF/CFH/vJFIr8d04+/YLXpPxpDH22eJHDSppCjWRJvKGijOSGGYkrR1ehfkoMLY3jj7tnFJDNT2l39AXFrB4mJEdwu/0nEJ+k+AO9HDOSDPYhIlUk39cAQ4KLRmiW0IcbR9Nlhi19zRgZ7nOkP5Lu4Uap4REXVOCGdt3jj705ogT/mRzH7+ihPA04r1uapsdhVdiVmKoFKyE+YUnQAFEW2+oIGSWALt/6NkJhlqmka3KKTLiu1Tk6jkhBqGIt/Td+1vNczakyck8QVyM+HG6wYM1cu2/iUU8fO8BkbvYug9yOv++iG/E8gCj4lN2dh2zkjNeY4ZQPcAbPNalUxaHttNdpEvRN/dunUL7ze9/Ml2ZZofmuiYkiC+JfGLN+6tSs0pwOnrnRIC+KezAo8fNcFZnEYZqfIz9NJ7t/NOB7DTnWEEWI3Zqk0aIDdx443z/CbJ+UYbf6eMqUD9OsYjCd29d10zF4JImDBudrizAv0Z7kAwQgtYRGdJuCNbLdTaJa9NVvTwUPfF8tqmSC73UDLc0sF4vd+fNbXv7TNms0FNTtz6ZGFy7njNMalLrUEMK2s5V3QEYnqWc+GOzBrKH+WdS3KMFJrignm1qJSnCTLmvSIL+p3uUb/iiW8jrsgPU6xgCDAOo9G/6tpII/gitrSLd4LXsu4lLoRri73qpMsjuFcidP1//NYYSv/QunVfAbS2W2fC7kglKFtcn6rgSo8BmIWrexgP7aeiiuXTnGaATvUnLtpPuB++Fd5+G1c+oMBo4w+ZOjIQDMfbmmw6XlqAiGTS3ajH/JWBWi+NT5nMjnfQBvqtwVTiI6TkNR5TEMWaVy8I1Q7UP2S1xNFy1ANXsE3SaX4BdnxJxHvvMpwQ7tfqtIeOWpSTvnW6aKhkOTHrxrn4TzHlEzs7YO5W7cx/6v9kot4nMaYgZdMHDdlfMJmXiLWtzcGFfaID1kosqATIG90fWpU5EGWgTXP337oG9v4veKBZvxF0W4WAJwL3whfRUEJKjGBm/ZFtCORnMih1NbHWGjaVbyCfQBcNKzUeTEEMoF4Rnz87JTa2/cRbxTwuvTrEC7yNX0/DVTO9AAGjGgxjS1CPWVtP/Mp3RoIbhOatgamrec5IHYj/YSNGxPe1smnIvp6xUst/edOdk9oqKeicmJT4Whovk/UwQQNkg+3ZbF3XL6alnE1ELLN7M8ryfQqT5E/KZ3OBrhmmP2jdfVgfA12eQYqlg4SME0HSN0IMbgkTFTqy/Jio7MwNntNlpalSqRWbv5CcT0IQUKMJt5cVnus+cFquw9in52Cd3cKRuW3Fwjah3GX/UXN5g+bH2yMkwx5NPWG8saSYCOqF1wBoeDKDGyv9rOTq1l2n9Zjv4BeSehbNorWeMEydtZEQ8Pz+uLvCUmsqiDWIslOZ1S9xspi1Ai9AUW5GKuV8y/F7NR6cJ3Ka33mNVp9PnfWDT0R2G4z/0gZz28HJSP/1aVsNuECskfZv2GoVpq78O4JbOi4G9AtOHe023G+IKu1AjGt1Qt+mmV5cB4rTXOQ+yI8vurppFwpB0ffOtzrtIFHpG52Upb3Yue3i7NMlOeXV3qj+Vn8QHCE/kXzkKUT+roksL53FxRemxkBYg/RkJNtOCt1dhBO0i9qxTBAzG6Z3Z/OJ5Fhw4fLLoO5tGL2otf9cwe9G9oB8K90VWl86VPV4d7MgazOXt0T74X3fUcM8xk/B2awXO1SeU1onvgQ7RO6BjGzD2jmERNyGjIupSY+8fEJFnCOh/8wWzhG0sZry2LmpjS5cpWJFqbXNZuWVWQJGzmTJ2/RCZwFdZq91PyN+gk+B03b9FGbVeVMu6RzcGhA34brzwM1c2W1CqCjvVtED5zVozoQ+W+MUWRy6nrOKEdoPavqNaOwetqd7T9VjbqMckCNp2x5xU4KJM95wcQBhcvclVhB6UU4TVCTTp1hEI1A+banEyoYux3rdQAxPEAq4gZF/GvKmrgwR0ElY0E85sZbUUl8rBk4oo8EBvmG9CuAP7FchhXEIVQXYzdq1CGXBmxYWYMVYI2X7O4VIVZoRP8P+RdMqfArUFqBHxSnMExZECVKy9R9jaeCL4YvGw6k1c+0q1sonO8cPkasXwNd5DMIRjqf93+JbXKtysClLirrAjNJY06FdZYOOQSIVhJ0c6W7iSrI+wOZS+rsMpYnLh58RHeBN2z0Gy7FfQBEzhkpW6r84TcmPN3JeUeLgGYdWHchFwlf504wO0/weZtxOY/OvLo9JcQnlea9SLsBoySW3+W/2VaEr4vTbRSpQSv7bGO/nGyX/r3GrJM0TkWXocH46qGCw193KrTGm6uxWD7jIn3FRjCGThbEzN3Mi0dzeMLPf6G9nL0wbKpzRL9BGjQRud8oZUZbYADz7O+BcfpRmJBpimVNv0roBSx0vQ/B++YAB+a+5Z6E8yyILu2qPVhGjbDCLwynCGL9i4mM+kdTpPfEpq3K6WMAqMmCgxhDl0xUyMvOfu3ovZQwxfdZxuCSis8k0tPCd4NMsJWmb/eXUvEulQwo/Ga4gObPPuRcfo861DSXNNctr87DXb/VTThfH352D+z5kEY1O0isPuQWIpqreyjeJduXilsHDWxm1j7lKafJqcms75u/y/GRVhJAxgV68e+qpTuVWI6OXK+AfFVnIC98TD3J1BZR/AwN/2xkSS2MGgaHPLRBhiucV2RpvGL4kXtg0lHwfYQwAfqYVJZpxXy61NJy2umJJvZESmXGI89V/nemKh5H+fz4CC/SvNpCkbKaXl88WlOV/FiFy3IzxJ6xJ6ZBmoPqhvVAgeuylWCprJT7vdkp0bNsHewmfLI9CfQ1xowFgNt/ILssdfpniyH4ND4LWLMTLKmnWf5TigWXhrNzSpsU5AJTva5hxlm2rThnnBRNnH55DEzAcoeoQXZAHczCoy5q4je0acdIojimzcoyQSapspmAnZeDqqZ7vYQS31aHtijB4tDfzU+GQtvflVPom2EGqH9FW7vNbNizm9V0Rm71NuVaj7RtlRYtUxaa+94H7V6zhpzlZLndBxMMIlLVdpw/OoapJEa3q8yBPXJ1xBZuDyOc5FTCgdVD2W6dUrYOSXlpu1qnbfhGQMcbf5ofwfmmW8RACyi1mm7KluIEgpX7peVqrq4QZnTOgNcygj+R1lr8cAfaqCgUl0ZOJKg6NDyOAFIWry4JRRyR7PLncJK559U5BKYQ2mCdxhCriYRZlgPMEUntSKAjdsAiXhJFxOBZ3F84euqA9CpY152hUI72IqB/99a3y8tGui9l1mMhls7JzuBiRW25IoCPjF6wwkaWJFpiZvhxTqVfJvNNlPsGHXVaPCksPjrJUvXf06kfzELBwthRorfdBbOVq3sDpr9kbNEbA3OiqKrMec/Q2xtWebM0G4o6XDj8rdc5s71j19YwBXO3yQOaYEL4l5QSwqDU76ZNv2dfrExiUUbBTczgURq+DZhZNjEKb4AsqFcBx3UrR1YJCp0RnNA7IGt1gJQzdZtu8Cd4JRvIQ2ZayRNVieAPXro3Q/Yuf5IfW7XWraDfW6SnnSIkb8jmXBwRPJ/S2XsP4+ODmT8fpDtbORgkTJ8i0Z+77zWuPbBZyRAvU/6OkK4niYPUzVi+tPcc7eqB3+LqZnR1/4e8+2Hb0Jm/g00sbLmWUTCvM8Mjmbv4pyAa7gkXFQg+jqR993oP1Y4AsABsJCD7WP7ADEvT8T/H12rtPSR2BMDwCR66WKYpzd33mLrKKmKpdFErZfmxevbh+JsccR/wJGNXEypDebMULAe/9jZkiSI06+rPalDNh4L0hpRLk64V6LDDIgg1WUYyEX0igb2t8tgr/DEQljTf1UNNddhgfE5W/qpazHY5eFrNa+SfahwRO82CsOYacDIbhUsz7Rl0U/73XZ6HG+Hp+C9R3qGTHK37eauouigODejhVdCIu7iDebJZZjYiFMfH8Tjgw57Uz/XWo1kl51WJQ8XGkFBUOHqWkqWU2fHhCoHYBzbdNb4yet17IgDm1x/Gg0qFUDHwD8usDYuzKMMzMq9kCaMUxPuPJOWA0PNPVTF7sGNnwn4NZ5uL38LJBry9San9/Slb6NIxqOMGorWeVwc6MVTiuFoTrF67BGLGFLBUEkG/dYeFd6xFeAh9GdeEIH90TTABJTOt/IFtNP8Fvw2giRFIgPrh/tiRez0W2FwVUOJ8yDZtvImRr8j6huK2+YMamT+4iXtdbSRzogIMasgid4cO11QkzGJUEc4php5OvTBPrEiqdDXWK0UAA8cW9ol8R59v/9nrP2pwpxNNYxhNywiKipkOp5C4uD83RDjpWBEedsookEHEL7XTEmDpLEZXVXsYoxTMgPLe7WWcGpnT+xakwcW4rs2u2dHkNGDtTzaNwhbZljp4yX8PcYyXmZIT2MbOyhKUkHH6xyKX82No/KrBw79GjVuArcZeUCaiel4UkbIDtr8LhWSrCu5sStgPJyfC+bBBClG0ksebDv+YeZ4jFZ+BxSfuHsEup/+fJ1n45g8MkGCIe+D7yf0EIzTROEDICjO3cpflDbEjMgB8Ee7QyE7TzFoeLaBwzj5Efdx7fsPFo9+7DQpIWM/dM6Bpztkbo/qtlL6GmbSdsATcXaUZTfVyxq/tDKzTIEfxc1PAvZcPw+eS+NbKSJqNrJGJadfvPMTSd01K0kM1VGzpOPxmoSizNAEK0fnHchTqOsn9EePTdgRJlDHsyO88YNxDK0rO35L1oXe+vuED1cLOidF0Epqd/lB6rZ/fZT3AhedBQQRKvgt1Y5CK/AIl3iakD2woE+7K3HEm0CJjAqwveMnctjN1c6FzzNHIJ61YaUnFLTkikkR5nAP6PY6XokYkN4Tfyjmq48U+77GlaC4ytHT51DWGg6aXpTxn5XzYLcqQssIgQihDZCpywO1W4UJgH4tP693jrClVrh/YneFe5AwRA9A4jftplo/cFQ+12EnEYnhYqDflpGJ89Mjkno+tFnGu1bgBagO/1YnqEyS0Ciz/eBeFmzaR45jdlfknTzPeZXmdwIInZCmXhKqwzSeLcpzfhL/VODe46jgauI1r8mZuN91RMnXe3BPiQ82vG5/iS2esckrtGtUuiepa3wm9gcghqn15QG2snG11SzXe3d/yp6BTsdJpbD9sP40qIhDEEOkrjYdgCSRYP0DqY1F/kgd+Z1BGX7P1ybS7Cy5Zf/40GgNhxyTqa0MIfxGFi3I+e1p8RprRYFKLix6eYpDcfCF+gwjzxzIfQSVxtruks5R34NsETquwJI3XBC+koFA6PMwp6f9+dKaIifHOqiQO504exclz8/frOqfDZYkcVuHUao+yCHlWFjfBPB5McRiN7tcgw7wdGqPSdqcvMCWfyYcCL3homBtkmisksYmPn9j92DxeqHFOS39RKb+JqR6xMGJBFDSfbtChlTzCxUlXZjxLrByEhJLo1dpY1+Zk5mJaIC40nwecC4/jCbVstNg0gHUjMi5KpYUvFC2oRchdxntnl/aQ364ULIuTUwu3BxmAQxgj9ujA0LSKKJMOgIuUVCBIh6ezcgoDLREqTnkgT0/k/h6ieH5xSqsE79C0iu1HLoSC9t95+pHSdN/MGnvwy3B35Vcwxa4LIuuqHNCNcmKbhg7dXpeyK9eljcmWVs90kLVZNWIFI6KlMZ99RWiDYBQIAWZZdYmjjpMevBdid4NHwCpjE51Q/BautO79JLvFEkgP2qb2+Q2TpLdCNPe1QrE7gXH93H3w1797x2KOKhKOb1OmwMdKt7sJrbd53ptF0E/lfdu4cpo8o3nbfdXpjbgY17nxaB1fz8TiTfTJXfn5EJIaBs+Al9D2kKQPw/dkmLkgelM4klTlVlFcYtNFYDhOhf6xbQbl2gjhqrbSr3D/UvUrHDXbz5nEu6fU1GcfR7Od3NEoo/+LgRq2fDBb5dNTBNQ3Aiz537wX75zxPHtO9jKplDDx+W5Jn/9QpbR0kEzX/mDpy6VDsD8GfBJ1cp475jmuhPjGV8/sONQZBHYzUlcgIwJ9heUEhFb8QupU7dYoA/5ivxDVs1rr/Yqm+pJPKUKIX+98kpPHky8aqXpULZuPHdKg3YkmLml93QA4qtFfA62y80iWgbT2W7UweERdkrAgwsnpCQ1ytWbNSygdlDbzlFIaHEtR4A+R28OKHMvnTbWhGsNQ3zWvqtNaw44ERvx8i0kT/12HoawnIF7DUEcHmu+LK4PC2UFhYklDejFeZwWB3kYBDil5LUZaa2Aw+BpB+t1GjmXqZbrbev3itqZtmm4JXbAtf3x7B2RPtdiJmcjiPAADhlQDD1fypbB9baNmws5A+WVDI3wzp82HdssabrC+rA2lzpVeqtDgjbATfQ0zKzBQlk6ohgHJTpTYe6jMS4PaoWyjWfsHN7nNWdi0e8V2H8uom/705+phx3RKAGK15DMuLhCXqZFtwu1j6m6/6zpHKayYRcMsJhwvR3V5fjkXlqy5igKnnVp3cSUrbYT8S7hoJ5XD3Jc6xAT4n1d0GKlzMoulgQ4ehmS2Auc+7bgU683cnpP5/v6Rzuws3HFs29oKe34pPKFUUwG0H3KajSJErQK7RvXTbjqMApMuZ9r9oyo7pEZRyzBZDNrh0NVRu8CuZljeXORUfjsQeEJN26uAVwysEM279Pm5KKR4H8yY9YuZEffGwJGBWMtLO4TzYAd+SQUtK4P/qDETM2Kkjc0gJLpl9H3Y5W8WeMxGQyY075gyHSlOc7TG/iINQWy6PIVlM0qis4klqonEoEofNPSWNVoOldXt9IodJDjFFVlLfVMRmNVTYVsJChi3WCIfpk5ekCHxZ3hlHHsvDK6l+9TRb8KA1RR8HbjJ5ZEjBInUJCtZBNQKTardWqR0ITlj/PtHMjg8PrB79Fzw7wZew1KIbHHJ9cIqkfXgdOWvi737hSc+tDML4ZWqEBzmMC9OohqApL8bouwol21AC1o4ynWziO50UsYJHH8W25TXxoKAQHbyBYwKhD1fkhvYwieL1W7IomK/6ZkV00l/bIwn5vVAZRtlNzqkUn5uRCKIJnbgo9YEOeYamroMMx0kxN/3MeHn90Clo5Lm/Es/LZgdd4wCuv6Uqcg6eqvYeS2EUQ//w8wLDc1/DLGLRuRDaknBsL6hlis9hiJJ3yk6ubIRH0hFx7edLjgaGjnJMrMUx3VrIuT4lQ3fM8I1SB7zA9AiDrzQbIbR+MKBGCZtdhKT+eoNTBkvpKO+gbD9+EfJ5V1rDA+oBLOuSR9o02Lv683vBOq5YGDMuiegkRtpMNAC3KQIIAv5vl7s9KrHHKAlHWOq/dczzWhb5XNu38vPTZhAd01qU1vN487T3yB26H8Vifnb53opTDpbAcYby1BVYpAQj/2OBJQXG/4+UIcGqCwtv0VBzfwQKHPWRtJQLiyXXrDJO1IT5VPFGDHBnX4EYR24HVQ0JVeCqh9hAMMLoLxZ/P11A2xBsGqAXo2Rf3Y1mZ2fs+71JSYsPymA24FTlF6dRMjeGuwgbF8/Zxhg0HQT42efgsHiutg6/QHAPhAZkKVofsy97EmjxMhpiAtkXeVUMow8kmos+k3VIs9maslVKJpvwbZx6V2MFj8r22DKkAd9ihiVoCQpEz1G+B+rO1p9NNN8nOq+/4IiO8RcxxW8EhhzNlN0VmZeL68/ypWTeERmt/6AaIT6Y7v70Ehn2MjlpUddHn+wJKapiGGB75p6645/oTROuA/I4eK6k+b5M1p4OBMyXlo90te8uach9SshKzKFU9lEHxtCpvGNJWF1nALVoZ1HRiLZY+QEmsJyVThEOu3nibr+sGk97q0USpIeHI0xAcMUvlkZsz+wIbtMa2BJ1sW2yr2iVQsjwOHYmdhe+g6fuXFIRwttH3ClsA8dcXtY9TMZzHy5Oi7yJZ1vDCfQwGz/DVEpChYXU5gFOSszjGqLdHVBE6WN8qLLngHlkHn9cg7lof1F5WrGvkIVy5mToCchggY5IpQsqz7F2KFACCf+CsDp9GcgT2AP5e32iqouWafmVm73hVJXtZ0WcaYoq9X+zsIZlTIgMNyZo9FT9KA3m4S7AFoN34QKAZwXy0stCmHgxyjREZLaNEWtqkhDKe9LAUOPT0nHdKENMkGuR8+7rizOs3UAudAZpmbQXDCTlRyFzjPwoYatrfy/79YIZVstgp98ig835iYDTgjIdl6udtDz1Sf6uiKMtOMnV6GL7DjzI4uHlUlA92WQWLAPxlgnBdrukOk0ReAoX58iRx2wP72S+TDEbU0BqrSI1/kLEtyHKHUIPbMsycudYARESHJ1c7se/vItaXAOxAqSkDeSOUepuUpXDNPJbsL4aC"
+     }
+    },
+    "function": {
+     "arguments": "{\"worksheet\":{\"E1\":{\"terms\":{\"record_date\":\"2014-04-28\",\"rate\":0.072,\"pay_date\":\"2014-06-02\"},\"citation\":{\"verbatim\":\"The dividend is to be paid on June 2, 2014 to holders of record on April 28, 2014.\",\"document\":\"zts-8k-20140327\",\"locator\":\"First paragraph\"}},\"C3\":{\"impact\":{\"gross_cash\":1800},\"changes\":[{\"what\":\"cash receivable\",\"old\":0,\"new\":1800,\"where\":\"ACCT-2101 ledger\"}]},\"E2\":{\"position\":{\"shares_settled\":25000},\"basis_shares\":25000},\"D1\":{\"decision\":\"book_receivable\",\"actions\":[{\"quantity\":25000,\"action\":\"book_receivable\",\"basis_doc\":\"zts-8k-20140327\",\"option\":null,\"by_date\":\"2014-06-02\",\"amount\":1800}]},\"P2\":{\"entitlement_basis\":\"record_date\",\"entitlement_basis_date\":\"2014-04-28\",\"election_deadline\":null,\"dates\":{\"record_date\":\"2014-04-28\",\"corrected\":\"2014-03-27\",\"declared\":\"2014-03-26\",\"pay_date\":\"2014-06-02\"}},\"C2\":{\"election_required\":false,\"options\":null,\"economics\":null,\"default_option\":null},\"C1\":{\"cil\":{\"amount\":null,\"applicable\":false},\"entitlement\":{\"eligible_shares\":25000,\"gross_cash\":1800,\"rate\":0.072}},\"D2\":{\"probe\":{\"label\":\"NOT_DETERMINABLE\",\"derivation\":\"The document store does not contain the Zoetis Dividend Reinvestment Plan Prospectus specifying the reinvestment pricing formula or price for the June 2, 2014 dividend payment. Escalated missing document Zoetis Dividend Reinvestment Plan Prospectus to desk supervisor.\",\"value\":null},\"twins\":[{\"id\":\"TW1\",\"value\":1800}]},\"P1\":{\"security\":{\"ticker\":\"ZTS\"},\"event_type\":\"mandatory\",\"issuer\":\"Zoetis Inc.\",\"governing_doc\":\"zts-8k-20140327\",\"superseded_docs\":[\"zts-8k-20140326\"]}}}",
+     "name": "submit_worksheet"
+    },
+    "id": "call_435382",
+    "type": "function"
+   }
+  ]
+ },
+ {
+  "role": "tool",
+  "tool_call_id": "call_435382",
+  "name": "submit_worksheet",
+  "content": "{\"status\": \"submitted\", \"episode\": \"ended\", \"ledger_entries\": 2}"
+ }
+]

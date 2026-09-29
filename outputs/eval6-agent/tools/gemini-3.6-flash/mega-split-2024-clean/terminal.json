@@ -1,0 +1,127 @@
+{
+  "P1": {
+    "superseded_docs": [],
+    "issuer": "NVIDIA Corporation",
+    "event_type": "mandatory",
+    "governing_doc": "nvda-8k-20240522",
+    "security": {
+      "ticker": "NVDA"
+    }
+  },
+  "D2": {
+    "probe": {
+      "derivation": "The document store does not contain a tax withholding schedule or treaty documentation specifying applicable withholding rates for the fund's dividend receivable. Escalated to supervisor for tax_withholding_schedule.",
+      "value": null,
+      "label": "NOT_DETERMINABLE"
+    },
+    "twins": [
+      {
+        "value": 1800,
+        "id": "TW1"
+      }
+    ]
+  },
+  "E2": {
+    "basis_shares": 18000,
+    "position": {
+      "basket_per_cu_pre": 180,
+      "basket_total_pre": 18000,
+      "creation_units": 100
+    }
+  },
+  "P2": {
+    "entitlement_basis": "record_date",
+    "election_deadline": null,
+    "entitlement_basis_date": "2024-06-06",
+    "dates": {
+      "distribution_date": "2024-06-07",
+      "record_date": "2024-06-06",
+      "split_adjusted_trading": "2024-06-10",
+      "announcement": "2024-05-22"
+    }
+  },
+  "C2": {
+    "economics": null,
+    "election_required": false,
+    "options": null,
+    "default_option": null
+  },
+  "E1": {
+    "citation": {
+      "document": "nvda-8k-20240522",
+      "locator": "Item 8.01",
+      "verbatim": "On May 22, 2024, the Company announced a ten-for-one forward stock split of the Company's issued common stock. Each record holder of common stock as of the close of market on Thursday, June 6, 2024 will receive nine additional shares of common stock, to be distributed after the close of market on Friday, June 7, 2024. Trading is expected to commence on a split-adjusted basis at market open on Monday, June 10, 2024."
+    },
+    "terms": {
+      "additional_shares_per_share": 9,
+      "record_date": "2024-06-06",
+      "distribution_date": "2024-06-07",
+      "split_adjusted_trading": "2024-06-10",
+      "ratio": 10
+    }
+  },
+  "D1": {
+    "decision": "Confirm post-split NVDA position of 180,000 shares and update PCF quantity per creation unit to 1,800 shares effective 2024-06-10 following 10-for-1 forward stock split.",
+    "actions": [
+      {
+        "_entry": "L1",
+        "_kind": "confirm_position",
+        "action": "confirm position of 180,000 NVDA shares",
+        "quantity": 180000.0,
+        "basis_doc": "nvda-8k-20240522",
+        "by_date": null,
+        "as_of": "2024-06-07",
+        "amount": null,
+        "option": null
+      },
+      {
+        "_entry": "L2",
+        "_kind": "update_pcf",
+        "action": "update PCF NVDA quantity per creation unit to 1,800",
+        "quantity": 1800.0,
+        "basis_doc": "nvda-8k-20240522",
+        "by_date": null,
+        "amount": null,
+        "option": null
+      },
+      {
+        "_entry": "L3",
+        "_kind": "escalate",
+        "action": "escalate and hold: book_net_dividend_receivable",
+        "note": "missing document: tax_withholding_schedule",
+        "by_date": null,
+        "basis_doc": null,
+        "amount": null,
+        "option": null,
+        "quantity": null
+      }
+    ]
+  },
+  "C3": {
+    "changes": [
+      {
+        "what": "basket quantity per creation unit for NVDA",
+        "where": "MEGA portfolio composition file (PCF)",
+        "new": 1800,
+        "old": 180
+      }
+    ],
+    "impact": {
+      "basket_per_cu_new": 1800,
+      "basket_total_new": 180000
+    }
+  },
+  "C1": {
+    "cil": {
+      "amount": null,
+      "applicable": false
+    },
+    "entitlement": {
+      "basket_per_cu_post": 1800,
+      "post_split_shares": 180000,
+      "pre_split_shares": 18000,
+      "ratio": 10,
+      "additional_shares": 162000
+    }
+  }
+}

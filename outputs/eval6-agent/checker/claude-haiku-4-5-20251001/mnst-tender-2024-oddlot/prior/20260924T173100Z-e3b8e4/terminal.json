@@ -1,0 +1,136 @@
+{
+  "P1": {
+    "issuer": "Monster Beverage Corporation",
+    "security": {
+      "ticker": "MNST"
+    },
+    "event_type": "voluntary",
+    "governing_doc": "mnst-results-20240610",
+    "superseded_docs": []
+  },
+  "P2": {
+    "dates": {
+      "offer_commenced": "2024-05-08",
+      "expiration": "2024-06-05",
+      "results_announced": "2024-06-10"
+    },
+    "entitlement_basis": "shares_validly_tendered_by_expiration",
+    "entitlement_basis_date": "2024-06-05",
+    "election_deadline": null
+  },
+  "E1": {
+    "terms": {
+      "final_price": 53.0,
+      "shares_tendered_total": 119018767,
+      "shares_accepted_total": 56603773,
+      "proration_factor": 0.4718,
+      "odd_lot_threshold": 100
+    },
+    "citation": {
+      "document": "mnst-results-20240610",
+      "locator": "final results announcement",
+      "verbatim": "Monster accepted for purchase a total of 56,603,773 shares of its common stock at the final purchase price of $53.00 per share, for an aggregate purchase price of approximately $3.0 billion. Because the number of shares tendered would have exceeded the aggregate purchase price of the tender offer, shares were accepted for purchase on a pro rata basis, except for tenders of \"odd lots,\" which will be accepted in full. Monster has been informed by the depositary that the final proration factor for the tender offer is approximately 47.18%."
+    }
+  },
+  "E2": {
+    "position": {
+      "shares_held": 87,
+      "shares_tendered": 87
+    },
+    "basis_shares": 87
+  },
+  "C1": {
+    "entitlement": {
+      "shares_tendered": 87,
+      "accepted_shares": 87,
+      "final_price": 53.0,
+      "gross_proceeds": 4611.0,
+      "residual_shares": 0
+    },
+    "cil": {
+      "applicable": false,
+      "amount": null
+    }
+  },
+  "C2": {
+    "election_required": false,
+    "options": null,
+    "default_option": null,
+    "economics": {
+      "proration_applies": false,
+      "factor_used": null,
+      "odd_lot_exception": true
+    }
+  },
+  "C3": {
+    "impact": {
+      "accepted_shares": 87,
+      "gross_proceeds": 4611.0,
+      "residual_shares": 0
+    },
+    "changes": [
+      {
+        "what": "Cash receivable (tender proceeds)",
+        "where": "ACCT-0093 ledger",
+        "old": 0,
+        "new": 4611.0
+      },
+      {
+        "what": "MNST position",
+        "where": "ACCT-0093 holdings",
+        "old": 87,
+        "new": 0
+      }
+    ]
+  },
+  "D1": {
+    "decision": "Accept all 87 tendered shares at final price of $53.00/share; book tender proceeds of $4,611.00 payable 2024-06-12; confirm position at 0 shares post-tender.",
+    "actions": [
+      {
+        "_entry": "L1",
+        "_kind": "escalate",
+        "action": "escalate and hold: Determination of fees/charges to be deducted from tender proceeds",
+        "note": "missing document: Letter of Transmittal (referenced in mnst-otp-20240508 but not provided in full)",
+        "by_date": null,
+        "basis_doc": null,
+        "amount": null,
+        "option": null,
+        "quantity": null
+      },
+      {
+        "_entry": "L2",
+        "_kind": "book_receivable",
+        "action": "book receivable of $4,611.00",
+        "amount": 4611.0,
+        "by_date": "2024-06-12",
+        "basis_doc": "mnst-results-20240610",
+        "quantity": 87.0,
+        "option": null
+      },
+      {
+        "_entry": "L3",
+        "_kind": "confirm_position",
+        "action": "confirm position of 0 MNST shares",
+        "quantity": 0.0,
+        "basis_doc": "mnst-results-20240610",
+        "by_date": null,
+        "as_of": "2024-06-05",
+        "amount": null,
+        "option": null
+      }
+    ]
+  },
+  "D2": {
+    "probe": {
+      "label": "NOT_DETERMINABLE",
+      "value": null,
+      "derivation": "The D2 probe asks for fees/charges per the Letter of Transmittal's terms. The OTP (mnst-otp-20240508) references the Letter of Transmittal but the store does not contain its full text. The complete Letter of Transmittal is required to determine fee terms. Escalated as missing document."
+    },
+    "twins": [
+      {
+        "id": "TW1",
+        "value": 4611.0
+      }
+    ]
+  }
+}

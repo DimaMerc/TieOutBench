@@ -1,0 +1,82 @@
+########################################################################
+  EPISODE zts-dividend-2014   arm=tools   model=claude-haiku-4-5-20251001
+########################################################################
+
+--- WORKSHEET (the submitted worksheet through the unchanged Phase-1 grader) ---
+========================================================================
+  CASE zts-dividend-2014    model=tools:claude-haiku-4-5-20251001    judge=mock
+========================================================================
+  CaseScore (gated, headline) : 1.000
+  CaseScore (ungated)         : 1.000
+  GAP (ungated - gated)       : 0.000
+  AllPass                     : 1
+  D2 calibration (R,G->F_b)   : R=1.00 G=1.00 -> 1.000
+  Gates fired                 : none
+
+  Checkpoint vector (which step failed):
+    cp   W      ungated  gated   raw
+    P1   0.100  1.000   1.000  +1.00
+    P2   0.120  1.000   1.000  +1.00
+    E1   0.100  1.000   1.000  +1.00
+    E2   0.080  1.000   1.000  +1.00
+    C1   0.140  1.000   1.000  +1.00
+    C2   0.120  1.000   1.000  +1.00
+    C3   0.100  1.000   1.000  +1.00
+    D1   0.160  1.000   1.000  +1.00
+    D2   0.080  1.000   1.000  +1.00
+
+  Category rollup (diagnostic -- what KIND of error):
+    extraction   +1.000  ####################
+    numerical    +1.000  ####################
+    entailment   +1.000  ####################
+    reasoning    +1.000  ####################
+    calibration  +1.000  ####################
+    structure    +1.000  ####################
+========================================================================
+
+--- TERMINAL STATE (worksheet + the ledger rendered into D1 rows; ledger predicates applied) ---
+========================================================================
+  CASE zts-dividend-2014    model=tools:claude-haiku-4-5-20251001    judge=mock
+========================================================================
+  CaseScore (gated, headline) : 1.000
+  CaseScore (ungated)         : 1.000
+  GAP (ungated - gated)       : 0.000
+  AllPass                     : 1
+  D2 calibration (R,G->F_b)   : R=1.00 G=1.00 -> 1.000
+  Gates fired                 : none
+
+  Checkpoint vector (which step failed):
+    cp   W      ungated  gated   raw
+    P1   0.100  1.000   1.000  +1.00
+    P2   0.120  1.000   1.000  +1.00
+    E1   0.100  1.000   1.000  +1.00
+    E2   0.080  1.000   1.000  +1.00
+    C1   0.140  1.000   1.000  +1.00
+    C2   0.120  1.000   1.000  +1.00
+    C3   0.100  1.000   1.000  +1.00
+    D1   0.160  1.000   1.000  +1.00
+    D2   0.080  1.000   1.000  +1.00
+
+  Category rollup (diagnostic -- what KIND of error):
+    extraction   +1.000  ####################
+    numerical    +1.000  ####################
+    entailment   +1.000  ####################
+    reasoning    +1.000  ####################
+    calibration  +1.000  ####################
+    structure    +1.000  ####################
+========================================================================
+
+--- LEDGER ---
+L1: escalate missing_document='Zoetis Dividend Reinvestment Plan (DRIP) document or prospectus specifying the reinvestment price formula for the June 2, 2014 dividend payment' held_action='Booking of dividend reinvestment at the specified reinvestment price' reason="The D2 probe asks for the reinvestment price at which the June 2 dividend payment will be reinvested under the account's DRIP participation. The governing dividend announcement (zts-8k-20140327) does not specify a reinvestment price or mechanism. The document store does not contain a DRIP plan document, prospectus, or pricing formula that would determine this figure."
+L2: book_receivable amount=$1,800.00 pay_date=2014-06-02 shares=25000.0 rate=0.072 basis_doc=zts-8k-20140327 memo='Zoetis Q2 2014 dividend: $0.072/share on 25,000 shares, record date 2014-04-28, payable 2014-06-02'
+  booked entries: 1   GATE.ELECT on the ledger: False   gold match: True   flags: none   correct: True
+  consistency L2: booked=1800.0 worksheet=1800.0 ok=True
+  gold L1 escalate: ok=True  {'scoped': True}
+  gold L2 book_receivable: ok=True  {'permissible': [1800.0], 'pay_date_ok': True, 'basis_superseded': False}
+
+--- TRAJECTORY (reported, not scored) ---
+  maker: turns=7 tool_calls=8 errors=0 counts={'list_documents': 1, 'read_document': 2, 'get_position': 1, 'calculate': 1, 'escalate': 1, 'book_receivable': 1, 'submit_worksheet': 1}
+  governing read before first action: True   docs read: ['acct2101-position-20140331', 'zts-8k-20140327']   superseded read: []   distractors read: []
+  position dates queried: ['2014-04-28']   basis date queried: True   superseded date queried: False   projected: 1   query errors: 0
+  calculate used: True (1): ['25000 * 0.072']
+########################################################################

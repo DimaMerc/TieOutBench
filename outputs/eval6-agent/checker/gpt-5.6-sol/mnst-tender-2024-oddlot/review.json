@@ -1,0 +1,82 @@
+{
+  "rounds": [
+    {
+      "round": 1,
+      "verdict": "reject",
+      "findings": [
+        "{\"entry\": \"P1.superseded_docs\", \"what_is_wrong\": \"The work product classifies mnst-otp-20240508 as superseded. The final-results release fixes the final price, accepted total, and proration factor, but does not supersede the Offer to Purchase provisions defining odd-lot eligibility. Those provisions remain necessary to establish that all 87 shares qualify for priority acceptance.\"}",
+        "{\"entry\": \"L2\", \"what_is_wrong\": \"The $4,611 gross receivable and 87-share quantity are correct (87 \\u00d7 $53), but the stated pay_date of 2024-06-10 is unsupported. The final-results release is dated June 10 and announces acceptance; it does not specify June 10 as the payment date.\", \"what_it_should_be\": \"Book the $4,611 gross receivable for 87 accepted shares without assigning a June 10 payment date unless a source establishing that payment date is obtained.\"}",
+        "{\"entry\": \"L2\", \"what_is_wrong\": \"The sole basis document mnst-results-20240610 does not by itself establish the account's odd-lot qualification. Qualification also depends on the still-operative Offer to Purchase and the account record showing aggregate ownership below 100 shares and a timely tender of all 87 shares.\", \"what_it_should_be\": \"Use mnst-results-20240610 for the $53 final price/final acceptance, mnst-otp-20240508 for odd-lot eligibility, and acct0093-position-20240610 (corroborated by the 2024-06-05 position query) for the 87-share holding and timely all-shares tender.\"}",
+        "{\"entry\": \"L3\", \"what_is_wrong\": \"The confirmed 87-share position as of 2024-06-05 is correct, but basis_doc=mnst-results-20240610 is wrong because the issuer's results release contains no account-level position evidence.\", \"what_it_should_be\": \"The position confirmation should cite acct0093-position-20240610 / the settled-position record as of 2024-06-05.\"}"
+      ],
+      "turns": 4,
+      "incomplete": false,
+      "ended_by": "end",
+      "ledger_shown_correct": true,
+      "ledger_shown_elect": false,
+      "ledger_shown_flags": []
+    },
+    {
+      "round": 2,
+      "verdict": "approve",
+      "findings": [],
+      "turns": 4,
+      "incomplete": false,
+      "ended_by": "end",
+      "ledger_shown_correct": false,
+      "ledger_shown_elect": false,
+      "ledger_shown_flags": [
+        "ledger_missing_required"
+      ]
+    }
+  ],
+  "ledger_v1": [
+    {
+      "entry_id": "L1",
+      "kind": "escalate",
+      "args": {
+        "reason": "The Offer to Purchase states that stockholders must complete the Letter of Transmittal, but the Letter of Transmittal is absent from the store. Its fee/charge deduction terms are required to determine deductions from tender proceeds. Gross proceeds remain determinable from the final results.",
+        "missing_document": "Monster Beverage tender offer Letter of Transmittal",
+        "held_action": "Determine and apply any fees or charges to derive net tender proceeds"
+      },
+      "seq": 20,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:14:42.239Z"
+    },
+    {
+      "entry_id": "L2",
+      "kind": "book_receivable",
+      "args": {
+        "account": "ACCT-0093",
+        "amount": 4611.0,
+        "pay_date": "2024-06-10",
+        "basis_doc": "mnst-results-20240610",
+        "shares": 87.0,
+        "rate": 53.0,
+        "memo": "Gross tender proceeds for 87 odd-lot shares accepted in full. Any fees or charges and resulting net proceeds are held pending receipt of the Letter of Transmittal."
+      },
+      "seq": 23,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:15:02.207Z"
+    },
+    {
+      "entry_id": "L3",
+      "kind": "confirm_position",
+      "args": {
+        "ticker": "MNST",
+        "shares": 87.0,
+        "as_of": "2024-06-05",
+        "basis_doc": "mnst-results-20240610"
+      },
+      "seq": 25,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:15:02.207Z"
+    }
+  ]
+}

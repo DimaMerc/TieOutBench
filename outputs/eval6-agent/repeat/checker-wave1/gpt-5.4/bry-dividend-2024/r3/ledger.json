@@ -1,0 +1,406 @@
+{
+  "clock": "2024-08-18",
+  "entries": [
+    {
+      "entry_id": "L1",
+      "kind": "confirm_position",
+      "args": {
+        "ticker": "BRY",
+        "shares": 40000.0,
+        "as_of": "2024-08-23",
+        "basis_doc": "bry-8k-20240813"
+      },
+      "seq": 21,
+      "agent": "maker",
+      "round": 1,
+      "voided": true,
+      "t": "2026-09-24T17:39:41.144Z",
+      "voided_round": 1
+    },
+    {
+      "entry_id": "L2",
+      "kind": "book_receivable",
+      "args": {
+        "account": "ACCT-7712",
+        "amount": 6800.0,
+        "pay_date": "2024-08-30",
+        "basis_doc": "bry-8k-20240813",
+        "shares": 40000.0,
+        "rate": 0.17,
+        "memo": "Berry Corp corrected dividend terms: $0.17/share payable 2024-08-30 to holders of record 2024-08-23"
+      },
+      "seq": 24,
+      "agent": "maker",
+      "round": 1,
+      "voided": true,
+      "t": "2026-09-24T17:39:42.773Z",
+      "voided_round": 1
+    },
+    {
+      "entry_id": "L3",
+      "kind": "escalate",
+      "args": {
+        "reason": "Net dividend cash for a foreign-domiciled beneficial owner depends on the applicable withholding tax rate/documentation, which is not provided in the store; only gross dividend terms are determined.",
+        "missing_document": "withholding tax documentation / applicable tax rate instruction for the foreign-domiciled subaccount (e.g., W-8 or tax withholding profile)",
+        "held_action": "determine and book net dividend cash after withholding"
+      },
+      "seq": 27,
+      "agent": "maker",
+      "round": 1,
+      "voided": true,
+      "t": "2026-09-24T17:39:44.653Z",
+      "voided_round": 1
+    },
+    {
+      "entry_id": "L4",
+      "kind": "confirm_position",
+      "args": {
+        "ticker": "BRY",
+        "shares": 40000.0,
+        "as_of": "2024-08-23",
+        "basis_doc": "bry-8k-20240813"
+      },
+      "seq": 60,
+      "agent": "maker",
+      "round": 2,
+      "voided": false,
+      "t": "2026-09-24T17:41:30.668Z"
+    },
+    {
+      "entry_id": "L5",
+      "kind": "book_receivable",
+      "args": {
+        "account": "ACCT-7712",
+        "amount": 6800.0,
+        "pay_date": "2024-08-30",
+        "basis_doc": "bry-8k-20240813",
+        "shares": 40000.0,
+        "rate": 0.17,
+        "memo": "Berry Corporation mandatory cash dividend on corrected terms"
+      },
+      "seq": 63,
+      "agent": "maker",
+      "round": 2,
+      "voided": false,
+      "t": "2026-09-24T17:41:31.879Z"
+    }
+  ],
+  "frozen": {
+    "ledger_v1": [
+      {
+        "entry_id": "L1",
+        "kind": "confirm_position",
+        "args": {
+          "ticker": "BRY",
+          "shares": 40000.0,
+          "as_of": "2024-08-23",
+          "basis_doc": "bry-8k-20240813"
+        },
+        "seq": 21,
+        "agent": "maker",
+        "round": 1,
+        "voided": false,
+        "t": "2026-09-24T17:39:41.144Z"
+      },
+      {
+        "entry_id": "L2",
+        "kind": "book_receivable",
+        "args": {
+          "account": "ACCT-7712",
+          "amount": 6800.0,
+          "pay_date": "2024-08-30",
+          "basis_doc": "bry-8k-20240813",
+          "shares": 40000.0,
+          "rate": 0.17,
+          "memo": "Berry Corp corrected dividend terms: $0.17/share payable 2024-08-30 to holders of record 2024-08-23"
+        },
+        "seq": 24,
+        "agent": "maker",
+        "round": 1,
+        "voided": false,
+        "t": "2026-09-24T17:39:42.773Z"
+      },
+      {
+        "entry_id": "L3",
+        "kind": "escalate",
+        "args": {
+          "reason": "Net dividend cash for a foreign-domiciled beneficial owner depends on the applicable withholding tax rate/documentation, which is not provided in the store; only gross dividend terms are determined.",
+          "missing_document": "withholding tax documentation / applicable tax rate instruction for the foreign-domiciled subaccount (e.g., W-8 or tax withholding profile)",
+          "held_action": "determine and book net dividend cash after withholding"
+        },
+        "seq": 27,
+        "agent": "maker",
+        "round": 1,
+        "voided": false,
+        "t": "2026-09-24T17:39:44.653Z"
+      }
+    ],
+    "ledger_v2": [
+      {
+        "entry_id": "L4",
+        "kind": "confirm_position",
+        "args": {
+          "ticker": "BRY",
+          "shares": 40000.0,
+          "as_of": "2024-08-23",
+          "basis_doc": "bry-8k-20240813"
+        },
+        "seq": 60,
+        "agent": "maker",
+        "round": 2,
+        "voided": false,
+        "t": "2026-09-24T17:41:30.668Z"
+      },
+      {
+        "entry_id": "L5",
+        "kind": "book_receivable",
+        "args": {
+          "account": "ACCT-7712",
+          "amount": 6800.0,
+          "pay_date": "2024-08-30",
+          "basis_doc": "bry-8k-20240813",
+          "shares": 40000.0,
+          "rate": 0.17,
+          "memo": "Berry Corporation mandatory cash dividend on corrected terms"
+        },
+        "seq": 63,
+        "agent": "maker",
+        "round": 2,
+        "voided": false,
+        "t": "2026-09-24T17:41:31.879Z"
+      }
+    ]
+  },
+  "frozen_worksheets": {
+    "ledger_v1": {
+      "P1": {
+        "issuer": "Berry Corporation",
+        "security": {
+          "ticker": "BRY"
+        },
+        "event_type": "mandatory",
+        "governing_doc": "bry-8k-20240813",
+        "superseded_docs": [
+          "bry-8k-20240809"
+        ]
+      },
+      "P2": {
+        "dates": {
+          "declared": "2024-08-09",
+          "corrected": "2024-08-13",
+          "record_date": "2024-08-23",
+          "pay_date": "2024-08-30"
+        },
+        "entitlement_basis": "record_date",
+        "entitlement_basis_date": "2024-08-23",
+        "election_deadline": null
+      },
+      "E1": {
+        "terms": {
+          "rate_total": 0.17,
+          "rate_fixed": 0.12,
+          "rate_variable": 0.05,
+          "record_date": "2024-08-23",
+          "pay_date": "2024-08-30"
+        },
+        "citation": {
+          "document": "bry-8k-20240813",
+          "locator": "correction notice body",
+          "verbatim": "The press release issued August 9, 2024 was changed only to correct the record date and payment date for the dividends on its outstanding common stock. The dividend amounts have not changed. The dividends will be payable on August 30, 2024 to all stockholders of record as of the close of business on August 23, 2024, not payable on August 20, 2024 to all stockholders of record on August 12, 2024 as previously disclosed."
+        }
+      },
+      "E2": {
+        "position": {
+          "shares_20240812": 50000,
+          "shares_settled_current": 40000
+        },
+        "basis_shares": 40000
+      },
+      "C1": {
+        "entitlement": {
+          "eligible_shares": 40000,
+          "rate": 0.17,
+          "gross_cash": 6800
+        },
+        "cil": {
+          "applicable": false,
+          "amount": null
+        }
+      },
+      "C2": {
+        "election_required": false,
+        "options": null,
+        "default_option": null,
+        "economics": null
+      },
+      "C3": {
+        "impact": {
+          "gross_cash": 6800
+        },
+        "changes": [
+          {
+            "what": "BRY share position confirmation as of corrected record date",
+            "where": "position verification ledger",
+            "old": null,
+            "new": 40000
+          },
+          {
+            "what": "Dividend cash receivable projection",
+            "where": "account cash receivable ledger",
+            "old": null,
+            "new": 6800
+          }
+        ]
+      },
+      "D1": {
+        "decision": "Book the mandatory BRY dividend on corrected terms using the record-date position as of 2024-08-23; no election applies.",
+        "actions": [
+          {
+            "action": "confirm_position",
+            "option": null,
+            "quantity": 40000,
+            "amount": null,
+            "by_date": "2024-08-23",
+            "basis_doc": "bry-8k-20240813"
+          },
+          {
+            "action": "book_receivable",
+            "option": null,
+            "quantity": 40000,
+            "amount": 6800,
+            "by_date": "2024-08-30",
+            "basis_doc": "bry-8k-20240813"
+          }
+        ]
+      },
+      "D2": {
+        "probe": {
+          "label": "NOT_DETERMINABLE",
+          "value": null,
+          "derivation": "Missing document: withholding tax documentation / applicable tax rate instruction for the foreign-domiciled subaccount (e.g., W-8 or tax withholding profile). Escalated and held only the net-dividend determination/book after withholding."
+        },
+        "twins": [
+          {
+            "id": "TW1",
+            "value": 6800
+          }
+        ]
+      }
+    },
+    "ledger_v2": {
+      "P1": {
+        "issuer": "Berry Corporation",
+        "security": {
+          "ticker": "BRY"
+        },
+        "event_type": "mandatory",
+        "governing_doc": "bry-8k-20240813",
+        "superseded_docs": [
+          "bry-8k-20240809"
+        ]
+      },
+      "P2": {
+        "dates": {
+          "declared": "2024-08-09",
+          "corrected": "2024-08-13",
+          "record_date": "2024-08-23",
+          "pay_date": "2024-08-30"
+        },
+        "entitlement_basis": "record_date",
+        "entitlement_basis_date": "2024-08-23",
+        "election_deadline": null
+      },
+      "E1": {
+        "terms": {
+          "rate_total": 0.17,
+          "rate_fixed": 0.12,
+          "rate_variable": 0.05,
+          "record_date": "2024-08-23",
+          "pay_date": "2024-08-30"
+        },
+        "citation": {
+          "document": "bry-8k-20240813",
+          "locator": "correction notice body",
+          "verbatim": "The press release issued August 9, 2024 was changed only to correct the record date and payment date for the dividends on its outstanding common stock. The dividend amounts have not changed. The dividends will be payable on August 30, 2024 to all stockholders of record as of the close of business on August 23, 2024, not payable on August 20, 2024 to all stockholders of record on August 12, 2024 as previously disclosed."
+        }
+      },
+      "E2": {
+        "position": {
+          "shares_20240812": 50000,
+          "shares_settled_current": 40000
+        },
+        "basis_shares": 40000
+      },
+      "C1": {
+        "entitlement": {
+          "eligible_shares": 40000,
+          "rate": 0.17,
+          "gross_cash": 6800
+        },
+        "cil": {
+          "applicable": false,
+          "amount": null
+        }
+      },
+      "C2": {
+        "election_required": false,
+        "options": null,
+        "default_option": null,
+        "economics": null
+      },
+      "C3": {
+        "impact": {
+          "gross_cash": 6800
+        },
+        "changes": [
+          {
+            "what": "BRY share position confirmation as of corrected record date",
+            "where": "position verification ledger",
+            "old": null,
+            "new": 40000
+          },
+          {
+            "what": "Dividend cash receivable projection",
+            "where": "account cash receivable ledger",
+            "old": null,
+            "new": 6800
+          }
+        ]
+      },
+      "D1": {
+        "decision": "Book the mandatory BRY dividend on corrected terms using the record-date position as of 2024-08-23; no election applies.",
+        "actions": [
+          {
+            "action": "confirm_position",
+            "option": null,
+            "quantity": 40000,
+            "amount": null,
+            "by_date": "2024-08-23",
+            "basis_doc": "bry-8k-20240813"
+          },
+          {
+            "action": "book_receivable",
+            "option": null,
+            "quantity": 40000,
+            "amount": 6800,
+            "by_date": "2024-08-30",
+            "basis_doc": "bry-8k-20240813"
+          }
+        ]
+      },
+      "D2": {
+        "probe": {
+          "label": "NOT_DETERMINABLE",
+          "value": null,
+          "derivation": "The document store provides no withholding tax rate or tax-status document for the foreign-domiciled beneficial owner, so net dividend cash after withholding is not determinable from the store."
+        },
+        "twins": [
+          {
+            "id": "TW1",
+            "value": 6800
+          }
+        ]
+      }
+    }
+  }
+}

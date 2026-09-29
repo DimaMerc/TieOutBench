@@ -1,0 +1,77 @@
+{
+  "rounds": [
+    {
+      "round": 1,
+      "verdict": "reject",
+      "findings": [
+        "{\"entry\": \"WORKSHEET P1/D1\", \"what_is_wrong\": \"The work product designates the May 22 announcement as the governing split document and lists no later governing document. By the June 10 processing date, the June 7 effectiveness 8-K documents that the amendment became effective at 4:01 p.m. ET and that each pre-effective share was automatically subdivided into ten shares.\", \"what_it_should_be\": \"Use nvda-8k-20240607 as the governing basis for effectuating the split. The May 22 8-K remains supporting source material for the announced record/distribution dates and separately governs the June dividend terms.\"}",
+        "{\"entry\": \"L1\", \"what_is_wrong\": \"The quantity of 1,800 NVDA shares per creation unit is correct, but the booked entry cites nvda-8k-20240522 rather than the effectiveness document governing the effected split as of the June 10 PCF date.\", \"what_it_should_be\": \"Maintain 1,800 shares per creation unit for 2024-06-10, based on nvda-8k-20240607. Derivation: 180 pre-split shares per CU multiplied by 10 equals 1,800.\"}",
+        "{\"entry\": \"L2\", \"what_is_wrong\": \"The confirmed 180,000-share quantity and June 7 as-of date are correct, but the entry cites the May 22 announcement rather than the June 7 effectiveness 8-K under which the shares were automatically subdivided.\", \"what_it_should_be\": \"Confirm 180,000 NVDA shares as of 2024-06-07 with nvda-8k-20240607 as the governing basis. Derivation: 18,000 shares multiplied by 10 equals 180,000.\"}"
+      ],
+      "turns": 4,
+      "incomplete": false,
+      "ended_by": "end",
+      "ledger_shown_correct": true,
+      "ledger_shown_elect": false,
+      "ledger_shown_flags": []
+    },
+    {
+      "round": 2,
+      "verdict": "approve",
+      "findings": [],
+      "turns": 4,
+      "incomplete": false,
+      "ended_by": "end",
+      "ledger_shown_correct": true,
+      "ledger_shown_elect": false,
+      "ledger_shown_flags": []
+    }
+  ],
+  "ledger_v1": [
+    {
+      "entry_id": "L1",
+      "kind": "update_pcf",
+      "args": {
+        "ticker": "NVDA",
+        "quantity_per_cu": 1800.0,
+        "previous_quantity_per_cu": 1800,
+        "basis_doc": "nvda-8k-20240522",
+        "memo": "Maintain split-adjusted NVDA basket quantity for 2024-06-10 dissemination: 180 pre-split shares per CU multiplied by 10."
+      },
+      "seq": 31,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:16:40.256Z"
+    },
+    {
+      "entry_id": "L2",
+      "kind": "confirm_position",
+      "args": {
+        "ticker": "NVDA",
+        "shares": 180000.0,
+        "as_of": "2024-06-07",
+        "basis_doc": "nvda-8k-20240522"
+      },
+      "seq": 33,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:16:40.256Z"
+    },
+    {
+      "entry_id": "L3",
+      "kind": "escalate",
+      "args": {
+        "reason": "The store determines the June dividend gross amount but contains no MEGA account tax-status or applicable NVDA dividend withholding-rate documentation, so net cash after withholding cannot be determined.",
+        "missing_document": "MEGA account tax-status and applicable NVDA dividend withholding-rate documentation",
+        "held_action": "Book the net June 28, 2024 NVDA dividend cash receivable only; split PCF and position processing may proceed."
+      },
+      "seq": 35,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:16:40.256Z"
+    }
+  ]
+}

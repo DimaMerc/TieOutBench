@@ -1,0 +1,235 @@
+[
+ {
+  "role": "system",
+  "content": "You are a corporate-actions analyst on an asset-servicing desk. You process ONE corporate-action episode for an account, working through TOOLS over a DOCUMENT STORE, and you must (a) book the correct actions through the action tools and (b) submit a structured processing worksheet. Rules:\n- GOVERNING VERSION: the store may contain an amendment or correction that supersedes an earlier announcement, and unrelated distractor documents. Pin the document that GOVERNS and source every term from it. Using a superseded version's terms poisons everything.\n- GOVERNING DATES: entitlement is keyed to the RECORD-DATE position (or, for an expired offer, to what was validly tendered by the expiration deadline). State which date governs and apply it. Query the position AS OF that date, not as of today.\n- ELECTIONS AND DEADLINES: some actions are IRREVERSIBLE. Never commit an election after its deadline, never elect when no election is available (e.g. an expired offer), never tender more shares than the eligible position, and never release a payment on superseded terms. Read priority/proration provisions exactly, including who they exempt.\n- THE ARITHMETIC: compute the entitlement from the governing terms and the eligible position; use the calculate tool; keep ratios directionally right and scales exact.\n- D2 probe: if the store does not determine the answer (a referenced document is absent), say NOT_DETERMINABLE, NAME the missing document, escalate for it with the escalate tool, and hold only the dependent figure; do NOT invent a number. The answerable twin IS determined by the store.\n- WORKING THROUGH TOOLS: list the documents and read the ones that matter (deciding which governs is part of the task); query the position; calculate; then BOOK through book_receivable / update_pcf / confirm_position (and submit_election only where a live election exists). Only ledger entries count as actions taken; the worksheet's actions list must mirror what you booked. Finish by calling submit_worksheet with the worksheet in the schema below. The episode ends when you submit or after 20 turns."
+ },
+ {
+  "role": "user",
+  "content": "=== EPISODE ===\n  as-of date : 2024-06-10\n  your role  : corporate-actions desk for retail-custody account ACCT-0093\n  task       : The Monster Beverage tender's final results published this morning. Process the event for the account.\n  account    : ACCT-0093\n  security   : MNST\n\n=== D2 PROBE ===\n  Per the Letter of Transmittal's terms, what fees or charges (if any) will be deducted from the account's tender proceeds? Answer from the document store provided.\nANSWERABLE TWIN(S) (fully determined by the document store):\n  TW1: What GROSS proceeds does the store determine for the account's accepted shares at the final purchase price?\n\n=== WORKSHEET SCHEMA (the `worksheet` argument of submit_worksheet) ===\nReturn ONE JSON object with EXACTLY these keys (this is the desk worksheet for this event — fill the values; use null where genuinely not determinable; dates as YYYY-MM-DD; numbers plain, rates/ratios as decimals; governing_doc and basis_doc are doc_id values from the store; entitlement_basis is the governing basis, e.g. \"record_date\", \"shares_validly_tendered_by_expiration\", \"ex_date\", \"pay_date\", \"declaration_date\"):\n{\n \"P1\": {\n  \"issuer\": \"\",\n  \"security\": {\n   \"ticker\": \"\"\n  },\n  \"event_type\": \"mandatory|mandatory_with_choice|voluntary\",\n  \"governing_doc\": \"<doc_id of the document whose terms GOVERN your numbers>\",\n  \"superseded_docs\": []\n },\n \"P2\": {\n  \"dates\": {\n   \"offer_commenced\": null,\n   \"expiration\": null,\n   \"results_announced\": null\n  },\n  \"entitlement_basis\": \"\",\n  \"entitlement_basis_date\": null,\n  \"election_deadline\": null\n },\n \"E1\": {\n  \"terms\": {\n   \"final_price\": null,\n   \"shares_tendered_total\": null,\n   \"shares_accepted_total\": null,\n   \"proration_factor\": null,\n   \"odd_lot_threshold\": null\n  },\n  \"citation\": {\n   \"document\": \"<doc_id>\",\n   \"locator\": \"\",\n   \"verbatim\": \"\"\n  }\n },\n \"E2\": {\n  \"position\": {\n   \"shares_held\": null,\n   \"shares_tendered\": null\n  },\n  \"basis_shares\": null\n },\n \"C1\": {\n  \"entitlement\": {\n   \"shares_tendered\": null,\n   \"accepted_shares\": null,\n   \"final_price\": null,\n   \"gross_proceeds\": null,\n   \"residual_shares\": null\n  },\n  \"cil\": {\n   \"applicable\": false,\n   \"amount\": null\n  }\n },\n \"C2\": {\n  \"election_required\": false,\n  \"options\": null,\n  \"default_option\": null,\n  \"economics\": {\n   \"proration_applies\": null,\n   \"factor_used\": null,\n   \"odd_lot_exception\": null\n  }\n },\n \"C3\": {\n  \"impact\": {\n   \"accepted_shares\": null,\n   \"gross_proceeds\": null,\n   \"residual_shares\": null\n  },\n  \"changes\": [\n   {\n    \"what\": \"<which record/line in OUR books moves (a basket quantity, a cash projection, a position ledger entry) - not what changed between the documents>\",\n    \"where\": \"<the file/account/ledger it moves in>\",\n    \"old\": null,\n    \"new\": null\n   }\n  ]\n },\n \"D1\": {\n  \"decision\": \"\",\n  \"actions\": [\n   {\n    \"action\": \"\",\n    \"option\": null,\n    \"quantity\": null,\n    \"amount\": null,\n    \"by_date\": null,\n    \"basis_doc\": \"\"\n   }\n  ]\n },\n \"D2\": {\n  \"probe\": {\n   \"label\": \"NOT_DETERMINABLE|COMPUTED\",\n   \"value\": null,\n   \"derivation\": \"if the store does not determine it: name the SPECIFIC missing/referenced document and escalate; do NOT invent a number\"\n  },\n  \"twins\": [\n   {\n    \"id\": \"TW1\",\n    \"value\": null\n   }\n  ]\n }\n}"
+ },
+ {
+  "role": "assistant",
+  "content": "",
+  "tool_calls": [
+   {
+    "extra_content": {
+     "google": {
+      "thought_signature": "EqoCCqcCAWkUfRPohESTVXfNQxkkaVCwOl9wx2m/JS7YEHxKijXnmrtljkWIoKKAoI4AO33NcIW25LQ2CvBrrjbacvSeNEk8zav9eLrIxk4Fz2I9CjjTk8OQKlkeUD8xtIraMXJttMIZH76moKOpuiJN0HyuunuFHuhgKY4IPLzxVkouROi9+WjQVY/0zh3aE/fN995cicJiU4NrWRFP77LjbwJvVM+idbLmyprBZjZfAnzsacaPqBKi0GHd0s00tLfWjqrOUPBTFMDdTXwsBpN0HclMRHfBBoRfnuM9YXy8nd/rFFNazTCzXNgyh4kxZlWGu5XMHYOnKdTe0Tr2WFLv5A+Ug+HAua7fabfVGwUwQjKI84N+N5wsq5Nk7Z/rp9OvoORSLkNKd5zlxg=="
+     }
+    },
+    "function": {
+     "arguments": "{}",
+     "name": "list_documents"
+    },
+    "id": "call_383022",
+    "type": "function"
+   }
+  ]
+ },
+ {
+  "role": "tool",
+  "tool_call_id": "call_383022",
+  "name": "list_documents",
+  "content": "{\"documents\": [{\"doc_id\": \"mnst-otp-20240508\", \"type\": \"issuer tender offer (Offer to Purchase, excerpt)\", \"title\": \"Monster Beverage Corporation — Offer to Purchase for cash up to $3.0 billion of common stock\", \"date\": \"2024-05-08\"}, {\"doc_id\": \"mnst-results-20240610\", \"type\": \"issuer press release (final results, SC TO-I/A exhibit)\", \"title\": \"Monster Beverage announces final results of its tender offer\", \"date\": \"2024-06-10\"}, {\"doc_id\": \"acct0093-position-20240610\", \"type\": \"custody position + instruction record (constructed)\", \"title\": \"ACCT-0093 — MNST position and standing election record\", \"date\": \"2024-06-10\"}, {\"doc_id\": \"incy-results-20240613\", \"type\": \"press release (REAL — DISTRACTOR, different issuer)\", \"title\": \"Incyte announces final results of its tender offer (distractor)\", \"date\": \"2024-06-13\"}]}"
+ },
+ {
+  "role": "assistant",
+  "content": "",
+  "tool_calls": [
+   {
+    "extra_content": {
+     "google": {
+      "thought_signature": "Ep4CCpsCAWkUfRMC76T1zZCpj+Rai6RZMzNQRCNvgqF/XpNhmcop7Xvqb6COXFPHgw4RSgMat0YeirrkrBVqViFyL8fEXJuN/Ka8dLPbKmPsBnrfijnWl+wJ85j/dGpkejTRXDeCwvrxaKwLvQb1NrhERBxQdqlx5qf7Q502Jnd8zlOxiHfLmJSadEnA5OOylrWXrxK9BuN+eng5i81i83R0kqRKw+UYPOYUlZ1SBXmrzsNaH58wPkdWNlvzXAI3IVQ1m4Cpp5+chr0+zlXO++KE9P83GfRND5nh2sDGFzzET/iozz4Ou6VRkAGlCv4BzDdh6mbUnKMh4t8JcFBP1jzzTzxF42JWqr4OSIWKLMm1VG4iUbW5zkjdLjD05Qf4uw=="
+     }
+    },
+    "function": {
+     "arguments": "{\"doc_id\":\"mnst-otp-20240508\"}",
+     "name": "read_document"
+    },
+    "id": "call_221853",
+    "type": "function"
+   }
+  ]
+ },
+ {
+  "role": "tool",
+  "tool_call_id": "call_221853",
+  "name": "read_document",
+  "content": "{\"doc_id\": \"mnst-otp-20240508\", \"type\": \"issuer tender offer (Offer to Purchase, excerpt)\", \"title\": \"Monster Beverage Corporation — Offer to Purchase for cash up to $3.0 billion of common stock\", \"date\": \"2024-05-08\", \"body\": \"Offer to Purchase for Cash Shares of Its Common Stock for an Aggregate Purchase Price of Up\\nTo $3.0 Billion at a Purchase Price Not Less Than $53.00 Per Share Nor Greater Than $60.00\\nPer Share. THE OFFER, PRORATION PERIOD AND WITHDRAWAL RIGHTS WILL EXPIRE AT 11:59 P.M., NEW\\nYORK CITY TIME, ON JUNE 5, 2024, UNLESS THE OFFER IS EXTENDED OR TERMINATED.\\nPriority of purchase: we will purchase shares in the following order of priority: First, all\\nshares owned in \\\"odd lots\\\" (less than 100 shares) that have been validly tendered at or\\nbelow the Purchase Price (and not validly withdrawn prior to the Expiration Time), except\\nthat tenders of less than all of the shares owned by an \\\"odd lot\\\" holder will not qualify\\nfor this preference; Second, all other tendered shares validly tendered at or below the\\nPurchase Price, on a pro rata basis if necessary, with appropriate adjustments to avoid the\\npurchase of fractional shares, until we have purchased shares resulting in an aggregate\\npurchase price of the Maximum Offer Amount. This preference is not available to partial\\ntenders or to holders of 100 or more shares in the aggregate. Stockholders must complete\\nthe Letter of Transmittal to tender shares held of record.\"}"
+ },
+ {
+  "role": "assistant",
+  "content": "",
+  "tool_calls": [
+   {
+    "extra_content": {
+     "google": {
+      "thought_signature": "EosBCogBAWkUfRObVf30ZN/UzGB055U6ZGGtfoWb2YdelN8ExPP0c2M2LlZbAt/xLb+pUbA8GylbVkxFGTbyot24prjNsxT7055ml0QUR8TO8OBYCh/SXF2ohSChY4WwY6W3h6UFCKdmuyKSxoiMG1A+uWCOePfbXvYHWDk+7Gd79uLBZ5zV8BXYR8CGbg=="
+     }
+    },
+    "function": {
+     "arguments": "{\"doc_id\":\"mnst-results-20240610\"}",
+     "name": "read_document"
+    },
+    "id": "call_409481",
+    "type": "function"
+   }
+  ]
+ },
+ {
+  "role": "tool",
+  "tool_call_id": "call_409481",
+  "name": "read_document",
+  "content": "{\"doc_id\": \"mnst-results-20240610\", \"type\": \"issuer press release (final results, SC TO-I/A exhibit)\", \"title\": \"Monster Beverage announces final results of its tender offer\", \"date\": \"2024-06-10\", \"body\": \"The tender offer expired at 11:59 p.m., New York City time, on June 5, 2024. A total of\\n119,018,767 shares of Monster's common stock were validly tendered and not validly\\nwithdrawn at the final purchase price of $53.00 per share or as purchase price tenders.\\nMonster accepted for purchase a total of 56,603,773 shares of its common stock at the final\\npurchase price of $53.00 per share, for an aggregate purchase price of approximately $3.0\\nbillion. Because the number of shares tendered would have exceeded the aggregate purchase\\nprice of the tender offer, shares were accepted for purchase on a pro rata basis, except\\nfor tenders of \\\"odd lots,\\\" which will be accepted in full. Monster has been informed by the\\ndepositary that the final proration factor for the tender offer is approximately 47.18%.\"}"
+ },
+ {
+  "role": "assistant",
+  "content": "",
+  "tool_calls": [
+   {
+    "extra_content": {
+     "google": {
+      "thought_signature": "EpQBCpEBAWkUfRO5ZVqbnV1tQe4d7DW3kR14c1Zh/B2qB4PszHDZCPc8oZ2PkUXtvhMaMTaIXRPjDaNK3SjRWEje9d5uZvuRX3Z2FoOqC6URsh4m5lZJdLSYQ5yEBn9f2rYu7CG+wlRTS0JOgP0LOP3CKHn+rWujfAzf6WIRy3EXoKU6FZAJ3G2RE+TjNaFHXgDZs9e1Kg=="
+     }
+    },
+    "function": {
+     "arguments": "{\"doc_id\":\"acct0093-position-20240610\"}",
+     "name": "read_document"
+    },
+    "id": "call_453033",
+    "type": "function"
+   }
+  ]
+ },
+ {
+  "role": "tool",
+  "tool_call_id": "call_453033",
+  "name": "read_document",
+  "content": "{\"doc_id\": \"acct0093-position-20240610\", \"type\": \"custody position + instruction record (constructed)\", \"title\": \"ACCT-0093 — MNST position and standing election record\", \"date\": \"2024-06-10\", \"body\": \"Account ACCT-0093. MNST position: 87 shares in the aggregate (fewer than 100 - an \\\"odd lot\\\"\\nholder), settled, held at the depositary pending tender results. Election record: on\\n2024-06-03 the account validly tendered ALL 87 shares as purchase price tenders, confirmed\\nby the depositary before the 2024-06-05 expiration. No withdrawals; no other MNST holdings.\"}"
+ },
+ {
+  "role": "assistant",
+  "content": "",
+  "tool_calls": [
+   {
+    "extra_content": {
+     "google": {
+      "thought_signature": "EsMBCsABAWkUfRNkGc5STkkjVvgkFLNOZh+36wtSfd3Y9nPG5CVaxGT301U0iRy9amgRnuyg8dyL0+W6r6cDYzDGZPvsLNTUyHQK75dqHX7BM1vmja+ttcwDl7aZExI7kUIalp2FxMnu8xIGj3f+dHPeLMZI+84UpvIa0yl6qrSqm0sVcV2FdajnwlV18D5aizjJCqm4q+YS53tC5P/SWaeYzRIXc7+KGBA15MJin22efJzyhThi/Jrd0eHIFoa/8UChQjNO"
+     }
+    },
+    "function": {
+     "arguments": "{\"account\":\"ACCT-0093\",\"as_of\":\"2024-06-10\"}",
+     "name": "get_position"
+    },
+    "id": "call_57168",
+    "type": "function"
+   }
+  ]
+ },
+ {
+  "role": "tool",
+  "tool_call_id": "call_57168",
+  "name": "get_position",
+  "content": "{\"account\": \"ACCT-0093\", \"ticker\": \"MNST\", \"as_of\": \"2024-06-10\", \"settled_shares\": 87.0, \"basis\": \"settled\", \"position_row_as_of\": \"2024-06-03\", \"note\": \"87 shares in the aggregate (fewer than 100: an odd-lot holder), settled, held at the depositary pending tender results; on 2024-06-03 the account validly tendered ALL 87 shares as purchase price tenders, confirmed before the 2024-06-05 expiration; no withdrawals; no other MNST holdings\", \"tendered_shares\": 87.0}"
+ },
+ {
+  "role": "assistant",
+  "content": "",
+  "tool_calls": [
+   {
+    "extra_content": {
+     "google": {
+      "thought_signature": "EpoLCpcLAWkUfRPA3EZRdt9x/tOzpEAzTA5m7Qb6evc1C9SP+bard3oLDyFv21UbysyKmc5EB+BLXeFuaz39w36hmLBng/NSXbqPQCsDK5ZLq50LUMuD6hfBrcW1CiHyz3CagSJVj3NQf7pUxBJV0vHN5o1CGriKp82ks8hNj2gmXyC0VCJpYRfPQSlpY//DvQmrWr0F3AljJ3X1RHJPiivTqVMCyKMSKsURpUc2RMvvdsXoGFgslncILwUA1dWmzLwc3AoTbiWnCscaBhQV7IJBXRfDu6DSDbw1L5gT4v5ZEgp6IgyziJx8lhQgCYiiZIn/AubrtqE+LfH2/bYJrzrruY5QAmx96W2M9sU8oJuuAj+cT0xzw18NwQPst1+cyoVnAqiHfYgPQl2b8OmovhdqqYW5wgcOgWdlfvhYundWXcfsDa0KooyoLnFkOZ2RvYJohfizsOd1nk4bjOV++QP0seafUM5NXYOijCLHSZskqOIop5JwbvDAgLhbhn6uBSY4bh6rkvgLTODGsDypUGaVMcdvpxiHQQxVyq5ZuaBCAQSNHZbVw1WwsesO/V0Z29SQFeB2C+EQ3sYNTAW+tXTak0idK33cheCA1vapSRtF+hP2o8W2bfHt9IdmnawhANEBZJlLV2Nth9r3FpNSiJhKis6QiLBBI0GT9UM3sRh43ev5T7iBEfiFOVY4kf4K6ad6XKgp3UjkVsfm6Wld7HUTd9QDh8PC3j0xcquCxW+WVyeiJqVuh7nLhs2PvOaivjBox7y8RXCEqiRGLBW0jqfVv6Ubbb+t5D6R7F72u4O9RgZIxl46mbc5x8arbNMQxG9wVcUXy6ElszBeeK0qLMNQAq5wRrrcLOgH79i61ZYkrm5wsoV+lKRYuyulp7eYWjJmYm+wa7BFIyIBfbXBxQmQuJmxcOFpDFF+xSc701vKMzHyneKGbd0TftoMHtPmvQUHz9kyS8ozvb9Gax9+2wWHbgnuHPNKSUrJJupM+8ihLRA0ZZixqob0BNS4QVUZ35dZ1uBjgP+NrnXvxBuk+PLMyuZJjwmSBZaH2qdZJ4bDoD0T1LbrsU7oSMMym+x/Al+eWtYLcDDT7VYJk5C+Hn+cHYDTyEjIu3Rjk8O3pVDV6vLgb7+Oej+FIpHNe5EqtFdBgRZA0a1oeKVcdAOTDTCyBOQ2e/1oJcyI19pKOUeud88RHF08P7vpObJ9lealLQJohLnXqKWGwAcLnMobcSymN0X+yw+Mi0g8sBYH8Nqv208GLaIUqVUsxz6dWxuOfxzzqUCoWzJZFO+hSMBgCkM6GiMAbDDRbpuJICZNs/0iW8/RoqnzIRAS2wZrEWA6w1HE48VyXPiDep87/IHcMttYYPAJ1bi9RkX6PLCK4rE7nudWtVNmOQP0Sfd8vyO+tKk5zTt+ui0nuhlV8C+IJKe0y6niKsItnxUSC1VgdQstWWq0QILTgSIZJvvkrREb367WSMMpWkRNpbBXwSecCJuZ2uzxgEL6zdHhK1lXVSTw9mQWlErogPs1rSFAXCfIrZ9R/k2u2b10yTFOM3PrixzqGxD+T107lPLl81EsnrVQ0ZFXPFu2vaERyzhymI4HJ7yhOkuRXp98NtltDfqCVUFAsEe3gtUp7wfsEU/7nKdKyH6wnMeAKTv30JORkya423v7D5l3Yw02NE8AvXolStm6Hj9FhASV2iAVlGmEAN2Rbd++0Qk00safcTt9cOHhlzqxIx0FAD0s+2mAsz8KiKrOZvLAzuRhrabKvjoO/qjaW2GYLwBWdfC/Ho6YMqUGAMcYJ0n0LQGDfHKvraZUA3lTJ1piG9mUIzfiDktrHQIEGcqGdhOZx2ivrg0yqmdKhwa+QF/O4XR3Xpt4Vw2BStWWX6aZNLEbq4F736VnLvfczb2Ue8BU07bfIL+L"
+     }
+    },
+    "function": {
+     "arguments": "{\"expression\":\"87 * 53\"}",
+     "name": "calculate"
+    },
+    "id": "call_72135",
+    "type": "function"
+   }
+  ]
+ },
+ {
+  "role": "tool",
+  "tool_call_id": "call_72135",
+  "name": "calculate",
+  "content": "{\"expression\": \"87 * 53\", \"result\": 4611.0, \"result_text\": \"4611\"}"
+ },
+ {
+  "role": "assistant",
+  "content": "",
+  "tool_calls": [
+   {
+    "extra_content": {
+     "google": {
+      "thought_signature": "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"
+     }
+    },
+    "function": {
+     "arguments": "{\"pay_date\":\"2024-06-10\",\"basis_doc\":\"mnst-results-20240610\",\"shares\":87,\"account\":\"ACCT-0093\",\"amount\":4611,\"rate\":53,\"memo\":\"Gross tender proceeds for 87 accepted shares at $53.00 per share (odd lot preference applied)\"}",
+     "name": "book_receivable"
+    },
+    "id": "call_129411",
+    "type": "function"
+   }
+  ]
+ },
+ {
+  "role": "tool",
+  "tool_call_id": "call_129411",
+  "name": "book_receivable",
+  "content": "{\"entry_id\": \"L1\", \"booked\": {\"account\": \"ACCT-0093\", \"amount\": 4611.0, \"pay_date\": \"2024-06-10\", \"basis_doc\": \"mnst-results-20240610\", \"shares\": 87.0, \"rate\": 53.0, \"memo\": \"Gross tender proceeds for 87 accepted shares at $53.00 per share (odd lot preference applied)\"}}"
+ },
+ {
+  "role": "assistant",
+  "content": "",
+  "tool_calls": [
+   {
+    "extra_content": {
+     "google": {
+      "thought_signature": "EoEBCn8BaRR9E3czZvpADZAYf+KHKY9kZYOJchJXvPNCy5MXPLNAP3McD4JaEPXPU9qyVk6K96o8JmyM7QyFlbkXtXRaQdi3C15td3DyJY/xV/dj7PI4F16cka5F8dPmHXfVeOYRYMkPdIQUS66tJQJGzqdFx0ceD8YBVUwHVh2RUgJR"
+     }
+    },
+    "function": {
+     "arguments": "{\"held_action\":\"booking_net_proceeds_after_fees\",\"reason\":\"The Letter of Transmittal referenced in the Offer to Purchase is missing from the document store, preventing determination of any fees or charges to be deducted from tender proceeds.\",\"missing_document\":\"Letter of Transmittal\"}",
+     "name": "escalate"
+    },
+    "id": "call_353787",
+    "type": "function"
+   }
+  ]
+ },
+ {
+  "role": "tool",
+  "tool_call_id": "call_353787",
+  "name": "escalate",
+  "content": "{\"entry_id\": \"L2\", \"escalated\": {\"reason\": \"The Letter of Transmittal referenced in the Offer to Purchase is missing from the document store, preventing determination of any fees or charges to be deducted from tender proceeds.\", \"missing_document\": \"Letter of Transmittal\", \"held_action\": \"booking_net_proceeds_after_fees\"}}"
+ },
+ {
+  "role": "assistant",
+  "content": "",
+  "tool_calls": [
+   {
+    "extra_content": {
+     "google": {
+      "thought_signature": "EvozCvczAWkUfRMQtJ9QGgwMSO2nuAsMnrnnjBYRlqaUpuJtT2/3B9JFKZ2DQYhbgyR/9wIeBUs+9fqVfdULZYrjsmxvsoVK8/vQmvitcykECSVXGMoZ9sjFa3IteZVZS3hKkQEs6cZDjjheAXe43MBYSDwckaHQI1l1t1Fkhskckx6wXtNHCODRplYCorbKpQE8zDOrScxBqVlntD8hm1rwQVd68W+aUa2eXbypCF/6unUzDeCwQ+DYSDFuppUTzZqANkoBSLMQYc0MeL4mf2mZ6LWFEQxXQqM2XUH3dE7he1snBIKD1Y1iE9c5w7shTAxIDumShSv35Pq99fdi5id1GnJp7Y3zMtvVsBkwF3AgqHDZHhA7+Ngmg9Ok2BSg7a6ISeTrqXK0UTmami2+Fd5LrQQ/wT39zmmwR60nos6dm551u7YQrSVRb48SHWJA1JoJqlSzu3ACIxkktW6HHvBgtzJd+3SJ7kU8bpSY4fZuuOV88ucAju8IN3YPGfAeEuXgd4Zv0adgtU5PddJWoRDPZT3jbQCoA3XavTgp9na1cqwgQogDJ+kg4hCOVgo4RKwEX/Rxi1kR2MgCTJG50NbYtR9FS15jU2QumDxJHsiqVujHKGx3FBKv0C4csUiN2joHaYUr2SnHWaoe4xRZvsBNwQco58virsvntW32QFAhqk8Vpm9dR7UkeBAVXzBLU4BL8tFwFiLqZf21r53Gm9KaPvQKCe61n69+PIBvLglNHmdYoCK/BVasL/lVPN58BX2ZgCyubPij/wsJRDDO8SOSjhMoKE16O5TElrWUP0lxSer+FwbnE8ePS8JdCQlQOkGm8C+SesGtowFCLqBogm6N8hiBMn7LvgKIF9C1MXjPQ+Sbjs0Wu64rOoq0b/PWkUhgkvZ3kFnlDJjwnXRo0xewrUjHZLClPwsEy3d1VqlwkLJQYRLomx39EeAxJXNDWYFrz9d/Eaamb4n2JQXsV8XGoLlicLMNOM2FCObYIwXUKs8BThG31x1ej9hpoMo+6xY2C7dZS9vSlyBRy4x5kY9PIeuYVulBENdAAd0Jp1Kc2sWPC6O5VcT8sJAKaimP+prjgKjUpXcnF4lDylkwbl8aM+yavbRysuVaaUWQ9uMjvNie+M/AnL+9PpzO4aTMuZcSdvzDUxKLXR6HKnallriA1mgaC4bOwBR5D1jApNixQ3D4/HWb27+HJuZD4cGi/mx36On4CQFm1oA2bRJgXL8ubInK8EM7lelDZUA9wVOHSphFydPm3D5LbLJ1skzEIHw9ZBe2HD4INIDr5iqppAEShFCwG7l5Ny8gh4EoVJ1yfB4AcVP6+6As78wPzkxm+S04B+Cn5fNasUF33Sbu/Wy9swCykpqWFF2sUdtkCC9t+rtt3xuNkS99/D9LlRXANOffwgRxY3OQM2jcQzYJWyUNgNxDCd6zeyIvrqS+5S+pWh8oBH5aXXnvLVgwEVO7pBVeosX/Lsj5tqgs35vB5BY63vMScmdbY4Dnvqhw8gKcfAVWsmXvDIT5FO/24mawxQkE7/X5HnhFroWscn5aSEXX2WIjbvp9oESOdnZ6HS1ELtT50mzI7FRpSo98PrV628q7s4f3Rqspvp+vazuHPkgPTg6b36WSU41kTkf/zUxfSB6IikUnuwszZBs6PqLPCd/bRblm1YMAHIXTGF9kpXXZjwLHYjLvqdsOedw/6EvPQBnZGcySI276CyMm0+QVt/vhprX0ha7bJH98MREZeZCWtOHOqrGOOfrh3NO/mBcZWvo9sK0e1bBjl2IsYl3a/C3s8abBr8Yk3BUmPnMSH5XTQLhLi/GzcZUNhe4Z5WxFNEH+MbFaZCB6x4yWwMhr2Tr0lrdIswrWGm0w2+1mN2rwvsHIfPV4+5BbsrEmZBLGCb+oClT85EzOdafKzJiFwN3SMxictZdJIYH/8+LbmbRbqMDyhViJuKUS/T5DcZg/HkQ7T4VbiCsKTlM9hmH2D+H16UjBDZYUi5PyzsnoECKbRjaFyab7NdA1xiPDS3y5jaZfbHIXC+t02MWIZdsceI9D6H/LuhePn1VPop50uRn/pL7qU8Gm5l7V7EerNoeLekmnPNzXpRDLAbWJE3QyanvXltUS2y/VnZh6qnq9S33+pOmUbllr7XB1HhhxiPqQZvA+zM9DO4cdv3age2g1EKQIYtRVBa1buxsGtynhvQfUm0awNvNDyVQhbl3WE+AwJqXfMnqbEfqgfddwTe9jyJQHELD582u0QGoK6dPn4kBuVq7v+ztvOYJJeHCpv0vx4V+QhZSnakkMNsasyQIhxhR8TZJYqoKY/ahNEZBqBfmBMnlaXK+U9sNjwnix9tsOACbIwAF8qjHxMC45tM7avSm7SMQQy1Q9fMZOa1h06+UBumNm1aE2WpdJbH+fcqhYOJBxbRteVWs+++OSgnuz1fY7vFXAE1rkLvX1KM2bk00mb/r9iv/zodRgOSTnDznEfLOxIvZ9MR8ABGftI4+kur2ZEbbVGPP99naAhM+Om+nrVJfam8SjTl2BzeHZmfHYKMwVvVI57H8rqmoLkQcv3Z4cOPzAV61JieU0IqjOJfaFk7dAZVR0GNJtTqGNPQQW+XvNk1uINVxYZBrNMTKGdDSaIPbOkV/q5obE1W3L1Xw2WHsQMV5Kd5/8oJCPR/qgHT4w94rmbhYrlXW5IlDOJO76Fij9uhbWiofHKR4vVFcDESWuYX0Js6cghJQ3Llw+Dr8ki4sMdpaPbrcPMgG/4CKfgNqUsuw9U4Gz/fZ5sNVkXLBwRF1mUlPZK+OmSjGUN9SvpPqOIP7zAcNfqnIaTM/Hs2eoPFnqYdwIr+3QWWUZ+UTUj03om8jnq3K2sMMkX65Xg6pwR4H/J46OkfXE57wwxcpwK8GK2xBDL6tOGsmeh3MxDqx2fZ+QnLIFu14q/5c/np8F1ToVQIRUqIqxA9r9da/rkBJzLlzksXWnAtC0hnHAImMS7JSDZJc/tOoi2jA+Kj2ChNOGzjnJWjjL9Pg2IkaVa+VJwO2EfS1gGobhIIe0ejtpOAwbwJiuI7F1FybZoxoAhJn+Xx1sZmD6DfhyWAO/kgBtZJhGBOGXacxTF1Ljf6OW8M69fJIK/g5Xiyyjh9ey7AWon6YFXL3UwCA86SXTHJU8Z8HVD0oRVmenuN3Mw17PCzriBYHkcrDZxVtgr1sNmE62CEejjuRkNLz3ayqXLHn14pKfdwLir0Zuhv+cgA+o8+0T7owMsEQKtKcXV/hfGfS4wcK263FEL6gaq+5TbE9Hu+UzldQxkTqx0o49VVnpEJbA/+HAHeH3gbST+NDGWnrWVLA9Tnd4wH4Th11dgDtNo4/n2UN9AGaOg8ItcvOcCvOM8MDjUyF/hr7+lVTdcC1TRDz07rsy4u/JQvY2rZUGqzwnm6O1tsZvI9qLf7+gv/ag+7kcyOULHVkFbHOg7uecqFN7hI+PbA0ELtSs8eLpcxc0RMlD8PuKpJmuQr6A/3nuMz+I0xeDS1fterbOJ4Lpzt2c2RrSW3VnQy1NPfVV5HEFKb+Ho6/gKtuHc6ovD/LaogJ/9Oweye6gV4CVYGXWJ1IMpkLAwh6jVTB3iaQnQ5ChY9/FJfhaHLvzb+WiCS+8Z5b/6as+VpZy+OHZNf7DMdmvTf/pighy7giLaRC7Y9SXFpYnzFod/HqShRhCxy/hIMIW2VE/LijaxBMVr9dqMcP5oPEJV4YsbHm3dR39kS9kCti25+6TrPzNwvd6wn4RpU9R2XKUIF8xsoxOtnNDNE03Q1/sKfGyFH9jQrCjqLLr/QJ1Ik6ruxvvr7vGZd6yCcLTBNlyoiaMtOUYiZm1nGxiHVehShP12oraumA7gJHq7TiLx/SLwlkA1GT5C32Z1vjEp3BIxoh0RpqKM016f3q7PEd4el/zwuFo++71amPmrJF+49VxK2ouj/Soonz5KD5TBtM1H7rXdJipB0kIExQLx0z1J4VU6AffHE5yw7dkA9gJVotXlO39fN+PBiJ900VAjyaEWQH7Y2rce+TLZzZUbU1aXfSlqyvCd74dhkmJ7jtxMsKtWSkg4yExyuVEg5zyCJ3hvdigcT8p8CBf02A6JulIydCkMtBd72g9pUD3Mf53tyNSynLL4x0hxDC3vBIgKi3Q/CrMnG6Mri0mFIzitlMghHix74VxSpnlqxH/wqnl8VOAG7sUEOkAT/jkD9kjblt34voHYvSUolgVYURiB1gtX1zXcYrwA/zoG4KEPxGgn9ouFyCrpB8gce/8jPB+GGjDbbxE15uMVGeCI3tnUDPSG5UamgEZDro0ORnfi6e/om4X0Xms0FklzygaALSZYpXEgu+QD/wGKPP/xggzKJVgGoyLIgHFOsfa9y95VWp+3Jgl0w/uzUo4bKiEb9Ca673czBin9ViwB/kUftQkdkTs2XHbADPFzvSyHFkVJ37N7EDpAM/hY2HndzAXOjVazVip4EGXg6S5uVsmmw0AxA4mqmSJySUwG186LWyHcIuPTDo1GG3FmnWPKbzdXqL4HsLLen+x/VxbJwdzDO1fowZ7SzwxQ5pUAjDXSOSG5OWWUoIAUkM05AwyNkt6ota3flEJ0/l4eoTO8ACSrwnHfFMmyCh/WcxzwKbu3UjlRHaf/9H99fgpTjgWU1K4eXMwCClX2SNIJN6+2Djwt+XhOrAls2z7n/2qzhTRlmI1Wf6t+46NLdTAtbn3klrW+aKGtndKpHxje1VXDhOXpMXU6dbIpGvN/R3wJMaVzqFLHt6Yt5PWL8Z4dPO746HVual9YAJBJCFw03B57DZpWxZv5Fy7tHCarq2mIMLy4cLws583mba1RTW8lO5X4GjOrvrM51CgNeQeL0CB+hDZ1EFdPCy7qsZBKmhuTbSL0Tp3o1eL6HDnIIiHridl3CntJ1xplJ3jv+dxXJdVWDPhMcHOEm55a7P7TGf8nqYwFYfABx0Uy/P66NCvA5lXBzn/PGKBoUDTLiygLZF0NOTGhH+lBgxdjWhSo95kh67TW2lb7gtKDZS4lVgz8+nKnf9LwDRYgQi+weNCDr89xRlAGQTSybfaTZYztSkr0L7gG1n+XDaBRSFCWs+2qOTk/rHw6VceMwZbNT4a6l07YgLLTIc2IBaNlUnmj5stF5iXwT2rrlt9UN5NaVgg8ZyZixgfkToIzMJ5B/fkDHeZENaSWZdqpeJ4oNPHn/onvEN9gVtpQjbUFThi1V4TiHytn5JO1slNQuR+4TX7+w/It4JYHy47K79whrsvsjYd/e9qkrZSNzRpKmpO6+6+vdA+xsKhWFJSf3iP314rSgi3OSDLTcfxOMcqa3/fOadeD0m2qZ+l7fcPCT14uVeI47xHxy7gfBfyDBKZ0t5qJlMhZU6uO9lui4WA6v/Nqv2JkCdgA79G+Fz9pJhmjCLEas6cSEUxM3ItwQJcmKEDf1nr4gARDaOyEyRlE3RbPTJDrc6ed24tY5oknkO2urNGtMNIGQo0uvClnhh9k8ckUUQpeTXhBl2oPMSMfJ7eSkp+rSOn8LzrBuazSBCYxyY4PUHkhZ4cEKdQzpQ2Wtx6chSno27AwNb5x0GR9E+/xTb5aI8qXr2gVTcJBCcNeEqUlcotv3hnug/megTEJSZ9F/4lM6PIto0WGLbKZfQBqYbm2lrhd9K+y+eopqfIii1T7gnLkXNl5NsBDegNOVaa83GGYgUGxgtt57ZI6+77yylBdOOS2QOYfR9OziVo9Occ+4Deg92Mpvusu/8anPavZ1VAcAKbc4ALmT6jrtvXwW0U0+Lxqtk062MZwzDui2ARRxBLl244gXXcjyk1PbdDHdg37fkj5IJhuUxvMPJdWFe7jVK6StPDJv9xsALwCkggPOWgkCq5mxCdWyldEIaxpmIOOWWTLlyI7VnESPrUoOyCm/qkU3d8Hj6uAIW5OHsICOYrO+Kz3S6/dA4hYkc6N/XtWdOi4BUWojUKI9tWunULHG+CRULN1ChrFsJ2Y8xwgAJNoJIc4eZ/J+BsKhvJvryLe7xmoF1aPdy6Kexf5fyKqXt9mSXFTk3s5ze+BLyTwfloZMR1fX+JJOaLZ85+WBapXYtHG4kPSihOJwlXxbaAppNw7Hp99DsKdMMj6Jj8LFevqRJn4JVEoSTFVdhCDNK7jlXCTEw07+NH/qF79XFFS91lb4DJSIzUmrUkSRIn7RDyOq3uihpdC6yYP4nEPWfMdRBqjniE/zwvY1mk5XbfSW2sVup3iyjMz5vSrcsrpqsVs73JxT+u/nH+dGZyHLZq9XhDggPVBJaMNqfbQjXlGFhgd/wc0YcV+qy+qY5jfIcpX2m455jakypLpclj/SXFEuMC2XImr2kImjOpk+gcvR7VRSimQFStGPunYSOF1aNINeJL9TtMCA3way2UFHss5WH+lm69GR+3/wtHS4jyCDU9T3TAoaYf76nclJ8UO/8CAS0pmfK2LAffGO1HXkE/ptsw8ZwSwSGgK1Q75r53OA5KbIa226ecj7DCM0zpZJMlbA3apYbP9z6wotVeWJZG+3ak/3DVMwa2ssLgN8kNSUie7r2vsXNaQkw11EfnhYkFkCy0DLmRcdecgS3NVsLVGDuDD03wQ43GY7Dkcr1h1hM1aUpZzviQbRA/300kPJhgkaKKW1AYRCCkLP5JbAza5brFcnlI4qXSgraXGiqHt51NaU+DKC0VjN1zanZzF2IUeJJ9m/3cCWNj7u9HuvE7YKtE0/RzQhbkjRIRN4ZvEs7d8bG4rFUkiNJc2754QblJwlnl0rtfMMdKXPGc+XztvOVUyFTgrWnXkFtRt8+XxUR62zCzcXWMmdbMI3Pk1RaxfdUgaec7B9pBwse77OJK1HHF7pmnY08G7yZvbSth7BWcy1rGYvbKxdINl10vtTXdPCr5Ym3SEH40mvdqdOGaeM078oyOg3ciXF1ja4UffaW8705U2vdsg+3UMhipzzwgH1GauT+O85K9lff7+pkBiquDKR8VB3D0j0O2dnJyMDoZZCKeK+ctwM7+Sup94YZr7Fn5qFIHmwkZxpdRL2FatKnVIL69lK91j+1K8oPtLhfQfpHFFnjAIV3uio1wZemmnbzatoYKjwSSad7PF3gUeU6fuKMNQL0XhKndESw3FVMDNk8eh7JnxAR7KMsOzxYDsTjtZRfFo06d1MbCIMvt8jAqqomcBZ9dnQfRxgj5qgNbGN/3ET7xj+lmP5RcMZvizuM035IU9XXEFLXTgtz9hIuaqKKuA0nyycjTedmmGX8oSCop7Mp8Pb2c8eV5En3O1bnhLe98DwYhULiu+WxDM/8PJr6ONBs0+rolYcxcxuPZW8JGZUv45NmmhDTAFhyAgCpwJ+nQblRRMpjj26IUMuOMuWtNWVhGrcyKD6n9YxkS9nLq6+nD0YtfinTpk1kvyRQ6lKF8aOr+qWsLgvJVaHhLqx/2uI077NRiitz86MzWlVstKJUBGJ+mTcg4IEzpZ5/cjTYIZlkKhS9Zwtrg5riY6m88cIaKPTFIPLI7b6nKH2iZHWGGnGKaAi/uYItaU6U7OkK6u2WZg7PNY/qf0WkC42CSB8q0vSVEHTbdQCArNKyqq0c1TxcPk0lzfxz1hGTOP7z/r/Yy8EgTtNAtezh5uLW9bD51j/459TdyM9Q+gE121/W/6ILvSIHjd9diOKs05fBN5E5rvoumohLbuttSEdUEM+4qmboCj0VJOXDEvOR1hgk664X3qvVfaTohGy1ArVZedQoHGDK8NFIr+5iHu4pfgbFDMYBrbFaDQ+ESJ6At2ngIiz/fp+CMMxLh14+LYsEQGpSU9sfsmq10BisPOKc+utDMRYUYJrwjD/CZWziYz1WZdIi4uonasm5nAASPpIzF3sKICF9dvhNOEt8iDQcvWhMyGX8fVuqx1WBmecfwc/nfGG6Rwd9RSydGpYOeml1ZJ3NNxOw0cZVNcLBeFKBjq4rZrtdao/kBIvHhEWszzlyOU/t4ZIWT/6HaAwEZ5dUGdBBg51PUhnKW5Je2+I4jXzZnW4BiXA2kEfdBat4TTwYoKSN0/817plTeC5NlcvakmwSPDyQTcYWnwCFNjYGft108nr9t7nZeTaBO0YN4eInIQTwUlEW0gVMSZPW9YJn0zMrIvhNBstwW+NY7698eJ7syG2DtwrICtDiYCFqMOf8WLI5Wf5lBUzZigdJVD5eUw/N+joyqi0Vj37kGB/Fwe2Z9CFAYtNikBhF5tHAqep9FnYZ97BhVy4zEPbHafgPJCuSTLvoG2IzJUVNQHrS2BAa6mqMlqmBFjhHkVY/XCAmC4MfQjBOm7JXVBsG1P0B46yacFIIcyMHuKhGMb8812f6e7PiGZitRIqpy53pqCXPiA2eSjq9Wcrbt+rxjFnDrzT4HLXPLgv8amcn6+gGja/GS7Nu1gkwp/MUzshIgmQ0TwZCrMWhJ/POdmi4q7UYJhP/3lm55CrseOB338UK8o3Hm8WUpzM8uqM50OjYFkfwWsDp8NbWUANWL14OJmPTwdYnx1s5pyw9+IpMHNULcw3XBoSwZxRLoMFKOuhP2p68mrHDh1JG1Yy6oWz53f8Kp8IW1bcChsVwdliWtumVvh/+KZQ7HsbsFFCoJ1udebc4wt4RDip4hxdG9UvAWpC+RLZkfdt+CjYtM3WMy8umRHw2KWpAsLU3r3o3/RJyJf/KZiMefWSNjjDdz+PfePeZWMKbF+0E6zwHOF2F+R4VRu2TKH2eDCXAl3pIVJGhKNwiHMGwCvFH/Oys9Jf2iU9t66q3TXbfIe3l/8iF+Tg0XeJMglXQUNN+Y0vWNrfKh6c1Pl+y8gFDcUTxrxPojo00XF28of4/QC77WwuWB4/LutOIFzLp8uFJEtOFfYSzAzy5jhf0ECgeqpXJPUsxnOPc="
+     }
+    },
+    "function": {
+     "arguments": "{\"worksheet\":{\"E1\":{\"terms\":{\"shares_accepted_total\":56603773,\"proration_factor\":0.4718,\"final_price\":53,\"shares_tendered_total\":119018767,\"odd_lot_threshold\":100},\"citation\":{\"locator\":\"Paragraph 1\",\"verbatim\":\"Monster accepted for purchase a total of 56,603,773 shares of its common stock at the final purchase price of $53.00 per share, for an aggregate purchase price of approximately $3.0 billion. Because the number of shares tendered would have exceeded the aggregate purchase price of the tender offer, shares were accepted for purchase on a pro rata basis, except for tenders of \\\"odd lots,\\\" which will be accepted in full. Monster has been informed by the depositary that the final proration factor for the tender offer is approximately 47.18%.\",\"document\":\"mnst-results-20240610\"}},\"C2\":{\"options\":null,\"default_option\":null,\"economics\":{\"proration_applies\":false,\"odd_lot_exception\":true,\"factor_used\":1},\"election_required\":false},\"D2\":{\"twins\":[{\"id\":\"TW1\",\"value\":4611}],\"probe\":{\"derivation\":\"The Letter of Transmittal referenced in the Offer to Purchase is missing from the document store; therefore, fees or charges to be deducted from tender proceeds cannot be determined.\",\"value\":null,\"label\":\"NOT_DETERMINABLE\"}},\"D1\":{\"decision\":\"Process tender offer acceptance in full (87 shares at $53.00/share = $4,611.00 gross proceeds) under the odd-lot preference, and escalate for missing Letter of Transmittal to determine fee deductions.\",\"actions\":[{\"option\":null,\"basis_doc\":\"mnst-results-20240610\",\"by_date\":\"2024-06-10\",\"amount\":4611,\"action\":\"book_receivable\",\"quantity\":87},{\"quantity\":null,\"basis_doc\":\"mnst-otp-20240508\",\"action\":\"escalate\",\"by_date\":null,\"option\":null,\"amount\":null}]},\"E2\":{\"position\":{\"shares_held\":87,\"shares_tendered\":87},\"basis_shares\":87},\"P2\":{\"entitlement_basis\":\"shares_validly_tendered_by_expiration\",\"dates\":{\"expiration\":\"2024-06-05\",\"offer_commenced\":\"2024-05-08\",\"results_announced\":\"2024-06-10\"},\"election_deadline\":\"2024-06-05\",\"entitlement_basis_date\":\"2024-06-05\"},\"C1\":{\"cil\":{\"applicable\":false,\"amount\":null},\"entitlement\":{\"residual_shares\":0,\"shares_tendered\":87,\"gross_proceeds\":4611,\"accepted_shares\":87,\"final_price\":53}},\"P1\":{\"issuer\":\"Monster Beverage Corporation\",\"superseded_docs\":[],\"security\":{\"ticker\":\"MNST\"},\"event_type\":\"voluntary\",\"governing_doc\":\"mnst-results-20240610\"},\"C3\":{\"impact\":{\"accepted_shares\":87,\"residual_shares\":0,\"gross_proceeds\":4611},\"changes\":[{\"new\":4611,\"where\":\"ACCT-0093 cash ledger\",\"what\":\"cash receivable for tender proceeds\",\"old\":0},{\"what\":\"MNST share position held pending tender results\",\"new\":0,\"where\":\"ACCT-0093 custody position ledger\",\"old\":87}]}}}",
+     "name": "submit_worksheet"
+    },
+    "id": "call_599084",
+    "type": "function"
+   }
+  ]
+ },
+ {
+  "role": "tool",
+  "tool_call_id": "call_599084",
+  "name": "submit_worksheet",
+  "content": "{\"status\": \"submitted\", \"episode\": \"ended\", \"ledger_entries\": 2}"
+ }
+]

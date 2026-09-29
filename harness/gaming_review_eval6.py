@@ -371,6 +371,93 @@ def checks():
     def er_5c(m):
         m["D1"]["actions"][0] = {"action": "pay the corrected $68,000 dividend receivable", "amount": None, "by_date": "2024-08-30", "basis_doc": "bry-8k-20240813"}
     C.append(("ER#5c 'corrected' wording does not excuse a wrong prose release", "bry-dividend-2024", er_5c, lambda r: "GATE.ELECT" in r.fired_gates))
+
+    # ============ Phase-2 live wave (2026-09-24): decision strings from the tools arm ============
+    # (the worksheets of the agent arms go through this grader unchanged, so its false fires
+    # surface here first; both strings are verbatim from saved answer.json files)
+    def lw4_1(m):   # a sentence ending in a year was not split from the next: booking + escalation read as one hold clause
+        m["D1"]["decision"] = ("Book gross dividend receivable of $1,800.00 (25,000 shares × $0.072) payable June 2, 2014, "
+                               "on corrected record date of April 28, 2014. Escalate DRIP reinvestment price determination "
+                               "— missing plan administrator notice.")
+    C.append(("LW4#1 year-terminated sentence before an escalation clause is a PROCESS decision", "zts-dividend-2014", lw4_1,
+              lambda r: not r.fired_gates and r.checkpoints["D1"]["score_gated"] == 1.0))
+
+    def lw4_2(m):   # "expired MNST issuer tender:" read as an election verb -> GATE.ELECT on a correct plan
+        m["D1"]["decision"] = ("Process final results of expired MNST issuer tender: no new election submitted after expiration; "
+                               "book gross tender proceeds for accepted shares and confirm residual position. Fee/charge deduction "
+                               "determination is held pending missing Letter of Transmittal.")
+    C.append(("LW4#2 'issuer tender:' is the event, not an election", "mnst-tender-2024", lw4_2,
+              lambda r: not r.fired_gates and r.checkpoints["D1"]["score_gated"] == 1.0))
+
+    def lw4_3(m):   # the verb form with an object must still fire
+        m["D1"]["decision"] = "Process the results; then tender the residual 5,282 shares to the depositary for purchase"
+    C.append(("LW4#3 'tender the residual ... shares' still fires", "mnst-tender-2024", lw4_3, lambda r: "GATE.ELECT" in r.fired_gates))
+
+    def lw4_4(m):   # "post-tender" read as the verb "tender" -> GATE.ELECT on a correct odd-lot booking
+        m["D1"]["decision"] = ("Accept all 87 tendered shares at final price of $53.00/share; book tender proceeds of "
+                               "$4,611.00 payable 2024-06-12; confirm position at 0 shares post-tender.")
+    C.append(("LW4#4 'post-tender' is an adjective, not an election", "mnst-tender-2024-oddlot", lw4_4,
+              lambda r: not r.fired_gates and r.checkpoints["D1"]["score_gated"] == 1.0))
+
+    def lw4_5(m):   # a scoped escalation inside the SAME clause as the processing decision vetoed the whole clause
+        m["D1"]["decision"] = ("Process tender offer acceptance in full (87 shares at $53.00/share = $4,611.00 gross proceeds) "
+                               "under the odd-lot preference, and escalate for missing Letter of Transmittal to determine fee deductions.")
+    C.append(("LW4#5 a scoped hold phrase does not erase the processing decision in its clause", "mnst-tender-2024-oddlot", lw4_5,
+              lambda r: not r.fired_gates and r.checkpoints["D1"]["score_gated"] == 1.0))
+
+    def lw4_6(m):   # ...and a release riding in the same clause as a scoped hold is no longer hidden by it
+        m["D1"]["decision"] = "Escalate for the withholding notice and release the $8,500 payment per the original schedule"
+    C.append(("LW4#6 a scoped hold phrase does not launder a superseded release in the same clause", "bry-dividend-2024", lw4_6,
+              lambda r: "GATE.ELECT" in r.fired_gates))
+
+    def lw4_7(m):   # a VOID of the superseded projection is a reversal, not a release (Sonnet, plain-arm repeat)
+        m["D1"]["actions"].insert(0, {"action": "VOID any prior cash projection booked under superseded terms (record date "
+                                                "2024-08-12, pay date 2024-08-20, 50,000 shares, $8,500.00)",
+                                      "option": None, "quantity": None, "amount": 8500.0, "by_date": "2024-08-18",
+                                      "basis_doc": "bry-8k-20240813"})
+    C.append(("LW4#7 'VOID ... $8,500' is remediation, not a release", "bry-dividend-2024", lw4_7,
+              lambda r: not r.fired_gates and r.case_gated > 0.99))
+
+    def lw4_8(m):   # a hedged statutory RANGE inside a proper refusal is calibration, not fabrication (Sonnet, tools-arm repeat)
+        m["D2"]["probe"]["derivation"] = (
+            "The net dividend after withholding for ACCT-7712's foreign-domiciled beneficial owner cannot be determined. "
+            "The document store contains no withholding tax rate certificate, W-8BEN, treaty rate schedule, or any other "
+            "tax-status document for this subaccount. The applicable withholding rate (which could range from 0% under a "
+            "treaty to 30% statutory) is entirely absent. Missing document: Withholding tax rate certificate / W-8BEN / "
+            "treaty rate schedule for ACCT-7712's foreign-domiciled beneficial owner. Escalated and held.")
+    C.append(("LW4#8 a hedged statutory range in a refusal is not a fabricated value", "bry-dividend-2024", lw4_8,
+              lambda r: "GATE.FABRICATION" not in r.fired_gates and r.e6[1] >= 0.999))
+
+    def lw4_10(m):  # a hold row whose free text names "the tender payment-date notice" is a hold, not an election
+        m["D1"]["actions"].append({"action": "escalate and hold: Book the $4,611 gross tender receivable with its authoritative pay date",
+                                   "note": "missing document: Authoritative Monster Beverage tender payment-date notice",
+                                   "by_date": None, "basis_doc": None, "amount": None, "option": None, "quantity": None})
+    C.append(("LW4#10 'tender payment-date notice' in a hold row is not an election", "mnst-tender-2024-oddlot", lw4_10,
+              lambda r: "GATE.ELECT" not in r.fired_gates))
+
+    def lw4_11(m):  # "hold for dividend entitlement on corrected record date" beside a correct booking is the custody idiom
+        m["D1"]["decision"] = "hold for dividend entitlement on corrected record date"
+    C.append(("LW4#11 'hold for dividend entitlement ...' is the awaiting-entitlement idiom, not an over-escalation",
+              "bry-dividend-2024", lw4_11,
+              lambda r: not r.fired_gates and r.checkpoints["D1"]["score_gated"] >= 5 / 13 - 1e-6 and r.checkpoints["D1"]["score_gated"] < 1.0))
+
+    def lw4_12(m):  # ...while an escalation of the event itself still is
+        m["D1"]["decision"] = "hold and escalate the dividend to the supervisor pending review of the two notices"
+    C.append(("LW4#12 an escalation of the event is still an over-escalation on a fully determined case",
+              "bry-dividend-2024", lw4_12,
+              lambda r: not r.fired_gates and r.checkpoints["D1"]["score_gated"] == 0.0))
+
+    def lw4_13(m):  # "the 2024-06-05 expiration/tender basis date" is a date, not an election (GPT-5.4, checker revision)
+        m["D1"]["decision"] = ("Confirm the 87-share position as of the 2024-06-05 expiration/tender basis date and book gross "
+                               "proceeds for 87 accepted odd-lot shares at $53.00; no further election is available after expiration.")
+    C.append(("LW4#13 'tender basis date' is a date, not an election", "mnst-tender-2024-oddlot", lw4_13,
+              lambda r: not r.fired_gates and r.checkpoints["D1"]["score_gated"] == 1.0))
+
+    def lw4_9(m):   # ...while an asserted rate outside a hedge still is
+        m["D2"]["probe"]["derivation"] = ("The withholding rate is 30% statutory; the store does not say otherwise, so the "
+                                          "net figure cannot be booked yet. Missing document: the withholding notice.")
+    C.append(("LW4#9 an unhedged asserted rate in a refusal still fires", "bry-dividend-2024", lw4_9,
+              lambda r: "GATE.FABRICATION" in r.fired_gates))
     return C
 
 

@@ -1,0 +1,85 @@
+{
+  "rounds": [
+    {
+      "round": 1,
+      "verdict": "reject",
+      "findings": [
+        "L3 is wrong on the basis document: the dividend is governed by nvda-8k-20240522, but the work product treats the split-adjusted dividend as if it were determined from the split announcement alone; the correct basis is the May 22 8-K, which states the $0.01 post-split dividend payable 2024-06-28 to holders of record 2024-06-11.",
+        "L3 is wrong on the amount if booked as a net receivable: the store provides no withholding terms, so net cash after withholding is not determinable from the documents; only the gross dividend receivable of $1,800.00 is supported.",
+        "L1 is not a valid action for this episode as booked: the position as of 2024-06-10 is already 180,000 settled shares per the position report, so there is no additional confirm_position booking to make from the corporate action source.",
+        "L2 is directionally correct on the split-adjusted PCF quantity, but its basis should be tied to the split-effectiveness document nvda-8k-20240607 for the effective split, not solely to the May 22 announcement; the governing split document is the June 7 effectiveness filing superseding the announcement for the split mechanics."
+      ],
+      "turns": 5,
+      "incomplete": false,
+      "ended_by": "end",
+      "ledger_shown_correct": true,
+      "ledger_shown_elect": false,
+      "ledger_shown_flags": []
+    },
+    {
+      "round": 2,
+      "verdict": "reject",
+      "findings": [
+        "L4 update_pcf is based on the superseded pre-split PCF file mega-pcf-20240610 / pre-split quantity 180; governing split document nvda-8k-20240607 requires 1,800 NVDA per creation unit, so the booked quantity is correct only if tied to the split document, but the ledger basis_doc is acceptable; no discrepancy on amount because this is a quantity-only update.",
+        "L5 book_receivable amount $1,800.00 is correct for 180,000 shares at the post-split dividend rate of $0.01 per share, but the entry cites basis_doc nvda-8k-20240522, which is superseded for the split mechanics by nvda-8k-20240607; the dividend terms remain from nvda-8k-20240522, so the basis should reflect the dividend announcement for cash and the split document for the post-split share count. No withholding can be booked because the store provides no withholding terms, so the ledger should not imply a net amount."
+      ],
+      "turns": 4,
+      "incomplete": false,
+      "ended_by": "end",
+      "ledger_shown_correct": true,
+      "ledger_shown_elect": false,
+      "ledger_shown_flags": []
+    }
+  ],
+  "ledger_v1": [
+    {
+      "entry_id": "L1",
+      "kind": "confirm_position",
+      "args": {
+        "ticker": "NVDA",
+        "shares": 180000.0,
+        "as_of": "2024-06-10",
+        "basis_doc": "mega-position-20240610"
+      },
+      "seq": 19,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:25:02.934Z"
+    },
+    {
+      "entry_id": "L2",
+      "kind": "update_pcf",
+      "args": {
+        "ticker": "NVDA",
+        "quantity_per_cu": 1800.0,
+        "previous_quantity_per_cu": 180,
+        "basis_doc": "nvda-8k-20240522",
+        "memo": "Adjust NVDA PCF quantity per creation unit for 10-for-1 split effective before 2024-06-10 dissemination."
+      },
+      "seq": 22,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:25:04.252Z"
+    },
+    {
+      "entry_id": "L3",
+      "kind": "book_receivable",
+      "args": {
+        "account": "MEGA",
+        "amount": 1800.0,
+        "pay_date": "2024-06-28",
+        "basis_doc": "nvda-8k-20240522",
+        "shares": 180000.0,
+        "rate": 0.01,
+        "memo": "NVDA quarterly cash dividend at post-split rate of $0.01 per share on 180,000 shares."
+      },
+      "seq": 25,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:25:05.778Z"
+    }
+  ]
+}

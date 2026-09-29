@@ -1,0 +1,119 @@
+{
+  "P1": {
+    "issuer": "Monster Beverage Corporation",
+    "security": {
+      "ticker": "MNST"
+    },
+    "event_type": "voluntary",
+    "governing_doc": "mnst-results-20240610",
+    "superseded_docs": []
+  },
+  "P2": {
+    "dates": {
+      "offer_commenced": "2024-05-08",
+      "expiration": "2024-06-05",
+      "results_announced": "2024-06-10"
+    },
+    "entitlement_basis": "shares_validly_tendered_by_expiration",
+    "entitlement_basis_date": "2024-06-05",
+    "election_deadline": "2024-06-05"
+  },
+  "E1": {
+    "terms": {
+      "price_range_low": 53,
+      "price_range_high": 60,
+      "final_price": 53,
+      "aggregate_cap": 3000000000,
+      "shares_tendered_total": 119018767,
+      "shares_accepted_total": 56603773,
+      "proration_factor": 0.4718,
+      "odd_lot_threshold": 100
+    },
+    "citation": {
+      "document": "mnst-results-20240610",
+      "locator": "final results paragraph",
+      "verbatim": "The tender offer expired at 11:59 p.m., New York City time, on June 5, 2024. A total of 119,018,767 shares of Monster's common stock were validly tendered and not validly withdrawn at the final purchase price of $53.00 per share or as purchase price tenders, which includes shares that were tendered through notice of guaranteed delivery. Monster accepted for purchase a total of 56,603,773 shares of its common stock, representing approximately 5.4% of the shares issued and outstanding immediately prior to the completion of the purchase, at the final purchase price of $53.00 per share, for an aggregate purchase price of approximately $3.0 billion. Because the number of shares tendered would have exceeded the aggregate purchase price of the tender offer, shares were accepted for purchase on a pro rata basis, except for tenders of \"odd lots,\" which will be accepted in full. Monster has been informed by the depositary that the final proration factor for the tender offer is approximately 47.18%."
+    }
+  },
+  "E2": {
+    "position": {
+      "shares_held": 10000,
+      "shares_tendered": 10000
+    },
+    "basis_shares": 10000
+  },
+  "C1": {
+    "entitlement": {
+      "shares_tendered": 10000,
+      "proration_factor": 0.4718,
+      "accepted_shares": 4718,
+      "final_price": 53,
+      "gross_proceeds": 250054,
+      "residual_shares": 5282
+    },
+    "cil": {
+      "applicable": false,
+      "amount": null
+    }
+  },
+  "C2": {
+    "election_required": false,
+    "options": null,
+    "default_option": null,
+    "economics": {
+      "proration_applies": true,
+      "factor_used": 0.4718,
+      "odd_lot_exception": "Not applicable; account is institutional; odd-lot preference applies only to holders of less than 100 shares tendering all odd-lot shares."
+    }
+  },
+  "C3": {
+    "impact": {
+      "accepted_shares": 4718,
+      "gross_proceeds": 250054,
+      "residual_shares": 5282
+    },
+    "changes": [
+      {
+        "what": "MNST share position confirmation",
+        "where": "position verification ledger",
+        "old": null,
+        "new": 10000
+      },
+      {
+        "what": "Tender proceeds cash receivable",
+        "where": "cash receivable ledger for ACCT-4407",
+        "old": null,
+        "new": null
+      }
+    ]
+  },
+  "D1": {
+    "decision": "Confirm the 10,000-share MNST position as of the 2024-06-05 expiration basis date and compute final tender results from the governing final-results announcement. No live election remains. Do not book a cash receivable yet because the store does not provide a payment date.",
+    "actions": [
+      {
+        "_entry": "L4",
+        "_kind": "confirm_position",
+        "action": "confirm position of 10,000 MNST shares",
+        "quantity": 10000.0,
+        "basis_doc": "mnst-results-20240610",
+        "by_date": null,
+        "as_of": "2024-06-05",
+        "amount": null,
+        "option": null
+      }
+    ]
+  },
+  "D2": {
+    "probe": {
+      "label": "COMPUTED",
+      "value": "Not determinable from the store that any fees or charges will be deducted; no deduction term is stated in the governing documents provided.",
+      "derivation": "The document store contains the final results announcement and offer excerpt, neither of which states any fee or charge deduction from this account's tender proceeds."
+    },
+    "twins": [
+      {
+        "id": "TW1",
+        "value": 250054
+      }
+    ]
+  }
+}

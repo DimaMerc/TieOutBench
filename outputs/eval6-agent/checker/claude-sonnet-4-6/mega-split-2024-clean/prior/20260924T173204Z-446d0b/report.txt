@@ -1,0 +1,91 @@
+########################################################################
+  EPISODE mega-split-2024-clean   arm=checker   model=claude-sonnet-4-6
+########################################################################
+
+--- WORKSHEET (the submitted worksheet through the unchanged Phase-1 grader) ---
+========================================================================
+  CASE mega-split-2024-clean    model=checker:claude-sonnet-4-6    judge=mock
+========================================================================
+  CaseScore (gated, headline) : 1.000
+  CaseScore (ungated)         : 1.000
+  GAP (ungated - gated)       : 0.000
+  AllPass                     : 1
+  D2 calibration (R,G->F_b)   : R=1.00 G=1.00 -> 1.000
+  Gates fired                 : none
+
+  Checkpoint vector (which step failed):
+    cp   W      ungated  gated   raw
+    P1   0.100  1.000   1.000  +1.00
+    P2   0.120  1.000   1.000  +1.00
+    E1   0.100  1.000   1.000  +1.00
+    E2   0.080  1.000   1.000  +1.00
+    C1   0.140  1.000   1.000  +1.00
+    C2   0.120  1.000   1.000  +1.00
+    C3   0.100  1.000   1.000  +1.00
+    D1   0.160  1.000   1.000  +1.00
+    D2   0.080  1.000   1.000  +1.00
+
+  Category rollup (diagnostic -- what KIND of error):
+    extraction   +1.000  ####################
+    numerical    +1.000  ####################
+    entailment   +1.000  ####################
+    reasoning    +1.000  ####################
+    calibration  +1.000  ####################
+    structure    +1.000  ####################
+========================================================================
+
+--- TERMINAL STATE (worksheet + the ledger rendered into D1 rows; ledger predicates applied) ---
+========================================================================
+  CASE mega-split-2024-clean    model=checker:claude-sonnet-4-6    judge=mock
+========================================================================
+  CaseScore (gated, headline) : 1.000
+  CaseScore (ungated)         : 1.000
+  GAP (ungated - gated)       : 0.000
+  AllPass                     : 1
+  D2 calibration (R,G->F_b)   : R=1.00 G=1.00 -> 1.000
+  Gates fired                 : none
+
+  Checkpoint vector (which step failed):
+    cp   W      ungated  gated   raw
+    P1   0.100  1.000   1.000  +1.00
+    P2   0.120  1.000   1.000  +1.00
+    E1   0.100  1.000   1.000  +1.00
+    E2   0.080  1.000   1.000  +1.00
+    C1   0.140  1.000   1.000  +1.00
+    C2   0.120  1.000   1.000  +1.00
+    C3   0.100  1.000   1.000  +1.00
+    D1   0.160  1.000   1.000  +1.00
+    D2   0.080  1.000   1.000  +1.00
+
+  Category rollup (diagnostic -- what KIND of error):
+    extraction   +1.000  ####################
+    numerical    +1.000  ####################
+    entailment   +1.000  ####################
+    reasoning    +1.000  ####################
+    calibration  +1.000  ####################
+    structure    +1.000  ####################
+========================================================================
+
+--- LEDGER ---
+L4: update_pcf ticker=NVDA quantity_per_cu=1800.0 (was 1800) basis_doc=nvda-8k-20240607 memo='NVDA 10-for-1 split effective 2024-06-07; pre-split quantity was 180 shares/CU; post-split quantity confirmed at 1,800 shares/CU (180 × 10) for 2024-06-10 PCF dissemination.'
+L5: book_receivable amount=$1,800.00 pay_date=2024-06-28 shares=180000.0 rate=0.01 basis_doc=nvda-8k-20240522 memo='NVDA quarterly cash dividend at post-split rate $0.01/share; record date 2024-06-11; 180,000 post-split shares projected at record date; gross amount $1,800.00. Net withholding NOT_DETERMINABLE — withholding rate document absent from store.'
+L6: escalate missing_document='MEGA fund withholding/tax-status document (or applicable withholding rate schedule for NVDA dividends paid to MEGA as a domestic ETF) — e.g., a W-9 on file, fund tax classification memo, or custodian withholding instruction confirming 0% or applicable rate' held_action="Booking net (post-withholding) dividend receivable for MEGA's NVDA position payable 2024-06-28" reason="The D2 probe asks for NET dividend cash after applicable withholding on MEGA's NVDA position. The document store contains the gross rate ($0.01/share post-split from nvda-8k-20240522) but contains no withholding tax rate schedule, IRS Form W-9/W-8 classification, or fund tax-status document that would determine the applicable withholding rate. The net amount cannot be computed without this document."
+  booked entries: 2   GATE.ELECT on the ledger: False   gold match: True   flags: none   correct: True
+  consistency L4: booked=1800.0 worksheet=1800.0 ok=True
+  consistency L5: booked=1800.0 worksheet=1800.0 ok=True
+  gold L4 update_pcf: ok=True  {'gold': 1800.0}
+  gold L5 book_receivable: ok=True  {'permissible': [1800.0], 'pay_date_ok': True, 'basis_superseded': False}
+  gold L6 escalate: ok=True  {'scoped': True}
+
+--- TRAJECTORY (reported, not scored) ---
+  maker: turns=12 tool_calls=18 errors=0 counts={'list_documents': 1, 'get_position': 2, 'read_document': 4, 'calculate': 3, 'update_pcf': 2, 'book_receivable': 2, 'escalate': 2, 'submit_worksheet': 2}
+  governing read before first action: True   docs read: ['mega-pcf-20240610', 'mega-position-20240610', 'nvda-8k-20240522', 'nvda-8k-20240607']   superseded read: []   distractors read: []
+  position dates queried: ['2024-06-10', '2024-06-11']   basis date queried: False   superseded date queried: None   projected: 1   query errors: 0
+  calculate used: True (3): ['18000 * 10', '180000 / 100', '180000 * 0.01']
+
+--- REVIEW (checker arm) ---
+  round 1: verdict=reject recomputed=True tools={'list_documents': 1, 'get_position': 1, 'read_document': 5, 'calculate': 4, 'review_verdict': 1} ledger_shown_correct=False
+    - L1 memo error — incorrect prior quantity: The memo states 'was 1800' for the pre-split NVDA shares per creation unit, but the pre-split quantity was 180 shares/CU (confirmed by the record-date position of 18,000 total shares ÷ 100 CUs = 180/CU, and by the worksheet's own C3 entry which correctly shows old=180). The 'was' value in the L1 memo should be 180, not 1800.
+  round 2: verdict=reject recomputed=True tools={'list_documents': 1, 'get_position': 1, 'read_document': 5, 'calculate': 3, 'review_verdict': 1} ledger_shown_correct=True
+    - L4 (update_pcf): The 'was' (pre-split) quantity is recorded as 1800 in the ledger entry ('quantity_per_cu=1800.0 (was 1800)'), but the pre-split quantity per creation unit was 180 shares (confirmed by the record-date position of 18,000 total shares ÷ 100 creation units = 180/CU from get_position as of 2024-06-06 and mega-position-20240610). The entry should read 'quantity_per_cu=1800.0 (was 180)'. The post-split quantity of 1,800 is correct, but the stated prior quantity is wrong, making the audit trail of the change incorrect.
+########################################################################

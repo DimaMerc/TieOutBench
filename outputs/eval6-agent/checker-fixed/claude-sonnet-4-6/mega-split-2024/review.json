@@ -1,0 +1,80 @@
+{
+  "rounds": [
+    {
+      "round": 1,
+      "verdict": "approve",
+      "findings": [],
+      "turns": 4,
+      "incomplete": false,
+      "ended_by": "end",
+      "ledger_shown_correct": true,
+      "ledger_shown_elect": false,
+      "ledger_shown_flags": []
+    }
+  ],
+  "ledger_v1": [
+    {
+      "entry_id": "L1",
+      "kind": "update_pcf",
+      "args": {
+        "ticker": "NVDA",
+        "quantity_per_cu": 1800.0,
+        "previous_quantity_per_cu": 180,
+        "basis_doc": "nvda-8k-20240607",
+        "memo": "NVDA 10-for-1 split effective 2024-06-07 (record date 2024-06-06). Pre-split basket was 180 shares/CU; post-split is 1,800 shares/CU. PCF updated for split-adjusted trading commencing 2024-06-10."
+      },
+      "seq": 27,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:20:47.361Z"
+    },
+    {
+      "entry_id": "L2",
+      "kind": "escalate",
+      "args": {
+        "reason": "The D2 probe asks for NET dividend cash after applicable withholding on MEGA's NVDA position. The store contains the gross rate ($0.01/share post-split) but contains no withholding tax rate schedule, IRS Form W-9/W-8 status document, or tax treaty document applicable to MEGA's NVDA dividend. The net figure cannot be computed without the applicable withholding rate.",
+        "missing_document": "MEGA withholding tax rate / tax-exempt status document for NVDA dividend (e.g., IRS Form W-9 or fund tax-status certification confirming 0% or applicable withholding rate on U.S. domestic equity dividends)",
+        "held_action": "Book net dividend receivable for MEGA NVDA June 2024 dividend after withholding"
+      },
+      "seq": 29,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:20:47.361Z"
+    },
+    {
+      "entry_id": "L3",
+      "kind": "book_receivable",
+      "args": {
+        "account": "MEGA",
+        "amount": 1800.0,
+        "pay_date": "2024-06-28",
+        "basis_doc": "nvda-8k-20240522",
+        "shares": 180000.0,
+        "rate": 0.01,
+        "memo": "NVDA quarterly cash dividend at post-split rate $0.01/share on 180,000 post-split shares (record date 2024-06-11, payable 2024-06-28). Gross amount; net-of-withholding booking held pending withholding rate document."
+      },
+      "seq": 32,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:20:54.689Z"
+    },
+    {
+      "entry_id": "L4",
+      "kind": "confirm_position",
+      "args": {
+        "ticker": "NVDA",
+        "shares": 180000.0,
+        "as_of": "2024-06-07",
+        "basis_doc": "nvda-8k-20240607"
+      },
+      "seq": 34,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:20:54.689Z"
+    }
+  ]
+}

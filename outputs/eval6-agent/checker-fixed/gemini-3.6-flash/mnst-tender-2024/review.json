@@ -1,0 +1,78 @@
+{
+  "rounds": [
+    {
+      "round": 1,
+      "verdict": "reject",
+      "findings": [
+        "L1 (escalate) is wrong: it holds settlement claiming fees/charges deducted from proceeds are 'not determinable' because the Letter of Transmittal is absent. The fee question IS determinable from the store: no governing document (neither the Offer to Purchase mnst-otp-20240508 nor the final-results release mnst-results-20240610) deducts any fee or charge from tendering holders' proceeds. The correct D2 answer is that NO fees or charges are deducted (zero), so gross proceeds equal net proceeds ($250,054). The escalation should not be booked; the item is not a missing-document blocker. This is also internally contradictory: L2 books gross proceeds in full and L3 confirms the residual position, so settlement is not actually held.",
+        "Consequence for D2 worksheet: value should be 'no fees deducted / $0', not label NOT_DETERMINABLE. The Letter of Transmittal governs the mechanics of tendering (already completed and confirmed by the depositary per the position record), not a proceeds fee, and its absence does not make the fee answer indeterminable."
+      ],
+      "turns": 4,
+      "incomplete": false,
+      "ended_by": "end",
+      "ledger_shown_correct": true,
+      "ledger_shown_elect": false,
+      "ledger_shown_flags": []
+    },
+    {
+      "round": 2,
+      "verdict": "approve",
+      "findings": [],
+      "turns": 4,
+      "incomplete": false,
+      "ended_by": "end",
+      "ledger_shown_correct": true,
+      "ledger_shown_elect": false,
+      "ledger_shown_flags": []
+    }
+  ],
+  "ledger_v1": [
+    {
+      "entry_id": "L1",
+      "kind": "escalate",
+      "args": {
+        "reason": "The Letter of Transmittal referenced in the Offer to Purchase is absent from the document store, preventing determination of applicable fees or charges deducted from tender proceeds.",
+        "missing_document": "Letter of Transmittal",
+        "held_action": "fee_deduction_and_net_proceeds_settlement"
+      },
+      "seq": 28,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:25:15.004Z"
+    },
+    {
+      "entry_id": "L2",
+      "kind": "book_receivable",
+      "args": {
+        "account": "ACCT-4407",
+        "amount": 250054.0,
+        "pay_date": "2024-06-10",
+        "basis_doc": "mnst-results-20240610",
+        "shares": 4718.0,
+        "rate": 53.0,
+        "memo": "Gross cash proceeds for 4,718 accepted shares at $53.00 per share"
+      },
+      "seq": 31,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:25:16.958Z"
+    },
+    {
+      "entry_id": "L3",
+      "kind": "confirm_position",
+      "args": {
+        "ticker": "MNST",
+        "shares": 5282.0,
+        "as_of": "2024-06-10",
+        "basis_doc": "mnst-results-20240610"
+      },
+      "seq": 34,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:25:18.610Z"
+    }
+  ]
+}

@@ -1,0 +1,89 @@
+########################################################################
+  EPISODE mnst-tender-2024   arm=checker   model=gpt-5.6-sol
+########################################################################
+
+--- WORKSHEET (the submitted worksheet through the unchanged Phase-1 grader) ---
+========================================================================
+  CASE mnst-tender-2024    model=checker:gpt-5.6-sol    judge=mock
+========================================================================
+  CaseScore (gated, headline) : 1.000
+  CaseScore (ungated)         : 1.000
+  GAP (ungated - gated)       : 0.000
+  AllPass                     : 1
+  D2 calibration (R,G->F_b)   : R=1.00 G=1.00 -> 1.000
+  Gates fired                 : none
+
+  Checkpoint vector (which step failed):
+    cp   W      ungated  gated   raw
+    P1   0.100  1.000   1.000  +1.00
+    P2   0.120  1.000   1.000  +1.00
+    E1   0.100  1.000   1.000  +1.00
+    E2   0.080  1.000   1.000  +1.00
+    C1   0.140  1.000   1.000  +1.00
+    C2   0.120  1.000   1.000  +1.00
+    C3   0.100  1.000   1.000  +1.00
+    D1   0.160  1.000   1.000  +1.00
+    D2   0.080  1.000   1.000  +1.00
+
+  Category rollup (diagnostic -- what KIND of error):
+    extraction   +1.000  ####################
+    numerical    +1.000  ####################
+    entailment   +1.000  ####################
+    reasoning    +1.000  ####################
+    calibration  +1.000  ####################
+    structure    +1.000  ####################
+========================================================================
+
+--- TERMINAL STATE (worksheet + the ledger rendered into D1 rows; ledger predicates applied) ---
+========================================================================
+  CASE mnst-tender-2024    model=checker:gpt-5.6-sol    judge=mock
+========================================================================
+  CaseScore (gated, headline) : 0.840
+  CaseScore (ungated)         : 1.000
+  GAP (ungated - gated)       : 0.160
+  AllPass                     : 0
+  D2 calibration (R,G->F_b)   : R=1.00 G=1.00 -> 1.000
+  Gates fired                 : none
+  Headline flags              : ledger_missing_required, ledger_overescalate
+
+  Checkpoint vector (which step failed):
+    cp   W      ungated  gated   raw
+    P1   0.100  1.000   1.000  +1.00
+    P2   0.120  1.000   1.000  +1.00
+    E1   0.100  1.000   1.000  +1.00
+    E2   0.080  1.000   1.000  +1.00
+    C1   0.140  1.000   1.000  +1.00
+    C2   0.120  1.000   1.000  +1.00
+    C3   0.100  1.000   1.000  +1.00
+    D1   0.160  1.000   0.000  +1.00  <-- gated
+    D2   0.080  1.000   1.000  +1.00
+
+  Category rollup (diagnostic -- what KIND of error):
+    extraction   +1.000  ####################
+    numerical    +1.000  ####################
+    entailment   +1.000  ####################
+    reasoning    +1.000  ####################
+    calibration  +1.000  ####################
+    structure    +1.000  ####################
+========================================================================
+
+--- LEDGER ---
+L4: escalate missing_document='Monster Beverage tender offer Letter of Transmittal' held_action='Determine/book fee deductions and net tender proceeds' reason='The Offer to Purchase requires the referenced Letter of Transmittal, which is absent from the store. Fees or charges deductible from tender proceeds are not determinable. Hold only fee deductions and net proceeds; gross proceeds remain processable.'
+L5: confirm_position ticker=MNST shares=5282.0 as_of=2024-06-10 basis_doc=mnst-results-20240610
+L6: escalate missing_document='Document establishing the Monster Beverage tender offer payment date' held_action='Assign payment date to the $250,054 gross tender receivable' reason='The governing final-results release establishes accepted shares, price, and gross proceeds, but no document in the store establishes the actual payment date. The receivable amount is determined, but its required pay_date field must remain unspecified pending a payment-date source.'
+  booked entries: 1   GATE.ELECT on the ledger: False   gold match: False   flags: ledger_missing_required, ledger_overescalate   correct: False
+  gold L4 escalate: ok=True  {'scoped': True}
+  gold L5 confirm_position: ok=True  {'as_of_is_basis_date': False}
+  gold L6 escalate: ok=False  {'scoped': False}
+
+--- TRAJECTORY (reported, not scored) ---
+  maker: turns=11 tool_calls=26 errors=2 counts={'list_documents': 2, 'read_document': 6, 'get_position': 2, 'calculate': 6, 'escalate': 3, 'book_receivable': 3, 'confirm_position': 2, 'submit_worksheet': 2}
+  governing read before first action: True   docs read: ['acct4407-position-20240610', 'mnst-otp-20240508', 'mnst-results-20240610']   superseded read: []   distractors read: []
+  position dates queried: ['2024-06-05', '2024-06-05']   basis date queried: True   superseded date queried: None   projected: 0   query errors: 0
+  calculate used: True (6): ['10000*0.4718', '10000*0.4718*53', '10000-(10000*0.4718)', '10000*0.4718', '4718*53', '10000-4718']
+
+--- REVIEW (checker arm) ---
+  round 1: verdict=reject recomputed=True tools={'list_documents': 1, 'read_document': 3, 'get_position': 2, 'calculate': 3, 'review_verdict': 1} ledger_shown_correct=True
+    - {"entry": "L2", "what_is_wrong": "The booked pay_date of 2024-06-10 is unsupported. The governing final-results release is dated June 10 and confirms acceptance, price, and proration, but it does not state that payment occurs on June 10. The announcement date cannot be used as the pay date.", "what_it_should_be": "Book the $250,054 gross receivable for 4,718 accepted shares at $53, but leave the pay date unspecified/held pending a source that establishes the actual payment date."}
+  round 2: verdict=approve recomputed=True tools={'list_documents': 1, 'read_document': 3, 'get_position': 2, 'calculate': 3, 'review_verdict': 1} ledger_shown_correct=False
+########################################################################

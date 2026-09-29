@@ -1,0 +1,13 @@
+{
+  "endpoint": "api.anthropic.com",
+  "model_id": "claude-fable-5-1",
+  "token": "conformance-aeef7c",
+  "tested_at": "2026-09-25T00:45:08Z",
+  "native": {
+    "tool_call": true,
+    "final": true,
+    "detail": "DONE conformance-aeef7c"
+  },
+  "text": null,
+  "tool_transport": "native"
+}

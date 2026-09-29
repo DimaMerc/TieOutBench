@@ -1,0 +1,51 @@
+{
+  "rounds": [
+    {
+      "round": 1,
+      "verdict": "approve",
+      "findings": [
+        "No discrepancies found. All figures, dates, document citations, and ledger entries tie out to source: governing doc bry-8k-20240813 correctly supersedes bry-8k-20240809; record date 2024-08-23 and pay date 2024-08-30 are correct per the correction notice; eligible shares of 40,000 confirmed by get_position as of 2024-08-23 (10,000-share sale settled 2024-08-15, fully out before record date); gross entitlement of $6,800.00 = 40,000 \u00d7 $0.17 confirmed by calculator; L1 book_receivable entry is correct in all fields; L2 escalate is appropriate given absence of withholding tax documentation in the store; broker-memo-20240815 correctly disregarded as a distractor."
+      ],
+      "turns": 4,
+      "incomplete": false,
+      "ended_by": "end",
+      "ledger_shown_correct": true,
+      "ledger_shown_elect": false,
+      "ledger_shown_flags": []
+    }
+  ],
+  "ledger_v1": [
+    {
+      "entry_id": "L1",
+      "kind": "book_receivable",
+      "args": {
+        "account": "ACCT-7712",
+        "amount": 6800.0,
+        "pay_date": "2024-08-30",
+        "basis_doc": "bry-8k-20240813",
+        "shares": 40000.0,
+        "rate": 0.17,
+        "memo": "BRY dividend: $0.12 fixed + $0.05 variable = $0.17/share on 40,000 shares (corrected record date 2024-08-23, corrected pay date 2024-08-30). Supersedes original 8-K dated 2024-08-09."
+      },
+      "seq": 20,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:35:12.428Z"
+    },
+    {
+      "entry_id": "L2",
+      "kind": "escalate",
+      "args": {
+        "reason": "The account's beneficial owner is a foreign-domiciled subaccount. The applicable withholding tax rate for this entity is not specified in any document in the store. A withholding tax agreement, W-8 form, or tax treaty rate schedule for ACCT-7712's foreign beneficial owner is required to compute the net dividend after withholding.",
+        "missing_document": "Withholding tax rate schedule / W-8BEN or equivalent tax treaty documentation for ACCT-7712's foreign-domiciled beneficial owner",
+        "held_action": "Computation of net dividend cash after withholding for ACCT-7712's foreign-domiciled subaccount"
+      },
+      "seq": 22,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:35:12.428Z"
+    }
+  ]
+}

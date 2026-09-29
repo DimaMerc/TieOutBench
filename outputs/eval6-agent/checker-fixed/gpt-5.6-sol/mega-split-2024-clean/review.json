@@ -1,0 +1,76 @@
+{
+  "rounds": [
+    {
+      "round": 1,
+      "verdict": "reject",
+      "findings": [
+        "L3 (escalate) rests on a false 'not determinable' premise. It escalates for 'MEGA account tax-status and applicable NVDA dividend withholding-rate documentation' and holds the net dividend receivable as undeterminable. MEGA is a U.S.-domiciled fund receiving a U.S.-source dividend from NVIDIA; no U.S. withholding applies to a domestic holder, so applicable withholding is 0 and NET = GROSS. The June dividend is fully determinable from the store: 180,000 post-split record-date shares (2024-06-11) x $0.01 post-split rate = $1,800. The escalation for withholding documentation is unwarranted and should not have been booked.",
+        "Worksheet D2 probe is answered incorrectly as label=NOT_DETERMINABLE, value=null. The NET cash the fund receives is determinable: $1,800 (gross $1,800 less $0 withholding for a U.S. fund on a U.S.-source dividend). It should be labeled determinable with value 1800, matching TW1 (gross = $1,800)."
+      ],
+      "turns": 4,
+      "incomplete": false,
+      "ended_by": "end",
+      "ledger_shown_correct": true,
+      "ledger_shown_elect": false,
+      "ledger_shown_flags": []
+    },
+    {
+      "round": 2,
+      "verdict": "approve",
+      "findings": [],
+      "turns": 5,
+      "incomplete": false,
+      "ended_by": "end",
+      "ledger_shown_correct": true,
+      "ledger_shown_elect": false,
+      "ledger_shown_flags": []
+    }
+  ],
+  "ledger_v1": [
+    {
+      "entry_id": "L1",
+      "kind": "update_pcf",
+      "args": {
+        "ticker": "NVDA",
+        "quantity_per_cu": 1800.0,
+        "previous_quantity_per_cu": 1800,
+        "basis_doc": "nvda-8k-20240522",
+        "memo": "Maintain split-adjusted NVDA basket quantity for 2024-06-10 dissemination: 180 pre-split shares per CU multiplied by 10."
+      },
+      "seq": 31,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:16:40.256Z"
+    },
+    {
+      "entry_id": "L2",
+      "kind": "confirm_position",
+      "args": {
+        "ticker": "NVDA",
+        "shares": 180000.0,
+        "as_of": "2024-06-07",
+        "basis_doc": "nvda-8k-20240522"
+      },
+      "seq": 33,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:16:40.256Z"
+    },
+    {
+      "entry_id": "L3",
+      "kind": "escalate",
+      "args": {
+        "reason": "The store determines the June dividend gross amount but contains no MEGA account tax-status or applicable NVDA dividend withholding-rate documentation, so net cash after withholding cannot be determined.",
+        "missing_document": "MEGA account tax-status and applicable NVDA dividend withholding-rate documentation",
+        "held_action": "Book the net June 28, 2024 NVDA dividend cash receivable only; split PCF and position processing may proceed."
+      },
+      "seq": 35,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:16:40.256Z"
+    }
+  ]
+}

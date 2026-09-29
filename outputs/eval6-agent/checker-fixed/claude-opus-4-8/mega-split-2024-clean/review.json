@@ -1,0 +1,94 @@
+{
+  "rounds": [
+    {
+      "round": 1,
+      "verdict": "reject",
+      "findings": [
+        "L4 (escalate) is wrong and should not be booked. It escalates a 'missing NVDA dividend withholding/tax-treatment schedule' and holds the NET receivable as un-computable. But no withholding document is needed: MEGA is a U.S. registered fund holding a U.S. issuer (NVDA) paying a U.S.-source dividend to a U.S. holder \u2014 no withholding applies. Applicable withholding is 0, so NET = GROSS = $1,800. The escalation should be removed; the receivable is fully determinable.",
+        "D2 probe answer is wrong: labeled NOT_DETERMINABLE with value null. The store fully determines the answer. NET cash after applicable withholding = $1,800 (180,000 post-split shares x $0.01, zero withholding on a U.S.-source dividend to the U.S. fund). It should read value=1800, not NOT_DETERMINABLE."
+      ],
+      "turns": 5,
+      "incomplete": false,
+      "ended_by": "end",
+      "ledger_shown_correct": true,
+      "ledger_shown_elect": false,
+      "ledger_shown_flags": []
+    },
+    {
+      "round": 2,
+      "verdict": "approve",
+      "findings": [],
+      "turns": 4,
+      "incomplete": false,
+      "ended_by": "end",
+      "ledger_shown_correct": true,
+      "ledger_shown_elect": false,
+      "ledger_shown_flags": []
+    }
+  ],
+  "ledger_v1": [
+    {
+      "entry_id": "L1",
+      "kind": "confirm_position",
+      "args": {
+        "ticker": "NVDA",
+        "shares": 180000.0,
+        "as_of": "2024-06-07",
+        "basis_doc": "nvda-8k-20240607"
+      },
+      "seq": 26,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:16:30.765Z"
+    },
+    {
+      "entry_id": "L2",
+      "kind": "update_pcf",
+      "args": {
+        "ticker": "NVDA",
+        "quantity_per_cu": 1800.0,
+        "previous_quantity_per_cu": 1800,
+        "basis_doc": "nvda-8k-20240607",
+        "memo": "Post 10-for-1 split PCF quantity per CU: 180 pre-split x 10 = 1800. Record 2024-06-06, distributed after close 2024-06-07, split-adjusted trading 2024-06-10."
+      },
+      "seq": 28,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:16:30.765Z"
+    },
+    {
+      "entry_id": "L3",
+      "kind": "book_receivable",
+      "args": {
+        "account": "MEGA",
+        "amount": 1800.0,
+        "pay_date": "2024-06-28",
+        "basis_doc": "nvda-8k-20240522",
+        "shares": 180000.0,
+        "rate": 0.01,
+        "memo": "GROSS Q1 FY25 dividend: 180,000 post-split shares x $0.01 post-split rate = $1,800. Record 2024-06-11, payable 2024-06-28. NET after withholding NOT_DETERMINABLE \u2014 no withholding/tax treatment document in store."
+      },
+      "seq": 30,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:16:30.765Z"
+    },
+    {
+      "entry_id": "L4",
+      "kind": "escalate",
+      "args": {
+        "reason": "The D2 probe asks for NET cash after applicable withholding on the NVDA June dividend, but the document store contains no withholding-rate/tax-treatment document (no W-8/W-9 status, no tax-lot/withholding schedule). Gross ($1,800) is determinable; the net cannot be computed without the withholding basis.",
+        "missing_document": "NVDA dividend withholding / tax-treatment schedule (withholding-rate document for the fund's NVDA dividend)",
+        "held_action": "Booking the NET dividend receivable amount for MEGA"
+      },
+      "seq": 32,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:16:30.765Z"
+    }
+  ]
+}

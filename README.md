@@ -357,6 +357,57 @@ caveats they need:
   depositary's stated 47.18%, and every model honored the odd-lot priority. Findings, grader log,
   and scope notes: [`outputs/eval6-live/TAXONOMY.md`](outputs/eval6-live/TAXONOMY.md).
 
+### Eval #6, Phase 2: the agent environment (tools, and a checker)
+
+The same six cases, eight models and grader, with the model working through **tools** instead of
+reading the store in one prompt: `list_documents`, `read_document`, `get_position` as of a date,
+`calculate`, the action tools (`book_receivable`, `update_pcf`, `confirm_position`,
+`submit_election`, `escalate`), then `submit_worksheet`. A third arm adds a **checker** with the
+discovery tools that receives the work product (worksheet and ledger, never the maker's
+transcript), approves or rejects, and grants one revision round. The worksheet is graded by the
+unchanged Phase-1 grader; the ledger is rendered into action rows and passed through the same
+grader, so `GATE.ELECT` fires on what was **booked**, and a worksheet that says $6,800 over a
+ledger that booked $8,500 fails the decision checkpoint. Trajectories (was the governing document
+read before the first booking, which dates went to `get_position`, did the reviewer recompute or
+only read) are reported, never scored.
+
+The grid ran on 2026-09-24 (48 cells per arm, three repeats per cell on the corrected dividend):
+
+- **AllPass 32 (plain), 35 (tools), 27 (checker), 25 (checker with a fixed Opus reviewer).** Tools helped the middle tier (GPT-5.4 four to
+  six clean cases, GPT-5.6-sol five to six, Opus four to five) and hurt the small tier (Haiku three
+  to two; GPT-5.4-mini reversed the already-adjusted basket, 1,800 to 180, and booked $180).
+  Sonnet: six of six in every arm, nine of nine on the repeats.
+- **The tool that prevents the Phase-1 error was there in every run.** Five tools-arm attempts by
+  the small model on the corrected dividend: twice it booked $8,500, both times without ever
+  calling `get_position`; three times it booked $6,800, each time after querying the position as
+  of the desk's own date rather than the record date.
+- **A same-model checker made the work worse.** Reviewers recomputed and then rejected 20 of 46
+  correct ledgers and approved one of two wrong ones; the makers complied, and the revisions
+  introduced four gates and five missing or held bookings. Round-one two-by-two: reject/wrong 1,
+  reject/correct 20, approve/wrong 1, approve/correct 26.
+- **A stronger fixed reviewer (Opus over every maker) was better on the verdicts and worse on
+  the probe.** 13 false rejections instead of 20, 33 correct approvals instead of 26, and ten of
+  those rejections told the makers the fund is U.S.-domiciled so the net equals the gross; every
+  maker replaced its calibrated refusal with a computed value and `GATE.FABRICATION` fired ten
+  times. AllPass 25. Neither review protocol improved on the tools arm.
+- The grader-bug rule ran on both graders: six environment-contract fixes, a reviewer-packet fix
+  (the reviewer had not been shown the probe question; the arm was re-run in full), and eight
+  Phase-1 false fires pinned by regression checks, with no committed Phase-1 headline number
+  moved. Findings, trajectories, repeats and the grader log:
+  [`outputs/eval6-agent/TAXONOMY.md`](outputs/eval6-agent/TAXONOMY.md).
+
+Design and build notes:
+[`workflow/DESIGN-phase2-agent-environment.md`](workflow/DESIGN-phase2-agent-environment.md);
+code: [`harness/env/`](harness/env/); artifacts and status:
+[`outputs/eval6-agent/`](outputs/eval6-agent/).
+
+```bash
+python -m harness env --oracle                          # the scripted oracle through the tools, all six cases
+python -m harness env --planted superseded_position     # the Phase-1 error replayed through tools (fires both gates)
+python -m harness env --list                            # the nine planted trajectories
+python outputs/run_live_eval6_agent.py --arm tools --model-id <model> --all-cases    # a live arm (needs a key)
+```
+
 ## What the demo shows
 
 `python -m harness demo` grades a model that does Snowflake's analysis **correctly** but misreads

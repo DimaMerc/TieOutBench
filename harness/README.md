@@ -110,6 +110,26 @@ arithmetic is internally consistent), but **`GATE.P2`** collapses the **gated** 
 trusted to read a statement header.* See [`../outputs/`](../outputs/) for the captured run and the
 gate-tier taxonomy.
 
+## Eval #6 Phase 2: the agent environment (`harness/env/`)
+
+| Module | Responsibility |
+|---|---|
+| [`env/state.py`](env/state.py) | the Episode: document store, clock, ledger, transcript; the tool functions and their function-calling specs |
+| [`env/ledger.py`](env/ledger.py) | ledger entry -> D1 action row, built from the structured arguments only (the memo is commentary) |
+| [`env/scoring.py`](env/scoring.py) | the three layers: the worksheet through the unchanged grader; the terminal state (ledger rows through the same grader, plus the ledger predicates that zero the decision checkpoint); trajectory metrics, reported only |
+| [`env/transport.py`](env/transport.py) | native function calling on the non-streaming path with the Phase-1 retry ladder, the text-protocol fallback, the per-endpoint conformance test, a scripted client for the selftest |
+| [`env/agent.py`](env/agent.py) | the maker loop, the reviewer loop, the maker-checker protocol (one revision round) |
+| [`env/oracle.py`](env/oracle.py) | the scripted oracle per case family and nine planted trajectories |
+| [`env/storyboard.py`](env/storyboard.py) | replay text, storyboard JSON and PNG cards from a saved episode (the video pack) |
+| [`gaming_review_env.py`](gaming_review_env.py) | 25 gaming checks on the new surfaces: memo, basis document, pay date, escalation text, the worksheet-ledger tie, tool refusals, the text protocol |
+
+`python -m harness selftest` runs the oracle on all six corporate-actions cases (1.000/AllPass on
+both layers with a clean trajectory), the planted trajectories (each fires exactly its gate or
+flag), the loops under a scripted client (submit; reject, revise, approve; nudges; the length
+retry; the max-turns cut-off; the text transport) and the gaming checks. `python -m harness env
+--list` names the planted trajectories; `python -m harness env --replay <dir> --cards` builds the
+video pack for a saved episode. Live runs: `outputs/run_live_eval6_agent.py`.
+
 ## Requirements
 
 `pip install -r requirements.txt` (just `pyyaml`; `anthropic`/`openai` only for a live run).

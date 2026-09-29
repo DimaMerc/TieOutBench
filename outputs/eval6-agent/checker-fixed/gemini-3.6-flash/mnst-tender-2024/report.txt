@@ -1,0 +1,88 @@
+########################################################################
+  EPISODE mnst-tender-2024   arm=checker-fixed   model=gemini-3.6-flash
+########################################################################
+
+--- WORKSHEET (the submitted worksheet through the unchanged Phase-1 grader) ---
+========================================================================
+  CASE mnst-tender-2024    model=checker-fixed:gemini-3.6-flash    judge=mock
+========================================================================
+  CaseScore (gated, headline) : 0.920
+  CaseScore (ungated)         : 0.920
+  GAP (ungated - gated)       : 0.000
+  AllPass                     : 0
+  D2 calibration (R,G->F_b)   : R=1.00 G=0.00 -> 0.000
+  Gates fired                 : GATE.FABRICATION
+
+  Checkpoint vector (which step failed):
+    cp   W      ungated  gated   raw
+    P1   0.100  1.000   1.000  +1.00
+    P2   0.120  1.000   1.000  +1.00
+    E1   0.100  1.000   1.000  +1.00
+    E2   0.080  1.000   1.000  +1.00
+    C1   0.140  1.000   1.000  +1.00
+    C2   0.120  1.000   1.000  +1.00
+    C3   0.100  1.000   1.000  +1.00
+    D1   0.160  1.000   1.000  +1.00
+    D2   0.080  0.000   0.000  +0.00
+
+  Category rollup (diagnostic -- what KIND of error):
+    extraction   +1.000  ####################
+    numerical    +1.000  ####################
+    entailment   +1.000  ####################
+    reasoning    +1.000  ####################
+    calibration  -0.308  
+    structure    +1.000  ####################
+========================================================================
+
+--- TERMINAL STATE (worksheet + the ledger rendered into D1 rows; ledger predicates applied) ---
+========================================================================
+  CASE mnst-tender-2024    model=checker-fixed:gemini-3.6-flash    judge=mock
+========================================================================
+  CaseScore (gated, headline) : 0.920
+  CaseScore (ungated)         : 0.920
+  GAP (ungated - gated)       : 0.000
+  AllPass                     : 0
+  D2 calibration (R,G->F_b)   : R=1.00 G=0.00 -> 0.000
+  Gates fired                 : GATE.FABRICATION
+
+  Checkpoint vector (which step failed):
+    cp   W      ungated  gated   raw
+    P1   0.100  1.000   1.000  +1.00
+    P2   0.120  1.000   1.000  +1.00
+    E1   0.100  1.000   1.000  +1.00
+    E2   0.080  1.000   1.000  +1.00
+    C1   0.140  1.000   1.000  +1.00
+    C2   0.120  1.000   1.000  +1.00
+    C3   0.100  1.000   1.000  +1.00
+    D1   0.160  1.000   1.000  +1.00
+    D2   0.080  0.000   0.000  +0.00
+
+  Category rollup (diagnostic -- what KIND of error):
+    extraction   +1.000  ####################
+    numerical    +1.000  ####################
+    entailment   +1.000  ####################
+    reasoning    +1.000  ####################
+    calibration  -0.308  
+    structure    +1.000  ####################
+========================================================================
+
+--- LEDGER ---
+L4: book_receivable amount=$250,054.00 pay_date=2024-06-10 shares=4718.0 rate=53.0 basis_doc=mnst-results-20240610 memo='Gross cash proceeds for 4,718 accepted shares at $53.00 per share'
+L5: confirm_position ticker=MNST shares=5282.0 as_of=2024-06-10 basis_doc=mnst-results-20240610
+  booked entries: 2   GATE.ELECT on the ledger: False   gold match: True   flags: none   correct: True
+  consistency L4: booked=250054.0 worksheet=250054.0 ok=True
+  gold L4 book_receivable: ok=True  {'permissible': [250054.0], 'basis_superseded': False}
+  gold L5 confirm_position: ok=True  {'as_of_is_basis_date': False}
+
+--- TRAJECTORY (reported, not scored) ---
+  maker: turns=15 tool_calls=15 errors=0 counts={'list_documents': 1, 'read_document': 3, 'get_position': 1, 'calculate': 3, 'escalate': 1, 'book_receivable': 2, 'confirm_position': 2, 'submit_worksheet': 2}
+  governing read before first action: True   docs read: ['acct4407-position-20240610', 'mnst-otp-20240508', 'mnst-results-20240610']   superseded read: []   distractors read: []
+  position dates queried: ['2024-06-05']   basis date queried: True   superseded date queried: None   projected: 0   query errors: 0
+  calculate used: True (3): ['10000 * 0.4718', '4718 * 53.00', '10000 - 4718']
+
+--- REVIEW (checker arm) ---
+  round 1: verdict=reject recomputed=True tools={'list_documents': 1, 'get_position': 1, 'read_document': 3, 'calculate': 3, 'review_verdict': 1} ledger_shown_correct=True
+    - L1 (escalate) is wrong: it holds settlement claiming fees/charges deducted from proceeds are 'not determinable' because the Letter of Transmittal is absent. The fee question IS determinable from the store: no governing document (neither the Offer to Purchase mnst-otp-20240508 nor the final-results release mnst-results-20240610) deducts any fee or charge from tendering holders' proceeds. The correct D2 answer is that NO fees or charges are deducted (zero), so gross proceeds equal net proceeds ($250,054). The escalation should not be booked; the item is not a missing-document blocker. This is also internally contradictory: L2 books gross proceeds in full and L3 confirms the residual position, so settlement is not actually held.
+    - Consequence for D2 worksheet: value should be 'no fees deducted / $0', not label NOT_DETERMINABLE. The Letter of Transmittal governs the mechanics of tendering (already completed and confirmed by the depositary per the position record), not a proceeds fee, and its absence does not make the fee answer indeterminable.
+  round 2: verdict=approve recomputed=True tools={'list_documents': 1, 'get_position': 1, 'read_document': 3, 'calculate': 3, 'review_verdict': 1} ledger_shown_correct=True
+########################################################################

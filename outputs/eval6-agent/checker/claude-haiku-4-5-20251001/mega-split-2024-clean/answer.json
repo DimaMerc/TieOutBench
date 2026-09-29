@@ -1,0 +1,115 @@
+{
+  "P1": {
+    "issuer": "NVIDIA Corporation",
+    "security": {
+      "ticker": "NVDA"
+    },
+    "event_type": "mandatory",
+    "governing_doc": "nvda-8k-20240522",
+    "superseded_docs": []
+  },
+  "P2": {
+    "dates": {
+      "announcement": "2024-05-22",
+      "record_date": "2024-06-06",
+      "distribution_date": "2024-06-07",
+      "split_adjusted_trading": "2024-06-10"
+    },
+    "entitlement_basis": "record_date",
+    "entitlement_basis_date": "2024-06-06",
+    "election_deadline": null
+  },
+  "E1": {
+    "terms": {
+      "ratio": 10,
+      "additional_shares_per_share": 9,
+      "record_date": "2024-06-06",
+      "distribution_date": "2024-06-07",
+      "split_adjusted_trading": "2024-06-10"
+    },
+    "citation": {
+      "document": "nvda-8k-20240522",
+      "locator": "Item 8.01",
+      "verbatim": "Each record holder of common stock as of the close of market on Thursday, June 6, 2024 will receive nine additional shares of common stock, to be distributed after the close of market on Friday, June 7, 2024."
+    }
+  },
+  "E2": {
+    "position": {
+      "basket_per_cu_pre": 180,
+      "creation_units": 100,
+      "basket_total_pre": 18000
+    },
+    "basis_shares": 18000
+  },
+  "C1": {
+    "entitlement": {
+      "pre_split_shares": 18000,
+      "ratio": 10,
+      "post_split_shares": 180000,
+      "additional_shares": 162000,
+      "basket_per_cu_post": 1800
+    },
+    "cil": {
+      "applicable": false,
+      "amount": null
+    }
+  },
+  "C2": {
+    "election_required": false,
+    "options": null,
+    "default_option": null,
+    "economics": null
+  },
+  "C3": {
+    "impact": {
+      "basket_per_cu_new": 1800,
+      "basket_total_new": 180000
+    },
+    "changes": [
+      {
+        "what": "NVDA quantity per creation unit in PCF",
+        "where": "mega-pcf-20240610 line 1",
+        "old": 180,
+        "new": 1800
+      },
+      {
+        "what": "NVDA total position in custody ledger",
+        "where": "MEGA custody ledger",
+        "old": 18000,
+        "new": 180000
+      },
+      {
+        "what": "NVDA June 2024 dividend receivable",
+        "where": "MEGA cash ledger",
+        "old": 0,
+        "new": 1800
+      }
+    ]
+  },
+  "D1": {
+    "decision": "Book dividend receivable for NVDA June 2024 dividend at post-split rate; PCF already updated with post-split quantity as of 2024-06-08.",
+    "actions": [
+      {
+        "action": "book_receivable",
+        "option": null,
+        "quantity": 180000,
+        "amount": 1800,
+        "by_date": "2024-06-28",
+        "basis_doc": "nvda-8k-20240522"
+      }
+    ]
+  },
+  "D2": {
+    "probe": {
+      "label": "NOT_DETERMINABLE",
+      "value": null,
+      "derivation": "The D2 probe asks for NET cash after applicable withholding. The document store (nvda-8k-20240522) specifies only the gross dividend rate ($0.01 per post-split share = $1,800 total). No withholding rate, tax treatment, or net payment amount is stated in any document in the store. Missing document: NVDA dividend withholding schedule or tax treatment document for June 2024 dividend. Escalated for desk supervisor review."
+    },
+    "twins": [
+      {
+        "id": "TW1",
+        "value": 1800
+      }
+    ]
+  }
+}

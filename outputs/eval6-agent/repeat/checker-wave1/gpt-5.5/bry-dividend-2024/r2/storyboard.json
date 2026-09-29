@@ -1,0 +1,344 @@
+{
+  "case_id": "bry-dividend-2024",
+  "arm": "checker",
+  "model_id": "gpt-5.5",
+  "scripted": false,
+  "total_s": 85,
+  "scenes": [
+    {
+      "id": "episode",
+      "kind": "title",
+      "title": "bry-dividend-2024 · arm: checker",
+      "lines": [
+        "as of 2024-08-18",
+        "Process the Berry Corporation dividend for the account.",
+        "run: gpt-5.5"
+      ],
+      "duration_s": 4
+    },
+    {
+      "id": "step-1",
+      "kind": "step",
+      "agent": "maker",
+      "round": 1,
+      "tool": "list_documents",
+      "title": "1. list_documents",
+      "lines": [
+        "list_documents()",
+        "4 documents: bry-8k-20240809, bry-8k-20240813, acct7712-position-20240816, broker-memo-20240815"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-2",
+      "kind": "step",
+      "agent": "maker",
+      "round": 1,
+      "tool": "read_document",
+      "title": "2. read_document",
+      "lines": [
+        "read_document(bry-8k-20240809)",
+        "bry-8k-20240809 (issuer 8-K exhibit (dividend declaration, within the Q2 earnings release), 2024-08-09)"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-3",
+      "kind": "step",
+      "agent": "maker",
+      "round": 1,
+      "tool": "read_document",
+      "title": "3. read_document",
+      "lines": [
+        "read_document(bry-8k-20240813)",
+        "bry-8k-20240813 (issuer 8-K exhibit (CORRECTION notice), 2024-08-13)"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-4",
+      "kind": "step",
+      "agent": "maker",
+      "round": 1,
+      "tool": "read_document",
+      "title": "4. read_document",
+      "lines": [
+        "read_document(acct7712-position-20240816)",
+        "acct7712-position-20240816 (custody position report (constructed), 2024-08-16)"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-5",
+      "kind": "step",
+      "agent": "maker",
+      "round": 1,
+      "tool": "get_position",
+      "title": "5. get_position",
+      "lines": [
+        "get_position(ACCT-7712, as of 2024-08-23)",
+        "40,000 shares, projected (position row 2024-08-15)"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-6",
+      "kind": "step",
+      "agent": "maker",
+      "round": 1,
+      "tool": "get_position",
+      "title": "6. get_position",
+      "lines": [
+        "get_position(ACCT-7712, as of 2024-08-18)",
+        "40,000 shares, settled (position row 2024-08-15)"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-7",
+      "kind": "step",
+      "agent": "maker",
+      "round": 1,
+      "tool": "get_position",
+      "title": "7. get_position",
+      "lines": [
+        "get_position(ACCT-7712, as of 2024-08-12)",
+        "50,000 shares, settled (position row 2024-08-12)"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-8",
+      "kind": "step",
+      "agent": "maker",
+      "round": 1,
+      "tool": "calculate",
+      "title": "8. calculate",
+      "lines": [
+        "calculate(40000*0.17)",
+        "= 6800"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-9",
+      "kind": "step",
+      "agent": "maker",
+      "round": 1,
+      "tool": "book_receivable",
+      "title": "9. book_receivable",
+      "lines": [
+        "book_receivable($6,800.00, pay 2024-08-30, basis bry-8k-20240813, 40000 shares)",
+        "L1 booked $6,800.00 for 2024-08-30 on bry-8k-20240813"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-10",
+      "kind": "step",
+      "agent": "maker",
+      "round": 1,
+      "tool": "escalate",
+      "title": "10. escalate",
+      "lines": [
+        "escalate(missing: beneficial-owner tax withholding documentation / applicab...; hold: determine net dividend cash after withholding)",
+        "L2 escalation recorded"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-11",
+      "kind": "step",
+      "agent": "maker",
+      "round": 1,
+      "tool": "confirm_position",
+      "title": "11. confirm_position",
+      "lines": [
+        "confirm_position(40000 BRY as of 2024-08-23)",
+        "L3 confirmed 40000.0 as of 2024-08-23"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-12",
+      "kind": "step",
+      "agent": "maker",
+      "round": 1,
+      "tool": "submit_worksheet",
+      "title": "12. submit_worksheet",
+      "lines": [
+        "submit_worksheet(...)",
+        "worksheet submitted; episode ended (3 ledger entries)"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-13",
+      "kind": "step",
+      "agent": "reviewer",
+      "round": 1,
+      "tool": "list_documents",
+      "title": "13. list_documents  (reviewer, round 1)",
+      "lines": [
+        "list_documents()",
+        "4 documents: bry-8k-20240809, bry-8k-20240813, acct7712-position-20240816, broker-memo-20240815"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-14",
+      "kind": "step",
+      "agent": "reviewer",
+      "round": 1,
+      "tool": "read_document",
+      "title": "14. read_document  (reviewer, round 1)",
+      "lines": [
+        "read_document(bry-8k-20240813)",
+        "bry-8k-20240813 (issuer 8-K exhibit (CORRECTION notice), 2024-08-13)"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-15",
+      "kind": "step",
+      "agent": "reviewer",
+      "round": 1,
+      "tool": "read_document",
+      "title": "15. read_document  (reviewer, round 1)",
+      "lines": [
+        "read_document(bry-8k-20240809)",
+        "bry-8k-20240809 (issuer 8-K exhibit (dividend declaration, within the Q2 earnings release), 2024-08-09)"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-16",
+      "kind": "step",
+      "agent": "reviewer",
+      "round": 1,
+      "tool": "get_position",
+      "title": "16. get_position  (reviewer, round 1)",
+      "lines": [
+        "get_position(ACCT-7712, as of 2024-08-23)",
+        "40,000 shares, projected (position row 2024-08-15)"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-17",
+      "kind": "step",
+      "agent": "reviewer",
+      "round": 1,
+      "tool": "calculate",
+      "title": "17. calculate  (reviewer, round 1)",
+      "lines": [
+        "calculate(40000*0.17)",
+        "= 6800"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-18",
+      "kind": "step",
+      "agent": "reviewer",
+      "round": 1,
+      "tool": "read_document",
+      "title": "18. read_document  (reviewer, round 1)",
+      "lines": [
+        "read_document(acct7712-position-20240816)",
+        "acct7712-position-20240816 (custody position report (constructed), 2024-08-16)"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-19",
+      "kind": "step",
+      "agent": "reviewer",
+      "round": 1,
+      "tool": "review_verdict",
+      "title": "19. review_verdict  (reviewer, round 1)",
+      "lines": [
+        "review_verdict(approve, 0 finding(s))",
+        "verdict approve recorded"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "ledger",
+      "kind": "ledger",
+      "title": "The ledger (what was booked)",
+      "lines": [
+        "L1: book_receivable amount=$6,800.00 pay_date=2024-08-30 shares=40000.0 rate=0.17 basis_doc=bry-8k-20240813 memo='BRY corrected dividend: $0.17/share ($0.12 fixed + $0.05 variable), payable 2024-08-30 to holders of record 2024-08-23; eligible projected settled position 40,000 shares.'",
+        "L2: escalate missing_document='beneficial-owner tax withholding documentation / applicable withholding-rate record for ACCT-7712 foreign-domiciled subaccount' held_action='determine net dividend cash after withholding' reason='Net dividend cash after withholding for the foreign-domiciled beneficial owner is not determined by the provided store; the applicable withholding rate/treaty status and valid tax documentation are absent.'",
+        "L3: confirm_position ticker=BRY shares=40000.0 as_of=2024-08-23 basis_doc=bry-8k-20240813"
+      ],
+      "duration_s": 5
+    },
+    {
+      "id": "tieout",
+      "kind": "check",
+      "title": "Does the worksheet tie to the ledger?",
+      "lines": [
+        "L1: booked 6800.0 vs worksheet 6800.0 -> ties",
+        "GATE.ELECT on the ledger: no",
+        "flags: none"
+      ],
+      "ok": true,
+      "duration_s": 5
+    },
+    {
+      "id": "grade",
+      "kind": "grade",
+      "title": "The grade",
+      "lines": [
+        "worksheet: 1.000 gated, AllPass 1, gates none",
+        "terminal state: 1.000 gated, AllPass 1, gates none",
+        "flags: none"
+      ],
+      "ok": true,
+      "duration_s": 5
+    },
+    {
+      "id": "review-1",
+      "kind": "review",
+      "title": "The checker, round 1: approved a correct ledger",
+      "lines": [
+        "verdict: APPROVE",
+        "the ledger it was shown was correct",
+        "the reviewer recomputed (list_documents x1, read_document x3, get_position x1, calculate x1, review_verdict x1)"
+      ],
+      "ok": true,
+      "cell": "approved a correct ledger",
+      "duration_s": 6
+    },
+    {
+      "id": "closing",
+      "kind": "title",
+      "title": "Does it tie out?",
+      "lines": [
+        "TieOutBench · evals.finance",
+        "eval #6, phase 2: the agent environment"
+      ],
+      "duration_s": 3
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "clock": "2024-06-10",
+  "entries": [
+    {
+      "entry_id": "L1",
+      "kind": "book_receivable",
+      "args": {
+        "account": "ACCT-0093",
+        "amount": 4611.0,
+        "pay_date": "2024-06-10",
+        "basis_doc": "mnst-results-20240610",
+        "shares": 87.0,
+        "rate": 53.0,
+        "memo": "MNST tender offer final results: 87 shares accepted in full (odd-lot holder, all shares tendered, exempt from proration) at final purchase price of $53.00/share. Gross proceeds $4,611.00."
+      },
+      "seq": 19,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:19:43.431Z"
+    },
+    {
+      "entry_id": "L2",
+      "kind": "confirm_position",
+      "args": {
+        "ticker": "MNST",
+        "shares": 0.0,
+        "as_of": "2024-06-10",
+        "basis_doc": "mnst-results-20240610"
+      },
+      "seq": 22,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:19:45.850Z"
+    },
+    {
+      "entry_id": "L3",
+      "kind": "escalate",
+      "args": {
+        "reason": "The D2 probe asks what fees or charges will be deducted from tender proceeds per the Letter of Transmittal's terms. The Letter of Transmittal is referenced in the Offer to Purchase (mnst-otp-20240508) but is not present in the document store. Without it, the fee/deduction terms cannot be determined.",
+        "missing_document": "Monster Beverage Corporation Letter of Transmittal (the transmittal document referenced in mnst-otp-20240508 that governs fees and charges deducted from tender proceeds)",
+        "held_action": "Determination of fees or charges deductible from ACCT-0093 tender proceeds per Letter of Transmittal terms"
+      },
+      "seq": 25,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:19:53.302Z"
+    }
+  ],
+  "frozen": {}
+}

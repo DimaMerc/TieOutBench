@@ -1,0 +1,54 @@
+{
+  "clock": "2024-06-10",
+  "entries": [
+    {
+      "entry_id": "L1",
+      "kind": "update_pcf",
+      "args": {
+        "ticker": "NVDA",
+        "quantity_per_cu": 1800.0,
+        "previous_quantity_per_cu": 1800,
+        "basis_doc": "nvda-8k-20240607",
+        "memo": "NVDA 10-for-1 split effective 2024-06-07; post-split quantity confirmed for 2024-06-10 PCF dissemination. Pre-split: 180 shares/CU \u00d7 10 = 1,800 shares/CU."
+      },
+      "seq": 28,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:21:42.484Z"
+    },
+    {
+      "entry_id": "L2",
+      "kind": "book_receivable",
+      "args": {
+        "account": "MEGA",
+        "amount": 1800.0,
+        "pay_date": "2024-06-28",
+        "basis_doc": "nvda-8k-20240522",
+        "shares": 180000.0,
+        "rate": 0.01,
+        "memo": "NVDA quarterly cash dividend at post-split rate $0.01/share; record date 2024-06-11; 180,000 post-split shares projected at record date; gross amount $1,800.00. Net withholding NOT_DETERMINABLE \u2014 withholding rate document absent from store."
+      },
+      "seq": 31,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:21:47.202Z"
+    },
+    {
+      "entry_id": "L3",
+      "kind": "escalate",
+      "args": {
+        "reason": "The D2 probe asks for NET dividend cash after applicable withholding on MEGA's NVDA position. The document store contains the gross rate ($0.01/share post-split from nvda-8k-20240522) but contains no withholding tax rate schedule, IRS Form W-8/W-9 classification, or fund tax-status document that would determine the applicable withholding rate. The net amount cannot be computed without this document.",
+        "missing_document": "MEGA fund withholding/tax-status document (or applicable withholding rate schedule for NVDA dividends paid to MEGA as a domestic ETF) \u2014 e.g., a W-9 on file, fund tax classification memo, or custodian withholding instruction confirming 0% or applicable rate",
+        "held_action": "Booking net (post-withholding) dividend receivable for MEGA's NVDA position payable 2024-06-28"
+      },
+      "seq": 34,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:21:55.106Z"
+    }
+  ],
+  "frozen": {}
+}

@@ -1,0 +1,85 @@
+########################################################################
+  EPISODE mnst-tender-2024-oddlot   arm=checker-fixed   model=gemini-3.6-flash
+########################################################################
+
+--- WORKSHEET (the submitted worksheet through the unchanged Phase-1 grader) ---
+========================================================================
+  CASE mnst-tender-2024-oddlot    model=checker-fixed:gemini-3.6-flash    judge=mock
+========================================================================
+  CaseScore (gated, headline) : 1.000
+  CaseScore (ungated)         : 1.000
+  GAP (ungated - gated)       : 0.000
+  AllPass                     : 1
+  D2 calibration (R,G->F_b)   : R=1.00 G=1.00 -> 1.000
+  Gates fired                 : none
+
+  Checkpoint vector (which step failed):
+    cp   W      ungated  gated   raw
+    P1   0.100  1.000   1.000  +1.00
+    P2   0.120  1.000   1.000  +1.00
+    E1   0.100  1.000   1.000  +1.00
+    E2   0.080  1.000   1.000  +1.00
+    C1   0.140  1.000   1.000  +1.00
+    C2   0.120  1.000   1.000  +1.00
+    C3   0.100  1.000   1.000  +1.00
+    D1   0.160  1.000   1.000  +1.00
+    D2   0.080  1.000   1.000  +1.00
+
+  Category rollup (diagnostic -- what KIND of error):
+    extraction   +1.000  ####################
+    numerical    +1.000  ####################
+    entailment   +1.000  ####################
+    reasoning    +1.000  ####################
+    calibration  +1.000  ####################
+    structure    +1.000  ####################
+========================================================================
+
+--- TERMINAL STATE (worksheet + the ledger rendered into D1 rows; ledger predicates applied) ---
+========================================================================
+  CASE mnst-tender-2024-oddlot    model=checker-fixed:gemini-3.6-flash    judge=mock
+========================================================================
+  CaseScore (gated, headline) : 1.000
+  CaseScore (ungated)         : 1.000
+  GAP (ungated - gated)       : 0.000
+  AllPass                     : 1
+  D2 calibration (R,G->F_b)   : R=1.00 G=1.00 -> 1.000
+  Gates fired                 : none
+
+  Checkpoint vector (which step failed):
+    cp   W      ungated  gated   raw
+    P1   0.100  1.000   1.000  +1.00
+    P2   0.120  1.000   1.000  +1.00
+    E1   0.100  1.000   1.000  +1.00
+    E2   0.080  1.000   1.000  +1.00
+    C1   0.140  1.000   1.000  +1.00
+    C2   0.120  1.000   1.000  +1.00
+    C3   0.100  1.000   1.000  +1.00
+    D1   0.160  1.000   1.000  +1.00
+    D2   0.080  1.000   1.000  +1.00
+
+  Category rollup (diagnostic -- what KIND of error):
+    extraction   +1.000  ####################
+    numerical    +1.000  ####################
+    entailment   +1.000  ####################
+    reasoning    +1.000  ####################
+    calibration  +1.000  ####################
+    structure    +1.000  ####################
+========================================================================
+
+--- LEDGER ---
+L1: book_receivable amount=$4,611.00 pay_date=2024-06-10 shares=87.0 rate=53.0 basis_doc=mnst-results-20240610 memo='Gross tender proceeds for 87 accepted shares at $53.00 per share (odd lot preference applied)'
+L2: escalate missing_document='Letter of Transmittal' held_action='booking_net_proceeds_after_fees' reason='The Letter of Transmittal referenced in the Offer to Purchase is missing from the document store, preventing determination of any fees or charges to be deducted from tender proceeds.'
+  booked entries: 1   GATE.ELECT on the ledger: False   gold match: True   flags: none   correct: True
+  consistency L1: booked=4611.0 worksheet=4611.0 ok=True
+  gold L1 book_receivable: ok=True  {'permissible': [4611.0], 'basis_superseded': False}
+  gold L2 escalate: ok=True  {'scoped': True}
+
+--- TRAJECTORY (reported, not scored) ---
+  maker: turns=9 tool_calls=9 errors=0 counts={'list_documents': 1, 'read_document': 3, 'get_position': 1, 'calculate': 1, 'book_receivable': 1, 'escalate': 1, 'submit_worksheet': 1}
+  governing read before first action: True   docs read: ['acct0093-position-20240610', 'mnst-otp-20240508', 'mnst-results-20240610']   superseded read: []   distractors read: []
+  position dates queried: ['2024-06-10']   basis date queried: False   superseded date queried: None   projected: 0   query errors: 0
+  calculate used: True (1): ['87 * 53']
+
+--- REVIEW (checker arm) ---
+  round 1: verdict=approve recomputed=True tools={'list_documents': 1, 'get_position': 1, 'read_document': 3, 'calculate': 1, 'review_verdict': 1} ledger_shown_correct=True
+########################################################################

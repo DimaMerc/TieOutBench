@@ -1,0 +1,73 @@
+{
+  "clock": "2024-08-18",
+  "entries": [
+    {
+      "entry_id": "L1",
+      "kind": "book_receivable",
+      "args": {
+        "account": "ACCT-7712",
+        "amount": 6800.0,
+        "pay_date": "2024-08-30",
+        "basis_doc": "bry-8k-20240813",
+        "shares": 40000.0,
+        "rate": 0.17,
+        "memo": "BRY Q2 2024 dividend (fixed $0.12 + variable $0.05 = $0.17/share) on 40,000 shares at corrected record date 2024-08-23; pay date corrected to 2024-08-30 per bry-8k-20240813. Gross amount; withholding for foreign subaccount held pending tax-rate document."
+      },
+      "seq": 20,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:17:18.629Z"
+    },
+    {
+      "entry_id": "L2",
+      "kind": "escalate",
+      "args": {
+        "reason": "The account's beneficial owner is a foreign-domiciled subaccount. The net dividend after withholding cannot be determined because the applicable withholding tax rate for this subaccount is not present in the document store. A W-8BEN / tax-treaty certification or custodian withholding-rate schedule for ACCT-7712's foreign beneficial owner is required to compute the net cash.",
+        "missing_document": "Withholding tax rate schedule or W-8BEN / tax-treaty certification for ACCT-7712's foreign-domiciled beneficial owner (needed to determine the applicable NRA withholding rate on BRY dividend)",
+        "held_action": "Booking of net (post-withholding) dividend cash receivable for ACCT-7712 foreign subaccount"
+      },
+      "seq": 22,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:17:18.629Z"
+    }
+  ],
+  "frozen": {
+    "ledger_v1": [
+      {
+        "entry_id": "L1",
+        "kind": "book_receivable",
+        "args": {
+          "account": "ACCT-7712",
+          "amount": 6800.0,
+          "pay_date": "2024-08-30",
+          "basis_doc": "bry-8k-20240813",
+          "shares": 40000.0,
+          "rate": 0.17,
+          "memo": "BRY Q2 2024 dividend (fixed $0.12 + variable $0.05 = $0.17/share) on 40,000 shares at corrected record date 2024-08-23; pay date corrected to 2024-08-30 per bry-8k-20240813. Gross amount; withholding for foreign subaccount held pending tax-rate document."
+        },
+        "seq": 20,
+        "agent": "maker",
+        "round": 1,
+        "voided": false,
+        "t": "2026-09-24T17:17:18.629Z"
+      },
+      {
+        "entry_id": "L2",
+        "kind": "escalate",
+        "args": {
+          "reason": "The account's beneficial owner is a foreign-domiciled subaccount. The net dividend after withholding cannot be determined because the applicable withholding tax rate for this subaccount is not present in the document store. A W-8BEN / tax-treaty certification or custodian withholding-rate schedule for ACCT-7712's foreign beneficial owner is required to compute the net cash.",
+          "missing_document": "Withholding tax rate schedule or W-8BEN / tax-treaty certification for ACCT-7712's foreign-domiciled beneficial owner (needed to determine the applicable NRA withholding rate on BRY dividend)",
+          "held_action": "Booking of net (post-withholding) dividend cash receivable for ACCT-7712 foreign subaccount"
+        },
+        "seq": 22,
+        "agent": "maker",
+        "round": 1,
+        "voided": false,
+        "t": "2026-09-24T17:17:18.629Z"
+      }
+    ]
+  }
+}

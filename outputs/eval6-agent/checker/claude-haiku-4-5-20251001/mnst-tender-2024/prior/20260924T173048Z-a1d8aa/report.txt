@@ -1,0 +1,87 @@
+########################################################################
+  EPISODE mnst-tender-2024   arm=checker   model=claude-haiku-4-5-20251001
+########################################################################
+
+--- WORKSHEET (the submitted worksheet through the unchanged Phase-1 grader) ---
+========================================================================
+  CASE mnst-tender-2024    model=checker:claude-haiku-4-5-20251001    judge=mock
+========================================================================
+  CaseScore (gated, headline) : 0.530
+  CaseScore (ungated)         : 0.950
+  GAP (ungated - gated)       : 0.420
+  AllPass                     : 0
+  D2 calibration (R,G->F_b)   : R=1.00 G=1.00 -> 1.000
+  Gates fired                 : GATE.DATES
+
+  Checkpoint vector (which step failed):
+    cp   W      ungated  gated   raw
+    P1   0.100  1.000   1.000  +1.00
+    P2   0.120  0.583   0.583  +0.58
+    E1   0.100  1.000   1.000  +1.00
+    E2   0.080  1.000   1.000  +1.00
+    C1   0.140  1.000   0.000  +1.00  <-- gated
+    C2   0.120  1.000   0.000  +1.00  <-- gated
+    C3   0.100  1.000   1.000  +1.00
+    D1   0.160  1.000   0.000  +1.00  <-- gated
+    D2   0.080  1.000   1.000  +1.00
+
+  Category rollup (diagnostic -- what KIND of error):
+    extraction   +1.000  ####################
+    numerical    +1.000  ####################
+    entailment   +1.000  ####################
+    reasoning    +0.833  #################
+    calibration  +1.000  ####################
+    structure    +1.000  ####################
+========================================================================
+
+--- TERMINAL STATE (worksheet + the ledger rendered into D1 rows; ledger predicates applied) ---
+========================================================================
+  CASE mnst-tender-2024    model=checker:claude-haiku-4-5-20251001    judge=mock
+========================================================================
+  CaseScore (gated, headline) : 0.530
+  CaseScore (ungated)         : 0.950
+  GAP (ungated - gated)       : 0.420
+  AllPass                     : 0
+  D2 calibration (R,G->F_b)   : R=1.00 G=1.00 -> 1.000
+  Gates fired                 : GATE.DATES
+
+  Checkpoint vector (which step failed):
+    cp   W      ungated  gated   raw
+    P1   0.100  1.000   1.000  +1.00
+    P2   0.120  0.583   0.583  +0.58
+    E1   0.100  1.000   1.000  +1.00
+    E2   0.080  1.000   1.000  +1.00
+    C1   0.140  1.000   0.000  +1.00  <-- gated
+    C2   0.120  1.000   0.000  +1.00  <-- gated
+    C3   0.100  1.000   1.000  +1.00
+    D1   0.160  1.000   0.000  +1.00  <-- gated
+    D2   0.080  1.000   1.000  +1.00
+
+  Category rollup (diagnostic -- what KIND of error):
+    extraction   +1.000  ####################
+    numerical    +1.000  ####################
+    entailment   +1.000  ####################
+    reasoning    +0.833  #################
+    calibration  +1.000  ####################
+    structure    +1.000  ####################
+========================================================================
+
+--- LEDGER ---
+L1: escalate missing_document='Letter of Transmittal (Monster Beverage tender offer)' held_action='D2 probe determination of fees/charges deducted from tender proceeds' reason="The D2 probe asks for fees or charges per the Letter of Transmittal's terms. The offer document (mnst-otp-20240508) references the Letter of Transmittal but the actual Letter of Transmittal document is not in the store. Without it, the fee/charge terms cannot be determined from the document store."
+L2: book_receivable amount=$250,054.00 pay_date=2024-06-10 shares=4718.0 rate=53.0 basis_doc=mnst-results-20240610 memo='Monster Beverage tender offer final results: 4,718 shares accepted at $53.00/share (47.18% proration of 10,000 tendered shares)'
+L3: confirm_position ticker=MNST shares=5282.0 as_of=2024-06-10 basis_doc=mnst-results-20240610
+  booked entries: 2   GATE.ELECT on the ledger: False   gold match: True   flags: none   correct: True
+  consistency L2: booked=250054.0 worksheet=250054.0 ok=True
+  gold L1 escalate: ok=True  {'scoped': True}
+  gold L2 book_receivable: ok=True  {'permissible': [250054.0], 'basis_superseded': False}
+  gold L3 confirm_position: ok=True  {'as_of_is_basis_date': False}
+
+--- TRAJECTORY (reported, not scored) ---
+  maker: turns=9 tool_calls=11 errors=0 counts={'list_documents': 1, 'read_document': 3, 'get_position': 1, 'calculate': 2, 'escalate': 1, 'book_receivable': 1, 'confirm_position': 1, 'submit_worksheet': 1}
+  governing read before first action: True   docs read: ['acct4407-position-20240610', 'mnst-otp-20240508', 'mnst-results-20240610']   superseded read: []   distractors read: []
+  position dates queried: ['2024-06-05']   basis date queried: True   superseded date queried: None   projected: 0   query errors: 0
+  calculate used: True (2): ['10000 * 0.4718 * 53', '10000 - 4718']
+
+--- REVIEW (checker arm) ---
+  round 1: verdict=approve recomputed=True tools={'list_documents': 1, 'read_document': 3, 'get_position': 2, 'calculate': 3, 'review_verdict': 1} ledger_shown_correct=True
+########################################################################

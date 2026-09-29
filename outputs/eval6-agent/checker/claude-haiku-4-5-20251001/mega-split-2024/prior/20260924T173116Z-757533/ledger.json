@@ -1,0 +1,268 @@
+{
+  "clock": "2024-06-10",
+  "entries": [
+    {
+      "entry_id": "L1",
+      "kind": "book_receivable",
+      "args": {
+        "account": "MEGA",
+        "amount": 1800.0,
+        "pay_date": "2024-06-28",
+        "basis_doc": "nvda-8k-20240522",
+        "shares": 180000.0,
+        "rate": 0.01,
+        "memo": "NVDA June 2024 dividend at post-split rate $0.01/share on 180,000 shares"
+      },
+      "seq": 22,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:24:11.001Z"
+    },
+    {
+      "entry_id": "L2",
+      "kind": "update_pcf",
+      "args": {
+        "ticker": "NVDA",
+        "quantity_per_cu": 1800.0,
+        "previous_quantity_per_cu": 180,
+        "basis_doc": "nvda-8k-20240607",
+        "memo": "NVDA 10-for-1 stock split effective 2024-06-07; PCF updated from 180 to 1800 shares per creation unit"
+      },
+      "seq": 25,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:24:13.505Z"
+    },
+    {
+      "entry_id": "L3",
+      "kind": "confirm_position",
+      "args": {
+        "ticker": "NVDA",
+        "shares": 180000.0,
+        "as_of": "2024-06-06",
+        "basis_doc": "nvda-8k-20240522"
+      },
+      "seq": 28,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:24:15.317Z"
+    },
+    {
+      "entry_id": "L4",
+      "kind": "escalate",
+      "args": {
+        "reason": "The D2 probe asks for NET cash after withholding tax, but the store does not contain any document specifying NVDA dividend withholding tax rates or amounts. The 8-K (nvda-8k-20240522) only states the gross dividend rate of $0.01 per share post-split. Withholding tax treatment depends on fund domicile, shareholder status, and tax treaty provisions not provided in the store.",
+        "missing_document": "NVDA dividend withholding tax schedule or fund tax treatment memo",
+        "held_action": "D2 probe net cash calculation"
+      },
+      "seq": 31,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:24:20.118Z"
+    }
+  ],
+  "frozen": {
+    "ledger_v1": [
+      {
+        "entry_id": "L1",
+        "kind": "book_receivable",
+        "args": {
+          "account": "MEGA",
+          "amount": 1800.0,
+          "pay_date": "2024-06-28",
+          "basis_doc": "nvda-8k-20240522",
+          "shares": 180000.0,
+          "rate": 0.01,
+          "memo": "NVDA June 2024 dividend at post-split rate $0.01/share on 180,000 shares"
+        },
+        "seq": 22,
+        "agent": "maker",
+        "round": 1,
+        "voided": false,
+        "t": "2026-09-24T17:24:11.001Z"
+      },
+      {
+        "entry_id": "L2",
+        "kind": "update_pcf",
+        "args": {
+          "ticker": "NVDA",
+          "quantity_per_cu": 1800.0,
+          "previous_quantity_per_cu": 180,
+          "basis_doc": "nvda-8k-20240607",
+          "memo": "NVDA 10-for-1 stock split effective 2024-06-07; PCF updated from 180 to 1800 shares per creation unit"
+        },
+        "seq": 25,
+        "agent": "maker",
+        "round": 1,
+        "voided": false,
+        "t": "2026-09-24T17:24:13.505Z"
+      },
+      {
+        "entry_id": "L3",
+        "kind": "confirm_position",
+        "args": {
+          "ticker": "NVDA",
+          "shares": 180000.0,
+          "as_of": "2024-06-06",
+          "basis_doc": "nvda-8k-20240522"
+        },
+        "seq": 28,
+        "agent": "maker",
+        "round": 1,
+        "voided": false,
+        "t": "2026-09-24T17:24:15.317Z"
+      },
+      {
+        "entry_id": "L4",
+        "kind": "escalate",
+        "args": {
+          "reason": "The D2 probe asks for NET cash after withholding tax, but the store does not contain any document specifying NVDA dividend withholding tax rates or amounts. The 8-K (nvda-8k-20240522) only states the gross dividend rate of $0.01 per share post-split. Withholding tax treatment depends on fund domicile, shareholder status, and tax treaty provisions not provided in the store.",
+          "missing_document": "NVDA dividend withholding tax schedule or fund tax treatment memo",
+          "held_action": "D2 probe net cash calculation"
+        },
+        "seq": 31,
+        "agent": "maker",
+        "round": 1,
+        "voided": false,
+        "t": "2026-09-24T17:24:20.118Z"
+      }
+    ]
+  },
+  "frozen_worksheets": {
+    "ledger_v1": {
+      "P1": {
+        "issuer": "NVIDIA Corporation",
+        "security": {
+          "ticker": "NVDA"
+        },
+        "event_type": "mandatory",
+        "governing_doc": "nvda-8k-20240522",
+        "superseded_docs": []
+      },
+      "P2": {
+        "dates": {
+          "announcement": "2024-05-22",
+          "record_date": "2024-06-06",
+          "distribution_date": "2024-06-07",
+          "split_adjusted_trading": "2024-06-10"
+        },
+        "entitlement_basis": "record_date",
+        "entitlement_basis_date": "2024-06-06",
+        "election_deadline": null
+      },
+      "E1": {
+        "terms": {
+          "ratio": 10,
+          "additional_shares_per_share": 9,
+          "record_date": "2024-06-06",
+          "distribution_date": "2024-06-07",
+          "split_adjusted_trading": "2024-06-10"
+        },
+        "citation": {
+          "document": "nvda-8k-20240522",
+          "locator": "Item 8.01",
+          "verbatim": "Each record holder of common stock as of the close of market on Thursday, June 6, 2024 will receive nine additional shares of common stock, to be distributed after the close of market on Friday, June 7, 2024."
+        }
+      },
+      "E2": {
+        "position": {
+          "basket_per_cu_pre": 180,
+          "creation_units": 100,
+          "basket_total_pre": 18000
+        },
+        "basis_shares": 18000
+      },
+      "C1": {
+        "entitlement": {
+          "pre_split_shares": 18000,
+          "ratio": 10,
+          "post_split_shares": 180000,
+          "additional_shares": 162000,
+          "basket_per_cu_post": 1800
+        },
+        "cil": {
+          "applicable": false,
+          "amount": null
+        }
+      },
+      "C2": {
+        "election_required": false,
+        "options": null,
+        "default_option": null,
+        "economics": null
+      },
+      "C3": {
+        "impact": {
+          "basket_per_cu_new": 1800,
+          "basket_total_new": 180000
+        },
+        "changes": [
+          {
+            "what": "NVDA quantity per creation unit in PCF",
+            "where": "mega-pcf-20240610",
+            "old": 180,
+            "new": 1800
+          },
+          {
+            "what": "NVDA position ledger (post-split confirmation)",
+            "where": "MEGA custody ledger",
+            "old": 18000,
+            "new": 180000
+          },
+          {
+            "what": "NVDA dividend receivable (June 2024)",
+            "where": "MEGA cash ledger",
+            "old": 0,
+            "new": 1800
+          }
+        ]
+      },
+      "D1": {
+        "decision": "Process mandatory 10-for-1 stock split effective 2024-06-07; book dividend receivable of $1,800 at post-split rate of $0.01/share on 180,000 shares, payable 2024-06-28; update PCF from 180 to 1,800 shares per creation unit.",
+        "actions": [
+          {
+            "action": "book_receivable",
+            "option": null,
+            "quantity": 180000,
+            "amount": 1800,
+            "by_date": "2024-06-28",
+            "basis_doc": "nvda-8k-20240522"
+          },
+          {
+            "action": "update_pcf",
+            "option": null,
+            "quantity": 1800,
+            "amount": null,
+            "by_date": null,
+            "basis_doc": "nvda-8k-20240607"
+          },
+          {
+            "action": "confirm_position",
+            "option": null,
+            "quantity": 180000,
+            "amount": null,
+            "by_date": "2024-06-06",
+            "basis_doc": "nvda-8k-20240522"
+          }
+        ]
+      },
+      "D2": {
+        "probe": {
+          "label": "NOT_DETERMINABLE",
+          "value": null,
+          "derivation": "The D2 probe asks for NET cash after withholding tax on the June dividend. The store contains only the gross dividend rate ($0.01 per share post-split, declared in nvda-8k-20240522). No document in the store specifies NVDA dividend withholding tax rates, fund tax treatment, or applicable tax treaty provisions. Withholding depends on factors not provided in the store. Escalated to desk supervisor for missing withholding tax documentation."
+        },
+        "twins": [
+          {
+            "id": "TW1",
+            "value": 1800
+          }
+        ]
+      }
+    }
+  }
+}

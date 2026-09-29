@@ -1,0 +1,49 @@
+{
+  "rounds": [
+    {
+      "round": 1,
+      "verdict": "approve",
+      "findings": [],
+      "turns": 5,
+      "incomplete": false,
+      "ended_by": "end",
+      "ledger_shown_correct": true,
+      "ledger_shown_elect": false,
+      "ledger_shown_flags": []
+    }
+  ],
+  "ledger_v1": [
+    {
+      "entry_id": "L1",
+      "kind": "book_receivable",
+      "args": {
+        "account": "ACCT-7712",
+        "amount": 6800.0,
+        "pay_date": "2024-08-30",
+        "basis_doc": "bry-8k-20240813",
+        "shares": 40000.0,
+        "rate": 0.17,
+        "memo": "Book Q2 2024 dividend receivable on corrected record date 2024-08-23 for 40,000 shares at $0.17 per share"
+      },
+      "seq": 28,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:32:50.514Z"
+    },
+    {
+      "entry_id": "L2",
+      "kind": "escalate",
+      "args": {
+        "reason": "The document store does not contain foreign tax withholding schedule or tax treaty documentation to determine net dividend cash after withholding for foreign-domiciled subaccount.",
+        "missing_document": "Foreign Tax Withholding Schedule / Tax Treaty Rate Schedule",
+        "held_action": "net_cash_withholding_calculation"
+      },
+      "seq": 31,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:32:52.140Z"
+    }
+  ]
+}

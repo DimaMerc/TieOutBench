@@ -1,0 +1,90 @@
+########################################################################
+  EPISODE mega-split-2024   arm=checker   model=claude-haiku-4-5-20251001
+########################################################################
+
+--- WORKSHEET (the submitted worksheet through the unchanged Phase-1 grader) ---
+========================================================================
+  CASE mega-split-2024    model=checker:claude-haiku-4-5-20251001    judge=mock
+========================================================================
+  CaseScore (gated, headline) : 0.475
+  CaseScore (ungated)         : 0.895
+  GAP (ungated - gated)       : 0.420
+  AllPass                     : 0
+  D2 calibration (R,G->F_b)   : R=1.00 G=1.00 -> 1.000
+  Gates fired                 : GATE.DATES
+
+  Checkpoint vector (which step failed):
+    cp   W      ungated  gated   raw
+    P1   0.100  1.000   1.000  +1.00
+    P2   0.120  0.375   0.375  +0.38
+    E1   0.100  1.000   1.000  +1.00
+    E2   0.080  0.625   0.625  +0.62
+    C1   0.140  1.000   0.000  +1.00  <-- gated
+    C2   0.120  1.000   0.000  +1.00  <-- gated
+    C3   0.100  1.000   1.000  +1.00
+    D1   0.160  1.000   0.000  +1.00  <-- gated
+    D2   0.080  1.000   1.000  +1.00
+
+  Category rollup (diagnostic -- what KIND of error):
+    extraction   +0.881  ##################
+    numerical    +0.900  ##################
+    entailment   +1.000  ####################
+    reasoning    +0.833  #################
+    calibration  +1.000  ####################
+    structure    +1.000  ####################
+========================================================================
+
+--- TERMINAL STATE (worksheet + the ledger rendered into D1 rows; ledger predicates applied) ---
+========================================================================
+  CASE mega-split-2024    model=checker:claude-haiku-4-5-20251001    judge=mock
+========================================================================
+  CaseScore (gated, headline) : 0.475
+  CaseScore (ungated)         : 0.895
+  GAP (ungated - gated)       : 0.420
+  AllPass                     : 0
+  D2 calibration (R,G->F_b)   : R=1.00 G=1.00 -> 1.000
+  Gates fired                 : GATE.DATES
+
+  Checkpoint vector (which step failed):
+    cp   W      ungated  gated   raw
+    P1   0.100  1.000   1.000  +1.00
+    P2   0.120  0.375   0.375  +0.38
+    E1   0.100  1.000   1.000  +1.00
+    E2   0.080  0.625   0.625  +0.62
+    C1   0.140  1.000   0.000  +1.00  <-- gated
+    C2   0.120  1.000   0.000  +1.00  <-- gated
+    C3   0.100  1.000   1.000  +1.00
+    D1   0.160  1.000   0.000  +1.00  <-- gated
+    D2   0.080  1.000   1.000  +1.00
+
+  Category rollup (diagnostic -- what KIND of error):
+    extraction   +0.881  ##################
+    numerical    +0.900  ##################
+    entailment   +1.000  ####################
+    reasoning    +0.833  #################
+    calibration  +1.000  ####################
+    structure    +1.000  ####################
+========================================================================
+
+--- LEDGER ---
+L5: book_receivable amount=$1,800.00 pay_date=2024-06-28 shares=180000.0 rate=0.01 basis_doc=nvda-8k-20240522 memo='NVDA June 2024 dividend at post-split rate $0.01/share on 180,000 shares (record date 2024-06-11)'
+L6: update_pcf ticker=NVDA quantity_per_cu=1800.0 (was 180) basis_doc=nvda-8k-20240607 memo='NVDA 10-for-1 stock split effective 2024-06-07; PCF updated from 180 to 1800 shares per creation unit'
+L7: confirm_position ticker=NVDA shares=180000.0 as_of=2024-06-06 basis_doc=nvda-8k-20240522
+  booked entries: 3   GATE.ELECT on the ledger: False   gold match: True   flags: none   correct: True
+  consistency L5: booked=1800.0 worksheet=1800.0 ok=True
+  consistency L6: booked=1800.0 worksheet=1800.0 ok=True
+  gold L5 book_receivable: ok=True  {'permissible': [1800.0], 'pay_date_ok': True, 'basis_superseded': False}
+  gold L6 update_pcf: ok=True  {'gold': 1800.0}
+  gold L7 confirm_position: ok=True  {'as_of_is_basis_date': True}
+
+--- TRAJECTORY (reported, not scored) ---
+  maker: turns=13 tool_calls=16 errors=0 counts={'list_documents': 1, 'read_document': 4, 'get_position': 1, 'calculate': 1, 'book_receivable': 2, 'update_pcf': 2, 'confirm_position': 2, 'escalate': 1, 'submit_worksheet': 2}
+  governing read before first action: True   docs read: ['mega-pcf-20240610', 'mega-position-20240610', 'nvda-8k-20240522', 'nvda-8k-20240607']   superseded read: []   distractors read: []
+  position dates queried: ['2024-06-11']   basis date queried: False   superseded date queried: None   projected: 1   query errors: 0
+  calculate used: True (1): ['180000 * 0.01']
+
+--- REVIEW (checker arm) ---
+  round 1: verdict=reject recomputed=True tools={'list_documents': 1, 'read_document': 2, 'get_position': 1, 'calculate': 2, 'review_verdict': 1} ledger_shown_correct=True
+    - L1 (book_receivable): Dividend record date is incorrect. The 8-K (nvda-8k-20240522) specifies the dividend record date as Tuesday, June 11, 2024, not June 6, 2024. June 6 is the stock split record date. The dividend entitlement basis should be 2024-06-11, and the worksheet section P2 'entitlement_basis_date' should be corrected from 2024-06-06 to 2024-06-11. The dividend amount of $1,800 is correct (180,000 post-split shares × $0.01), but the record date for dividend entitlement is wrong.
+  round 2: verdict=approve recomputed=True tools={'list_documents': 1, 'get_position': 2, 'read_document': 2, 'calculate': 2, 'review_verdict': 1} ledger_shown_correct=True
+########################################################################

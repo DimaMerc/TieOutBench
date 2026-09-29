@@ -1,0 +1,122 @@
+{
+  "C1": {
+    "cil": {
+      "amount": null,
+      "applicable": false
+    },
+    "entitlement": {
+      "basket_per_cu_post": 1800,
+      "post_split_shares": 180000,
+      "pre_split_shares": 18000,
+      "additional_shares": 162000,
+      "ratio": 10
+    }
+  },
+  "D1": {
+    "actions": [
+      {
+        "_entry": "L4",
+        "_kind": "update_pcf",
+        "action": "update PCF NVDA quantity per creation unit to 1,800",
+        "quantity": 1800.0,
+        "basis_doc": "nvda-8k-20240607",
+        "by_date": null,
+        "amount": null,
+        "option": null
+      },
+      {
+        "_entry": "L5",
+        "_kind": "confirm_position",
+        "action": "confirm position of 180,000 NVDA shares",
+        "quantity": 180000.0,
+        "basis_doc": "nvda-8k-20240607",
+        "by_date": null,
+        "as_of": "2024-06-10",
+        "amount": null,
+        "option": null
+      }
+    ],
+    "decision": "Update PCF for trade date 2024-06-10 to reflect post-split NVDA quantity of 1,800 shares per creation unit and confirm post-split custody position of 180,000 shares."
+  },
+  "D2": {
+    "probe": {
+      "derivation": "The document store does not contain tax withholding schedule or fund tax profile documentation required to compute net dividend cash after tax withholding.",
+      "label": "NOT_DETERMINABLE",
+      "value": null
+    },
+    "twins": [
+      {
+        "id": "TW1",
+        "value": 1800
+      }
+    ]
+  },
+  "E2": {
+    "position": {
+      "creation_units": 100,
+      "basket_per_cu_pre": 180,
+      "basket_total_pre": 18000
+    },
+    "basis_shares": 18000
+  },
+  "C2": {
+    "options": null,
+    "economics": null,
+    "election_required": false,
+    "default_option": null
+  },
+  "C3": {
+    "impact": {
+      "basket_total_new": 180000,
+      "basket_per_cu_new": 1800
+    },
+    "changes": [
+      {
+        "old": 180,
+        "new": 1800,
+        "what": "NVDA quantity per creation unit",
+        "where": "MEGA Portfolio Composition File (PCF)"
+      },
+      {
+        "where": "Custody position ledger",
+        "what": "NVDA settled share position",
+        "new": 180000,
+        "old": 18000
+      }
+    ]
+  },
+  "E1": {
+    "terms": {
+      "split_adjusted_trading": "2024-06-10",
+      "ratio": 10,
+      "record_date": "2024-06-06",
+      "additional_shares_per_share": 9,
+      "distribution_date": "2024-06-07"
+    },
+    "citation": {
+      "document": "nvda-8k-20240607",
+      "verbatim": "The Amendment became effective at 4:01 p.m. Eastern Time on June 7, 2024. Exhibit 3.1: At the Effective Time, each share of Common Stock issued as of immediately prior to the Effective Time shall be automatically subdivided and reclassified into ten (10) validly issued, fully paid and non-assessable shares of Common Stock. Trading is expected to commence on a split-adjusted basis at market open on June 10, 2024.",
+      "locator": "Item 5.03 / Exhibit 3.1"
+    }
+  },
+  "P1": {
+    "issuer": "NVIDIA Corporation",
+    "security": {
+      "ticker": "NVDA"
+    },
+    "event_type": "mandatory",
+    "governing_doc": "nvda-8k-20240607",
+    "superseded_docs": []
+  },
+  "P2": {
+    "dates": {
+      "record_date": "2024-06-06",
+      "distribution_date": "2024-06-07",
+      "split_adjusted_trading": "2024-06-10",
+      "announcement": "2024-05-22"
+    },
+    "election_deadline": null,
+    "entitlement_basis": "record_date",
+    "entitlement_basis_date": "2024-06-06"
+  }
+}

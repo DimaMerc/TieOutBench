@@ -111,6 +111,25 @@ verified separately.
 
 ## Provenance
 
+## Eval #6 — Corporate-actions processing (and its Phase-2 `env` block)
+
+Workflow: [corporate-actions-analysis](../workflow/corporate-actions-analysis.md) · rubric:
+[criteria-corporate-actions.yaml](../rubric/criteria-corporate-actions.yaml). Six document-store
+episodes on four real events: `mega-split-2024` / `-clean` (a real 10-for-1 split against a
+constructed ETF basket, stale and already adjusted), `mnst-tender-2024` / `-oddlot` (a real
+oversubscribed self-tender, proration and the odd-lot priority), `bry-dividend-2024` /
+`zts-dividend-2014` (real corrected dividend pairs, one economically material, one a Sunday
+record date). The announcements are real filings; the accounts, positions and the basket are
+constructed and disclosed in each file.
+
+Each of the six carries an **`env` block** for the Phase-2 agent environment
+([design](../workflow/DESIGN-phase2-agent-environment.md)): the account, the ticker, the
+settled-position history (`positions`, rows of `as_of` and `settled_shares`, transcribed from the
+case's own position document and nothing else), whether anything is pending after the clock
+(`pending_after_clock`), the PCF line for the split family, and `actions_allowed` (gold, not a
+prompt hint). The block is never shown to the model; the tools answer from it. The selftest lints
+every row against the position document, and `verification.env` records the transcription.
+
 All filings are public on SEC EDGAR. Each case file records its accession numbers and URLs under
 `sources:`. Eval #1 consensus snapshots cite the public outlet and date under `consensus:`;
 eval #2 market snapshots document their provenance (real + cited, or constructed + labeled) under

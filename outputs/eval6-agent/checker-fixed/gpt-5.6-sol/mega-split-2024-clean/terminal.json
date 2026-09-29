@@ -1,0 +1,138 @@
+{
+  "P1": {
+    "issuer": "NVIDIA Corporation",
+    "security": {
+      "ticker": "NVDA"
+    },
+    "event_type": "mandatory",
+    "governing_doc": "nvda-8k-20240522",
+    "superseded_docs": []
+  },
+  "P2": {
+    "dates": {
+      "announcement": "2024-05-22",
+      "record_date": "2024-06-06",
+      "distribution_date": "2024-06-07",
+      "split_adjusted_trading": "2024-06-10"
+    },
+    "entitlement_basis": "record_date",
+    "entitlement_basis_date": "2024-06-06",
+    "election_deadline": null
+  },
+  "E1": {
+    "terms": {
+      "ratio": 10,
+      "additional_shares_per_share": 9,
+      "record_date": "2024-06-06",
+      "distribution_date": "2024-06-07",
+      "split_adjusted_trading": "2024-06-10"
+    },
+    "citation": {
+      "document": "nvda-8k-20240522",
+      "locator": "Item 8.01, first paragraph",
+      "verbatim": "Each record holder of common stock as of the close of market on Thursday, June 6, 2024 will receive nine additional shares of common stock, to be distributed after the close of market on Friday, June 7, 2024. Trading is expected to commence on a split-adjusted basis at market open on Monday, June 10, 2024."
+    }
+  },
+  "E2": {
+    "position": {
+      "basket_per_cu_pre": 180,
+      "creation_units": 100,
+      "basket_total_pre": 18000
+    },
+    "basis_shares": 18000
+  },
+  "C1": {
+    "entitlement": {
+      "pre_split_shares": 18000,
+      "ratio": 10,
+      "post_split_shares": 180000,
+      "additional_shares": 162000,
+      "basket_per_cu_post": 1800
+    },
+    "cil": {
+      "applicable": false,
+      "amount": null
+    }
+  },
+  "C2": {
+    "election_required": false,
+    "options": null,
+    "default_option": null,
+    "economics": null
+  },
+  "C3": {
+    "impact": {
+      "basket_per_cu_new": 1800,
+      "basket_total_new": 180000
+    },
+    "changes": [
+      {
+        "what": "NVDA quantity per creation unit",
+        "where": "MEGA PCF for 2024-06-10 dissemination",
+        "old": 1800,
+        "new": 1800
+      },
+      {
+        "what": "NVDA share-position confirmation",
+        "where": "NVDA position ledger as of 2024-06-07",
+        "old": 18000,
+        "new": 180000
+      },
+      {
+        "what": "June NVDA dividend cash receivable",
+        "where": "MEGA cash receivables ledger",
+        "old": 0,
+        "new": 1800
+      }
+    ]
+  },
+  "D1": {
+    "decision": "Process the mandatory 10-for-1 split from the 2024-06-06 record-date position, maintain the split-adjusted PCF at 1,800 NVDA shares per creation unit, confirm 180,000 post-split shares, and book the fully determinable $1,800 June dividend receivable. The dividend uses the projected 180,000-share position on its separate 2024-06-11 record date and the $0.01 post-split rate. No election is required.",
+    "actions": [
+      {
+        "_entry": "L4",
+        "_kind": "update_pcf",
+        "action": "update PCF NVDA quantity per creation unit to 1,800",
+        "quantity": 1800.0,
+        "basis_doc": "nvda-8k-20240522",
+        "by_date": null,
+        "amount": null,
+        "option": null
+      },
+      {
+        "_entry": "L5",
+        "_kind": "confirm_position",
+        "action": "confirm position of 180,000 NVDA shares",
+        "quantity": 180000.0,
+        "basis_doc": "nvda-8k-20240522",
+        "by_date": null,
+        "as_of": "2024-06-07",
+        "amount": null,
+        "option": null
+      },
+      {
+        "_entry": "L6",
+        "_kind": "book_receivable",
+        "action": "book receivable of $1,800.00",
+        "amount": 1800.0,
+        "by_date": "2024-06-28",
+        "basis_doc": "nvda-8k-20240522",
+        "quantity": 180000.0,
+        "option": null
+      }
+    ]
+  },
+  "D2": {
+    "probe": {
+      "label": "COMPUTED",
+      "value": 1800,
+      "derivation": "The June dividend is governed by the 2024-06-11 record date. Projected record-date position 180,000 post-split shares \u00d7 $0.01 per share = $1,800 gross. Applicable U.S. withholding is $0 for MEGA, a U.S.-domiciled fund receiving NVIDIA's U.S.-source dividend; therefore net cash is $1,800."
+    },
+    "twins": [
+      {
+        "id": "TW1",
+        "value": 1800
+      }
+    ]
+  }
+}

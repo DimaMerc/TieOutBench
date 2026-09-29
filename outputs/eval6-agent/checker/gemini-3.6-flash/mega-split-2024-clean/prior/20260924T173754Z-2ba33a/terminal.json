@@ -1,0 +1,118 @@
+{
+  "C2": {
+    "economics": null,
+    "election_required": false,
+    "default_option": null,
+    "options": null
+  },
+  "C3": {
+    "impact": {
+      "basket_per_cu_new": 1800,
+      "basket_total_new": 180000
+    },
+    "changes": [
+      {
+        "what": "basket quantity per creation unit for NVDA",
+        "new": 1800,
+        "old": 180,
+        "where": "MEGA portfolio composition file (PCF)"
+      }
+    ]
+  },
+  "P1": {
+    "security": {
+      "ticker": "NVDA"
+    },
+    "governing_doc": "nvda-8k-20240607",
+    "issuer": "NVIDIA Corporation",
+    "event_type": "mandatory",
+    "superseded_docs": [
+      "nvda-8k-20240522"
+    ]
+  },
+  "E1": {
+    "terms": {
+      "split_adjusted_trading": "2024-06-10",
+      "record_date": "2024-06-06",
+      "distribution_date": "2024-06-07",
+      "ratio": 10,
+      "additional_shares_per_share": 9
+    },
+    "citation": {
+      "document": "nvda-8k-20240607",
+      "verbatim": "At the Effective Time, each share of Common Stock issued as of immediately prior to the Effective Time shall be automatically subdivided and reclassified into ten (10) validly issued, fully paid and non-assessable shares of Common Stock. Trading is expected to commence on a split-adjusted basis at market open on June 10, 2024.",
+      "locator": "Item 5.03 / Exhibit 3.1"
+    }
+  },
+  "D1": {
+    "decision": "Confirmed post-split NVDA position of 180,000 shares and updated PCF quantity per creation unit to 1,800 shares effective 2024-06-10 following 10-for-1 forward stock split.",
+    "actions": [
+      {
+        "_entry": "L4",
+        "_kind": "confirm_position",
+        "action": "confirm position of 180,000 NVDA shares",
+        "quantity": 180000.0,
+        "basis_doc": "nvda-8k-20240607",
+        "by_date": null,
+        "as_of": "2024-06-07",
+        "amount": null,
+        "option": null
+      },
+      {
+        "_entry": "L5",
+        "_kind": "update_pcf",
+        "action": "update PCF NVDA quantity per creation unit to 1,800",
+        "quantity": 1800.0,
+        "basis_doc": "nvda-8k-20240607",
+        "by_date": null,
+        "amount": null,
+        "option": null
+      }
+    ]
+  },
+  "C1": {
+    "cil": {
+      "applicable": false,
+      "amount": null
+    },
+    "entitlement": {
+      "post_split_shares": 180000,
+      "pre_split_shares": 18000,
+      "additional_shares": 162000,
+      "ratio": 10,
+      "basket_per_cu_post": 1800
+    }
+  },
+  "E2": {
+    "basis_shares": 18000,
+    "position": {
+      "creation_units": 100,
+      "basket_per_cu_pre": 180,
+      "basket_total_pre": 18000
+    }
+  },
+  "P2": {
+    "entitlement_basis": "record_date",
+    "election_deadline": null,
+    "dates": {
+      "record_date": "2024-06-06",
+      "split_adjusted_trading": "2024-06-10",
+      "announcement": "2024-05-22",
+      "distribution_date": "2024-06-07"
+    },
+    "entitlement_basis_date": "2024-06-06"
+  },
+  "D2": {
+    "twins": [
+      {
+        "id": "TW1",
+        "value": 1800
+      }
+    ],
+    "probe": {
+      "label": "NOT_DETERMINABLE",
+      "value": null,
+      "derivation": "Tax withholding documentation is not present in the store, and the June dividend record date (2024-06-11) is after today's as-of date (2024-06-10)."
+    }
+  }
+}

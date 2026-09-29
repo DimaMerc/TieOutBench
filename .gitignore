@@ -12,6 +12,8 @@ __pycache__/
 .venv/
 venv/
 env/
+# the eval-6 Phase-2 agent environment package is a Python package, not a virtualenv
+!harness/env/
 
 # Secrets / API keys — never commit
 .env

@@ -1,0 +1,86 @@
+########################################################################
+  EPISODE bry-dividend-2024   arm=checker   model=claude-sonnet-4-6
+########################################################################
+
+--- WORKSHEET (the submitted worksheet through the unchanged Phase-1 grader) ---
+========================================================================
+  CASE bry-dividend-2024    model=checker:claude-sonnet-4-6    judge=mock
+========================================================================
+  CaseScore (gated, headline) : 1.000
+  CaseScore (ungated)         : 1.000
+  GAP (ungated - gated)       : 0.000
+  AllPass                     : 1
+  D2 calibration (R,G->F_b)   : R=1.00 G=1.00 -> 1.000
+  Gates fired                 : none
+
+  Checkpoint vector (which step failed):
+    cp   W      ungated  gated   raw
+    P1   0.100  1.000   1.000  +1.00
+    P2   0.120  1.000   1.000  +1.00
+    E1   0.100  1.000   1.000  +1.00
+    E2   0.080  1.000   1.000  +1.00
+    C1   0.140  1.000   1.000  +1.00
+    C2   0.120  1.000   1.000  +1.00
+    C3   0.100  1.000   1.000  +1.00
+    D1   0.160  1.000   1.000  +1.00
+    D2   0.080  1.000   1.000  +1.00
+
+  Category rollup (diagnostic -- what KIND of error):
+    extraction   +1.000  ####################
+    numerical    +1.000  ####################
+    entailment   +1.000  ####################
+    reasoning    +1.000  ####################
+    calibration  +1.000  ####################
+    structure    +1.000  ####################
+========================================================================
+
+--- TERMINAL STATE (worksheet + the ledger rendered into D1 rows; ledger predicates applied) ---
+========================================================================
+  CASE bry-dividend-2024    model=checker:claude-sonnet-4-6    judge=mock
+========================================================================
+  CaseScore (gated, headline) : 1.000
+  CaseScore (ungated)         : 1.000
+  GAP (ungated - gated)       : 0.000
+  AllPass                     : 1
+  D2 calibration (R,G->F_b)   : R=1.00 G=1.00 -> 1.000
+  Gates fired                 : none
+
+  Checkpoint vector (which step failed):
+    cp   W      ungated  gated   raw
+    P1   0.100  1.000   1.000  +1.00
+    P2   0.120  1.000   1.000  +1.00
+    E1   0.100  1.000   1.000  +1.00
+    E2   0.080  1.000   1.000  +1.00
+    C1   0.140  1.000   1.000  +1.00
+    C2   0.120  1.000   1.000  +1.00
+    C3   0.100  1.000   1.000  +1.00
+    D1   0.160  1.000   1.000  +1.00
+    D2   0.080  1.000   1.000  +1.00
+
+  Category rollup (diagnostic -- what KIND of error):
+    extraction   +1.000  ####################
+    numerical    +1.000  ####################
+    entailment   +1.000  ####################
+    reasoning    +1.000  ####################
+    calibration  +1.000  ####################
+    structure    +1.000  ####################
+========================================================================
+
+--- LEDGER ---
+L1: book_receivable amount=$6,800.00 pay_date=2024-08-30 shares=40000.0 rate=0.17 basis_doc=bry-8k-20240813 memo='BRY Q2 2024 dividend (fixed $0.12 + variable $0.05 = $0.17/share) on 40,000 shares at corrected record date 2024-08-23, pay date 2024-08-30. Governed by correction notice bry-8k-20240813 superseding bry-8k-20240809.'
+L2: escalate missing_document='Withholding tax rate documentation for ACCT-7712 foreign-domiciled subaccount (e.g., W-8BEN/W-8BEN-E, tax treaty schedule, or custodian withholding instruction on file)' held_action='Booking of net (post-withholding) dividend cash for the foreign-domiciled subaccount' reason="The account's beneficial owner is a foreign-domiciled subaccount. The applicable withholding tax rate (and therefore the net dividend after withholding) cannot be determined from the document store. The store contains no tax treaty schedule, W-8 form, or withholding rate table for this subaccount. The gross entitlement is determinable ($6,800.00), but the net amount after withholding is NOT_DETERMINABLE without the subaccount's tax domicile/treaty documentation."
+  booked entries: 1   GATE.ELECT on the ledger: False   gold match: True   flags: none   correct: True
+  consistency L1: booked=6800.0 worksheet=6800.0 ok=True
+  gold L1 book_receivable: ok=True  {'permissible': [6800.0, 4800.0, 2000.0], 'pay_date_ok': True, 'basis_superseded': False}
+  gold L2 escalate: ok=True  {'scoped': True}
+
+--- TRAJECTORY (reported, not scored) ---
+  maker: turns=6 tool_calls=9 errors=0 counts={'list_documents': 1, 'get_position': 2, 'read_document': 2, 'calculate': 1, 'book_receivable': 1, 'escalate': 1, 'submit_worksheet': 1}
+  governing read before first action: True   docs read: ['bry-8k-20240809', 'bry-8k-20240813']   superseded read: ['bry-8k-20240809']   distractors read: []
+  position dates queried: ['2024-08-12', '2024-08-23']   basis date queried: True   superseded date queried: True   projected: 1   query errors: 0
+  calculate used: True (1): ['40000 * 0.17']
+
+--- REVIEW (checker arm) ---
+  round 1: verdict=approve recomputed=True tools={'list_documents': 1, 'get_position': 2, 'read_document': 4, 'calculate': 1, 'review_verdict': 1} ledger_shown_correct=True
+    - No discrepancies found. All figures tie out to the governing document (bry-8k-20240813): dividend rate $0.17/share ($0.12 fixed + $0.05 variable) is confirmed unchanged by the correction notice; record date 2024-08-23 and pay date 2024-08-30 match the correction notice exactly; eligible share count of 40,000 matches the settled position as of the corrected record date (50,000 pre-sale minus 10,000 sold and settled 2024-08-15, no further changes scheduled); gross entitlement 40,000 × $0.17 = $6,800.00 is arithmetically correct; bry-8k-20240809 is correctly identified as superseded; broker-memo-20240815 is correctly treated as a distractor; L2 escalation for missing withholding tax documentation is appropriate as no such documentation exists in the store.
+########################################################################

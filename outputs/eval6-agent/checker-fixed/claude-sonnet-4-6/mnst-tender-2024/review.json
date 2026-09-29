@@ -1,0 +1,64 @@
+{
+  "rounds": [
+    {
+      "round": 1,
+      "verdict": "approve",
+      "findings": [],
+      "turns": 4,
+      "incomplete": false,
+      "ended_by": "end",
+      "ledger_shown_correct": true,
+      "ledger_shown_elect": false,
+      "ledger_shown_flags": []
+    }
+  ],
+  "ledger_v1": [
+    {
+      "entry_id": "L1",
+      "kind": "book_receivable",
+      "args": {
+        "account": "ACCT-4407",
+        "amount": 250054.0,
+        "pay_date": "2024-06-10",
+        "basis_doc": "mnst-results-20240610",
+        "shares": 4718.0,
+        "rate": 53.0,
+        "memo": "MNST tender offer final results: 4,718 shares accepted at $53.00 final purchase price (47.18% proration factor applied to 10,000 tendered shares). Gross proceeds $250,054.00."
+      },
+      "seq": 24,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:18:58.897Z"
+    },
+    {
+      "entry_id": "L2",
+      "kind": "confirm_position",
+      "args": {
+        "ticker": "MNST",
+        "shares": 5282.0,
+        "as_of": "2024-06-10",
+        "basis_doc": "mnst-results-20240610"
+      },
+      "seq": 26,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:18:58.897Z"
+    },
+    {
+      "entry_id": "L3",
+      "kind": "escalate",
+      "args": {
+        "reason": "The D2 probe asks what fees or charges per the Letter of Transmittal will be deducted from tender proceeds. The Offer to Purchase (mnst-otp-20240508) references the Letter of Transmittal but that document is not present in the store. Cannot determine fee/charge terms without it.",
+        "missing_document": "Letter of Transmittal \u2014 Monster Beverage Corporation tender offer (referenced in mnst-otp-20240508)",
+        "held_action": "Determination of fees or charges deducted from ACCT-4407 tender proceeds per Letter of Transmittal terms"
+      },
+      "seq": 28,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:18:58.897Z"
+    }
+  ]
+}

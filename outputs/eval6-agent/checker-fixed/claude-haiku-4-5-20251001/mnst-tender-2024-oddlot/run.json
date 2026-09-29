@@ -1,0 +1,238 @@
+{
+  "schema": "tieoutbench.run/1",
+  "run_id": "20260925T000139Z-ff1ee4",
+  "written_at": "2026-09-25T00:03:05Z",
+  "arm": "checker-fixed",
+  "suite": "corporate-actions",
+  "model_id": "claude-haiku-4-5-20251001",
+  "endpoint": "api.anthropic.com",
+  "request": {
+    "max_tokens": 8000,
+    "temperature": 0.0,
+    "stream": false,
+    "tool_transport": "native",
+    "max_turns": 20,
+    "deadline_s": 900
+  },
+  "conformance": {
+    "tool_transport": "native",
+    "tested_at": "2026-09-24T15:58:11Z"
+  },
+  "loop": {
+    "maker_round1": {
+      "turns": 8,
+      "incomplete": false,
+      "ended_by": "end",
+      "elapsed_s": null
+    },
+    "review_round1": {
+      "round": 1,
+      "verdict": "reject",
+      "findings": [
+        "L3 (confirm_position): quantity/timing wrong. The entry confirms MNST position at 0 shares as_of 2024-06-05. The position record shows 87 settled shares held at the depositary both as of 2024-06-05 and as of the 2024-06-10 as-of date (shares are held pending purchase settlement, not removed at the expiration date). As of the expiration date 2024-06-05 the position was 87, not 0. The position should be shown as 87 as of the as-of date, with the tendered/accepted 87 removed only upon settlement of the purchase, not backdated to the 2024-06-05 expiration.",
+        "L2 (book_receivable): pay_date 2024-06-12 is not supported by any document in the store. Neither the final results release (mnst-results-20240610) nor the Offer to Purchase excerpt states a payment/settlement date. The pay date is fabricated; it cannot be tied to the source and should not be booked as 2024-06-12 absent a document stating it.",
+        "D2 probe / L1 (escalate): the escalation is incorrect. The probe is answerable from the document store. Neither the Offer to Purchase excerpt (mnst-otp-20240508) nor the results release states that any fees or charges are deducted from tender proceeds. The store supports the answer that no fees/charges are deducted from the account's proceeds; declaring NOT_DETERMINABLE and escalating a 'missing Letter of Transmittal' is not warranted by the store's contents."
+      ],
+      "turns": 5,
+      "incomplete": false,
+      "ended_by": "end",
+      "ledger_shown_correct": true,
+      "ledger_shown_elect": false,
+      "ledger_shown_flags": []
+    },
+    "revised": true,
+    "maker_round2": {
+      "turns": 3,
+      "incomplete": false,
+      "ended_by": "end",
+      "elapsed_s": 18.6
+    },
+    "review_round2": {
+      "round": 2,
+      "verdict": "approve",
+      "findings": [
+        "L5 (confirm_position): Ties out. Account is a settled odd-lot holder of 87 MNST shares (<100) that validly tendered ALL 87 shares as purchase-price tenders before the 2024-06-05 expiration. Under the Offer to Purchase priority terms, odd-lot tenders of all shares are accepted in full and are not subject to the 47.18% proration. Governing doc (mnst-results-20240610) and quantity (87) are correct.",
+        "L4 (escalate book_receivable): Correct hold. Gross proceeds = 87 x $53.00 = $4,611.00 is determinable, but neither the Offer to Purchase (mnst-otp-20240508) nor the final results (mnst-results-20240610) states a payment/settlement date, so booking a receivable with a pay_date is not supportable from the store. Escalation is the right action.",
+        "TW1 (gross proceeds): $4,611.00 verified (87 x $53.00). Correct.",
+        "ADVISORY (not a booked entry): D2 probe answer 'No fees or charges are deducted' is labeled COMPUTED but is not actually determinable from the store. The probe asks specifically about the Letter of Transmittal's terms, and no Letter of Transmittal is present in the document store (only an OTP excerpt, the results release, and the position record). Concluding 'no fees' from the silence of documents that are not the governing LoT is inference, not evidence; this probe should be escalated as undetermined rather than answered COMPUTED. This does not affect any booked ledger entry, so it does not change the verdict on the ledger."
+      ],
+      "turns": 4,
+      "incomplete": false,
+      "ended_by": "end",
+      "ledger_shown_correct": false,
+      "ledger_shown_elect": false,
+      "ledger_shown_flags": [
+        "ledger_missing_required",
+        "ledger_overescalate"
+      ]
+    }
+  },
+  "usage_total": {
+    "prompt_tokens": 29086,
+    "completion_tokens": 1712,
+    "total_tokens": 30798
+  },
+  "chat_calls": 3,
+  "transient_retries": 0,
+  "last_finish_reason": "tool_calls",
+  "incomplete": false,
+  "reused_maker_from": "outputs/eval6-agent/tools/claude-haiku-4-5-20251001/mnst-tender-2024-oddlot",
+  "reviewer": {
+    "model_id": "claude-opus-4-8",
+    "endpoint": "api.anthropic.com",
+    "tool_transport": "native",
+    "max_tokens": 8000,
+    "usage_total": {
+      "prompt_tokens": 44299,
+      "completion_tokens": 4521,
+      "total_tokens": 48820
+    },
+    "chat_calls": 9,
+    "transient_retries": 0
+  },
+  "case": {
+    "case_id": "mnst-tender-2024-oddlot",
+    "path": "cases/mnst-tender-2024-oddlot.case.yaml",
+    "sha256": "42d15f5cec17ca9931ed58da98c69df9fbfd5c997a7c7653d6aa6bbdc8e7b539"
+  },
+  "rubric": {
+    "path": "rubric/criteria-corporate-actions.yaml",
+    "sha256": "81d0498cd0f16bef5aaf8e2569e4963771c55f330332fccda87a161329cb59b6"
+  },
+  "grader_version": "93b2efa",
+  "grader_tree_dirty": true,
+  "harness_hashes": {
+    "harness/graders.py": "4ce46f1ed091fa4e95dd471b7900be5464ced9a5c952d32ca7e8160243caa65b",
+    "harness/scoring.py": "c31e1901303253cf8b4ac600998ae130fb6111b32e5b99dd16029151db1dd1a8",
+    "harness/suites/corporate_actions.py": "f7b05b87e497cc4bb51849596a7b2891311d67d73e3fde5ba8b30b3a7bd99c22",
+    "harness/env/state.py": "ede4e582823945c77ba3c6631c0c3c704f2c8db2db58169a453a1aaee73fabc1",
+    "harness/env/scoring.py": "c60a98ff4d0cf6463f5b244b85fad9562a27edffd188a1adaf3efe2bde9c8d04",
+    "harness/env/agent.py": "d5d6b293408d287dce85cae6ec0ffbf5dd26fd2872bca637fe66f13c1e9a0d8d",
+    "harness/env/transport.py": "764a24ac1c3858f90fa5542ec428f7fa7b9433afd5a194806ccb78163f6153ca"
+  },
+  "prior_dir": null,
+  "score": {
+    "worksheet": {
+      "gated": 0.4735,
+      "ungated": 0.8935,
+      "gap": 0.42,
+      "allpass": 0,
+      "gates": [
+        "GATE.DATES"
+      ],
+      "flags": []
+    },
+    "terminal": {
+      "gated": 0.4735,
+      "ungated": 0.8935,
+      "gap": 0.42,
+      "allpass": 0,
+      "gates": [
+        "GATE.DATES"
+      ],
+      "flags": [
+        "ledger_missing_required",
+        "ledger_overescalate"
+      ]
+    },
+    "ledger": {
+      "correct": false,
+      "elect_fired": false,
+      "gold_ok": false,
+      "flags": [
+        "ledger_missing_required",
+        "ledger_overescalate"
+      ],
+      "n_booked": 1
+    },
+    "review": {
+      "rounds": [
+        {
+          "round": 1,
+          "verdict": "reject",
+          "ledger_shown_correct": true,
+          "incomplete": false
+        },
+        {
+          "round": 2,
+          "verdict": "approve",
+          "ledger_shown_correct": false,
+          "incomplete": false
+        }
+      ],
+      "recomputed": {
+        "1": true,
+        "2": true
+      }
+    }
+  },
+  "score_at_run": {
+    "worksheet": {
+      "gated": 0.4735,
+      "ungated": 0.8935,
+      "gap": 0.42,
+      "allpass": 0,
+      "gates": [
+        "GATE.DATES"
+      ],
+      "flags": []
+    },
+    "terminal": {
+      "gated": 0.4735,
+      "ungated": 0.8935,
+      "gap": 0.42,
+      "allpass": 0,
+      "gates": [
+        "GATE.DATES"
+      ],
+      "flags": [
+        "ledger_missing_required",
+        "ledger_overescalate"
+      ]
+    },
+    "ledger": {
+      "correct": false,
+      "elect_fired": false,
+      "gold_ok": false,
+      "flags": [
+        "ledger_missing_required",
+        "ledger_overescalate"
+      ],
+      "n_booked": 1
+    },
+    "trajectory": {
+      "n_turns": 11,
+      "n_tool_calls": 13,
+      "n_tool_errors": 0,
+      "governing_read_before_first_action": true,
+      "position_dates_queried": [
+        "2024-06-05"
+      ],
+      "basis_date_queried": true,
+      "superseded_date_queried": null,
+      "calculate_used": true
+    },
+    "review": {
+      "rounds": [
+        {
+          "round": 1,
+          "verdict": "reject",
+          "ledger_shown_correct": true,
+          "incomplete": false
+        },
+        {
+          "round": 2,
+          "verdict": "approve",
+          "ledger_shown_correct": false,
+          "incomplete": false
+        }
+      ],
+      "recomputed": {
+        "1": true,
+        "2": true
+      }
+    }
+  },
+  "rescored_at": "2026-09-25T00:10:15Z",
+  "grader_version_rescore": "93b2efa"
+}

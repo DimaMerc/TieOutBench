@@ -1,0 +1,138 @@
+{
+  "P1": {
+    "issuer": "NVIDIA Corporation",
+    "security": {
+      "ticker": "NVDA"
+    },
+    "event_type": "mandatory",
+    "governing_doc": "nvda-8k-20240607",
+    "superseded_docs": []
+  },
+  "P2": {
+    "dates": {
+      "announcement": "2024-05-22",
+      "record_date": "2024-06-06",
+      "distribution_date": "2024-06-07",
+      "split_adjusted_trading": "2024-06-10"
+    },
+    "entitlement_basis": "record_date",
+    "entitlement_basis_date": "2024-06-06",
+    "election_deadline": null
+  },
+  "E1": {
+    "terms": {
+      "ratio": 10,
+      "additional_shares_per_share": 9,
+      "record_date": "2024-06-06",
+      "distribution_date": "2024-06-07",
+      "split_adjusted_trading": "2024-06-10"
+    },
+    "citation": {
+      "document": "nvda-8k-20240607",
+      "locator": "Item 5.03, Exhibit 3.1",
+      "verbatim": "At the Effective Time, each share of Common Stock issued as of immediately prior to the Effective Time shall be automatically subdivided and reclassified into ten (10) validly issued, fully paid and non-assessable shares of Common Stock."
+    }
+  },
+  "E2": {
+    "position": {
+      "basket_per_cu_pre": 180,
+      "creation_units": 100,
+      "basket_total_pre": 18000
+    },
+    "basis_shares": 18000
+  },
+  "C1": {
+    "entitlement": {
+      "pre_split_shares": 18000,
+      "ratio": 10,
+      "post_split_shares": 180000,
+      "additional_shares": 162000,
+      "basket_per_cu_post": 1800
+    },
+    "cil": {
+      "applicable": false,
+      "amount": null
+    }
+  },
+  "C2": {
+    "election_required": false,
+    "options": null,
+    "default_option": null,
+    "economics": null
+  },
+  "C3": {
+    "impact": {
+      "basket_per_cu_new": 1800,
+      "basket_total_new": 180000
+    },
+    "changes": [
+      {
+        "what": "NVDA quantity per creation unit on the PCF",
+        "where": "mega-pcf-20240610 (PCF line 1, NVDA)",
+        "old": 180,
+        "new": 1800
+      },
+      {
+        "what": "NVDA custody position (total shares held)",
+        "where": "MEGA custody position ledger",
+        "old": 18000,
+        "new": 180000
+      },
+      {
+        "what": "NVDA dividend cash receivable (record 2024-06-11, pay 2024-06-28)",
+        "where": "MEGA cash receivable ledger",
+        "old": null,
+        "new": 1800
+      }
+    ]
+  },
+  "D1": {
+    "decision": "Mandatory 10-for-1 forward stock split governed by the effectiveness 8-K (nvda-8k-20240607). Record date 2024-06-06 position of 18,000 shares (180/CU x 100 CU) becomes 180,000 shares (1,800/CU) post-distribution; split-adjusted trading commences 2024-06-10. PCF confirmed at 1,800/CU. No election. June dividend of $1,800 booked as receivable (U.S.-source dividend to U.S. fund: zero withholding, NET = GROSS = $1,800).",
+    "actions": [
+      {
+        "_entry": "L5",
+        "_kind": "confirm_position",
+        "action": "confirm position of 180,000 NVDA shares",
+        "quantity": 180000.0,
+        "basis_doc": "nvda-8k-20240607",
+        "by_date": null,
+        "as_of": "2024-06-07",
+        "amount": null,
+        "option": null
+      },
+      {
+        "_entry": "L6",
+        "_kind": "update_pcf",
+        "action": "update PCF NVDA quantity per creation unit to 1,800",
+        "quantity": 1800.0,
+        "basis_doc": "nvda-8k-20240607",
+        "by_date": null,
+        "amount": null,
+        "option": null
+      },
+      {
+        "_entry": "L7",
+        "_kind": "book_receivable",
+        "action": "book receivable of $1,800.00",
+        "amount": 1800.0,
+        "by_date": "2024-06-28",
+        "basis_doc": "nvda-8k-20240522",
+        "quantity": 180000.0,
+        "option": null
+      }
+    ]
+  },
+  "D2": {
+    "probe": {
+      "label": "COMPUTED",
+      "value": 1800,
+      "derivation": "NET cash after applicable withholding = $1,800. MEGA is a U.S. registered fund holding U.S. issuer NVDA; the U.S.-source dividend to a U.S. holder is subject to zero withholding, so NET = GROSS. 180,000 post-split shares x $0.01 post-split rate = $1,800."
+    },
+    "twins": [
+      {
+        "id": "TW1",
+        "value": 1800
+      }
+    ]
+  }
+}

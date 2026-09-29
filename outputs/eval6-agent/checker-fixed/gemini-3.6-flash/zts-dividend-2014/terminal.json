@@ -1,0 +1,100 @@
+{
+  "C2": {
+    "options": null,
+    "election_required": false,
+    "default_option": null,
+    "economics": null
+  },
+  "C3": {
+    "impact": {
+      "gross_cash": 1800
+    },
+    "changes": [
+      {
+        "new": 1800,
+        "where": "ACCT-2101 ledger",
+        "what": "cash receivable",
+        "old": 0
+      }
+    ]
+  },
+  "E1": {
+    "citation": {
+      "locator": "First paragraph",
+      "document": "zts-8k-20140327",
+      "verbatim": "The dividend is to be paid on June 2, 2014 to holders of record on April 28, 2014."
+    },
+    "terms": {
+      "rate": 0.072,
+      "pay_date": "2014-06-02",
+      "record_date": "2014-04-28"
+    }
+  },
+  "P1": {
+    "event_type": "mandatory",
+    "governing_doc": "zts-8k-20140327",
+    "superseded_docs": [
+      "zts-8k-20140326"
+    ],
+    "security": {
+      "ticker": "ZTS"
+    },
+    "issuer": "Zoetis Inc."
+  },
+  "E2": {
+    "position": {
+      "shares_settled": 25000
+    },
+    "basis_shares": 25000
+  },
+  "D1": {
+    "actions": [
+      {
+        "_entry": "L3",
+        "_kind": "book_receivable",
+        "action": "book receivable of $1,800.00",
+        "amount": 1800.0,
+        "by_date": "2014-06-02",
+        "basis_doc": "zts-8k-20140327",
+        "quantity": 25000.0,
+        "option": null
+      }
+    ],
+    "decision": "book_receivable"
+  },
+  "D2": {
+    "probe": {
+      "derivation": "The document store contains no Dividend Reinvestment Plan (DRIP) prospectus or document specifying a DRIP reinvestment price for the June 2, 2014 payment.",
+      "label": "NOT_DETERMINABLE",
+      "value": null
+    },
+    "twins": [
+      {
+        "id": "TW1",
+        "value": 1800
+      }
+    ]
+  },
+  "C1": {
+    "cil": {
+      "applicable": false,
+      "amount": null
+    },
+    "entitlement": {
+      "rate": 0.072,
+      "gross_cash": 1800,
+      "eligible_shares": 25000
+    }
+  },
+  "P2": {
+    "entitlement_basis_date": "2014-04-28",
+    "election_deadline": null,
+    "dates": {
+      "record_date": "2014-04-28",
+      "declared": "2014-03-26",
+      "pay_date": "2014-06-02",
+      "corrected": "2014-03-27"
+    },
+    "entitlement_basis": "record_date"
+  }
+}

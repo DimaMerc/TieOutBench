@@ -1,0 +1,86 @@
+{
+  "rounds": [
+    {
+      "round": 1,
+      "verdict": "reject",
+      "findings": [
+        "L1 memo error \u2014 incorrect prior quantity: The memo states 'was 1800' for the pre-split NVDA shares per creation unit, but the pre-split quantity was 180 shares/CU (confirmed by the record-date position of 18,000 total shares \u00f7 100 CUs = 180/CU, and by the worksheet's own C3 entry which correctly shows old=180). The 'was' value in the L1 memo should be 180, not 1800."
+      ],
+      "turns": 4,
+      "incomplete": false,
+      "ended_by": "end",
+      "ledger_shown_correct": false,
+      "ledger_shown_elect": false,
+      "ledger_shown_flags": [
+        "ledger_missing_required",
+        "ledger_inconsistent"
+      ]
+    },
+    {
+      "round": 2,
+      "verdict": "reject",
+      "findings": [
+        "L4 (update_pcf): The 'was' (pre-split) quantity is recorded as 1800 in the ledger entry ('quantity_per_cu=1800.0 (was 1800)'), but the pre-split quantity per creation unit was 180 shares (confirmed by the record-date position of 18,000 total shares \u00f7 100 creation units = 180/CU from get_position as of 2024-06-06 and mega-position-20240610). The entry should read 'quantity_per_cu=1800.0 (was 180)'. The post-split quantity of 1,800 is correct, but the stated prior quantity is wrong, making the audit trail of the change incorrect."
+      ],
+      "turns": 4,
+      "incomplete": false,
+      "ended_by": "end",
+      "ledger_shown_correct": false,
+      "ledger_shown_elect": false,
+      "ledger_shown_flags": [
+        "ledger_missing_required",
+        "ledger_inconsistent"
+      ]
+    }
+  ],
+  "ledger_v1": [
+    {
+      "entry_id": "L1",
+      "kind": "update_pcf",
+      "args": {
+        "ticker": "NVDA",
+        "quantity_per_cu": 1800.0,
+        "previous_quantity_per_cu": 1800,
+        "basis_doc": "nvda-8k-20240607",
+        "memo": "NVDA 10-for-1 split effective 2024-06-07; post-split quantity confirmed for 2024-06-10 PCF dissemination. Pre-split: 180 shares/CU \u00d7 10 = 1,800 shares/CU."
+      },
+      "seq": 28,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:21:42.484Z"
+    },
+    {
+      "entry_id": "L2",
+      "kind": "book_receivable",
+      "args": {
+        "account": "MEGA",
+        "amount": 1800.0,
+        "pay_date": "2024-06-28",
+        "basis_doc": "nvda-8k-20240522",
+        "shares": 180000.0,
+        "rate": 0.01,
+        "memo": "NVDA quarterly cash dividend at post-split rate $0.01/share; record date 2024-06-11; 180,000 post-split shares projected at record date; gross amount $1,800.00. Net withholding NOT_DETERMINABLE \u2014 withholding rate document absent from store."
+      },
+      "seq": 31,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:21:47.202Z"
+    },
+    {
+      "entry_id": "L3",
+      "kind": "escalate",
+      "args": {
+        "reason": "The D2 probe asks for NET dividend cash after applicable withholding on MEGA's NVDA position. The document store contains the gross rate ($0.01/share post-split from nvda-8k-20240522) but contains no withholding tax rate schedule, IRS Form W-8/W-9 classification, or fund tax-status document that would determine the applicable withholding rate. The net amount cannot be computed without this document.",
+        "missing_document": "MEGA fund withholding/tax-status document (or applicable withholding rate schedule for NVDA dividends paid to MEGA as a domestic ETF) \u2014 e.g., a W-9 on file, fund tax classification memo, or custodian withholding instruction confirming 0% or applicable rate",
+        "held_action": "Booking net (post-withholding) dividend receivable for MEGA's NVDA position payable 2024-06-28"
+      },
+      "seq": 34,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:21:55.106Z"
+    }
+  ]
+}

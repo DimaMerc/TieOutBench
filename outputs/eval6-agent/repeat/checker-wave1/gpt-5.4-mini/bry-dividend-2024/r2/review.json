@@ -1,0 +1,68 @@
+{
+  "rounds": [
+    {
+      "round": 1,
+      "verdict": "reject",
+      "findings": [
+        "L1: basis_doc is correct on the correction notice, but the booked amount should be $6,800.00 only if tied to 40,000 shares; the worksheet/ledger are internally consistent on amount and rate, and no discrepancy found here.",
+        "L2: confirm_position uses basis_doc acct7712-position-20240816, but the governing position source for the entitlement date is the projected settled position as of 2024-08-23 from the position report; quantity 40,000 ties out, so no discrepancy found here."
+      ],
+      "turns": 4,
+      "incomplete": false,
+      "ended_by": "end",
+      "ledger_shown_correct": true,
+      "ledger_shown_elect": false,
+      "ledger_shown_flags": []
+    },
+    {
+      "round": 2,
+      "verdict": "reject",
+      "findings": [
+        "L3 is tied to the correct governing document and amount, but the work product\u2019s D2 note about withholding is unsupported by the source set; however this does not affect the booked gross receivable. No discrepancy in L3.",
+        "L4 confirms the correct settled position quantity of 40,000 shares as of 2024-08-23, but the basis document should be the position report itself (acct7712-position-20240816), which is acceptable and ties out. No discrepancy in L4.",
+        "The worksheet correctly uses the superseding correction notice bry-8k-20240813 rather than the superseded bry-8k-20240809, and the dividend terms are 0.17 per share payable 2024-08-30 to record holders on 2024-08-23. No discrepancy in the booked entries was found."
+      ],
+      "turns": 4,
+      "incomplete": false,
+      "ended_by": "end",
+      "ledger_shown_correct": true,
+      "ledger_shown_elect": false,
+      "ledger_shown_flags": []
+    }
+  ],
+  "ledger_v1": [
+    {
+      "entry_id": "L1",
+      "kind": "book_receivable",
+      "args": {
+        "account": "ACCT-7712",
+        "amount": 6800.0,
+        "pay_date": "2024-08-30",
+        "basis_doc": "bry-8k-20240813",
+        "shares": 40000.0,
+        "rate": 0.17,
+        "memo": "BRY dividend on corrected record date 2024-08-23; gross cash receivable"
+      },
+      "seq": 17,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:40:22.547Z"
+    },
+    {
+      "entry_id": "L2",
+      "kind": "confirm_position",
+      "args": {
+        "ticker": "BRY",
+        "shares": 40000.0,
+        "as_of": "2024-08-23",
+        "basis_doc": "acct7712-position-20240816"
+      },
+      "seq": 20,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:40:24.333Z"
+    }
+  ]
+}

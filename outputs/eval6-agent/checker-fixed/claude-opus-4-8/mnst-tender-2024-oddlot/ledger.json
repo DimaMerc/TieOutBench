@@ -1,0 +1,233 @@
+{
+  "clock": "2024-06-10",
+  "entries": [
+    {
+      "entry_id": "L1",
+      "kind": "book_receivable",
+      "args": {
+        "account": "ACCT-0093",
+        "amount": 4611.0,
+        "pay_date": "2024-06-10",
+        "basis_doc": "mnst-results-20240610",
+        "shares": 87.0,
+        "rate": 53.0,
+        "memo": "Tender proceeds: 87 odd-lot shares accepted in full at final price $53.00; no proration (odd-lot preference). GROSS proceeds; any LoT fees not determinable."
+      },
+      "seq": 19,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:14:39.732Z"
+    },
+    {
+      "entry_id": "L2",
+      "kind": "confirm_position",
+      "args": {
+        "ticker": "MNST",
+        "shares": 87.0,
+        "as_of": "2024-06-05",
+        "basis_doc": "mnst-results-20240610"
+      },
+      "seq": 21,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:14:39.732Z"
+    },
+    {
+      "entry_id": "L3",
+      "kind": "escalate",
+      "args": {
+        "reason": "The D2 probe asks what fees/charges the Letter of Transmittal deducts from the account's tender proceeds. The Offer to Purchase requires holders to complete the Letter of Transmittal, but that document is absent from the store, so the fee/charge terms cannot be sourced. Holding only the net-of-fee figure; gross proceeds ($4,611.00) are determined and booked.",
+        "missing_document": "Letter of Transmittal for the Monster Beverage tender offer",
+        "held_action": "Determination/booking of any fee or charge deduction (net proceeds figure) from the account's tender proceeds"
+      },
+      "seq": 23,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:14:39.732Z"
+    }
+  ],
+  "frozen": {
+    "ledger_v1": [
+      {
+        "entry_id": "L1",
+        "kind": "book_receivable",
+        "args": {
+          "account": "ACCT-0093",
+          "amount": 4611.0,
+          "pay_date": "2024-06-10",
+          "basis_doc": "mnst-results-20240610",
+          "shares": 87.0,
+          "rate": 53.0,
+          "memo": "Tender proceeds: 87 odd-lot shares accepted in full at final price $53.00; no proration (odd-lot preference). GROSS proceeds; any LoT fees not determinable."
+        },
+        "seq": 19,
+        "agent": "maker",
+        "round": 1,
+        "voided": false,
+        "t": "2026-09-24T17:14:39.732Z"
+      },
+      {
+        "entry_id": "L2",
+        "kind": "confirm_position",
+        "args": {
+          "ticker": "MNST",
+          "shares": 87.0,
+          "as_of": "2024-06-05",
+          "basis_doc": "mnst-results-20240610"
+        },
+        "seq": 21,
+        "agent": "maker",
+        "round": 1,
+        "voided": false,
+        "t": "2026-09-24T17:14:39.732Z"
+      },
+      {
+        "entry_id": "L3",
+        "kind": "escalate",
+        "args": {
+          "reason": "The D2 probe asks what fees/charges the Letter of Transmittal deducts from the account's tender proceeds. The Offer to Purchase requires holders to complete the Letter of Transmittal, but that document is absent from the store, so the fee/charge terms cannot be sourced. Holding only the net-of-fee figure; gross proceeds ($4,611.00) are determined and booked.",
+          "missing_document": "Letter of Transmittal for the Monster Beverage tender offer",
+          "held_action": "Determination/booking of any fee or charge deduction (net proceeds figure) from the account's tender proceeds"
+        },
+        "seq": 23,
+        "agent": "maker",
+        "round": 1,
+        "voided": false,
+        "t": "2026-09-24T17:14:39.732Z"
+      }
+    ]
+  },
+  "frozen_worksheets": {
+    "ledger_v1": {
+      "P1": {
+        "issuer": "Monster Beverage Corporation",
+        "security": {
+          "ticker": "MNST"
+        },
+        "event_type": "voluntary",
+        "governing_doc": "mnst-results-20240610",
+        "superseded_docs": []
+      },
+      "P2": {
+        "dates": {
+          "offer_commenced": "2024-05-08",
+          "expiration": "2024-06-05",
+          "results_announced": "2024-06-10"
+        },
+        "entitlement_basis": "shares_validly_tendered_by_expiration",
+        "entitlement_basis_date": "2024-06-05",
+        "election_deadline": "2024-06-05"
+      },
+      "E1": {
+        "terms": {
+          "final_price": 53.0,
+          "shares_tendered_total": 119018767,
+          "shares_accepted_total": 56603773,
+          "proration_factor": 0.4718,
+          "odd_lot_threshold": 100
+        },
+        "citation": {
+          "document": "mnst-results-20240610",
+          "locator": "final results press release, body",
+          "verbatim": "Monster accepted for purchase a total of 56,603,773 shares of its common stock at the final purchase price of $53.00 per share ... shares were accepted for purchase on a pro rata basis, except for tenders of \"odd lots,\" which will be accepted in full. ... the final proration factor for the tender offer is approximately 47.18%."
+        }
+      },
+      "E2": {
+        "position": {
+          "shares_held": 87,
+          "shares_tendered": 87
+        },
+        "basis_shares": 87
+      },
+      "C1": {
+        "entitlement": {
+          "shares_tendered": 87,
+          "accepted_shares": 87,
+          "final_price": 53.0,
+          "gross_proceeds": 4611.0,
+          "residual_shares": 0
+        },
+        "cil": {
+          "applicable": false,
+          "amount": null
+        }
+      },
+      "C2": {
+        "election_required": false,
+        "options": null,
+        "default_option": null,
+        "economics": {
+          "proration_applies": false,
+          "factor_used": 1.0,
+          "odd_lot_exception": true
+        }
+      },
+      "C3": {
+        "impact": {
+          "accepted_shares": 87,
+          "gross_proceeds": 4611.0,
+          "residual_shares": 0
+        },
+        "changes": [
+          {
+            "what": "Cash receivable for tender proceeds on 87 accepted odd-lot shares",
+            "where": "ACCT-0093 cash ledger (receivable)",
+            "old": 0,
+            "new": 4611.0
+          },
+          {
+            "what": "MNST position tendered and accepted in full; position reduced to zero",
+            "where": "ACCT-0093 MNST position ledger",
+            "old": 87,
+            "new": 0
+          }
+        ]
+      },
+      "D1": {
+        "decision": "Offer expired 2024-06-05; no live election remains. Account is an odd-lot holder (87 < 100) that validly tendered ALL its shares before expiration, so it qualifies for the odd-lot preference and all 87 shares are accepted in full at $53.00 with no proration. Book gross tender proceeds of $4,611.00 and confirm the 87-share tendered position. Any Letter-of-Transmittal fees are not determinable and are escalated/held.",
+        "actions": [
+          {
+            "action": "book_receivable",
+            "option": null,
+            "quantity": 87,
+            "amount": 4611.0,
+            "by_date": "2024-06-10",
+            "basis_doc": "mnst-results-20240610"
+          },
+          {
+            "action": "confirm_position",
+            "option": null,
+            "quantity": 87,
+            "amount": null,
+            "by_date": "2024-06-05",
+            "basis_doc": "mnst-results-20240610"
+          },
+          {
+            "action": "escalate",
+            "option": null,
+            "quantity": null,
+            "amount": null,
+            "by_date": null,
+            "basis_doc": "mnst-otp-20240508"
+          }
+        ]
+      },
+      "D2": {
+        "probe": {
+          "label": "NOT_DETERMINABLE",
+          "value": null,
+          "derivation": "The Offer to Purchase requires holders to complete the Letter of Transmittal to tender, but the Letter of Transmittal is not in the document store. Its fee/charge terms (e.g., whether any fees are deducted from proceeds) cannot be sourced, so the deduction is NOT_DETERMINABLE. Missing document: Letter of Transmittal for the Monster Beverage tender offer. Escalated (entry L3); net-of-fee figure held. No number invented."
+        },
+        "twins": [
+          {
+            "id": "TW1",
+            "value": 4611.0
+          }
+        ]
+      }
+    }
+  }
+}

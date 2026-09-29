@@ -1,0 +1,86 @@
+########################################################################
+  EPISODE zts-dividend-2014   arm=checker   model=gpt-5.4
+########################################################################
+
+--- WORKSHEET (the submitted worksheet through the unchanged Phase-1 grader) ---
+========================================================================
+  CASE zts-dividend-2014    model=checker:gpt-5.4    judge=mock
+========================================================================
+  CaseScore (gated, headline) : 1.000
+  CaseScore (ungated)         : 1.000
+  GAP (ungated - gated)       : 0.000
+  AllPass                     : 1
+  D2 calibration (R,G->F_b)   : R=1.00 G=1.00 -> 1.000
+  Gates fired                 : none
+
+  Checkpoint vector (which step failed):
+    cp   W      ungated  gated   raw
+    P1   0.100  1.000   1.000  +1.00
+    P2   0.120  1.000   1.000  +1.00
+    E1   0.100  1.000   1.000  +1.00
+    E2   0.080  1.000   1.000  +1.00
+    C1   0.140  1.000   1.000  +1.00
+    C2   0.120  1.000   1.000  +1.00
+    C3   0.100  1.000   1.000  +1.00
+    D1   0.160  1.000   1.000  +1.00
+    D2   0.080  1.000   1.000  +1.00
+
+  Category rollup (diagnostic -- what KIND of error):
+    extraction   +1.000  ####################
+    numerical    +1.000  ####################
+    entailment   +1.000  ####################
+    reasoning    +1.000  ####################
+    calibration  +1.000  ####################
+    structure    +1.000  ####################
+========================================================================
+
+--- TERMINAL STATE (worksheet + the ledger rendered into D1 rows; ledger predicates applied) ---
+========================================================================
+  CASE zts-dividend-2014    model=checker:gpt-5.4    judge=mock
+========================================================================
+  CaseScore (gated, headline) : 1.000
+  CaseScore (ungated)         : 1.000
+  GAP (ungated - gated)       : 0.000
+  AllPass                     : 1
+  D2 calibration (R,G->F_b)   : R=1.00 G=1.00 -> 1.000
+  Gates fired                 : none
+
+  Checkpoint vector (which step failed):
+    cp   W      ungated  gated   raw
+    P1   0.100  1.000   1.000  +1.00
+    P2   0.120  1.000   1.000  +1.00
+    E1   0.100  1.000   1.000  +1.00
+    E2   0.080  1.000   1.000  +1.00
+    C1   0.140  1.000   1.000  +1.00
+    C2   0.120  1.000   1.000  +1.00
+    C3   0.100  1.000   1.000  +1.00
+    D1   0.160  1.000   1.000  +1.00
+    D2   0.080  1.000   1.000  +1.00
+
+  Category rollup (diagnostic -- what KIND of error):
+    extraction   +1.000  ####################
+    numerical    +1.000  ####################
+    entailment   +1.000  ####################
+    reasoning    +1.000  ####################
+    calibration  +1.000  ####################
+    structure    +1.000  ####################
+========================================================================
+
+--- LEDGER ---
+L4: book_receivable amount=$1,800.00 pay_date=2014-06-02 shares=25000.0 rate=0.072 basis_doc=zts-8k-20140327 memo='Zoetis Q2 2014 mandatory cash dividend at $0.072/share on record-date position 2014-04-28 (projected stable position per store)'
+  booked entries: 1   GATE.ELECT on the ledger: False   gold match: True   flags: none   correct: True
+  consistency L4: booked=1800.0 worksheet=1800.0 ok=True
+  gold L4 book_receivable: ok=True  {'permissible': [1800.0], 'pay_date_ok': True, 'basis_superseded': False}
+
+--- TRAJECTORY (reported, not scored) ---
+  maker: turns=10 tool_calls=11 errors=0 counts={'list_documents': 1, 'read_document': 2, 'get_position': 1, 'calculate': 1, 'book_receivable': 2, 'confirm_position': 1, 'escalate': 1, 'submit_worksheet': 2}
+  governing read before first action: True   docs read: ['zts-8k-20140326', 'zts-8k-20140327']   superseded read: ['zts-8k-20140326']   distractors read: []
+  position dates queried: ['2014-04-28']   basis date queried: True   superseded date queried: False   projected: 1   query errors: 0
+  calculate used: True (1): ['25000*0.072']
+
+--- REVIEW (checker arm) ---
+  round 1: verdict=reject recomputed=True tools={'list_documents': 1, 'read_document': 2, 'get_position': 1, 'calculate': 1, 'review_verdict': 1} ledger_shown_correct=True
+    - L3 escalate is not an action allowed by the governing event. The governing document zts-8k-20140327 announces only a mandatory cash dividend of $0.072 per share payable 2014-06-02 to holders of record on 2014-04-28; it provides no election or reinvestment feature. No DRIP pricing determination should be booked or held for this event. The correct treatment is no such ledger entry.
+    - L2 confirm_position cites basis_doc zts-8k-20140327 but books an as_of/quantity confirmation for 2014-04-28 using a projected position. The source position available from the tool is projected from the latest settled position as of the desk as-of date 2014-04-01, not a settled position on 2014-04-28. This entry should not be booked as a confirmed position ledger entry; at most it could be an internal projection outside the event ledger.
+  round 2: verdict=approve recomputed=True tools={'list_documents': 1, 'read_document': 2, 'get_position': 1, 'calculate': 1, 'review_verdict': 1} ledger_shown_correct=True
+########################################################################

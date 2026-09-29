@@ -1,0 +1,219 @@
+{
+  "case_id": "mnst-tender-2024",
+  "arm": "tools",
+  "model_id": "claude-haiku-4-5-20251001",
+  "scripted": false,
+  "total_s": 55,
+  "scenes": [
+    {
+      "id": "episode",
+      "kind": "title",
+      "title": "mnst-tender-2024 · arm: tools",
+      "lines": [
+        "as of 2024-06-10",
+        "The Monster Beverage tender's final results published this morning. Process the event for the account.",
+        "run: claude-haiku-4-5-20251001"
+      ],
+      "duration_s": 4
+    },
+    {
+      "id": "step-1",
+      "kind": "step",
+      "agent": "maker",
+      "round": 1,
+      "tool": "list_documents",
+      "title": "1. list_documents",
+      "lines": [
+        "list_documents()",
+        "4 documents: mnst-otp-20240508, mnst-results-20240610, acct4407-position-20240610, incy-results-20240613"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-2",
+      "kind": "step",
+      "agent": "maker",
+      "round": 1,
+      "tool": "read_document",
+      "title": "2. read_document",
+      "lines": [
+        "read_document(mnst-results-20240610)",
+        "mnst-results-20240610 (issuer press release (final results, SC TO-I/A exhibit), 2024-06-10)"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-3",
+      "kind": "step",
+      "agent": "maker",
+      "round": 1,
+      "tool": "read_document",
+      "title": "3. read_document",
+      "lines": [
+        "read_document(mnst-otp-20240508)",
+        "mnst-otp-20240508 (issuer tender offer (Offer to Purchase, excerpt), 2024-05-08)"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-4",
+      "kind": "step",
+      "agent": "maker",
+      "round": 1,
+      "tool": "read_document",
+      "title": "4. read_document",
+      "lines": [
+        "read_document(acct4407-position-20240610)",
+        "acct4407-position-20240610 (custody position + instruction record (constructed), 2024-06-10)"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-5",
+      "kind": "step",
+      "agent": "maker",
+      "round": 1,
+      "tool": "get_position",
+      "title": "5. get_position",
+      "lines": [
+        "get_position(ACCT-4407, as of 2024-06-05)",
+        "10,000 shares, settled (position row 2024-06-04); tendered 10,000"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-6",
+      "kind": "step",
+      "agent": "maker",
+      "round": 1,
+      "tool": "calculate",
+      "title": "6. calculate",
+      "lines": [
+        "calculate(10000 * 0.4718 * 53)",
+        "= 250054"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-7",
+      "kind": "step",
+      "agent": "maker",
+      "round": 1,
+      "tool": "escalate",
+      "title": "7. escalate",
+      "lines": [
+        "escalate(missing: Letter of Transmittal (Monster Beverage tender offer); hold: D2 probe determination of fees/charges deducted from tender proceeds)",
+        "L1 escalation recorded"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-8",
+      "kind": "step",
+      "agent": "maker",
+      "round": 1,
+      "tool": "book_receivable",
+      "title": "8. book_receivable",
+      "lines": [
+        "book_receivable($250,054.00, pay 2024-06-10, basis mnst-results-20240610, 4718 shares)",
+        "L2 booked $250,054.00 for 2024-06-10 on mnst-results-20240610"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-9",
+      "kind": "step",
+      "agent": "maker",
+      "round": 1,
+      "tool": "calculate",
+      "title": "9. calculate",
+      "lines": [
+        "calculate(10000 - 4718)",
+        "= 5282"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-10",
+      "kind": "step",
+      "agent": "maker",
+      "round": 1,
+      "tool": "confirm_position",
+      "title": "10. confirm_position",
+      "lines": [
+        "confirm_position(5282 MNST as of 2024-06-10)",
+        "L3 confirmed 5282.0 as of 2024-06-10"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-11",
+      "kind": "step",
+      "agent": "maker",
+      "round": 1,
+      "tool": "submit_worksheet",
+      "title": "11. submit_worksheet",
+      "lines": [
+        "submit_worksheet(...)",
+        "worksheet submitted; episode ended (3 ledger entries)"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "ledger",
+      "kind": "ledger",
+      "title": "The ledger (what was booked)",
+      "lines": [
+        "L1: escalate missing_document='Letter of Transmittal (Monster Beverage tender offer)' held_action='D2 probe determination of fees/charges deducted from tender proceeds' reason=\"The D2 probe asks for fees or charges per the Letter of Transmittal's terms. The offer document (mnst-otp-20240508) references the Letter of Transmittal but the actual Letter of Transmittal document is not in the store. Without it, the fee/charge terms cannot be determined from the document store.\"",
+        "L2: book_receivable amount=$250,054.00 pay_date=2024-06-10 shares=4718.0 rate=53.0 basis_doc=mnst-results-20240610 memo='Monster Beverage tender offer final results: 4,718 shares accepted at $53.00/share (47.18% proration of 10,000 tendered shares)'",
+        "L3: confirm_position ticker=MNST shares=5282.0 as_of=2024-06-10 basis_doc=mnst-results-20240610"
+      ],
+      "duration_s": 5
+    },
+    {
+      "id": "tieout",
+      "kind": "check",
+      "title": "Does the worksheet tie to the ledger?",
+      "lines": [
+        "L2: booked 250054.0 vs worksheet 250054.0 -> ties",
+        "GATE.ELECT on the ledger: no",
+        "flags: none"
+      ],
+      "ok": true,
+      "duration_s": 5
+    },
+    {
+      "id": "grade",
+      "kind": "grade",
+      "title": "The grade",
+      "lines": [
+        "worksheet: 0.530 gated, AllPass 0, gates GATE.DATES",
+        "terminal state: 0.530 gated, AllPass 0, gates GATE.DATES",
+        "flags: none"
+      ],
+      "ok": false,
+      "duration_s": 5
+    },
+    {
+      "id": "closing",
+      "kind": "title",
+      "title": "Does it tie out?",
+      "lines": [
+        "TieOutBench · evals.finance",
+        "eval #6, phase 2: the agent environment"
+      ],
+      "duration_s": 3
+    }
+  ]
+}

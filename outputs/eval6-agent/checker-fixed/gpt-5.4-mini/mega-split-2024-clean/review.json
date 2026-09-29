@@ -1,0 +1,85 @@
+{
+  "rounds": [
+    {
+      "round": 1,
+      "verdict": "reject",
+      "findings": [
+        "L1 (book_receivable): amount and share basis are wrong. The dividend record date is 2024-06-11 (per nvda-8k-20240522), which falls AFTER the split distribution (nine additional shares distributed after close 2024-06-07). On the record date the fund holds 180,000 post-split shares (per mega-position-20240610 and get_position as of 2024-06-11), not 18,000. The rate of $0.01 is the post-split rate and must be applied to the post-split share count. Correct: shares=180,000, amount=180,000 x 0.01 = $1,800.00. The maker incorrectly applied the post-split rate to the pre-split 18,000 shares, understating the receivable by a factor of 10.",
+        "L3 (update_pcf): the direction is reversed and wrong. mega-pcf-20240610 already correctly reflects the 10-for-1 split at 1,800 NVDA shares per creation unit (split applied 2024-06-08). The booked entry changes 1,800 -> 180, which un-does the correct split adjustment. Correct action: NVDA quantity per CU must remain 1,800 (post-split), not 180.",
+        "D2 probe / TW1: figures are wrong. GROSS dividend (TW1) is 180,000 post-split shares x $0.01 = $1,800, not $180. NET cash: the payer (NVDA) is a US issuer and the holder (MEGA) is a US ETF, so no withholding applies; net = gross = $1,800. The maker's net/gross of $180 both stem from applying the post-split rate to the pre-split share count.",
+        "Worksheet P1 mischaracterization (not an independent booking error but incorrect): nvda-8k-20240607 (effectiveness 8-K) does not supersede nvda-8k-20240522; it corroborates the split's effectiveness. Neither is superseded, and the June-11 dividend record date/rate govern from nvda-8k-20240522."
+      ],
+      "turns": 4,
+      "incomplete": false,
+      "ended_by": "end",
+      "ledger_shown_correct": false,
+      "ledger_shown_elect": false,
+      "ledger_shown_flags": [
+        "ledger_inconsistent",
+        "ledger_wrong_amount"
+      ]
+    },
+    {
+      "round": 2,
+      "verdict": "approve",
+      "findings": [],
+      "turns": 5,
+      "incomplete": false,
+      "ended_by": "end",
+      "ledger_shown_correct": true,
+      "ledger_shown_elect": false,
+      "ledger_shown_flags": []
+    }
+  ],
+  "ledger_v1": [
+    {
+      "entry_id": "L1",
+      "kind": "book_receivable",
+      "args": {
+        "account": "MEGA",
+        "amount": 180.0,
+        "pay_date": "2024-06-28",
+        "basis_doc": "nvda-8k-20240522",
+        "shares": 18000.0,
+        "rate": 0.01,
+        "memo": "NVDA quarterly cash dividend at post-split rate; record date 2024-06-11; payable 2024-06-28"
+      },
+      "seq": 22,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:25:18.475Z"
+    },
+    {
+      "entry_id": "L2",
+      "kind": "confirm_position",
+      "args": {
+        "ticker": "NVDA",
+        "shares": 18000.0,
+        "as_of": "2024-06-06",
+        "basis_doc": "mega-position-20240610"
+      },
+      "seq": 24,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:25:18.475Z"
+    },
+    {
+      "entry_id": "L3",
+      "kind": "update_pcf",
+      "args": {
+        "ticker": "NVDA",
+        "quantity_per_cu": 180.0,
+        "previous_quantity_per_cu": 1800,
+        "basis_doc": "mega-pcf-20240610",
+        "memo": "NVDA split-adjusted basket quantity per creation unit"
+      },
+      "seq": 26,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:25:18.475Z"
+    }
+  ]
+}

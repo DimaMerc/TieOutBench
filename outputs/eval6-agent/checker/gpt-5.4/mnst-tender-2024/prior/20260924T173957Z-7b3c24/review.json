@@ -1,0 +1,81 @@
+{
+  "rounds": [
+    {
+      "round": 1,
+      "verdict": "reject",
+      "findings": [
+        "L1 is not an event-permitted booked entry. The governing documents for this tender are mnst-results-20240610 (final results) together with the underlying offer terms in mnst-otp-20240508; neither requires a separate Letter of Transmittal document in the store to process the final cash receivable. The escalation/hold should not have been booked.",
+        "L2 uses the wrong basis document. The 10,000-share position as of 2024-06-05 ties to the position history/get_position result (and is corroborated by acct4407-position-20240610), not to basis_doc=acct4407-position-20240610 as a governing source for the as-of confirmation. Quantity 10,000 as of 2024-06-05 is correct, but the basis should be the 2024-06-05 position record/get_position evidence.",
+        "L3 has the wrong pay date/basis date. The governing final-results press release mnst-results-20240610 announces the final purchase price and proration factor, supporting 4,718 accepted shares and gross proceeds of $250,054, but it does not state a cash payment date of 2024-06-10. The receivable amount is correct, but the pay_date should not be booked as 2024-06-10 absent source support; it should be left unstated/await actual payment settlement evidence."
+      ],
+      "turns": 5,
+      "incomplete": false,
+      "ended_by": "end",
+      "ledger_shown_correct": true,
+      "ledger_shown_elect": false,
+      "ledger_shown_flags": []
+    },
+    {
+      "round": 2,
+      "verdict": "approve",
+      "findings": [],
+      "turns": 5,
+      "incomplete": false,
+      "ended_by": "end",
+      "ledger_shown_correct": false,
+      "ledger_shown_elect": false,
+      "ledger_shown_flags": [
+        "ledger_missing_required"
+      ]
+    }
+  ],
+  "ledger_v1": [
+    {
+      "entry_id": "L1",
+      "kind": "escalate",
+      "args": {
+        "reason": "D2 probe asks what fees or charges, if any, will be deducted from tender proceeds under the Letter of Transmittal's terms, but the referenced Letter of Transmittal is not present in the document store. Hold only the dependent D2 fee-deduction determination.",
+        "missing_document": "Letter of Transmittal for Monster Beverage tender offer",
+        "held_action": "Determine D2 fee/charge deductions from tender proceeds"
+      },
+      "seq": 21,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:23:32.109Z"
+    },
+    {
+      "entry_id": "L2",
+      "kind": "confirm_position",
+      "args": {
+        "ticker": "MNST",
+        "shares": 10000.0,
+        "as_of": "2024-06-05",
+        "basis_doc": "acct4407-position-20240610"
+      },
+      "seq": 24,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:23:33.953Z"
+    },
+    {
+      "entry_id": "L3",
+      "kind": "book_receivable",
+      "args": {
+        "account": "ACCT-4407",
+        "amount": 250054.0,
+        "pay_date": "2024-06-10",
+        "basis_doc": "mnst-results-20240610",
+        "shares": 4718.0,
+        "rate": 53.0,
+        "memo": "Gross tender proceeds for 4,718 accepted MNST shares at final purchase price $53.00 per share based on final proration factor 47.18%; account had validly tendered 10,000 shares by 2024-06-05 expiration."
+      },
+      "seq": 26,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:23:33.953Z"
+    }
+  ]
+}

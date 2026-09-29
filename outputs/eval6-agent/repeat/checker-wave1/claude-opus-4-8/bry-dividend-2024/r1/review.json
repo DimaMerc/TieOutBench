@@ -1,0 +1,70 @@
+{
+  "rounds": [
+    {
+      "round": 1,
+      "verdict": "approve",
+      "findings": [
+        "L1 book_receivable ties out: governing doc is the 2024-08-13 correction 8-K (supersedes the 2024-08-09 declaration for record/pay dates; amounts unchanged). Rate $0.17/sh, record date 2024-08-23, pay date 2024-08-30 all match the governing document.",
+        "Position ties out: 50,000 shares as of 2024-08-12; 10,000-share sale executed 2024-08-13 settled 2024-08-15 (before record date 2024-08-23), leaving 40,000 settled shares as of record date. L2 confirm_position 40,000 as of 2024-08-23 is correct.",
+        "Gross cash ties out: 40,000 x 0.17 = 6,800. L1 amount $6,800.00 is correct.",
+        "Event type correct: mandatory dividend, no election available; no election was booked. Correct.",
+        "Note (non-blocking) on L3 escalate: the escalation's premise of a 'foreign-domiciled beneficial owner' and applicable withholding is not supported by any document in the store; no source establishes foreign domicile or a withholding obligation. The escalation does not book any figure, so the gross receivable (the only supported cash entry) is unaffected, but the escalation rests on a fact not in the record and should not have been raised."
+      ],
+      "turns": 4,
+      "incomplete": false,
+      "ended_by": "end",
+      "ledger_shown_correct": true,
+      "ledger_shown_elect": false,
+      "ledger_shown_flags": []
+    }
+  ],
+  "ledger_v1": [
+    {
+      "entry_id": "L1",
+      "kind": "book_receivable",
+      "args": {
+        "account": "ACCT-7712",
+        "amount": 6800.0,
+        "pay_date": "2024-08-30",
+        "basis_doc": "bry-8k-20240813",
+        "shares": 40000.0,
+        "rate": 0.17,
+        "memo": "BRY dividend $0.17/sh ($0.12 fixed + $0.05 variable) on corrected terms; record date 2024-08-23; 40,000 shares eligible."
+      },
+      "seq": 20,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:32:04.849Z"
+    },
+    {
+      "entry_id": "L2",
+      "kind": "confirm_position",
+      "args": {
+        "ticker": "BRY",
+        "shares": 40000.0,
+        "as_of": "2024-08-23",
+        "basis_doc": "bry-8k-20240813"
+      },
+      "seq": 22,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:32:04.849Z"
+    },
+    {
+      "entry_id": "L3",
+      "kind": "escalate",
+      "args": {
+        "reason": "D2 probe asks for NET dividend cash to a foreign-domiciled subaccount after withholding, but the store contains no withholding-tax / treaty-rate document determining the applicable withholding rate for this beneficial owner. Gross is determined ($6,800) but net is not.",
+        "missing_document": "Applicable withholding-tax rate / tax treaty (Form W-8/withholding schedule) for the foreign-domiciled beneficial owner",
+        "held_action": "Booking of net dividend cash (withholding amount) for the foreign subaccount"
+      },
+      "seq": 24,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:32:04.849Z"
+    }
+  ]
+}

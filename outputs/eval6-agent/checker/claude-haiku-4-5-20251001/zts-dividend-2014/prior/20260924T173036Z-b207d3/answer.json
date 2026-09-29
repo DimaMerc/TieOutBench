@@ -1,0 +1,98 @@
+{
+  "P1": {
+    "issuer": "Zoetis Inc.",
+    "security": {
+      "ticker": "ZTS"
+    },
+    "event_type": "mandatory",
+    "governing_doc": "zts-8k-20140327",
+    "superseded_docs": [
+      "zts-8k-20140326"
+    ]
+  },
+  "P2": {
+    "dates": {
+      "declared": "2014-03-26",
+      "corrected": "2014-03-27",
+      "record_date": "2014-04-28",
+      "pay_date": "2014-06-02"
+    },
+    "entitlement_basis": "record_date",
+    "entitlement_basis_date": "2014-04-28",
+    "election_deadline": null
+  },
+  "E1": {
+    "terms": {
+      "rate": 0.072,
+      "record_date": "2014-04-28",
+      "pay_date": "2014-06-02"
+    },
+    "citation": {
+      "document": "zts-8k-20140327",
+      "locator": "First paragraph, second sentence",
+      "verbatim": "The dividend is to be paid on June 2, 2014 to holders of record on April 28, 2014. The Board of Directors of Zoetis Inc. (NYSE:ZTS) declared a second quarter dividend payable to holders of the company's common stock of $0.072 per share."
+    }
+  },
+  "E2": {
+    "position": {
+      "shares_settled": 25000
+    },
+    "basis_shares": 25000
+  },
+  "C1": {
+    "entitlement": {
+      "eligible_shares": 25000,
+      "rate": 0.072,
+      "gross_cash": 1800
+    },
+    "cil": {
+      "applicable": false,
+      "amount": null
+    }
+  },
+  "C2": {
+    "election_required": false,
+    "options": null,
+    "default_option": null,
+    "economics": null
+  },
+  "C3": {
+    "impact": {
+      "gross_cash": 1800
+    },
+    "changes": [
+      {
+        "what": "Cash receivable ledger entry for dividend payment",
+        "where": "ACCT-2101 dividend receivable ledger",
+        "old": 0,
+        "new": 1800
+      }
+    ]
+  },
+  "D1": {
+    "decision": "Book mandatory dividend receivable of $1,800.00 payable June 2, 2014",
+    "actions": [
+      {
+        "action": "book_receivable",
+        "option": null,
+        "quantity": 25000,
+        "amount": 1800,
+        "by_date": "2014-06-02",
+        "basis_doc": "zts-8k-20140327"
+      }
+    ]
+  },
+  "D2": {
+    "probe": {
+      "label": "NOT_DETERMINABLE",
+      "value": null,
+      "derivation": "The reinvestment price for the June 2, 2014 dividend payment under the account's DRIP participation is not specified in the governing dividend announcement (zts-8k-20140327) or any other document in the store. The Zoetis Dividend Reinvestment Plan document or prospectus containing the reinvestment price formula is missing from the document store and must be obtained to determine this figure."
+    },
+    "twins": [
+      {
+        "id": "TW1",
+        "value": 1800
+      }
+    ]
+  }
+}

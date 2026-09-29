@@ -1,0 +1,317 @@
+{
+  "case_id": "mnst-tender-2024-oddlot",
+  "arm": "checker",
+  "model_id": "claude-sonnet-4-6",
+  "scripted": false,
+  "total_s": 79,
+  "scenes": [
+    {
+      "id": "episode",
+      "kind": "title",
+      "title": "mnst-tender-2024-oddlot · arm: checker",
+      "lines": [
+        "as of 2024-06-10",
+        "The Monster Beverage tender's final results published this morning. Process the event for the account.",
+        "run: claude-sonnet-4-6"
+      ],
+      "duration_s": 4
+    },
+    {
+      "id": "step-1",
+      "kind": "step",
+      "agent": "maker",
+      "round": 1,
+      "tool": "list_documents",
+      "title": "1. list_documents",
+      "lines": [
+        "list_documents()",
+        "4 documents: mnst-otp-20240508, mnst-results-20240610, acct0093-position-20240610, incy-results-20240613"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-2",
+      "kind": "step",
+      "agent": "maker",
+      "round": 1,
+      "tool": "get_position",
+      "title": "2. get_position",
+      "lines": [
+        "get_position(ACCT-0093, as of 2024-06-10)",
+        "87 shares, settled (position row 2024-06-03); tendered 87"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-3",
+      "kind": "step",
+      "agent": "maker",
+      "round": 1,
+      "tool": "read_document",
+      "title": "3. read_document",
+      "lines": [
+        "read_document(mnst-results-20240610)",
+        "mnst-results-20240610 (issuer press release (final results, SC TO-I/A exhibit), 2024-06-10)"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-4",
+      "kind": "step",
+      "agent": "maker",
+      "round": 1,
+      "tool": "read_document",
+      "title": "4. read_document",
+      "lines": [
+        "read_document(mnst-otp-20240508)",
+        "mnst-otp-20240508 (issuer tender offer (Offer to Purchase, excerpt), 2024-05-08)"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-5",
+      "kind": "step",
+      "agent": "maker",
+      "round": 1,
+      "tool": "read_document",
+      "title": "5. read_document",
+      "lines": [
+        "read_document(acct0093-position-20240610)",
+        "acct0093-position-20240610 (custody position + instruction record (constructed), 2024-06-10)"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-6",
+      "kind": "step",
+      "agent": "maker",
+      "round": 1,
+      "tool": "calculate",
+      "title": "6. calculate",
+      "lines": [
+        "calculate(87 * 53.00)",
+        "= 4611"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-7",
+      "kind": "step",
+      "agent": "maker",
+      "round": 1,
+      "tool": "book_receivable",
+      "title": "7. book_receivable",
+      "lines": [
+        "book_receivable($4,611.00, pay 2024-06-10, basis mnst-results-20240610, 87 shares)",
+        "L1 booked $4,611.00 for 2024-06-10 on mnst-results-20240610"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-8",
+      "kind": "step",
+      "agent": "maker",
+      "round": 1,
+      "tool": "confirm_position",
+      "title": "8. confirm_position",
+      "lines": [
+        "confirm_position(0 MNST as of 2024-06-10)",
+        "L2 confirmed 0.0 as of 2024-06-10"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-9",
+      "kind": "step",
+      "agent": "maker",
+      "round": 1,
+      "tool": "escalate",
+      "title": "9. escalate",
+      "lines": [
+        "escalate(missing: Monster Beverage Corporation Letter of Transmittal (the t...; hold: Determination of fees or charges deductible from ACCT-0093 tender p...)",
+        "L3 escalation recorded"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-10",
+      "kind": "step",
+      "agent": "maker",
+      "round": 1,
+      "tool": "submit_worksheet",
+      "title": "10. submit_worksheet",
+      "lines": [
+        "submit_worksheet(...)",
+        "worksheet submitted; episode ended (3 ledger entries)"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-11",
+      "kind": "step",
+      "agent": "reviewer",
+      "round": 1,
+      "tool": "list_documents",
+      "title": "11. list_documents  (reviewer, round 1)",
+      "lines": [
+        "list_documents()",
+        "4 documents: mnst-otp-20240508, mnst-results-20240610, acct0093-position-20240610, incy-results-20240613"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-12",
+      "kind": "step",
+      "agent": "reviewer",
+      "round": 1,
+      "tool": "get_position",
+      "title": "12. get_position  (reviewer, round 1)",
+      "lines": [
+        "get_position(ACCT-0093, as of 2024-06-05)",
+        "87 shares, settled (position row 2024-06-03); tendered 87"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-13",
+      "kind": "step",
+      "agent": "reviewer",
+      "round": 1,
+      "tool": "read_document",
+      "title": "13. read_document  (reviewer, round 1)",
+      "lines": [
+        "read_document(mnst-results-20240610)",
+        "mnst-results-20240610 (issuer press release (final results, SC TO-I/A exhibit), 2024-06-10)"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-14",
+      "kind": "step",
+      "agent": "reviewer",
+      "round": 1,
+      "tool": "read_document",
+      "title": "14. read_document  (reviewer, round 1)",
+      "lines": [
+        "read_document(mnst-otp-20240508)",
+        "mnst-otp-20240508 (issuer tender offer (Offer to Purchase, excerpt), 2024-05-08)"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-15",
+      "kind": "step",
+      "agent": "reviewer",
+      "round": 1,
+      "tool": "read_document",
+      "title": "15. read_document  (reviewer, round 1)",
+      "lines": [
+        "read_document(acct0093-position-20240610)",
+        "acct0093-position-20240610 (custody position + instruction record (constructed), 2024-06-10)"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-16",
+      "kind": "step",
+      "agent": "reviewer",
+      "round": 1,
+      "tool": "calculate",
+      "title": "16. calculate  (reviewer, round 1)",
+      "lines": [
+        "calculate(87 * 53.0)",
+        "= 4611"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-17",
+      "kind": "step",
+      "agent": "reviewer",
+      "round": 1,
+      "tool": "review_verdict",
+      "title": "17. review_verdict  (reviewer, round 1)",
+      "lines": [
+        "review_verdict(approve, 1 finding(s))",
+        "verdict approve recorded"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "ledger",
+      "kind": "ledger",
+      "title": "The ledger (what was booked)",
+      "lines": [
+        "L1: book_receivable amount=$4,611.00 pay_date=2024-06-10 shares=87.0 rate=53.0 basis_doc=mnst-results-20240610 memo='MNST tender offer final results: 87 shares accepted in full (odd-lot holder, all shares tendered, exempt from proration) at final purchase price of $53.00/share. Gross proceeds $4,611.00.'",
+        "L2: confirm_position ticker=MNST shares=0.0 as_of=2024-06-10 basis_doc=mnst-results-20240610",
+        "L3: escalate missing_document='Monster Beverage Corporation Letter of Transmittal (the transmittal document referenced in mnst-otp-20240508 that governs fees and charges deducted from tender proceeds)' held_action='Determination of fees or charges deductible from ACCT-0093 tender proceeds per Letter of Transmittal terms' reason=\"The D2 probe asks what fees or charges will be deducted from tender proceeds per the Letter of Transmittal's terms. The Letter of Transmittal is referenced in the Offer to Purchase (mnst-otp-20240508) but is not present in the document store. Without it, the fee/deduction terms cannot be determined.\""
+      ],
+      "duration_s": 5
+    },
+    {
+      "id": "tieout",
+      "kind": "check",
+      "title": "Does the worksheet tie to the ledger?",
+      "lines": [
+        "L1: booked 4611.0 vs worksheet 4611.0 -> ties",
+        "GATE.ELECT on the ledger: no",
+        "flags: none"
+      ],
+      "ok": true,
+      "duration_s": 5
+    },
+    {
+      "id": "grade",
+      "kind": "grade",
+      "title": "The grade",
+      "lines": [
+        "worksheet: 1.000 gated, AllPass 1, gates none",
+        "terminal state: 1.000 gated, AllPass 1, gates none",
+        "flags: none"
+      ],
+      "ok": true,
+      "duration_s": 5
+    },
+    {
+      "id": "review-1",
+      "kind": "review",
+      "title": "The checker, round 1: approved a correct ledger",
+      "lines": [
+        "verdict: APPROVE",
+        "the ledger it was shown was correct",
+        "the reviewer recomputed (list_documents x1, get_position x1, read_document x3, calculate x1, review_verdict x1)",
+        "- No discrepancies found. All entries tie out to source documents. Governing document mnst-results-20240610 is correctly identified; incy-results-20240613 is a distractor (different issuer) and was correctly ignored. Position confirmed at 87 shares (odd-lot holder, <100 shares), all 87 validly tendered on 2024-06-03 before the 2024-06-05 expiration, with no withdrawals, per acct0093-position-20240610. Odd-lot full-acceptance exception correctly applied per mnst-otp-20240508 (all shares tendered, not a partial tender) and confirmed by mnst-results-20240610. Gross proceeds 87 × $53.00 = $4,611.00 verified by calculation. L1 (book_receivable $4,611.00, 87 shares, rate $53.00, pay_date 2024-06-10) is correct. L2 (confirm_position MNST = 0 as of 2024-06-10) is correct. L3 (escalate missing Letter of Transmittal for fee/deduction terms) is appropriate: the OTP references the Letter of Transmittal for tendering mechanics and fee terms, that document is absent from the store, and the escalation is correctly scoped and does not block the main booking."
+      ],
+      "ok": true,
+      "cell": "approved a correct ledger",
+      "duration_s": 6
+    },
+    {
+      "id": "closing",
+      "kind": "title",
+      "title": "Does it tie out?",
+      "lines": [
+        "TieOutBench · evals.finance",
+        "eval #6, phase 2: the agent environment"
+      ],
+      "duration_s": 3
+    }
+  ]
+}

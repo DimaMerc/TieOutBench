@@ -1,0 +1,217 @@
+{
+  "schema": "tieoutbench.run/1",
+  "run_id": "20260925T000305Z-7f8442",
+  "written_at": "2026-09-25T00:04:31Z",
+  "arm": "checker-fixed",
+  "suite": "corporate-actions",
+  "model_id": "claude-haiku-4-5-20251001",
+  "endpoint": "api.anthropic.com",
+  "request": {
+    "max_tokens": 8000,
+    "temperature": 0.0,
+    "stream": false,
+    "tool_transport": "native",
+    "max_turns": 20,
+    "deadline_s": 900
+  },
+  "conformance": {
+    "tool_transport": "native",
+    "tested_at": "2026-09-24T15:58:11Z"
+  },
+  "loop": {
+    "maker_round1": {
+      "turns": 9,
+      "incomplete": false,
+      "ended_by": "end",
+      "elapsed_s": null
+    },
+    "review_round1": {
+      "round": 1,
+      "verdict": "reject",
+      "findings": [
+        "L3 (confirm_position): quantity/date mismatch. It confirms 180,000 NVDA shares as_of 2024-06-06, but on the split record date 2024-06-06 the settled position is 18,000 shares (180 per CU x 100). The 180,000-share position only exists post-distribution, after close 2024-06-07. It should be either 18,000 shares as_of 2024-06-06, or 180,000 shares as_of 2024-06-07 (post-distribution custody ledger). Basis for the post-distribution figure is properly the effectiveness 8-K (nvda-8k-20240607), not nvda-8k-20240522.",
+        "L4 / D2 probe (net cash): incorrectly marked NOT_DETERMINABLE and escalated for 'missing withholding documentation.' The store determines the net: MEGA is a US-domiciled ETF and NVDA is a US issuer paying a US-source dividend, which is not subject to US dividend withholding. Net therefore equals gross = 180,000 shares x $0.01 = $1,800.00 (payable 2024-06-28). D2 should be $1,800.00, not NOT_DETERMINABLE."
+      ],
+      "turns": 5,
+      "incomplete": false,
+      "ended_by": "end",
+      "ledger_shown_correct": true,
+      "ledger_shown_elect": false,
+      "ledger_shown_flags": []
+    },
+    "revised": true,
+    "maker_round2": {
+      "turns": 2,
+      "incomplete": false,
+      "ended_by": "end",
+      "elapsed_s": 16.7
+    },
+    "review_round2": {
+      "round": 2,
+      "verdict": "approve",
+      "findings": [],
+      "turns": 5,
+      "incomplete": false,
+      "ended_by": "end",
+      "ledger_shown_correct": true,
+      "ledger_shown_elect": false,
+      "ledger_shown_flags": []
+    }
+  },
+  "usage_total": {
+    "prompt_tokens": 18521,
+    "completion_tokens": 1731,
+    "total_tokens": 20252
+  },
+  "chat_calls": 2,
+  "transient_retries": 0,
+  "last_finish_reason": "tool_calls",
+  "incomplete": false,
+  "reused_maker_from": "outputs/eval6-agent/tools/claude-haiku-4-5-20251001/mega-split-2024",
+  "reviewer": {
+    "model_id": "claude-opus-4-8",
+    "endpoint": "api.anthropic.com",
+    "tool_transport": "native",
+    "max_tokens": 8000,
+    "usage_total": {
+      "prompt_tokens": 53891,
+      "completion_tokens": 4852,
+      "total_tokens": 58743
+    },
+    "chat_calls": 10,
+    "transient_retries": 0
+  },
+  "case": {
+    "case_id": "mega-split-2024",
+    "path": "cases/mega-split-2024.case.yaml",
+    "sha256": "696d097e2baf78d92e5e881a6e812883f12a3762698b1aaa0ebbddd7736088b5"
+  },
+  "rubric": {
+    "path": "rubric/criteria-corporate-actions.yaml",
+    "sha256": "81d0498cd0f16bef5aaf8e2569e4963771c55f330332fccda87a161329cb59b6"
+  },
+  "grader_version": "93b2efa",
+  "grader_tree_dirty": true,
+  "harness_hashes": {
+    "harness/graders.py": "4ce46f1ed091fa4e95dd471b7900be5464ced9a5c952d32ca7e8160243caa65b",
+    "harness/scoring.py": "c31e1901303253cf8b4ac600998ae130fb6111b32e5b99dd16029151db1dd1a8",
+    "harness/suites/corporate_actions.py": "f7b05b87e497cc4bb51849596a7b2891311d67d73e3fde5ba8b30b3a7bd99c22",
+    "harness/env/state.py": "ede4e582823945c77ba3c6631c0c3c704f2c8db2db58169a453a1aaee73fabc1",
+    "harness/env/scoring.py": "c60a98ff4d0cf6463f5b244b85fad9562a27edffd188a1adaf3efe2bde9c8d04",
+    "harness/env/agent.py": "d5d6b293408d287dce85cae6ec0ffbf5dd26fd2872bca637fe66f13c1e9a0d8d",
+    "harness/env/transport.py": "764a24ac1c3858f90fa5542ec428f7fa7b9433afd5a194806ccb78163f6153ca"
+  },
+  "prior_dir": null,
+  "score": {
+    "worksheet": {
+      "gated": 0.92,
+      "ungated": 0.92,
+      "gap": 0.0,
+      "allpass": 0,
+      "gates": [
+        "GATE.FABRICATION"
+      ],
+      "flags": []
+    },
+    "terminal": {
+      "gated": 0.92,
+      "ungated": 0.92,
+      "gap": 0.0,
+      "allpass": 0,
+      "gates": [
+        "GATE.FABRICATION"
+      ],
+      "flags": []
+    },
+    "ledger": {
+      "correct": true,
+      "elect_fired": false,
+      "gold_ok": true,
+      "flags": [],
+      "n_booked": 3
+    },
+    "review": {
+      "rounds": [
+        {
+          "round": 1,
+          "verdict": "reject",
+          "ledger_shown_correct": true,
+          "incomplete": false
+        },
+        {
+          "round": 2,
+          "verdict": "approve",
+          "ledger_shown_correct": true,
+          "incomplete": false
+        }
+      ],
+      "recomputed": {
+        "1": true,
+        "2": true
+      }
+    }
+  },
+  "score_at_run": {
+    "worksheet": {
+      "gated": 0.92,
+      "ungated": 0.92,
+      "gap": 0.0,
+      "allpass": 0,
+      "gates": [
+        "GATE.FABRICATION"
+      ],
+      "flags": []
+    },
+    "terminal": {
+      "gated": 0.92,
+      "ungated": 0.92,
+      "gap": 0.0,
+      "allpass": 0,
+      "gates": [
+        "GATE.FABRICATION"
+      ],
+      "flags": []
+    },
+    "ledger": {
+      "correct": true,
+      "elect_fired": false,
+      "gold_ok": true,
+      "flags": [],
+      "n_booked": 3
+    },
+    "trajectory": {
+      "n_turns": 11,
+      "n_tool_calls": 16,
+      "n_tool_errors": 0,
+      "governing_read_before_first_action": true,
+      "position_dates_queried": [
+        "2024-06-11"
+      ],
+      "basis_date_queried": false,
+      "superseded_date_queried": null,
+      "calculate_used": true
+    },
+    "review": {
+      "rounds": [
+        {
+          "round": 1,
+          "verdict": "reject",
+          "ledger_shown_correct": true,
+          "incomplete": false
+        },
+        {
+          "round": 2,
+          "verdict": "approve",
+          "ledger_shown_correct": true,
+          "incomplete": false
+        }
+      ],
+      "recomputed": {
+        "1": true,
+        "2": true
+      }
+    }
+  },
+  "rescored_at": "2026-09-25T00:10:14Z",
+  "grader_version_rescore": "93b2efa"
+}

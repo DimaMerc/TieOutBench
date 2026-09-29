@@ -1,0 +1,131 @@
+{
+  "P1": {
+    "issuer": "NVIDIA Corporation",
+    "security": {
+      "ticker": "NVDA"
+    },
+    "event_type": "mandatory",
+    "governing_doc": "nvda-8k-20240607",
+    "superseded_docs": []
+  },
+  "P2": {
+    "dates": {
+      "announcement": "2024-05-22",
+      "record_date": "2024-06-06",
+      "distribution_date": "2024-06-07",
+      "split_adjusted_trading": "2024-06-10"
+    },
+    "entitlement_basis": "record_date",
+    "entitlement_basis_date": "2024-06-06",
+    "election_deadline": null
+  },
+  "E1": {
+    "terms": {
+      "ratio": 10,
+      "additional_shares_per_share": 9,
+      "record_date": "2024-06-06",
+      "distribution_date": "2024-06-07",
+      "split_adjusted_trading": "2024-06-10"
+    },
+    "citation": {
+      "document": "nvda-8k-20240607",
+      "locator": "Item 5.03 and Exhibit 3.1",
+      "verbatim": "The Amendment became effective at 4:01 p.m. Eastern Time on June 7, 2024. Exhibit 3.1: At the Effective Time, each share of Common Stock issued as of immediately prior to the Effective Time shall be automatically subdivided and reclassified into ten (10) validly issued, fully paid and non-assessable shares of Common Stock. Trading is expected to commence on a split-adjusted basis at market open on June 10, 2024."
+    }
+  },
+  "E2": {
+    "position": {
+      "basket_per_cu_pre": 180,
+      "creation_units": 100,
+      "basket_total_pre": 18000
+    },
+    "basis_shares": 18000
+  },
+  "C1": {
+    "entitlement": {
+      "pre_split_shares": 18000,
+      "ratio": 10,
+      "post_split_shares": 180000,
+      "additional_shares": 162000,
+      "basket_per_cu_post": 1800
+    },
+    "cil": {
+      "applicable": false,
+      "amount": null
+    }
+  },
+  "C2": {
+    "election_required": false,
+    "options": null,
+    "default_option": null,
+    "economics": null
+  },
+  "C3": {
+    "impact": {
+      "basket_per_cu_new": 1800,
+      "basket_total_new": 180000
+    },
+    "changes": [
+      {
+        "what": "NVDA basket quantity per creation unit",
+        "where": "MEGA PCF for today's dissemination",
+        "old": 180,
+        "new": 1800
+      },
+      {
+        "what": "NVDA share position",
+        "where": "MEGA custody position verification ledger",
+        "old": 18000,
+        "new": 180000
+      },
+      {
+        "what": "NVDA June gross dividend cash projection",
+        "where": "MEGA cash receivable ledger",
+        "old": null,
+        "new": 1800
+      }
+    ]
+  },
+  "D1": {
+    "decision": "Apply the mandatory ten-for-one split confirmed effective by the 2024-06-07 effectiveness filing, using the 2024-06-06 record-date position from the supporting announcement. Update today's PCF and confirm the post-split position using the effectiveness filing. Separately book the gross June dividend under the 2024-05-22 dividend announcement. No election is available or required. Hold only the withholding adjustment and net dividend cash figure pending the missing tax documentation.",
+    "actions": [
+      {
+        "action": "update_pcf",
+        "option": null,
+        "quantity": 1800,
+        "amount": null,
+        "by_date": "2024-06-10",
+        "basis_doc": "nvda-8k-20240607"
+      },
+      {
+        "action": "confirm_position",
+        "option": null,
+        "quantity": 180000,
+        "amount": null,
+        "by_date": "2024-06-07",
+        "basis_doc": "nvda-8k-20240607"
+      },
+      {
+        "action": "book_receivable",
+        "option": null,
+        "quantity": 180000,
+        "amount": 1800,
+        "by_date": "2024-06-28",
+        "basis_doc": "nvda-8k-20240522"
+      }
+    ]
+  },
+  "D2": {
+    "probe": {
+      "label": "NOT_DETERMINABLE",
+      "value": null,
+      "derivation": "The 2024-06-11 projected record-date position is 180,000 post-split shares, and gross dividend cash is 180,000 \u00d7 0.01 = 1,800. Net cash is not determinable because the store lacks the MEGA account tax/withholding profile and applicable withholding-rate documentation for the NVDA dividend. This missing documentation was escalated, with only the withholding adjustment and net cash figure held."
+    },
+    "twins": [
+      {
+        "id": "TW1",
+        "value": 1800
+      }
+    ]
+  }
+}

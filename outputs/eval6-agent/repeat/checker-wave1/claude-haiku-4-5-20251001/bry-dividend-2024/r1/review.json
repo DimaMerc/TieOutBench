@@ -1,0 +1,49 @@
+{
+  "rounds": [
+    {
+      "round": 1,
+      "verdict": "approve",
+      "findings": [],
+      "turns": 5,
+      "incomplete": false,
+      "ended_by": "end",
+      "ledger_shown_correct": true,
+      "ledger_shown_elect": false,
+      "ledger_shown_flags": []
+    }
+  ],
+  "ledger_v1": [
+    {
+      "entry_id": "L1",
+      "kind": "escalate",
+      "args": {
+        "reason": "The D2 probe requires the net dividend cash after withholding for a foreign-domiciled subaccount. The store provides the gross dividend amount ($6,800 on 40,000 shares at $0.17/share) but does not contain any withholding tax rate, tax treaty documentation, or account tax status/withholding instructions needed to compute the net amount.",
+        "missing_document": "Withholding tax rate or account tax status documentation for ACCT-7712 (foreign-domiciled subaccount)",
+        "held_action": "Determination of net dividend cash after withholding"
+      },
+      "seq": 20,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:37:41.256Z"
+    },
+    {
+      "entry_id": "L2",
+      "kind": "book_receivable",
+      "args": {
+        "account": "ACCT-7712",
+        "amount": 6800.0,
+        "pay_date": "2024-08-30",
+        "basis_doc": "bry-8k-20240813",
+        "shares": 40000.0,
+        "rate": 0.17,
+        "memo": "Berry Corporation Q2 2024 dividend: $0.12 fixed + $0.05 variable per share, record date 2024-08-23, payment date 2024-08-30"
+      },
+      "seq": 23,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:37:44.585Z"
+    }
+  ]
+}

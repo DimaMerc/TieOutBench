@@ -1,0 +1,90 @@
+########################################################################
+  EPISODE mnst-tender-2024-oddlot   arm=checker   model=gpt-5.4
+########################################################################
+
+--- WORKSHEET (the submitted worksheet through the unchanged Phase-1 grader) ---
+========================================================================
+  CASE mnst-tender-2024-oddlot    model=checker:gpt-5.4    judge=mock
+========================================================================
+  CaseScore (gated, headline) : 1.000
+  CaseScore (ungated)         : 1.000
+  GAP (ungated - gated)       : 0.000
+  AllPass                     : 1
+  D2 calibration (R,G->F_b)   : R=1.00 G=1.00 -> 1.000
+  Gates fired                 : none
+
+  Checkpoint vector (which step failed):
+    cp   W      ungated  gated   raw
+    P1   0.100  1.000   1.000  +1.00
+    P2   0.120  1.000   1.000  +1.00
+    E1   0.100  1.000   1.000  +1.00
+    E2   0.080  1.000   1.000  +1.00
+    C1   0.140  1.000   1.000  +1.00
+    C2   0.120  1.000   1.000  +1.00
+    C3   0.100  1.000   1.000  +1.00
+    D1   0.160  1.000   1.000  +1.00
+    D2   0.080  1.000   1.000  +1.00
+
+  Category rollup (diagnostic -- what KIND of error):
+    extraction   +1.000  ####################
+    numerical    +1.000  ####################
+    entailment   +1.000  ####################
+    reasoning    +1.000  ####################
+    calibration  +1.000  ####################
+    structure    +1.000  ####################
+========================================================================
+
+--- TERMINAL STATE (worksheet + the ledger rendered into D1 rows; ledger predicates applied) ---
+========================================================================
+  CASE mnst-tender-2024-oddlot    model=checker:gpt-5.4    judge=mock
+========================================================================
+  CaseScore (gated, headline) : 1.000
+  CaseScore (ungated)         : 1.000
+  GAP (ungated - gated)       : 0.000
+  AllPass                     : 1
+  D2 calibration (R,G->F_b)   : R=1.00 G=1.00 -> 1.000
+  Gates fired                 : none
+
+  Checkpoint vector (which step failed):
+    cp   W      ungated  gated   raw
+    P1   0.100  1.000   1.000  +1.00
+    P2   0.120  1.000   1.000  +1.00
+    E1   0.100  1.000   1.000  +1.00
+    E2   0.080  1.000   1.000  +1.00
+    C1   0.140  1.000   1.000  +1.00
+    C2   0.120  1.000   1.000  +1.00
+    C3   0.100  1.000   1.000  +1.00
+    D1   0.160  1.000   1.000  +1.00
+    D2   0.080  1.000   1.000  +1.00
+
+  Category rollup (diagnostic -- what KIND of error):
+    extraction   +1.000  ####################
+    numerical    +1.000  ####################
+    entailment   +1.000  ####################
+    reasoning    +1.000  ####################
+    calibration  +1.000  ####################
+    structure    +1.000  ####################
+========================================================================
+
+--- LEDGER ---
+L4: confirm_position ticker=MNST shares=87.0 as_of=2024-06-05 basis_doc=mnst-results-20240610
+L5: book_receivable amount=$4,611.00 pay_date=2024-06-10 shares=87.0 rate=53.0 basis_doc=mnst-results-20240610 memo='Gross tender proceeds for 87 odd-lot shares accepted in full at final purchase price $53.00 per share; payment date not stated in governing document.'
+  booked entries: 2   GATE.ELECT on the ledger: False   gold match: True   flags: none   correct: True
+  consistency L5: booked=4611.0 worksheet=4611.0 ok=True
+  gold L4 confirm_position: ok=True  {'as_of_is_basis_date': True}
+  gold L5 book_receivable: ok=True  {'permissible': [4611.0], 'basis_superseded': False}
+
+--- TRAJECTORY (reported, not scored) ---
+  maker: turns=8 tool_calls=13 errors=0 counts={'list_documents': 1, 'read_document': 3, 'calculate': 1, 'confirm_position': 2, 'book_receivable': 2, 'escalate': 1, 'submit_worksheet': 2, 'get_position': 1}
+  governing read before first action: True   docs read: ['acct0093-position-20240610', 'mnst-otp-20240508', 'mnst-results-20240610']   superseded read: []   distractors read: []
+  position dates queried: ['2024-06-05']   basis date queried: True   superseded date queried: None   projected: 0   query errors: 0
+  calculate used: True (1): ['87*53']
+
+--- REVIEW (checker arm) ---
+  round 1: verdict=reject recomputed=True tools={'list_documents': 1, 'read_document': 3, 'get_position': 1, 'calculate': 1, 'review_verdict': 1} ledger_shown_correct=True
+    - L1 confirm_position uses basis_doc acct0093-position-20240610, which is dated 2024-06-10 and therefore is not the position as of the governing entitlement date. The position does tie out to 87 settled/tendered shares as of 2024-06-05 from the position history, but the entry should be based on the 2024-06-05 position (get_position for ACCT-0093 as of 2024-06-05), not a later-dated constructed document.
+    - L2 book_receivable amount $4,611.00 for 87 shares at $53.00 on 2024-06-10 ties out mathematically and is permitted under the governing final-results document, but the pay_date is unsupported. The governing document mnst-results-20240610 states final results and acceptance terms only; it does not provide a cash payment date. The entry should not assert pay_date 2024-06-10 without source support.
+    - L3 escalate is not an event action allowed by the tender terms and is not a booked corporate-action ledger entry arising from the governing document. The document store does not contain the Letter of Transmittal, so D2 cannot be answered from source, but the correct treatment is simply that the probe is not determinable from the store; no event ledger booking should be created for an escalation item.
+  round 2: verdict=reject recomputed=True tools={'list_documents': 1, 'read_document': 3, 'get_position': 1, 'calculate': 1, 'review_verdict': 1} ledger_shown_correct=True
+    - L5 book_receivable has pay_date=2024-06-10, but the governing document mnst-results-20240610 states final results only and does not state any payment date. The entry should not book a pay date from this source; pay_date should be left unstated/null unless supported by a governing document that provides it.
+########################################################################

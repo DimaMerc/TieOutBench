@@ -94,6 +94,18 @@ documents:
       [Distractor] Annual-meeting proxy materials mail in April. No corporate-actions processing
       impact for cash dividends.
 
+# ----------------------------------------------------------------------------- ENVIRONMENT (Phase 2: the tool arm's state; NOT shown to the model)
+env:
+  # Authored from acct2101-position-20140331 and nothing else. The clock is 2014-04-01; the record
+  # date 2014-04-28 lies after it and the position is stable through June, so a projection is the
+  # correct answer for either candidate record date (the point of the clean case).
+  account: ACCT-2101
+  ticker: ZTS
+  positions:
+    - { as_of: "2014-02-14", settled_shares: 25000, note: "25,000 shares settled; position stable since 2014-02-14" }
+  pending_after_clock: none        # "no open orders and no pending trades; no position changes scheduled through June 2014"
+  actions_allowed: [book_receivable, confirm_position, escalate]
+
 # ----------------------------------------------------------------------------- PROBE (D2 INPUT — shown to the model)
 probe:
   question: "The account participates in dividend reinvestment. At what reinvestment price will the
@@ -213,3 +225,5 @@ verification:
   provenance: "both announcement versions verified against EDGAR accessions 0001555280-14-000162
                and 0001555280-14-000166 (retrieved 2026-08-18); the account and position report
                are constructed (disclosed above)."
+  env: "positions transcribed from acct2101-position-20140331: 25,000 settled, stable since
+       2014-02-14; no pending changes through June 2014."

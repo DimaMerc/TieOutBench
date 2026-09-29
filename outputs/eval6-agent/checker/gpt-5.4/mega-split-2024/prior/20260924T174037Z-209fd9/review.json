@@ -1,0 +1,94 @@
+{
+  "rounds": [
+    {
+      "round": 1,
+      "verdict": "reject",
+      "findings": [
+        "L3 book_receivable is not supported by the governing document for this event. The governing document is nvda-8k-20240607, which effects only the 10-for-1 stock split and does not authorize booking the June 28 cash dividend receivable. This entry should not be booked as part of this corporate-action episode; if processed, it must be handled under the separate dividend announcement/event documented by nvda-8k-20240522, not under the split effectiveness event.",
+        "L4 escalate is not an action allowed by the governing stock-split event and rests on nvda-8k-20240522 rather than the governing split document nvda-8k-20240607. There is no election or withholding determination required to process the mandatory split. This entry should not be booked for this episode."
+      ],
+      "turns": 4,
+      "incomplete": false,
+      "ended_by": "end",
+      "ledger_shown_correct": true,
+      "ledger_shown_elect": false,
+      "ledger_shown_flags": []
+    },
+    {
+      "round": 2,
+      "verdict": "approve",
+      "findings": [],
+      "turns": 4,
+      "incomplete": false,
+      "ended_by": "end",
+      "ledger_shown_correct": true,
+      "ledger_shown_elect": false,
+      "ledger_shown_flags": []
+    }
+  ],
+  "ledger_v1": [
+    {
+      "entry_id": "L1",
+      "kind": "update_pcf",
+      "args": {
+        "ticker": "NVDA",
+        "quantity_per_cu": 1800.0,
+        "previous_quantity_per_cu": 180,
+        "basis_doc": "nvda-8k-20240607",
+        "memo": "Adjust MEGA PCF for NVDA 10-for-1 split effective 2024-06-07; trading split-adjusted 2024-06-10. Pre-split 180 shares/CU to 1800 shares/CU."
+      },
+      "seq": 25,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:24:00.010Z"
+    },
+    {
+      "entry_id": "L2",
+      "kind": "confirm_position",
+      "args": {
+        "ticker": "NVDA",
+        "shares": 180000.0,
+        "as_of": "2024-06-07",
+        "basis_doc": "nvda-8k-20240607"
+      },
+      "seq": 27,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:24:00.010Z"
+    },
+    {
+      "entry_id": "L3",
+      "kind": "book_receivable",
+      "args": {
+        "account": "MEGA",
+        "amount": 1800.0,
+        "pay_date": "2024-06-28",
+        "basis_doc": "nvda-8k-20240522",
+        "shares": 180000.0,
+        "rate": 0.01,
+        "memo": "Gross NVDA quarterly cash dividend at post-split rate $0.01/share for holders of record 2024-06-11."
+      },
+      "seq": 29,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:24:00.010Z"
+    },
+    {
+      "entry_id": "L4",
+      "kind": "escalate",
+      "args": {
+        "reason": "Net dividend cash after withholding cannot be determined from the store because no tax withholding documentation or account tax status document is provided for the 2024-06-28 NVDA dividend.",
+        "missing_document": "withholding tax documentation / account tax status applicable to NVDA dividend payable 2024-06-28",
+        "held_action": "determine D2 net cash after any applicable withholding"
+      },
+      "seq": 31,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:24:00.010Z"
+    }
+  ]
+}

@@ -1,0 +1,176 @@
+{
+  "case_id": "bry-dividend-2024",
+  "arm": "tools",
+  "model_id": "gpt-5.4-mini",
+  "scripted": false,
+  "total_s": 46,
+  "scenes": [
+    {
+      "id": "episode",
+      "kind": "title",
+      "title": "bry-dividend-2024 · arm: tools",
+      "lines": [
+        "as of 2024-08-18",
+        "Process the Berry Corporation dividend for the account.",
+        "run: gpt-5.4-mini"
+      ],
+      "duration_s": 4
+    },
+    {
+      "id": "step-1",
+      "kind": "step",
+      "agent": "maker",
+      "round": 1,
+      "tool": "list_documents",
+      "title": "1. list_documents",
+      "lines": [
+        "list_documents()",
+        "4 documents: bry-8k-20240809, bry-8k-20240813, acct7712-position-20240816, broker-memo-20240815"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-2",
+      "kind": "step",
+      "agent": "maker",
+      "round": 1,
+      "tool": "read_document",
+      "title": "2. read_document",
+      "lines": [
+        "read_document(bry-8k-20240809)",
+        "bry-8k-20240809 (issuer 8-K exhibit (dividend declaration, within the Q2 earnings release), 2024-08-09)"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-3",
+      "kind": "step",
+      "agent": "maker",
+      "round": 1,
+      "tool": "read_document",
+      "title": "3. read_document",
+      "lines": [
+        "read_document(bry-8k-20240813)",
+        "bry-8k-20240813 (issuer 8-K exhibit (CORRECTION notice), 2024-08-13)"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-4",
+      "kind": "step",
+      "agent": "maker",
+      "round": 1,
+      "tool": "read_document",
+      "title": "4. read_document",
+      "lines": [
+        "read_document(acct7712-position-20240816)",
+        "acct7712-position-20240816 (custody position report (constructed), 2024-08-16)"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-5",
+      "kind": "step",
+      "agent": "maker",
+      "round": 1,
+      "tool": "calculate",
+      "title": "5. calculate",
+      "lines": [
+        "calculate(50000*0.17)",
+        "= 8500"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-6",
+      "kind": "step",
+      "agent": "maker",
+      "round": 1,
+      "tool": "book_receivable",
+      "title": "6. book_receivable",
+      "lines": [
+        "book_receivable($8,500.00, pay 2024-08-30, basis bry-8k-20240813, 50000 shares)",
+        "L1 booked $8,500.00 for 2024-08-30 on bry-8k-20240813"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-7",
+      "kind": "step",
+      "agent": "maker",
+      "round": 1,
+      "tool": "confirm_position",
+      "title": "7. confirm_position",
+      "lines": [
+        "confirm_position(50000 BRY as of 2024-08-23)",
+        "L2 confirmed 50000.0 as of 2024-08-23"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "step-8",
+      "kind": "step",
+      "agent": "maker",
+      "round": 1,
+      "tool": "submit_worksheet",
+      "title": "8. submit_worksheet",
+      "lines": [
+        "submit_worksheet(...)",
+        "worksheet submitted; episode ended (2 ledger entries)"
+      ],
+      "error": false,
+      "duration_s": 3
+    },
+    {
+      "id": "ledger",
+      "kind": "ledger",
+      "title": "The ledger (what was booked)",
+      "lines": [
+        "L1: book_receivable amount=$8,500.00 pay_date=2024-08-30 shares=50000.0 rate=0.17 basis_doc=bry-8k-20240813 memo='Berry Corporation dividend on corrected record date 2024-08-23; account position as of governing record date 2024-08-23 not separately provided, so booked on store-determined entitlement basis from available position history and corrected terms.'",
+        "L2: confirm_position ticker=BRY shares=50000.0 as_of=2024-08-23 basis_doc=bry-8k-20240813"
+      ],
+      "duration_s": 5
+    },
+    {
+      "id": "tieout",
+      "kind": "check",
+      "title": "Does the worksheet tie to the ledger?",
+      "lines": [
+        "L1: booked 8500.0 vs worksheet 8500.0 -> ties",
+        "GATE.ELECT on the ledger: yes",
+        "flags: none"
+      ],
+      "ok": false,
+      "duration_s": 5
+    },
+    {
+      "id": "grade",
+      "kind": "grade",
+      "title": "The grade",
+      "lines": [
+        "worksheet: 0.225 gated, AllPass 0, gates GATE.VERSION, GATE.ELECT",
+        "terminal state: 0.225 gated, AllPass 0, gates GATE.VERSION, GATE.ELECT",
+        "flags: elect_override_fired"
+      ],
+      "ok": false,
+      "duration_s": 5
+    },
+    {
+      "id": "closing",
+      "kind": "title",
+      "title": "Does it tie out?",
+      "lines": [
+        "TieOutBench · evals.finance",
+        "eval #6, phase 2: the agent environment"
+      ],
+      "duration_s": 3
+    }
+  ]
+}

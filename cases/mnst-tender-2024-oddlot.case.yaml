@@ -94,6 +94,20 @@ documents:
       final proration factor for the shares that Incyte will purchase pursuant to the tender
       offer is approximately 93.5 percent.
 
+# ----------------------------------------------------------------------------- ENVIRONMENT (Phase 2: the tool arm's state; NOT shown to the model)
+env:
+  # Authored from acct0093-position-20240610 and nothing else (see mnst-tender-2024 for the clock).
+  account: ACCT-0093
+  ticker: MNST
+  positions:
+    - { as_of: "2024-06-03", settled_shares: 87, tendered_shares: 87,
+        note: "87 shares in the aggregate (fewer than 100: an odd-lot holder), settled, held at the
+               depositary pending tender results; on 2024-06-03 the account validly tendered ALL 87
+               shares as purchase price tenders, confirmed before the 2024-06-05 expiration; no
+               withdrawals; no other MNST holdings" }
+  pending_after_clock: "settlement of the tender allocation (accepted shares delivered against payment) is pending"
+  actions_allowed: [book_receivable, confirm_position, escalate]
+
 # ----------------------------------------------------------------------------- PROBE (D2 INPUT — shown to the model)
 probe:
   question: "Per the Letter of Transmittal's terms, what fees or charges (if any) will be deducted
@@ -235,3 +249,5 @@ verification:
                            accepts odd lots in full before any proration)"
   provenance: "identical to mnst-tender-2024 (EDGAR accessions 0001104659-24-058430 /
                0001104659-24-069878, retrieved 2026-08-18); the account is constructed (disclosed)."
+  env: "position and election record transcribed from acct0093-position-20240610: 87 settled,
+       all 87 tendered 2024-06-03, confirmed before the 2024-06-05 expiration."

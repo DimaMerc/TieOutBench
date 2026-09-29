@@ -1,0 +1,38 @@
+{
+  "clock": "2014-04-01",
+  "entries": [
+    {
+      "entry_id": "L1",
+      "kind": "book_receivable",
+      "args": {
+        "account": "ACCT-2101",
+        "amount": 1800.0,
+        "pay_date": "2014-06-02",
+        "basis_doc": "zts-8k-20140327",
+        "shares": 25000.0,
+        "rate": 0.072,
+        "memo": "Second quarter 2014 cash dividend receivable ($0.072 per share on 25,000 shares)"
+      },
+      "seq": 25,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:24:24.646Z"
+    },
+    {
+      "entry_id": "L2",
+      "kind": "escalate",
+      "args": {
+        "reason": "The document store does not contain the Dividend Reinvestment Plan (DRIP) terms or prospectus specifying the reinvestment price for the June 2, 2014 payment.",
+        "missing_document": "Zoetis Dividend Reinvestment Plan Prospectus",
+        "held_action": "reinvest_dividend_cash"
+      },
+      "seq": 28,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:24:27.059Z"
+    }
+  ],
+  "frozen": {}
+}

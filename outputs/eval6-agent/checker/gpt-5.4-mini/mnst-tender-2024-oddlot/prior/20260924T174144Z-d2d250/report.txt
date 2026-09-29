@@ -1,0 +1,85 @@
+########################################################################
+  EPISODE mnst-tender-2024-oddlot   arm=checker   model=gpt-5.4-mini
+########################################################################
+
+--- WORKSHEET (the submitted worksheet through the unchanged Phase-1 grader) ---
+========================================================================
+  CASE mnst-tender-2024-oddlot    model=checker:gpt-5.4-mini    judge=mock
+========================================================================
+  CaseScore (gated, headline) : 0.921
+  CaseScore (ungated)         : 0.921
+  GAP (ungated - gated)       : 0.000
+  AllPass                     : 0
+  D2 calibration (R,G->F_b)   : R=1.00 G=0.25 -> 0.294
+  Gates fired                 : none
+
+  Checkpoint vector (which step failed):
+    cp   W      ungated  gated   raw
+    P1   0.100  1.000   1.000  +1.00
+    P2   0.120  1.000   1.000  +1.00
+    E1   0.100  0.778   0.778  +0.78
+    E2   0.080  1.000   1.000  +1.00
+    C1   0.140  1.000   1.000  +1.00
+    C2   0.120  1.000   1.000  +1.00
+    C3   0.100  1.000   1.000  +1.00
+    D1   0.160  1.000   1.000  +1.00
+    D2   0.080  0.294   0.294  +0.29
+
+  Category rollup (diagnostic -- what KIND of error):
+    extraction   +1.000  ####################
+    numerical    +1.000  ####################
+    entailment   +0.000  
+    reasoning    +1.000  ####################
+    calibration  +0.308  ######
+    structure    +1.000  ####################
+========================================================================
+
+--- TERMINAL STATE (worksheet + the ledger rendered into D1 rows; ledger predicates applied) ---
+========================================================================
+  CASE mnst-tender-2024-oddlot    model=checker:gpt-5.4-mini    judge=mock
+========================================================================
+  CaseScore (gated, headline) : 0.921
+  CaseScore (ungated)         : 0.921
+  GAP (ungated - gated)       : 0.000
+  AllPass                     : 0
+  D2 calibration (R,G->F_b)   : R=1.00 G=0.25 -> 0.294
+  Gates fired                 : none
+
+  Checkpoint vector (which step failed):
+    cp   W      ungated  gated   raw
+    P1   0.100  1.000   1.000  +1.00
+    P2   0.120  1.000   1.000  +1.00
+    E1   0.100  0.778   0.778  +0.78
+    E2   0.080  1.000   1.000  +1.00
+    C1   0.140  1.000   1.000  +1.00
+    C2   0.120  1.000   1.000  +1.00
+    C3   0.100  1.000   1.000  +1.00
+    D1   0.160  1.000   1.000  +1.00
+    D2   0.080  0.294   0.294  +0.29
+
+  Category rollup (diagnostic -- what KIND of error):
+    extraction   +1.000  ####################
+    numerical    +1.000  ####################
+    entailment   +0.000  
+    reasoning    +1.000  ####################
+    calibration  +0.308  ######
+    structure    +1.000  ####################
+========================================================================
+
+--- LEDGER ---
+L1: book_receivable amount=$4,611.00 pay_date=2024-06-10 shares=87.0 rate=53.0 basis_doc=mnst-results-20240610 memo='MNST tender proceeds for 87 shares accepted in full as odd-lot holder; final purchase price $53.00 per share.'
+L2: confirm_position ticker=MNST shares=0.0 as_of=2024-06-05 basis_doc=mnst-results-20240610
+  booked entries: 2   GATE.ELECT on the ledger: False   gold match: True   flags: none   correct: True
+  consistency L1: booked=4611.0 worksheet=4611.0 ok=True
+  gold L1 book_receivable: ok=True  {'permissible': [4611.0], 'basis_superseded': False}
+  gold L2 confirm_position: ok=True  {'as_of_is_basis_date': True}
+
+--- TRAJECTORY (reported, not scored) ---
+  maker: turns=7 tool_calls=9 errors=0 counts={'list_documents': 1, 'read_document': 3, 'get_position': 1, 'calculate': 1, 'book_receivable': 1, 'confirm_position': 1, 'submit_worksheet': 1}
+  governing read before first action: True   docs read: ['acct0093-position-20240610', 'mnst-otp-20240508', 'mnst-results-20240610']   superseded read: []   distractors read: []
+  position dates queried: ['2024-06-05']   basis date queried: True   superseded date queried: None   projected: 0   query errors: 0
+  calculate used: True (1): ['87*53']
+
+--- REVIEW (checker arm) ---
+  round 1: verdict=approve recomputed=True tools={'list_documents': 1, 'read_document': 3, 'get_position': 1, 'calculate': 1, 'review_verdict': 1} ledger_shown_correct=True
+########################################################################

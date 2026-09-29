@@ -1,0 +1,127 @@
+{
+  "P1": {
+    "issuer": "Monster Beverage Corporation",
+    "security": {
+      "ticker": "MNST"
+    },
+    "event_type": "voluntary",
+    "governing_doc": "mnst-results-20240610",
+    "superseded_docs": [
+      "mnst-otp-20240508"
+    ]
+  },
+  "P2": {
+    "dates": {
+      "offer_commenced": "2024-05-08",
+      "expiration": "2024-06-05",
+      "results_announced": "2024-06-10"
+    },
+    "entitlement_basis": "shares_validly_tendered_by_expiration",
+    "entitlement_basis_date": "2024-06-05",
+    "election_deadline": "2024-06-05"
+  },
+  "E1": {
+    "terms": {
+      "final_price": 53,
+      "shares_tendered_total": 119018767,
+      "shares_accepted_total": 56603773,
+      "proration_factor": 0.4718,
+      "odd_lot_threshold": 100
+    },
+    "citation": {
+      "document": "mnst-results-20240610",
+      "locator": "final results paragraph",
+      "verbatim": "The tender offer expired at 11:59 p.m., New York City time, on June 5, 2024. A total of 119,018,767 shares of Monster's common stock were validly tendered and not validly withdrawn at the final purchase price of $53.00 per share or as purchase price tenders. Monster accepted for purchase a total of 56,603,773 shares of its common stock at the final purchase price of $53.00 per share, for an aggregate purchase price of approximately $3.0 billion. Because the number of shares tendered would have exceeded the aggregate purchase price of the tender offer, shares were accepted for purchase on a pro rata basis, except for tenders of \"odd lots,\" which will be accepted in full. Monster has been informed by the depositary that the final proration factor for the tender offer is approximately 47.18%."
+    }
+  },
+  "E2": {
+    "position": {
+      "shares_held": 87,
+      "shares_tendered": 87
+    },
+    "basis_shares": 87
+  },
+  "C1": {
+    "entitlement": {
+      "shares_tendered": 87,
+      "accepted_shares": 87,
+      "final_price": 53,
+      "gross_proceeds": 4611,
+      "residual_shares": 0
+    },
+    "cil": {
+      "applicable": false,
+      "amount": null
+    }
+  },
+  "C2": {
+    "election_required": false,
+    "options": null,
+    "default_option": null,
+    "economics": {
+      "proration_applies": false,
+      "factor_used": null,
+      "odd_lot_exception": "Yes; account held fewer than 100 shares and tendered all 87 shares, so odd-lot tender accepted in full."
+    }
+  },
+  "C3": {
+    "impact": {
+      "accepted_shares": 87,
+      "gross_proceeds": 4611,
+      "residual_shares": 0
+    },
+    "changes": [
+      {
+        "what": "MNST tender-result position confirmation",
+        "where": "position verification ledger",
+        "old": null,
+        "new": 87
+      },
+      {
+        "what": "Tender proceeds cash receivable",
+        "where": "cash receivable ledger for ACCT-0093",
+        "old": null,
+        "new": 4611
+      }
+    ]
+  },
+  "D1": {
+    "decision": "Book gross tender proceeds for all 87 shares accepted in full under odd-lot preference; no further election permitted because the offer expired on 2024-06-05.",
+    "actions": [
+      {
+        "_entry": "L4",
+        "_kind": "confirm_position",
+        "action": "confirm position of 87 MNST shares",
+        "quantity": 87.0,
+        "basis_doc": "acct0093-position-20240610",
+        "by_date": null,
+        "as_of": "2024-06-05",
+        "amount": null,
+        "option": null
+      },
+      {
+        "_entry": "L5",
+        "_kind": "book_receivable",
+        "action": "book receivable of $4,611.00",
+        "amount": 4611.0,
+        "by_date": "2024-06-10",
+        "basis_doc": "mnst-results-20240610",
+        "quantity": 87.0,
+        "option": null
+      }
+    ]
+  },
+  "D2": {
+    "probe": {
+      "label": "COMPUTED",
+      "value": 0,
+      "derivation": "From the document store provided, no fees or charges are stated as deducted from ACCT-0093's tender proceeds; gross proceeds determined and booked are $4,611.00 for 87 accepted shares at $53.00 per share."
+    },
+    "twins": [
+      {
+        "id": "TW1",
+        "value": 4611
+      }
+    ]
+  }
+}

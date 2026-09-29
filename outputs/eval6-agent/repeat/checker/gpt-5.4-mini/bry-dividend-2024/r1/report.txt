@@ -1,0 +1,93 @@
+########################################################################
+  EPISODE bry-dividend-2024   arm=checker   model=gpt-5.4-mini
+########################################################################
+
+--- WORKSHEET (the submitted worksheet through the unchanged Phase-1 grader) ---
+========================================================================
+  CASE bry-dividend-2024    model=checker:gpt-5.4-mini    judge=mock
+========================================================================
+  CaseScore (gated, headline) : 0.988
+  CaseScore (ungated)         : 0.988
+  GAP (ungated - gated)       : 0.000
+  AllPass                     : 0
+  D2 calibration (R,G->F_b)   : R=1.00 G=1.00 -> 1.000
+  Gates fired                 : none
+
+  Checkpoint vector (which step failed):
+    cp   W      ungated  gated   raw
+    P1   0.100  1.000   1.000  +1.00
+    P2   0.120  0.896   0.896  +0.90
+    E1   0.100  1.000   1.000  +1.00
+    E2   0.080  1.000   1.000  +1.00
+    C1   0.140  1.000   1.000  +1.00
+    C2   0.120  1.000   1.000  +1.00
+    C3   0.100  1.000   1.000  +1.00
+    D1   0.160  1.000   1.000  +1.00
+    D2   0.080  1.000   1.000  +1.00
+
+  Category rollup (diagnostic -- what KIND of error):
+    extraction   +0.940  ###################
+    numerical    +1.000  ####################
+    entailment   +1.000  ####################
+    reasoning    +1.000  ####################
+    calibration  +1.000  ####################
+    structure    +1.000  ####################
+========================================================================
+
+--- TERMINAL STATE (worksheet + the ledger rendered into D1 rows; ledger predicates applied) ---
+========================================================================
+  CASE bry-dividend-2024    model=checker:gpt-5.4-mini    judge=mock
+========================================================================
+  CaseScore (gated, headline) : 0.988
+  CaseScore (ungated)         : 0.988
+  GAP (ungated - gated)       : 0.000
+  AllPass                     : 0
+  D2 calibration (R,G->F_b)   : R=1.00 G=1.00 -> 1.000
+  Gates fired                 : none
+
+  Checkpoint vector (which step failed):
+    cp   W      ungated  gated   raw
+    P1   0.100  1.000   1.000  +1.00
+    P2   0.120  0.896   0.896  +0.90
+    E1   0.100  1.000   1.000  +1.00
+    E2   0.080  1.000   1.000  +1.00
+    C1   0.140  1.000   1.000  +1.00
+    C2   0.120  1.000   1.000  +1.00
+    C3   0.100  1.000   1.000  +1.00
+    D1   0.160  1.000   1.000  +1.00
+    D2   0.080  1.000   1.000  +1.00
+
+  Category rollup (diagnostic -- what KIND of error):
+    extraction   +0.940  ###################
+    numerical    +1.000  ####################
+    entailment   +1.000  ####################
+    reasoning    +1.000  ####################
+    calibration  +1.000  ####################
+    structure    +1.000  ####################
+========================================================================
+
+--- LEDGER ---
+L3: book_receivable amount=$6,800.00 pay_date=2024-08-30 shares=40000.0 rate=0.17 basis_doc=bry-8k-20240813 memo='Berry Corporation dividend on corrected terms; record date 2024-08-23, based on settled position as of 2024-08-23.'
+L4: confirm_position ticker=BRY shares=40000.0 as_of=2024-08-23 basis_doc=acct7712-position-20240816
+  booked entries: 2   GATE.ELECT on the ledger: False   gold match: True   flags: none   correct: True
+  consistency L3: booked=6800.0 worksheet=6800.0 ok=True
+  gold L3 book_receivable: ok=True  {'permissible': [6800.0, 4800.0, 2000.0], 'pay_date_ok': True, 'basis_superseded': False}
+  gold L4 confirm_position: ok=True  {'as_of_is_basis_date': True}
+
+--- TRAJECTORY (reported, not scored) ---
+  maker: turns=12 tool_calls=14 errors=0 counts={'list_documents': 1, 'read_document': 4, 'calculate': 2, 'book_receivable': 2, 'confirm_position': 2, 'submit_worksheet': 2, 'get_position': 1}
+  governing read before first action: True   docs read: ['acct7712-position-20240816', 'bry-8k-20240809', 'bry-8k-20240813']   superseded read: ['bry-8k-20240809']   distractors read: []
+  position dates queried: ['2024-08-23']   basis date queried: True   superseded date queried: False   projected: 1   query errors: 0
+  calculate used: True (2): ['50000*0.17', '40000*0.17']
+
+--- REVIEW (checker arm) ---
+  round 1: verdict=reject recomputed=True tools={'list_documents': 1, 'get_position': 1, 'read_document': 2, 'review_verdict': 1} ledger_shown_correct=False
+    - L1: booked on the corrected document but used 50,000 shares; the governing record-date position is 40,000 settled shares as of 2024-08-23, so gross receivable should be $6,800.00 (40,000 × $0.17), not $8,500.00.
+    - L1: memo says the basis was position as of 2024-08-12, but the governing correction sets entitlement by record date 2024-08-23; the entry should be based on the 2024-08-23 record-date position, not the earlier date.
+    - L2: confirm_position shows 50,000 shares as of 2024-08-23, but the position tool returns 40,000 settled shares as of that date; the entry should confirm 40,000 shares, not 50,000.
+    - D2/TW1: the work product states gross dividend cash is $8,500, but on the corrected terms and record-date position it should be $6,800.00.
+    - D2 probe: net dividend cash for a foreign-domiciled subaccount cannot be determined from the store because no withholding rate/document is provided; any implied net amount would be unsupported.
+  round 2: verdict=reject recomputed=True tools={'list_documents': 1, 'read_document': 3, 'get_position': 1, 'calculate': 1, 'review_verdict': 1} ledger_shown_correct=True
+    - L3: gross dividend amount ties to 40,000 shares at $0.17 and pay date 2024-08-30, but the basis document is incomplete for entitlement because the governing document is the corrected 2024-08-13 notice superseding the 2024-08-09 announcement; the entry should explicitly rest on bry-8k-20240813 as the governing source and the amount is $6,800.00.
+    - L4: confirm_position is supported by the position report; no discrepancy found.
+########################################################################

@@ -1,0 +1,53 @@
+{
+  "clock": "2024-06-10",
+  "entries": [
+    {
+      "entry_id": "L1",
+      "kind": "book_receivable",
+      "args": {
+        "account": "ACCT-4407",
+        "amount": 250054.0,
+        "pay_date": "2024-06-10",
+        "basis_doc": "mnst-results-20240610",
+        "shares": 4718.0,
+        "rate": 53.0,
+        "memo": "MNST tender final results: 4,718 accepted shares (10,000 tendered x 47.18% proration) at final price $53.00. GROSS proceeds; any LOT fees NOT determinable from store."
+      },
+      "seq": 24,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:13:55.403Z"
+    },
+    {
+      "entry_id": "L2",
+      "kind": "confirm_position",
+      "args": {
+        "ticker": "MNST",
+        "shares": 10000.0,
+        "as_of": "2024-06-05",
+        "basis_doc": "acct4407-position-20240610"
+      },
+      "seq": 26,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:13:55.403Z"
+    },
+    {
+      "entry_id": "L3",
+      "kind": "escalate",
+      "args": {
+        "reason": "D2 probe asks what fees/charges the Letter of Transmittal deducts from tender proceeds. The Offer to Purchase references the Letter of Transmittal, but that document is not in the store, so the fee/net-proceeds figure cannot be determined.",
+        "missing_document": "Letter of Transmittal for the Monster Beverage tender offer",
+        "held_action": "Net (after-fee) tender proceeds figure for ACCT-4407"
+      },
+      "seq": 28,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:13:55.403Z"
+    }
+  ],
+  "frozen": {}
+}

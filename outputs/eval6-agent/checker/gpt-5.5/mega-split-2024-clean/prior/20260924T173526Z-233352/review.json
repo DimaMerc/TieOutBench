@@ -1,0 +1,75 @@
+{
+  "rounds": [
+    {
+      "round": 1,
+      "verdict": "reject",
+      "findings": [
+        "L1 update_pcf contains an incorrect prior quantity: it books NVDA quantity_per_cu=1,800 but states \u201cwas 1,800.\u201d The pre-split MEGA NVDA position was 18,000 shares across 100 creation units, i.e. 180 shares per creation unit; after the 10-for-1 split it should be 1,800 per creation unit. L1 should therefore show old/prior quantity 180 and new quantity 1,800."
+      ],
+      "turns": 7,
+      "incomplete": false,
+      "ended_by": "end",
+      "ledger_shown_correct": true,
+      "ledger_shown_elect": false,
+      "ledger_shown_flags": []
+    },
+    {
+      "round": 2,
+      "verdict": "approve",
+      "findings": [],
+      "turns": 5,
+      "incomplete": false,
+      "ended_by": "end",
+      "ledger_shown_correct": true,
+      "ledger_shown_elect": false,
+      "ledger_shown_flags": []
+    }
+  ],
+  "ledger_v1": [
+    {
+      "entry_id": "L1",
+      "kind": "update_pcf",
+      "args": {
+        "ticker": "NVDA",
+        "quantity_per_cu": 1800.0,
+        "previous_quantity_per_cu": 1800,
+        "basis_doc": "nvda-8k-20240607",
+        "memo": "NVDA 10-for-1 split effective 2024-06-07; PCF per creation unit adjusted from 180 to 1,800 for 2024-06-10 dissemination."
+      },
+      "seq": 30,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:22:15.847Z"
+    },
+    {
+      "entry_id": "L2",
+      "kind": "confirm_position",
+      "args": {
+        "ticker": "NVDA",
+        "shares": 180000.0,
+        "as_of": "2024-06-07",
+        "basis_doc": "nvda-8k-20240607"
+      },
+      "seq": 32,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:22:15.847Z"
+    },
+    {
+      "entry_id": "L3",
+      "kind": "escalate",
+      "args": {
+        "reason": "The governing NVIDIA dividend announcement states the gross post-split dividend rate and dividend dates, but the document store does not provide the fund/account withholding-tax status or applicable withholding-rate documentation needed to determine net cash after withholding.",
+        "missing_document": "MEGA applicable withholding tax status/rate documentation for NVIDIA dividend",
+        "held_action": "book net dividend cash receivable for NVDA June 2024 dividend"
+      },
+      "seq": 35,
+      "agent": "maker",
+      "round": 1,
+      "voided": false,
+      "t": "2026-09-24T17:22:25.149Z"
+    }
+  ]
+}
