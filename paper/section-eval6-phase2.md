@@ -152,7 +152,7 @@ position change rather than assumes it. Two runs never queried the position at a
 queried the position in the first round, 45 used the calculator, 4.9 turns on average. They then
 rejected 20 of the 46 correct ledgers and approved one of the two wrong ones. The one wrong ledger
 caught was the reversed basket (re-booked correctly on revision; its worksheet stayed wrong); the
-one approved was Haiku's basket line left unconfirmed. The false rejections were confident and
+one approved was Haiku's basket line left unconfirmed. The rejections of correct ledgers were confident and
 specific: the announcement 8-K cited as basis where the reviewer preferred the effectiveness 8-K
 (both are accepted governing documents), a memo that said "was 1,800" for the pre-split
 quantity, a tender pay date the store does not state, a dividend receivable called premature
@@ -169,7 +169,7 @@ to 27 with the same models as makers.
 right). With Opus 4.8 reviewing every maker, 13 correct ledgers were rejected instead of 20, 33
 approved instead of 26, the same two wrong ledgers were caught and missed, and 46 of 48 ledgers
 came through correct. The arm still finished with 25 clean cells and a gate in 14. Ten of the 13
-false rejections carried the same finding, in the reviewer's words on one cell: "MEGA is a U.S.
+rejections of correct ledgers carried the same finding, in the reviewer's words on one cell: "MEGA is a U.S.
 ETF and NVIDIA Corporation is a U.S. issuer; a U.S. fund's dividend from a U.S. corporation is not
 subject to withholding. No withholding schedule is 'missing' because none is needed". It
 instructed the makers to replace the NOT_DETERMINABLE answer and the escalation with a computed
@@ -209,7 +209,7 @@ above.
 | Reverse adjustment | already-adjusted basket set from 1,800 to 180; $180 receivable | small | `ledger_wrong_amount`, `ledger_inconsistent` | `outputs/eval6-agent/tools/gpt-5.4-mini/mega-split-2024-clean/` |
 | Booked right, wrote wrong | correct ledger under a worksheet with three gates | small | `DATES`,`SCALE`,`FABRICATION` | `outputs/eval6-agent/tools/gpt-5.4-mini/mega-split-2024/` |
 | Form field left empty | election deadline null on both tenders, ledgers right | small | `DATES` | `outputs/eval6-agent/tools/claude-haiku-4-5-20251001/mnst-tender-2024*/` |
-| Reviewer false alarm, executed | maker moved the split's basis date to the dividend's record date | small | `DATES` | `outputs/eval6-agent/checker/claude-haiku-4-5-20251001/mega-split-2024/` |
+| Reviewer finding the documents contradict, executed | maker moved the split's basis date to the dividend's record date | small | `DATES` | `outputs/eval6-agent/checker/claude-haiku-4-5-20251001/mega-split-2024/` |
 | Reviewer demand the store cannot meet | "The booked pay_date of 2024-06-10 is unsupported" led the maker to un-book a correct receivable | flagship | `ledger_missing_required`, `ledger_overescalate` | `outputs/eval6-agent/checker/gpt-5.6-sol/mnst-tender-2024/` |
 | Reviewer over-rules a refusal | a U.S. fund, so no withholding and the net equals the gross (nine cells); no fees on the tender (one); executed each time, by six makers | all tiers | `FABRICATION` x10 | `outputs/eval6-agent/checker-fixed/*/mega-split-2024*/`, `checker-fixed/gemini-3.6-flash/mnst-tender-2024/` |
 | Reviewer rejects with no discrepancy | findings say "no discrepancy" three times; verdict reject | small | (revision emptied the ledger) | `outputs/eval6-agent/checker/gpt-5.4-mini/mega-split-2024/prior/` |

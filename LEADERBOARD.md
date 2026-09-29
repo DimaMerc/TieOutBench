@@ -89,7 +89,7 @@ on what was booked. AllPass per model, of six cases:
 | Claude Opus 4.8 | 4 | 5 | 5 | 3 | the same 0.983 partial on the corrected dividend in every arm and every repeat; two `FABRICATION` under the fixed reviewer (its own model) |
 | **Claude Sonnet 4.6** | **6** | **6** | **6** | 5 | twelve of twelve on the repeats across four arms |
 | Claude Haiku 4.5 | 3 | 2 | 1 | 1 | `GATE.DATES` on both tenders with tools (deadline field left empty; ledgers right); reviewer-induced errors in both review arms |
-| GPT-5.6-sol | 5 | 6 | 4 | 4 | text protocol (the compat endpoint refuses function tools for it); correct receivables un-booked after false rejections (self-review); two `FABRICATION` (fixed) |
+| GPT-5.6-sol | 5 | 6 | 4 | 4 | text protocol (the compat endpoint refuses function tools for it); correct receivables un-booked after the reviewer objected to the pay date (self-review); two `FABRICATION` (fixed) |
 | GPT-5.5 | 5 | 5 | 4 | 4 | one receivable un-booked (self-review); one `FABRICATION` (fixed) |
 | GPT-5.4 | 4 | 6 | 3 | **6** | two `FABRICATION` after self-review revisions; clean under the fixed reviewer |
 | GPT-5.4-mini | 0 | 0 | 0 | 0 | tools: reversed the clean basket (1,800 to 180) and booked $180; wrong on the stale basket's worksheet with a correct ledger |
@@ -114,7 +114,7 @@ on what was booked. AllPass per model, of six cases:
 - **A stronger fixed reviewer was better on the verdicts and worse on the probe.** Opus
   reviewing every maker: 13 correct ledgers rejected instead of 20, 33 approved instead of 26,
   the same two wrong ledgers caught and missed, 46 of 48 ledgers correct. Ten of its thirteen
-  false rejections over-ruled a correct refusal: nine said the fund is U.S.-domiciled, so no
+  rejections of correct ledgers over-ruled a correct refusal: nine said the fund is U.S.-domiciled, so no
   withholding applies and the net equals the gross, and one said no fees apply to the tender.
   The maker complied each time (six makers, ten cells), and `GATE.FABRICATION` fired ten times on
   worksheets that had refused

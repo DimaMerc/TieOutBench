@@ -138,7 +138,8 @@ state after the review and, where the reviewer rejected, after the maker's one r
 
    The one wrong ledger caught was GPT-5.4-mini's reversed PCF (the maker re-booked it correctly
    in the revision; its worksheet stayed wrong). The one approved was Haiku's clean-split ledger
-   with no confirmation of the basket line. The 20 false rejections were confident and specific:
+   with no confirmation of the basket line. The 20 rejections of correct ledgers were confident
+   and specific (finding 12 reads each one; 7 of the 20 raise a point the documents support):
    the announcement 8-K cited as basis where the reviewer preferred the effectiveness 8-K (both are
    accepted governing documents in the gold), a memo that said "was 1,800" for the pre-split
    quantity, a tender pay date the store does not state, a dividend receivable called premature
@@ -209,7 +210,7 @@ state after the review and, where the reviewer rejected, after the maker's one r
    caught (the small model's reversed basket) and missed (Haiku's unconfirmed basket line).
    Fourteen revisions instead of 21. The ledgers came through better too: 46 of 48 correct
    against 44. And the arm still finished with fewer clean cells than self-review, 25 against 27,
-   with a gate in fourteen cells instead of eight. Ten of the thirteen false rejections carried the
+   with a gate in fourteen cells instead of eight. Ten of the thirteen rejections of correct ledgers carried the
    same finding, in the reviewer's words on one cell: "MEGA is a U.S. ETF and NVIDIA Corporation is
    a U.S. issuer; a U.S. fund's dividend from a U.S. corporation is not subject to withholding. No
    withholding schedule is 'missing' because none is needed". Nine of the ten are that finding on

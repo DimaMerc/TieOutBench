@@ -476,7 +476,7 @@ runs), tools, checker (maker-checker with one revision round). Deterministic gra
 - [x] **Fixed-reviewer cell (2026-09-25):** Opus reviews every maker's saved work product
       (`--reviewer-model claude-opus-4-8` -> outputs/eval6-agent/checker-fixed/, 48 cells + 24
       repeats). Two-by-two 1/13/1/33 (self-review 1/20/1/26): better verdicts; AllPass 25 (worse):
-      10 of 13 false rejections over-ruled the NOT_DETERMINABLE answer (nine on withholding: a U.S.
+      10 of the 13 rejections of correct ledgers over-ruled the NOT_DETERMINABLE answer (nine on withholding: a U.S.
       fund, so net = gross; one on the tender's fees) and the maker complied each time (six makers) ->
       GATE.FABRICATION x10. Ledgers
       correct 46/48. GPT-5.4 6/6 under the fixed reviewer.

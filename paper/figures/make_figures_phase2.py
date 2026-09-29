@@ -112,10 +112,10 @@ def f9_two_by_two(S):
     panels = (("checker", "Same-model reviewer"), ("checker-fixed", "Fixed reviewer (Claude Opus 4.8)"))
     for ax, (arm, title) in zip(axes, panels):
         c = S["two_by_two"][arm]["counts"]
-        grid = [[("reject", "wrong", c["reject_wrong"], "caught", BLUEBG),
-                 ("reject", "correct", c["reject_correct"], "false alarm", REDBG)],
-                [("approve", "wrong", c["approve_wrong"], "missed", REDBG),
-                 ("approve", "correct", c["approve_correct"], "confirmed", BLUEBG)]]
+        grid = [[("reject", "wrong", c["reject_wrong"], "wrong ledger\nrejected", BLUEBG),
+                 ("reject", "correct", c["reject_correct"], "correct ledger\nrejected", REDBG)],
+                [("approve", "wrong", c["approve_wrong"], "wrong ledger\napproved", REDBG),
+                 ("approve", "correct", c["approve_correct"], "correct ledger\napproved", BLUEBG)]]
         ax.set_xlim(0, 2)
         ax.set_ylim(0, 2)
         ax.set_aspect("equal")
@@ -125,9 +125,10 @@ def f9_two_by_two(S):
                 x, yy = j, 1 - i
                 ax.add_patch(FancyBboxPatch((x + 0.04, yy + 0.04), 0.92, 0.92, boxstyle="round,pad=0,rounding_size=0.06",
                                             facecolor=wash, edgecolor=LINE, lw=0.8))
-                ax.text(x + 0.5, yy + 0.58, f"{cnt}", ha="center", va="center", fontsize=22, weight="bold",
+                ax.text(x + 0.5, yy + 0.63, f"{cnt}", ha="center", va="center", fontsize=22, weight="bold",
                         color=RED if wash == REDBG else NAVY)
-                ax.text(x + 0.5, yy + 0.24, word, ha="center", va="center", fontsize=8.6, color=MUTE)
+                ax.text(x + 0.5, yy + 0.26, word, ha="center", va="center", fontsize=8.2, color=MUTE,
+                        linespacing=1.25)
         ax.text(0.5, 2.08, "ledger wrong", ha="center", va="bottom", fontsize=9, color=NAVY)
         ax.text(1.5, 2.08, "ledger correct", ha="center", va="bottom", fontsize=9, color=NAVY)
         ax.text(-0.08, 1.5, "reject", ha="right", va="center", fontsize=9, color=NAVY, rotation=90)
@@ -137,7 +138,10 @@ def f9_two_by_two(S):
     fig.suptitle("The reviewer's first-round verdict against the ledger it was shown", fontsize=12.5,
                  color=NAVY, weight="bold", x=0.02, ha="left", y=1.06)
     fig.text(0.02, -0.04, "A ledger is correct when it is booked, fires no gate, and ties to the worksheet and the gold. "
-             "Source: outputs/eval6-agent/summary.json (two_by_two).", fontsize=8.2, color=MUTE, ha="left")
+             "The grader does not score every field:\n7 of the 20 and 3 of the 13 rejections of correct ledgers raise a "
+             "point the documents support (TAXONOMY.md, finding 12).\n"
+             "Source: outputs/eval6-agent/summary.json (two_by_two).", fontsize=8.2, color=MUTE, ha="left", va="top",
+             linespacing=1.35)
     save(fig, "f9-phase2-two-by-two")
 
 
