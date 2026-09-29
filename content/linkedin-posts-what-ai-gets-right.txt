@@ -1,0 +1,157 @@
+"WHAT AI ALREADY GETS RIGHT" - the plain-format series (his idea, 2026-09-22)
+===========================================================================
+Format: open with what he is doing overall (what is tested, how, how much is published) so a non-specialist can forward it; then three or four things EVERY model got right in
+one of the six evals, as recorded; one line on the thing still checked; a question a
+practitioner can answer in one sentence. No link in the body; article + evals.finance in the
+first comment. Claims stay scoped: "in my recorded runs", one run per model per case, never
+"can do independently" / never a deployment claim; the small-tier exception stays in.
+Cadence: one of these between technical pieces (Tue/Wed), ~120-150 words.
+
+---------------------------------------------------------------------------
+POST 1 - corporate actions (earliest slot: Tue Sep 29 / Wed Sep 30, Sibos week)
+VERIFIED 2026-09-22 against outputs/eval6-live: all 8 models governing_doc = bry-8k-20240813,
+record_date 2024-08-23, superseded [bry-8k-20240809]; all 8 proration_factor 0.4718 and
+4,718 accepted shares; Sonnet 6/6 AllPass; mini booked $8,500 (50,000 x $0.17) vs $6,800.
+---------------------------------------------------------------------------
+
+I test whether AI can be trusted with finance work: real documents, one task at a time, every answer checked against the source. Six tasks so far, eight AI models, all results published.
+
+Most of the steps, the models get right. Here is what that looked like on a corporate action, the kind a custody desk handles every week: a dividend notice the issuer corrected after publishing it.
+
+- All eight models found the corrected notice, not the original.
+- All eight used the new record date, the date that decides who is paid.
+- On a tender offer in the same test, all eight used the proration factor the depositary announced instead of recomputing it and getting it wrong.
+- One model passed every check on all six cases, a first in this series.
+
+I still check the amount even when the decision is right. One model did everything above and then booked $8,500 where $6,800 was due, because it counted the shares as of the old date.
+
+Full results in the first comment. Which of these steps would you let run without a human check?
+
+FIRST COMMENT: the eval-6 article link + https://evals.finance
+(The model with the $8,500 is unnamed, as everywhere; the perfect row is named in the article.)
+
+---------------------------------------------------------------------------
+SUGGESTED SLOTS (Tue/Wed 8-9:30am ET; shift freely around the October pieces)
+  Post 1 corporate actions      Tue Sep 29 / Wed Sep 30 (Sibos week)
+  Post 2 back-office controls   Tue Oct 6 / Wed Oct 7
+  Post 3 valuation              Tue Oct 13 / Wed Oct 14
+  Post 4 the method             Tue Oct 20 / Wed Oct 21 (AFME OPTIC Oct 19-20; TNF Americas Oct 22)
+  Post 5 buffer ETFs            Tue Oct 27 / Wed Oct 28
+  Post 6 earnings + correction  Tue Nov 3 (OSFF New York is Nov 4-5)
+Re-read each on the day for time words; the two that carry one are marked.
+
+---------------------------------------------------------------------------
+POST 2 - the two back-office controls (evals 4 and 5)
+FACTS: eval 4 grin-create-2026 (basket short $13,320): all 8 decisions DO_NOT_SETTLE; clean
+twin: all 8 SETTLE. Eval 5 irs-confirm-2026 (fixed 6.00 vs 6.05): all 8 MISMATCHED; clean: all 8
+AFFIRMED. Refusal probe on eval 4: all 8 refused correctly, no invented number (cross-vendor
+article). Break sizing: one model 0.5 bp (ten times too small), one 50 bp (ten times too large)
+on the 5 bp break (eval 5; the Aug 26 post). Verified Sep 2 / Sep 6 scans.
+---------------------------------------------------------------------------
+
+In my tests, no AI model has approved a transaction that should have been stopped.
+
+Two back-office checks, eight AI models, one run each on every case: an ETF creation basket that was $13,320 short, and a swap confirmation where the two sides disagreed on the fixed rate.
+
+- All eight refused to settle the short basket.
+- All eight refused to affirm the mismatched swap.
+- None reported a break on the clean versions of the same cases, where there was none.
+- All eight said a figure could not be determined from the documents instead of inventing one.
+
+The thing I still check is the size of the break. Two models sized the same 5 basis point mismatch ten times too small and ten times too large. The decision was right; the amount was not.
+
+I build these tests and publish every run. Where in your process is the number checked, and not only the decision?
+
+FIRST COMMENT: the cross-vendor article link + https://evals.finance
+
+---------------------------------------------------------------------------
+POST 3 - valuation (eval 3, two DCF cases on real 10-Ks)
+FACTS: NVDA case: Opus 0.974, Sonnet 0.973, GPT-5.6-sol 0.970, GPT-5.5 0.970, Gemini Flash 0.970
+= five within 0.004. MCD case: Gemini 3.6 Flash $227.81 vs case reference $227.82; no live
+model skipped the EV-to-equity bridge on MCD (mini fired GATE.BRIDGE on NVDA, hence "on that
+case"). Derived 12.62% / wrote 12.31 = GPT-5.4 on NVDA. Say "reference value", never "fair
+value" or "correct value" (not advice). Models unnamed.
+---------------------------------------------------------------------------
+
+On a valuation, the AI models mostly agreed with each other, and with the reference answer.
+
+Two discounted cash flow valuations built on real 10-Ks, eight AI models, one run each.
+
+- On one case, five of the eight scored within 0.004 of each other.
+- On the other, a small, fast model came within one cent of the reference value: $227.81 against $227.82.
+- On that case, every model did the step from enterprise value to value per share, the step that is easiest to skip and hardest to detect when skipped.
+
+The thing I still check is whether the answer matches the work. One model calculated a discount rate of 12.62% and then entered 12.31% in its answer field.
+
+The tests and every run are open, link in the first comment. Would you have noticed?
+
+FIRST COMMENT: the DCF article link (or the paper DOI) + https://evals.finance
+
+---------------------------------------------------------------------------
+POST 4 - the method in plain words
+FACTS: six workflows; 20 gold cases cited to filings or labeled constructed; step-by-step
+checkpoints; gates (wrong fiscal period, unit/scale, fabricated number, payment on superseded
+terms, plus the decision gates); every run published; four adversarial passes before eval-6
+went live; the September outside review found four more gaps, fixed, regression-tested.
+TIME WORD: "in September" is right through October; from November say "this autumn".
+---------------------------------------------------------------------------
+
+How I test AI on finance work, in plain words.
+
+- Every case is built on a real document: a filing, a trade confirmation, a corporate action notice. Where something had to be constructed, such as an account position, the case file says so.
+- The work is graded step by step, not on the final answer alone. Which document governs, does the calculation tie out, does the action follow.
+- A few mistakes fail the run automatically, whatever else went right: a wrong fiscal period, a unit error, an invented number, a payment on superseded terms.
+- Every model run is published, so anyone can re-grade it.
+- The grader is tested too. Four adversarial passes before the first live run, and an outside review in September that found four more gaps. All fixed, all now permanent checks.
+
+The thing I still check is the grader itself. Every round so far has found something.
+
+Six workflows, eight models, three vendors, and the report is on SSRN, link in the first comment. What would you add to the list of automatic failures?
+
+FIRST COMMENT: https://doi.org/10.2139/ssrn.7243025 + https://evals.finance
+
+---------------------------------------------------------------------------
+POST 5 - buffer ETFs (eval 2, open-weight models)
+FACTS (paper 6.5): qwen3.6-27b (reasoning) beat qwen2.5-72b-instruct on every case, 0.732 /
+0.708 / 0.702 vs 0.638 / 0.584 / 0.577; both extracted at 0.86-0.91; both filled the payoff
+grid with the prospectus percentage convention while the 27B had the correct per-unit dollars
+elsewhere in the same answer; in the end-to-end probe with three same-day sibling N-PORTs and a
+stale 497K, the 27B pinned the correct vintage (0.732 -> 0.651 gated, no gate fired). Say
+"open-weight, run locally" - these are NOT the frontier models.
+---------------------------------------------------------------------------
+
+In one of my tests, a smaller AI model scored higher than a bigger one.
+
+A buffer ETF test: read the prospectus and the fund's option positions, then recompute the cap and buffer the fund advertises from its option positions. Two open-weight models, run on my own machine, three cases each.
+
+- A 27-billion-parameter model that reasons before answering scored higher than a 72-billion-parameter model on every case.
+- Both extracted the option terms almost perfectly, 0.86 to 0.91 out of 1.
+- Given a packet with three same-day filings and one stale prospectus, the smaller model picked the right filing.
+
+The thing I still check is the convention. Both models filled the payoff table with the percentages from the prospectus when the case asked for dollars per unit, and one of them had the right dollar figures elsewhere in the same answer.
+
+These were open-weight models, not the frontier ones in my other tests; that run is still to come. Do you know which size of model your tools use?
+
+FIRST COMMENT: the buffer-ETF article link + https://evals.finance
+
+---------------------------------------------------------------------------
+POST 6 - earnings analysis (eval 1) and the published correction
+FACTS (paper 6.5 + 9.8): qwen2.5-32b on the SNOW case: extraction (segments/shares) 0.91;
+refused the not-disclosed probe correctly; missed a +1,118 bp GAAP-margin swing. Sep 2026:
+18 earnings criteria had been credited on presence; fixed, fail-closed; offline score 0.679 ->
+0.603; recorded as errata item 8 in the v1.1 report. TIME WORD: "in September".
+---------------------------------------------------------------------------
+
+The first test I built is also the one I got most wrong, and the correction is published.
+
+Quarterly earnings analysis: read the press release and the 10-Q, extract the figures, compare with consensus, list what changed. One open-weight model, run on my own machine.
+
+- It extracted segment revenue and share counts correctly: 0.91 out of 1 on extraction.
+- Where the company gave no guidance, it said so instead of inventing a range.
+- Its analysis was weak. It missed an eleven-point change in a margin.
+
+Then, in September, an outside review found that my grader had been giving credit for 18 criteria it never checked. I fixed it, the model's score fell from 0.68 to 0.60, and the report now includes the correction.
+
+The thing I still check is my own grader. I build these tests and publish the mistakes with the results. Would you trust a benchmark that has never published one?
+
+FIRST COMMENT: https://doi.org/10.2139/ssrn.7243025 + https://evals.finance

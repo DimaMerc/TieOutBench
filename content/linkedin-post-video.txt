@@ -6,13 +6,13 @@ NATIVELY to LinkedIn; YouTube link + evals.finance + AI-likeness disclosure in t
 
 Can AI replace a financial analyst?
 
-I built TieOutBench to test the work we would hand one.
+I built TieOutBench to test the work.
 
 In one valuation test, a model calculated a discount rate of 12.62% and entered 12.31% as its final answer. In a corporate-actions test, a model found the corrected dividend notice and still proposed booking $8,500 when the correct amount was $6,800.
 
-Other results were much stronger. One model passed all six corporate-actions cases with nothing to flag. The interesting part is seeing where the work holds up and where it still needs checking.
+Other results were much stronger. One model passed all six corporate-actions cases with nothing to flag. The useful part is seeing where the work is reliable and where it still needs checking.
 
-This 90-second video walks through the evidence.
+This 90-second video shows the evidence.
 
 ===========================================================================
 FIRST COMMENT:
