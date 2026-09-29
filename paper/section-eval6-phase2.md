@@ -157,7 +157,8 @@ specific: the announcement 8-K cited as basis where the reviewer preferred the e
 (both are accepted governing documents), a memo that said "was 1,800" for the pre-split
 quantity, a tender pay date the store does not state, a dividend receivable called premature
 because the record date lies a day after the desk date. The makers complied with 21 rejections,
-and the revisions introduced four gates and five missing or held bookings: a split's entitlement
+and the revisions put a gate on four cells that had none and un-booked or held a correct
+receivable in three: a split's entitlement
 basis moved to the dividend's record date after the reviewer conflated the two events; the net-cash
 probe answered as equal to the gross because the store holds no withholding document; correct
 tender receivables un-booked and held (in one maker's words, "pending a payment-date source").
@@ -167,7 +168,7 @@ to 27 with the same models as makers.
 **A stronger fixed reviewer was better on the verdicts and worse on the probe** (Figure 9,
 right). With Opus 4.8 reviewing every maker, 13 correct ledgers were rejected instead of 20, 33
 approved instead of 26, the same two wrong ledgers were caught and missed, and 46 of 48 ledgers
-came through correct. The arm still finished with 25 clean cells and 14 gates. Ten of the 13
+came through correct. The arm still finished with 25 clean cells and a gate in 14. Ten of the 13
 false rejections carried the same finding, in the reviewer's words on one cell: "MEGA is a U.S.
 ETF and NVIDIA Corporation is a U.S. issuer; a U.S. fund's dividend from a U.S. corporation is not
 subject to withholding. No withholding schedule is 'missing' because none is needed". It
@@ -182,9 +183,10 @@ six of six, its best row in any arm. Neither protocol improved on the tools arm,
 were never the problem in either: 46, 44 and 46 correct with no reviewer, self-review and the
 fixed reviewer. The review round moved the worksheet, and mostly moved it the wrong way.
 
-**Repeatability.** Sonnet: twelve runs across four arms, twelve AllPass. Opus, Haiku and Gemini:
-the same 0.983 partial in every run of every arm, a stable one-item loss rather than noise. GPT-5.4:
-three clean tools runs where the plain arm gave one. The small model: both sides of the finding
+**Repeatability.** Sonnet: twelve runs across four arms, twelve AllPass. Opus: the same 0.983
+partial in every repeat of every arm, a stable one-item loss rather than noise. Haiku and Gemini:
+the same 0.983 in every repeat with tools or a reviewer; in the plain arm Haiku was clean twice
+and Gemini scored 0.948 once. GPT-5.4: three clean tools runs where the plain arm gave one. The small model: both sides of the finding
 in the tools arm. Reviewer verdicts on identical correct work were not stable under self-review
 (GPT-5.4's reviewer: approve, reject, approve) and were under the fixed reviewer (every correct
 repeat ledger approved; the one wrong one caught and re-booked).

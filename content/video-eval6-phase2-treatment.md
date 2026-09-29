@@ -58,8 +58,8 @@ Then the experiment: the same six cases and eight models, three ways.
   one; two runs never asked for the position at all.
 - **The checker made the work worse.** Reviewers did the tie-out (48 of 48 queried the position,
   45 recalculated) and then rejected 20 of the 46 correct ledgers and approved one of the two wrong
-  ones. The makers complied with 21 rejections; the revisions introduced four gates and five
-  ledger faults that were not there before. Clean runs fell from 35 to 27. Two-by-two (round one,
+  ones. The makers complied with 21 rejections; the revisions put a gate on four cells that
+  had none and a ledger fault on three. Clean runs fell from 35 to 27. Two-by-two (round one,
   verdict against whether the ledger shown was correct): reject/wrong 1, reject/correct 20,
   approve/wrong 1, approve/correct 26.
 - **A stronger reviewer did not fix it.** With one flagship reviewing every maker

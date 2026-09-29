@@ -376,15 +376,16 @@ The grid ran on 2026-09-24 (48 cells per arm, three repeats per cell on the corr
 - **AllPass 32 (plain), 35 (tools), 27 (checker), 25 (checker with a fixed Opus reviewer).** Tools helped the middle tier (GPT-5.4 four to
   six clean cases, GPT-5.6-sol five to six, Opus four to five) and hurt the small tier (Haiku three
   to two; GPT-5.4-mini reversed the already-adjusted basket, 1,800 to 180, and booked $180).
-  Sonnet: six of six in every arm, nine of nine on the repeats.
+  Sonnet: six of six in the plain, tools and self-review arms, five of six under the fixed
+  reviewer, twelve of twelve on the repeats.
 - **The tool that prevents the Phase-1 error was there in every run.** Five tools-arm attempts by
   the small model on the corrected dividend: twice it booked $8,500, both times without ever
   calling `get_position`; three times it booked $6,800, each time after querying the position as
   of the desk's own date rather than the record date.
 - **A same-model checker made the work worse.** Reviewers recomputed and then rejected 20 of 46
-  correct ledgers and approved one of two wrong ones; the makers complied, and the revisions
-  introduced four gates and five missing or held bookings. Round-one two-by-two: reject/wrong 1,
-  reject/correct 20, approve/wrong 1, approve/correct 26.
+  correct ledgers and approved one of two wrong ones; the makers complied, and the revisions put
+  a gate on four cells that had none and un-booked or held a correct receivable in three.
+  Round-one two-by-two: reject/wrong 1, reject/correct 20, approve/wrong 1, approve/correct 26.
 - **A stronger fixed reviewer (Opus over every maker) was better on the verdicts and worse on
   the probe.** 13 false rejections instead of 20, 33 correct approvals instead of 26, and ten of
   those rejections over-ruled a calibrated refusal (nine: the fund is U.S.-domiciled, so the net

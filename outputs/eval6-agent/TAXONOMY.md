@@ -139,7 +139,7 @@ state after the review and, where the reviewer rejected, after the maker's one r
    accepted governing documents in the gold), a memo that said "was 1,800" for the pre-split
    quantity, a tender pay date the store does not state, a dividend receivable called premature
    because the record date lies a day after the desk date. The makers complied with 21 rejections,
-   and the revisions introduced four gates and five ledger faults that were not there before:
+   and the revisions put a gate on four cells that had none and a ledger fault on three:
    Haiku moved the split's entitlement basis to the dividend's record date after its reviewer
    conflated the two events (`GATE.DATES`, 1.000 to 0.475); GPT-5.4 and Gemini answered the
    net-cash probe as equal to the gross because the store holds no withholding document
@@ -147,7 +147,8 @@ state after the review and, where the reviewer rejected, after the maker's one r
    tender receivable and held it (in one maker's words, "pending a payment-date source") after
    the reviewer called the pay date unsupported (the receivable is missing from the terminal
    state). AllPass fell from 35
-   to 27 and the gate count doubled from four to eight, with the same models as makers.
+   to 27 (four cells to a gate, three to a ledger fault, one to a lower worksheet score) and the
+   cells with a gate doubled from four to eight, with the same models as makers.
 
 5. **Self-review is not a control.** The design's cheapest deployment, the same model as maker and
    reviewer, catches one of two wrong ledgers and rejects nearly half of the correct ones, and the
@@ -156,9 +157,11 @@ state after the review and, where the reviewer rejected, after the maker's one r
    and approved. A fixed-reviewer cell (one strong model reviewing every maker) is the design's
    open decision two and the obvious next run; the numbers above are the baseline it has to beat.
 
-6. **Repeatability.** Sonnet: nine runs, three arms, nine AllPass. Opus, Haiku and Gemini: the same
-   0.983 partial in every run of every arm (a stable one-item loss, not noise). GPT-5.4: three
-   clean tools runs where the plain arm gave one. The small model: both sides of the finding in
+6. **Repeatability.** Sonnet: nine runs, three arms, nine AllPass (twelve of twelve once the
+   fixed-reviewer repeats were added). Opus: the same 0.983 partial in every repeat of every arm
+   (a stable one-item loss, not noise). Haiku and Gemini: the same 0.983 in every repeat with
+   tools or a reviewer; in the plain arm Haiku was clean twice and Gemini scored 0.948 once.
+   GPT-5.4: three clean tools runs where the plain arm gave one. The small model: both sides of the finding in
    the tools arm (finding 2), and three reviewer verdicts on three different work products in the
    checker arm (reject a wrong one then reject the fix; reject a correct one twice; approve). One
    run per cell is a recorded result, not a rate; three runs per cell say which cells are stable
@@ -202,7 +205,7 @@ state after the review and, where the reviewer rejected, after the maker's one r
    caught (the small model's reversed basket) and missed (Haiku's unconfirmed basket line).
    Fourteen revisions instead of 21. The ledgers came through better too: 46 of 48 correct
    against 44. And the arm still finished with fewer clean cells than self-review, 25 against 27,
-   with fourteen gates fired instead of eight. Ten of the thirteen false rejections carried the
+   with a gate in fourteen cells instead of eight. Ten of the thirteen false rejections carried the
    same finding, in the reviewer's words on one cell: "MEGA is a U.S. ETF and NVIDIA Corporation is
    a U.S. issuer; a U.S. fund's dividend from a U.S. corporation is not subject to withholding. No
    withholding schedule is 'missing' because none is needed". Nine of the ten are that finding on
