@@ -281,6 +281,18 @@ In order of importance, no hedging-by-burying:
   from this suite's outputs to an artifact-backed DDQ section; a purpose-built ODD workflow eval
   is a natural successor to the corporate-actions eval."*
 
+### v1.2 addition (2026-09-25): eval #6 and its agent environment
+
+Drafts in `paper/section-eval6-phase2.md`, written to the v1.1 template so they drop in as §4.6
+(the document-store eval), §4.7 (the agent environment: plain / tools / checker / checker with a
+fixed reviewer), §6.6 and §6.7 (results), and additions to §8, §9, §10, §11. Figures F8 to F10 are
+built by `paper/figures/make_figures_phase2.py` from `outputs/eval6-agent/summary.json` (same
+palette as F1 to F7); tables T6 to T8 are in the draft. Headline for the abstract: with tools,
+clean runs rose from 32 to 35 of 48; a same-model checker cut them to 27 by rejecting 20 of 46
+correct ledgers; a stronger fixed reviewer rejected less and over-ruled ten calibrated refusals
+into fabrications (25). No v1.1 number changes. The dataset snapshot needs a v3 with
+`outputs/eval6-agent/` before the revision is submitted (see paper/mendeley/README.txt).
+
 ## 11. Reproducibility statement
 
 One dependency, no API key for everything deterministic; the five commands (from PAPER.md §5);
