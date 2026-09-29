@@ -174,7 +174,8 @@ ETF and NVIDIA Corporation is a U.S. issuer; a U.S. fund's dividend from a U.S. 
 subject to withholding. No withholding schedule is 'missing' because none is needed". It
 instructed the makers to replace the NOT_DETERMINABLE answer and the escalation with a computed
 net of $1,800 on nine split cells (and once, "no fees deducted / $0" on the tender's
-letter-of-transmittal probe); every maker complied, and `GATE.FABRICATION`
+letter-of-transmittal probe); the maker complied each time (six makers, ten cells), and
+`GATE.FABRICATION`
 fired ten times on worksheets that had been calibrated before the review. The store never states
 the fund's domicile or tax status. The two review protocols fail in opposite directions:
 self-review rejects correct bookings for reasons the store does not support; the strong reviewer
@@ -210,7 +211,7 @@ above.
 | Form field left empty | election deadline null on both tenders, ledgers right | small | `DATES` | `outputs/eval6-agent/tools/claude-haiku-4-5-20251001/mnst-tender-2024*/` |
 | Reviewer false alarm, executed | maker moved the split's basis date to the dividend's record date | small | `DATES` | `outputs/eval6-agent/checker/claude-haiku-4-5-20251001/mega-split-2024/` |
 | Reviewer demand the store cannot meet | "The booked pay_date of 2024-06-10 is unsupported" led the maker to un-book a correct receivable | flagship | `ledger_missing_required`, `ledger_overescalate` | `outputs/eval6-agent/checker/gpt-5.6-sol/mnst-tender-2024/` |
-| Reviewer over-rules a refusal | a U.S. fund, so no withholding and the net equals the gross (nine cells); no fees on the tender (one); executed by every maker | all tiers | `FABRICATION` x10 | `outputs/eval6-agent/checker-fixed/*/mega-split-2024*/`, `checker-fixed/gemini-3.6-flash/mnst-tender-2024/` |
+| Reviewer over-rules a refusal | a U.S. fund, so no withholding and the net equals the gross (nine cells); no fees on the tender (one); executed each time, by six makers | all tiers | `FABRICATION` x10 | `outputs/eval6-agent/checker-fixed/*/mega-split-2024*/`, `checker-fixed/gemini-3.6-flash/mnst-tender-2024/` |
 | Reviewer rejects with no discrepancy | findings say "no discrepancy" three times; verdict reject | small | (revision emptied the ledger) | `outputs/eval6-agent/checker/gpt-5.4-mini/mega-split-2024/prior/` |
 
 ## 9 (addition). Limitations

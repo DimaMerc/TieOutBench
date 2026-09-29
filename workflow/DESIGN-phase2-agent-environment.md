@@ -334,7 +334,7 @@ verdicts improved (13 correct ledgers rejected instead of 20, 33 approved instea
 two wrong ledgers caught and missed) and the arm finished worse than self-review, 25 AllPass
 against 27, because ten of the thirteen false rejections over-ruled a calibrated refusal (nine on
 the net-cash probe: "a U.S. fund's dividend from a U.S. corporation is not subject to
-withholding"; one on the tender's fee probe) and every maker complied. The two review protocols fail in opposite
+withholding"; one on the tender's fee probe) and the maker complied each time (six makers, ten cells). The two review protocols fail in opposite
 directions: self-review rejects correct bookings for reasons the store does not support; the
 strong reviewer uses its authority to assert what the store does not say. The reviewer prompt
 carried the tie-out instruction and not the desk's control rules the maker's prompt carries (the

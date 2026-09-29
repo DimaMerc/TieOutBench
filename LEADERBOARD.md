@@ -116,7 +116,8 @@ on what was booked. AllPass per model, of six cases:
   the same two wrong ledgers caught and missed, 46 of 48 ledgers correct. Ten of its thirteen
   false rejections over-ruled a correct refusal: nine said the fund is U.S.-domiciled, so no
   withholding applies and the net equals the gross, and one said no fees apply to the tender.
-  Every maker complied, and `GATE.FABRICATION` fired ten times on worksheets that had refused
+  The maker complied each time (six makers, ten cells), and `GATE.FABRICATION` fired ten times on
+  worksheets that had refused
   the probe correctly before the review. AllPass 25. Round-one two-by-two:
   reject/wrong 1, reject/correct 13, approve/wrong 1, approve/correct 33.
 - **Transport.** Native function calling on all three compat endpoints for seven models; GPT-5.6-sol

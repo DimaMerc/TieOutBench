@@ -393,7 +393,7 @@ The grid ran on 2026-09-24 (48 cells per arm, three repeats per cell on the corr
 - **A stronger fixed reviewer (Opus over every maker) was better on the verdicts and worse on
   the probe.** 13 false rejections instead of 20, 33 correct approvals instead of 26, and ten of
   those rejections over-ruled a calibrated refusal (nine: the fund is U.S.-domiciled, so the net
-  equals the gross; one: no fees on the tender); every maker replaced the refusal with a computed
+  equals the gross; one: no fees on the tender); each time the maker replaced the refusal with a computed
   value and `GATE.FABRICATION` fired ten times. AllPass 25. Neither review protocol improved on
   the tools arm.
 - The grader-bug rule ran on both graders: six environment-contract fixes, a reviewer-packet fix

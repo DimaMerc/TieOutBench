@@ -66,10 +66,10 @@ Then the experiment: the same six cases and eight models, three ways.
   (`checker-fixed/`), the verdicts improved (13 correct ledgers rejected instead of 20) and the
   outcome did not (25 clean runs): ten of its rejections over-ruled a correct refusal (nine: the
   fund is U.S.-domiciled, so no withholding applies and the net equals the gross; one: no fees
-  apply to the tender), every maker complied, and the fabrication gate fired ten times on answers
+  apply to the tender), the maker complied each time (six makers), and the fabrication gate fired ten times on answers
   that had been correctly held before the review. The line for the
-  script: "The careful reviewer rejected less. It also told every model the answer to a question
-  the documents do not answer, and every model wrote it down."
+  script: "The careful reviewer rejected less. It also told six of the eight models the answer to
+  a question the documents do not answer, and all six wrote it down."
 - **Repeats.** One model (Claude Sonnet 4.6) was clean twelve times out of twelve across the four
   arms. The small model landed on both sides of the finding in the tools arm. The reviewer of one
   mid-tier model gave three different verdicts on three identical correct ledgers.
