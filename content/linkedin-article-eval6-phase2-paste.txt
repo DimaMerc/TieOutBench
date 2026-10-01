@@ -1,0 +1,210 @@
+HEADLINE (goes in the article title field; 84 characters):
+
+An AI checker reviewed the work of eight AI models. Fewer runs passed every check.
+
+
+BODY (paste below into the article editor; formatting notes at the bottom):
+
+Latest in a series on building runnable evaluations for finance LLMs. The last one gave eight AI models every document for a corporate action in one prompt. This one gives the same models the tools a desk uses, and then adds the control that operations already relies on: a second reviewer. The tools raised the number of runs that passed every check. The reviewer lowered it. Part of the reason is in the reviewers, and part of it is in the environment I built.
+
+
+Two objections to the last test
+
+In September I published the results of eight AI models on six corporate-actions cases. One small model found the corrected dividend notice, stated the new record date, and then booked USD 8,500 where USD 6,800 was due. It had counted the shares as of the old record date.
+
+Two objections to that test are fair. The model had every document in a single prompt and nothing to look anything up with. And nobody checked its work before it was graded. A desk has a position system to ask, and a second person who reviews a booking before it is released.
+
+This evaluation tests both, on the same six cases, with the same eight models and the same grader.
+
+
+The setup
+
+The cases are unchanged: four real events, cited to the issuers' filings. The accounts, the positions and the ETF basket are constructed, and every case file says so.
+
+What changed is how the model works. It no longer receives the documents. It receives tools: list the documents in the store and read them, ask for the account's position as of any date, calculate, and book. A booking is an entry in a test ledger: a receivable, a basket update, a position confirmation, an election, or an escalation that names a missing document and holds the one action that depends on it. No payment is made anywhere.
+
+The grader reads two things: the worksheet the model submits, and the ledger. A worksheet that says 6,800 over a ledger that booked 8,500 fails. Which documents the model read, and which dates it asked for, are recorded and reported. They are not scored.
+
+I ran this four ways, 48 runs each, one run per model per case.
+
+Prompt only. These are the runs from the last article.
+
+Tools.
+
+Tools and a checker. A second agent of the same model receives the task, the worksheet and the ledger, but not the first model's conversation. It can read the documents, query positions and calculate. It approves or rejects. After a rejection the bookings are voided and the first model has one round to revise.
+
+Tools and a stronger checker. The same, with one flagship model reviewing the work of all eight.
+
+
+Tools helped
+
+Runs that passed every check: 32 with the prompt only, 35 with tools. In the 48 tools runs, no model booked an amount on superseded terms.
+
+The recorded calls show how the models worked. All 48 runs read the governing document before the first booking. 46 asked for the position at least once. 37 asked for it as of the date the entitlement is based on. On the corrected dividend, five models asked for the position on both record dates, saw 50,000 shares on the old one and 40,000 on the new one, and booked on 40,000.
+
+Then I looked again at the small model from the last article. I have five saved attempts of it on the corrected dividend with tools. In two it booked USD 8,500. Both times it read the correction, read a position report, called the calculator with 50,000 shares, and never asked the position tool. In three it booked USD 6,800. Each time it asked for the position as of the desk's date, not the record date. The amount was right because nothing changed between those two dates. The note on one of the wrong bookings reads: "account position as of governing record date 2024-08-23 not separately provided, so booked on store-determined entitlement basis from available position history and corrected terms."
+
+The tool that answers that question was available in all five attempts. One disclosure: these are five saved attempts, not five identical trials. The first stopped on an error in my harness after the booking was saved, and I changed the harness between attempts.
+
+So tools helped, and access to the data was not the control. The control would be a check that the position was requested as of the record date before anything is booked.
+
+
+The checker lowered the result
+
+With a checker of the same model, 27 runs passed every check, against 35 without one.
+
+The reviewers looked things up. All 48 queried the position in their first round, and 45 recalculated. Then they rejected 20 of the 46 ledgers my grader scores as correct, and approved one of the two it scores as wrong. Every one of the 21 rejections was followed by a revision.
+
+I read the 20 rejections finding by finding. Thirteen raise nothing the documents support. One reviewer asked for the entitlement date of the stock split to be replaced with the record date of a dividend, which is a different event. The maker made the change, and its score fell from 1.000 to 0.475. Several reviewers told the maker that net cash equals gross cash because no document mentions withholding, and the maker replaced a correct refusal with a number. One review contains two findings, both of which say the entries are right, and its verdict is reject.
+
+Seven raise at least one fair point, and five of those are the same point. My booking tool requires a payment date. No document in the store states the payment date of the tender. The makers entered the date of the results announcement, and the reviewers objected, correctly, that the date has no source. One wrote: "The booked pay_date of 2024-06-10 is unsupported." My grader scores the amount and the share count of that booking, not its date, which is why those ledgers count as correct. Three makers answered the objection by removing the booking. A correct receivable went missing from the ledger because my tool cannot book without a date.
+
+Of the eight runs the checker cost, five trace to reviewer findings the documents do not support, and three to that payment date.
+
+
+A stronger checker did not fix it
+
+With one flagship model reviewing all eight makers, 25 runs passed every check.
+
+Its verdicts were better. It rejected 13 ledgers that the grader scores as correct, against 20. It also found an error the same-model reviewers had missed: a position confirmed at 180,000 shares as of the split's record date, a day before the new shares were distributed.
+
+But ten of its rejections told the maker to replace a refusal with a value. Nine were about tax. In the reviewer's words, about the constructed fund in the case: "MEGA is a U.S. ETF and NVIDIA Corporation is a U.S. issuer; a U.S. fund's dividend from a U.S. corporation is not subject to withholding." One was about fees on the tender. The documents state neither the fund's tax status nor the fees. In all ten runs the maker entered the value. Ten answers that had correctly declined to state an amount now stated one. The reviewer was not consistent about it: on the same tax question it over-ruled the refusal in nine runs and approved it in five.
+
+The counter-argument belongs here. The reviewer's tax reasoning is plausible: a U.S. fund ordinarily has no withholding on a dividend from a U.S. company. The case is built on the rule the makers were given: if the documents do not determine the answer, say so, name the missing document, and hold only the figure that depends on it. The reviewer was never given that rule. Its instruction was to tie the work out to the source and approve only what ties out.
+
+That qualification applies to both checker results. The reviewers had the same documents and the same tools as the makers. They did not have the same rules.
+
+
+What I conclude, and what I do not
+
+In these runs, one round of AI review made the graded result worse, with a checker of the same model and with a stronger one. In 20 of the 21 revisions the maker changed its bookings.
+
+A checker needs the rules, not only the documents. Without them, the stronger reviewer used what it knew about tax to fill the gap, and six of the eight models wrote it down.
+
+The environment is part of the control. A required field with no source, and a label that reads like an error, produced objections that had nothing to do with the quality of the work.
+
+I do not conclude that AI review does not work. This was one protocol: one revision round, a reviewer with full authority, and makers that did not check a finding against the source before acting on it. I do not conclude that a person would have done better as the checker. That was not tested. And these counts are recorded results, not rates: one run per model per case, with three repeats on one case.
+
+The repeats showed both kinds of result. One mid-tier model passed every check in all twelve of its repeat runs, across the four ways of working. And the same-model reviewer of another mid-tier model gave three verdicts on three correct ledgers with the same bookings: approve, reject, approve.
+
+
+Testing my own test
+
+The first time I ran the checker, I had not given the reviewer the question the maker had been asked about the missing document. The reviewers rejected correct escalations as unsupported. I fixed what the reviewer receives and ran the whole arm again. The first wave is kept in the repository, and every number in this article is from the second.
+
+The new runs also found eight places where my grader marked a correct answer wrong. Each is fixed and has a regression check. No published score or gate moved. One diagnostic sub-score did, and the repository says which.
+
+Before writing this, I read every count in the repository's documents against the saved runs and corrected what did not match, including a sentence that said all ten of the stronger reviewer's over-rules were about tax. Nine were.
+
+
+What is next
+
+The next run gives the checker the desk's rules. It may reject a booking. It may not tell a maker to replace a refusal with a value. And the maker checks each finding against the source before it changes anything.
+
+The cases, the grader, every transcript, every ledger and every verdict are open in the repository (github.com/DimaMerc/TieOutBench), and the technical report for the first five evaluations is on SSRN.
+
+If you run a maker-checker control: what does your checker receive that the maker does not?
+
+evals.finance
+
+
+==================================================================
+FORMATTING NOTES (do these by hand in the LinkedIn editor - not part of the article):
+
+1. Cover image: assets/cover-eval6-phase2.png (wide, 1200x630; built by
+   assets/make_cover_eval6_phase2.py from outputs/eval6-agent/summary.json).
+
+2. Make these lines Section Headers (the editor's "H2" style):
+   - Two objections to the last test
+   - The setup
+   - Tools helped
+   - The checker lowered the result
+   - A stronger checker did not fix it
+   - What I conclude, and what I do not
+   - Testing my own test
+   - What is next
+
+3. Italicize the opening "Latest in a series..." paragraph.
+
+4. "Prompt only." / "Tools." / "Tools and a checker." / "Tools and a stronger checker." in
+   The setup: make them a bulleted list in the editor, with the first words in bold.
+
+5. Bold SPARINGLY. Suggested spots:
+   - "access to the data was not the control" (end of Tools helped)
+   - "They did not have the same rules." (end of A stronger checker did not fix it)
+   Anything more starts to look generated.
+
+6. Inline figure after the first paragraph of "The checker lowered the result":
+   paper/figures/f8-phase2-arms.png. After "A stronger checker did not fix it", first
+   paragraph: paper/figures/f9-phase2-two-by-two.png.
+
+7. Links inside article bodies are fine on LinkedIn, so the repo URL and evals.finance stay
+   inline. Add the SSRN link at "is on SSRN": https://doi.org/10.2139/ssrn.7243025
+
+8. Timing words: "In September I published" is right from October 1 on. If this publishes in
+   September, change it to "Last week I published".
+
+9. Sequence: publish this ARTICLE first so the link exists, then the video post
+   (content/linkedin-post-eval6-phase2-driver.txt) with the link in its first comment.
+
+FACT ANCHORS (re-read 2026-09-29 against the saved runs - not part of the article):
+- Counts: outputs/eval6-agent/summary.json. Passed every check (AllPass) 32 plain, 35 tools, 27
+  same-model checker, 25 fixed reviewer, of 48 each. GATE.ELECT in the tools grid: 0.
+- Trajectories (tools arm): governing document read before the first action 48/48; any
+  position query 46/48; basis date queried 37/48; both record dates queried on the corrected
+  dividend by five models (Opus 4.8, Sonnet 4.6, GPT-5.6-sol, GPT-5.5, Gemini 3.6 Flash).
+- The last article's cascade = GPT-5.4-mini, bry-dividend-2024 (outputs/eval6-live), booked
+  $8,500 on 50,000; gold 40,000 x $0.17 = $6,800. Unnamed in the body ("one small model").
+- Five attempts = GPT-5.4-mini, tools arm: prior/20260924T155900Z-4b2349 (8,500; its run.json
+  records "TypeError: 'int' object is not callable" after the ledger was saved), the grid cell
+  (6,800), repeat r1 (8,500), r2 (6,800), r3 (6,800). Wrong runs: read_document bry-8k-20240809,
+  bry-8k-20240813, acct7712-position-20240816; calculate 50000*0.17; no get_position. Right
+  runs: get_position as_of 2024-08-18, calculate 40000*0.17. Harness hashes differ between
+  attempts (agent.py after the first; state.py, scoring.py, transport.py,
+  corporate_actions.py before the repeats). The memo is verbatim from the prior run's
+  ledger.json.
+- Reviewers, same model: 48 of 48 called get_position in round one, 45 called calculate.
+  Two-by-two, round one: reject/wrong 1, reject/correct 20, approve/wrong 1, approve/correct
+  26. 21 rejections, 21 revisions; in 20 the final ledger differs from the rejected one (the
+  21st, GPT-5.4-mini on the corrected dividend, re-booked the same entry and changed its
+  worksheet).
+- The reading of the 20 (13 without a supported objection, 7 with, 5 of them the tender's
+  payment date) and of the fixed reviewer's 13 (10 and 3): outputs/eval6-agent/TAXONOMY.md,
+  finding 12, per-cell tables. It is my reading; the article says "I read".
+- "entitlement date of the stock split replaced with the record date of a dividend" = Haiku
+  4.5's reviewer on mega-split-2024; 1.000 -> 0.475, GATE.DATES.
+- "two findings, both of which say the entries are right" = GPT-5.4-mini's reviewer on
+  zts-dividend-2014 ("no discrepancy on amount, shares, rate, pay date, or governing document";
+  "The escalation is appropriate").
+- "The booked pay_date of 2024-06-10 is unsupported." = verbatim, GPT-5.6-sol's reviewer on
+  mnst-tender-2024 (review.json). Three makers removed the receivable: GPT-5.6-sol on both
+  tender cases, GPT-5.5 on the odd-lot case (ledger_missing_required).
+- Eight cells lost under self-review: Haiku split (DATES); GPT-5.4 split, GPT-5.4 split-clean,
+  Gemini split-clean (FABRICATION); GPT-5.4 tender (probe label changed to COMPUTED); GPT-5.6-sol
+  tender, GPT-5.6-sol odd-lot, GPT-5.5 odd-lot (receivable removed). Five and three.
+- Fixed reviewer = Claude Opus 4.8, unnamed in the body ("one flagship model"). 13 of 46
+  rejected; 14 rejections in all. The error it found that the others missed = Haiku's
+  confirm_position 180,000 as_of 2024-06-06 (distribution was 2024-06-07). Ten over-rules: nine
+  on withholding (split cases), one on the tender's fees (Gemini, "no fees deducted / $0"); ten
+  new GATE.FABRICATION. The quotation is verbatim from checker-fixed/claude-opus-4-8/
+  mega-split-2024/review.json; the sentence continues "No withholding schedule is 'missing'
+  because none is needed". On the 14 split-case runs where the maker had refused correctly, the
+  fixed reviewer over-ruled 9 and approved 5 (Sonnet stale split, Haiku clean split, GPT-5.5
+  clean split, GPT-5.4 both).
+- "six of the eight models wrote it down": the ten over-ruled runs belong to six makers (Opus
+  twice, Sonnet, Haiku, GPT-5.6-sol twice, GPT-5.5, Gemini three times). GPT-5.4 was not
+  over-ruled (six of six under the fixed reviewer); GPT-5.4-mini's split worksheets already
+  carried the fabrication gate before the review.
+- Repeats: Claude Sonnet 4.6 12 of 12 AllPass across four arms (mid tier). "Another mid-tier
+  model" = GPT-5.4: reviewer verdicts approve, reject then approve, approve on three ledgers
+  with the same three bookings (6,800 receivable, 40,000 confirmed as of 2024-08-23,
+  escalation for the withholding document).
+- First checker wave: reviewer packet without the D2 probe question; arm re-run in full;
+  wave 1 under each cell's prior/ and repeat/checker-wave1. Eight Phase-1 false fires, LW4#1
+  to LW4#13; no gated score, ungated score, gate or checkpoint moved; one category rollup moved
+  (GPT-5.4-mini, corrected dividend, calibration -0.385 to +0.077).
+- "corrected what did not match" = commits 898e55a and 8ba0b74 (2026-09-29).
+- Attribution wall: "I ran", "I read", "my grader", "my booking tool" - his own tests. No desk
+  claim, no employer, no bio line. "A desk has a position system to ask, and a second person
+  who reviews a booking" is a general statement of the control, not a claim of experience.
+- Models are named by tier in the body; names are on the leaderboard.

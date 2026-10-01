@@ -1,0 +1,65 @@
+DRIVER POST for the eval-#6 Phase-2 article, carrying the VIDEO (feed post; runbook at bottom)
+Drafted 2026-09-29. Every figure re-read that day against outputs/eval6-agent/summary.json.
+Upload the MP4 NATIVELY to LinkedIn. Links and the AI-likeness disclosure go in the first comment.
+===========================================================================
+
+I gave eight AI models the tools a desk uses for a corporate action. Then I added a second AI to check the work.
+
+With tools, more runs passed every check: 35 of 48, up from 32.
+
+With the checker, fewer did: 27.
+
+The checker looked up the position and recalculated. Then it rejected 20 of the 46 bookings my grader scores as correct, and each time the first model changed its work.
+
+Not every objection was wrong. Five were about a payment date that no document states. My test required that date, so part of this result comes from my environment, not from the AI.
+
+The 90-second video shows the recorded calls. The article has the rest: what a stronger checker did, and what I would give the checker next time. Links in the first comment.
+
+If you run a maker-checker control: what does your checker receive that the maker does not?
+
+
+===========================================================================
+FIRST COMMENT (post it right after the post goes up):
+
+The article: [ARTICLE LINK]
+Full video with captions and chapters: [YOUTUBE LINK]
+Cases, grader and every recorded run: https://evals.finance
+Results by model: https://github.com/DimaMerc/TieOutBench/blob/main/LEADERBOARD.md
+
+The presenter is my AI-generated likeness, with a clone of my own voice. The events are sourced to real filings. The accounts and positions are constructed, and the bookings are in a test ledger. No payment is made.
+
+The counts are recorded results, not rates. The checker had the documents and the tools, but not the maker's rules for missing evidence.
+
+
+===========================================================================
+PUBLISH RUNBOOK (not part of the post):
+
+1. Sequence: publish the ARTICLE first (content/linkedin-article-eval6-phase2-paste.txt) so
+   the link exists. Upload the video to YouTube (content/video/eval6-phase2-v7/youtube-draft.md
+   has the title, description and chapters; tick the altered-content box). Then this post.
+2. Timing: the week after Sibos, Tue Oct 6 to Thu Oct 8, 8:00 to 9:30 ET (afternoon in
+   Frankfurt and Zurich).
+3. Video file: content/video/eval6-phase2-v7/tieoutbench-eval6-phase2-v7.mp4, with
+   captions.srt. The video covers three ways of working (prompt, tools, same-model checker).
+   The stronger checker (25 of 48) is in the article only, so the post does not give that number.
+4. No links in the post body. Replace the two placeholders in the first comment.
+5. The hook differs from the article's headline on purpose, so a profile visitor does not read
+   the same sentence twice.
+6. If asked "which model?", answer with the leaderboard link and the tier, not a vendor
+   argument.
+7. If asked whether the checker result is the environment's doing: three of the eight runs the
+   checker cost trace to the payment-date field, five to reviewer findings the documents do not
+   support. The per-cell table is finding 12 in outputs/eval6-agent/TAXONOMY.md.
+
+FACTS (not part of the post):
+- 32 / 35 / 27 of 48 = AllPass, plain / tools / same-model checker.
+- "looked up the position and recalculated" = 48 of 48 reviewers called get_position in round
+  one, 45 called calculate.
+- "20 of the 46 bookings my grader scores as correct" = round-one two-by-two, reject/correct 20
+  of 46 ledgers scored correct. 16 of the 20 work products had passed every check before review.
+- "each time the first model changed its work" = 21 rejections, 21 revisions; the final ledger
+  differs from the rejected one in 20, and in the 21st the worksheet changed.
+- "Five were about a payment date that no document states" = GPT-5.4 (both tender cases),
+  GPT-5.5 (odd-lot), GPT-5.6-sol (both tender cases). book_receivable requires pay_date.
+- Video v7 text was checked against the corrected documents on 2026-09-29: none of the
+  corrected sentences appear in its captions or description.
