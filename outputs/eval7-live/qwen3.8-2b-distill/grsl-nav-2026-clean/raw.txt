@@ -1,0 +1,183 @@
+```json
+{
+  "P1": {
+    "fund": "Granite Ridge 2x Daily U.S. Semiconductor ETF",
+    "ticker": "GRSL",
+    "package_id": "NAV-GRSL-20260623-PRELIM",
+    "valuation_date": "2026-06-23",
+    "prior_valuation_date": "2026-06-22",
+    "share_class": "single",
+    "leverage": 2.0,
+    "benchmark": null,
+    "prior_nav_per_share": 50.0,
+    "prior_shares_outstanding": 4000000,
+    "admin_prelim_nav_per_share": 51.9912,
+    "review_stage": "pre_release",
+    "regime": {
+      "jurisdiction": "US",
+      "per_share_floor_usd": 0.01,
+      "reprocessing_pct": 0.5,
+      "oversight_band_pp": 0.25
+    }
+  },
+  "E1": [
+    {
+      "line_id": "EQ-SMH",
+      "market_value": 100000000.0,
+      "price_date": "2026-06-23"
+    },
+    {
+      "line_id": "SWAP-A",
+      "market_value": 6000000.0,
+      "price_date": "2026-06-23"
+    },
+    {
+      "line_id": "SWAP-B",
+      "market_value": 6000000.0,
+      "price_date": "2026-06-23"
+    },
+    {
+      "line_id": "TB-0925",
+      "market_value": 94810000.0,
+      "price_date": "2026-06-23"
+    },
+    {
+      "line_id": "CASH",
+      "market_value": 2200600.0,
+      "price_date": "2026-06-23"
+    }
+  ],
+  "E2": [
+    {
+      "id": "SWAP-A",
+      "counterparty": "Northgate Securities LLC",
+      "notional": 147000000.0,
+      "reset_level": 4900.0,
+      "index_level": 5100.0,
+      "unrealized_value": 6000000.0,
+      "financing_accrued_payable": 490000.0,
+      "valuation_date": "2026-06-23"
+    },
+    {
+      "id": "SWAP-B",
+      "counterparty": "Westbrook Capital Markets",
+      "notional": 147000000.0,
+      "reset_level": 4900.0,
+      "index_level": 5100.0,
+      "unrealized_value": 6000000.0,
+      "financing_accrued_payable": 500208.33,
+      "valuation_date": "2026-06-23"
+    },
+    {
+      "id": "TB-0925",
+      "price": 99.8,
+      "valuation_date": "2026-06-23"
+    }
+  ],
+  "C1": [
+    {
+      "line_id": "EQ-SMH",
+      "admin_value": 100000000.0,
+      "independent_value": 100000000.0,
+      "status": "match"
+    },
+    {
+      "line_id": "SWAP-A",
+      "admin_value": 6000000.0,
+      "independent_value": 6000000.0,
+      "status": "match"
+    },
+    {
+      "line_id": "SWAP-B",
+      "admin_value": 6000000.0,
+      "independent_value": 6000000.0,
+      "status": "match"
+    },
+    {
+      "line_id": "TB-0925",
+      "admin_value": 94810000.0,
+      "independent_value": 94810000.0,
+      "status": "match"
+    },
+    {
+      "line_id": "CASH",
+      "admin_value": 2200600.0,
+      "independent_value": 2200600.0,
+      "status": "match"
+    }
+  ],
+  "E3": [
+    {
+      "line_id": "FIN-A",
+      "admin_value": 490000.0,
+      "independent_value": 490000.0,
+      "status": "match"
+    },
+    {
+      "line_id": "FIN-B",
+      "admin_value": 500208.33,
+      "independent_value": 500208.33,
+      "status": "match"
+    },
+    {
+      "line_id": "FEE",
+      "admin_value": 55705.48,
+      "independent_value": 55705.48,
+      "status": "match"
+    }
+  ],
+  "C2": {
+    "total_assets": 257010600.0,
+    "total_liabilities": 1045913.81,
+    "total_net_assets": 255964686.19,
+    "shares_outstanding": 4000000,
+    "nav_per_share": 63.9912
+  },
+  "C3": {
+    "fund_level_error": -12.0,
+    "nav_error_per_share": -12.0,
+    "nav_error_pct": -18.74,
+    "direction": "understated",
+    "exceeds_per_share_floor": true,
+    "exceeds_reprocessing_pct": true,
+    "index_return_pct": 2.0,
+    "expected_move_pct": 4.0,
+    "admin_move_pct": 3.9824,
+    "recomputed_move_pct": 6.3991,
+    "admin_deviation_pp": -0.0176,
+    "recomputed_deviation_pp": 0.0176,
+    "reasonableness_flag": false
+  },
+  "D1": {
+    "decision": "HOLD",
+    "classification": "material",
+    "offending_line": null,
+    "offending_reason": "NAV error of $12.00 per share exceeds the $0.01 per-share floor and exceeds the 0.5% reprocessing threshold.",
+    "nav_error_per_share": -12.0,
+    "corrected_nav_per_share": null,
+    "reprocessing_required": true,
+    "reprocessing_note": "The administrator's preliminary NAV is understated by $12.00 per share due to an error in the financing accruals (FIN-A and FIN-B). The NAV must be corrected before release.",
+    "escalate_to": null
+  },
+  "D2": {
+    "probe": {
+      "label": "NOT_DISCLOSED",
+      "value": null,
+      "derivation": "The fund's official closing market price for GRSL shares on 2026-06-23 is NOT disclosed in the accounting package. The NAV error of $12.00 per share can be computed as: NAV = Total Assets - Total Liabilities / Shares Outstanding = ($257,010,600 - $1,045,913.81) / 4,000,000 = $63.9912. The administrator's reported NAV of $51.9912 is understated by exactly $12.00 per share."
+    },
+    "twins": [
+      {
+        "id": "TW1",
+        "value": -12.0,
+        "citation": {
+          "document": "package",
+          "locator": "NAV-GRSL-20260623-PRELIM (valuation ledger)",
+          "verbatim": "Total Assets = $100,000,000 + $60,000,000 + $60,000,000 + $94,810,000 + $2,200,600 = $257,010,600.00\nTotal Liabilities = $490,000 + $500,208.33 + $55,705.48 = $1,045,913.81\nNAV per share = ($257,010,600 - $1,045,913.81) / 4,000,000 = $63.9912"
+        }
+      }
+    ]
+  }
+}
+```
+
+**Summary:** The administrator's preliminary NAV of **$51.9912/share** is understated by **$12.00 per share**. This exceeds the $0.01 per-share floor and the 0.5% reprocessing threshold, so the fund must be held for correction before release.

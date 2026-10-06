@@ -1,0 +1,166 @@
+```json
+{
+ "P1": {
+  "fund": "Granite Ridge 2x Daily U.S. Semiconductor ETF",
+  "ticker": "GRSL",
+  "package_id": "NAV-GRSL-20260623-PRELIM",
+  "valuation_date": "2026-06-23",
+  "prior_valuation_date": "2026-06-22",
+  "share_class": "single",
+  "leverage": 2.0,
+  "benchmark": "PHLX Semiconductor Sector Index (SOX)",
+  "prior_nav_per_share": 50.0,
+  "prior_shares_outstanding": 4000000,
+  "admin_prelim_nav_per_share": 51.2412,
+  "review_stage": "pre_release",
+  "regime": {
+   "jurisdiction": "US",
+   "per_share_floor_usd": 0.01,
+   "reprocessing_pct": 0.5,
+   "oversight_band_pp": 0.25
+  }
+ },
+ "E1": {
+  "admin_lines": [
+   {
+    "line_id": "EQ-SMH",
+    "market_value": 100000000.0,
+    "price_date": "2026-06-23"
+   },
+   {
+    "line_id": "SWAP-A",
+    "market_value": 6000000.0,
+    "price_date": "2026-06-23"
+   },
+   {
+    "line_id": "SWAP-B",
+    "market_value": 3000000.0,
+    "price_date": "2026-06-22"
+   },
+   {
+    "line_id": "TB-0925",
+    "market_value": 94810000.0,
+    "price_date": "2026-06-23"
+   },
+   {
+    "line_id": "CASH",
+    "market_value": 2200600.0,
+    "price_date": "2026-06-23"
+   }
+  ],
+  "admin_liabilities": [
+   {
+    "line_id": "FIN-A",
+    "amount": 490000.0
+   },
+   {
+    "line_id": "FIN-B",
+    "amount": 500208.33
+   },
+   {
+    "line_id": "FEE",
+    "amount": 55705.48
+   }
+  ],
+  "admin_total_assets": 206010600.0,
+  "admin_total_liabilities": 1045913.81,
+  "admin_total_net_assets": 204964686.19,
+  "admin_shares_outstanding": 4000000,
+  "admin_nav_per_share": 51.2412,
+  "stale_flags": [
+   "SWAP-B"
+  ],
+  "citation": {
+   "document": "package",
+   "locator": "PRICING EXCEPTIONS REPORT",
+   "verbatim": "line_id=SWAP-B  flag=STALE_PRICE  note=Westbrook valuation file not received by the 17:30 ET pricing cut-off; prior business day (2026-06-22) value carried forward"
+  }
+ },
+ "E2": {
+  "swap_statements": [
+   {
+    "id": "SWAP-A",
+    "counterparty": "Northgate Securities LLC",
+    "notional": 147000000.0,
+    "reset_level": 4900.0,
+    "index_level": 5100.0,
+    "unrealized_value": 6000000.0,
+    "financing_accrued_payable": 490000.0,
+    "valuation_date": "2026-06-23"
+   },
+   {
+    "id": "SWAP-B",
+    "counterparty": "Westbrook Capital Markets",
+    "notional": 147000000.0,
+    "reset_level": 4900.0,
+    "index_level": 5100.0,
+    "unrealized_value": 6000000.0,
+    "financing_accrued_payable": 500208.33,
+    "valuation_date": "2026-06-23"
+   }
+  ],
+  "prices": {
+   "SMH": 250.0,
+   "TB-0925": 99.8
+  },
+  "index": {
+   "close": 5100.0,
+   "prior_close": 5000.0,
+   "return_pct": 2.0
+  },
+  "capital_stock": {
+   "creations_shares": 0,
+   "redemptions_shares": 0,
+   "shares_outstanding": 4000000
+  }
+ },
+ "C1": {
+  "recon": [
+   {
+    "line_id": "EQ-SMH",
+    "admin_value": 100000000.0,
+    "independent_value": 100000000.0,
+    "status": "match"
+   },
+   {
+    "line_id": "SWAP-A",
+    "admin_value": 6000000.0,
+    "independent_value": 6000000.0,
+    "status": "match"
+   },
+   {
+    "line_id": "SWAP-B",
+    "admin_value": 3000000.0,
+    "independent_value": 6000000.0,
+    "status": "stale"
+   },
+   {
+    "line_id": "TB-0925",
+    "admin_value": 94810000.0,
+    "independent_value": 94810000.0,
+    "status": "match"
+   },
+   {
+    "line_id": "CASH",
+    "admin_value": 2200600.0,
+    "independent_value": 2200600.0,
+    "status": "match"
+   },
+   {
+    "line_id": "FIN-A",
+    "admin_value": 490000.0,
+    "independent_value": 490000.0,
+    "status": "match"
+   },
+   {
+    "line_id": "FIN-B",
+    "admin_value": 500208.33,
+    "independent_value": 500208.33,
+    "status": "match"
+   },
+   {
+    "line_id": "FEE",
+    "admin_value": 55705.48,
+    "independent_value": 55705.48,
+    "status": "match"
+   }

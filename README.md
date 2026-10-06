@@ -16,11 +16,15 @@ answer: the workflow broken into checkpoints, a gating-plus-weighted rubric, exp
 cases cited to SEC filings, and a grader that surfaces exactly *where* — and how badly — a model
 fails.
 
-Three of the six workflows are the analyst's (earnings, buffer-ETF diligence, DCF). Three are the
-**back office's** (ETF creation/redemption reconciliation, OTC swap confirmation matching, and
-corporate-actions processing — the suite's first document-store episode, where the model must
-decide *which document governs* before any number is right) — and as of mid-2026, those three
-appear to be the **only public LLM evals of capital-markets post-trade operations anywhere** (see
+Three of the seven workflows are the analyst's (earnings, buffer-ETF diligence, DCF). Four are the
+**back office's** (ETF creation/redemption reconciliation, OTC swap confirmation matching,
+corporate-actions processing - the suite's first document-store episode, where the model must
+decide *which document governs* before any number is right - and, new in October 2026, **ETF NAV
+oversight**, the "release only if it ties" control on a fund administrator's daily NAV package).
+As of October 2026 no other public benchmark covers ETF creation/redemption, confirmation matching
+or corporate-actions processing; fund NAV work appears in one general professional-work suite
+(Surge AI's DAYJOB, October 1, 2026), which is why eval #7 is built on position-level packets,
+deterministic checks and SEC-letter failure patterns (see
 [where this sits in the 2026 benchmark
 landscape](#where-this-sits-in-the-2026-benchmark-landscape)). Every live model run is
 consolidated in [**LEADERBOARD.md**](LEADERBOARD.md).
@@ -43,7 +47,7 @@ CASE snow-2026q2   model=scale_slip   gated 0.452   AllPass 0   gates: GATE.P2  
 The arithmetic is internally consistent, so the naive (**ungated**) score stays ~0.95. But one hard
 **gate** fires on the scale misread and the **gated score collapses to 0.45.** That ~0.50 gap *is*
 the finding: *can do the math, cannot be trusted to read a statement header.* Measuring that gap —
-across six analyst and back-office workflows — is the whole repo.
+across seven analyst and back-office workflows — is the whole repo.
 
 ## How the scoring works (30 more seconds)
 
@@ -55,7 +59,7 @@ exactly where and how badly** the model failed. Every gold figure is traced to a
 nothing is invented. Models also earn credit for **calibrated uncertainty** — saying "not
 determinable from this packet" instead of guessing.
 
-## The six evals — and how to run each
+## The seven evals — and how to run each
 
 | Eval | What it tests | Run it (the perfect "oracle") | See it fail |
 |---|---|---|---|
@@ -65,6 +69,7 @@ determinable from this packet" instead of guessing.
 | **#4 — Creation/redemption** | reconcile an AP's creation basket vs the PCF & NAV; **settle only if it ties** | `python -m harness run --case grin-create-2026` | `--model approve_break` — settle a basket that's $13,320 short → **GATE.RECON** |
 | **#5 — Confirmation matching** | match two OTC swap confirmations field-by-field; **affirm only if the economics tie** | `python -m harness run --case irs-confirm-2026` | `--model affirm_match` — affirm a trade with a material rate break → **GATE.MATCH** |
 | **#6 — Corporate actions** | process an event from a **document store** (announcement + amendment + distractors): pin the governing version and dates, compute the entitlement, **commit only what the deadline allows** | `python -m harness run --case bry-dividend-2024` | `--model version_slip` — terms sourced from the superseded announcement → **GATE.VERSION** |
+| **#7 — NAV oversight** | review a fund administrator's **preliminary daily NAV package**: recompute the NAV from the position-level inputs, check the day's move against the expected leveraged index move, localize the break, **release only if it ties** | `python -m harness run --case grsl-nav-2026` | `--model release_override` — releases a NAV understated by $0.75/share → **GATE.RELEASE** |
 
 Every `run` defaults to a perfect answer (scores 1.000); add `--model <name>` to watch a designed
 flaw trip its gate. `python -m harness list` shows every case and variant ·
@@ -82,7 +87,7 @@ in [`outputs/`](outputs/), consolidated in [`LEADERBOARD.md`](LEADERBOARD.md).
 > source in [`paper/`](paper/). Each eval also has a plain-language write-up in
 > [`content/`](content/).
 
-## The six evals in detail
+## The seven evals in detail
 
 - **Eval #1 — Quarterly earnings analysis.** Digest a 10-Q/earnings release, reconcile the figures,
   benchmark versus consensus, flag what moved. 17 checkpoints, 109 criteria, three gold cases
@@ -158,19 +163,41 @@ in [`outputs/`](outputs/), consolidated in [`LEADERBOARD.md`](LEADERBOARD.md).
   average is unconstrained optimization; gates define the feasible set). 9 checkpoints, 31
   criteria (+5 gates), six gold cases — all corporate-action facts cited to EDGAR filings.
   Live traces: [`outputs/eval6-live/`](outputs/eval6-live/).
+- **Eval #7 — ETF NAV oversight** *(the fund-accounting "release only if it ties" control, and the one
+  fund-servicing process the custodians say they are putting AI on)*. Given a fund administrator's
+  **preliminary daily NAV package** (valuation ledger, accruals, capital stock, pricing-exception
+  report), the counterparty swap valuation statements, the market data and the fund's NAV error
+  policy: recompute the NAV from the position-level inputs, check the day's move against the
+  expected leveraged index move, localize any break to its line, quantify it per share and in
+  percent against the materiality regime - and **release only if it ties.** The signature is
+  **GATE.RELEASE**: a model that releases a NAV whose error reaches the $0.01 floor auto-fails. The
+  gold case is a 2x leveraged ETF whose administrator carried one total return swap at the prior
+  day's mark after the counterparty file missed the pricing cut-off - NAV understated by $0.7500 a
+  share (1.44%), the day's move +2.48% against an expected +4.00%; gold answer HOLD, correct the mark
+  from the statement already in the packet, re-strike. The failure pattern is the documented one
+  (Rydex Series Funds CORRESP, Feb 2024: "use of a stale price (i.e., the prior day's price) for a
+  total return swap"; Simplify QIS, Nov 2024: "an incorrect swap security price"), and the 2026 ETF
+  restatement cluster (MSOX, GMEY, HOLA, METV, HDGE/DWSH) is dominated by swap and income
+  bookkeeping. A clean mirror case (the file on time, the package ties, RELEASE) penalizes the
+  perma-holder. 8 checkpoints, 37 criteria (+6 gates), two gold cases - constructed and
+  mechanics-faithful like eval #4 (a NAV package is not a public document; real SMH/SOX,
+  fictitious fund). Built, offline-validated and live-run October 5, 2026 - eight frontier models, three
+  vendors, both cases: ten of sixteen runs AllPass, no gate fired, GATE.RELEASE never fired; see
+  [What the live runs found (eval #7)](#what-the-live-runs-found-eval-7-nav-oversight) and
+  [`outputs/eval7-live/`](outputs/eval7-live/).
 
 ## What's here
 
 | Path | Contents |
 |---|---|
-| [`workflow/`](workflow/) | Each workflow decomposed into measurable checkpoints (earnings: 17 · defined-outcome: 18 · DCF: 18 · creation/redemption: 8 · confirmation-matching: 8 · corporate-actions: 9) |
+| [`workflow/`](workflow/) | Each workflow decomposed into measurable checkpoints (earnings: 17 · defined-outcome: 18 · DCF: 18 · creation/redemption: 8 · confirmation-matching: 8 · corporate-actions: 9 · NAV oversight: 8) |
 | [`rubric/`](rubric/) | Gating + weighted, tiered rubrics — machine-readable atoms (`criteria*.yaml`), the frozen judge prompt (`judge.md`), and a `validate.py` linter |
-| [`cases/`](cases/) | Gold cases — every figure cited to a real SEC filing (10-K / 10-Q / 8-K / 497K / N-PORT); **no invented numbers** (the creation/redemption case is the one exception: PCFs are not public, so it is a constructed, mechanics-faithful scenario over real securities) |
+| [`cases/`](cases/) | Gold cases — every figure cited to a real SEC filing (10-K / 10-Q / 8-K / 497K / N-PORT); **no invented numbers** (two exceptions: the creation/redemption and NAV-oversight cases - PCFs and administrators' NAV packages are not public, so they are constructed, mechanics-faithful scenarios over real securities, with the failure patterns cited to SEC correspondence and issuer press releases) |
 | [`harness/`](harness/) | The runnable scorer: one suite-agnostic engine + a module per eval; deterministic checks + gating + a pluggable LLM-judge interface; a live path for real models |
-| [`LEADERBOARD.md`](LEADERBOARD.md) | Every live model run on one page — frontier (evals #3–#5) and open-weight (#1–#2), with the discriminating findings and the honest caveats |
+| [`LEADERBOARD.md`](LEADERBOARD.md) | Every live model run on one page — frontier (evals #3–#7) and open-weight (#1–#2), with the discriminating findings and the honest caveats |
 | [`profiles/`](profiles/) | The leaderboard as data — machine-readable per-checkpoint capability profiles per model (routing priors: which workflow step a model can touch), regenerated byte-stably from the committed runs via `python -m harness profiles` |
 | [`ODD.md`](ODD.md) | The allocator framing — what these outputs look like as operational-due-diligence evidence for AI in the investment process, with a sample artifact-backed DDQ section |
-| [`outputs/`](outputs/) | The real graded model runs + failure taxonomies — [`eval2-live/`](outputs/eval2-live/) (two local models, the judge-vs-expert calibration), [`eval3-live/`](outputs/eval3-live/) (eight frontier models on both DCF cases, incl. [`nvda-fy2026-dcf/`](outputs/eval3-live/nvda-fy2026-dcf/)), [`eval4-live/`](outputs/eval4-live/) and [`eval5-live/`](outputs/eval5-live/) (frontier runs on reconciliation and confirmation matching), [`eval6-live/`](outputs/eval6-live/) (eight frontier models on all six corporate-actions cases) — the full eight-model grid is in [`LEADERBOARD.md`](LEADERBOARD.md) |
+| [`outputs/`](outputs/) | The real graded model runs + failure taxonomies — [`eval2-live/`](outputs/eval2-live/) (two local models, the judge-vs-expert calibration), [`eval3-live/`](outputs/eval3-live/) (eight frontier models on both DCF cases, incl. [`nvda-fy2026-dcf/`](outputs/eval3-live/nvda-fy2026-dcf/)), [`eval4-live/`](outputs/eval4-live/) and [`eval5-live/`](outputs/eval5-live/) (frontier runs on reconciliation and confirmation matching), [`eval6-live/`](outputs/eval6-live/) (eight frontier models on all six corporate-actions cases), [`eval7-live/`](outputs/eval7-live/) (the same eight models on both NAV-oversight cases) — the full eight-model grid is in [`LEADERBOARD.md`](LEADERBOARD.md) |
 
 ## What the live runs found (eval #2)
 
@@ -414,6 +441,63 @@ python -m harness env --list                            # the nine planted traje
 python outputs/run_live_eval6_agent.py --arm tools --model-id <model> --all-cases    # a live arm (needs a key)
 ```
 
+## What the live runs found (eval #7, NAV oversight)
+
+Eight frontier models, three vendors, both gold cases - the administrator's package with one swap at the
+prior day's mark (NAV understated $0.75 a share) and its clean mirror. Deterministic core, no free-form
+atoms, one run per model per case:
+
+| Model | Tier | Break case (stale swap mark) | Clean case |
+|---|---|---:|---:|
+| **Claude Opus 4.8** | flagship | **1.000 AP** | **1.000 AP** |
+| Claude Sonnet 4.6 | mid | 0.972 | **1.000 AP** |
+| Claude Haiku 4.5 | small | 0.964 | 0.986 |
+| **GPT-5.6-sol** | flagship | **1.000 AP** | **1.000 AP** |
+| **GPT-5.5** | flagship (prev.) | **1.000 AP** | **1.000 AP** |
+| GPT-5.4 | mid | 0.972 | 1.000 AP |
+| GPT-5.4-mini | small | **0.633** | 1.000 AP |
+| Gemini 3.6 Flash | small/fast | 0.956 | **1.000 AP** |
+
+**The frontier holds the wrong NAV and releases the right one.** Every model returned HOLD on the break
+case, localized it to the stale swap line, recomputed 51.9912, and ran the reasonableness check the same
+way (+2.48% against an expected +4.00%, flag raised); every model released the clean package. Three
+AllPass both cases, the suite's first AllPasses on a reconciliation-type break case; a fourth is perfect on the
+clean case and loses its break-case AllPass only to a refusal reason that echoed the answer schema's own text. All eight refused
+the D2 probe correctly: no model invented a closing market price or assumed the shares closed at NAV.
+
+**The small tier does the right thing on wrong arithmetic.** GPT-5.4-mini reconciles every line
+correctly, then sums the recomputed assets $2,000,000 short, so its error comes out at 0.25 a share, or
+0.49% - just under the 0.5% reprocessing threshold. It still holds, because the $0.01 floor is exceeded
+either way, but post-release the same slip would have changed the remediation class. The eval pins it to
+the recomputation and the quantification, and fires no gate: a 0.99 ratio is an arithmetic error, not a
+scale error, and the scale gate is built not to fire on it.
+
+**The mid tier answers the test as a consequence.** Sonnet 4.6 and GPT-5.4 compute the error at 1.44%
+and still report the 0.5% test as not exceeded, reasoning that reprocessing does not apply pre-release.
+Haiku 4.5 orders shareholder reprocessing for a NAV that was never released. Both are decision-layer
+misreads with the numbers right.
+
+**The honest negative: `GATE.RELEASE` never fired.** No model pushed the wrong NAV out, just as no
+model settled the broken basket on eval #4 or affirmed the mismatched confirmation on eval #5. Running
+real models surfaced two grader calibrations (a valid citation of the totals block the single gold string
+rejected, and a refusal reason that was the answer schema's own text echoed back; both fixed, all runs re-graded
+offline with provenance kept) and one harness artifact (a token-budget cut-off on Gemini's first attempt, re-run
+at a larger budget). A six-attacker gaming review then hardened the grader on every surface; its fixes moved four
+scores, none of them a decision or a gate, all disclosed in the taxonomy. Traces, re-grade log and
+the write-up: [`outputs/eval7-live/`](outputs/eval7-live/).
+
+**Five free local models on the same packages.** A 27B Qwen 3.8 running through LM Studio on a laptop with a
+12 GB graphics card matched the frontier flagships on the break case, every criterion met, after 24 minutes
+of thinking; on the clean case it thought twice as long, released the NAV correctly and scored 0.986, in five and
+a half minutes once moved to a desktop RTX 5090 (the laptop attempt ran past its output budget). A 31B Gemma 4 on a desktop RTX 5090 passed everything on both
+packages in about six minutes each, with a fraction of the Qwen's thinking. A 35B Qwen 3.6 mixture model with 3B
+active parameters got every number and decision right in under four minutes per case and lost points only for giving
+no citations and leaving the NAV-to-release blank on the clean package (0.968 and 0.932). A 32B Qwen 2.5 that
+answers without a thinking phase saw the stale swap and held, but copied the administrator's NAV back as its
+recomputation and reported no error (0.535; exact on the clean case apart from paperwork, 0.941). A 2B distill read every line correctly and then could not add them up, declaring
+errors of $27.75 and $12 a share that did not exist and holding the clean NAV. The paid models took 15 to 40
+seconds per case. Details and the cut-off attempts: [`outputs/eval7-live/TAXONOMY.md`](outputs/eval7-live/TAXONOMY.md).
+
 ## What the demo shows
 
 `python -m harness demo` grades a model that does Snowflake's analysis **correctly** but misreads
@@ -445,8 +529,9 @@ due diligence would ask about AI inside an investment process.
 
 The methodology here is the same family the frontier now uses — expert-authored tasks decomposed
 into checkpoints, point-weighted rubric criteria with **gating conditions**, LLM-judge grading,
-all-pass alongside partial credit. What's different is the **domain**. Every prominent finance
-benchmark tests the front office; none covers post-trade operations:
+all-pass alongside partial credit. What's different is the **domain**. Nearly every prominent finance
+benchmark tests the front office; as of October 2026 one general professional-work suite touches fund NAV
+work, and none covers the rest of post-trade operations:
 
 | Benchmark | Built by | Format | Finance slice covered | Post-trade ops? |
 |---|---|---|---|---|
@@ -456,14 +541,19 @@ benchmark tests the front office; none covers post-trade operations:
 | [BigFinanceBench](https://arxiv.org/abs/2606.03829) (2026) | Rogo + OpenAI | point-weighted-rubric QA | public-equity research (52 expert authors) | ✗ |
 | [FrontierFinance](https://arxiv.org/abs/2604.05912) (2026) | Kensho / S&P / MIT | long-horizon computer use | 3-statement / LBO / DCF / M&A model building | ✗ |
 | [FinBalance](https://arxiv.org/abs/2606.15949) (2026) | academic | static reconciliation | corporate bookkeeping (invoices → journals) | ✗ (accounting, not securities) |
-| **this suite** (2025–26) | one domain expert | rubric-gated, runnable, live-graded | analyst workflows **+ ETF creation/redemption + OTC confirmation matching** | **✓** |
+| [DAYJOB](https://arxiv.org/abs/2610.01306) (Oct 2026) | Surge AI | containerized professional-work tasks, agentic judge, all-or-nothing pass | 80 finance tasks across valuation, credit, real estate, treasury, close and audit, and "fund operations (net asset value, pricing review, rebalancing)" | touches fund NAV; no ETF primary market, confirmations, corporate actions or settlement |
+| [FinancialAuditBench](https://arxiv.org/abs/2609.32835) (Sep 2026) | academic | synthetic audit engagements, workpaper tasks | corporate financial-statement audit workpapers | ✗ (audit, not fund operations) |
+| **this suite** (2025–26) | one domain expert | rubric-gated, runnable, live-graded | analyst workflows **+ ETF creation/redemption + OTC confirmation matching + corporate-actions processing + ETF NAV oversight** | **✓** |
 
 A July 2026 meta-survey mapping 452 public financial-services benchmarks onto banking-industry
 domains ([arXiv 2607.01740](https://arxiv.org/abs/2607.01740)) reports the same picture: coverage
 concentrates in information-processing and analysis, with "a genuine gap in the public evaluation
-landscape for regulated domain tasks." To our knowledge, evals #4 and #5 are the first public,
-runnable LLM evals of capital-markets post-trade workflows — the asset-servicing back office that
-clears, settles, and reconciles what the front office trades.
+landscape for regulated domain tasks." To our knowledge, evals #4 to #7 are the only public, runnable
+LLM evals of capital-markets post-trade workflows - the asset-servicing back office that clears, settles,
+reconciles and strikes the NAV on what the front office trades - with one qualification: fund NAV work also
+appears, as a task family inside a general suite, in DAYJOB (October 2026). Eval #7 is built to differ from it
+on the points that matter to a desk: position-level packets, deterministic checks, failure patterns taken from
+the SEC-letter record, a jurisdiction-aware materiality regime, and calibrated refusal.
 
 The design lineage, for the record: OpenAI's **HealthBench** (expert rubric criteria graded by an
 LLM judge), **FinanceBench** (every answer tied to an evidence string), **FinQA / TAT-QA**

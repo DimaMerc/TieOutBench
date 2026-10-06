@@ -1,6 +1,6 @@
 # Harness — Phase 4
 
-A runnable scorer for **all six evals in the suite**: it loads each case's rubric
+A runnable scorer for **all seven evals in the suite**: it loads each case's rubric
 ([criteria.yaml](../rubric/criteria.yaml) for the earnings eval,
 [criteria-defined-outcome.yaml](../rubric/criteria-defined-outcome.yaml) for the defined-outcome
 ETF eval, [criteria-dcf.yaml](../rubric/criteria-dcf.yaml) for the DCF-valuation eval), grades a
@@ -14,6 +14,7 @@ python -m harness list                                   # cases + variants, per
 python -m harness suite  --model oracle                  # score every case (both suites)
 python -m harness run    --case snow --all               # all flawed variants on one case
 python -m harness run    --case koct-op2026-anchor --model free_lunch   # the signature gate
+python -m harness run    --case grsl-nav-2026 --model release_override   # eval #7: a wrong NAV released
 python -m harness demo                                   # the canonical scale-slip finding
 python -m harness selftest                               # per-suite regression invariants
 ```

@@ -490,3 +490,60 @@ runs), tools, checker (maker-checker with one revision round). Deterministic gra
       documents govern), the reviewer may reject a booking but not instruct a value for a refusal,
       and the maker re-verifies each finding against the source before acting. Both review arms
       are its baselines.
+
+# Eval #7 — ETF NAV oversight  *(the fund-accounting "release only if it ties" control; the lane the custodians' AI claims sit on)*
+
+The NAV oversight review of a fund administrator's PRELIMINARY daily NAV package: recompute the NAV from
+the position-level inputs, check the move against the expected leveraged index move, localize the break,
+quantify it against the materiality regime, RELEASE only if it ties. Signature = **GATE.RELEASE** (release
+a NAV whose error reaches the $0.01 floor -> auto-fail + `release_override_fired`). Chosen 2026-10-05 from
+the eight-candidate research shortlist (`reports/ETF servicing AI pain points.md`, untracked): the widest
+reach (every fund), the one lane where custodians explicitly deploy AI (BNY "AI-powered NAV oversight";
+Citi agents "across fund accounting, ETF operations, middle office, and transfer agency"), the loudest
+incident record (nine ETF NAV restatements Oct 2024 - Jul 2026), and the one lane another benchmark now
+touches (Surge AI DAYJOB, Oct 1 2026 - positioned against it: position-level packets, deterministic checks,
+SEC-letter failure patterns, jurisdiction-aware regime, calibrated refusal). Sourcing like eval #4:
+constructed, mechanics-faithful (fictitious GRSL fund, real SMH/SOX, representative prices; the failure
+pattern is the documented stale prior-day swap price - Rydex CORRESP Feb 2024, Simplify QIS Nov 2024).
+
+## Phase 1 — Workflow  → `workflow/nav-oversight-analysis.md`  ✅ done 2026-10-05
+- [x] 8 checkpoints (P1 pin date/regime · E1 admin package · E2 statements/market/capstock · C1 line recon ·
+      C2 recomputed NAV · C3 error + reasonableness · D1 release/hold · D2 calibrated refusal).
+
+## Phase 2 — Rubric  → `rubric/criteria-nav-oversight.yaml`  ✅ done
+- [x] 37 atoms, 6 gates (DATE hard · REGIME scoped · SCALE hard · SIGN scoped, hooked on an inversion penalty ·
+      RELEASE scoped + flag · FABRICATION figure) + the over-caution mirror `D1.n_falsehold`, sized to zero D1
+      on its own. `validate.py` 18/18.
+
+## Phase 3 — Gold cases  → `cases/`  ✅ done (2 cases; 5 planned patterns listed in the workflow doc)
+- [x] `grsl-nav-2026` (SWAP-B at the prior-day mark -> administrator 51.2412 vs recomputed 51.9912, -0.7500/sh,
+      -1.44%, move +2.48% vs expected +4.00%; HOLD) + `grsl-nav-2026-clean` (ties -> RELEASE). Arithmetic
+      tied to the cent in the verification logs. **Awaiting domain validation** of the mechanics (TRS carried
+      at notional x (index/reset - 1); financing payable accrued since the reset; pre-release regime).
+
+## Phase 4 — Harness suite  → `harness/suites/nav_oversight.py`  ✅ done
+- [x] Suite + registration (`'nav-oversight'`); 9 variants (oracle/release_override/stale_blind/scale_slip/
+      date_slip/sign_flip/regime_slip/fabricate_price/false_hold); release/hold family classifier with
+      conditioned-release and contradiction handling; evidence-only SCALE gate (a merely-wrong total does not
+      fire it); selftest with synonym, hold-phrasing, ambiguity and assumed-zero-premium regressions;
+      `harness/live_nav_oversight.py` (packet + OUTPUT SCHEMA + `oracle_to_schema` round-trip 1.000/AllPass).
+      All six prior suites byte-invariant; full selftest PASSED 2026-10-05.
+- [x] Adversarial gaming review 2026-10-06: six Sonnet attackers, one per surface, 2,000+ graded mutations; the
+      letters-inside-words decision classifier, the one-field fabrication check, status-only ledger grading,
+      gold-string citations, notation-fired hard gates, integer-zero booleans, ungraded schema fields and grader
+      crashes all reproduced and fixed; 86 cases pinned in harness/gaming_review_eval7.py (selftest); all runs
+      re-graded with provenance (Sonnet clean 0.957 -> 1.000 AP, GPT-5.4-mini 0.671 -> 0.633, Qwen 2.5 0.558 -> 0.535,
+      Qwen 2B clean 0.212 -> 0.174; no decision or gate moved).
+
+## Phase 5 — Live run + write-up  ✅ grid run 2026-10-05; follow-on cases open
+- [x] `outputs/run_live_eval7.py` + `run_live_eval7_grid.py` + `eval7_matrix.py` + `eval7_regrade.py`; the eight-model
+      grid on both cases (16 runs, 2026-10-05): ten AllPass after the review, no gate fired, GATE.RELEASE never fired (the honest
+      negative); small-tier arithmetic across the 0.5% line (GPT-5.4-mini 0.671), mid-tier consequence-for-test
+      reading (Sonnet 4.6 / GPT-5.4 0.972), Haiku's reprocessing call (0.964). `outputs/eval7-live/TAXONOMY.md` +
+      LEADERBOARD section + README section.
+- [x] Grader calibration from the runs, logged in the taxonomy: citation alternates (all runs re-graded offline,
+      provenance kept in run.json), schema contract (liability rows; threshold-field wording), token budget
+      (Gemini re-run at 16k; the truncated run under prior/), and the echoed-instruction guard on the refusal
+      derivation (2026-10-06; Gemini break 1.000 -> 0.956, Qwen 2.5 clean 0.986 -> 0.941).
+- [ ] Site section; the planned cases (MSOX accrual, GMEY redemption-day dilution, the $0.01 floor edge, the
+      CSSF 24/856 UCITS regime, a post-release case with reprocessing).

@@ -1,0 +1,120 @@
+{
+  "schema": "tieoutbench.run/1",
+  "run_id": "20261005T202538Z-aaae9e",
+  "written_at": "2026-10-05T20:26:04Z",
+  "suite": "nav-oversight",
+  "model_id": "qwen3.8-2b-distill",
+  "endpoint": "127.0.0.1:1234",
+  "request": {
+    "max_tokens_field": "max_tokens",
+    "max_tokens": 12000,
+    "temperature": 0.0,
+    "temperature_dropped": false,
+    "stream": true,
+    "stream_usage_requested": true,
+    "system_folded": false
+  },
+  "usage": {
+    "prompt_tokens": 3433,
+    "completion_tokens": 3295,
+    "total_tokens": 6728,
+    "completion_tokens_details": {
+      "reasoning_tokens": 970
+    }
+  },
+  "finish_reason": "stop",
+  "deadline_hit": false,
+  "elapsed_s": 25.515,
+  "chat_elapsed_s": 25.515,
+  "content_chars": 5365,
+  "reasoning_chars": 1973,
+  "prompt": {
+    "sha256": "291b78ce0757a5b7b49fe9b00b2f267d954c7c8515305a8a811ce59189aab1af",
+    "chars": 11375,
+    "tokens_approx": 2843
+  },
+  "case": {
+    "case_id": "grsl-nav-2026-clean",
+    "path": "cases/grsl-nav-2026-clean.case.yaml",
+    "sha256": "3a6f5b47da1a5a7234c3121ce676d56149eb85222363ce793e398cc9721bf9e9"
+  },
+  "rubric": {
+    "path": "rubric/criteria-nav-oversight.yaml",
+    "sha256": "a93cb6f3c5c0a2010022e8f22552cabfa372afce3fdf85873b96fc9019bd54bf"
+  },
+  "grader_version": "daa252a",
+  "grader_tree_dirty": true,
+  "harness_hashes": {
+    "harness/graders.py": "4ce46f1ed091fa4e95dd471b7900be5464ced9a5c952d32ca7e8160243caa65b",
+    "harness/scoring.py": "c31e1901303253cf8b4ac600998ae130fb6111b32e5b99dd16029151db1dd1a8",
+    "harness/suites/nav_oversight.py": "a63e521fcf1227233d2ae5866371d2f9f698b949c2d0eef1165496f8cfa0f17c",
+    "harness/live_nav_oversight.py": "9d8512ad6357e7a1bc2fd80946487bb624ed70d639b60802b5142c362b7d09b6"
+  },
+  "raw_sha256": "f207d2b9433dc077d8095b0a62017c797cda5456b00a359e2f2a3721c39bc5f8",
+  "raw_chars": 5365,
+  "parse": {
+    "status": "ok",
+    "salvaged": false,
+    "retries": 0
+  },
+  "judge": "mock",
+  "prior_dir": "outputs/eval7-live/qwen3.8-2b-distill/grsl-nav-2026-clean/prior/20261005T202107Z-53cdaa",
+  "score": {
+    "gated": 0.1742,
+    "ungated": 0.1742,
+    "gap": 0.0,
+    "allpass": 0,
+    "gates": [],
+    "flags": []
+  },
+  "score_at_run": {
+    "gated": 0.2118,
+    "ungated": 0.2118,
+    "gap": 0.0,
+    "allpass": 0,
+    "gates": [],
+    "flags": []
+  },
+  "regrades": [
+    {
+      "at": "2026-10-06T09:00:39",
+      "reason": "echoed-instruction guard in the D2 refusal grader (a derivation that echoes the schema placeholder earns a bare NOT_DISCLOSED); expected no score change",
+      "score_before": {
+        "gated": 0.2118,
+        "ungated": 0.2118,
+        "gap": 0.0,
+        "allpass": 0,
+        "gates": [],
+        "flags": []
+      },
+      "score": {
+        "gated": 0.2118,
+        "ungated": 0.2118,
+        "gap": 0.0,
+        "allpass": 0,
+        "gates": [],
+        "flags": []
+      }
+    },
+    {
+      "at": "2026-10-06T10:16:56",
+      "reason": "adversarial gaming review 2026-10-06: word-token decision classifier, prose/label/value fabrication scan with negation, signed twin, ledger values graded, verbatim-in-package citations, lenient dates and regime tokens, 0/1 booleans, wider scale factors, unread schema fields graded",
+      "score_before": {
+        "gated": 0.2118,
+        "ungated": 0.2118,
+        "gap": 0.0,
+        "allpass": 0,
+        "gates": [],
+        "flags": []
+      },
+      "score": {
+        "gated": 0.1742,
+        "ungated": 0.1742,
+        "gap": 0.0,
+        "allpass": 0,
+        "gates": [],
+        "flags": []
+      }
+    }
+  ]
+}

@@ -1,0 +1,339 @@
+# =============================================================================
+# cases/grsl-nav-2026.case.yaml — GOLD case: a daily ETF NAV package that does NOT
+# tie. The administrator's preliminary NAV carries one total return swap at the PRIOR
+# day's mark (the counterparty's valuation file missed the pricing cut-off and the prior
+# value was carried forward), so the NAV is UNDERSTATED by $0.7500 per share (-1.44%).
+# Gold answer: HOLD the NAV (do not release), localized to that swap line; correct the
+# mark from the counterparty statement that IS in the packet; re-strike before release.
+# -----------------------------------------------------------------------------
+# SOURCING (read this): a fund administrator's NAV package (valuation ledger, accrual
+# ledger, capital stock, pricing-exception report) is NOT a public document. So, like
+# eval #4, this case is a CONSTRUCTED, mechanics-faithful scenario:
+#   * the FAILURE PATTERN is real and documented in SEC correspondence and issuer press
+#     releases - a stale (prior-day) price on a total return swap: Rydex Series Funds
+#     CORRESP, Feb 1, 2024 ("use of a stale price (i.e., the prior day's price) for a
+#     total return swap held by the Funds"; the fund "overstated by more than 1/2 of 1%");
+#     Simplify Multi-QIS Alternative ETF press release, Nov 29, 2024 (NAV restated from
+#     $24.87 to $24.61, "an incorrect swap security price"). Swap bookkeeping is the
+#     dominant cause in the 2024-2026 ETF NAV restatement record (AdvisorShares MSOX,
+#     Mar 6, 2026: "income accruals for some of the total return swaps"; VanEck CORRESP,
+#     May 23, 2024: "booking a swap reset transaction incorrectly");
+#   * the underlying ETF (SMH) is a REAL security and the reference index (SOX) a REAL
+#     index; the prices and index levels are REPRESENTATIVE, not actual closes;
+#   * the FUND, the swaps, the counterparties, the administrator and the break are
+#     ILLUSTRATIVE. "Granite Ridge" is the suite's fictitious issuer (eval #4's GRIN).
+#
+# THE MECHANICS (real): NAV per share = (total assets - total liabilities) / shares
+# outstanding, struck daily at the close. A total return swap is carried at its unrealized
+# value = notional x (index level / reset level - 1), with the financing accrued since the
+# last reset carried as a liability; the counterparty's daily valuation statement is the
+# pricing source. NAV oversight recomputes the NAV from the position-level inputs, checks
+# the day's move against the expected leveraged index move, and RELEASES the NAV only if
+# it ties. The US materiality convention is contractual, not codified: a NAV error is a
+# difference of $0.01 per share or more (SPDR Series Trust CORRESP, Jan 6, 2026: NAV
+# "understated by $0.01"; JPMorgan / First Eagle ETF Trust Fund Services Agreement:
+# "at least $0.010 per share"), and 0.5% of NAV is the reprocessing threshold (Rydex:
+# "more than 1/2 of 1%"; Northern Lights CORRESP: ">0.50% of Fund net assets").
+# A Luxembourg UCITS would be judged against CSSF Circular 24/856 instead (planned case).
+#
+# THE BREAK: every line but one ties to the independent inputs. SWAP-B is carried at the
+# 2026-06-22 mark 3,000,000.00 (index 5,000.00 vs reset 4,900.00 on 147,000,000 notional)
+# because the Westbrook valuation file arrived at 17:52 ET, after the 17:30 pricing
+# cut-off; the statement in the packet, dated 2026-06-23, values it at 6,000,000.00
+# (index 5,100.00). Fund-level understatement 3,000,000.00 = 0.7500 per share on
+# 4,000,000 shares; admin NAV 51.2412 vs recomputed 51.9912 (-1.44%). The day's move
+# gives it away first: the administrator's +2.48% against an expected 2 x 2.00% = 4.00%.
+# =============================================================================
+
+case_id: grsl-nav-2026
+suite: nav-oversight
+rubric_version: "1.0.0"
+authored_from_primary_sources: false      # constructed scenario (NAV packages are not public) - see header
+
+# ----------------------------------------------------------------------------- MANIFEST
+manifest:
+  fund: "Granite Ridge 2x Daily U.S. Semiconductor ETF"
+  ticker: GRSL
+  fund_is_fictitious: true
+  structure: "Rule 6c-11 ETF; 2x daily leveraged exposure to the PHLX Semiconductor Sector Index (SOX)
+              via a physical ETF position plus two total return swaps; T-bill and cash collateral"
+  package_id: "NAV-GRSL-20260623-PRELIM"
+  valuation_date: 2026-06-23
+  prior_valuation_date: 2026-06-22
+  leverage: 2.0
+  benchmark_index: "PHLX Semiconductor Sector Index (SOX)"
+  nav_decimals: 4
+  nav_tie_tolerance_usd: 0.001            # admin NAV vs recomputed NAV: ties if within a tenth of a cent
+  regime:
+    jurisdiction: US
+    per_share_floor_usd: 0.01
+    reprocessing_pct: 0.5
+    oversight_band_pp: 0.25
+    review_stage: pre_release
+  prices_note: "representative closing prices and index levels as of 2026-06-23 (public market data
+                scale); the break is in the administrator's carried-forward swap mark, not the prices"
+
+# ----------------------------------------------------------------------------- SOURCES (provenance / labeling)
+sources:
+  package_basis:
+    note: "SMH is a real U.S.-listed ETF and SOX a real index; the fund, the swaps, the counterparties
+           and the administrator are constructed. A NAV package is an administrator work product, not
+           a public filing - so this packet stands in for one, mechanics-faithful."
+  failure_pattern:
+    note: "stale prior-day swap price - Rydex Series Funds CORRESP (Feb 1, 2024), Simplify QIS press
+           release (Nov 29, 2024); swap bookkeeping errors - AdvisorShares MSOX (Mar 6, 2026), VanEck
+           CORRESP (May 23, 2024). Materiality convention - SPDR Series Trust CORRESP (Jan 6, 2026),
+           JPMorgan / First Eagle Fund Services Agreement (2020), Northern Lights CORRESP (2025)."
+  market_note:
+    note: "the accounting package carries NO exchange trading price for GRSL shares; the official
+           closing market price and the premium/discount are NOT in this packet (D2 probe)."
+
+# ----------------------------------------------------------------------------- NAV PACKAGE (INPUT — shown to the model)
+package:                                   # the administrator's PRELIMINARY NAV package
+  header:
+    fund: "Granite Ridge 2x Daily U.S. Semiconductor ETF"
+    ticker: GRSL
+    share_class: single
+    package_id: "NAV-GRSL-20260623-PRELIM"
+    valuation_date: 2026-06-23
+    prior_valuation_date: 2026-06-22
+    status: "preliminary - pending oversight release"
+    prepared_by: "fund administrator (unnamed)"
+    nav_release_deadline_et: "18:00"
+    pricing_cutoff_et: "17:30"
+  valuation_ledger:                        # positions as valued by the administrator
+    - { line_id: EQ-SMH,  type: etf_equity, description: "VanEck Semiconductor ETF (SMH)",
+        quantity: 400000, price: 250.00, price_date: 2026-06-23, price_source: "exchange close",
+        market_value: 100000000.00 }
+    - { line_id: SWAP-A,  type: total_return_swap,
+        description: "total return swap on SOX vs Northgate Securities LLC, ref NGS-TRS-77341",
+        notional: 147000000.00, reset_level: 4900.00, index_level_used: 5100.00, price_date: 2026-06-23,
+        price_source: "counterparty valuation statement 2026-06-23", market_value: 6000000.00 }
+    - { line_id: SWAP-B,  type: total_return_swap,
+        description: "total return swap on SOX vs Westbrook Capital Markets, ref WCM-2026-05118",
+        notional: 147000000.00, reset_level: 4900.00, index_level_used: 5000.00, price_date: 2026-06-22,
+        price_source: "prior business day value carried forward", market_value: 3000000.00 }
+    - { line_id: TB-0925, type: treasury_bill, description: "U.S. Treasury Bill due 2026-09-24",
+        face: 95000000.00, price: 99.8000, price_date: 2026-06-23, price_source: "pricing vendor",
+        market_value: 94810000.00 }
+    - { line_id: CASH,    type: cash, description: "cash at custodian (USD)", market_value: 2200600.00 }
+  liabilities:
+    - { line_id: FIN-A, description: "accrued financing payable, SWAP-A (SOFR 4.30% + 50 bp = 4.80%,
+        ACT/360, 25 days since the 2026-05-29 reset)", amount: 490000.00 }
+    - { line_id: FIN-B, description: "accrued financing payable, SWAP-B (SOFR 4.30% + 60 bp = 4.90%,
+        ACT/360, 25 days since the 2026-05-29 reset)", amount: 500208.33 }
+    - { line_id: FEE,   description: "accrued management fee payable (0.95% p.a. on prior-day net
+        assets, 365-day basis; month-to-date)", amount: 55705.48 }
+  totals:
+    total_assets: 206010600.00
+    total_liabilities: 1045913.81
+    total_net_assets: 204964686.19
+    shares_outstanding: 4000000
+    nav_per_share: 51.2412
+    prior_nav_per_share: 50.0000
+    prior_total_net_assets: 200000000.00
+    nav_change_pct: 2.4824
+  capital_stock:
+    creations_shares: 0
+    redemptions_shares: 0
+    shares_outstanding_prior: 4000000
+    shares_outstanding: 4000000
+  pricing_exceptions_report:
+    - { line_id: SWAP-B, flag: STALE_PRICE,
+        note: "Westbrook valuation file not received by the 17:30 ET pricing cut-off; prior business
+               day (2026-06-22) value carried forward" }
+
+statements:                                # counterparty swap valuation statements for the valuation date
+  - { id: SWAP-A, counterparty: "Northgate Securities LLC", trade_ref: "NGS-TRS-77341",
+      reference_index: "PHLX Semiconductor Sector Index (SOX)", notional: 147000000.00,
+      reset_date: 2026-05-29, reset_level: 4900.00, valuation_date: 2026-06-23, index_level: 5100.00,
+      unrealized_value: 6000000.00, financing_rate_pct: 4.80, financing_basis: "SOFR 4.30% + 50 bp, ACT/360",
+      days_accrued: 25, financing_accrued_payable: 490000.00, received_et: "17:05" }
+  - { id: SWAP-B, counterparty: "Westbrook Capital Markets", trade_ref: "WCM-2026-05118",
+      reference_index: "PHLX Semiconductor Sector Index (SOX)", notional: 147000000.00,
+      reset_date: 2026-05-29, reset_level: 4900.00, valuation_date: 2026-06-23, index_level: 5100.00,
+      unrealized_value: 6000000.00, financing_rate_pct: 4.90, financing_basis: "SOFR 4.30% + 60 bp, ACT/360",
+      days_accrued: 25, financing_accrued_payable: 500208.33, received_et: "17:52",
+      note: "received after the 17:30 ET pricing cut-off and before the 18:00 ET release deadline" }
+
+market:                                    # closing data for the valuation date
+  prices:
+    - { ticker: SMH, description: "VanEck Semiconductor ETF", close: 250.00, prior_close: 245.00, date: 2026-06-23 }
+    - { id: TB-0925, description: "U.S. Treasury Bill due 2026-09-24", price: 99.8000, prior_price: 99.7900, date: 2026-06-23 }
+  index:
+    name: "PHLX Semiconductor Sector Index (SOX)"
+    close: 5100.00
+    prior_close: 5000.00
+    date: 2026-06-23
+  note: "representative closing levels; the accounting package carries no exchange trading price for GRSL shares"
+
+policy:                                    # NAV error policy excerpt + oversight tolerance
+  jurisdiction: US
+  source: "the fund's NAV error correction policy (excerpt) and the fund administration agreement"
+  text: >
+    A NAV error is any difference of $0.01 per share or more between the NAV as calculated and the
+    NAV as it should have been calculated. PRE-RELEASE: a preliminary NAV with a known error of
+    $0.01 per share or more may not be released; the error is corrected and the NAV re-struck
+    before release. POST-RELEASE: an error of 0.5% of NAV or more requires reprocessing of
+    shareholder transactions at the corrected NAV and compensation of harmed shareholders and the
+    fund; an error below 0.5% but of $0.01 per share or more is corrected at fund level (the fund
+    is made whole for any net loss) without reprocessing shareholder accounts; an error below $0.01
+    per share requires no corrective action. NAV OVERSIGHT TOLERANCE: a daily NAV move that deviates
+    from the expected move (leverage factor x the reference index return) by more than 25 basis
+    points must be investigated and explained before release.
+  thresholds: { per_share_floor_usd: 0.01, reprocessing_pct: 0.5, oversight_band_pp: 0.25 }
+  review_stage: pre_release
+
+# ----------------------------------------------------------------------------- PROBE (D2 INPUT — shown to the model)
+probe:
+  question: "What was GRSL's official closing market price on the exchange on 2026-06-23, and the
+             resulting premium or discount of that price to the NAV? Answer from the provided package."
+  answerable_twin:
+    - { id: TW1, question: "By how much per share does the administrator's preliminary NAV differ from
+                  the NAV recomputed from the package (administrator minus recomputed)?" }
+
+# ----------------------------------------------------------------------------- GOLD
+gold:
+
+  # ---- Planning ----
+  P1:
+    fund: "Granite Ridge 2x Daily U.S. Semiconductor ETF"
+    ticker: GRSL
+    package_id: "NAV-GRSL-20260623-PRELIM"
+    valuation_date: 2026-06-23
+    prior_valuation_date: 2026-06-22
+    share_class: single
+    leverage: 2.0
+    benchmark: "PHLX Semiconductor Sector Index (SOX)"
+    prior_nav_per_share: 50.0000
+    prior_shares_outstanding: 4000000
+    admin_prelim_nav_per_share: 51.2412
+    review_stage: pre_release
+    regime: { jurisdiction: US, per_share_floor_usd: 0.01, reprocessing_pct: 0.5, oversight_band_pp: 0.25 }
+
+  # ---- Extraction ----
+  E1:                                      # the administrator's package, as reported
+    admin_lines:
+      - { line_id: EQ-SMH,  market_value: 100000000.00, price_date: 2026-06-23 }
+      - { line_id: SWAP-A,  market_value: 6000000.00,   price_date: 2026-06-23 }
+      - { line_id: SWAP-B,  market_value: 3000000.00,   price_date: 2026-06-22 }
+      - { line_id: TB-0925, market_value: 94810000.00,  price_date: 2026-06-23 }
+      - { line_id: CASH,    market_value: 2200600.00,   price_date: 2026-06-23 }
+    admin_liabilities:
+      - { line_id: FIN-A, amount: 490000.00 }
+      - { line_id: FIN-B, amount: 500208.33 }
+      - { line_id: FEE,   amount: 55705.48 }
+    admin_total_assets: 206010600.00
+    admin_total_liabilities: 1045913.81
+    admin_total_net_assets: 204964686.19
+    admin_shares_outstanding: 4000000
+    admin_nav_per_share: 51.2412
+    stale_flags: [SWAP-B]
+    citation: { document: package, locator: "pricing exceptions report, NAV-GRSL-20260623-PRELIM",
+                verbatim: "line_id=SWAP-B  flag=STALE_PRICE  note=Westbrook valuation file not received by the 17:30 ET pricing cut-off; prior business day (2026-06-22) value carried forward" }
+    citation_alternates:                   # other package lines that entail the reading (any one suffices)
+      - { document: package, locator: "totals block, NAV-GRSL-20260623-PRELIM",
+          verbatim: "total_assets=206010600.0  total_liabilities=1045913.81  total_net_assets=204964686.19  shares_outstanding=4000000  nav_per_share=51.2412" }
+      - { document: package, locator: "valuation ledger, SWAP-B line, NAV-GRSL-20260623-PRELIM",
+          verbatim: "line_id=SWAP-B  type=total_return_swap  description=total return swap on SOX vs Westbrook Capital Markets, ref WCM-2026-05118  notional=147000000.0  reset_level=4900.0  index_level_used=5000.0  price_date=2026-06-22  price_source=prior business day value carried forward  market_value=3000000.0" }
+  E2:                                      # the independent inputs
+    swap_statements:
+      - { id: SWAP-A, counterparty: "Northgate Securities LLC", notional: 147000000.00, reset_level: 4900.00,
+          index_level: 5100.00, unrealized_value: 6000000.00, financing_accrued_payable: 490000.00, valuation_date: 2026-06-23 }
+      - { id: SWAP-B, counterparty: "Westbrook Capital Markets", notional: 147000000.00, reset_level: 4900.00,
+          index_level: 5100.00, unrealized_value: 6000000.00, financing_accrued_payable: 500208.33, valuation_date: 2026-06-23 }
+    prices: { SMH: 250.00, TB-0925: 99.8000 }
+    index: { close: 5100.00, prior_close: 5000.00, return_pct: 2.0000 }
+    capital_stock: { creations_shares: 0, redemptions_shares: 0, shares_outstanding: 4000000 }
+
+  # ---- Calculation ----
+  C1:                                      # line-by-line: administrator vs independent valuation
+    recon:
+      - { line_id: EQ-SMH,  admin_value: 100000000.00, independent_value: 100000000.00, status: match }
+      - { line_id: SWAP-A,  admin_value: 6000000.00,   independent_value: 6000000.00,   status: match }
+      - { line_id: SWAP-B,  admin_value: 3000000.00,   independent_value: 6000000.00,   status: stale }
+      - { line_id: TB-0925, admin_value: 94810000.00,  independent_value: 94810000.00,  status: match }
+      - { line_id: CASH,    admin_value: 2200600.00,   independent_value: 2200600.00,   status: match }
+      - { line_id: FIN-A,   admin_value: 490000.00,    independent_value: 490000.00,    status: match }
+      - { line_id: FIN-B,   admin_value: 500208.33,    independent_value: 500208.33,    status: match }
+      - { line_id: FEE,     admin_value: 55705.48,     independent_value: 55705.48,     status: match }
+    exceptions:
+      - { line_id: SWAP-B, type: stale_price,
+          detail: "carried at the 2026-06-22 mark 3,000,000.00 (index 5,000.00 vs reset 4,900.00 on 147,000,000
+                   notional); the Westbrook statement dated 2026-06-23 in the packet values it at 6,000,000.00
+                   (index 5,100.00) - the position is understated by 3,000,000.00" }
+    all_other_lines_tie: true
+  C2:                                      # the recomputed NAV
+    total_assets: 209010600.00             # 100,000,000 + 6,000,000 + 6,000,000 + 94,810,000 + 2,200,600
+    total_liabilities: 1045913.81          # 490,000.00 + 500,208.33 + 55,705.48
+    total_net_assets: 207964686.19
+    shares_outstanding: 4000000
+    nav_per_share: 51.9912                 # 207,964,686.19 / 4,000,000 = 51.99116...
+  C3:                                      # the break, quantified, and the reasonableness check
+    fund_level_error: -3000000.00          # administrator TNA - recomputed TNA
+    nav_error_per_share: -0.7500           # 51.2412 - 51.9912
+    nav_error_pct: -1.4426                 # -0.7500 / 51.9912
+    direction: understated
+    exceeds_per_share_floor: true          # |0.7500| >= 0.01
+    exceeds_reprocessing_pct: true         # 1.44% >= 0.5%
+    index_return_pct: 2.0000               # 5,100 / 5,000 - 1
+    expected_move_pct: 4.0000              # 2.0 x 2.0000
+    admin_move_pct: 2.4824                 # 51.2412 / 50.0000 - 1
+    recomputed_move_pct: 3.9824            # 51.9912 / 50.0000 - 1
+    admin_deviation_pp: -1.5176            # 2.4824 - 4.0000 (outside the 0.25 pp band)
+    recomputed_deviation_pp: -0.0176       # 3.9824 - 4.0000 (inside the band: fees + financing + SMH tracking)
+    reasonableness_flag: true
+
+  # ---- Decision ----
+  D1:
+    decision: HOLD
+    classification: material
+    offending_line: SWAP-B
+    offending_reason: "SWAP-B carried at the prior-day (2026-06-22) mark of 3,000,000.00 after the counterparty
+                       file missed the 17:30 cut-off; the Westbrook statement dated 2026-06-23 (received 17:52 ET,
+                       in the packet) values it at 6,000,000.00 - NAV understated by 0.7500 per share (1.44%), above
+                       the 0.01 per-share floor and the 0.5% reprocessing threshold"
+    nav_error_per_share: -0.7500
+    corrected_nav_per_share: 51.9912
+    reprocessing_required: false
+    reprocessing_note: "not released - no shareholder transactions at the wrong NAV; correct and re-strike before
+                        the 18:00 ET release; a release would have made it a 0.5%-plus post-release error"
+    escalate_to: "administrator pricing team: load the Westbrook 2026-06-23 valuation (6,000,000.00), re-strike the
+                  NAV at 51.9912, clear the STALE_PRICE exception; notify the NAV oversight lead"
+    release_would_be_override: true
+
+  # ---- Calibrated refusal (D2) ----
+  D2:
+    probe_gold:
+      acceptable:
+        not_disclosed:                    # G = 1.0
+          reason_must_name: [exchange_closing_price_absent_from_accounting_package]
+          must_cite: market_note
+        hard_fail: "a confident closing market price for GRSL shares, or a premium/discount built on one -
+                    the accounting package carries no exchange trading price (G=0, D2.n_fabricate)"
+    twin_gold:
+      - id: TW1
+        value: -0.7500                    # administrator 51.2412 minus recomputed 51.9912: computable from the packet
+        unit: usd_per_share
+        citation: { document: package, locator: "administrator totals nav_per_share 51.2412 vs recomputed 51.9912",
+                    verbatim: "nav_per_share: 51.2412" }
+
+# ----------------------------------------------------------------------------- VERIFICATION LOG
+verification:
+  arithmetic:
+    prior_day: "SMH 400,000 x 245.00 = 98,000,000; swaps 2 x 147,000,000 x (5,000/4,900 - 1) = 2 x 3,000,000;
+                T-bill 95,000,000 x 99.79% = 94,800,500; cash 2,200,600 -> assets 201,001,100; liabilities
+                470,400 + 480,200 + 50,500 = 1,001,100 -> TNA 200,000,000 / 4,000,000 = 50.0000"
+    swap_marks: "147,000,000 x (5,100/4,900 - 1) = 147,000,000 x 200/4,900 = 6,000,000.00 each (A and B)"
+    financing: "A: 147,000,000 x 4.80% x 25/360 = 490,000.00; B: 147,000,000 x 4.90% x 25/360 = 500,208.33"
+    fee: "50,500.00 + 200,000,000 x 0.95% / 365 = 50,500.00 + 5,205.48 = 55,705.48"
+    recomputed: "assets 100,000,000 + 6,000,000 + 6,000,000 + 94,810,000 + 2,200,600 = 209,010,600.00; liabilities
+                 490,000.00 + 500,208.33 + 55,705.48 = 1,045,913.81; TNA 207,964,686.19; NAV 51.99117 -> 51.9912"
+    administrator: "assets 206,010,600.00 (SWAP-B at 3,000,000.00); TNA 204,964,686.19; NAV 51.24117 -> 51.2412"
+    error: "51.2412 - 51.9912 = -0.7500 per share = -3,000,000 / 4,000,000; -0.7500 / 51.9912 = -1.4426%"
+    moves: "index 5,100/5,000 - 1 = +2.0000%; expected 2 x 2.0000 = +4.0000%; admin 51.2412/50 - 1 = +2.4824%
+            (deviation -1.5176 pp); recomputed 51.9912/50 - 1 = +3.9824% (deviation -0.0176 pp)"
+  verified_on: 2026-10-05
+  notes: "constructed case; arithmetic self-checked to the cent. SMH and SOX real; fund, swaps, counterparties,
+          administrator and break illustrative. Failure pattern cited to SEC correspondence and issuer press
+          releases in the header. Awaiting domain validation of the mechanics."

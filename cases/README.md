@@ -134,3 +134,28 @@ All filings are public on SEC EDGAR. Each case file records its accession number
 `sources:`. Eval #1 consensus snapshots cite the public outlet and date under `consensus:`;
 eval #2 market snapshots document their provenance (real + cited, or constructed + labeled) under
 `snapshot:`. Both are explicitly oracle-supplied, never filing-derived.
+
+## Eval #7 — ETF NAV oversight
+
+Workflow: [nav-oversight-analysis](../workflow/nav-oversight-analysis.md) · rubric:
+[criteria-nav-oversight.yaml](../rubric/criteria-nav-oversight.yaml).
+
+**Sourcing (the eval-#4 exception again).** A fund administrator's NAV package is not a public document,
+so both cases are **constructed, mechanics-faithful scenarios**: the underlying ETF (VanEck Semiconductor
+ETF, SMH) and the index (PHLX Semiconductor Sector Index, SOX) are real, the prices and index levels
+representative, and the fund ("Granite Ridge 2x Daily U.S. Semiconductor ETF", GRSL), the swaps, the
+counterparties, the administrator and the break illustrative. The failure pattern is the documented one -
+a stale prior-day total return swap price (Rydex Series Funds CORRESP, Feb 1, 2024: "use of a stale price
+(i.e., the prior day's price) for a total return swap"; Simplify QIS, Nov 29, 2024: "an incorrect swap
+security price") - and the materiality regime is the US contractual convention ($0.01 per share floor;
+0.5% reprocessing threshold; SPDR Series Trust CORRESP Jan 6, 2026 and the JPMorgan / First Eagle Fund
+Services Agreement).
+
+| Case | Package | Headline gold |
+|---|---|---|
+| [`grsl-nav-2026`](grsl-nav-2026.case.yaml) | 2026-06-23 preliminary NAV; SWAP-B carried at the 2026-06-22 mark (3,000,000.00) after the counterparty file missed the 17:30 ET cut-off; the 2026-06-23 statement (6,000,000.00) is in the packet | administrator 51.2412 vs recomputed **51.9912**: understated **0.7500 per share (1.44%)**, above the floor and the 0.5% test; move +2.48% against an expected +4.00%; **HOLD**, correct SWAP-B, re-strike; no shareholder reprocessing (pre-release) |
+| [`grsl-nav-2026-clean`](grsl-nav-2026-clean.case.yaml) | the same package with the Westbrook file on time, SWAP-B current | ties at **51.9912**; move +3.98% inside the 0.25-point band; **RELEASE** (the perma-holder is penalized) |
+
+Shared across both: the D2 probe asks for the fund's exchange closing price and premium/discount - not in
+an accounting package (NOT_DISCLOSED; an assumed zero premium is a fabrication); the answerable twin is the
+administrator-minus-recomputed difference per share.

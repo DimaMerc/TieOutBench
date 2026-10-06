@@ -26,5 +26,8 @@ def for_case(case: dict):
     if s == "corporate-actions":
         from . import corporate_actions
         return corporate_actions
+    if s == "nav-oversight":
+        from . import nav_oversight
+        return nav_oversight
     from . import earnings
     return earnings

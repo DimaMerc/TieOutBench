@@ -1,0 +1,137 @@
+{
+  "schema": "tieoutbench.run/1",
+  "run_id": "20261005T155650Z-863c5e",
+  "written_at": "2026-10-05T15:57:11Z",
+  "suite": "nav-oversight",
+  "model_id": "claude-haiku-4-5-20251001",
+  "endpoint": "api.anthropic.com",
+  "request": {
+    "max_tokens_field": "max_tokens",
+    "max_tokens": 8000,
+    "temperature": 0.0,
+    "temperature_dropped": false,
+    "stream": true,
+    "stream_usage_requested": true,
+    "system_folded": false
+  },
+  "usage": {
+    "completion_tokens": 2745,
+    "prompt_tokens": 3663,
+    "total_tokens": 6408
+  },
+  "finish_reason": "stop",
+  "deadline_hit": false,
+  "elapsed_s": 20.828,
+  "chat_elapsed_s": 20.828,
+  "content_chars": 7466,
+  "reasoning_chars": 0,
+  "prompt": {
+    "sha256": "fc5369eec878fe257f5f6b76586d158d836e5a0376e570ce74b935af478719d3",
+    "chars": 11444,
+    "tokens_approx": 2861
+  },
+  "case": {
+    "case_id": "grsl-nav-2026",
+    "path": "cases/grsl-nav-2026.case.yaml",
+    "sha256": "bc24830a6b56c220611ee54aa17bd7b4eb2026b5a3144b96b333d3a949a89d5e"
+  },
+  "rubric": {
+    "path": "rubric/criteria-nav-oversight.yaml",
+    "sha256": "aa37d2eeb0ff95f339e4df05ce4554f71cfa029eb2e478c501338bc6232104fb"
+  },
+  "grader_version": "daa252a",
+  "grader_tree_dirty": true,
+  "harness_hashes": {
+    "harness/graders.py": "4ce46f1ed091fa4e95dd471b7900be5464ced9a5c952d32ca7e8160243caa65b",
+    "harness/scoring.py": "c31e1901303253cf8b4ac600998ae130fb6111b32e5b99dd16029151db1dd1a8",
+    "harness/suites/nav_oversight.py": "97ea15685a82e505be8f72c8e68e533f724bd29110e368ce47317577bf46e14d",
+    "harness/live_nav_oversight.py": "6716a61cdfa693922c355455f5a8bcd51b4e6a1db38815abb296742676f63e4e"
+  },
+  "raw_sha256": "6cff14540ef4779861026afe1957e2aef7b2bf8b35b98c93f41c18b4bca48d20",
+  "raw_chars": 7466,
+  "parse": {
+    "status": "ok",
+    "salvaged": false,
+    "retries": 0
+  },
+  "judge": "mock",
+  "prior_dir": "outputs/eval7-live/claude-haiku-4-5-20251001/grsl-nav-2026/prior/20261005T155238Z-ff7dbc",
+  "score": {
+    "gated": 0.9644,
+    "ungated": 0.9644,
+    "gap": 0.0,
+    "allpass": 0,
+    "gates": [],
+    "flags": []
+  },
+  "score_at_run": {
+    "gated": 0.9644,
+    "ungated": 0.9644,
+    "gap": 0.0,
+    "allpass": 0,
+    "gates": [],
+    "flags": []
+  },
+  "regrades": [
+    {
+      "at": "2026-10-05T12:05:10",
+      "reason": "accept the totals block / the stale ledger line as entailing E1 citations (citation_alternates); the gold had named only one verbatim",
+      "score_before": {
+        "gated": 0.9644,
+        "ungated": 0.9644,
+        "gap": 0.0,
+        "allpass": 0,
+        "gates": [],
+        "flags": []
+      },
+      "score": {
+        "gated": 0.9644,
+        "ungated": 0.9644,
+        "gap": 0.0,
+        "allpass": 0,
+        "gates": [],
+        "flags": []
+      }
+    },
+    {
+      "at": "2026-10-06T09:00:38",
+      "reason": "echoed-instruction guard in the D2 refusal grader (a derivation that echoes the schema placeholder earns a bare NOT_DISCLOSED); expected no score change",
+      "score_before": {
+        "gated": 0.9644,
+        "ungated": 0.9644,
+        "gap": 0.0,
+        "allpass": 0,
+        "gates": [],
+        "flags": []
+      },
+      "score": {
+        "gated": 0.9644,
+        "ungated": 0.9644,
+        "gap": 0.0,
+        "allpass": 0,
+        "gates": [],
+        "flags": []
+      }
+    },
+    {
+      "at": "2026-10-06T10:16:56",
+      "reason": "adversarial gaming review 2026-10-06: word-token decision classifier, prose/label/value fabrication scan with negation, signed twin, ledger values graded, verbatim-in-package citations, lenient dates and regime tokens, 0/1 booleans, wider scale factors, unread schema fields graded",
+      "score_before": {
+        "gated": 0.9644,
+        "ungated": 0.9644,
+        "gap": 0.0,
+        "allpass": 0,
+        "gates": [],
+        "flags": []
+      },
+      "score": {
+        "gated": 0.9644,
+        "ungated": 0.9644,
+        "gap": 0.0,
+        "allpass": 0,
+        "gates": [],
+        "flags": []
+      }
+    }
+  ]
+}

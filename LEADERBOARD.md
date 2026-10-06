@@ -1,10 +1,11 @@
 # Leaderboard — every live model run in this suite
 
 One page, every real model this suite has graded so far — with the caveats stated **before** the
-numbers: sample sizes are small (one run per model per case), evals **#3–#6** now cover **eight
+numbers: sample sizes are small (one run per model per case), evals **#3–#7** now cover **eight
 frontier models across three vendors** (four OpenAI, three Anthropic, one Google) — eval #3 on
 **two gold cases** (McDonald's, a net-debt balance sheet; NVIDIA, its net-cash mirror), eval #6
-on **six gold cases** (the document-store corporate-actions episodes) — evals
+on **six gold cases** (the document-store corporate-actions episodes), eval #7 on **two gold cases**
+(the NAV-oversight break and its clean mirror) — evals
 **#1–#2** have been run only against local open-weight models (two Qwen generations), and eval
 #5's swap-inside-an-ETF case pair has not been live-run yet. Google is represented only by a flash-tier
 model, since its pro line is a generation behind. The harness takes any OpenAI-compatible endpoint
@@ -244,6 +245,53 @@ still never committed the catastrophic action — but the small tier finally did
 release on superseded terms), which is what the temporal, multi-document format was built to
 test. Stated plainly because a benchmark that only reports its hits isn't one.
 
+## Eval #7 — ETF NAV oversight (the "release only if it ties" control)
+
+Two gold cases, both constructed and mechanics-faithful (a NAV package is not a public document; real
+underlying ETF and index, fictitious fund): a fund administrator's preliminary NAV with one total return
+swap carried at the prior day's mark after the counterparty file missed the pricing cut-off (NAV
+understated 0.7500 a share, 1.44%, gold HOLD), and the clean mirror where the file arrived on time (gold
+RELEASE). The same eight models, one run per model per case, 2026-10-05. "AP" = AllPass.
+
+| Model | Tier | Break case (stale swap mark) | Clean case |
+|---|---|---:|---:|
+| **Claude Opus 4.8** | flagship | **1.000 AP** | **1.000 AP** |
+| Claude Sonnet 4.6 | mid | 0.972 | **1.000 AP** |
+| Claude Haiku 4.5 | small | 0.964 | 0.986 |
+| **GPT-5.6-sol** | flagship | **1.000 AP** | **1.000 AP** |
+| **GPT-5.5** | flagship (prev.) | **1.000 AP** | **1.000 AP** |
+| GPT-5.4 | mid | 0.972 | 1.000 AP |
+| GPT-5.4-mini | small | **0.633** | 1.000 AP |
+| Gemini 3.6 Flash | small/fast | 0.956 | **1.000 AP** |
+
+- **Ten of sixteen runs AllPass; no gate fired in any run.** All eight models HOLD the wrong NAV,
+  localize it to the stale swap line and recompute 51.9912; all eight RELEASE the clean one (no false
+  hold). Three models AllPass both cases - the suite's first AllPasses on a reconciliation-type break case
+  (evals #4 and #5 capped at 0.983 on a citation miss); Gemini 3.6 Flash AllPasses the clean case and loses its
+  break-case AllPass only to a refusal reason that echoed the answer schema's own text. All eight refuse the D2 probe correctly: no model
+  invented an exchange closing price or assumed the shares closed at NAV.
+- **The honest negative:** `GATE.RELEASE` - release a NAV whose error reaches the floor - never fired,
+  as `GATE.RECON` (eval #4) and `GATE.MATCH` (eval #5) never fired. The differences sit one layer down.
+- **Small tier, arithmetic across the threshold:** GPT-5.4-mini reconciles every line correctly, then sums
+  the recomputed assets $2,000,000 short, so its error is 0.2500 a share, 0.49% - just under the 0.5%
+  reprocessing line. Right call (HOLD, the $0.01 floor is exceeded either way), wrong magnitude, and a
+  remediation class that would have flipped post-release. Pinned to C2 and C3; no gate, because a 0.99
+  ratio is an arithmetic slip, not a scale error.
+- **Mid tier, consequence for test:** Sonnet 4.6 and GPT-5.4 compute -1.4426% and answer the
+  "exceeds the reprocessing percentage" field as "reprocessing is not applicable pre-release" (0.972 each;
+  the schema wording has since been sharpened, disclosed in the taxonomy). Haiku 4.5 orders shareholder
+  reprocessing for a NAV that was never released (0.964). Sonnet files an "exception" on the clean case
+  whose own text concludes that every line matches; the hardened grader reads it as informational (1.000 AP).
+- **Grader calibration logged:** seven of eight models cited the administrator's totals block, a valid
+  citation the single gold verbatim rejected; alternates added, all runs re-graded offline with the
+  original scores kept in each `run.json`. Gemini 3.6 Flash's first break-case attempt was cut off by the
+  8,000-token budget (0.428 as parsed) and re-run at 16,000 (0.956 after the echoed-instruction guard, 1.000 AP
+  before it); the truncated run is kept under `prior/`. Details: [`outputs/eval7-live/TAXONOMY.md`](outputs/eval7-live/TAXONOMY.md).
+- **Adversarial gaming review (October 6, 2026):** six attackers, one per grader surface, reproduced ways a wrong
+  answer scored well (a release read as a hold because "note" contains "not"; a fabricated price in the
+  reasoning text) and ways a right answer lost (a date with a time part firing the date gate). All fixed, 86
+  cases pinned as standing checks, every run re-graded with provenance; four scores moved, no decision or gate.
+
 ## Open-weight local runs — evals #1–#2
 
 **Eval #1 (earnings, Snowflake FQ2-2026) — Qwen2.5-32B-Instruct**, local, press-release packet:
@@ -265,6 +313,37 @@ The 27B reasoning model beat the 72B non-reasoning model on every case despite a
 disadvantage. Both nailed extraction (0.86–0.91) and the headline remaining-cap calculation, and
 both fell into the same payoff-grid conflation — two subjects, one lineage, so a cross-family
 replication is the honest next step before calling it task-level. [Taxonomy](outputs/eval2-live/TAXONOMY.md)
+
+
+### Eval #7 on local models (the cost question)
+
+Five free models through LM Studio, same packages, same grader: on a laptop with a 12 GB graphics card and on
+a desktop RTX 5090. The paid models took 15 to 40 seconds per case.
+
+| Model | Hardware | Break case | Clean case | Time per case |
+|---|---|---:|---:|---:|
+| Qwen 3.8 27B (4-bit) | laptop (12 GB GPU + CPU) for the break; a desktop RTX 5090 for the clean | **1.000 AllPass** | 0.986 | 24 min on the laptop; 5.7 min on the 5090 |
+| Gemma 4 31B (4-bit) | desktop RTX 5090 | **1.000 AllPass** | **1.000 AllPass** | 5.7 min / 6.3 min |
+| Qwen 3.6 35B-A3B (4-bit, 3B active) | desktop RTX 5090 | 0.968 | 0.932 | 3.6 min / 3.2 min |
+| Qwen 2.5 32B instruct (4-bit, no thinking phase) | desktop RTX 5090 | **0.535** | 0.941 | about 2 min |
+| Qwen 3.8 2B distill (8-bit) | laptop GPU | 0.131, sign gate | 0.174, false hold | about 25 s |
+
+- The 27B found the stale swap, recomputed 51.9912, held and refused the probe correctly - every criterion
+  met, 24 minutes of thinking on the laptop. On the clean case it thought twice as long (15,665 tokens), released
+  the NAV with no exception and lost one point for a thin citation: 0.986 in five and a half minutes on the 5090;
+  the laptop attempt had run past its output budget and is kept under `prior/`.
+- Gemma 4 31B passed everything on both packages on the 5090, under six and a half minutes each, with a fraction
+  of the Qwen's thinking: two free models from two families at the flagship level on this package.
+- Qwen 3.6 35B-A3B, the fast mixture model, got every number and decision right in under four minutes per case
+  and lost points only on paperwork: no citations, and the NAV-to-release left blank on the clean package.
+- Qwen 2.5 32B instruct, with no thinking phase, saw the problem and did not do the work: it flagged the stale
+  swap, named the line and held, but copied the administrator's NAV back as its recomputation and reported no
+  error (0.535); exact on the clean case apart from a thin citation and an echoed refusal reason (0.941); about
+  two minutes per case.
+- The 2B read every line correctly, then added them up $108 million and $48 million too high, declared
+  errors that did not exist and held the clean NAV with reprocessing ordered. The small-model floor.
+- Earlier attempts cut off by LM Studio's default 8,192-token window are kept under `prior/`. Details:
+  [`outputs/eval7-live/TAXONOMY.md`](outputs/eval7-live/TAXONOMY.md).
 
 ## Scope notes
 

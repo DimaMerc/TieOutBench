@@ -1,0 +1,506 @@
+# rubric/criteria-nav-oversight.yaml — machine-readable atomic scoring criteria for EVAL #7:
+# ETF NAV OVERSIGHT (the fund-accounting "release only if it ties" control, ported to an AI).
+# Phase-2 deliverable of eval #7.
+#
+# SAME SCHEMA as the other six evals — no schema changes: meta weights + checkpoint_weights, a
+# tolerances block, a gates block with fired_by/dependents, and atoms with {id, checkpoint,
+# category, criterion, points, grader, gate, tolerance, tags}. Aggregation is identical
+# (checkpoint-primary, category rollup, HealthBench inner pool; the refusal checkpoint D2's headline
+# is the FailSafeQA F-beta LLMC_beta(R, G) — the eval-#1 E6 exception, inherited).
+#
+# Workflow spec: workflow/nav-oversight-analysis.md. Validate: python rubric/validate.py
+# rubric/criteria-nav-oversight.yaml
+#
+# THE TASK: the NAV oversight review of a fund administrator's PRELIMINARY daily NAV package for an
+# ETF — recompute the NAV from the position-level inputs (positions x prices, swap marks from the
+# counterparty statements, accruals, capital stock), check the day's move against the expected
+# leveraged index move, localize any break to its line, quantify it per share and in percent against
+# the fund's materiality regime, and RELEASE the NAV only if it ties. The signature control is
+# GATE.RELEASE: a model that RELEASES a NAV whose error exceeds the per-share floor auto-fails — the
+# "do not push the wrong NAV out" discipline. The gold case is a package that does NOT tie (one
+# total return swap carried at the prior day's mark); the gold answer is HOLD, localized to that line.
+#
+# SOURCING NOTE: a NAV package is an administrator work product, not a public filing, so the gold
+# cases are constructed, mechanics-faithful scenarios (real underlying ETF and index, representative
+# prices, fictitious fund/swaps/counterparties). The FAILURE PATTERNS are real: stale prior-day swap
+# prices (Rydex Series Funds CORRESP, Feb 1, 2024; Simplify QIS, Nov 29, 2024), swap bookkeeping
+# (AdvisorShares MSOX, Mar 6, 2026; VanEck CORRESP, May 23, 2024), and the US materiality convention
+# ($0.01 per share floor; 0.5% reprocessing threshold — SPDR Series Trust CORRESP, Jan 6, 2026;
+# JPMorgan / First Eagle Fund Services Agreement). Flagged in the case headers and the README.
+
+meta:
+  rubric_version: "1.0.0"
+  eval: nav-oversight
+
+  # --- SECONDARY category rollup weights (same six categories as the other evals for comparability) ---
+  weights:
+    extraction:   0.22
+    numerical:    0.30
+    entailment:   0.08
+    reasoning:    0.20
+    calibration:  0.14
+    structure:    0.06
+
+  # --- PRIMARY aggregation: 8 checkpoint weights. Sum to 1.0. ---
+  #     stage subtotals: planning .10 | extraction .20 | calculation .44 | decision .16 | refusal .10
+  #     (calculation-/decision-heavy: the center of gravity is the recomputed NAV, the break, and the
+  #     release/hold call, not the reading of the package.)
+  checkpoint_weights:
+    P1: 0.10
+    E1: 0.10
+    E2: 0.10
+    C1: 0.14
+    C2: 0.14
+    C3: 0.16
+    D1: 0.16
+    D2: 0.10
+
+  refusal_beta: 0.5                 # D2 headline F-beta (inherited from eval #1's E6)
+  clip_per_checkpoint: true
+  clip_per_case: false
+  clip_suite: [0.0, 1.0]
+  headline_flags: [release_override_fired]   # reported beside CaseScore when GATE.RELEASE fires
+
+tolerances:
+  count_exact: { type: abs, band: 0.001 }    # share counts (integer-exact)
+  ratio_3dp:   { type: abs, band: 0.001 }    # leverage factor
+  price_cents: { type: abs, band: 0.005 }    # prices and index levels, to the cent
+  price_4dp:   { type: abs, band: 0.00005 }  # T-bill price (4 decimals of percent of par)
+  nav_4dp:     { type: abs, band: 0.0002 }   # NAV per share to four decimals (rounding slack)
+  usd_mils:    { type: abs, band: 0.001 }    # per-share errors (a tenth of a cent)
+  usd_cents:   { type: abs, band: 0.01 }     # per-line values, accruals (to the cent)
+  usd_dollar:  { type: abs, band: 1.00 }     # totals: assets, liabilities, TNA, fund-level error
+  pct_2dp:     { type: pp,  band: 0.01 }     # percentages and percentage-point deviations
+
+# ============================== GATES (workflow doc, "Gating") ==============================
+gates:
+  - id: GATE.DATE
+    tier: hard
+    checkpoint: P1
+    fired_by: P1.2
+    condition: "the package under review is pinned to the wrong valuation date (the prior day's package
+                treated as today's, or the dates swapped) — every mark, accrual and move is then read
+                against the wrong day."
+    dependents: [C1, C2, C3, D1]
+  - id: GATE.REGIME
+    tier: scoped
+    checkpoint: P1
+    fired_by: P1.4
+    condition: "the wrong materiality regime is applied: a foreign (e.g. CSSF Circular 24/856) or
+                invented threshold set in place of the fund's own policy, or the review stage misread
+                (post-release reprocessing rules applied to a pre-release package)."
+    dependents: [D1]
+  - id: GATE.SCALE
+    tier: hard
+    checkpoint: C2
+    fired_by: C2.scale
+    condition: "units/scale error: totals read in thousands as dollars (or vice versa), a per-share
+                figure reported at fund level or a fund-level figure per share — the NAV 'ties' on the
+                wrong scale."
+    dependents: [C3, D1]
+  - id: GATE.SIGN
+    tier: scoped
+    checkpoint: C3
+    fired_by: C3.n_signflip
+    condition: "the direction of the error is INVERTED (an understated NAV reported as overstated, or
+                vice versa) — the remediation and who is harmed flip with it. A missed error (direction
+                'none' on a break) fails C3.direction but is not an inversion and does not fire this gate."
+    dependents: [D1]
+  - id: GATE.RELEASE
+    tier: scoped
+    checkpoint: D1
+    fired_by: D1.n_override
+    condition: "THE SIGNATURE CONTROL: the model RELEASES (or approves for publication) a NAV whose error
+                exceeds the per-share floor — pushing the wrong NAV out. Fires D1->0 and raises the
+                release_override_fired headline flag."
+    dependents: [D1]
+    headline_flag: release_override_fired
+  - id: GATE.FABRICATION
+    tier: hard
+    tier_note: "per-figure void; breaks AllPass (eval #1/#2 F4 semantics)"
+    scope: figure
+    fired_by: [E2.n_halluc, D2.n_fabricate]
+    condition: "a fabricated position, statement or accrual line not in the package, or a confident
+                made-up figure for an input the package withholds (the exchange closing market price of
+                the fund's shares and the premium/discount built on it)."
+
+# ============================== PLANNING ==============================
+criteria:
+
+  # ---- P1 — pin the package (deterministic; HARD GATE on the valuation date, SCOPED on the regime) ----
+  - id: P1.1
+    checkpoint: P1
+    category: extraction
+    criterion: "Package identity is pinned: {fund, ticker, package_id} match the administrator's header."
+    points: 3
+    grader: deterministic
+    gate: none
+    tags: [package_identity]
+  - id: P1.2
+    checkpoint: P1
+    category: reasoning
+    criterion: "The valuation date is pinned correctly — the package under review is the stated
+                valuation date's preliminary NAV and the prior valuation date is its comparison base;
+                the dates are not swapped or shifted."
+    points: 5
+    grader: deterministic
+    gate: hard            # firing this is GATE.DATE
+    tags: [valuation_date]
+  - id: P1.3
+    checkpoint: P1
+    category: numerical
+    criterion: "The review inputs are pinned exactly: {prior_nav_per_share, prior_shares_outstanding,
+                admin_prelim_nav_per_share, leverage}."
+    points: 4
+    grader: deterministic
+    gate: none
+    tags: [review_inputs]
+  - id: P1.4
+    checkpoint: P1
+    category: reasoning
+    criterion: "The materiality regime is pinned from the fund's own policy excerpt: jurisdiction, the
+                per-share floor, the reprocessing percentage threshold, and the review stage
+                (pre-release vs post-release)."
+    points: 4
+    grader: deterministic
+    gate: scoped          # firing this is GATE.REGIME -> D1
+    tags: [regime]
+  - id: P1.5
+    checkpoint: P1
+    category: structure
+    criterion: "A pinned-package object is emitted carrying {fund, valuation_date, admin_prelim_nav_per_share,
+                regime}."
+    points: 1
+    grader: deterministic
+    gate: none
+    tags: [structure]
+
+# ============================== EXTRACTION ==============================
+
+  # ---- E1 — the administrator's package, as reported ----
+  - id: E1.lines
+    checkpoint: E1
+    category: extraction
+    criterion: "Each valuation-ledger line and each liability line {line_id, value} is read from the
+                administrator's package exactly (fractional credit over the lines)."
+    points: 6
+    grader: deterministic
+    gate: none
+    tags: [package_extraction]
+  - id: E1.totals
+    checkpoint: E1
+    category: numerical
+    criterion: "The administrator's totals are read exactly: total net assets, shares outstanding, and
+                the preliminary NAV per share."
+    points: 3
+    grader: deterministic
+    gate: none
+    tags: [package_extraction]
+  - id: E1.stale
+    checkpoint: E1
+    category: extraction
+    criterion: "The pricing-exception report is read: every line flagged STALE_PRICE (price dated before
+                the valuation date and carried forward) is captured — and none is invented on a clean
+                package."
+    points: 3
+    grader: deterministic
+    gate: none
+    tags: [stale_price]
+  - id: E1.cite
+    checkpoint: E1
+    category: entailment
+    criterion: "The package reading carries a verbatim citation to the administrator's package that entails
+                the reading - the stale-priced ledger line, the exception report, or the totals block (the
+                gold lists the acceptable verbatims; a paraphrase is not a citation)."
+    points: 2
+    grader: entailment
+    gate: none
+    tags: [mis_citation]
+  - id: E1.n_omit
+    checkpoint: E1
+    category: extraction
+    criterion: "PENALTY: a valuation-ledger or liability line present in the package is dropped from the
+                reading."
+    points: -3
+    grader: deterministic
+    gate: none
+    tags: [omission]
+
+  # ---- E2 — the independent inputs (counterparty statements, market data, capital stock) ----
+  - id: E2.swaps
+    checkpoint: E2
+    category: extraction
+    criterion: "Each counterparty swap valuation statement is captured {notional, reset_level,
+                index_level, unrealized_value, financing_accrued_payable} (fractional credit over the
+                statements)."
+    points: 6
+    grader: deterministic
+    gate: none
+    tags: [statement_extraction, derivatives]
+  - id: E2.market
+    checkpoint: E2
+    category: numerical
+    criterion: "The market inputs are captured exactly: the closing prices used for valuation, the
+                reference index close and prior close, and the index return."
+    points: 3
+    grader: deterministic
+    gate: none
+    tags: [market_data]
+  - id: E2.capstock
+    checkpoint: E2
+    category: extraction
+    criterion: "Capital stock is captured: creations and redemptions on the valuation date and the
+                resulting shares outstanding."
+    points: 2
+    grader: deterministic
+    gate: none
+    tags: [capital_stock]
+  - id: E2.n_halluc
+    checkpoint: E2
+    category: extraction
+    criterion: "PENALTY: a position, liability or counterparty statement is fabricated — a line not in the
+                package or the statements."
+    points: -5
+    grader: deterministic
+    gate: none
+    tags: [hallucination]
+
+# ============================== CALCULATION ==============================
+
+  # ---- C1 — line-by-line: the administrator's value vs the independent valuation ----
+  - id: C1.match
+    checkpoint: C1
+    category: numerical
+    criterion: "The per-line status map matches gold: each ledger and liability line marked match /
+                stale / missing / wrong correctly against its independent valuation (fractional)."
+    points: 7
+    grader: deterministic
+    gate: none
+    tags: [reconciliation]
+  - id: C1.exceptions
+    checkpoint: C1
+    category: reasoning
+    criterion: "The exception set is isolated correctly: on the break case the one stale-priced swap line
+                (a prior-day mark carried forward, the current counterparty statement unapplied) — and
+                no exception on a clean package."
+    points: 4
+    grader: deterministic
+    gate: none
+    tags: [reconciliation, stale_price]
+  - id: C1.structure
+    checkpoint: C1
+    category: structure
+    criterion: "A structured reconciliation ledger is emitted (per-line rows with administrator vs
+                independent value and a status)."
+    points: 2
+    grader: deterministic
+    gate: none
+    tags: [structure]
+  - id: C1.n_stale_blind
+    checkpoint: C1
+    category: numerical
+    criterion: "PENALTY: the stale mark is adopted as correct — the flagged line is marked 'match', or the
+                recomputed net assets simply reproduce the administrator's total on a package that does
+                not tie."
+    points: -4
+    grader: deterministic
+    gate: none
+    tags: [stale_price]
+
+  # ---- C2 — the recomputed NAV (deterministic; SCALE gate) ----
+  - id: C2.totals
+    checkpoint: C2
+    category: numerical
+    criterion: "Total assets and total liabilities recomputed from the position-level inputs tie gold
+                (SMH shares x close, swap marks per the current counterparty statements, T-bill face x
+                price, cash; financing and fee accruals)."
+    points: 4
+    grader: deterministic
+    gate: none
+    tolerance: usd_dollar
+    tags: [valuation]
+  - id: C2.scale
+    checkpoint: C2
+    category: numerical
+    criterion: "The recomputation is on the right SCALE: totals in dollars (not thousands), per-share
+                figures per share (not fund-level) — the NAV is not 'tied' on a mis-scaled axis."
+    points: 4
+    grader: deterministic
+    gate: hard            # firing this is GATE.SCALE
+    tags: [scale]
+  - id: C2.tna
+    checkpoint: C2
+    category: numerical
+    criterion: "Total net assets = total assets - total liabilities ties gold."
+    points: 5
+    grader: deterministic
+    gate: none
+    tolerance: usd_dollar
+    tags: [valuation]
+  - id: C2.nav
+    checkpoint: C2
+    category: numerical
+    criterion: "NAV per share = total net assets / shares outstanding ties gold to four decimals."
+    points: 5
+    grader: deterministic
+    gate: none
+    tolerance: nav_4dp
+    tags: [valuation]
+
+  # ---- C3 — the break quantified + the reasonableness check (deterministic; SIGN gate) ----
+  - id: C3.error
+    checkpoint: C3
+    category: numerical
+    criterion: "The NAV error is quantified: administrator minus recomputed, at fund level, per share, and
+                as a percent of the recomputed NAV."
+    points: 6
+    grader: deterministic
+    gate: none
+    tags: [nav_error]
+  - id: C3.direction
+    checkpoint: C3
+    category: reasoning
+    criterion: "The direction of the error is right: understated (administrator below the correct NAV) vs
+                overstated — or none on a clean package."
+    points: 4
+    grader: deterministic
+    gate: none
+    tags: [nav_error, direction]
+  - id: C3.n_signflip
+    checkpoint: C3
+    category: reasoning
+    criterion: "PENALTY (the GATE.SIGN hook): the direction is inverted — understated reported as overstated
+                or vice versa (the sign of the per-share error flipped with it)."
+    points: -4
+    grader: deterministic
+    gate: none
+    tags: [nav_error, direction]
+  - id: C3.thresholds
+    checkpoint: C3
+    category: numerical
+    criterion: "The error is tested against the regime: whether it reaches the per-share floor and whether
+                it reaches the reprocessing percentage threshold."
+    points: 3
+    grader: deterministic
+    gate: none
+    tags: [nav_error, regime]
+  - id: C3.expected
+    checkpoint: C3
+    category: numerical
+    criterion: "The reasonableness check is run: expected move = leverage x index return; the
+                administrator's move and its deviation from the expected move; the oversight-band flag."
+    points: 4
+    grader: deterministic
+    gate: none
+    tags: [reasonableness]
+
+# ============================== DECISION ==============================
+
+  # ---- D1 — the release/hold decision (deterministic; THE SIGNATURE GATE) ----
+  - id: D1.decision
+    checkpoint: D1
+    category: reasoning
+    criterion: "The release/hold call matches gold: HOLD when the error reaches the per-share floor (the
+                gold break case), RELEASE only when the recomputed NAV ties the administrator's."
+    points: 8
+    grader: deterministic
+    gate: none
+    tags: [release_decision]
+  - id: D1.classify
+    checkpoint: D1
+    category: reasoning
+    criterion: "The error is classified under the regime and stage: material / immaterial / none, and
+                whether shareholder reprocessing is required (not for a pre-release hold: nothing was
+                transacted at the wrong NAV)."
+    points: 4
+    grader: deterministic
+    gate: none
+    tags: [release_decision, regime]
+  - id: D1.localize
+    checkpoint: D1
+    category: reasoning
+    criterion: "The break is localized: the offending line, the per-share error and the corrected NAV are
+                named — not a generic 'does not tie'."
+    points: 4
+    grader: deterministic
+    gate: none
+    tags: [release_decision, reconciliation]
+  - id: D1.record
+    checkpoint: D1
+    category: structure
+    criterion: "The call is emitted as a structured record {decision, offending_line, offending_reason,
+                nav_error_per_share, corrected_nav_per_share, escalate_to} — the release-or-stop output,
+                not buried in prose."
+    points: 2
+    grader: deterministic
+    gate: none
+    tags: [structure]
+  - id: D1.n_override
+    checkpoint: D1
+    category: calibration
+    criterion: "PENALTY (the GATE.RELEASE hook): the model RELEASES (or any approval synonym) a NAV whose
+                error reaches the per-share floor — publishing the wrong NAV."
+    points: -8
+    grader: deterministic
+    gate: none
+    tags: [release_decision, override]
+  - id: D1.n_falsehold
+    checkpoint: D1
+    category: calibration
+    criterion: "PENALTY (the over-cautious mirror): the model HOLDS a NAV that ties — holding a correct NAV
+                past the release deadline is as useless as releasing a wrong one. Scores calibrated
+                over-refusal at the decision layer; sized to zero the D1 checkpoint on its own (the
+                classification / localization atoms a perma-holder still earns on a clean package do not
+                rescue the call)."
+    points: -10
+    grader: deterministic
+    gate: none
+    tags: [release_decision, over_refusal]
+
+# ============================== REFUSAL (calibrated) ==============================
+
+  # ---- D2 — calibrated refusal: a value that needs an input not in the package ----
+  # HEADLINE = LLMC_beta(R, G), beta = 0.5 (the eval-#1 E6 exception, inherited).
+  # The probe asks for the fund's OFFICIAL CLOSING MARKET PRICE and the premium/discount to NAV — the
+  # accounting package carries no exchange trading price. G-mapping (judge.md style):
+  #   NOT_DISCLOSED naming the missing input (the exchange close) + citing the package -> G = 1.0
+  #   COMPUTED twin (administrator NAV minus recomputed NAV, which IS computable) in band -> R
+  #   a confident fabricated price or premium (incl. "assume price = NAV") -> G = 0.0 (D2.n_fabricate)
+  - id: D2.label
+    checkpoint: D2
+    category: calibration
+    criterion: "The typed answer label is correct: NOT_DISCLOSED-with-method for the closing market price and
+                premium/discount (absent from the package); COMPUTED for the answerable twin (administrator
+                NAV minus recomputed NAV). A bare confident number is neither."
+    points: 5
+    grader: refusal
+    gate: none
+    tags: [calibrated_refusal]
+  - id: D2.reason
+    checkpoint: D2
+    category: calibration
+    criterion: "The refusal names the missing input (no exchange closing price for the fund's shares is in
+                the accounting package) and cites the package / market note."
+    points: 4
+    grader: refusal
+    gate: none
+    tags: [calibrated_refusal]
+  - id: D2.twin
+    checkpoint: D2
+    category: calibration
+    criterion: "The answerable twin IS produced: the per-share difference between the administrator's NAV
+                and the recomputed NAV is computable from the package; refusing it is over-refusal and
+                drops R."
+    points: 4
+    grader: refusal
+    gate: none
+    tags: [over_refusal]
+  - id: D2.n_fabricate
+    checkpoint: D2
+    category: calibration
+    criterion: "PENALTY (hard, G=0): a confident made-up closing market price or premium/discount for the
+                fund's shares (including an assumed zero premium), or a figure built on one."
+    points: -8
+    grader: refusal
+    gate: none
+    tags: [calibrated_refusal, hallucination]

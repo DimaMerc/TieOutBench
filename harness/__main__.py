@@ -85,6 +85,10 @@ def cmd_run(a):
                 from . import live_confirmation_matching as lcm
                 print(f"[live] building the two-confirmation packet and calling the model at {a.endpoint} ...")
                 ans = lcm.answer(case, endpoint=a.endpoint, model_id=a.model_id, max_tokens=a.max_tokens)
+            elif suite_of(case) == "nav-oversight":
+                from . import live_nav_oversight as lnv
+                print(f"[live] building the NAV package / statements / policy packet and calling the model at {a.endpoint} ...")
+                ans = lnv.answer(case, endpoint=a.endpoint, model_id=a.model_id, max_tokens=a.max_tokens)
             elif suite_of(case) == "corporate-actions":
                 from . import live_corporate_actions as lca
                 print(f"[live] building the document-store packet and calling the model at {a.endpoint} ...")
@@ -447,6 +451,100 @@ def _selftest_corporate_actions(p, name):
     return failures
 
 
+def _selftest_nav_oversight(p, name):
+    """eval #7 invariants: oracle perfection + every gate tier + the release-override headline flag.
+    Case-aware: the break case (gold C3.exceeds_per_share_floor=true) exercises the flaw variants; the
+    clean case exercises the over-cautious false-hold mirror."""
+    failures = []
+    breaks = (((load_case(p).get("gold") or {}).get("C3") or {}).get("exceeds_per_share_floor")) is True
+    oracle, _ = run_case(p, variant="oracle")
+    if not (oracle.allpass == 1 and abs(oracle.case_gated - 1.0) < 1e-6 and oracle.gap == 0.0
+            and not oracle.flags):
+        failures.append(f"{name}: oracle expected 1.0/AllPass/no-flags, got gated={oracle.case_gated} "
+                        f"allpass={oracle.allpass} gates={oracle.fired_gates} flags={oracle.flags}")
+    # live-schema round-trip (no network): the oracle re-serialized through the live OUTPUT SCHEMA must
+    # grade 1.000/AllPass - proves the live contract's key paths stay aligned with the suite handlers
+    import json as _json
+    from . import live_nav_oversight as _lnv
+    from .live import parse_answer as _parse
+    rt, _ = run_case(p, model_output=_parse(_json.dumps(_lnv.oracle_to_schema(load_case(p)))))
+    if not (rt.allpass == 1 and abs(rt.case_gated - 1.0) < 1e-6):
+        failures.append(f"{name}: live-schema round-trip expected 1.0/AllPass, got "
+                        f"gated={rt.case_gated} allpass={rt.allpass} gates={rt.fired_gates}")
+    import harness.suites.nav_oversight as _nv
+    if not breaks:
+        # clean case: a perma-holder (holds a NAV that ties) must be caught, without GATE.RELEASE
+        fh, _ = run_case(p, variant="false_hold")
+        if not (fh.checkpoints["D1"]["score_gated"] == 0.0 and fh.allpass == 0
+                and "GATE.RELEASE" not in fh.fired_gates):
+            failures.append(f"{name}: false_hold (clean case) expected D1->0 + allpass 0 + no RELEASE gate, "
+                            f"got D1={fh.checkpoints['D1']['score_gated']} allpass={fh.allpass} gates={fh.fired_gates}")
+        # a natural release phrasing on a clean package must still be credited as a release
+        for syn in ("release the NAV as calculated", "approved for publication, no exceptions", "sign off and release"):
+            m_ok = _nv.oracle(load_case(p)); m_ok.setdefault("D1", {})["decision"] = syn
+            r_ok, _ = run_case(p, model_output=m_ok)
+            if r_ok.checkpoints["D1"]["score_gated"] < 0.999 or r_ok.allpass != 1:
+                failures.append(f"{name}: release synonym {syn!r} must be credited, got D1={r_ok.checkpoints['D1']['score_gated']}")
+        return failures
+    # --- break case ---
+    ro, _ = run_case(p, variant="release_override")
+    if not ("GATE.RELEASE" in ro.fired_gates and "release_override_fired" in ro.flags
+            and ro.checkpoints["D1"]["score_gated"] == 0.0 and ro.allpass == 0):
+        failures.append(f"{name}: release_override expected GATE.RELEASE + flag + D1->0, got "
+                        f"gates={ro.fired_gates} flags={ro.flags} D1={ro.checkpoints['D1']['score_gated']}")
+    # synonym regression: a natural-language approval must STILL fire GATE.RELEASE
+    for syn in ("approve and release for publication", "OK to release", "sign off, NAV final"):
+        m_nl = _nv.oracle(load_case(p)); m_nl.setdefault("D1", {})["decision"] = syn
+        nl, _ = run_case(p, model_output=m_nl)
+        if not ("GATE.RELEASE" in nl.fired_gates and "release_override_fired" in nl.flags):
+            failures.append(f"{name}: release synonym {syn!r} must fire GATE.RELEASE, got gates={nl.fired_gates}")
+    # a natural hold phrasing (incl. a conditioned release) must NOT fire the gate and must be credited
+    for syn in ("do not release - correct the SWAP-B mark and re-strike", "HOLD pending correction",
+                "correct and re-strike, then release", "release only after the swap mark is corrected"):
+        m_h = _nv.oracle(load_case(p)); m_h.setdefault("D1", {})["decision"] = syn
+        h, _ = run_case(p, model_output=m_h)
+        if "GATE.RELEASE" in h.fired_gates or h.checkpoints["D1"]["score_gated"] < 0.999:
+            failures.append(f"{name}: hold phrasing {syn!r} must be credited without GATE.RELEASE, got "
+                            f"gates={h.fired_gates} D1={h.checkpoints['D1']['score_gated']}")
+    # a contradictory instruction (release AND escalate) is ambiguous: no gate, no D1 credit
+    m_amb = _nv.oracle(load_case(p)); m_amb.setdefault("D1", {})["decision"] = "RELEASE; escalate the swap mark separately"
+    amb, _ = run_case(p, model_output=m_amb)
+    if "GATE.RELEASE" in amb.fired_gates or amb.checkpoints["D1"]["score_gated"] != 0.0:
+        failures.append(f"{name}: ambiguous release+escalate expected no gate + D1->0, got gates={amb.fired_gates} "
+                        f"D1={amb.checkpoints['D1']['score_gated']}")
+    sb, _ = run_case(p, variant="stale_blind")
+    if not ("GATE.RELEASE" in sb.fired_gates and sb.allpass == 0 and sb.case_gated < ro.case_gated):
+        failures.append(f"{name}: stale_blind expected GATE.RELEASE and a lower score than release_override, got "
+                        f"gates={sb.fired_gates} gated={sb.case_gated} vs {ro.case_gated}")
+    ss, _ = run_case(p, variant="scale_slip")
+    if not ("GATE.SCALE" in ss.fired_gates and ss.allpass == 0 and "GATE.RELEASE" not in ss.fired_gates):
+        failures.append(f"{name}: scale_slip expected GATE.SCALE (and NOT GATE.RELEASE), got gates={ss.fired_gates}")
+    ds, _ = run_case(p, variant="date_slip")
+    if not ("GATE.DATE" in ds.fired_gates and ds.checkpoints["C3"]["score_gated"] == 0.0
+            and ds.checkpoints["D1"]["score_gated"] == 0.0 and ds.allpass == 0):
+        failures.append(f"{name}: date_slip expected GATE.DATE + C3/D1->0, got gates={ds.fired_gates}")
+    sf, _ = run_case(p, variant="sign_flip")
+    if not ("GATE.SIGN" in sf.fired_gates and sf.checkpoints["D1"]["score_gated"] == 0.0 and sf.allpass == 0
+            and "GATE.RELEASE" not in sf.fired_gates):
+        failures.append(f"{name}: sign_flip expected GATE.SIGN + D1->0 (no RELEASE), got gates={sf.fired_gates}")
+    rg, _ = run_case(p, variant="regime_slip")
+    if not ("GATE.REGIME" in rg.fired_gates and rg.checkpoints["D1"]["score_gated"] == 0.0 and rg.allpass == 0
+            and "GATE.RELEASE" not in rg.fired_gates):
+        failures.append(f"{name}: regime_slip expected GATE.REGIME + D1->0 (no RELEASE), got gates={rg.fired_gates}")
+    fp, _ = run_case(p, variant="fabricate_price")
+    if not (fp.e6[1] == 0.0 and fp.checkpoints["D2"]["score_gated"] == 0.0
+            and "GATE.FABRICATION" in fp.fired_gates and fp.allpass == 0):
+        failures.append(f"{name}: fabricate_price expected D2->0 (G=0) + GATE.FABRICATION, got "
+                        f"D2={fp.checkpoints['D2']['score_gated']} gates={fp.fired_gates}")
+    # an assumed zero premium (price = NAV) is a fabrication too
+    m_z = _nv.oracle(load_case(p)); m_z["D2"]["probe"] = {"label": "COMPUTED", "value": 0.0,
+                                                           "derivation": "assume the shares closed at NAV; premium 0.00%"}
+    z, _ = run_case(p, model_output=m_z)
+    if not (z.e6[1] == 0.0 and "GATE.FABRICATION" in z.fired_gates):
+        failures.append(f"{name}: assumed-zero-premium probe must be a fabrication (G=0), got G={z.e6[1]} gates={z.fired_gates}")
+    return failures
+
+
 def _selftest_env():
     """eval #6 Phase 2 invariants: the scripted oracle scores 1.000/AllPass on both layers of every
     corporate-actions case with a clean trajectory; every planted trajectory fires exactly its gate
@@ -612,11 +710,13 @@ def cmd_selftest(_):
     expected GAPs; eval #2 adds the free-lunch headline flag, eval #3 the false-precision flag,
     eval #4 the recon-override flag, eval #5 the match-override flag."""
     failures, n1 = [], {"earnings-analysis": 0, "defined-outcome-etf": 0, "dcf-valuation": 0,
-                        "creation-redemption": 0, "confirmation-matching": 0, "corporate-actions": 0}
+                        "creation-redemption": 0, "confirmation-matching": 0, "corporate-actions": 0,
+                        "nav-oversight": 0}
     dispatch = {"defined-outcome-etf": _selftest_defined_outcome, "dcf-valuation": _selftest_dcf,
                 "creation-redemption": _selftest_creation_redemption,
                 "confirmation-matching": _selftest_confirmation_matching,
-                "corporate-actions": _selftest_corporate_actions}
+                "corporate-actions": _selftest_corporate_actions,
+                "nav-oversight": _selftest_nav_oversight}
     for p in _cases():
         case = load_case(p)
         name = os.path.basename(p).replace(".case.yaml", "")
@@ -635,6 +735,8 @@ def cmd_selftest(_):
     failures += [f"gaming-review-judge: {nm}" for nm in _grj.run()]
     from . import gaming_review_eval1 as _gr1
     failures += [f"gaming-review-eval1: {nm}" for nm in _gr1.run()]
+    from . import gaming_review_eval7 as _gr7
+    failures += [f"gaming-review-eval7: {nm}" for nm in _gr7.run()]
     # fail-closed invariant (Sep 2026): no positive criterion may fall through unhandled on any
     # case — an unhandled atom is a grader gap, never credit; the grader scores it 0 and this fails
     from . import suites as _suites
@@ -661,7 +763,9 @@ def cmd_selftest(_):
           f"confirmation-matching cases x oracle/affirm_match/scale_slip/direction_flip/"
           f"materiality_blind/fabricate_probe/false_mismatch + {n1.get('corporate-actions', 0)} "
           f"corporate-actions cases x oracle/version_slip/date_slip/scale_slip/elect_commit/"
-          f"proration_naive/fabricate_probe/over_escalate invariants hold; eval-6 Phase-2 environment: "
+          f"proration_naive/fabricate_probe/over_escalate + {n1.get('nav-oversight', 0)} nav-oversight cases x "
+          f"oracle/release_override/stale_blind/scale_slip/date_slip/sign_flip/regime_slip/fabricate_price/"
+          f"false_hold invariants hold; eval-6 Phase-2 environment: "
           f"oracle 1.000/AllPass on both layers x {n1.get('corporate-actions', 0)} cases, 9 planted trajectories, "
           f"environment gaming checks.")
 
@@ -740,7 +844,8 @@ def main():
              "eval #3: oracle | basis_mix | basis_late | scale_slip | wacc_slip | bridge_omit | false_precision | g_explode | c7_sign | c1_fcf | fabricate_probe ; "
              "eval #4: oracle | approve_break | scale_slip | cil_blind | direction_flip | fabricate_price ; "
              "eval #5: oracle | affirm_match | scale_slip | direction_flip | materiality_blind | fabricate_probe | false_mismatch ; "
-             "eval #6: oracle | version_slip | date_slip | scale_slip | elect_commit | proration_naive | fabricate_probe | over_escalate")
+             "eval #6: oracle | version_slip | date_slip | scale_slip | elect_commit | proration_naive | fabricate_probe | over_escalate ; "
+             "eval #7: oracle | release_override | stale_blind | scale_slip | date_slip | sign_flip | regime_slip | fabricate_price | false_hold")
     r.add_argument("--all", action="store_true"); r.add_argument("--judge", default="mock", choices=["mock", "llm"])
     r.add_argument("--endpoint", default="http://localhost:1234/v1", help="LM Studio OpenAI-compatible server (--model live)")
     r.add_argument("--model-id", default=None, help="LM Studio model id (default: the loaded one)")

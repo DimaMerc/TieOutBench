@@ -25,6 +25,7 @@ SUITE_RUBRICS = {
     "creation-redemption": "criteria-creation-redemption.yaml",
     "confirmation-matching": "criteria-confirmation-matching.yaml",
     "corporate-actions": "criteria-corporate-actions.yaml",
+    "nav-oversight": "criteria-nav-oversight.yaml",
 }
 DEFAULT_SUITE = "earnings-analysis"
 

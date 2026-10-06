@@ -1,0 +1,18 @@
+=== grid start 2026-10-05 11:54:43 ===
+claude-opus-4-8              grsl-nav-2026          gated=1.000 ungated=1.000 GAP=0.000 AllPass=1 gates=[] flags=[] D2=1.0, 1.0  (30s)
+claude-opus-4-8              grsl-nav-2026-clean    gated=0.986 ungated=0.986 GAP=0.000 AllPass=0 gates=[] flags=[] D2=1.0, 1.0  (26s)
+claude-sonnet-4-6            grsl-nav-2026          gated=0.972 ungated=0.972 GAP=0.000 AllPass=0 gates=[] flags=[] D2=1.0, 1.0  (38s)
+claude-sonnet-4-6            grsl-nav-2026-clean    gated=0.943 ungated=0.943 GAP=0.000 AllPass=0 gates=[] flags=[] D2=1.0, 1.0  (33s)
+claude-haiku-4-5-20251001    grsl-nav-2026          gated=0.964 ungated=0.964 GAP=0.000 AllPass=0 gates=[] flags=[] D2=1.0, 1.0  (21s)
+claude-haiku-4-5-20251001    grsl-nav-2026-clean    gated=0.986 ungated=0.986 GAP=0.000 AllPass=0 gates=[] flags=[] D2=1.0, 1.0  (15s)
+gpt-5.6-sol                  grsl-nav-2026          gated=0.986 ungated=0.986 GAP=0.000 AllPass=0 gates=[] flags=[] D2=1.0, 1.0  (35s)
+gpt-5.6-sol                  grsl-nav-2026-clean    gated=0.986 ungated=0.986 GAP=0.000 AllPass=0 gates=[] flags=[] D2=1.0, 1.0  (21s)
+gpt-5.5                      grsl-nav-2026          gated=0.986 ungated=0.986 GAP=0.000 AllPass=0 gates=[] flags=[] D2=1.0, 1.0  (39s)
+gpt-5.5                      grsl-nav-2026-clean    gated=0.986 ungated=0.986 GAP=0.000 AllPass=0 gates=[] flags=[] D2=1.0, 1.0  (28s)
+gpt-5.4                      grsl-nav-2026          gated=0.972 ungated=0.972 GAP=0.000 AllPass=0 gates=[] flags=[] D2=1.0, 1.0  (18s)
+gpt-5.4                      grsl-nav-2026-clean    gated=0.986 ungated=0.986 GAP=0.000 AllPass=0 gates=[] flags=[] D2=1.0, 1.0  (15s)
+gpt-5.4-mini                 grsl-nav-2026          gated=0.671 ungated=0.671 GAP=0.000 AllPass=0 gates=[] flags=[] D2=0.0, 1.0  (8s)
+gpt-5.4-mini                 grsl-nav-2026-clean    gated=0.986 ungated=0.986 GAP=0.000 AllPass=0 gates=[] flags=[] D2=1.0, 1.0  (6s)
+gemini-3.6-flash             grsl-nav-2026          gated=0.428 ungated=0.428 GAP=0.000 AllPass=0 gates=[] flags=[] D2=0.0, 0.25  (31s)
+gemini-3.6-flash             grsl-nav-2026-clean    gated=0.986 ungated=0.986 GAP=0.000 AllPass=0 gates=[] flags=[] D2=1.0, 1.0  (29s)
+=== grid end 2026-10-05 12:01:17 ===

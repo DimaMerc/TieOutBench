@@ -1,0 +1,29 @@
+========================================================================
+  CASE grsl-nav-2026-clean    model=live:qwen3.8-2b-distill    judge=mock
+========================================================================
+  CaseScore (gated, headline) : 0.174
+  CaseScore (ungated)         : 0.174
+  GAP (ungated - gated)       : 0.000
+  AllPass                     : 0
+  D2 calibration (R,G->F_b)   : R=0.00 G=1.00 -> 0.000
+  Gates fired                 : none
+
+  Checkpoint vector (which step failed):
+    cp   W      ungated  gated   raw
+    P1   0.100  1.000   1.000  +1.00
+    E1   0.100  0.000   0.000  +0.00
+    E2   0.100  0.000   0.000  +0.00
+    C1   0.140  0.308   0.308  +0.31
+    C2   0.140  0.222   0.222  +0.22
+    C3   0.160  0.000   0.000  +0.00
+    D1   0.160  0.000   0.000  -0.44
+    D2   0.100  0.000   0.000  +0.00
+
+  Category rollup (diagnostic -- what KIND of error):
+    extraction   +0.150  ###
+    numerical    +0.167  ###
+    entailment   +0.000  
+    reasoning    +0.394  ########
+    calibration  -0.077  
+    structure    +0.600  ############
+========================================================================

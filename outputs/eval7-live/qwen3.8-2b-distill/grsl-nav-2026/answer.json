@@ -1,0 +1,179 @@
+{
+  "P1": {
+    "fund": "Granite Ridge 2x Daily U.S. Semiconductor ETF",
+    "ticker": "GRSL",
+    "package_id": "NAV-GRSL-20260623-PRELIM",
+    "valuation_date": "2026-06-23",
+    "prior_valuation_date": "2026-06-22",
+    "share_class": "single",
+    "leverage": 2.0,
+    "benchmark": "PHLX Semiconductor Sector Index (SOX)",
+    "prior_nav_per_share": 50.0,
+    "prior_shares_outstanding": 4000000,
+    "admin_prelim_nav_per_share": 51.2412,
+    "review_stage": "pre_release",
+    "regime": {
+      "jurisdiction": "US",
+      "per_share_floor_usd": 0.01,
+      "reprocessing_pct": 0.5,
+      "oversight_band_pp": 0.25
+    }
+  },
+  "E1": [
+    {
+      "line_id": "EQ-SMH",
+      "market_value": 100000000.0,
+      "price_date": "2026-06-23"
+    },
+    {
+      "line_id": "SWAP-A",
+      "market_value": 6000000.0,
+      "price_date": "2026-06-23"
+    },
+    {
+      "line_id": "SWAP-B",
+      "market_value": 6000000.0,
+      "price_date": "2026-06-22"
+    },
+    {
+      "line_id": "TB-0925",
+      "market_value": 94810000.0,
+      "price_date": "2026-06-23"
+    },
+    {
+      "line_id": "CASH",
+      "market_value": 2200600.0,
+      "price_date": "2026-06-23"
+    }
+  ],
+  "E2": [
+    {
+      "id": "SWAP-A",
+      "counterparty": "Northgate Securities LLC",
+      "notional": 147000000.0,
+      "reset_level": 4900.0,
+      "index_level": 5100.0,
+      "unrealized_value": 6000000.0,
+      "financing_accrued_payable": 490000.0,
+      "valuation_date": "2026-06-23"
+    },
+    {
+      "id": "SWAP-B",
+      "counterparty": "Westbrook Capital Markets",
+      "notional": 147000000.0,
+      "reset_level": 4900.0,
+      "index_level": 5100.0,
+      "unrealized_value": 6000000.0,
+      "financing_accrued_payable": 500208.33,
+      "valuation_date": "2026-06-23"
+    },
+    {
+      "id": "TB-0925",
+      "price": 99.8,
+      "valuation_date": "2026-06-23"
+    }
+  ],
+  "C1": [
+    {
+      "line_id": "EQ-SMH",
+      "admin_value": 100000000.0,
+      "independent_value": 100000000.0,
+      "status": "match"
+    },
+    {
+      "line_id": "SWAP-A",
+      "admin_value": 6000000.0,
+      "independent_value": 6000000.0,
+      "status": "match"
+    },
+    {
+      "line_id": "SWAP-B",
+      "admin_value": 3000000.0,
+      "independent_value": 6000000.0,
+      "status": "wrong"
+    },
+    {
+      "line_id": "TB-0925",
+      "admin_value": 94810000.0,
+      "independent_value": 94810000.0,
+      "status": "match"
+    },
+    {
+      "line_id": "CASH",
+      "admin_value": 2200600.0,
+      "independent_value": 2200600.0,
+      "status": "match"
+    }
+  ],
+  "E3": [
+    {
+      "line_id": "FIN-A",
+      "admin_value": 490000.0,
+      "independent_value": 490000.0,
+      "status": "match"
+    },
+    {
+      "line_id": "FIN-B",
+      "admin_value": 500208.33,
+      "independent_value": 500208.33,
+      "status": "match"
+    },
+    {
+      "line_id": "FEE",
+      "admin_value": 55705.48,
+      "independent_value": 55705.48,
+      "status": "match"
+    }
+  ],
+  "C2": {
+    "total_assets": 317010600.0,
+    "total_liabilities": 1045913.81,
+    "total_net_assets": 315964686.19,
+    "shares_outstanding": 4000000,
+    "nav_per_share": 78.9912
+  },
+  "C3": {
+    "fund_level_error": 27.75,
+    "nav_error_per_share": 27.75,
+    "nav_error_pct": 0.0088,
+    "direction": "overstated",
+    "exceeds_per_share_floor": true,
+    "exceeds_reprocessing_pct": false,
+    "index_return_pct": 1.0,
+    "expected_move_pct": 2.0,
+    "admin_move_pct": 54.4824,
+    "recomputed_move_pct": 2.4824,
+    "admin_deviation_pp": 53.4824,
+    "recomputed_deviation_pp": 1.9676,
+    "reasonableness_flag": true
+  },
+  "D1": {
+    "decision": "HOLD",
+    "classification": "material",
+    "offending_line": "SWAP-B",
+    "offending_reason": "The administrator's NAV is overstated by $27.75 per share (approximately 34% of the prior NAV), which exceeds the per-share floor threshold of $0.01 and requires correction before release.",
+    "nav_error_per_share": 27.75,
+    "corrected_nav_per_share": 78.9912,
+    "reprocessing_required": true,
+    "reprocessing_note": "NAV error exceeds per-share floor ($0.01). Requires re-striking NAV and compensating harmed shareholders.",
+    "escalate_to": "Fund Administrator / Board of Directors"
+  },
+  "D2": {
+    "probe": {
+      "label": "NOT_DISCLOSED",
+      "value": null,
+      "derivation": "The fund's official closing market price is NOT disclosed in the accounting package. The premium/discount to NAV must be computed from the administrator's NAV and the known share count."
+    },
+    "twins": [
+      {
+        "id": "TW1",
+        "value": 27.75,
+        "citation": {
+          "document": "package",
+          "locator": "NAV-GRSL-20260623-PRELIM (E1)",
+          "verbatim": "The administrator's NAV is overstated by $27.75 per share compared to the recomputed NAV."
+        }
+      }
+    ]
+  }
+}
