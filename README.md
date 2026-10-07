@@ -459,8 +459,9 @@ atoms, one run per model per case:
 | Gemini 3.6 Flash | small/fast | 0.956 | **1.000 AP** |
 
 **The frontier holds the wrong NAV and releases the right one.** Every model returned HOLD on the break
-case, localized it to the stale swap line, recomputed 51.9912, and ran the reasonableness check the same
-way (+2.48% against an expected +4.00%, flag raised); every model released the clean package. Three
+case, localized it to the stale swap line, recomputed the NAV (seven of eight at 51.9912; one small model's
+recomputation came out at 51.4912, below) and ran the reasonableness check the same way (+2.48% against an
+expected +4.00%, flag raised); every model released the clean package. Three
 AllPass both cases, the suite's first AllPasses on a reconciliation-type break case; a fourth is perfect on the
 clean case and loses its break-case AllPass only to a refusal reason that echoed the answer schema's own text. All eight refused
 the D2 probe correctly: no model invented a closing market price or assumed the shares closed at NAV.

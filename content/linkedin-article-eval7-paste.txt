@@ -1,0 +1,170 @@
+HEADLINE (goes in the article title field; 92 characters):
+
+Eight AI models were given an ETF's NAV package with one stale swap price. All eight held it.
+
+
+BODY (paste below into the article editor; formatting notes at the bottom):
+
+Latest in a series on building runnable evaluations for finance LLMs. The earlier ones covered an earnings release, a buffer ETF, a DCF, the creation and redemption basket, a swap confirmation and a corporate action. This one is the daily control in fund accounting: is the net asset value right, and may it go out?
+
+
+Where the ETF error record is
+
+Since 2024, ETF issuers have restated NAVs or disclosed errors in SEC correspondence for a cluster of mostly derivative-heavy funds. The causes were the bookkeeping of swaps and income, not the pricing of equities. Rydex Series Funds told the SEC in February 2024 of the "use of a stale price (i.e., the prior day's price) for a total return swap held by the Funds". Simplify's QIS ETF restated its 26 November 2024 NAV from $24.87 to $24.61 for "an incorrect swap security price". AdvisorShares restated MSOX for 18 dates in March 2026 because of the "Fund Administrator not correctly accounting for income accruals for some of the total return swaps". The SPDR S&P Bank ETF was understated by $0.01 on 14 May 2025 because "A manual entry to record income on the Fund's books and records, related to the receipt of a non-recurring cash payment, was delayed by one day due to an oversight".
+
+This is also the one fund-servicing process the custodians say they are putting AI on. BNY markets "AI-powered NAV oversight" beside a "99.99% NAV accuracy" figure that describes the production process, not the AI. A Citi job posting from August 2026 describes AI agents working "across fund accounting, ETF operations, middle office, and transfer agency". None of them publishes an accuracy figure for the AI's decisions.
+
+The control itself is simple to state. A preliminary NAV is released only if it ties, and a known error of one cent a share or more is corrected and the NAV re-struck before release. The question is whether a language model can be trusted to run that control.
+
+
+The test
+
+The model receives what the oversight reviewer receives: the administrator's preliminary NAV package for the day (the valuation ledger, the accruals, the totals, the capital stock, the pricing-exception report), the counterparty statements for the fund's swaps, the market data, and the fund's NAV error policy. It has to recompute the NAV from the positions, check the day's move against the expected move of a leveraged index fund, find any break and name the line, size it per share and in percent against the policy's thresholds, and decide: release, or hold and correct.
+
+The case is a 2x daily leveraged semiconductor ETF on 23 June 2026, four million shares, prior NAV 50.0000. The index rose 2.00 percent, so the fund should have moved about 4.00 percent. One of its two total return swaps is carried at the prior day's value, 3,000,000, because the counterparty's file arrived at 17:52 ET, after the 17:30 pricing cut-off. The counterparty statement for the day is in the package, and it values the swap at 6,000,000. The administrator's NAV is 51.2412, a move of 2.48 percent. The right NAV is 51.9912. The error is 75 cents a share, 1.44 percent of NAV, above the one-cent floor and the 0.5 percent reprocessing threshold. The right call is to hold, correct the mark from the statement already in hand, and re-strike before the 18:00 release. No shareholder reprocessing, because nothing was transacted at the wrong NAV.
+
+A second case is the same package with the file on time. It ties at 51.9912, and the right call is to release. A model that holds everything fails it.
+
+The package is constructed, because an administrator's NAV package is not a public document. The underlying ETF and the index are real, the prices are representative, and the failure pattern is the documented one. Every case file says so.
+
+There is also a refusal test. The package does not contain the fund's exchange closing price or its premium or discount, and the model is asked for them. The right answer is to say they are not in the package and name the missing input. Inventing a price, or assuming the shares closed at NAV, is a disqualifying error.
+
+A score runs from 0 to 1 over eight steps. "Passed every check" means every criterion met and no disqualifying error. A gate is a disqualifying error, such as releasing a wrong NAV, reviewing the wrong day, or a thousand-fold mistake in scale. Before any model ran, nine designed answers were scored to check that the grader localizes a failure rather than averaging it away. Every number right but the NAV released anyway scores 0.840 and fails the release check. Holding the clean package scores 0.840 with the decision step at zero.
+
+
+Eight paid models
+
+On 5 October 2026 I ran eight models from three vendors, one run per model per case. Every model held the wrong NAV, named the swap and ran the move check the same way; seven of the eight recomputed 51.9912. Every model released the clean package. Ten of the sixteen runs passed every check, and three models did so on both cases. No model released the wrong NAV, which is the same honest negative as the earlier back-office evals, where no model settled the broken basket or affirmed the mismatched confirmation.
+
+The points lost were one layer below the decision.
+
+One small model reconciled every line correctly and then summed the recomputed assets two million dollars short. Its error came out at 25 cents a share, 0.49 percent, just under the reprocessing threshold. It still held, because the one-cent floor was exceeded either way. After a release, the same error would have changed the remediation class. Score 0.633.
+
+Two mid-tier models computed the error at 1.44 percent and still answered the 0.5 percent test as not exceeded. One of them explains why in its own words: "Reprocessing is not applicable." They read a test as its consequence. Reprocessing does not apply before release, so the threshold was recorded as not exceeded. Scores 0.972 each.
+
+One small model ordered shareholder reprocessing for a NAV that was never released: "reprocess all transactions executed at the preliminary NAV of 51.2412 to the corrected NAV of 51.9912". There were no such transactions. Score 0.964.
+
+One mid-tier model filed an exception on the clean package whose own text concludes "No break at the line level; all individual lines match." My grader first charged that as a false exception. After the review described below, it reads it as a note. Score 1.000.
+
+One small, fast model was cut off on its first attempt by the 8,000-token output budget I had set. Re-run at 16,000, it scored 0.956, losing points only because its refusal reason was the answer form's own instruction text, echoed back. The truncated run is kept.
+
+All eight refused the price question correctly. None invented a closing price, and none assumed the shares closed at NAV.
+
+
+Two free models did it too
+
+Then the same two packages and the same grader, with five open-weight models running through LM Studio on a laptop with a 12 GB graphics card and on a desktop with an RTX 5090. There is no API cost. The cost is time: the paid models took 15 to 40 seconds per case.
+
+Gemma 4 31B passed everything on both packages, in about six minutes each. Qwen 3.8 27B matched the paid flagships on the break case after 24 minutes of thinking on the laptop, and lost one point for a thin citation on the clean case, in five and a half minutes on the desktop. Two free models from two families at the flagship level on this package.
+
+The other three show where the floor is. A fast mixture model got every number and decision right and lost points only on paperwork: no citations, and the corrected NAV left blank on the clean package. Scores 0.968 and 0.932. A 32B model with no thinking phase saw the problem and did not do the work. It flagged the stale swap, named the line and held, but copied the administrator's NAV back as its recomputation and reported no error. Score 0.535. A 2B model read every line correctly and could not add them up: 108 million dollars too high on the break case, declaring the NAV overstated by $27.75 a share, and 48 million too high on the clean one, which it held. Scores 0.131 and 0.174.
+
+One run per model per case. These are recorded results, not rates.
+
+
+Testing my own test
+
+Three grader calibrations came out of the paid runs and are logged. Seven of eight models cited the administrator's totals block, a valid citation my single gold string rejected; alternates were added and every run re-graded offline with the original scores kept. One attempt was cut off by my token budget and re-run. Two models gave the answer form's own instruction text as their refusal reason, which the grader had credited; it now counts as a bare refusal, which moved two scores. No decision or gate changed.
+
+Then six adversarial reviewers, AI agents with one part of the grader each, tried to make a wrong answer score well or a right answer score badly, and had to reproduce every claim against the live grader. They found both. "RELEASE (see note)" scored a perfect 1.000 on the break case, because the decision reader matched letters inside words and "note" contains "not". A fabricated price in the reasoning text passed as a refusal. A valuation date written with a time part lost 63 percent of the score. All of it is fixed, 86 of their cases are standing checks, and every saved run was re-graded with the before and after kept. Four scores moved, none of them a decision or a gate. What the reviewers could not do, after the fixes, is make a released wrong NAV score as a hold, or make a fabricated price pass as a refusal.
+
+
+What I conclude, and what I do not
+
+On a single stale-mark package the frontier runs the control: it finds the break, sizes it, holds, and does not over-hold. Two open-weight models do the same, one of them in about six minutes a case on a desktop graphics card. The capability gap is not in the decision but one layer down, in arithmetic across a materiality threshold and in reading a test as its consequence. That is where an oversight team's review belongs.
+
+I do not conclude that a model can run NAV oversight. This is one break pattern, one run each. The incident record contains patterns this test does not: an accrual missing for weeks, a redemption-day dilution, a one-cent floor edge, a Luxembourg fund with different thresholds and a regulator notification, and an error discovered after release with transactions on the day. Those five cases are the next build.
+
+Fund NAV work now appears in one general professional-work benchmark, Surge AI's DAYJOB of October 2026, which lists "fund operations (net asset value, pricing review, rebalancing)" among its tasks. This eval differs in using position-level packages, deterministic checks, failure patterns from the SEC letters, a jurisdiction-aware materiality regime and calibrated refusal.
+
+The cases, the grader, every run and the reviewers' notes are open in the repository (github.com/DimaMerc/TieOutBench). Results by model are on the leaderboard.
+
+If your team reviews a preliminary NAV: which of these steps would you let a model run before a person looks at it?
+
+evals.finance
+
+
+==================================================================
+FORMATTING NOTES (do these by hand in the LinkedIn editor - not part of the article):
+
+1. Cover image: assets/cover-eval7.png (1200x630, built by assets/make_cover_eval7.py on 7 October
+   2026 from the case file and the saved runs: the NAV ladder 50.0000 / 51.2412 / 51.9912, the
+   75-cent bracket, 10 of 16 AllPass, decisions right 16 of 16). Upload it as the article header.
+
+2. Make these lines Section Headers (the editor's "H2" style):
+   - Where the ETF error record is
+   - The test
+   - Eight paid models
+   - Two free models did it too
+   - Testing my own test
+   - What I conclude, and what I do not
+
+3. Italicize the opening "Latest in a series..." paragraph.
+
+4. Bold SPARINGLY. Suggested spots:
+   - "The points lost were one layer below the decision." (Eight paid models)
+   - "These are recorded results, not rates." (end of Two free models did it too)
+   Anything more starts to look generated.
+
+5. Links inside article bodies are fine on LinkedIn, so the repo URL and evals.finance stay
+   inline. "the leaderboard" -> https://github.com/DimaMerc/TieOutBench/blob/main/LEADERBOARD.md
+
+6. Timing words: the article carries only absolute dates ("5 October 2026", "February 2024",
+   "October 2026"). Re-read on the day anyway; if the Phase-2 article is still the latest
+   published piece, "Latest in a series" stays right.
+
+7. Sequence: publish this ARTICLE first so the link exists, then the driver post
+   (content/linkedin-post-eval7-driver.txt) with the link in its first comment. Earliest slot
+   after the Phase-2 article: Tue 13 Oct / Wed 14 Oct 2026, 8:00 to 9:30 ET.
+
+8. Quotes: every quotation is verbatim. The four SEC quotations and the BNY / Citi / DAYJOB
+   quotations are the ones verified for the 5 October brief (content/eval7-nav-oversight-brief.pdf
+   and reports/). The model quotations are grepped from the saved answer.json files (anchors
+   below). Do not shorten any of them inside the quotation marks.
+
+FACT ANCHORS (re-read 2026-10-06 against the saved runs - not part of the article):
+- Matrix: outputs/eval7-live/TAXONOMY.md and LEADERBOARD.md, eval #7 section. Paid grid run
+  2026-10-05. Passed every check (AllPass): 10 of 16 after the 2026-10-06 re-grade; AllPass on
+  both cases: Claude Opus 4.8, GPT-5.6-sol, GPT-5.5. No gate fired in any paid run; GATE.RELEASE
+  never fired.
+- "One small model ... two million dollars short ... 25 cents ... 0.49 percent ... 0.633" =
+  GPT-5.4-mini, grsl-nav-2026: corrected_nav_per_share 51.4912 (gold 51.9912; 0.50 x 4,000,000 =
+  2,000,000), nav_error_per_share -0.25 (gold -0.75), nav_error_pct -0.4856, exceeds_reprocessing_pct
+  false, decision HOLD; case 0.633 (0.671 before the gaming-review re-grade).
+- "Two mid-tier models ... not exceeded ... 0.972 each" = Claude Sonnet 4.6 and GPT-5.4,
+  grsl-nav-2026: nav_error_pct -1.4426, exceeds_reprocessing_pct false. "Reprocessing is not
+  applicable." is verbatim from Sonnet's D1.reprocessing_note ("Pre-release hold; no shareholder
+  transactions were executed at the erroneous NAV. Reprocessing is not applicable. The NAV is
+  corrected and re-struck before release per the fund's pre-release error policy.").
+- "One small model ordered shareholder reprocessing ... 0.964" = Claude Haiku 4.5, grsl-nav-2026,
+  reprocessing_required true; the quotation is the second clause of its D1.escalate_to ("fund
+  administrator and compliance; reprocess all transactions executed at the preliminary NAV of
+  51.2412 to the corrected NAV of 51.9912").
+- "One mid-tier model filed an exception on the clean package ... 1.000" = Claude Sonnet 4.6,
+  grsl-nav-2026-clean, C1.exceptions[0] (line_id TOTALS, type arithmetic_error); the quotation is a
+  sentence inside its detail field. 0.957 before the gaming-review re-grade, 1.000 AllPass after.
+- "One small, fast model ... 8,000 ... 16,000 ... 0.956" = Gemini 3.6 Flash, grsl-nav-2026; the
+  truncated attempt (0.428 as parsed) is under prior/. Its D2 derivation is the schema's own
+  instruction text ("for the fund's OFFICIAL CLOSING MARKET PRICE and premium/discount: state that
+  no exchange trading price is in the accounting package ..."), credited by the first grader,
+  now a bare refusal (calibration item 4 in TAXONOMY.md).
+- Local models (outputs/eval7-live/, TAXONOMY.md "Open-weight local models"): Gemma 4 31B
+  1.000/1.000 (5.7 / 6.3 min, RTX 5090); Qwen 3.8 27B 1.000 AllPass (laptop, 24 min) / 0.986 (RTX
+  5090, 5.7 min); Qwen 3.6 35B-A3B 0.968 / 0.932 (3.6 / 3.2 min; corrected_nav_per_share null on
+  the clean case, no citations); Qwen 2.5 32B instruct 0.535 / 0.941 (about 2 min; recomputed NAV =
+  administrator's 51.2412, error 0); Qwen 3.8 2B distill 0.131 (GATE.SIGN) / 0.174 (false hold).
+  "108 million too high", "$27.75", "48 million too high": TAXONOMY.md local section.
+- "Seven of eight models cited the administrator's totals block": LEADERBOARD.md eval #7
+  calibration bullet; re-grade reason strings in each run.json.
+- Gaming review: outputs/eval7-live/gaming-review/1-decision-classifier.md (X1 "RELEASE (see note)"
+  1.000 AllPass), 2-refusal-grader.md (price in the derivation text), 6-false-positives.md (A1 date
+  with a time part, 0.371 = 63 percent lost); harness/gaming_review_eval7.py (86 checks); the
+  four moved scores and "none of them a decision or a gate" in TAXONOMY.md "Hardening".
+- Designed answers: workflow/nav-oversight-analysis.md taxonomy table (release_override 0.840 +
+  flag; false_hold on the clean case 0.840, D1 = 0).
+- SEC quotations and the BNY / Citi / DAYJOB quotations: as in the 5 October brief, sourced in
+  reports/ (research, untracked). Rydex CORRESP Feb 2024; Simplify QIS press release Nov 2024;
+  AdvisorShares MSOX press release Mar 2026; SPDR Series Trust CORRESP Jan 2026.
+- Attribution wall: "I ran", "my grader", "my single gold string", "my token budget". No desk
+  claim, no employer, no bio line. "what the oversight reviewer receives" describes the control,
+  not experience. Models by tier in failure lines; names in success lines and on the leaderboard.

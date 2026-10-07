@@ -148,14 +148,14 @@ headline is the FailSafeQA F-beta LLMC_beta(R, G), beta = 0.5 (the eval-#1 E6 ex
 | `regime_slip` | 0.817 | GATE.REGIME | applied CSSF Circular 24/856 to a US fund; the hold is right, the classification is on the wrong footing |
 | `sign_flip` | 0.708 | GATE.SIGN | reported the understated NAV as overstated - who is harmed flips |
 | `scale_slip` | 0.579 | GATE.SCALE | ledger totals read in thousands as dollars |
-| `stale_blind` | 0.392 | GATE.RELEASE + flag | adopted the carried-forward mark, reproduced the administrator's NAV, rationalized the move, RELEASED - the worst case: the control never engaged |
-| `date_slip` | 0.371 | GATE.DATE | reviewed the package as the prior day's - the biggest cascade |
+| `stale_blind` | 0.354 | GATE.RELEASE + flag | adopted the carried-forward mark, reproduced the administrator's NAV, rationalized the move, RELEASED - the worst case: the control never engaged |
+| `date_slip` | 0.347 | GATE.DATE | reviewed the package as the prior day's - the biggest cascade |
 
 Reproduce any row: `python -m harness run --case grsl-nav-2026 --model <variant>`.
 
 The pattern *is* the finding: the eval tells "looks right, is wrong" (`release_override`, 0.840, the
-control switched off with every number correct) apart from "never saw it" (`stale_blind`, 0.392) and
-from a foundational error (`date_slip`, 0.371) - and localizes each to the checkpoint that owns it.
+control switched off with every number correct) apart from "never saw it" (`stale_blind`, 0.354) and
+from a foundational error (`date_slip`, 0.347) - and localizes each to the checkpoint that owns it.
 Note that two variants fire the same signature gate at very different scores: the headline flag says
 *what* was done (a wrong NAV released); the checkpoint vector says *why*.
 

@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Dmitry Krutous — LLM Evaluation &amp; AI Model Validation for Asset Management</title>
-<meta name="description" content="ETF and derivatives domain expert building runnable evaluations for finance LLMs: workflow decomposition, gated grading rubrics, evidence-cited gold cases, LLM-as-judge harnesses, and live frontier-model runs. Author of TieOutBench, including public evaluations of post-trade operations (ETF creation/redemption reconciliation, OTC swap confirmation matching).">
-<meta name="keywords" content="LLM evaluation, AI model validation, AI governance, model risk management, finance LLM benchmark, post-trade operations, ETF creation redemption, confirmation matching, FpML, asset management AI, GenAI validation, Boston">
+<meta name="description" content="ETF and derivatives domain expert building runnable evaluations for finance LLMs: workflow decomposition, gated grading rubrics, evidence-cited gold cases, LLM-as-judge harnesses, and live frontier-model runs. Author of TieOutBench, including public evaluations of post-trade operations (ETF creation/redemption reconciliation, OTC swap confirmation matching, corporate actions, ETF NAV oversight).">
+<meta name="keywords" content="LLM evaluation, AI model validation, AI governance, model risk management, finance LLM benchmark, post-trade operations, ETF creation redemption, confirmation matching, corporate actions, NAV oversight, fund accounting, FpML, asset management AI, GenAI validation, Boston">
 <meta name="author" content="Dmitry Krutous">
 <link rel="canonical" href="https://evals.finance/">
 <meta property="og:type" content="profile">
@@ -16,7 +16,7 @@
 <meta property="og:image" content="https://evals.finance/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Where can you trust an AI with finance work? Six runnable, rubric-graded evaluations — looks right does not equal is right.">
+<meta property="og:image:alt" content="Where can you trust an AI with finance work? Seven runnable, rubric-graded evaluations — looks right does not equal is right.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Dmitry Krutous — LLM Evaluation &amp; AI Model Validation for Asset Management">
 <meta name="twitter:description" content="Runnable evaluations for finance LLMs — analyst workflows and the back office.">
@@ -75,7 +75,7 @@
 </header>
 
 <h2>TieOutBench — an open benchmark suite</h2>
-<p>Six runnable evaluations of real asset-management workflows. Each decomposes the workflow into scored checkpoints, grades against a point-weighted rubric with auto-fail gates, cites gold answers to source documents, and runs live models end to end.</p>
+<p>Seven runnable evaluations of real asset-management workflows. Each decomposes the workflow into scored checkpoints, grades against a point-weighted rubric with auto-fail gates, cites gold answers to source documents, and runs live models end to end.</p>
 
 <div class="tablewrap">
 <table>
@@ -87,17 +87,20 @@
     <tr><td>ETF creation/redemption reconciliation</td><td>Tie an authorized participant's basket to the published PCF — settle only if it ties</td></tr>
     <tr><td>OTC swap confirmation matching</td><td>Match two confirmations field by field — affirm only if the economics agree</td></tr>
     <tr><td>Corporate-actions processing</td><td>From a document store with amendments and distractors: pin the governing version and dates, compute the entitlement — commit only what the deadline allows</td></tr>
+    <tr><td>ETF NAV oversight</td><td>Recompute a leveraged ETF's NAV from the administrator's package and the counterparty statements; find the stale swap mark and size it against the fund's error policy: hold and re-strike, or release only if it ties</td></tr>
   </tbody>
 </table>
 </div>
 
-<p>The last three are back-office controls. As of mid-2026 they appear to be the only public LLM evaluations of capital-markets post-trade operations — every other prominent finance benchmark (GDPval, Vals AI's Finance Agent, Mercor's APEX, BigFinanceBench, FrontierFinance) grades front-office analyst work.</p>
+<p>The last four are back-office controls. As of October 2026 they appear to be the only public, runnable LLM evaluations of capital-markets post-trade operations, with one qualification: fund NAV work also appears, as a task family inside a general professional-work suite (Surge AI's DAYJOB, October 2026). The other prominent finance benchmarks (GDPval, Vals AI's Finance Agent, Mercor's APEX, BigFinanceBench, FrontierFinance) grade front-office analyst work.</p>
+
+<p>The corporate-actions evaluation also runs as an agent environment: the same six cases with the tools a desk has (a document store, positions as of a date, a calculator, a test ledger) and, in two further arms, a second AI as checker. With tools, 35 of 48 runs passed every check, up from 32 with the documents in a single prompt; with a checker of the same model, 27; with a stronger checker, 25.</p>
 
 <ul class="facts">
-  <li>6 evaluations</li>
-  <li>78 scored checkpoints</li>
-  <li>~420 rubric criteria</li>
-  <li>20 gold cases</li>
+  <li>7 evaluations</li>
+  <li>86 scored checkpoints</li>
+  <li>~450 rubric criteria</li>
+  <li>22 gold cases</li>
   <li>MIT licensed</li>
 </ul>
 
@@ -132,7 +135,17 @@
   <p>Across the first three live-run evaluations, no model ever committed the catastrophic action the signature gates exist to catch. The corporate-actions evaluation changed that: one small-tier model pinned the correct corrected announcement, stated the corrected record date — and then computed the entitlement on the superseded position and booked the wrong payment. The flagships still never commit the catastrophic action; the small tier now does, and the evaluation localizes exactly where.</p>
 </div>
 
-<p class="caveat">Caveats stated rather than buried: one run per model per case; evaluations 3–6 now cover eight frontier models across three vendors, while evaluations 1–2 have been run only against open-weight models. The leaderboard says so on its face.</p>
+<div class="panel">
+  <h3>An AI checker made the work worse</h3>
+  <p>Giving the corporate-actions models the tools a desk has raised the runs that passed every check from 32 to 35 of 48. Adding a second AI of the same model as a checker lowered it to 27: the reviewers rejected 20 of the 46 ledgers the grader scores as correct, and the makers changed their work after every rejection. A stronger checker rejected fewer correct ledgers and still over-ruled ten correct refusals into stated values. A checker needs the rules, not only the documents.</p>
+</div>
+
+<div class="panel">
+  <h3>The decision was right; the arithmetic under it was not</h3>
+  <p>Given a leveraged ETF's NAV package with one swap carried at the prior day's price, every one of eight frontier models held the NAV, named the swap and released the clean twin package; ten of sixteen runs passed every check. The points lost were one layer down: one small model summed the recomputed assets two million dollars short and sized the error at 25 cents a share instead of 75. It still held, because the one-cent floor was exceeded either way. Two open-weight models, running on a desktop graphics card and on a laptop, did the same work as the paid flagships.</p>
+</div>
+
+<p class="caveat">Caveats stated rather than buried: one run per model per case; evaluations 3–7 now cover eight frontier models across three vendors (evaluation 7 also five open-weight models run locally), while evaluations 1–2 have been run only against open-weight models. The leaderboard says so on its face.</p>
 
 <h2>What it's for</h2>
 <p>Before a firm lets an AI do analyst or operations work, it needs to know <em>whether — and exactly where — to trust it.</em> A blended accuracy number cannot answer that. A gated, checkpoint-level evaluation can, and it serves three purposes:</p>

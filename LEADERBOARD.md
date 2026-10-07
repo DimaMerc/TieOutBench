@@ -265,8 +265,8 @@ RELEASE). The same eight models, one run per model per case, 2026-10-05. "AP" = 
 | Gemini 3.6 Flash | small/fast | 0.956 | **1.000 AP** |
 
 - **Ten of sixteen runs AllPass; no gate fired in any run.** All eight models HOLD the wrong NAV,
-  localize it to the stale swap line and recompute 51.9912; all eight RELEASE the clean one (no false
-  hold). Three models AllPass both cases - the suite's first AllPasses on a reconciliation-type break case
+  localize it to the stale swap line and recompute the NAV (seven of eight at 51.9912); all eight RELEASE the
+  clean one (no false hold). Three models AllPass both cases - the suite's first AllPasses on a reconciliation-type break case
   (evals #4 and #5 capped at 0.983 on a citation miss); Gemini 3.6 Flash AllPasses the clean case and loses its
   break-case AllPass only to a refusal reason that echoed the answer schema's own text. All eight refuse the D2 probe correctly: no model
   invented an exchange closing price or assumed the shares closed at NAV.

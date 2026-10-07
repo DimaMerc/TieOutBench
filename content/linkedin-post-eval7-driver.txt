@@ -1,0 +1,76 @@
+DRIVER POST for the eval-#7 article, carrying the VIDEO (feed post; runbook at bottom)
+Drafted 2026-10-06. Every figure re-read that day against outputs/eval7-live/TAXONOMY.md.
+Upload the MP4 NATIVELY to LinkedIn. Links and the AI-likeness disclosure go in the first comment.
+===========================================================================
+
+I test whether AI can be trusted with finance work: real documents, one task at a time, every answer checked against the source. Seven tasks so far, all results published.
+
+The seventh is the daily control in fund accounting: is the net asset value right, and may it go out? I gave the models an ETF's NAV package with one swap carried at yesterday's price. The error is 75 cents a share on a $51 NAV.
+
+Eight paid AI models and five free ones running on my own computers.
+
+- All eight paid models found the stale swap and held the package. None released it. Seven of the eight recomputed the right NAV.
+- All eight released the clean twin package. Nobody held a NAV that was right.
+- Two free models, a 27B and a 31B, did the same. The 31B took about six minutes a case on a desktop graphics card; the 27B took 24 minutes on a laptop.
+- What went wrong was one layer down. One small model added the assets up two million dollars short and sized the error at 25 cents instead of 75. It still held.
+
+The 90-second video shows the package and the break. The article has the rest, including how six AI reviewers tried to fool my grader, and what they found. Links in the first comment.
+
+If your team reviews a preliminary NAV: which of these steps would you let a model run before a person looks at it?
+
+
+===========================================================================
+FIRST COMMENT (post it right after the post goes up):
+
+The article: [ARTICLE LINK]
+Full video with captions and chapters: [YOUTUBE LINK]
+Cases, grader and every recorded run: https://evals.finance
+Results by model: https://github.com/DimaMerc/TieOutBench/blob/main/LEADERBOARD.md
+
+The presenter is my AI-generated likeness, with a clone of my own voice. The failure pattern is sourced to SEC correspondence and issuer press releases. The fund, the swaps and the administrator's package are constructed, because a NAV package is not a public document.
+
+One run per model per case. These are recorded results, not rates.
+
+
+===========================================================================
+PUBLISH RUNBOOK (not part of the post):
+
+1. Sequence: publish the ARTICLE first (content/linkedin-article-eval7-paste.txt) so the link
+   exists. Upload the video to YouTube (content/video-eval7-treatment.md has the title,
+   description and chapters; tick the altered-content box). Then this post.
+2. Timing: after the Phase-2 article and its post have had their week. Earliest Tue 13 Oct /
+   Wed 14 Oct 2026, 8:00 to 9:30 ET (afternoon in Frankfurt and Zurich). 14 Oct is State
+   Street's Q3 call; nothing in the post depends on it.
+3. No links in the post body. Replace the two placeholders in the first comment.
+4. The hook differs from the article's headline on purpose, so a profile visitor does not read
+   the same sentence twice.
+5. If asked "which model?", answer with the leaderboard link and the tier, not a vendor
+   argument. The two free models may be named (Qwen 3.8 27B, Gemma 4 31B): success lines carry
+   names.
+6. If asked whether the free models are "as good": one run per case, one break pattern; the
+   27B took 24 minutes on a laptop and five and a half on a desktop card; the article has the
+   three weaker free models too.
+7. If asked whether the grader is trustworthy: the six-reviewer gaming review is in the article
+   and the notes are in the repository (outputs/eval7-live/gaming-review/).
+8. Re-read on the day for time words. The post carries none; "Seven tasks so far" is right until
+   eval #8 is published.
+
+FACTS (not part of the post):
+- "Seven tasks": evals #1 to #7 on evals.finance and in README.md.
+- "75 cents a share on a $51 NAV": gold nav_error_per_share -0.7500, administrator's NAV 51.2412,
+  recomputed 51.9912 (cases/grsl-nav-2026.case.yaml).
+- "All eight ... held the package. None released it ... Seven of the eight recomputed the right NAV": every
+  paid run's D1.decision HOLD on grsl-nav-2026, GATE.RELEASE never fired; C2.nav_per_share 51.9912 in seven
+  answers, 51.4912 in GPT-5.4-mini's (outputs/eval7-live/TAXONOMY.md matrix; fact-audit.json in the video folder).
+- "All eight released the clean twin": every paid run's D1.decision RELEASE on grsl-nav-2026-clean;
+  D1.n_falsehold fired in no paid run.
+- "Two free models ... 31B ... six minutes ... 27B ... 24 minutes on a laptop": Gemma 4 31B 5.7 / 6.3 min on
+  the RTX 5090, both 1.000 AllPass; Qwen 3.8 27B 1.000 AllPass (break, laptop, 24 min) and 0.986 (clean,
+  RTX 5090, 5.7 min).
+- "One small model ... two million dollars short ... 25 cents instead of 75 ... still held" =
+  GPT-5.4-mini, grsl-nav-2026 (corrected NAV 51.4912 vs 51.9912 = 0.50 x 4,000,000 shares;
+  nav_error_per_share -0.25; decision HOLD; score 0.633). Unnamed in the post.
+- "six AI reviewers tried to fool my grader": outputs/eval7-live/gaming-review/, six attacker
+  notes; 86 standing checks in harness/gaming_review_eval7.py.
+- Attribution wall: "I test", "I gave", "my grader", "my own computers". No desk claim, no
+  employer.
