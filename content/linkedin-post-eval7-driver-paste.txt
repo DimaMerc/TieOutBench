@@ -1,0 +1,14 @@
+I test whether AI can be trusted with finance work: real documents, one task at a time, every answer checked against the source. Seven tasks so far, all results published.
+
+The seventh is the daily control in fund accounting: is the net asset value right, and may it go out? I gave the models an ETF's NAV package with one swap carried at yesterday's price. The error is 75 cents a share on a $51 NAV.
+
+Eight paid AI models and five free ones running on my own computers.
+
+- All eight paid models found the stale swap and held the package. None released it. Seven of the eight recomputed the right NAV.
+- All eight released the clean twin package. Nobody held a NAV that was right.
+- Two free models, a 27B and a 31B, did the same. The 31B took about six minutes a case on a desktop graphics card; the 27B took 24 minutes on a laptop.
+- What went wrong was one layer down. One small model added the assets up two million dollars short and sized the error at 25 cents instead of 75. It still held.
+
+The 90-second video shows the package and the break. The article has the rest, including how six AI reviewers tried to fool my grader, and what they found. Links in the first comment.
+
+If your team reviews a preliminary NAV: which of these steps would you let a model run before a person looks at it?

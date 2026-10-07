@@ -22,8 +22,8 @@ If your team reviews a preliminary NAV: which of these steps would you let a mod
 ===========================================================================
 FIRST COMMENT (post it right after the post goes up):
 
-The article: [ARTICLE LINK]
-Full video with captions and chapters: [YOUTUBE LINK]
+The article: https://www.linkedin.com/pulse/eight-ai-models-were-given-etfs-nav-package-one-stale-dmitry-uopxc
+Full video with captions and chapters: https://youtu.be/Da5dXwpAtPs
 Cases, grader and every recorded run: https://evals.finance
 Results by model: https://github.com/DimaMerc/TieOutBench/blob/main/LEADERBOARD.md
 
@@ -41,7 +41,7 @@ PUBLISH RUNBOOK (not part of the post):
 2. Timing: after the Phase-2 article and its post have had their week. Earliest Tue 13 Oct /
    Wed 14 Oct 2026, 8:00 to 9:30 ET (afternoon in Frankfurt and Zurich). 14 Oct is State
    Street's Q3 call; nothing in the post depends on it.
-3. No links in the post body. Replace the two placeholders in the first comment.
+3. No links in the post body. The first comment carries the article and video links (filled 2026-10-07).
 4. The hook differs from the article's headline on purpose, so a profile visitor does not read
    the same sentence twice.
 5. If asked "which model?", answer with the leaderboard link and the tier, not a vendor

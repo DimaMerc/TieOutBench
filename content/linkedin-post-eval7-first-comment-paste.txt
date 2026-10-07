@@ -1,0 +1,8 @@
+The article: https://www.linkedin.com/pulse/eight-ai-models-were-given-etfs-nav-package-one-stale-dmitry-uopxc
+Full video with captions and chapters: https://youtu.be/Da5dXwpAtPs
+Cases, grader and every recorded run: https://evals.finance
+Results by model: https://github.com/DimaMerc/TieOutBench/blob/main/LEADERBOARD.md
+
+The presenter is my AI-generated likeness, with a clone of my own voice. The failure pattern is sourced to SEC correspondence and issuer press releases. The fund, the swaps and the administrator's package are constructed, because a NAV package is not a public document.
+
+One run per model per case. These are recorded results, not rates.
