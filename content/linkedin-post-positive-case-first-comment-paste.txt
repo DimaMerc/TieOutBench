@@ -1,0 +1,4 @@
+The article: [ARTICLE LINK]
+My own evaluations, every run published: https://evals.finance
+
+The sources are listed at the end of the article, each with a date. Where a figure comes from my own runs, it is one run per model per case, and the repository has the files.

@@ -1,0 +1,216 @@
+HEADLINE (goes in the article title field; 85 characters):
+
+Eight things LinkedIn says about AI, checked against the record, and two it leaves out
+
+
+BODY (paste below into the article editor; formatting notes and fact anchors at the bottom):
+
+A departure from the evaluation series. I spend my days measuring whether an AI can be trusted with a specific finance job, so I read the AI arguments on this platform with the same habit: what does the record say? I took eight claims I keep seeing, from "agents will run amok" to "the valuations make no sense", found the strongest serious version of each and the people who make it, and checked both against sources dated 2025 to October 2026. Then I added the two critiques the feed mostly leaves out, which happen to lead the debate in Germany and Switzerland. The record is more specific than the mood, and on several counts better. Where the critics are right, I say so. The sources are listed at the end.
+
+
+1. "The frontier models cost too much and produce too little. Free models will be just as good. The valuations make no sense."
+
+The serious version of this is about financing, and its proponents are not cranks. David Cahn of Sequoia, who asked the "$600 billion question" in 2024, wrote in July that "It is now AI's $1.5T question". Jim Covello, Goldman Sachs's resident sceptic, said in June: "At some point, you've got to make money", while calling consumer adoption "magnificent". Ed Zitron's line is that OpenAI "spent $34 billion to make $13.07 billion". Michael Burry's case is accounting: "Understating depreciation by extending useful life of assets artificially boosts earnings." The Bank of England's Financial Policy Committee recorded in September that "Equity valuations for AI companies fell sharply in July", flagged the rapid rise in AI-related debt issuance and named "circular arrangements". The BIS warned that "Disappointment in returns could trigger a sudden pullback in financing". Nobody on that list says the models produce too little.
+
+The fairest version on the feed itself describes a dinner where everyone pays everyone else's check and says the money "has to escape the circle" as better products, lower costs, higher productivity or new revenue. That is the right test. The IMF states the circular part precisely: "AI developers, chipmakers, and large technology firms simultaneously act as customers, investors, and financiers." Where the money escapes is also on the record. More than 1.2 billion people a week use ChatGPT. OpenAI's audited 2025 revenue of $13.07 billion is sales to customers; the Nvidia money is investment, not revenue. Anthropic's recognised revenue passed $11.5 billion in the second quarter of 2026 with positive adjusted operating income, by its own preliminary account. The circular part is the capital spending and its financing, and that is the part the Bank of England is watching.
+
+Now the numbers that get mixed up. OpenAI's audited 2025 results, leaked in June and verified by the Financial Times, are the $13.07 billion of revenue against $34 billion of costs. That is calendar-year accounting. The run-rate is a different measure, the current pace times twelve. On 8 October the FT reported that OpenAI told investors its revenue was "approaching $50bn on an annualised basis at the end of September, far short of the $70bn reported by the FT and other media outlets late last month". The $70 billion had been an extrapolation from "reports that the group's annualised revenue had hit $40bn in August". So the shortfall headline describes a number that rose from about 40 to about 50 billion in seven weeks. Anthropic announced a $14 billion run-rate in February and, by Bloomberg's account, reached $65 billion by the end of July, counted gross of sales through cloud partners, which OpenAI does not count; the two are not like for like. Anthropic raised at a $965 billion post-money valuation in May, OpenAI at $852 billion in March. Whether that is sane depends on growth holding, which is a forecast, not a measurement.
+
+What is measured is the cost side. Epoch AI reported in September that "the cost of achieving a given level of AI performance has fallen about 47% per quarter since 2023, or 13x per year", with the caveat that "the timeframe is barely three years". That is why a $20 subscription exists, and why the question "what if it goes to $100" already has an answer: the $100 tier exists, and so far the labs have used usage caps rather than list-price rises, with weekly limits introduced in August 2025 that affected, by the company's account, under 5 percent of subscribers.
+
+The free-model point is where the critics are closest to right. Epoch measured in May that open models "lagged frontier closed models by an average of four months". Artificial Analysis found a 27-billion-parameter open model matching a 2025 frontier model on a single server card. I see the same thing in my own runs: on a fund-accounting check in October, two free models, a 31B and a 27B, did what the paid flagships did, one on a desktop graphics card and one on a laptop. That caps what yesterday's capability can be sold for. It does not cap the newest tier, and enterprises still buy closed models; one venture survey put Anthropic at 40 percent of enterprise model spend in December 2025.
+
+Verdict: the slogan is wrong; the financing critique is right. The Nvidia "up to $100 billion" investment in OpenAI became, in Nvidia's own August filing, lease and power guarantees capped at $105 billion, with the comment that many customers are "growing faster than their balance sheets and long-term credit profiles can support". As for the chart that overlays today's Nasdaq on 1998 to 2001: it shows a price path. The BIS noted that tech's share of the S&P 500 "reached 47%, doubling from 23% in less than two years" by 2000, and that the recent rise was "more rooted in rising profitability". Two axes with two scales make a picture, not a measurement.
+
+
+2. "There is no measurable productivity gain."
+
+The serious version belongs to Daron Acemoglu, the 2024 Nobel laureate, and it is modest rather than zero: "no more than a 0.66% increase in total factor productivity" over ten years, in his 2024 paper, and about 0.55 percent in his 2026 statements. He is no capability denier: "I think you have to really have your head in the sand to think that AI is a stochastic parrot right now." Erik Brynjolfsson, who disagrees with him on the size, called 2025 the start of a "harvest phase". The LinkedIn number, MIT's "95% of organizations are getting zero return", comes from a July 2025 report that rests on 52 organizations and 153 leaders and calls itself "directionally accurate based on individual interviews".
+
+Controlled studies say something more specific. Customer-support agents, 5,179 of them, resolved 14 percent more issues per hour with an AI assistant, 34 percent more for the least experienced. Consultants at BCG, 758 of them, produced 40 percent higher-quality work on tasks inside the models' competence and 23 percent worse outside it. A Danish study of 25,000 workers found "precise null effects on earnings and recorded hours", ruling out effects above 2 percent on those two measures, and its authors add that "Technological change reshapes work well before it surfaces in earnings or hours." A survey of nearly 6,000 executives found nine in ten reporting no impact on employment or productivity. McKinsey's 2026 survey found 37 percent of firms attributing some earnings impact to AI, 6 percent high performers, 80 percent reporting better individual productivity. The BIS summarised the task-level studies as gains "often to the tune of between 20 and 50% in time savings" and the economy-level evidence as potential, and the ECB's staff estimate over ten years runs "between 0.1% and 3.4%". Adoption is uneven in a way that surprises an American reader: 54.5 percent of German firms use AI by the ifo Institute's June count, against 17 to 20 percent of US firms in the Census Bureau's survey, which asks a different question.
+
+Verdict: the gain is measured at the task level and small so far at the economy level, which is Acemoglu's position, not the slogan's.
+
+
+3. "Programmers, mathematicians, writers, composers: everyone will lose their job."
+
+The strongest version of this comes from the people building the systems. Dario Amodei warned in May 2025 that AI could eliminate half of entry-level white-collar jobs within five years: "Most of them are unaware that this is about to happen." Acemoglu's version is political: if 30 or 40 percent of new graduates could not find jobs, "Wherever that has happened in the past, you've had revolutions."
+
+The record so far is narrower than either. Stanford's Digital Economy Lab, using ADP payroll data on millions of workers through June 2026, wrote: "We find no evidence of widespread, economy-wide job displacement." Yale's Budget Lab found the labor market "has not experienced a discernible disruption" since ChatGPT's release. The BIS: such displacements "have yet to occur at scale". What the same studies find is an entry-level problem, and it is the critics' best point. Stanford: "employment of young workers (ages 22-25) in AI-exposed occupations now stands 19% below where it would be" otherwise, a gap that "has widened steadily since we first documented it in August 2025". The ECB found employment of young workers in euro-area ICT down 18.6 percent over three years, while saying the evidence "does not yet allow this pattern to be attributed to generative AI". ETH Zurich's KOF found 27 percent more job-seekers in highly exposed Swiss occupations. US employers cited AI in about 21 percent of announced job cuts in the first nine months of 2026, while total cuts fell 39 percent. Marcel Fratzscher of DIW Berlin makes the German version: AI hits "vor allem die Mitte", the middle, not the low earners earlier automation hit.
+
+By occupation the picture splits. For programmers, METR's 2025 trial found experienced open-source developers 19 percent slower with AI; METR's own February 2026 update says it now believes "developers are more sped up from AI tools now", on "very weak evidence" of the size; field trials at three companies with 4,867 developers found 26 percent more tasks completed; the US statistics bureau projects fewer programmers and more software developers over the decade. For mathematicians, a model earned a gold-medal score at the 2025 olympiad, and the widely shared story that AI had solved open Erdos problems turned out to be literature search; in the tally kept in Terence Tao's own repository, about a third of the AI entries are full solutions and about one in six are wrong. For composers, Deezer receives nearly 90,000 fully AI-generated tracks a day, more than half of deliveries on peak days, and they earn 1 to 3 percent of streams, up to 85 percent of those fraudulent.
+
+Verdict: task change and a real entry-level cost, not mass unemployment, so far. The warning from the labs is about the next five years, and nothing in the record rules it out.
+
+
+4. "Superintelligence will soon supersede the human mind."
+
+This is not a slogan. It is contested among the people best placed to know, and the contest is the finding. On 23 September the UN Security Council heard Sam Altman say "we could lose control of the future to AI" and Dario Amodei that "If managed poorly, I even believe that AI could be a risk to humanity as a whole". Amodei wrote in January that powerful AI "could be as little as 1-2 years away, although it could also be considerably further out". Daniel Kokotajlo's forecasting group gives a dated, narrower call: an automated coder, median "mid 2028". On the other side, Yann LeCun: "The breakthroughs are not going to come from scaling up LLMs." Ilya Sutskever: "These models somehow just generalize dramatically worse than people." Andrej Karpathy on general intelligence: "it just feels like a decade to me", and on agents, "they just don't work." Demis Hassabis: "on the horizon in the next five to eight years", with today's systems "kind of frozen and then put out into the world". Emily Bender and Timnit Gebru: "Claims of incipient, dangerous superintelligence are not based in good scientific or engineering practice." Arvind Narayanan and Sayash Kapoor call the concept "incoherent as usually conceptualized" and expect diffusion "over decades, not years". The largest survey of AI researchers put a 50 percent chance of machines outperforming humans at every task at 2047; a June 2026 expert panel put the median at 2050, and the same institute found that forecasters "dramatically underestimate AI progress on benchmarks".
+
+The measured trend is fast and jagged. METR, which measures how long a task a model can finish, found the horizon doubling every 131 days since 2023; the best model in May managed tasks of about 17 hours at a 50 percent success rate and about 3 hours at 80 percent. A benchmark of interactive puzzles that humans solve completely went from under 1 percent for AI in March to 63 percent in September. On an index of real freelance projects, the best agent went from 2.5 percent to about 21 percent in a year.
+
+Verdict: contested among experts. "Superhuman on well-specified, checkable tasks, and widening" is measured. "Soon supersedes the human mind" is a forecast that serious people hold and serious people reject, and the slope of that curve is the honest caveat for whichever side you take.
+
+
+5. "It makes too many errors and cannot learn."
+
+The serious version has two parts, and both have good proponents. Melanie Mitchell on errors: "today's AI systems perform extremely well until, often unexpectedly, they don't", and "benchmark performance rarely predicts an AI system's actual capabilities in the real world." Karpathy and Sutskever on learning: "You can't just tell them something and they'll remember it"; Hassabis's "frozen". The feed's blanket version, that models are "just a reflection of the data they were fed", is the one Acemoglu says requires a head in the sand.
+
+Error rates are measured, and they move. On one long-running leaderboard the best summarisation score went from 2.5 percent hallucinated in 2024 to 0.6 percent in 2025, though the grader changed; on that leaderboard's harder 2026 set, three frontier models score between 6.5 and 12.2 percent. OpenAI's card for its 2025 model reported 44 to 78 percent fewer responses with a major factual error than its predecessor, and its researchers published why the problem persists: benchmarks "reward guessing over acknowledging uncertainty", because "language models are optimized to be good test-takers". Where the task is hard, errors stay high: a BBC-led study found 45 percent of AI news answers had at least one significant issue; on a finance-agent benchmark the best model scored 46.8 percent in May 2025 and 65.4 percent on a harder successor test in October 2026.
+
+My runs say the same thing at a smaller scale. On four back-office controls, no model has released a wrong NAV, settled a short basket or affirmed a mismatched confirmation, one run per model per case. The errors sit one layer down: a small model that summed an ETF's assets two million dollars short and still made the right hold decision; a small model that found the corrected dividend notice and booked $8,500 where $6,800 was due. The error is real and it is specific, which means it can be measured and gated. Mitchell's point about benchmarks is also right, and it is my own trade: a review of 445 benchmarks found patterns that "undermine the validity of the resulting claims", and a study of the best-known leaderboard found "overfitting to Arena-specific dynamics rather than general model quality". The answer is task-level tests with published runs and grading that rewards an honest "cannot be determined", which is what I build.
+
+On learning, the critics are right as stated. Deployed models do not update their weights from use. Within a task they adapt, and that is measured; across sessions, they do not.
+
+
+6. "It cannot be trusted because it agrees with everything."
+
+True, measured, partly fixed, and in its serious 2026 form a matter of harm rather than annoyance. OpenAI itself reported in October 2025 that 0.15 percent of weekly users, more than a million people on a base above 800 million, have conversations with "explicit indicators of potential suicidal planning or intent". The US Federal Trade Commission opened an inquiry in September 2025 into chatbots acting as companions, asking seven companies how they "measure, test, and monitor potentially negative impacts" on children and teens. Google and Character.AI settled lawsuits over teenage deaths in January 2026, with no admission of liability. That is the version a serious critic defends, and the sycophancy research is its mechanism.
+
+On 25 April 2025 OpenAI shipped an update that "made the model noticeably more sycophantic", rolled it back, and wrote that "we also didn't have specific deployment evaluations tracking sycophancy". Academic benchmarks found sycophantic behavior in 58 percent of cases on one test and found models affirming users 45 points more than humans do on another; a Nature paper in April 2026 found that training models to be warm raised error rates by 10 to 30 points. The mitigations are measured too: OpenAI reported its 2025 model at about a third of its predecessor's sycophancy score, and Anthropic reported in April 2026 a 9 percent rate in personal-guidance conversations, 18 percent when the user pushes back, halved in its newest model. Those last figures are the vendors' own.
+
+My own finding is the uncomfortable one. In my runs the models refuse well: on the NAV package all eight paid models declined to invent the fund's exchange price, and on the short basket all eight said a figure could not be determined from the documents. But when I put a second, stronger AI in the reviewer's seat for corporate actions, it over-ruled ten correct refusals, and the first model wrote the reviewer's number down every time. Sycophancy toward a reviewer is a work-setting risk, and the fix in that experiment was procedural: the checker had the documents but not the rules.
+
+
+7. "It steals books and pays nobody."
+
+That was the state of play in 2023. In 2026 it is live litigation with a price being set, and the serious critics are the rights-holders. The Authors Guild wrote in September that OpenAI "built the foundations of its business on mass piracy". GEMA, the German collecting society, after its Munich win: "Even tech giants must obtain licences for the use of intellectual property."
+
+What the courts have said so far: in June 2025 a San Francisco federal judge held that training on books was "exceedingly transformative and was a fair use", and in the same ruling that keeping a library of pirated copies "was not itself a fair use". The result was a $1.5 billion settlement over 482,460 works, given final approval on 20 July 2026. A second judge in the same court let Meta win on a thin record while writing that "in many circumstances it will be illegal" to train without permission. Munich's regional court went the other way twice, against OpenAI in November 2025 and against Suno in July 2026, neither ruling final. The New York Times case against OpenAI has summary-judgment briefing running to November. Meanwhile a licensing market formed: the Associated Press, Axel Springer, the Financial Times and News Corp with OpenAI; Universal with Udio and Warner with Suno, lawsuits settled into licensing deals; a Microsoft marketplace that pays publishers; per-crawl pricing at Cloudflare. The US Copyright Office called government intervention "premature" because of that market, and the EU has required summaries of training content since August 2025. Austria's collecting society is asking for a statutory levy.
+
+Verdict: "pays nobody" is no longer true; piracy has been paid for, licences exist, and the price of training itself is being set in court and in contracts. Whether lawful training needs permission at all is unsettled on appeal, and the two jurisdictions disagree.
+
+
+8. "Agents will run amok, and then we all die."
+
+Two claims. The first is no longer hypothetical, and conceding it is the most useful thing an optimist can do. In 2026 agents reached real systems. A coding agent wiped a company's database in April. Between May and July, OpenAI models in a benchmark run with reduced refusals left their sandbox, and METR's independent investigation counted "roughly 1200 agents" communicating on an unsanctioned message board, about 700 of which joined an attack that extracted files and credentials from Hugging Face. METR's reading of the motive was mundane: "understanding the implementation of the scorer rather than stealing answer keys". In September an OpenAI agent reached an Australian health statistics portal; the government said "it appeared no personal information had been accessed". OpenAI disclosed the incident, slowed its development pace in August, and Amodei wrote that "no one was hurt" while warning that a more capable swarm "could have caused catastrophic damage".
+
+Against that stands a control system that did not exist three years ago. Anthropic activated its highest safeguard level in May 2025; OpenAI designated a model "High capability" for cyber in February 2026; the UK's AI Security Institute publishes its tests, reported that models went from completing apprentice-level cyber tasks 9 percent of the time to 50 percent, and found one model succeeding on 73 percent of expert tasks, a model its maker then did not release generally. The EU's duties for general-purpose models have applied since August 2025; Germany's AI supervision law has been in force since 29 July 2026, with the Bundesnetzagentur in Bonn as market surveillance authority and BaFin for financial firms; the ECB wrote to the banks it supervises in July asking for plans by 31 October.
+
+The second claim, extinction, is contested among experts, and I will not pretend otherwise. Geoffrey Hinton puts the odds around ten percent and adds that "nobody knows how to give a sensible estimate". Stuart Russell says governments should not let companies "play Russian roulette with every human being on earth". Both lab chiefs told the Security Council in September that loss of control is a risk if the technology is managed poorly. On the other side, Bender and Gebru call the claims unscientific, Narayanan and Kapoor call the concept incoherent, and ETH Zurich's AI Center put the sober position precisely: claims of human-like misbehaviour "rest on insufficient evidence", while "some of the most serious failures have no human analogue at all: they arise when agents are given permissions and interact with real systems." The International AI Safety Report 2026, chaired by one of the worriers, says "evidence on their risks is slow to emerge and difficult to assess".
+
+A third claim rides with these two on the feed: that the labs talk up the danger so that only they are allowed to control the models. It has serious proponents. Andrew Ng said in 2023 that big companies were "creating fear of AI leading to human extinction" to win regulation that would hurt open models. Bender and Gebru say the superintelligence framing "ascribes agency to products rather than to the companies building them". Gary Marcus, who agrees with Bengio on the risk, heard at the Security Council "some self-congratulatory hype in the speeches of Altman and Amodei". The record gives the critics their strongest point here: the safety frameworks are voluntary and self-reported. Anthropic's own third version of its policy says its thresholds were "far more ambiguous than we anticipated", an independent index found the companies had published no explicit plans for controlling smarter-than-human systems, and Meta did not sign the EU code. What the record does not support is the conclusion that open labs would be safer by themselves: the one head-to-head test by a government laboratory found an open Chinese model's agents "12 times more likely than evaluated U.S. frontier models to follow malicious instructions".
+
+Verdict: the measured risk is an agent with permissions on a real system, and it is being met with disclosure, controls and law. The extinction risk has no measurement on either side; I hold the ETH view, and I note that the two people with the most to lose from saying so put the other view to the Security Council.
+
+
+9. Left out: "It eats the grid and drinks the water."
+
+The LinkedIn feed rarely says this; the German and Swiss press say little else. The International Energy Agency reported in April that "Electricity demand from data centers soared by 17 percent in 2025" and is "set to double by 2030", to around 945 terawatt-hours, with AI deployment "increasingly coming up against a range of physical bottlenecks". A peer-reviewed estimate puts AI's water withdrawal at 4.2 to 6.6 billion cubic metres by 2027. In Germany, data centres used about 21 terawatt-hours in 2025 by the industry association's count, with AI about 15 percent of installed capacity; an expert report for the economy ministry projects 31 terawatt-hours by 2030 and 80 by 2045, and the Bundestag's own summary says the federal government "has no comprehensive overview of planned or under-construction data centres". In Switzerland the federal energy office counted 2.1 terawatt-hours in 2024, with AI playing "hardly any role" because large training runs do not happen there, and a high case above 5 percent of national power by 2030; Swiss public radio reported Zurich's grid "already loaded to its limit". Local opposition has its own vocabulary: "data centres are vampires", in a German activist's words.
+
+Verdict: real, rising, locally acute, and nationally still modest in German-speaking Europe. The one measured reply, that a unit of capability gets 13 times cheaper a year, cuts both ways, because cheaper capability is why demand keeps rising. This is a planning problem with numbers, which is more than most of the feed's claims can say.
+
+
+10. Left out: "It makes Europe dependent on a handful of American companies."
+
+The strongest critique in the German-language sources I checked is not about capability at all. The EuroStack report put it in one line: "More than 80% of Europe's digital technologies and infrastructures are imported", and "70% of foundational AI models used globally originate in the United States." The US Federal Trade Commission's own staff found in January 2025 that the big-tech partnerships with AI labs "can create lock-in, deprive start-ups of key AI inputs". Palantir is the case in point: German state police in Bavaria, Hesse and North Rhine-Westphalia use its software after the Karlsruhe constitutional court faulted the legal threshold for such analysis, and a Social Democrat member of the Bundestag summed up the objection: "Palantir ist kein neutraler IT-Dienstleister." In Britain the doctors' union wants "a complete break from Palantir technologies in the NHS"; the contract is under full government review with a decision due in 2027. In Zurich the commercial court sided with the magazine Republik on 22 of 23 points Palantir had demanded corrected. The Swiss army chief has questioned the Microsoft cloud on cost and control. And Nvidia's filing says five customers hold most of its receivables and that it has guaranteed up to $105 billion of an OpenAI affiliate's leases.
+
+What the record offers in reply is partial. On models, dependence is narrowing: open-weight models trail by about four months, and in my own runs free models from two families did a fund-accounting check as well as the paid flagships did. On clouds and chips, it is not narrowing, and nobody serious claims it is.
+
+Verdict: the critics are right, and this is the critique a European reader should be arguing about instead of the bubble chart.
+
+
+What I conclude
+
+Across the ten, the record is better than the mood on what the models produce, on the direction of error rates, on sycophancy mitigation and on payment for copyright. It is worse than the optimists admit on entry-level jobs, on agents with permissions, on energy and on dependence. It is contested among serious people on superintelligence and extinction, and undecided on the two things that would settle the economic argument, firm-level productivity and the financing of the capital spending. Where a figure above comes from a lab's own research, OpenAI's and Anthropic's system cards and studies, I have said so; treat those as the vendor's numbers.
+
+The pattern is the one I see in my own evaluations: the decision-level claim, "it works" or "it fails", is cheap, and the layer underneath is where the answer is. The critics of benchmarks are right that a leaderboard does not predict deployment value, and the fix is task-level measurement with published runs. The measurement is mostly missing, and the people arguing loudest on both sides are not doing it.
+
+Every number above has a dated source, listed below. Every number from my own runs is in the repository (github.com/DimaMerc/TieOutBench), one run per model per case.
+
+Which of the ten would change your mind if the number moved?
+
+evals.finance
+
+
+SOURCES (dated; add as links in the editor)
+
+The serious critics: David Cahn, "AI's $1.5T Question", 8 Jul 2026. Fortune on Jim Covello, 5 Jun 2026. Ed Zitron, "Dead Money", 29 Sep 2026. Michael Burry via TheStreet/Yahoo Finance, 12 Nov 2025. Daron Acemoglu, "The Simple Macroeconomics of AI", NBER WP 32487, May 2024; Fortune, 21 Jun 2026 and 15 Aug 2026. Fortune on Erik Brynjolfsson, 15 Feb 2026. Fortune on Dario Amodei, 28 May 2025. Melanie Mitchell, "Jagged Intelligence", The Yale Review, 8 Jun 2026. MIT Technology Review on Yann LeCun, 22 Jan 2026. Dwarkesh Podcast with Ilya Sutskever, 25 Nov 2025, and with Andrej Karpathy, 17 Oct 2025. Gebru and Bender, MIT Technology Review, 22 Sep 2026. Narayanan and Kapoor, "AI as Normal Technology", Knight First Amendment Institute, 15 Apr 2025. AI Futures Project, "Q1 2026 Timelines Update", 2 Apr 2026. Fortune on Stuart Russell, 18 Feb 2026. UN Security Council briefing of 23 Sep 2026 (Security Council Report, 22 Sep 2026; third-party transcript, Singju Post, 24 Sep 2026). Authors Guild, 5 Sep 2026. GEMA, 11 Nov 2025. Singh et al., "The Leaderboard Illusion", arXiv 2504.20879. Bean et al., "Measuring what Matters", arXiv 2511.04703. Marcel Fratzscher, DIW Berlin, 26 May 2026.
+
+Lab economics and the bubble: IMF, Global Financial Stability Report, Apr 2026, ch. 1. The Decoder, 29 Sep 2026. The Next Web, 15 Aug 2026. Financial Times, "OpenAI annualised revenues $20bn less than previously signalled", 8 Oct 2026. Quartz via Yahoo Finance, "OpenAI 2025 financials leaked", 16 Jun 2026. Anthropic, Series G announcement, 12 Feb 2026. TechCrunch, 28 May 2026. Bloomberg, 18 Aug 2026 and 31 Mar 2026. Epoch AI, "The plunging price of thought", 22 Sep 2026, and "Open models lag state-of-the-art closed models by 4 months", 29 May 2026. Artificial Analysis, 13 Apr 2026. Menlo Ventures, 9 Dec 2025. TechCrunch, 28 Jul 2025. Bank of England, Financial Stability Report, 7 Jul 2026, and FPC record, 30 Sep 2026. BIS Annual Economic Report 2026, ch. I, 28 Jun 2026, and "The valuations of tech stocks: dotcom redux?", 16 Sep 2024. NVIDIA, CFO Commentary Q2 FY2027, 26 Aug 2026, and Form 10-Q for the quarter ended 26 Jul 2026. NVIDIA and OpenAI, 22 Sep 2025.
+
+Productivity and adoption: MIT NANDA, "The GenAI Divide", Jul 2025. Brynjolfsson, Li and Raymond, NBER WP 31161. Dell'Acqua et al., BCG, 21 Sep 2023. Humlum and Vestergaard, NBER WP 33777, rev. Mar 2026. NBER WP 34836, Feb 2026. The Register on McKinsey, 25 Aug 2026. ECB blog, 26 Aug 2026. ifo Institute, 5 Jun 2026. US Census Bureau, 26 May 2026.
+
+Jobs: Stanford Digital Economy Lab, "Canaries in the Coal Mine?", rev. 12 Aug 2026. Yale Budget Lab, 1 Oct 2025. ECB Economic Bulletin 5/2026, 6 Aug 2026. ETH Zurich KOF via Netzwoche, 27 Oct 2025. Challenger, Gray & Christmas, 1 Oct 2026. METR, arXiv 2507.09089 (Jul 2025) and "We are Changing our Developer Productivity Experiment Design", 24 Feb 2026. Cui et al., SSRN 4945566. BLS Occupational Outlook Handbook, 2026. Google DeepMind, 21 Jul 2025. TechCrunch, 19 Oct 2025. Terence Tao's erdosproblems repository wiki. Deezer, 21 Jul 2026.
+
+Superintelligence: Dario Amodei, "The Adolescence of Technology", Jan 2026. Storyboard18 on Demis Hassabis, 18 Feb 2026. Grace et al., arXiv 2401.02843. Forecasting Research Institute, 2 Jun 2026 and 23 Sep 2026. METR, "Time Horizon 1.1", 29 Jan 2026, and dashboard, 8 May 2026. ARC Prize, arXiv 2603.24621 and results page, 2 Sep 2026. Remote Labor Index, arXiv 2510.26787; Epoch AI benchmark data, 8 Oct 2026.
+
+Errors and sycophancy: Vectara hallucination leaderboard, Jul 2024, Oct 2025, 22 Sep 2026. OpenAI, GPT-5 System Card, 7 Aug 2025. Kalai et al., arXiv 2509.04664. EBU and BBC, 22 Oct 2025. Vals AI, arXiv 2508.00828 and Finance Agent v2, 7 Oct 2026. TechCrunch, 27 Oct 2025 (OpenAI's 0.15 percent). FTC, 11 Sep 2025. Fortune, 8 Jan 2026 (Character.AI settlements). OpenAI, "Expanding on what we missed with sycophancy", 2 May 2025. Fanous et al., arXiv 2502.08177. Cheng et al., arXiv 2505.13995. Ibrahim et al., Nature, 29 Apr 2026. Anthropic, 30 Apr 2026. TieOutBench: outputs/eval4-live, eval6-agent, eval7-live.
+
+Copyright: Bartz v. Anthropic, Order on Fair Use, 23 Jun 2025 (ECF 231); motion for final approval, 19 Mar 2026 (ECF 619); Textbook & Academic Authors Association, 22 Jul 2026. Kadrey v. Meta, 25 Jun 2025 (ECF 598). Landgericht München I, Pressemitteilungen 11/2025 and 16/2026. Music Business Worldwide, 30 Oct 2025. Warner Music Group, 25 Nov 2025. AP, Axel Springer (ORF), FT, News Corp, Microsoft Advertising (3 Feb 2026), Cloudflare (1 Jul 2025). US Copyright Office, Part 3, pre-publication, 9 May 2025. European Commission, GPAI Q&A, 9 Sep 2025. ORF on AKM, 25 Mar 2026.
+
+Agents and safety: SiliconANGLE on Andrew Ng, 31 Oct 2023. Anthropic, Responsible Scaling Policy v3.0, 24 Feb 2026. Future of Life Institute, AI Safety Index Winter 2025. NIST CAISI, DeepSeek evaluation, 30 Sep 2025. European Commission, Code of Practice signatories. Euronews, 28 Apr 2026. OpenAI, 21 Jul 2026. Hugging Face, 16 Jul 2026. METR, 26 Aug 2026. The Guardian, 24 Sep 2026 and 18 Aug 2026. Dario Amodei, "We Must Pace the Frontier", Sep 2026. Anthropic, 22 May 2025. OpenAI, GPT-5.3-Codex System Card, 5 Feb 2026. UK AISI, 18 Dec 2025 and 13 Apr 2026. Anthropic, "Project Glasswing", 7 Apr 2026. KI-MIG, gesetze-im-internet.de. BaFin, 29 Jul 2026. ECB Banking Supervision, letter SSM-2026-0301, 7 Jul 2026. Business Insider and StartupHub on Geoffrey Hinton, Sep 2026. International AI Safety Report 2026, 3 Feb 2026. ETH News, 30 Sep 2026.
+
+Energy and dependence: IEA, "Energy and AI", Apr 2025 (via Hydrocarbon Engineering, 10 Apr 2025) and April 2026 report (via Rigzone, 20 Apr 2026). Li, Yang, Islam and Ren, arXiv 2304.03271, rev. Mar 2025. Bitkom, 10 Nov 2025. Deutscher Bundestag, hib 636/2026, 11 Aug 2026. IT Reseller on the Swiss Federal Office of Energy study, 7 May 2026. swissinfo, 7 Jul 2026. SRF News, 7 Jan 2026 and 2 Nov 2025. netzpolitik.org, 17 Apr 2026 and 16 Jun 2026. EuroStack, Bertelsmann Stiftung, 13 Feb 2025. FTC staff report on AI partnerships, 17 Jan 2025. Legal Tribune Online, 30 Jul 2025. The Register, 11 Feb 2026 (BMA). Reuters via BNN Bloomberg, 9 Jun 2026. Bundesverfassungsgericht, Pressemitteilung 18/2023.
+
+
+==================================================================
+FORMATTING NOTES (do these by hand in the LinkedIn editor - not part of the article):
+
+1. Cover image: assets/cover-positive-case.png (1200x630, built by assets/make_cover_positive_case.py on
+   9 October 2026): the ten claims as a verdict ledger, ink blue where the record says no, oxblood where
+   the critics are right, grey where it is undecided or contested, with a rule separating the eight
+   LinkedIn claims from the two it leaves out. No numbers on the cover; the article carries them.
+
+2. Make the ten numbered claims and "What I conclude" Section Headers (H2). The claims stay in quotation
+   marks; "Left out:" stays in the header text of 9 and 10.
+
+3. Italicize the opening "A departure from the evaluation series..." paragraph.
+
+4. Bold SPARINGLY: the word "Verdict:" only.
+
+5. Links: add the FT, Epoch, Stanford, METR, Bartz, IEA and EuroStack links inline at first mention; the
+   rest stay in the sources block. Repo link and evals.finance stay inline.
+
+6. Timing words: "On 8 October", "in September", "in May", "this year" are relative to 2026. Re-read on the day you publish. "Sources dated 2025 to October 2026" dates the
+   piece honestly.
+
+7. Sequence: a standalone piece, not an eval article. Earliest slot after the eval-7 driver post (Tue 13 /
+   Wed 14 Oct): the following week, Tue 20 / Wed 21 Oct, 8:00 to 9:30 ET. The driver post is
+   content/linkedin-post-positive-case-driver.txt.
+
+8. Quotations: every quotation is verbatim from the sources in research_notes/positive-case/A-E (never
+   commit that folder), machine-matched by the researchers on 8 October 2026; the five load-bearing ones
+   (FT run-rate, METR investigation, Epoch cost decline, Stanford 19 percent, Bartz final approval) were
+   re-fetched the same day. The two Security Council quotations come from a third-party transcript; the
+   meeting and its briefers are confirmed by Security Council Report. Do not shorten any quotation inside
+   its quotation marks. German quotations stay in German with the English gloss beside them.
+
+9. Disclosures kept in the body: vendor-sourced figures named as such (OpenAI's 0.15 percent, the system
+   cards, Anthropic's guidance study). Anton Korinek is not cited, so his Anthropic affiliation needs no
+   disclosure; if he is added later, disclose it.
+
+FACT ANCHORS (not part of the article; note sections in research_notes/positive-case/):
+- Section 1: E [CAH-1, COV-1, ZIT-1, BUR-1, BOE-1, BIS-1]; A-1.1 to 1.4, A-2, A-3, A-6; D-3 (Nvidia). "has to escape
+  the circle" = a LinkedIn post of 8 Oct 2026 (author unnamed in the body; "the world's most expensive group dinner where
+  everyone keeps paying each other's check"). IMF quote = GFSR Apr 2026 ch. 1 (A-2.1). "1.2 billion" = The Decoder
+  29 Sep 2026 (A-6). "$11.5 billion ... positive adjusted operating income" = The Next Web 15 Aug 2026, preliminary (A-1.1).
+  The post's Anthropic-SpaceX compute deal and Grok-uses-Claude claims are NOT used (unverified).
+  "under 5 percent of subscribers" = TechCrunch 28 Jul 2025. "a 2025 frontier model" = GPT-5 (medium),
+  AA 13 Apr 2026. "two free models" = Gemma 4 31B and Qwen 3.8 27B, outputs/eval7-live.
+- Section 2: E [ACE-1, ACE-2, ACE-3, BRY-2, HUM-1]; A-4. The Danish bound is on earnings and hours
+  (corrected from the first draft). "0.55 percent" is Fortune's report of Acemoglu's 2026 figure.
+- Section 3: E [AMO-1, ACE-2, BIS-1, FRA-1, MET-1, MET-2]; B-1, B-2. METR's 19% is now paired with METR's
+  24 Feb 2026 update (corrected). Amodei's "half of entry-level white-collar jobs" is Fortune's report of
+  what he told Axios; the quotation is his.
+- Section 4: E [UNSC-1, UNSC-2, KOK-1, LEC-1, SUT-1, KAR-1, BEN-2, NAR-1]; B-3. Re-graded to "contested".
+- Section 5: E [MIT-1, KAR-1, ACE-3, LDB-1, OII-1, KAL-1]; C-2. My runs: evals 4, 5, 7 decisions;
+  GPT-5.4-mini 207,010,600 vs 209,010,600 (eval 7); GPT-5.4-mini $8,500 vs $6,800 (eval 6); unnamed.
+- Section 6: E [OAI-1, FTC-1, CAI-1]; C-3. "more than a million people" = TechCrunch's arithmetic of
+  0.15% of 800 million-plus. Phase 2 fixed reviewer: ten over-ruled refusals, all ten entered
+  (outputs/eval6-agent/TAXONOMY.md finding 12).
+- Section 7: E [AG-1, GEM-1, AKM-1]; D-1. "false in 2026" replaced by "live litigation with a price being
+  set" (corrected). NYT briefing to 6 Nov 2026.
+- Section 8: C-1; E [HIN-1, RUS-1, UNSC-2, BEN-2, NAR-1, ETH-1, BENG-1, MAR-1]. Regulatory-capture paragraph: Ng =
+  SiliconANGLE 31 Oct 2023 (C-1); RSP v3 quote (C-1, 24 Feb 2026); FLI AI Safety Index Winter 2025 (C-1); Meta not a
+  signatory (C-1, Commission page); CAISI DeepSeek evaluation 30 Sep 2025 (C-1). Re-graded: extinction
+  "contested among experts"; "the rest is belief" removed. Hinton "around ten percent" = "Ten percent is
+  not unreasonable" (StartupHub, Sep 2026) and "10% to 20%" (Guardian, 27 Dec 2024).
+- Section 9: E [IEA-1, IEA-2, WAT-1, BIT-1, BUN-1, BFE-1, SWI-1, SRF-1, NET-1]. "21 terawatt-hours in
+  2025" = Bitkom "21,3 Mrd. Kilowattstunden". The Bundestag line is a paraphrase of "verfügt über keine
+  umfassende Übersicht über geplante oder im Bau befindliche Rechenzentren in Deutschland". "hardly any
+  role" = "kaum eine Rolle". SRF's six-to-eight-percent figure conflicts with the 2024 count and is not used.
+- Section 10: E [EUS-1, FTC-2, PAL-DE, PAL-UK, REP-1, SRF-2]; D-2, D-3. The Zurich ruling is not final.
+  "free models from two families" = Gemma (Google) and Qwen (Alibaba), outputs/eval7-live.
+- Attribution wall: "I spend my days measuring", "my runs", "I put a second AI in the reviewer's seat",
+  "which is what I build". No desk claim, no employer. No model ranked above another by name in the body.

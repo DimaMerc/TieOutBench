@@ -1,0 +1,73 @@
+DRIVER POST for the "Eight things LinkedIn says about AI ... and two it leaves out" article (feed post; runbook at bottom)
+Drafted 2026-10-08. Every figure re-read that day against research_notes/positive-case/A-D and the
+five re-fetched sources. Links in the first comment only. Paste body from
+content/linkedin-post-positive-case-driver-paste.txt as plain text (Ctrl+Shift+V).
+===========================================================================
+
+I test whether AI can be trusted with finance work: real documents, one task at a time, every answer checked against the source. So I read the AI arguments on LinkedIn the same way: what does the record say?
+
+I took eight claims I keep seeing here, from "agents will run amok" to "the valuations make no sense", found the strongest serious version of each, and checked both against sources dated 2025 to October 2026. Then I added the two critiques the feed leaves out. Five things that surprised me:
+
+- The 70 billion OpenAI run-rate that "fell short" in early October was a media extrapolation. The reported figure went from about 40 billion in August to about 50 billion in September.
+- The cost of a given level of AI performance has fallen about 47 percent a quarter since 2023, and open models trail the frontier by about four months. In my own runs, two free models did a fund-accounting check as well as the paid flagships did.
+- No study I found shows economy-wide job loss. What the data shows is a 19 percent gap for 22-to-25-year-olds in AI-exposed jobs. That one is real, and it is the critics' best point.
+- The agent incidents of 2026 were real, bounded, disclosed, and met with controls and law. On extinction, the two lab chiefs told the UN Security Council in September that it is a risk if the technology is managed poorly. Serious researchers call that claim unscientific. Nobody on either side has a measurement.
+- The two critiques the feed leaves out are the ones that lead the debate in Germany and Switzerland: data-centre power and water, and dependence on a few US vendors. Both are real.
+
+The article has the record for all ten, with dated sources, and says where the critics are right. Link in the first comment.
+
+Which of the ten would change your mind if the number moved?
+
+
+===========================================================================
+FIRST COMMENT (post it right after the post goes up):
+
+The article: [ARTICLE LINK]
+My own evaluations, every run published: https://evals.finance
+
+The sources are listed at the end of the article, each with a date. Where a figure comes from my own runs, it is one run per model per case, and the repository has the files.
+
+
+===========================================================================
+PUBLISH RUNBOOK (not part of the post):
+
+1. Sequence: publish the ARTICLE first (content/linkedin-article-positive-case-paste.txt) so the
+   link exists, then this post with the link in its first comment.
+2. Timing: the week after the eval-7 driver post. Tue 20 / Wed 21 Oct 2026, 8:00 to 9:30 ET
+   (afternoon in Frankfurt and Zurich). The first bullet says "in early October" (the FT story is dated
+   8 Oct); if this slips into November, make it "in October".
+3. Image: assets/post-positive-case.png (1080x1350 portrait, built by assets/make_post_image_positive_case.py),
+   uploaded natively with the post. It is the article cover's ledger set larger for a phone; the cover
+   itself (1200x630) stays on the article so a profile visitor does not see the same picture twice.
+4. No links in the post body. Replace the placeholder in the first comment.
+5. If asked "so you are an AI optimist": the article concedes four of the ten (entry-level jobs,
+   agents with permissions, energy, dependence), calls two contested among experts (superintelligence,
+   extinction) and two undecided (firm-level productivity, financing).
+6. If asked "which model is best": no model is ranked in the piece; the leaderboard link and the
+   tier, not a vendor argument.
+7. If challenged on a number: every number has a dated source in the article; the two posts that
+   prompted it mixed calendar-year revenue, run-rate and a projection, which the article sorts out.
+8. Expect pushback from both camps. Reply with the source, not with a position.
+
+FACTS (not part of the post):
+- "70 billion ... a media extrapolation": FT 8 Oct 2026, "far short of the $70bn reported by the FT
+  and other media outlets late last month"; "its revenues have grown more than 70 per cent, leading
+  to the $70bn figure"; "reports that the group's annualised revenue had hit $40bn in August";
+  "approaching $50bn on an annualised basis at the end of September".
+- "47 percent a quarter": Epoch AI, "The plunging price of thought", 22 Sep 2026. "about four
+  months": Epoch AI, 29 May 2026.
+- "two free models did a fund-accounting check the paid flagships did": Gemma 4 31B 1.000 AllPass on
+  both eval-7 cases; Qwen 3.8 27B 1.000 AllPass on the break case (outputs/eval7-live).
+- "19 percent gap": Stanford Digital Economy Lab, "Canaries in the Coal Mine?", rev. 12 Aug 2026;
+  same paper: "We find no evidence of widespread, economy-wide job displacement."
+- "real, bounded, disclosed, met with controls and law": OpenAI disclosure 21 Jul 2026; Hugging Face
+  "detected and stopped the activity" (16 Jul 2026); Medicare portal "no personal information had
+  been accessed" (Guardian, 24 Sep 2026); OpenAI slowed its development pace (Guardian, 18 Aug 2026);
+  ASL-3, OpenAI High cyber, EU GPAI duties, KI-MIG 29 Jul 2026.
+- UN Security Council 23 Sep 2026: Altman "we could lose control of the future to AI"; Amodei "If managed
+  poorly, I even believe that AI could be a risk to humanity as a whole" (third-party transcript; meeting
+  confirmed by Security Council Report). "unscientific" = Gebru and Bender, MIT Technology Review, 22 Sep
+  2026: "not based in good scientific or engineering practice".
+- Energy and dependence: IEA via Rigzone 20 Apr 2026 (+17 percent in 2025); EuroStack, Bertelsmann
+  Stiftung, 13 Feb 2025 ("More than 80% ... are imported").
+- Attribution wall: "I test", "my own runs". No desk claim, no employer.

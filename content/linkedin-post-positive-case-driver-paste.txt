@@ -1,0 +1,13 @@
+I test whether AI can be trusted with finance work: real documents, one task at a time, every answer checked against the source. So I read the AI arguments on LinkedIn the same way: what does the record say?
+
+I took eight claims I keep seeing here, from "agents will run amok" to "the valuations make no sense", found the strongest serious version of each, and checked both against sources dated 2025 to October 2026. Then I added the two critiques the feed leaves out. Five things that surprised me:
+
+- The 70 billion OpenAI run-rate that "fell short" in early October was a media extrapolation. The reported figure went from about 40 billion in August to about 50 billion in September.
+- The cost of a given level of AI performance has fallen about 47 percent a quarter since 2023, and open models trail the frontier by about four months. In my own runs, two free models did a fund-accounting check as well as the paid flagships did.
+- No study I found shows economy-wide job loss. What the data shows is a 19 percent gap for 22-to-25-year-olds in AI-exposed jobs. That one is real, and it is the critics' best point.
+- The agent incidents of 2026 were real, bounded, disclosed, and met with controls and law. On extinction, the two lab chiefs told the UN Security Council in September that it is a risk if the technology is managed poorly. Serious researchers call that claim unscientific. Nobody on either side has a measurement.
+- The two critiques the feed leaves out are the ones that lead the debate in Germany and Switzerland: data-centre power and water, and dependence on a few US vendors. Both are real.
+
+The article has the record for all ten, with dated sources, and says where the critics are right. Link in the first comment.
+
+Which of the ten would change your mind if the number moved?

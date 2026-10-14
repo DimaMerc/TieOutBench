@@ -1,0 +1,13 @@
+I test whether AI can be trusted with finance work: real documents, one task at a time, every answer checked against the source, every run published.
+
+My second technical report is on SSRN. It measures the oldest control in operations, a maker and a checker, when both are AI.
+
+- Six corporate-action cases on real events, eight models, one grader, four ways of working.
+- With tools, 35 of 48 runs passed every check, up from 32 with the documents in a single prompt.
+- With a second AI of the same model as checker, 27. With a stronger checker, 25.
+- The reviewers rejected 20 of the 46 correct ledgers, and the makers revised their work every time. A stronger reviewer over-ruled ten correct refusals into invented numbers.
+- The reviewer had the documents but not the rules. That is the finding, and it is the next protocol.
+
+Fourteen pages, every verdict and every finding published. Link in the first comment.
+
+Who gives your checker the rules the maker works to?

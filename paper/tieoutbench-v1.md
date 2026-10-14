@@ -4,7 +4,7 @@
 
 **Dmitry Krutous**
 MBA, PMP · Independent · Greater Boston
-[evals.finance](https://evals.finance) · welt.management.solutions@gmail.com
+[evals.finance](https://evals.finance) · welt.management.solutions@gmail.com · ORCID [0009-0003-7594-4671](https://orcid.org/0009-0003-7594-4671)
 
 *Version 1.1 — September 2026 (v1 posted August 2026; v1.1 adds the DOI and the post-publication
 grader corrections recorded in §9, item 8 — no other result changes). This is a technical report on a working artifact, written in the
