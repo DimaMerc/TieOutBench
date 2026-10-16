@@ -1,0 +1,13 @@
+Every agentic data platform launched this year ships the same control: an approval checkpoint before anything reaches production. A human, or a second AI, reviews the work and approves or rejects it. Good. I spent the autumn measuring what happens at that checkpoint when the reviewer is an AI.
+
+Six corporate-action cases on real events, eight models, one grader. With tools, 35 of 48 runs passed every check. With a second AI as checker, 27. With a stronger checker, 25. The reviewers did the tie-out and then rejected 20 of the 46 correct ledgers, and the makers revised their work every time.
+
+Three things the checkpoint has to show, from those runs:
+
+- The result tying back to the source, not the steps. Every reviewer showed its steps. The ones that were wrong showed them just as clearly.
+- The rules the maker works to. The reviewer had the documents but not the rule that a refusal with a named missing document is correct. A stronger reviewer over-ruled ten of those refusals into invented numbers.
+- A way for the maker to answer a finding. Every rejection produced a revision, including the wrong ones. Compliance was the failure mode.
+
+The paper, with every verdict and finding published, is in the first comment.
+
+Who gives your checker the rules the maker works to?

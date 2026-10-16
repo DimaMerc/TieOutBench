@@ -1,5 +1,9 @@
 # SSRN submission package — the checker report (companion to TieOutBench v1.1)
 
+**POSTED: abstract ID 7611299 — https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7611299 — submitted 2026-10-14, APPROVED 2026-10-15 (public view yes).
+DOI: not yet assigned (the first report's took about a month). Add it to the site, README and the paper's
+front matter when it appears.**
+
 Everything to paste into the SSRN submission form for the second paper. The PDF to upload:
 `paper/tieoutbench-checker-v1.pdf`, built by `python paper/build_checker.py`.
 

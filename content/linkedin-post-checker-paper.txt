@@ -21,7 +21,7 @@ Who gives your checker the rules the maker works to?
 ===========================================================================
 FIRST COMMENT (post it right after the post goes up):
 
-The paper: [SSRN LINK]
+The paper: https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7611299
 The first report it builds on: https://doi.org/10.2139/ssrn.7243025
 Every episode's transcript, ledger, worksheet and verdict: https://github.com/DimaMerc/TieOutBench (outputs/eval6-agent)
 The project: https://evals.finance

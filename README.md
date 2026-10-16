@@ -86,6 +86,10 @@ in [`outputs/`](outputs/), consolidated in [`LEADERBOARD.md`](LEADERBOARD.md).
 > [SSRN (abstract 7243025)](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7243025), DOI [10.2139/ssrn.7243025](https://doi.org/10.2139/ssrn.7243025); frozen data-and-code snapshot on Mendeley Data, DOI [10.17632/m5wfrnhdsp](https://doi.org/10.17632/m5wfrnhdsp);
 > source in [`paper/`](paper/). Each eval also has a plain-language write-up in
 > [`content/`](content/).
+>
+> The companion report on the maker-checker experiment (October 2026), *A Second AI as Checker: Measuring a
+> Maker-Checker Protocol for LLM Agents on Corporate-Actions Processing*, is on
+> [SSRN (abstract 7611299)](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7611299); source, builder and the SSRN package are under `paper/`.
 
 ## The seven evals in detail
 

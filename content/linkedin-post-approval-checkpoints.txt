@@ -1,0 +1,62 @@
+POST: "the approval checkpoint" (feed post; plain format; runbook at bottom)
+Drafted 2026-10-14. Names no vendor. Can serve as the announcement post for the checker paper in place of
+content/linkedin-post-checker-paper.txt (stronger hook, same first comment), or run the week after it.
+Private delivery to the one team you want to reach is a direct message (kept out of the repository), with a
+link to this post or to the paper. Paste the body as plain text from the -paste.txt file.
+===========================================================================
+
+Every agentic data platform launched this year ships the same control: an approval checkpoint before anything reaches production. A human, or a second AI, reviews the work and approves or rejects it. Good. I spent the autumn measuring what happens at that checkpoint when the reviewer is an AI.
+
+Six corporate-action cases on real events, eight models, one grader. With tools, 35 of 48 runs passed every check. With a second AI as checker, 27. With a stronger checker, 25. The reviewers did the tie-out and then rejected 20 of the 46 correct ledgers, and the makers revised their work every time.
+
+Three things the checkpoint has to show, from those runs:
+
+- The result tying back to the source, not the steps. Every reviewer showed its steps. The ones that were wrong showed them just as clearly.
+- The rules the maker works to. The reviewer had the documents but not the rule that a refusal with a named missing document is correct. A stronger reviewer over-ruled ten of those refusals into invented numbers.
+- A way for the maker to answer a finding. Every rejection produced a revision, including the wrong ones. Compliance was the failure mode.
+
+The paper, with every verdict and finding published, is in the first comment.
+
+Who gives your checker the rules the maker works to?
+
+
+===========================================================================
+FIRST COMMENT (post it right after the post goes up):
+
+The paper: https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7611299
+The first report it builds on: https://doi.org/10.2139/ssrn.7243025
+Every episode's transcript, ledger, worksheet and verdict: https://github.com/DimaMerc/TieOutBench (outputs/eval6-agent)
+The project: https://evals.finance
+
+One run per model per case, three repeats on one case. Recorded results, not rates.
+
+
+===========================================================================
+PUBLISH RUNBOOK (not part of the post):
+
+1. Only after SSRN shows the paper as posted; the link must resolve.
+2. Either this post OR content/linkedin-post-checker-paper.txt announces the paper, not both. This one
+   has the stronger hook for the operations audience; the other is the plainer "my second report" form.
+3. Image: assets/post-approval-checkpoints.png (1080x1350 portrait, built by assets/make_post_image_checkpoint.py
+   from summary.json: the three arms as bars, then the three things), uploaded natively with the post.
+4. Timing: Tue 27 / Wed 28 Oct 2026, 8:00 to 9:30 ET, the week after the "ten claims" article.
+5. No vendor is named, and none should be added in replies. If someone asks "which platforms", answer
+   that the design is common to the category and the measurement is of the control, not of a product.
+6. "Every agentic data platform launched this year" is a generalisation; if challenged, "every one I
+   have looked at" is the honest form, and the body should be edited to that wording on the day if you
+   prefer not to defend the stronger one.
+7. The private delivery: the direct message (kept out of the repository) goes to the person you find on
+   the one team you want to reach, with the link to this post or to the paper. That is how they see it
+   without a public mention.
+8. If asked whether the checker result is an argument against AI review: it is an argument for giving
+   the reviewer the rules and the maker a voice; the next protocol is in the paper.
+
+FACTS (not part of the post):
+- 35 / 27 / 25 of 48 = AllPass, tools / self-review checker / fixed reviewer; 32 plain.
+- "rejected 20 of the 46 correct ledgers" = self-review two-by-two; "revised their work every time" = 21 of 21.
+- "Every reviewer showed its steps": all 48 self-review reviewers queried the position in round one
+  and 45 recomputed (summary.json recomputed [48, 48]); the finding text is in each review.json.
+- "over-ruled ten of those refusals into invented numbers" = fixed reviewer, GATE.FABRICATION x10.
+- "the rule that a refusal with a named missing document is correct" = the maker prompt's D2 rule,
+  quoted in the paper's section 3.2; absent from the reviewer prompt (section 4).
+- Attribution wall: "I spent the autumn measuring", "from those runs". No desk claim, no employer.
