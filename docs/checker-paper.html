@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A Second AI as Checker — technical report | evals.finance</title>
+<meta name="description" content="Measuring a maker-checker protocol for LLM agents on corporate-actions processing: six real cases, eight models, four ways of working. With tools 35 of 48 runs passed every check; with a second AI as checker, 27. Every run published.">
+<meta name="author" content="Dmitry Krutous">
+<link rel="canonical" href="https://evals.finance/checker-paper">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="evals.finance">
+<meta property="og:title" content="A Second AI as Checker: Measuring a Maker-Checker Protocol for LLM Agents on Corporate-Actions Processing">
+<meta property="og:description" content="Six corporate-action cases, eight models, four ways of working. With tools, 35 of 48 runs passed every check; with a second AI as checker, 27; with a stronger checker, 25. The reviewer had the documents but not the rules the maker worked to. Technical report, October 2026, on SSRN; every run published.">
+<meta property="og:url" content="https://evals.finance/checker-paper">
+<meta property="og:image" content="https://evals.finance/og-checker-paper.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A Second AI as Checker. Runs that passed every check, of 48: documents in one prompt 32, with tools 35, same-model checker 27, stronger checker 25.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="A Second AI as Checker — technical report">
+<meta name="twitter:description" content="With tools, 35 of 48 runs passed every check; with a second AI as checker, 27. The reviewer had the documents but not the rules the maker worked to.">
+<meta name="twitter:image" content="https://evals.finance/og-checker-paper.png">
+<style>
+  :root{
+    --bg:#ffffff; --fg:#16243b; --mute:#5b6878; --line:#dbe3ec;
+    --accent:#0f4c81; --panel:#f6f9fc; --red:#b03a2e;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{ --bg:#0f1721; --fg:#e8eef6; --mute:#9dabbc; --line:#25313f;
+           --accent:#7fb2e5; --panel:#161f2b; --red:#e8836f; }
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--fg);
+    font:16px/1.62 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  .wrap{max-width:760px;margin:0 auto;padding:56px 22px 72px}
+  header{border-bottom:1px solid var(--line);padding-bottom:26px;margin-bottom:30px}
+  h1{font-size:1.72rem;line-height:1.25;margin:0 0 6px}
+  .role{color:var(--mute);font-size:1.03rem;margin:0 0 14px}
+  h2{font-size:1.16rem;margin:38px 0 12px}
+  p{margin:0 0 14px}
+  a{color:var(--accent)}
+  a:hover{text-decoration:none}
+  .meta{color:var(--mute);font-size:.94rem}
+  .links{margin:18px 0 0}
+  .panel{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:0 0 16px}
+  .panel p:last-child{margin-bottom:0}
+  .tablewrap{overflow-x:auto;margin:0 0 16px}
+  table{border-collapse:collapse;width:100%;font-size:.94rem;min-width:420px}
+  th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line)}
+  th{font-weight:600;color:var(--mute);font-size:.86rem;text-transform:uppercase;letter-spacing:.04em}
+  td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+  .caveat{color:var(--mute);font-size:.92rem;font-style:italic}
+  footer{border-top:1px solid var(--line);margin-top:46px;padding-top:22px;color:var(--mute);font-size:.93rem}
+  .crumb{font-size:.92rem;color:var(--mute);margin:0 0 22px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<p class="crumb"><a href="/">evals.finance</a> · technical reports · the second report</p>
+
+<header>
+  <h1>A Second AI as Checker</h1>
+  <p class="role">Measuring a maker-checker protocol for LLM agents on corporate-actions processing</p>
+  <p class="meta">Dmitry Krutous · Technical report, October 2026 · SSRN abstract 7611299 · Companion to the TieOutBench report (DOI 10.2139/ssrn.7243025)</p>
+  <p class="links">
+    <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7611299"><strong>Read it on SSRN</strong></a> ·
+    <a href="/checker-paper.pdf">PDF (14 pages)</a> ·
+    <a href="https://github.com/DimaMerc/TieOutBench/tree/main/outputs/eval6-agent">Every run: transcripts, ledgers, worksheets, verdicts</a> ·
+    <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7243025">The first report</a>
+  </p>
+</header>
+
+<h2>What was measured</h2>
+<p>The oldest control in operations, a maker and a checker, with both seats taken by AI. Six corporate-action cases built on real events, eight models from three vendors, one grader, run four ways: the documents in a single prompt; the same task worked through tools; the tools run handed to a second agent of the same model, which ties the work out, approves or rejects, and sends the maker into one revision round; and the same protocol with one stronger model reviewing every maker. One run per model per case, 48 cells in each arm, three repeats on one case.</p>
+
+<div class="tablewrap">
+<table>
+  <thead><tr><th>Arm</th><th class="num">Runs that passed every check, of 48</th></tr></thead>
+  <tbody>
+    <tr><td>Documents in one prompt</td><td class="num">32</td></tr>
+    <tr><td>With tools</td><td class="num">35</td></tr>
+    <tr><td>A second AI of the same model as checker</td><td class="num">27</td></tr>
+    <tr><td>A stronger AI as checker</td><td class="num">25</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h2>What happened</h2>
+<div class="panel">
+  <p>The reviewers rejected 20 of the 46 ledgers the grader scores correct, and the makers revised in all 21 rejections. The stronger reviewer over-ruled ten correct refusals, and the makers then booked numbers the documents do not support. The reviewer received the documents, the tools and the maker's work, but not the rules the maker worked to, and under a plain tie-out instruction a correct refusal looks like a missing figure.</p>
+</div>
+<p>A reviewer with the documents but without the maker's rules is a source of errors as well as a filter for them. The paper sets out the mechanism, the part of the result that traces to the environment rather than to the reviewers, and the next protocol: the maker checks each finding against the source before changing anything.</p>
+
+<p class="caveat">One run per model per case; recorded results, not rates. Not investment advice. Everything on this page is reproducible from the repository.</p>
+
+<footer>
+  <p><a href="/">Back to evals.finance</a> · <a href="https://github.com/DimaMerc/TieOutBench">Repository on GitHub</a> · <a href="https://www.linkedin.com/in/dmitrykrutous">LinkedIn</a></p>
+</footer>
+
+</div>
+</body>
+</html>
