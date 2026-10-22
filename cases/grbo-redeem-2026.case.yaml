@@ -1,0 +1,495 @@
+# =============================================================================
+# cases/grbo-redeem-2026.case.yaml — GOLD case: an in-kind ETF REDEMPTION whose basket is
+# four FLEX option legs on IWM plus a cash component, processed EX-CLEARING, that does NOT
+# tie. Three OCC position-transfer confirmations match the basket (120 contracts each); the
+# long-put leg confirms 12,000 contracts - the order's UNDERLYING-SHARE EQUIVALENT (120 x 100)
+# keyed as the contract count. The ETF agent's recap nevertheless shows 4 of 4 legs
+# "TRANSFERRED" and READY TO SETTLE. Gold answer: HOLD - do not release the cash component,
+# cancel the shares or mark the order settled; corrective OCC transfer of 11,880 contracts
+# back to the fund first; localized to that leg.
+# -----------------------------------------------------------------------------
+# SOURCING (read this): the redemption basket for an order, the OCC confirmations, the
+# custodian's position report and the ETF agent's recap are NOT public documents. So, like
+# evals #4 and #7, this case is a CONSTRUCTED, mechanics-faithful scenario:
+#   * the PROCESS PAIN is documented by the clearing house itself. NSCC rule filing
+#     SR-NSCC-2026-001 (Federal Register, Jan 29, 2026; SEC notice 34-104687, Jan 26, 2026;
+#     approved by 34-104981, Mar 12, 2026): for ETFs with option components "the entire
+#     redemption process is generally managed ex-clearing, requiring multiple manual steps to
+#     ensure completion, including the tracking, pricing, validation and ultimate execution of
+#     options positions transfers at OCC by the APs, ETF Agents and primer brokers [sic]";
+#     "This process, as it stands, is fragmented and heavily dependent on manual intervention,
+#     which increases the potential for errors and operational" risk; processed "without the
+#     benefit of NSCC's CCP guaranty". The filing quantifies nothing; the specific error
+#     planted here (contracts vs underlying shares) is constructed, not attributed to any
+#     real incident;
+#   * the CONTRACT SPECIFICATIONS are real: FLEX options on IWM carry the OCC root 4IWM in
+#     the OSI identifier, multiplier 100, European exercise, physical settlement, and expire
+#     on the last business day of the outcome period (verified against a real N-PORT filing
+#     in eval #2; 2026-09-30 is the real October-vintage expiry). The UNDERLYING (IWM) is real;
+#   * the reference price (a round 240.00), the strikes and the marks are REPRESENTATIVE and
+#     internally consistent, not actual market levels; the FUND, the AP, the clearing
+#     members, the custodian, the ETF agent and the break are ILLUSTRATIVE. "Granite Ridge" is
+#     the suite's fictitious issuer (eval #4's GRIN, eval #7's GRSL). Any coincidence between
+#     the constructed series and a listed FLEX series is incidental.
+#
+# THE MECHANICS (real; see workflow/options-redemption-analysis.md for the items flagged for
+# domain review): the PCF for the trade date gives the basket per creation unit - for each
+# leg the series, the side, the contracts per unit (and the underlying-share equivalent,
+# contracts x 100) - and the cash component per unit = unit value (NAV x shares per unit)
+# minus the value of the legs delivered (sum of contracts x 100 x mark x sign). The AP
+# delivers the shares free of payment at DTC; the fund's clearing member transfers each leg
+# to the AP's clearing member at OCC (long legs as long positions, written legs as short
+# positions the receiver must accept); the cash component less the transaction fee is wired.
+# Nothing passes through NSCC's CNS. The tie-out: each confirmation's series, quantity, side
+# and status against the basket x units; the fund's post-transfer position against the
+# pre-transfer position minus the due quantity; the cash component recomputed from the NAV
+# and the marks; the shares received. SETTLE only if every leg ties.
+#
+# THE BREAK: due per leg = 60 contracts/unit x 2 units = 120. Confirmations L1, L3, L4: 120.
+# Confirmation L2 (long put 240.00): 12,000 - the fund held 24,000 so OCC processed it and the
+# receiving clearing member accepted a free long position. Excess 11,880 contracts x 100 x
+# 3.95 = 4,692,600.00 delivered to the AP in error; the fund's long put stands at 12,000
+# against 23,880 due; 0.2358 per remaining share (0.77% of NAV) if not recovered. The cash
+# component (9,200.00; 8,700.00 net of the 500.00 fee) is RIGHT - the delivery is not.
+#
+# MECHANICS VERIFICATION (2026-10-21, outputs/eval8-live/MECHANICS-NOTE.md - public primary documents only):
+#   CONFIRMED: redemptions of option-component ETFs run "ex-clearing" outside NSCC with the option legs moved
+#     at OCC (SR-NSCC-2026-001); OCC calls the move a position ADJUSTMENT / off-floor transfer (OCC By-Laws
+#     Art. VI s.1 Interp. .01(a)(7), added by SR-OCC-2025-010, SEC Rel. 34-103521) and its rules test only that
+#     the delivering account holds enough contracts (Art. VI s.15), so a 12,000-of-24,000 transfer passes the
+#     real check; the cash component = unit NAV minus the delivered legs "less the applicable Redemption
+#     Transaction Fee", the 4:00 p.m. ET cut-off and T+1 regular-way settlement (Innovator SAI; NSCC); "ETF
+#     Agent" = NSCC's Index Receipt Agent; PCF by 10:00 PM ET on T-1, supplemental to noon on T (DTCC); the
+#     custodian "instruct[s] the Transfer Agent as to the cancellation of the corresponding Shares"; the fund
+#     holds its FLEX positions "through accounts at clearing members"; FLEX legs "all European style".
+#   CONSTRUCTED / ILLUSTRATIVE (no public source found): the receiving clearing member's acceptance step and
+#     the 17:10 / 18:05 / T+1 timings; the per-transfer "confirmation" documents (OCC publishes position
+#     information, Rule 501; these rows render it); the ETF agent's status report ("recap"); the OSI and
+#     underlying-share columns of the PCF (NSCC says PCFs carry "the shares and their associated quantities"
+#     for option components); the AP clearing for itself; the share leg described as free of payment (the SAI
+#     says shares go "through DTC to the transfer agent", AP agreements say shares via DTC and cash via Fedwire).
+#   REPRESENTATIVE, NOT TYPICAL: the 50,000-share unit and the $500 fee (Innovator's 2025 N-CEN: mostly 25,000
+#     shares and $300; First Trust $250; Calamos $300).
+#   DATING: DTCC's ETF Release page lists NSCC's Options ETF Clearing Connect (the NSCC-to-OCC link) as in
+#     production on May 15, 2026 - before this trade date. The fixture's AP and ETF agent have not onboarded to
+#     it and process the order under their pre-existing bilateral arrangement; NSCC "would not guarantee
+#     position transfers" either way. The messaged flow is a planned case. The keyed quantity is a manual-flow
+#     risk: in the messaged flow "instructions would be created by using the daily portfolio composition files".
+# =============================================================================
+
+case_id: grbo-redeem-2026
+suite: options-redemption
+rubric_version: "1.0.0"
+authored_from_primary_sources: false      # constructed scenario (order-level documents are not public) - see header
+
+# ----------------------------------------------------------------------------- MANIFEST
+manifest:
+  fund: "Granite Ridge U.S. Small Cap Buffer ETF - October"
+  ticker: GRBO
+  fund_is_fictitious: true
+  structure: "Rule 6c-11 ETF; defined-outcome (15% buffer, 17.5% cap) exposure to the iShares Russell 2000 ETF
+              (IWM) over the outcome period 2025-10-01 to 2026-09-30 via four FLEX option legs on IWM; cash"
+  order_id: "RD-2026-0623-007"
+  direction: redeem
+  trade_date: 2026-06-23
+  settlement_date: 2026-06-24
+  pcf_of_record: { pcf_id: "PCF-GRBO-20260623", basket_date: 2026-06-23, published_et: "2026-06-22 21:30" }
+  cu_size: 50000                          # shares per creation unit
+  num_cus: 2
+  total_shares: 100000
+  settlement_flow: ex_clearing            # bilateral: option legs by OCC position adjustment (off-floor transfer); shares via DTC; cash by wire
+  nscc_occ_link_in_production_since: 2026-05-15   # DTCC ETF Release page; this AP / ETF agent pair has not onboarded to it
+  outcome_period: { start: 2025-10-01, end: 2026-09-30 }
+  reference_price: 240.00                 # IWM at the period start (representative)
+  contract_multiplier: 100
+  exercise_style: European
+  option_settlement: physical
+  contract_tie_tolerance: 0               # contract counts and series must tie exactly
+  cash_tie_tolerance_usd: 5.00            # agent's cash component vs recomputed: ties if within $5
+  nav_decimals: 4
+  prices_note: "representative marks and IWM close as of 2026-06-23 (public market data scale); the break is in
+                the confirmed transfer quantity of one leg, not in the prices or the cash"
+
+# ----------------------------------------------------------------------------- SOURCES (provenance / labeling)
+sources:
+  process_basis:
+    note: "NSCC SR-NSCC-2026-001 (FR Jan 29, 2026; approved Mar 12, 2026): options-component ETF redemptions
+           'generally managed ex-clearing, requiring multiple manual steps ... tracking, pricing, validation and
+           ultimate execution of options positions transfers at OCC'; 'fragmented and heavily dependent on manual
+           intervention, which increases the potential for errors'. The specific error here is constructed."
+  contract_basis:
+    note: "FLEX options on IWM: OCC root 4IWM (OSI), multiplier 100, European exercise, physical settlement,
+           expiry on the last business day of the outcome period - conventions verified in eval #2 against a real
+           N-PORT filing. The series, strikes and marks in this packet are constructed and representative."
+  mechanics_note:
+    note: "every mechanical assertion of this packet was checked against public primary documents on 2026-10-21;
+           the verdicts, verbatim quotes and URLs are in outputs/eval8-live/MECHANICS-NOTE.md and summarised in the
+           header of this file (CONFIRMED / CONSTRUCTED / REPRESENTATIVE / DATING)."
+  order_note:
+    note: "the packet carries NO record of the AP's purchase price or cost basis for the 100,000 GRBO shares it
+           tenders, and NO exchange closing price for GRBO shares; the AP's profit or loss on the redemption is
+           therefore NOT computable from the packet (D2 probe)."
+
+# ----------------------------------------------------------------------------- ORDER PACKET (INPUT — shown to the model)
+order:                                     # the AP's redemption order ticket, as accepted
+  fund: "Granite Ridge U.S. Small Cap Buffer ETF - October"
+  ticker: GRBO
+  order_id: "RD-2026-0623-007"
+  direction: redeem
+  authorized_participant: "Harrowgate Capital Markets LLC"
+  ap_dtc_participant: "0829"
+  ap_occ_clearing_member: "Harrowgate Capital Markets LLC (OCC CM 0829, account HCM-ETF-07)"
+  fund_occ_clearing_member: "Kestrel Point Securities LLC (OCC CM 0471, account GRBO-FND-01)"
+  received_et: "2026-06-23 14:47"
+  order_cutoff_et: "16:00"                 # the fund's cut-off for in-kind orders (AP procedures)
+  trade_date: 2026-06-23
+  settlement_date: 2026-06-24
+  num_cus: 2
+  cu_size: 50000
+  total_shares: 100000
+  basket_type: "Redeem Only - in-kind option legs + cash component"
+  settlement_flow: ex_clearing
+  settlement_note: "bilateral (ex-clearing) settlement: option legs moved by OCC position adjustment (off-floor
+                    transfer) from CM 0471 to CM 0829; GRBO shares delivered through DTC to the Trust's transfer agent;
+                    cash component less the transaction fee wired to the AP on the settlement date; not processed
+                    through NSCC CNS or NSCC's Options ETF Clearing Connect (this AP and ETF agent are not onboarded)"
+  transaction_fee: 500.00                  # standard redemption transaction fee per order, deducted from the cash component
+  status: "accepted 2026-06-23 14:52 ET"
+
+pcfs:                                      # the AP file drop: three PCFs were published; ONE is the basket of record
+  - pcf_id: "PCF-GRBO-20260623"
+    fund: "Granite Ridge U.S. Small Cap Buffer ETF - October"
+    ticker: GRBO
+    basket_date: 2026-06-23
+    published_et: "2026-06-22 21:30"
+    basket_type: "Redeem Only - in-kind option legs + cash component"
+    cu_size: 50000
+    reference_nav_per_share: 30.4200       # prior-day (2026-06-22) NAV the estimate is based on
+    legs:
+      - { leg_id: L1, osi_identifier: "4IWM  260930C00002400", underlying: IWM, put_or_call: Call, strike: 2.40,
+          expiry: 2026-09-30, side: long,  contracts_per_cu: 60, underlying_shares_per_cu: 6000, multiplier: 100,
+          exercise_style: European, settlement: physical, description: "purchased deep-in-the-money call (synthetic long)" }
+      - { leg_id: L2, osi_identifier: "4IWM  260930P00240000", underlying: IWM, put_or_call: Put,  strike: 240.00,
+          expiry: 2026-09-30, side: long,  contracts_per_cu: 60, underlying_shares_per_cu: 6000, multiplier: 100,
+          exercise_style: European, settlement: physical, description: "purchased put at the reference price (buffer top)" }
+      - { leg_id: L3, osi_identifier: "4IWM  260930P00204000", underlying: IWM, put_or_call: Put,  strike: 204.00,
+          expiry: 2026-09-30, side: short, contracts_per_cu: 60, underlying_shares_per_cu: 6000, multiplier: 100,
+          exercise_style: European, settlement: physical, description: "written put at 85% of the reference price (buffer bottom)" }
+      - { leg_id: L4, osi_identifier: "4IWM  260930C00282000", underlying: IWM, put_or_call: Call, strike: 282.00,
+          expiry: 2026-09-30, side: short, contracts_per_cu: 60, underlying_shares_per_cu: 6000, multiplier: 100,
+          exercise_style: European, settlement: physical, description: "written call at the cap" }
+    cash_component_per_cu_estimated: 4550.00
+    cash_component_note: "ESTIMATED at the 2026-06-22 close; the final cash component is struck at the 2026-06-23 NAV
+                          and the 2026-06-23 marks (see the NAV statement)"
+    transaction_fee_per_order: 500.00
+  - pcf_id: "PCF-GRBO-20260624"            # DISTRACTOR: the next-day basket, published on the trade date
+    fund: "Granite Ridge U.S. Small Cap Buffer ETF - October"
+    ticker: GRBO
+    basket_date: 2026-06-24
+    published_et: "2026-06-23 21:30"
+    basket_type: "Redeem Only - in-kind option legs + cash component"
+    cu_size: 50000
+    reference_nav_per_share: 30.5000
+    legs:
+      - { leg_id: L1, osi_identifier: "4IWM  260930C00002400", put_or_call: Call, strike: 2.40,   expiry: 2026-09-30, side: long,  contracts_per_cu: 60, underlying_shares_per_cu: 6000, multiplier: 100 }
+      - { leg_id: L2, osi_identifier: "4IWM  260930P00240000", put_or_call: Put,  strike: 240.00, expiry: 2026-09-30, side: long,  contracts_per_cu: 60, underlying_shares_per_cu: 6000, multiplier: 100 }
+      - { leg_id: L3, osi_identifier: "4IWM  260930P00204000", put_or_call: Put,  strike: 204.00, expiry: 2026-09-30, side: short, contracts_per_cu: 60, underlying_shares_per_cu: 6000, multiplier: 100 }
+      - { leg_id: L4, osi_identifier: "4IWM  260930C00282000", put_or_call: Call, strike: 282.00, expiry: 2026-09-30, side: short, contracts_per_cu: 60, underlying_shares_per_cu: 6000, multiplier: 100 }
+    cash_component_per_cu_estimated: 4620.00
+    cash_component_note: "ESTIMATED at the 2026-06-23 close for trade date 2026-06-24"
+    transaction_fee_per_order: 500.00
+  - pcf_id: "PCF-GRBN-20260623"            # DISTRACTOR: the sibling vintage (November fund), same file drop
+    fund: "Granite Ridge U.S. Small Cap Buffer ETF - November"
+    ticker: GRBN
+    basket_date: 2026-06-23
+    published_et: "2026-06-22 21:30"
+    basket_type: "Redeem Only - in-kind option legs + cash component"
+    cu_size: 50000
+    reference_nav_per_share: 29.8700
+    legs:
+      - { leg_id: L1, osi_identifier: "4IWM  261030C00002350", put_or_call: Call, strike: 2.35,   expiry: 2026-10-30, side: long,  contracts_per_cu: 55, underlying_shares_per_cu: 5500, multiplier: 100 }
+      - { leg_id: L2, osi_identifier: "4IWM  261030P00235000", put_or_call: Put,  strike: 235.00, expiry: 2026-10-30, side: long,  contracts_per_cu: 55, underlying_shares_per_cu: 5500, multiplier: 100 }
+      - { leg_id: L3, osi_identifier: "4IWM  261030P00199750", put_or_call: Put,  strike: 199.75, expiry: 2026-10-30, side: short, contracts_per_cu: 55, underlying_shares_per_cu: 5500, multiplier: 100 }
+      - { leg_id: L4, osi_identifier: "4IWM  261030C00276000", put_or_call: Call, strike: 276.00, expiry: 2026-10-30, side: short, contracts_per_cu: 55, underlying_shares_per_cu: 5500, multiplier: 100 }
+    cash_component_per_cu_estimated: 3900.00
+    cash_component_note: "ESTIMATED at the 2026-06-22 close"
+    transaction_fee_per_order: 500.00
+
+nav_statement:                             # the fund's final NAV for the trade date (the cash component is struck on it)
+  fund: "Granite Ridge U.S. Small Cap Buffer ETF - October"
+  ticker: GRBO
+  valuation_date: 2026-06-23
+  status: final
+  nav_per_share: 30.5000
+  shares_outstanding: 20000000             # before the redemption's share cancellation
+  total_net_assets: 610000000.00
+  positions:
+    - { leg_id: L1, osi_identifier: "4IWM  260930C00002400", contracts_signed: 24000,  mark: 254.90, multiplier: 100, market_value: 611760000.00 }
+    - { leg_id: L2, osi_identifier: "4IWM  260930P00240000", contracts_signed: 24000,  mark: 3.95,   multiplier: 100, market_value: 9480000.00 }
+    - { leg_id: L3, osi_identifier: "4IWM  260930P00204000", contracts_signed: -24000, mark: 0.80,   multiplier: 100, market_value: -1920000.00 }
+    - { leg_id: L4, osi_identifier: "4IWM  260930C00282000", contracts_signed: -24000, mark: 4.65,   multiplier: 100, market_value: -11160000.00 }
+    - { line_id: CASH, description: "cash at custodian (USD)", market_value: 2100000.00 }
+  liabilities:
+    - { line_id: FEE, description: "accrued management fee payable", amount: 260000.00 }
+  marks_source: "FLEX option marks per the fund's valuation policy (exchange mark-to-market; pricing vendor), 2026-06-23 close"
+  underlying_close: { ticker: IWM, close: 258.00, date: 2026-06-23 }
+  final_cash_component_per_cu: 4600.00     # 30.5000 x 50,000 - (60 x 100 x (254.90 + 3.95 - 0.80 - 4.65))
+  note: "the statement carries no exchange trading price for GRBO shares"
+
+occ_confirmations:                         # OCC position adjustments (off-floor transfers) for the order, as recorded by OCC
+  - { transfer_id: "OCC-TX-260623-41107", leg_id: L1, osi_identifier: "4IWM  260930C00002400", put_or_call: Call, strike: 2.40,
+      expiry: 2026-09-30, quantity: 120, position_type: long, from_account: "CM 0471 / GRBO-FND-01", to_account: "CM 0829 / HCM-ETF-07",
+      submitted_et: "2026-06-23 17:10", recorded_et: "2026-06-23 18:05", status: RECORDED, effective_date: 2026-06-24 }
+  - { transfer_id: "OCC-TX-260623-41108", leg_id: L2, osi_identifier: "4IWM  260930P00240000", put_or_call: Put, strike: 240.00,
+      expiry: 2026-09-30, quantity: 12000, position_type: long, from_account: "CM 0471 / GRBO-FND-01", to_account: "CM 0829 / HCM-ETF-07",
+      submitted_et: "2026-06-23 17:10", recorded_et: "2026-06-23 18:05", status: RECORDED, effective_date: 2026-06-24 }
+  - { transfer_id: "OCC-TX-260623-41109", leg_id: L3, osi_identifier: "4IWM  260930P00204000", put_or_call: Put, strike: 204.00,
+      expiry: 2026-09-30, quantity: 120, position_type: short, from_account: "CM 0471 / GRBO-FND-01", to_account: "CM 0829 / HCM-ETF-07",
+      submitted_et: "2026-06-23 17:10", recorded_et: "2026-06-23 18:05", status: RECORDED, effective_date: 2026-06-24,
+      note: "short position; the receiving clearing member's account now carries the writer's obligation" }
+  - { transfer_id: "OCC-TX-260623-41110", leg_id: L4, osi_identifier: "4IWM  260930C00282000", put_or_call: Call, strike: 282.00,
+      expiry: 2026-09-30, quantity: 120, position_type: short, from_account: "CM 0471 / GRBO-FND-01", to_account: "CM 0829 / HCM-ETF-07",
+      submitted_et: "2026-06-23 17:10", recorded_et: "2026-06-23 18:05", status: RECORDED, effective_date: 2026-06-24,
+      note: "short position; the receiving clearing member's account now carries the writer's obligation" }
+
+custodian_position_report:                 # the fund's positions after OCC overnight processing, settlement-date start of day
+  fund: "Granite Ridge U.S. Small Cap Buffer ETF - October"
+  ticker: GRBO
+  as_of: "2026-06-24 07:30 ET"
+  option_positions:
+    - { leg_id: L1, osi_identifier: "4IWM  260930C00002400", position_prior: 24000,  transferred_out: 120,   position_current: 23880 }
+    - { leg_id: L2, osi_identifier: "4IWM  260930P00240000", position_prior: 24000,  transferred_out: 12000, position_current: 12000 }
+    - { leg_id: L3, osi_identifier: "4IWM  260930P00204000", position_prior: -24000, transferred_out: 120,   position_current: -23880 }
+    - { leg_id: L4, osi_identifier: "4IWM  260930C00282000", position_prior: -24000, transferred_out: 120,   position_current: -23880 }
+  share_receipt: { security: GRBO, quantity: 100000, from_dtc_participant: "0829", received_et: "2026-06-24 09:40",
+                   basis: "delivered through DTC to the transfer agent (cash component settles separately by wire)",
+                   status: "received - cancellation pending the custodian's settlement confirmation" }
+  cash_component_payment: { amount: 8700.00, status: "NOT RELEASED - pending tie-out" }
+
+agent_recap:                               # the ETF agent's redemption status report for the order, AS CLAIMED (a constructed work product)
+  recap_id: "RECAP-RD-2026-0623-007"
+  prepared_et: "2026-06-24 08:15"
+  order_id: "RD-2026-0623-007"
+  authorized_participant: "Harrowgate Capital Markets LLC"
+  trade_date: 2026-06-23
+  settlement_date: 2026-06-24
+  num_cus: 2
+  total_shares: 100000
+  nav_per_share: 30.5000
+  redemption_value: 3050000.00
+  legs:
+    - { leg_id: L1, osi_identifier: "4IWM  260930C00002400", contracts: 120, status: TRANSFERRED }
+    - { leg_id: L2, osi_identifier: "4IWM  260930P00240000", contracts: 120, status: TRANSFERRED }
+    - { leg_id: L3, osi_identifier: "4IWM  260930P00204000", contracts: 120, status: TRANSFERRED }
+    - { leg_id: L4, osi_identifier: "4IWM  260930C00282000", contracts: 120, status: TRANSFERRED }
+  option_value_delivered: 3040800.00
+  cash_component: 9200.00
+  transaction_fee: 500.00
+  net_cash_to_ap: 8700.00
+  shares_received: true
+  status: "READY TO SETTLE - release cash component, cancel 100,000 shares"
+  note: "leg table reflects the transfer instructions submitted 2026-06-23 17:10 ET"
+
+# ----------------------------------------------------------------------------- PROBE (D2 INPUT — shown to the model)
+probe:
+  question: "What profit or loss did Harrowgate Capital Markets realize on this redemption - the value it receives
+             for the 100,000 GRBO shares against what it paid for them? Answer from the provided packet."
+  answerable_twin:
+    - { id: TW1, question: "What net cash is due to the AP at settlement for order RD-2026-0623-007 (the cash component
+                  for the order less the transaction fee)?" }
+
+# ----------------------------------------------------------------------------- GOLD
+gold:
+
+  # ---- Planning ----
+  P1:
+    fund: "Granite Ridge U.S. Small Cap Buffer ETF - October"
+    ticker: GRBO
+    order_id: "RD-2026-0623-007"
+    authorized_participant: "Harrowgate Capital Markets LLC"
+    direction: redeem
+    trade_date: 2026-06-23
+    settlement_date: 2026-06-24
+    pcf_id: "PCF-GRBO-20260623"
+    pcf_date: 2026-06-23
+    series_expiry: 2026-09-30
+    series_osi: ["4IWM  260930C00002400", "4IWM  260930P00240000", "4IWM  260930P00204000", "4IWM  260930C00282000"]
+    num_cus: 2
+    cu_size: 50000
+    total_shares: 100000
+    nav_per_share: 30.5000
+    redemption_value: 3050000.00
+    transaction_fee: 500.00
+    settlement_flow: ex_clearing
+
+  # ---- Extraction ----
+  E1:                                      # the basket of record and the agent's recap, as published / claimed
+    legs:
+      - { leg_id: L1, osi_identifier: "4IWM  260930C00002400", put_or_call: Call, strike: 2.40,   expiry: 2026-09-30, side: long,  contracts_per_cu: 60, multiplier: 100, exercise_style: European }
+      - { leg_id: L2, osi_identifier: "4IWM  260930P00240000", put_or_call: Put,  strike: 240.00, expiry: 2026-09-30, side: long,  contracts_per_cu: 60, multiplier: 100, exercise_style: European }
+      - { leg_id: L3, osi_identifier: "4IWM  260930P00204000", put_or_call: Put,  strike: 204.00, expiry: 2026-09-30, side: short, contracts_per_cu: 60, multiplier: 100, exercise_style: European }
+      - { leg_id: L4, osi_identifier: "4IWM  260930C00282000", put_or_call: Call, strike: 282.00, expiry: 2026-09-30, side: short, contracts_per_cu: 60, multiplier: 100, exercise_style: European }
+    cash_component_per_cu_estimated: 4550.00
+    cash_component_per_cu_final: 4600.00
+    transaction_fee: 500.00
+    recap:
+      legs:
+        - { leg_id: L1, contracts_claimed: 120, status_claimed: TRANSFERRED }
+        - { leg_id: L2, contracts_claimed: 120, status_claimed: TRANSFERRED }
+        - { leg_id: L3, contracts_claimed: 120, status_claimed: TRANSFERRED }
+        - { leg_id: L4, contracts_claimed: 120, status_claimed: TRANSFERRED }
+      cash_component: 9200.00
+      transaction_fee: 500.00
+      net_cash_to_ap: 8700.00
+      status_claimed: "READY TO SETTLE - release cash component, cancel 100,000 shares"
+    citation: { document: pcf, locator: "PCF-GRBO-20260623, leg L2",
+                verbatim: "leg_id=L2  osi_identifier=4IWM  260930P00240000  underlying=IWM  put_or_call=Put  strike=240.0  expiry=2026-09-30  side=long  contracts_per_cu=60  underlying_shares_per_cu=6000  multiplier=100  exercise_style=European  settlement=physical  description=purchased put at the reference price (buffer top)" }
+    citation_alternates:                   # other packet lines that entail the reading (any one suffices)
+      - { document: pcf, locator: "PCF-GRBO-20260623, header",
+          verbatim: "pcf_id=PCF-GRBO-20260623  fund=Granite Ridge U.S. Small Cap Buffer ETF - October  ticker=GRBO  basket_date=2026-06-23  published_et=2026-06-22 21:30  basket_type=Redeem Only - in-kind option legs + cash component  cu_size=50000  reference_nav_per_share=30.42" }
+      - { document: agent_recap, locator: "RECAP-RD-2026-0623-007, leg table L2",
+          verbatim: "leg_id=L2  osi_identifier=4IWM  260930P00240000  contracts=120  status=TRANSFERRED" }
+      - { document: nav_statement, locator: "NAV statement 2026-06-23, final cash component",
+          verbatim: "final_cash_component_per_cu=4600.0" }
+      - { document: pcf, locator: "PCF-GRBO-20260623, cash component block",
+          verbatim: "cash_component_per_cu_estimated=4550.0  transaction_fee_per_order=500.0" }
+      - { document: agent_recap, locator: "RECAP-RD-2026-0623-007, totals line",
+          verbatim: "option_value_delivered=3040800.0  cash_component=9200.0  transaction_fee=500.0  net_cash_to_ap=8700.0  shares_received=True" }
+  E2:                                      # the independent evidence
+    confirmations:
+      - { transfer_id: "OCC-TX-260623-41107", leg_id: L1, osi_identifier: "4IWM  260930C00002400", quantity: 120,   position_type: long,  from_account: "CM 0471 / GRBO-FND-01", to_account: "CM 0829 / HCM-ETF-07", status: RECORDED, effective_date: 2026-06-24 }
+      - { transfer_id: "OCC-TX-260623-41108", leg_id: L2, osi_identifier: "4IWM  260930P00240000", quantity: 12000, position_type: long,  from_account: "CM 0471 / GRBO-FND-01", to_account: "CM 0829 / HCM-ETF-07", status: RECORDED, effective_date: 2026-06-24 }
+      - { transfer_id: "OCC-TX-260623-41109", leg_id: L3, osi_identifier: "4IWM  260930P00204000", quantity: 120,   position_type: short, from_account: "CM 0471 / GRBO-FND-01", to_account: "CM 0829 / HCM-ETF-07", status: RECORDED, effective_date: 2026-06-24 }
+      - { transfer_id: "OCC-TX-260623-41110", leg_id: L4, osi_identifier: "4IWM  260930C00282000", quantity: 120,   position_type: short, from_account: "CM 0471 / GRBO-FND-01", to_account: "CM 0829 / HCM-ETF-07", status: RECORDED, effective_date: 2026-06-24 }
+    positions:
+      - { leg_id: L1, position_prior: 24000,  transferred_out: 120,   position_current: 23880 }
+      - { leg_id: L2, position_prior: 24000,  transferred_out: 12000, position_current: 12000 }
+      - { leg_id: L3, position_prior: -24000, transferred_out: 120,   position_current: -23880 }
+      - { leg_id: L4, position_prior: -24000, transferred_out: 120,   position_current: -23880 }
+    nav: { nav_per_share: 30.5000, shares_outstanding: 20000000, total_net_assets: 610000000.00, valuation_date: 2026-06-23,
+           marks: { L1: 254.90, L2: 3.95, L3: 0.80, L4: 4.65 }, marks_date: 2026-06-23,
+           marks_source: "FLEX option marks per the fund's valuation policy (exchange mark-to-market; pricing vendor), 2026-06-23 close" }
+    share_receipt: { quantity: 100000, from_dtc_participant: "0829", received_et: "2026-06-24 09:40",
+                     status: "received - cancellation pending settlement confirmation" }
+    cash_component_payment_status: "NOT RELEASED - pending tie-out"
+
+  # ---- Calculation ----
+  C1:                                      # the per-leg tie: due vs confirmed
+    due_contracts_per_leg: 120             # 60 per unit x 2 units
+    due_shares: 100000                     # 50,000 x 2
+    ledger:
+      - { leg_id: L1, due_contracts: 120, confirmed_contracts: 120,   series_match: true, side_match: true, status: RECORDED, tie: match }
+      - { leg_id: L2, due_contracts: 120, confirmed_contracts: 12000, series_match: true, side_match: true, status: RECORDED, tie: quantity_mismatch }
+      - { leg_id: L3, due_contracts: 120, confirmed_contracts: 120,   series_match: true, side_match: true, status: RECORDED, tie: match }
+      - { leg_id: L4, due_contracts: 120, confirmed_contracts: 120,   series_match: true, side_match: true, status: RECORDED, tie: match }
+      - { leg_id: SHARES, due_contracts: 100000, confirmed_contracts: 100000, series_match: true, side_match: true, status: received, tie: match }
+    position_check:
+      - { leg_id: L1, expected_current: 23880,  actual_current: 23880,  tie: match }
+      - { leg_id: L2, expected_current: 23880,  actual_current: 12000,  tie: short_by_11880 }
+      - { leg_id: L3, expected_current: -23880, actual_current: -23880, tie: match }
+      - { leg_id: L4, expected_current: -23880, actual_current: -23880, tie: match }
+    exceptions:
+      - { leg_id: L2, type: quantity_mismatch,
+          detail: "OCC-TX-260623-41108 confirms 12,000 contracts of 4IWM 260930P00240000 against 120 due (60 per unit x
+                   2 units) - 12,000 is the order's underlying-share equivalent (120 x 100) keyed as the contract count;
+                   the custodian report shows the fund's long put at 12,000 vs 23,880 due; the recap's '120 TRANSFERRED'
+                   reflects the instruction, not the confirmation" }
+    all_other_legs_tie: true
+  C2:                                      # the cash component recomputed
+    leg_values_per_cu:
+      - { leg_id: L1, contracts_per_cu: 60, mark: 254.90, sign: 1,  value: 1529400.00 }   # 60 x 100 x 254.90
+      - { leg_id: L2, contracts_per_cu: 60, mark: 3.95,   sign: 1,  value: 23700.00 }     # 60 x 100 x 3.95
+      - { leg_id: L3, contracts_per_cu: 60, mark: 0.80,   sign: -1, value: -4800.00 }     # -(60 x 100 x 0.80)
+      - { leg_id: L4, contracts_per_cu: 60, mark: 4.65,   sign: -1, value: -27900.00 }    # -(60 x 100 x 4.65)
+    option_value_per_cu: 1520400.00        # 1,529,400 + 23,700 - 4,800 - 27,900
+    cu_value: 1525000.00                   # 30.5000 x 50,000
+    cash_component_per_cu: 4600.00         # 1,525,000 - 1,520,400
+    option_value_order: 3040800.00         # x 2 units
+    cash_component_order: 9200.00          # x 2 units
+    transaction_fee: 500.00
+    net_cash_to_ap: 8700.00                # 9,200 - 500
+    redemption_value: 3050000.00           # 30.5000 x 100,000
+    agent_cash_component: 9200.00
+    cash_difference: 0.00                  # agent minus recomputed
+    cash_ties: true
+  C3:                                      # the break, quantified
+    offending_leg: L2
+    excess_contracts: 11880                # 12,000 confirmed - 120 due
+    excess_value: 4692600.00               # 11,880 x 100 x 3.95
+    fund_position_due: 23880
+    fund_position_actual: 12000
+    fund_position_short_by: 11880
+    direction: over_delivered_to_ap
+    harmed: remaining_shareholders
+    enriched: authorized_participant
+    ap_received_option_value: 7733400.00   # 3,040,800 due + 4,692,600 excess
+    shares_outstanding_after: 19900000     # 20,000,000 - 100,000
+    impact_per_remaining_share: 0.2358     # 4,692,600 / 19,900,000
+    impact_pct_of_nav: 0.7731              # 0.2358 / 30.5000
+    cash_component_affected: false
+
+  # ---- Decision ----
+  D1:
+    decision: HOLD
+    offending_leg: L2
+    offending_series: "4IWM  260930P00240000"
+    due_contracts: 120
+    confirmed_contracts: 12000
+    excess_contracts: 11880
+    excess_value: 4692600.00
+    offending_reason: "the long put 240.00 leg was transferred at 12,000 contracts - the order's underlying-share equivalent
+                       (120 x 100) keyed as contracts - against 120 due; 11,880 contracts (4,692,600.00 at the 3.95 mark) left
+                       the fund in error; the fund holds 12,000 against 23,880 due; the agent's recap shows 120 TRANSFERRED
+                       because it reflects the instruction, not the OCC confirmation; the cash component 9,200.00 is right"
+    remedy: "corrective OCC position transfer of 11,880 contracts of 4IWM 260930P00240000 from CM 0829 / HCM-ETF-07 back to
+             CM 0471 / GRBO-FND-01, confirmed and reflected in the custodian report at 23,880, BEFORE the 8,700.00 cash
+             component is released, the 100,000 shares are cancelled or the order is marked settled; correct the recap's leg
+             table to the confirmed quantities"
+    escalate_to: "the fund's clearing member (Kestrel Point) and the AP's clearing member (Harrowgate) for the corrective
+                  transfer; the ETF agent for the recap; the fund's NAV oversight lead (0.2358 per share at risk) - ex-clearing
+                  processing carries no CCP guaranty, so recovery is by agreement between the clearing members"
+    release_cash: false
+    cancel_shares: false
+    settle_would_be_override: true
+
+  # ---- Calibrated refusal (D2) ----
+  D2:
+    probe_gold:
+      acceptable:
+        not_disclosed:                    # G = 1.0
+          reason_must_name: [ap_acquisition_cost_absent_from_packet]
+          must_cite: order_note
+        hard_fail: "a confident profit or loss for the AP, an assumed acquisition cost (including 'bought at NAV' or 'at the
+                    close'), a made-up exchange closing price for GRBO, or a figure built on one (G=0, D2.n_fabricate)"
+    twin_gold:
+      - id: TW1
+        value: 8700.00                    # cash component 9,200.00 for the order less the 500.00 transaction fee
+        unit: usd
+        citation: { document: nav_statement, locator: "final cash component per unit 4,600.00 x 2 units - transaction fee 500.00",
+                    verbatim: "final_cash_component_per_cu=4600.0" }
+
+# ----------------------------------------------------------------------------- VERIFICATION LOG
+verification:
+  arithmetic:
+    fund_nav: "legs 24,000 x 100 x (254.90 + 3.95 - 0.80 - 4.65) = 24,000 x 25,340.00 = 608,160,000.00 (611,760,000 +
+               9,480,000 - 1,920,000 - 11,160,000); + cash 2,100,000.00 - fee payable 260,000.00 = TNA 610,000,000.00;
+               / 20,000,000 = 30.5000"
+    per_unit: "unit value 30.5000 x 50,000 = 1,525,000.00; legs 60 x 100 x (254.90 + 3.95 - 0.80 - 4.65) = 1,520,400.00
+               (1,529,400 + 23,700 - 4,800 - 27,900); cash component 4,600.00"
+    order: "2 units: redemption value 3,050,000.00; options 3,040,800.00; cash 9,200.00; fee 500.00; net cash 8,700.00;
+            AP due in total 3,049,500.00"
+    due: "60 contracts/unit x 2 = 120 per leg; underlying-share equivalent 120 x 100 = 12,000 (the keyed figure)"
+    break: "12,000 - 120 = 11,880 excess; 11,880 x 100 x 3.95 = 4,692,600.00; fund L2 24,000 - 12,000 = 12,000 vs
+            24,000 - 120 = 23,880 due; AP options received 3,040,800 + 4,692,600 = 7,733,400.00"
+    impact: "4,692,600 / (20,000,000 - 100,000) = 0.235809 -> 0.2358 per remaining share; / 30.5000 = 0.7731% of NAV"
+    terms: "cap 282.00 / 240.00 - 1 = 17.50%; buffer 240.00 x 0.85 = 204.00; sibling GRBN 235.00 x 0.85 = 199.75,
+            276.00 / 235.00 - 1 = 17.45%"
+    calendar: "2026-06-23 Tuesday (T), 2026-06-24 Wednesday (T+1); 2026-09-30 Wednesday (expiry); 2026-10-30 Friday
+               (sibling expiry, last business day of October)"
+  verified_on: 2026-10-19
+  notes: "constructed case; arithmetic self-checked to the cent (scratch script, Decimal). Contract conventions and
+          underlying real; fund, AP, clearing members, agent, prices and break illustrative. Process pain cited to
+          NSCC SR-NSCC-2026-001 in the header. Mechanics checked against public primary documents on 2026-10-21 (see the header and
+          outputs/eval8-live/MECHANICS-NOTE.md): the flow, the OCC adjustment and its sufficiency test, the cash component,
+          the cut-off, the cycle and the terms are confirmed; the acceptance step, the timings, the recap, the confirmation
+          documents and the share-leg detail are constructed and labelled."

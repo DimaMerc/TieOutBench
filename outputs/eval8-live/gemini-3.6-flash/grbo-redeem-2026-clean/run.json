@@ -1,0 +1,67 @@
+{
+  "schema": "tieoutbench.run/1",
+  "run_id": "20261021T205653Z-2883fc",
+  "written_at": "2026-10-21T20:58:05Z",
+  "suite": "options-redemption",
+  "model_id": "gemini-3.6-flash",
+  "endpoint": "generativelanguage.googleapis.com",
+  "request": {
+    "max_tokens_field": "max_tokens",
+    "max_tokens": 16000,
+    "temperature": 0.0,
+    "temperature_dropped": false,
+    "stream": true,
+    "stream_usage_requested": true,
+    "system_folded": false
+  },
+  "usage": {
+    "completion_tokens": 4125,
+    "prompt_tokens": 6826,
+    "total_tokens": 19597
+  },
+  "finish_reason": "stop",
+  "deadline_hit": false,
+  "elapsed_s": 72.461,
+  "chat_elapsed_s": 72.459,
+  "content_chars": 8735,
+  "reasoning_chars": 0,
+  "prompt": {
+    "sha256": "0495262ea87688d9a144a7497a0ad604b8e05506a4e14065db9437ebbe8e75ce",
+    "chars": 18732,
+    "tokens_approx": 4683
+  },
+  "case": {
+    "case_id": "grbo-redeem-2026-clean",
+    "path": "cases/grbo-redeem-2026-clean.case.yaml",
+    "sha256": "d9400b413f55219423a5a35c6709193f2693656b9eca708dd88cf7b7263f2eb9"
+  },
+  "rubric": {
+    "path": "rubric/criteria-options-redemption.yaml",
+    "sha256": "1b180d59670e2cc690d9cb051e4bbb45d7007de1a7ba2436abbb0357867f9f23"
+  },
+  "grader_version": "814ba50",
+  "grader_tree_dirty": true,
+  "harness_hashes": {
+    "harness/graders.py": "4ce46f1ed091fa4e95dd471b7900be5464ced9a5c952d32ca7e8160243caa65b",
+    "harness/scoring.py": "c31e1901303253cf8b4ac600998ae130fb6111b32e5b99dd16029151db1dd1a8",
+    "harness/suites/options_redemption.py": "a9678124bacc25a8daeb90d3e0de525269937c5bf5cfc6add9749eec210bc08c",
+    "harness/live_options_redemption.py": "20130ba04e0159b0ba4e404935a4b175a4e1f64628639527deee27c740c1f115"
+  },
+  "raw_sha256": "1f67773a59b3c8d95d5b3b235da9a60f0babf7e152e7c24c667fff673acaa9fd",
+  "raw_chars": 8735,
+  "parse": {
+    "status": "ok",
+    "salvaged": false,
+    "retries": 0
+  },
+  "judge": "mock",
+  "prior_dir": "outputs/eval8-live/gemini-3.6-flash/grbo-redeem-2026-clean/prior/20261021T205503Z-678361",
+  "score": {
+    "gated": 0.9888,
+    "ungated": 0.9888,
+    "gap": 0.0,
+    "allpass": 0,
+    "gates": [],
+    "flags": []
+  }
+}

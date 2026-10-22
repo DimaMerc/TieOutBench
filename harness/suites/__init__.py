@@ -29,5 +29,8 @@ def for_case(case: dict):
     if s == "nav-oversight":
         from . import nav_oversight
         return nav_oversight
+    if s == "options-redemption":
+        from . import options_redemption
+        return options_redemption
     from . import earnings
     return earnings

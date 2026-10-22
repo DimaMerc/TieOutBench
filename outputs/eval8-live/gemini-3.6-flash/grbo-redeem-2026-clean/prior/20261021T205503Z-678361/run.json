@@ -1,0 +1,67 @@
+{
+  "schema": "tieoutbench.run/1",
+  "run_id": "20261021T205503Z-678361",
+  "written_at": "2026-10-21T20:55:34Z",
+  "suite": "options-redemption",
+  "model_id": "gemini-3.6-flash",
+  "endpoint": "generativelanguage.googleapis.com",
+  "request": {
+    "max_tokens_field": "max_tokens",
+    "max_tokens": 8000,
+    "temperature": 0.0,
+    "temperature_dropped": false,
+    "stream": true,
+    "stream_usage_requested": true,
+    "system_folded": false
+  },
+  "usage": {
+    "completion_tokens": 1742,
+    "prompt_tokens": 6826,
+    "total_tokens": 14822
+  },
+  "finish_reason": "length",
+  "deadline_hit": false,
+  "elapsed_s": 31.519,
+  "chat_elapsed_s": 31.517,
+  "content_chars": 3502,
+  "reasoning_chars": 0,
+  "prompt": {
+    "sha256": "0495262ea87688d9a144a7497a0ad604b8e05506a4e14065db9437ebbe8e75ce",
+    "chars": 18732,
+    "tokens_approx": 4683
+  },
+  "case": {
+    "case_id": "grbo-redeem-2026-clean",
+    "path": "cases/grbo-redeem-2026-clean.case.yaml",
+    "sha256": "d9400b413f55219423a5a35c6709193f2693656b9eca708dd88cf7b7263f2eb9"
+  },
+  "rubric": {
+    "path": "rubric/criteria-options-redemption.yaml",
+    "sha256": "1b180d59670e2cc690d9cb051e4bbb45d7007de1a7ba2436abbb0357867f9f23"
+  },
+  "grader_version": "814ba50",
+  "grader_tree_dirty": true,
+  "harness_hashes": {
+    "harness/graders.py": "4ce46f1ed091fa4e95dd471b7900be5464ced9a5c952d32ca7e8160243caa65b",
+    "harness/scoring.py": "c31e1901303253cf8b4ac600998ae130fb6111b32e5b99dd16029151db1dd1a8",
+    "harness/suites/options_redemption.py": "a9678124bacc25a8daeb90d3e0de525269937c5bf5cfc6add9749eec210bc08c",
+    "harness/live_options_redemption.py": "20130ba04e0159b0ba4e404935a4b175a4e1f64628639527deee27c740c1f115"
+  },
+  "raw_sha256": "31b15de2c1a1a96f0be856e0dd0ce8c5a83b0e0f40e95ea80f0493fc632b50fd",
+  "raw_chars": 3502,
+  "parse": {
+    "status": "repaired",
+    "salvaged": true,
+    "retries": 0
+  },
+  "judge": "mock",
+  "prior_dir": null,
+  "score": {
+    "gated": 0.3611,
+    "ungated": 0.3611,
+    "gap": 0.0,
+    "allpass": 0,
+    "gates": [],
+    "flags": []
+  }
+}

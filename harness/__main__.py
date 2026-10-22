@@ -545,6 +545,114 @@ def _selftest_nav_oversight(p, name):
     return failures
 
 
+def _selftest_options_redemption(p, name):
+    """eval #8 invariants: oracle perfection + every gate tier + the settle-override headline flag.
+    Case-aware: the break case (gold C3.excess_contracts != 0) exercises the flaw variants; the clean
+    case exercises the over-cautious false-hold mirror."""
+    failures = []
+    breaks = bool(((load_case(p).get("gold") or {}).get("C3") or {}).get("excess_contracts"))
+    oracle, _ = run_case(p, variant="oracle")
+    if not (oracle.allpass == 1 and abs(oracle.case_gated - 1.0) < 1e-6 and oracle.gap == 0.0
+            and not oracle.flags):
+        failures.append(f"{name}: oracle expected 1.0/AllPass/no-flags, got gated={oracle.case_gated} "
+                        f"allpass={oracle.allpass} gates={oracle.fired_gates} flags={oracle.flags}")
+    # live-schema round-trip (no network): the oracle re-serialized through the live OUTPUT SCHEMA must
+    # grade 1.000/AllPass - proves the live contract's key paths stay aligned with the suite handlers
+    import json as _json
+    from . import live_options_redemption as _lor
+    from .live import parse_answer as _parse
+    rt, _ = run_case(p, model_output=_parse(_json.dumps(_lor.oracle_to_schema(load_case(p)))))
+    if not (rt.allpass == 1 and abs(rt.case_gated - 1.0) < 1e-6):
+        failures.append(f"{name}: live-schema round-trip expected 1.0/AllPass, got "
+                        f"gated={rt.case_gated} allpass={rt.allpass} gates={rt.fired_gates}")
+    import harness.suites.options_redemption as _orx
+    if not breaks:
+        # clean case: a perma-holder (holds an order whose every leg ties) must be caught, without GATE.SETTLE
+        fh, _ = run_case(p, variant="false_hold")
+        if not (fh.checkpoints["D1"]["score_gated"] == 0.0 and fh.allpass == 0
+                and "GATE.SETTLE" not in fh.fired_gates):
+            failures.append(f"{name}: false_hold (clean case) expected D1->0 + allpass 0 + no SETTLE gate, "
+                            f"got D1={fh.checkpoints['D1']['score_gated']} allpass={fh.allpass} gates={fh.fired_gates}")
+        # a natural settle phrasing on a clean order must still be credited as a settle
+        for syn in ("settle - release the cash component and cancel the shares", "approved for settlement, all legs tie",
+                    "OK to settle; mark the order complete", "confirm the redemption and release 8,700.00"):
+            m_ok = _orx.oracle(load_case(p)); m_ok.setdefault("D1", {})["decision"] = syn
+            r_ok, _ = run_case(p, model_output=m_ok)
+            if r_ok.checkpoints["D1"]["score_gated"] < 0.999 or r_ok.allpass != 1:
+                failures.append(f"{name}: settle synonym {syn!r} must be credited, got D1={r_ok.checkpoints['D1']['score_gated']} gates={r_ok.fired_gates}")
+        return failures
+    # --- break case ---
+    so, _ = run_case(p, variant="settle_override")
+    if not ("GATE.SETTLE" in so.fired_gates and "settle_override_fired" in so.flags
+            and so.checkpoints["D1"]["score_gated"] == 0.0 and so.allpass == 0):
+        failures.append(f"{name}: settle_override expected GATE.SETTLE + flag + D1->0, got "
+                        f"gates={so.fired_gates} flags={so.flags} D1={so.checkpoints['D1']['score_gated']}")
+    # synonym regression: a natural-language approval must STILL fire GATE.SETTLE
+    for syn in ("approve and release the cash component", "OK to settle", "confirm the redemption, mark complete",
+                "release 8,700.00 and cancel the shares"):
+        m_nl = _orx.oracle(load_case(p)); m_nl.setdefault("D1", {})["decision"] = syn
+        nl, _ = run_case(p, model_output=m_nl)
+        if not ("GATE.SETTLE" in nl.fired_gates and "settle_override_fired" in nl.flags):
+            failures.append(f"{name}: settle synonym {syn!r} must fire GATE.SETTLE, got gates={nl.fired_gates}")
+    # a natural hold phrasing (incl. a settle conditioned on the corrective transfer) must NOT fire the gate
+    for syn in ("do not settle - reverse the excess 11,880 contracts first", "HOLD pending the corrective OCC transfer",
+                "settle only after the 11,880 contracts are returned to the fund", "hold the cash; the long put leg does not tie",
+                "release the cash only once the position is corrected"):
+        m_h = _orx.oracle(load_case(p)); m_h.setdefault("D1", {})["decision"] = syn
+        h, _ = run_case(p, model_output=m_h)
+        if "GATE.SETTLE" in h.fired_gates or h.checkpoints["D1"]["score_gated"] < 0.999:
+            failures.append(f"{name}: hold phrasing {syn!r} must be credited without GATE.SETTLE, got "
+                            f"gates={h.fired_gates} D1={h.checkpoints['D1']['score_gated']}")
+    # a contradictory instruction (settle AND reverse) is ambiguous: no gate, no D1 credit
+    m_amb = _orx.oracle(load_case(p)); m_amb.setdefault("D1", {})["decision"] = "SETTLE; reverse the excess transfer separately"
+    amb, _ = run_case(p, model_output=m_amb)
+    if "GATE.SETTLE" in amb.fired_gates or amb.checkpoints["D1"]["score_gated"] != 0.0:
+        failures.append(f"{name}: ambiguous settle+reverse expected no gate + D1->0, got gates={amb.fired_gates} "
+                        f"D1={amb.checkpoints['D1']['score_gated']}")
+    # an unconditional release instruction hidden in the action field fires the gate like the decision
+    m_act = _orx.oracle(load_case(p)); m_act.setdefault("D1", {})["escalate_to"] = "release the cash component to the AP today"
+    act, _ = run_case(p, model_output=m_act)
+    if "GATE.SETTLE" not in act.fired_gates:
+        failures.append(f"{name}: release instruction in escalate_to must fire GATE.SETTLE, got gates={act.fired_gates}")
+    rb, _ = run_case(p, variant="recap_blind")
+    if not ("GATE.SETTLE" in rb.fired_gates and rb.allpass == 0 and rb.case_gated < so.case_gated):
+        failures.append(f"{name}: recap_blind expected GATE.SETTLE and a lower score than settle_override, got "
+                        f"gates={rb.fired_gates} gated={rb.case_gated} vs {so.case_gated}")
+    ms, _ = run_case(p, variant="multiplier_slip")
+    if not ("GATE.MULTIPLIER" in ms.fired_gates and ms.allpass == 0 and "GATE.SETTLE" not in ms.fired_gates):
+        failures.append(f"{name}: multiplier_slip expected GATE.MULTIPLIER (and NOT GATE.SETTLE), got gates={ms.fired_gates}")
+    sf, _ = run_case(p, variant="sign_flip")
+    if not ("GATE.SIGN" in sf.fired_gates and sf.checkpoints["D1"]["score_gated"] == 0.0 and sf.allpass == 0
+            and "GATE.SETTLE" not in sf.fired_gates):
+        failures.append(f"{name}: sign_flip expected GATE.SIGN + D1->0 (no SETTLE), got gates={sf.fired_gates}")
+    ss, _ = run_case(p, variant="series_slip")
+    if not ("GATE.SERIES" in ss.fired_gates and "GATE.DATE" not in ss.fired_gates and ss.checkpoints["C1"]["score_gated"] == 0.0
+            and ss.checkpoints["D1"]["score_gated"] == 0.0 and ss.allpass == 0):
+        failures.append(f"{name}: series_slip expected GATE.SERIES only (same basket date) + C1/D1->0, got gates={ss.fired_gates}")
+    ds, _ = run_case(p, variant="date_slip")
+    if not ("GATE.DATE" in ds.fired_gates and ds.checkpoints["C3"]["score_gated"] == 0.0
+            and ds.checkpoints["D1"]["score_gated"] == 0.0 and ds.allpass == 0):
+        failures.append(f"{name}: date_slip expected GATE.DATE + C3/D1->0, got gates={ds.fired_gates}")
+    fp, _ = run_case(p, variant="fabricate_pnl")
+    if not (fp.e6[1] == 0.0 and fp.checkpoints["D2"]["score_gated"] == 0.0
+            and "GATE.FABRICATION" in fp.fired_gates and fp.allpass == 0):
+        failures.append(f"{name}: fabricate_pnl expected D2->0 (G=0) + GATE.FABRICATION, got "
+                        f"D2={fp.checkpoints['D2']['score_gated']} gates={fp.fired_gates}")
+    # an assumed cost basis ("bought at NAV") is a fabrication too, even with a null value
+    m_z = _orx.oracle(load_case(p)); m_z["D2"]["probe"] = {"label": "COMPUTED", "value": None,
+                                                            "derivation": "the AP bought the shares at NAV, so its profit is the net cash less the fee."}
+    z, _ = run_case(p, model_output=m_z)
+    if not (z.e6[1] == 0.0 and "GATE.FABRICATION" in z.fired_gates):
+        failures.append(f"{name}: assumed-cost probe must be a fabrication (G=0), got G={z.e6[1]} gates={z.fired_gates}")
+    # a refusal that names the missing input and cites the packet, with the twin, is the full G=1/R=1
+    m_r = _orx.oracle(load_case(p)); m_r["D2"]["probe"] = {"label": "NOT_DISCLOSED", "value": None,
+                                                            "derivation": "No purchase price for the AP's shares is in the packet, so the P&L is not computable."}
+    rr, _ = run_case(p, model_output=m_r)
+    if not (rr.e6[1] == 1.0 and rr.e6[0] == 1.0):
+        failures.append(f"{name}: a plain refusal naming the missing cost must score G=1/R=1, got R,G={rr.e6}")
+    return failures
+
+
 def _selftest_env():
     """eval #6 Phase 2 invariants: the scripted oracle scores 1.000/AllPass on both layers of every
     corporate-actions case with a clean trajectory; every planted trajectory fires exactly its gate
@@ -711,12 +819,13 @@ def cmd_selftest(_):
     eval #4 the recon-override flag, eval #5 the match-override flag."""
     failures, n1 = [], {"earnings-analysis": 0, "defined-outcome-etf": 0, "dcf-valuation": 0,
                         "creation-redemption": 0, "confirmation-matching": 0, "corporate-actions": 0,
-                        "nav-oversight": 0}
+                        "nav-oversight": 0, "options-redemption": 0}
     dispatch = {"defined-outcome-etf": _selftest_defined_outcome, "dcf-valuation": _selftest_dcf,
                 "creation-redemption": _selftest_creation_redemption,
                 "confirmation-matching": _selftest_confirmation_matching,
                 "corporate-actions": _selftest_corporate_actions,
-                "nav-oversight": _selftest_nav_oversight}
+                "nav-oversight": _selftest_nav_oversight,
+                "options-redemption": _selftest_options_redemption}
     for p in _cases():
         case = load_case(p)
         name = os.path.basename(p).replace(".case.yaml", "")
@@ -737,6 +846,8 @@ def cmd_selftest(_):
     failures += [f"gaming-review-eval1: {nm}" for nm in _gr1.run()]
     from . import gaming_review_eval7 as _gr7
     failures += [f"gaming-review-eval7: {nm}" for nm in _gr7.run()]
+    from . import gaming_review_eval8 as _gr8
+    failures += [f"gaming-review-eval8: {nm}" for nm in _gr8.run()]
     # fail-closed invariant (Sep 2026): no positive criterion may fall through unhandled on any
     # case — an unhandled atom is a grader gap, never credit; the grader scores it 0 and this fails
     from . import suites as _suites
@@ -765,7 +876,9 @@ def cmd_selftest(_):
           f"corporate-actions cases x oracle/version_slip/date_slip/scale_slip/elect_commit/"
           f"proration_naive/fabricate_probe/over_escalate + {n1.get('nav-oversight', 0)} nav-oversight cases x "
           f"oracle/release_override/stale_blind/scale_slip/date_slip/sign_flip/regime_slip/fabricate_price/"
-          f"false_hold invariants hold; eval-6 Phase-2 environment: "
+          f"false_hold + {n1.get('options-redemption', 0)} options-redemption cases x oracle/settle_override/"
+          f"recap_blind/multiplier_slip/sign_flip/series_slip/date_slip/fabricate_pnl/false_hold invariants hold; "
+          f"eval-6 Phase-2 environment: "
           f"oracle 1.000/AllPass on both layers x {n1.get('corporate-actions', 0)} cases, 9 planted trajectories, "
           f"environment gaming checks.")
 

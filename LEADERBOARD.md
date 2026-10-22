@@ -1,11 +1,12 @@
 # Leaderboard — every live model run in this suite
 
 One page, every real model this suite has graded so far — with the caveats stated **before** the
-numbers: sample sizes are small (one run per model per case), evals **#3–#7** now cover **eight
+numbers: sample sizes are small (one run per model per case), evals **#3–#8** now cover **eight
 frontier models across three vendors** (four OpenAI, three Anthropic, one Google) — eval #3 on
 **two gold cases** (McDonald's, a net-debt balance sheet; NVIDIA, its net-cash mirror), eval #6
 on **six gold cases** (the document-store corporate-actions episodes), eval #7 on **two gold cases**
-(the NAV-oversight break and its clean mirror) — evals
+(the NAV-oversight break and its clean mirror), eval #8 on **two gold cases** (the options-component
+redemption break and its clean mirror) — evals
 **#1–#2** have been run only against local open-weight models (two Qwen generations), and eval
 #5's swap-inside-an-ETF case pair has not been live-run yet. Google is represented only by a flash-tier
 model, since its pro line is a generation behind. The harness takes any OpenAI-compatible endpoint
@@ -291,6 +292,53 @@ RELEASE). The same eight models, one run per model per case, 2026-10-05. "AP" = 
   answer scored well (a release read as a hold because "note" contains "not"; a fabricated price in the
   reasoning text) and ways a right answer lost (a date with a time part firing the date gate). All fixed, 86
   cases pinned as standing checks, every run re-graded with provenance; four scores moved, no decision or gate.
+
+## Eval #8 — Options-component ETF redemption tie-out (the "settle only if every leg ties" control)
+
+Two gold cases, both constructed and mechanics-faithful (the settlement documents of an in-kind redemption
+are not public; real FLEX contract specifications and underlying, fictitious fund, AP and clearing members;
+the mechanics checked against public primary documents, see `outputs/eval8-live/MECHANICS-NOTE.md`): an AP
+redeems two creation units of a buffer ETF whose basket is four FLEX option legs on IWM plus cash, settled
+bilaterally; one leg was moved at OCC at 12,000 contracts against 120 due (the share equivalent keyed as the
+contract count) while the ETF agent's report says all four legs moved (gold HOLD, return 11,880 contracts
+first), and the clean mirror where every leg ties (gold SETTLE). The same eight models, one run per model per
+case, 2026-10-21 (Gemini needed a 16,000-token budget; its 8,000-token attempts were cut off and are kept under
+`prior/`). "AP" = AllPass.
+
+| Model | Tier | Break case (12,000 contracts moved against 120 due) | Clean case |
+|---|---|---:|---:|
+| **Claude Opus 4.8** | flagship | **1.000 AP** | **1.000 AP** |
+| Claude Sonnet 4.6 | mid | 0.868 | **1.000 AP** |
+| Claude Haiku 4.5 | small | **0.543** · GATE.MULTIPLIER | **0.549** · GATE.MULTIPLIER |
+| **GPT-5.6-sol** | flagship | **1.000 AP** | **1.000 AP** |
+| **GPT-5.5** | flagship (prev.) | **1.000 AP** | **1.000 AP** |
+| GPT-5.4 | mid | 0.988 | **1.000 AP** |
+| GPT-5.4-mini | small | 0.968 | **1.000 AP** |
+| Gemini 3.6 Flash | small/fast | 0.956 | 0.989 |
+
+- **Nine of sixteen runs AllPass; three models perfect on both cases; the settle gate never fired.** Every
+  model held the broken order and settled the clean one, found the leg, the 12,000 against 120 and the 11,880
+  excess, named the corrective transfer back to the fund before any release, and escalated to both clearing
+  members. All sixteen refused the probe correctly: no model assumed what the AP paid for its shares or
+  invented a closing price - though Gemini 3.6 Flash's stated reason on the break case was the answer schema's own
+  instruction text echoed back, as on eval #7 (half credit on the refusal, 0.956).
+- **The hard gate this eval was built for fired once, on a small model's own arithmetic.** Claude Haiku 4.5
+  valued the legs per share of the underlying instead of per contract (each leg at one hundredth of its
+  value), reported the unit's value as 30.50 rather than 1,525,000, and copied the agent's cash component as
+  its recomputation; GATE.MULTIPLIER fired on both cases (0.543, 0.549). Right decisions, wrong arithmetic.
+- **Magnitude one layer down:** Sonnet 4.6 sized the excess at 46,926,000, ten times its value, and carried it
+  into the per-share impact (0.868); GPT-5.4-mini got the excess and the per-share impact right and reported
+  0.0154 percent of NAV instead of 0.7731 (0.968); GPT-5.4 moved the written legs' positions the wrong way and
+  flagged a 240-contract shortfall on two legs that tie (0.988).
+- **Grader calibration logged:** six calibrations from the runs (null position fields on the clean twin; an
+  undefined schema field no longer graded; the settlement switches as the clean remedy; a narrower echo guard;
+  a cash "exception" that says the figures agree; the agent's totals line as a citation), all runs re-graded
+  offline with the original scores kept in each `run.json`; eleven scores moved, no decision or gate. Details:
+  [`outputs/eval8-live/TAXONOMY.md`](outputs/eval8-live/TAXONOMY.md).
+- **Adversarial gaming review (October 19-21, 2026), before any model ran:** six attackers, one per surface,
+  about 1,500 graded mutations; every gate moved onto an evidence hook, the decision classifier made
+  clause-aware, the remedy graded for direction, fabrication tested against the packet, the refusal grader
+  rebuilt; 267 checks pinned as standing regressions. No published number existed to move.
 
 ## Open-weight local runs — evals #1–#2
 

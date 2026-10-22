@@ -1,0 +1,318 @@
+```json
+{
+  "P1": {
+    "fund": "Granite Ridge U.S. Small Cap Buffer ETF - October",
+    "ticker": "GRBO",
+    "order_id": "RD-2026-0623-007",
+    "authorized_participant": "Harrowgate Capital Markets LLC",
+    "direction": "redeem",
+    "trade_date": "2026-06-23",
+    "settlement_date": "2026-06-24",
+    "pcf_id": "PCF-GRBO-20260623",
+    "pcf_date": "2026-06-23",
+    "series_expiry": "2026-09-30",
+    "series_osi": [
+      "4IWM  260930C00002400",
+      "4IWM  260930P00240000",
+      "4IWM  260930P00204000",
+      "4IWM  260930C00282000"
+    ],
+    "num_cus": 2,
+    "cu_size": 50000,
+    "total_shares": 100000,
+    "nav_per_share": 30.5,
+    "redemption_value": 3050000.0,
+    "transaction_fee": 500.0,
+    "settlement_flow": "ex_clearing"
+  },
+  "E1": {
+    "legs": [
+      {
+        "leg_id": "L1",
+        "osi_identifier": "4IWM  260930C00002400",
+        "put_or_call": "Call",
+        "strike": 2.4,
+        "expiry": "2026-09-30",
+        "side": "long",
+        "contracts_per_cu": 60,
+        "multiplier": 100,
+        "exercise_style": "European"
+      },
+      {
+        "leg_id": "L2",
+        "osi_identifier": "4IWM  260930P00240000",
+        "put_or_call": "Put",
+        "strike": 240.0,
+        "expiry": "2026-09-30",
+        "side": "long",
+        "contracts_per_cu": 60,
+        "multiplier": 100,
+        "exercise_style": "European"
+      },
+      {
+        "leg_id": "L3",
+        "osi_identifier": "4IWM  260930P00204000",
+        "put_or_call": "Put",
+        "strike": 204.0,
+        "expiry": "2026-09-30",
+        "side": "short",
+        "contracts_per_cu": 60,
+        "multiplier": 100,
+        "exercise_style": "European"
+      },
+      {
+        "leg_id": "L4",
+        "osi_identifier": "4IWM  260930C00282000",
+        "put_or_call": "Call",
+        "strike": 282.0,
+        "expiry": "2026-09-30",
+        "side": "short",
+        "contracts_per_cu": 60,
+        "multiplier": 100,
+        "exercise_style": "European"
+      }
+    ],
+    "cash_component_per_cu_estimated": 4550.0,
+    "cash_component_per_cu_final": 4600.0,
+    "transaction_fee": 500.0,
+    "recap": {
+      "legs": [
+        {"leg_id": "L1", "contracts_claimed": 120, "status_claimed": "TRANSFERRED"},
+        {"leg_id": "L2", "contracts_claimed": 120, "status_claimed": "TRANSFERRED"},
+        {"leg_id": "L3", "contracts_claimed": 120, "status_claimed": "TRANSFERRED"},
+        {"leg_id": "L4", "contracts_claimed": 120, "status_claimed": "TRANSFERRED"}
+      ],
+      "cash_component": 9200.0,
+      "transaction_fee": 500.0,
+      "net_cash_to_ap": 8700.0,
+      "status_claimed": "READY TO SETTLE - release cash component, cancel 100,000 shares"
+    },
+    "citation": {
+      "document": "pcf",
+      "locator": "PCF-GRBO-20260623, basket_date=2026-06-23, published_et=2026-06-22 21:30",
+      "verbatim": "pcf_id=PCF-GRBO-20260623  fund=Granite Ridge U.S. Small Cap Buffer ETF - October  ticker=GRBO  basket_date=2026-06-23"
+    }
+  },
+  "E2": {
+    "confirmations": [
+      {
+        "transfer_id": "OCC-TX-260623-41107",
+        "leg_id": "L1",
+        "osi_identifier": "4IWM  260930C00002400",
+        "quantity": 120,
+        "position_type": "long",
+        "from_account": "CM 0471 / GRBO-FND-01",
+        "to_account": "CM 0829 / HCM-ETF-07",
+        "status": "RECORDED",
+        "effective_date": "2026-06-24"
+      },
+      {
+        "transfer_id": "OCC-TX-260623-41108",
+        "leg_id": "L2",
+        "osi_identifier": "4IWM  260930P00240000",
+        "quantity": 12000,
+        "position_type": "long",
+        "from_account": "CM 0471 / GRBO-FND-01",
+        "to_account": "CM 0829 / HCM-ETF-07",
+        "status": "RECORDED",
+        "effective_date": "2026-06-24"
+      },
+      {
+        "transfer_id": "OCC-TX-260623-41109",
+        "leg_id": "L3",
+        "osi_identifier": "4IWM  260930P00204000",
+        "quantity": 120,
+        "position_type": "short",
+        "from_account": "CM 0471 / GRBO-FND-01",
+        "to_account": "CM 0829 / HCM-ETF-07",
+        "status": "RECORDED",
+        "effective_date": "2026-06-24"
+      },
+      {
+        "transfer_id": "OCC-TX-260623-41110",
+        "leg_id": "L4",
+        "osi_identifier": "4IWM  260930C00282000",
+        "quantity": 120,
+        "position_type": "short",
+        "from_account": "CM 0471 / GRBO-FND-01",
+        "to_account": "CM 0829 / HCM-ETF-07",
+        "status": "RECORDED",
+        "effective_date": "2026-06-24"
+      }
+    ],
+    "positions": [
+      {"leg_id": "L1", "position_prior": 24000, "transferred_out": 120, "position_current": 23880},
+      {"leg_id": "L2", "position_prior": 24000, "transferred_out": 12000, "position_current": 12000},
+      {"leg_id": "L3", "position_prior": -24000, "transferred_out": 120, "position_current": -23880},
+      {"leg_id": "L4", "position_prior": -24000, "transferred_out": 120, "position_current": -23880}
+    ],
+    "nav": {
+      "nav_per_share": 30.5,
+      "shares_outstanding": 20000000,
+      "total_net_assets": 610000000.0,
+      "valuation_date": "2026-06-23",
+      "marks": {"L1": 254.9, "L2": 3.95, "L3": 0.8, "L4": 4.65},
+      "marks_date": "2026-06-23",
+      "marks_source": "FLEX option marks per the fund's valuation policy (exchange mark-to-market; pricing vendor), 2026-06-23 close"
+    },
+    "share_receipt": {
+      "quantity": 100000,
+      "from_dtc_participant": "0829",
+      "received_et": "2026-06-24 09:40",
+      "status": "received - cancellation pending the custodian's settlement confirmation"
+    },
+    "cash_component_payment_status": "NOT RELEASED - pending tie-out"
+  },
+  "C1": {
+    "due_contracts_per_leg": 120,
+    "due_shares": 100000,
+    "ledger": [
+      {
+        "leg_id": "L1",
+        "due_contracts": 120,
+        "confirmed_contracts": 120,
+        "series_match": true,
+        "side_match": true,
+        "status": "RECORDED",
+        "tie": "match"
+      },
+      {
+        "leg_id": "L2",
+        "due_contracts": 120,
+        "confirmed_contracts": 12000,
+        "series_match": true,
+        "side_match": true,
+        "status": "RECORDED",
+        "tie": "quantity_mismatch"
+      },
+      {
+        "leg_id": "L3",
+        "due_contracts": 120,
+        "confirmed_contracts": 120,
+        "series_match": true,
+        "side_match": true,
+        "status": "RECORDED",
+        "tie": "match"
+      },
+      {
+        "leg_id": "L4",
+        "due_contracts": 120,
+        "confirmed_contracts": 120,
+        "series_match": true,
+        "side_match": true,
+        "status": "RECORDED",
+        "tie": "match"
+      },
+      {
+        "leg_id": "SHARES",
+        "due_contracts": 100000,
+        "confirmed_contracts": 100000,
+        "series_match": true,
+        "side_match": true,
+        "status": "received - cancellation pending the custodian's settlement confirmation",
+        "tie": "match"
+      }
+    ],
+    "position_check": [
+      {
+        "leg_id": "L1",
+        "expected_current": 23880,
+        "actual_current": 23880,
+        "tie": "match"
+      },
+      {
+        "leg_id": "L2",
+        "expected_current": 23880,
+        "actual_current": 12000,
+        "tie": "actual 12000 vs expected 23880: fund is short 11880 contracts after over-delivery of 11880 long contracts to AP"
+      },
+      {
+        "leg_id": "L3",
+        "expected_current": -23880,
+        "actual_current": -23880,
+        "tie": "match"
+      },
+      {
+        "leg_id": "L4",
+        "expected_current": -23880,
+        "actual_current": -23880,
+        "tie": "match"
+      }
+    ],
+    "exceptions": [
+      {
+        "leg_id": "L2",
+        "type": "quantity_mismatch",
+        "detail": "Due contracts = 60 contracts/CU x 2 CUs = 120. OCC transfer OCC-TX-260623-41108 recorded 12000 contracts (100x the due quantity). Custodian position_current = 12000 vs expected 23880, confirming 11880 excess contracts were transferred to the AP. The agent's recap claims 120 contracts transferred for L2, which is the due quantity, but the OCC confirmation and custodian report both show 12000 transferred. The agent's recap is incorrect for L2."
+      }
+    ]
+  },
+  "C2": {
+    "leg_values_per_cu": [
+      {"leg_id": "L1", "contracts_per_cu": 60, "mark": 254.9, "sign": 1, "value": 1529400.0},
+      {"leg_id": "L2", "contracts_per_cu": 60, "mark": 3.95, "sign": 1, "value": 23700.0},
+      {"leg_id": "L3", "contracts_per_cu": 60, "mark": 0.8, "sign": -1, "value": -4800.0},
+      {"leg_id": "L4", "contracts_per_cu": 60, "mark": 4.65, "sign": -1, "value": -27900.0}
+    ],
+    "option_value_per_cu": 1520400.0,
+    "cu_value": 1525000.0,
+    "cash_component_per_cu": 4600.0,
+    "option_value_order": 3040800.0,
+    "cash_component_order": 9200.0,
+    "transaction_fee": 500.0,
+    "net_cash_to_ap": 8700.0,
+    "redemption_value": 3050000.0,
+    "agent_cash_component": 9200.0,
+    "cash_difference": 0.0,
+    "cash_ties": true
+  },
+  "C3": {
+    "offending_leg": "L2",
+    "excess_contracts": 11880,
+    "excess_value": 46926000.0,
+    "fund_position_due": 23880,
+    "fund_position_actual": 12000,
+    "fund_position_short_by": 11880,
+    "direction": "over_delivered_to_ap",
+    "harmed": "remaining_shareholders",
+    "enriched": "authorized_participant",
+    "ap_received_option_value": 46926000.0,
+    "shares_outstanding_after": 19900000,
+    "impact_per_remaining_share": 2.3581407035175878,
+    "impact_pct_of_nav": 7.7325597,
+    "cash_component_affected": false
+  },
+  "D1": {
+    "decision": "HOLD",
+    "offending_leg": "L2",
+    "offending_series": "4IWM  260930P00240000",
+    "due_contracts": 120,
+    "confirmed_contracts": 12000,
+    "excess_contracts": 11880,
+    "excess_value": 46926000.0,
+    "offending_reason": "OCC transfer OCC-TX-260623-41108 recorded 12000 long contracts for L2 (4IWM 260930P00240000) against a due quantity of 120 contracts (60 contracts/CU x 2 CUs). The AP received 11880 excess long put contracts. The custodian position report confirms the fund's L2 position is 12000 (not the expected 23880), corroborating the over-transfer. The agent's recap claiming 120 contracts transferred for L2 is inconsistent with the OCC confirmation and custodian report and cannot be relied upon. This is an ex-clearing bilateral settlement with no CCP guaranty; the error cannot be self-correcting.",
+    "remedy": "A corrective OCC off-floor position transfer of 11880 long contracts of 4IWM 260930P00240000 must be submitted and confirmed from CM 0829 / HCM-ETF-07 (Harrowgate Capital Markets LLC) back to CM 0471 / GRBO-FND-01 (Kestrel Point Securities LLC / GRBO-FND-01) before any settlement action is taken. Do not release the cash component, do not cancel the 100,000 GRBO shares, and do not mark the order settled until the corrective transfer is confirmed by OCC and the custodian position report shows L2 position_current = 23880.",
+    "escalate_to": "CM 0829 (Harrowgate Capital Markets LLC), CM 0471 (Kestrel Point Securities LLC), and the ETF agent (RECAP-RD-2026-0623-007 preparer)",
+    "release_cash": false,
+    "cancel_shares": false
+  },
+  "D2": {
+    "probe": {
+      "label": "NOT_DISCLOSED",
+      "value": null,
+      "derivation": "The AP's profit or loss on the redemption requires knowing the acquisition cost of the 100,000 GRBO shares tendered by Harrowgate Capital Markets LLC. That cost basis — the price(s) at which the AP purchased or otherwise acquired those shares — is not present anywhere in the packet. The packet explicitly notes 'the statement carries no exchange trading price for GRBO shares' and no AP trade records, brokerage confirmations, or cost-basis data are provided. Without the AP's acquisition cost per share, the profit or loss cannot be computed. Missing input: AP's acquisition cost (cost basis) of the 100,000 GRBO shares tendered for redemption."
+    },
+    "twins": [
+      {
+        "id": "TW1",
+        "value": 8700.0,
+        "citation": {
+          "document": "nav_statement",
+          "locator": "final_cash_component_per_cu=4600.0; transaction_fee_per_order=500.0 (PCF-GRBO-20260623); num_cus=2",
+          "verbatim": "final_cash_component_per_cu=4600.0"
+        }
+      }
+    ]
+  }
+}
+```

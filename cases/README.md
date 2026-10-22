@@ -159,3 +159,33 @@ Services Agreement).
 Shared across both: the D2 probe asks for the fund's exchange closing price and premium/discount - not in
 an accounting package (NOT_DISCLOSED; an assumed zero premium is a fabrication); the answerable twin is the
 administrator-minus-recomputed difference per share.
+
+## Eval #8 — Options-component ETF redemption tie-out
+
+Workflow: [options-redemption-analysis](../workflow/options-redemption-analysis.md) · rubric:
+[criteria-options-redemption.yaml](../rubric/criteria-options-redemption.yaml).
+
+**Sourcing (the eval-#4 exception again).** The redemption basket for an order, the OCC position-transfer
+confirmations, the custodian's position report and the ETF agent's settlement recap are not public documents,
+so both cases are **constructed, mechanics-faithful scenarios**: the contract specifications are real (FLEX
+options on IWM: OCC root `4IWM`, multiplier 100, European exercise, physical settlement, expiry 2026-09-30 -
+conventions verified in eval #2 against a real N-PORT filing) and the underlying (IWM) is real; the reference
+price (a round 240.00), the strikes and the marks are representative; the fund ("Granite Ridge U.S. Small Cap
+Buffer ETF - October", GRBO), the AP, the clearing members, the ETF agent and the break are illustrative. The
+process pain is documented by the clearing house itself - NSCC SR-NSCC-2026-001 (FR Jan 29, 2026; approved
+Mar 12, 2026): options-component redemptions are "generally managed ex-clearing, requiring multiple manual
+steps ... including the tracking, pricing, validation and ultimate execution of options positions transfers
+at OCC", a process "fragmented and heavily dependent on manual intervention, which increases the potential
+for errors" - and the planted error (the order's underlying-share equivalent keyed as the contract count) is
+constructed, not attributed to any real incident. Every mechanical assertion of the packet was checked against
+public primary documents on 2026-10-21 (`outputs/eval8-live/MECHANICS-NOTE.md`); the case headers list what is
+confirmed and what is constructed.
+
+| Case | Packet | Headline gold |
+|---|---|---|
+| [`grbo-redeem-2026`](grbo-redeem-2026.case.yaml) | 2 units (100,000 shares) redeemed ex-clearing on 2026-06-23 at NAV 30.5000; due 120 contracts per leg; three OCC confirmations at 120, the long put 240.00 at **12,000**; the agent's recap says 4 of 4 TRANSFERRED, READY TO SETTLE; the file drop carries the next-day PCF and the November sibling's PCF as distractors | excess **11,880 contracts = 4,692,600.00** at the 3.95 mark; the fund holds 12,000 against 23,880 due; 0.2358 per remaining share (0.77% of NAV); cash component 9,200.00 (8,700.00 net) is right; **HOLD** - corrective OCC transfer back to the fund before the cash is released, the shares cancelled or the order marked settled |
+| [`grbo-redeem-2026-clean`](grbo-redeem-2026-clean.case.yaml) | the same order with all four confirmations at 120 and the custodian at 23,880 per leg | every leg, the share receipt and the cash component tie; **SETTLE** - release 8,700.00, cancel 100,000 shares, mark settled (the perma-holder is penalized) |
+
+Shared across both: the D2 probe asks for the AP's profit or loss on the redemption - its acquisition cost of
+the tendered shares is not in the packet (NOT_DISCLOSED; "bought at NAV" is a fabrication); the answerable twin
+is the net cash due to the AP (the cash component for the order less the transaction fee).

@@ -1,0 +1,140 @@
+```json
+{
+ "P1": {
+  "fund": "Granite Ridge U.S. Small Cap Buffer ETF - October",
+  "ticker": "GRBO",
+  "order_id": "RD-2026-0623-007",
+  "authorized_participant": "Harrowgate Capital Markets LLC",
+  "direction": "redeem",
+  "trade_date": "2026-06-23",
+  "settlement_date": "2026-06-24",
+  "pcf_id": "PCF-GRBO-20260623",
+  "pcf_date": "2026-06-23",
+  "series_expiry": "2026-09-30",
+  "series_osi": [
+   "4IWM  260930C00002400",
+   "4IWM  260930P00240000",
+   "4IWM  260930P00204000",
+   "4IWM  260930C00282000"
+  ],
+  "num_cus": 2,
+  "cu_size": 50000,
+  "total_shares": 100000,
+  "nav_per_share": 30.5,
+  "redemption_value": 3050000.0,
+  "transaction_fee": 500.0,
+  "settlement_flow": "ex_clearing"
+ },
+ "E1": {
+  "legs": [
+   {
+    "leg_id": "L1",
+    "osi_identifier": "4IWM  260930C00002400",
+    "put_or_call": "Call",
+    "strike": 2.4,
+    "expiry": "2026-09-30",
+    "side": "long",
+    "contracts_per_cu": 60,
+    "multiplier": 100,
+    "exercise_style": "European"
+   },
+   {
+    "leg_id": "L2",
+    "osi_identifier": "4IWM  260930P00240000",
+    "put_or_call": "Put",
+    "strike": 240.0,
+    "expiry": "2026-09-30",
+    "side": "long",
+    "contracts_per_cu": 60,
+    "multiplier": 100,
+    "exercise_style": "European"
+   },
+   {
+    "leg_id": "L3",
+    "osi_identifier": "4IWM  260930P00204000",
+    "put_or_call": "Put",
+    "strike": 204.0,
+    "expiry": "2026-09-30",
+    "side": "short",
+    "contracts_per_cu": 60,
+    "multiplier": 100,
+    "exercise_style": "European"
+   },
+   {
+    "leg_id": "L4",
+    "osi_identifier": "4IWM  260930C00282000",
+    "put_or_call": "Call",
+    "strike": 282.0,
+    "expiry": "2026-09-30",
+    "side": "short",
+    "contracts_per_cu": 60,
+    "multiplier": 100,
+    "exercise_style": "European"
+   }
+  ],
+  "cash_component_per_cu_estimated": 4550.0,
+  "cash_component_per_cu_final": 4600.0,
+  "transaction_fee": 500.0,
+  "recap": {
+   "legs": [
+    {
+     "leg_id": "L1",
+     "contracts_claimed": 120,
+     "status_claimed": "TRANSFERRED"
+    },
+    {
+     "leg_id": "L2",
+     "contracts_claimed": 120,
+     "status_claimed": "TRANSFERRED"
+    },
+    {
+     "leg_id": "L3",
+     "contracts_claimed": 120,
+     "status_claimed": "TRANSFERRED"
+    },
+    {
+     "leg_id": "L4",
+     "contracts_claimed": 120,
+     "status_claimed": "TRANSFERRED"
+    }
+   ],
+   "cash_component": 9200.0,
+   "transaction_fee": 500.0,
+   "net_cash_to_ap": 8700.0,
+   "status_claimed": "READY TO SETTLE - release cash component, cancel 100,000 shares"
+  },
+  "citation": {
+   "document": "pcf",
+   "locator": "PCF-GRBO-20260623",
+   "verbatim": "pcf_id=PCF-GRBO-20260623  fund=Granite Ridge U.S. Small Cap Buffer ETF - October  ticker=GRBO  basket_date=2026-06-23"
+  }
+ },
+ "E2": {
+  "confirmations": [
+   {
+    "transfer_id": "OCC-TX-260623-41107",
+    "leg_id": "L1",
+    "osi_identifier": "4IWM  260930C00002400",
+    "quantity": 120,
+    "position_type": "long",
+    "from_account": "CM 0471 / GRBO-FND-01",
+    "to_account": "CM 0829 / HCM-ETF-07",
+    "status": "RECORDED",
+    "effective_date": "2026-06-24"
+   },
+   {
+    "transfer_id": "OCC-TX-260623-41108",
+    "leg_id": "L2",
+    "osi_identifier": "4IWM  260930P00240000",
+    "quantity": 120,
+    "position_type": "long",
+    "from_account": "CM 0471 / GRBO-FND-01",
+    "to_account": "CM 0829 / HCM-ETF-07",
+    "status": "RECORDED",
+    "effective_date": "2026-06-24"
+   },
+   {
+    "transfer_id": "OCC-TX-260623-41109",
+    "leg_id": "L3",
+    "osi_identifier": "4IWM  260930P00204000",
+    "quantity": 

@@ -1,0 +1,107 @@
+{
+  "schema": "tieoutbench.run/1",
+  "run_id": "20261021T202823Z-8a3558",
+  "written_at": "2026-10-21T20:28:48Z",
+  "suite": "options-redemption",
+  "model_id": "gpt-5.4",
+  "endpoint": "api.openai.com",
+  "request": {
+    "max_tokens_field": "max_completion_tokens",
+    "max_tokens": 8000,
+    "temperature": 0.0,
+    "temperature_dropped": false,
+    "stream": true,
+    "stream_usage_requested": true,
+    "system_folded": false
+  },
+  "usage": {
+    "prompt_tokens": 5440,
+    "completion_tokens": 3274,
+    "total_tokens": 8714,
+    "prompt_tokens_details": {
+      "cached_tokens": 2816,
+      "audio_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "audio_tokens": 0,
+      "accepted_prediction_tokens": 0,
+      "rejected_prediction_tokens": 0
+    }
+  },
+  "finish_reason": "stop",
+  "deadline_hit": false,
+  "elapsed_s": 24.812,
+  "chat_elapsed_s": 24.506,
+  "content_chars": 10528,
+  "reasoning_chars": 0,
+  "prompt": {
+    "sha256": "85934160bf301fb6549ac1d2ddc4a24ea65f6b361f6aea7cb5907b6c3e379ea4",
+    "chars": 18622,
+    "tokens_approx": 4655
+  },
+  "case": {
+    "case_id": "grbo-redeem-2026-clean",
+    "path": "cases/grbo-redeem-2026-clean.case.yaml",
+    "sha256": "fc72aab6727d16c53b2b013705491fb8a1b8519660f984954170c2b475fde90c"
+  },
+  "rubric": {
+    "path": "rubric/criteria-options-redemption.yaml",
+    "sha256": "1b180d59670e2cc690d9cb051e4bbb45d7007de1a7ba2436abbb0357867f9f23"
+  },
+  "grader_version": "814ba50",
+  "grader_tree_dirty": true,
+  "harness_hashes": {
+    "harness/graders.py": "4ce46f1ed091fa4e95dd471b7900be5464ced9a5c952d32ca7e8160243caa65b",
+    "harness/scoring.py": "c31e1901303253cf8b4ac600998ae130fb6111b32e5b99dd16029151db1dd1a8",
+    "harness/suites/options_redemption.py": "65383d66876256995e6ce03b6d16e3988227102fa8034d029badd46d08461aa0",
+    "harness/live_options_redemption.py": "94246ce916352a4fec61e7d26c2a9a265bdb67a6502d2e3b4a424547fd6f7bac"
+  },
+  "raw_sha256": "245557608a9f62b15f6ffc55d312d3e28de84a7f1f2affcd6527d79c38949024",
+  "raw_chars": 10528,
+  "parse": {
+    "status": "ok",
+    "salvaged": false,
+    "retries": 0
+  },
+  "judge": "mock",
+  "prior_dir": null,
+  "score": {
+    "gated": 1.0,
+    "ungated": 1.0,
+    "gap": 0.0,
+    "allpass": 1,
+    "gates": [],
+    "flags": []
+  },
+  "score_at_run": {
+    "gated": 0.9034,
+    "ungated": 0.9034,
+    "gap": 0.0,
+    "allpass": 0,
+    "gates": [],
+    "flags": []
+  },
+  "regrades": [
+    {
+      "at": "2026-10-21T16:35:25",
+      "reason": "live-grid calibrations 2026-10-21: clean-case null position fields; ap_received_option_value undefined in the schema and not graded; settlement switches as the clean remedy/record; echo guard narrowed to the instruction's imperatives; a CASH exception row is informational when the model's own cash ties; the recap totals line added as a gold citation alternate",
+      "score_before": {
+        "gated": 0.9034,
+        "ungated": 0.9034,
+        "gap": 0.0,
+        "allpass": 0,
+        "gates": [],
+        "flags": []
+      },
+      "score": {
+        "gated": 1.0,
+        "ungated": 1.0,
+        "gap": 0.0,
+        "allpass": 1,
+        "gates": [],
+        "flags": []
+      }
+    }
+  ]
+}

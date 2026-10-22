@@ -15,6 +15,7 @@ python -m harness suite  --model oracle                  # score every case (bot
 python -m harness run    --case snow --all               # all flawed variants on one case
 python -m harness run    --case koct-op2026-anchor --model free_lunch   # the signature gate
 python -m harness run    --case grsl-nav-2026 --model release_override   # eval #7: a wrong NAV released
+python -m harness run    --case grbo-redeem-2026 --model settle_override  # eval #8: a broken options redemption settled
 python -m harness demo                                   # the canonical scale-slip finding
 python -m harness selftest                               # per-suite regression invariants
 ```

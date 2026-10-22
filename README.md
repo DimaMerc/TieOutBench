@@ -16,13 +16,16 @@ answer: the workflow broken into checkpoints, a gating-plus-weighted rubric, exp
 cases cited to SEC filings, and a grader that surfaces exactly *where* — and how badly — a model
 fails.
 
-Three of the seven workflows are the analyst's (earnings, buffer-ETF diligence, DCF). Four are the
+Three of the eight workflows are the analyst's (earnings, buffer-ETF diligence, DCF). Five are the
 **back office's** (ETF creation/redemption reconciliation, OTC swap confirmation matching,
 corporate-actions processing - the suite's first document-store episode, where the model must
-decide *which document governs* before any number is right - and, new in October 2026, **ETF NAV
-oversight**, the "release only if it ties" control on a fund administrator's daily NAV package).
-As of October 2026 no other public benchmark covers ETF creation/redemption, confirmation matching
-or corporate-actions processing; fund NAV work appears in one general professional-work suite
+decide *which document governs* before any number is right - **ETF NAV oversight**, the "release
+only if it ties" control on a fund administrator's daily NAV package, and, new in October 2026, the
+**options-component ETF redemption tie-out**, the "settle only if every leg ties" control on an in-kind
+redemption whose basket is exchange-traded options - the one create/redeem step a clearing house
+describes, in a 2026 rule filing, as "fragmented and heavily dependent on manual intervention").
+As of October 2026 no other public benchmark covers ETF creation/redemption (options-component
+redemptions included), confirmation matching or corporate-actions processing; fund NAV work appears in one general professional-work suite
 (Surge AI's DAYJOB, October 1, 2026), which is why eval #7 is built on position-level packets,
 deterministic checks and SEC-letter failure patterns (see
 [where this sits in the 2026 benchmark
@@ -47,7 +50,7 @@ CASE snow-2026q2   model=scale_slip   gated 0.452   AllPass 0   gates: GATE.P2  
 The arithmetic is internally consistent, so the naive (**ungated**) score stays ~0.95. But one hard
 **gate** fires on the scale misread and the **gated score collapses to 0.45.** That ~0.50 gap *is*
 the finding: *can do the math, cannot be trusted to read a statement header.* Measuring that gap —
-across seven analyst and back-office workflows — is the whole repo.
+across eight analyst and back-office workflows — is the whole repo.
 
 ## How the scoring works (30 more seconds)
 
@@ -59,7 +62,7 @@ exactly where and how badly** the model failed. Every gold figure is traced to a
 nothing is invented. Models also earn credit for **calibrated uncertainty** — saying "not
 determinable from this packet" instead of guessing.
 
-## The seven evals — and how to run each
+## The eight evals — and how to run each
 
 | Eval | What it tests | Run it (the perfect "oracle") | See it fail |
 |---|---|---|---|
@@ -70,6 +73,7 @@ determinable from this packet" instead of guessing.
 | **#5 — Confirmation matching** | match two OTC swap confirmations field-by-field; **affirm only if the economics tie** | `python -m harness run --case irs-confirm-2026` | `--model affirm_match` — affirm a trade with a material rate break → **GATE.MATCH** |
 | **#6 — Corporate actions** | process an event from a **document store** (announcement + amendment + distractors): pin the governing version and dates, compute the entitlement, **commit only what the deadline allows** | `python -m harness run --case bry-dividend-2024` | `--model version_slip` — terms sourced from the superseded announcement → **GATE.VERSION** |
 | **#7 — NAV oversight** | review a fund administrator's **preliminary daily NAV package**: recompute the NAV from the position-level inputs, check the day's move against the expected leveraged index move, localize the break, **release only if it ties** | `python -m harness run --case grsl-nav-2026` | `--model release_override` — releases a NAV understated by $0.75/share → **GATE.RELEASE** |
+| **#8 — Options redemption** | tie out an in-kind redemption whose basket is **four FLEX option legs**: each OCC position adjustment to the basket, the custodian's positions, the cash component; **settle only if every leg ties** | `python -m harness run --case grbo-redeem-2026` | `--model settle_override` — settle with one leg at 12,000 contracts against 120 due → **GATE.SETTLE** |
 
 Every `run` defaults to a perfect answer (scores 1.000); add `--model <name>` to watch a designed
 flaw trip its gate. `python -m harness list` shows every case and variant ·
@@ -89,9 +93,9 @@ in [`outputs/`](outputs/), consolidated in [`LEADERBOARD.md`](LEADERBOARD.md).
 >
 > The companion report on the maker-checker experiment (October 2026), *A Second AI as Checker: Measuring a
 > Maker-Checker Protocol for LLM Agents on Corporate-Actions Processing*, is on
-> [SSRN (abstract 7611299)](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7611299); source, builder and the SSRN package are under `paper/`.
+> [SSRN (abstract 7611299)](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7611299), DOI [10.2139/ssrn.7611299](https://doi.org/10.2139/ssrn.7611299); source, builder and the SSRN package are under `paper/`.
 
-## The seven evals in detail
+## The eight evals in detail
 
 - **Eval #1 — Quarterly earnings analysis.** Digest a 10-Q/earnings release, reconcile the figures,
   benchmark versus consensus, flag what moved. 17 checkpoints, 109 criteria, three gold cases
@@ -190,13 +194,39 @@ in [`outputs/`](outputs/), consolidated in [`LEADERBOARD.md`](LEADERBOARD.md).
   [What the live runs found (eval #7)](#what-the-live-runs-found-eval-7-nav-oversight) and
   [`outputs/eval7-live/`](outputs/eval7-live/).
 
+- **Eval #8 — Options-component ETF redemption tie-out** *(the "settle only if every leg ties" control on
+  the one create/redeem step a clearing house calls manual and error-prone)*. Given an Authorized
+  Participant's in-kind redemption of a buffer ETF whose basket is **four FLEX option legs on IWM** plus a
+  cash component, settled bilaterally outside NSCC: the order ticket, the AP file drop of PCFs (the basket
+  of record among the next-day basket and the sibling vintage's), the final NAV statement, OCC's record of
+  the four position adjustments, the custodian's positions and the ETF agent's status report. Tie every leg
+  (series, side, quantity = contracts per unit x units), cross-check the custodian, recompute the cash
+  component from the NAV and the marks (contracts x 100 x mark x sign) - and **settle only if every leg
+  ties.** The signature is **GATE.SETTLE**: a model that settles a redemption whose legs do not all tie
+  auto-fails. The gold case: the long-put leg moved at 12,000 contracts against 120 due, the order's
+  share equivalent keyed as the contract count, while the agent's report says all four moved - 11,880
+  contracts (4,692,600.00) out of the fund in error, 0.2358 per remaining share; gold answer HOLD, return
+  the excess first. The process pain is the clearing house's own description (NSCC SR-NSCC-2026-001,
+  approved March 12, 2026: redemptions of such ETFs are "generally managed ex-clearing, requiring multiple
+  manual steps ... fragmented and heavily dependent on manual intervention, which increases the potential
+  for errors"). A clean mirror case (every leg ties, SETTLE) penalizes the perma-holder. 8 checkpoints, 42
+  criteria (+6 gates, every one on an evidence hook), two gold cases - constructed and mechanics-faithful
+  (real FLEX contract specifications and underlying, fictitious fund, AP and clearing members; every
+  mechanical assertion checked against public primary documents, confirmed or labelled constructed in the
+  case headers). Built and adversarially hardened October 19-21, 2026, live-run October 21: eight frontier
+  models, three vendors, both cases - nine of sixteen runs AllPass, every model held the broken order and settled the
+  clean one, the settle gate never fired, one small model confused contracts with shares in its own
+  arithmetic and tripped the multiplier gate; see
+  [What the live runs found (eval #8)](#what-the-live-runs-found-eval-8-options-redemption) and
+  [`outputs/eval8-live/`](outputs/eval8-live/).
+
 ## What's here
 
 | Path | Contents |
 |---|---|
-| [`workflow/`](workflow/) | Each workflow decomposed into measurable checkpoints (earnings: 17 · defined-outcome: 18 · DCF: 18 · creation/redemption: 8 · confirmation-matching: 8 · corporate-actions: 9 · NAV oversight: 8) |
+| [`workflow/`](workflow/) | Each workflow decomposed into measurable checkpoints (earnings: 17 · defined-outcome: 18 · DCF: 18 · creation/redemption: 8 · confirmation-matching: 8 · corporate-actions: 9 · NAV oversight: 8 · options redemption: 8) |
 | [`rubric/`](rubric/) | Gating + weighted, tiered rubrics — machine-readable atoms (`criteria*.yaml`), the frozen judge prompt (`judge.md`), and a `validate.py` linter |
-| [`cases/`](cases/) | Gold cases — every figure cited to a real SEC filing (10-K / 10-Q / 8-K / 497K / N-PORT); **no invented numbers** (two exceptions: the creation/redemption and NAV-oversight cases - PCFs and administrators' NAV packages are not public, so they are constructed, mechanics-faithful scenarios over real securities, with the failure patterns cited to SEC correspondence and issuer press releases) |
+| [`cases/`](cases/) | Gold cases — every figure cited to a real SEC filing (10-K / 10-Q / 8-K / 497K / N-PORT); **no invented numbers** (three exceptions: the creation/redemption, NAV-oversight and options-redemption cases - PCFs, administrators' NAV packages and redemption settlement documents are not public, so they are constructed, mechanics-faithful scenarios over real securities and real contract specifications, with the failure patterns cited to SEC correspondence, issuer press releases and the NSCC rule filing, and the mechanics checked against public primary documents) |
 | [`harness/`](harness/) | The runnable scorer: one suite-agnostic engine + a module per eval; deterministic checks + gating + a pluggable LLM-judge interface; a live path for real models |
 | [`LEADERBOARD.md`](LEADERBOARD.md) | Every live model run on one page — frontier (evals #3–#7) and open-weight (#1–#2), with the discriminating findings and the honest caveats |
 | [`profiles/`](profiles/) | The leaderboard as data — machine-readable per-checkpoint capability profiles per model (routing priors: which workflow step a model can touch), regenerated byte-stably from the committed runs via `python -m harness profiles` |
@@ -502,6 +532,49 @@ answers without a thinking phase saw the stale swap and held, but copied the adm
 recomputation and reported no error (0.535; exact on the clean case apart from paperwork, 0.941). A 2B distill read every line correctly and then could not add them up, declaring
 errors of $27.75 and $12 a share that did not exist and holding the clean NAV. The paid models took 15 to 40
 seconds per case. Details and the cut-off attempts: [`outputs/eval7-live/TAXONOMY.md`](outputs/eval7-live/TAXONOMY.md).
+
+## What the live runs found (eval #8, options redemption)
+
+Eight frontier models, three vendors, both gold cases - the in-kind options redemption with one leg moved at
+12,000 contracts against 120 due, and its clean mirror. Deterministic core, no free-form atoms, one run per
+model per case (Gemini needed a 16,000-token budget; its 8,000-token attempts were cut off and are kept under
+`prior/`):
+
+| Model | Tier | Break case (12,000 contracts moved against 120 due) | Clean case |
+|---|---|---:|---:|
+| **Claude Opus 4.8** | flagship | **1.000 AP** | **1.000 AP** |
+| Claude Sonnet 4.6 | mid | 0.868 | **1.000 AP** |
+| Claude Haiku 4.5 | small | **0.543** · GATE.MULTIPLIER | **0.549** · GATE.MULTIPLIER |
+| **GPT-5.6-sol** | flagship | **1.000 AP** | **1.000 AP** |
+| **GPT-5.5** | flagship (prev.) | **1.000 AP** | **1.000 AP** |
+| GPT-5.4 | mid | 0.988 | **1.000 AP** |
+| GPT-5.4-mini | small | 0.968 | **1.000 AP** |
+| Gemini 3.6 Flash | small/fast | 0.956 | 0.989 |
+
+**Everyone holds the broken order and settles the clean one.** Every model found the leg, the 12,000 against
+120 and the 11,880 excess, named the corrective transfer back to the fund's account before any release, and
+escalated to both clearing members; every model settled the clean mirror. Nine of sixteen runs passed every
+check; three models were perfect on both cases. All sixteen refused the probe correctly: no model assumed
+what the AP paid for its shares or invented a closing price, though the flash-tier Google model's stated reason
+was the answer schema's own instruction echoed back, as on eval #7.
+
+**The gate this eval was built for fired once, in a small model's own arithmetic.** Claude Haiku 4.5 valued
+the option legs per share of the underlying instead of per contract, each leg at one hundredth of its value,
+reported the creation unit's value as 30.50 rather than 1,525,000, and copied the agent's cash component as
+its recomputation. The multiplier gate fired on both cases. It still made the right decision each time.
+
+**Magnitude, one layer down.** A mid-tier model sized the excess at ten times its value and carried that into
+the impact per share. Another mid-tier model moved the written legs' positions the wrong way and flagged a
+shortfall on two legs that tie. A small model got the per-share impact right and the percent of NAV wrong by
+a factor of fifty. Right calls, wrong sizes.
+
+**The honest negative: the settle gate never fired.** No model settled the broken order, as no model settled
+the broken basket on eval #4, affirmed the mismatched confirmation on eval #5 or released the wrong NAV on
+eval #7. Running real models surfaced six grader calibrations (null fields on the clean twin, an undefined
+schema field, settlement actions stated in the structured switches, a refusal mistaken for an echo, a cash
+"exception" that says the figures agree, a citation of the agent's totals line); all runs were re-graded offline
+with the original scores kept, eleven scores moved, no decision or gate. Traces, re-grade log, the mechanics
+verification and the write-up: [`outputs/eval8-live/`](outputs/eval8-live/).
 
 ## What the demo shows
 

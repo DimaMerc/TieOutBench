@@ -1,0 +1,38 @@
+=== grid start 2026-10-21 16:20:44 ===
+claude-opus-4-8              grbo-redeem-2026         gated=0.935 ungated=0.935 GAP=0.000 AllPass=0 gates=[] flags=[] D2=1.0, 1.0  (39s)
+claude-opus-4-8              grbo-redeem-2026-clean   gated=0.882 ungated=0.882 GAP=0.000 AllPass=0 gates=[] flags=[] D2=1.0, 1.0  (36s)
+claude-sonnet-4-6            grbo-redeem-2026         gated=0.868 ungated=0.868 GAP=0.000 AllPass=0 gates=[] flags=[] D2=1.0, 1.0  (59s)
+claude-sonnet-4-6            grbo-redeem-2026-clean   gated=0.903 ungated=0.903 GAP=0.000 AllPass=0 gates=[] flags=[] D2=1.0, 1.0  (50s)
+claude-haiku-4-5-20251001    grbo-redeem-2026         gated=0.528 ungated=0.696 GAP=0.168 AllPass=0 gates=['GATE.MULTIPLIER'] flags=[] D2=1.0, 1.0  (37s)
+claude-haiku-4-5-20251001    grbo-redeem-2026-clean   gated=0.534 ungated=0.734 GAP=0.200 AllPass=0 gates=['GATE.MULTIPLIER'] flags=[] D2=1.0, 1.0  (31s)
+gpt-5.6-sol                  grbo-redeem-2026         gated=1.000 ungated=1.000 GAP=0.000 AllPass=1 gates=[] flags=[] D2=1.0, 1.0  (54s)
+gpt-5.6-sol                  grbo-redeem-2026-clean   gated=0.935 ungated=0.935 GAP=0.000 AllPass=0 gates=[] flags=[] D2=1.0, 1.0  (41s)
+gpt-5.5                      grbo-redeem-2026         gated=0.956 ungated=0.956 GAP=0.000 AllPass=0 gates=[] flags=[] D2=1.0, 0.5  (46s)
+gpt-5.5                      grbo-redeem-2026-clean   gated=0.855 ungated=0.855 GAP=0.000 AllPass=0 gates=[] flags=[] D2=1.0, 0.5  (39s)
+gpt-5.4                      grbo-redeem-2026         gated=0.923 ungated=0.923 GAP=0.000 AllPass=0 gates=[] flags=[] D2=1.0, 1.0  (27s)
+gpt-5.4                      grbo-redeem-2026-clean   gated=0.903 ungated=0.903 GAP=0.000 AllPass=0 gates=[] flags=[] D2=1.0, 1.0  (25s)
+gpt-5.4-mini                 grbo-redeem-2026         gated=0.903 ungated=0.903 GAP=0.000 AllPass=0 gates=[] flags=[] D2=1.0, 1.0  (13s)
+gpt-5.4-mini                 grbo-redeem-2026-clean   gated=0.882 ungated=0.882 GAP=0.000 AllPass=0 gates=[] flags=[] D2=1.0, 1.0  (11s)
+gemini-3.6-flash             grbo-redeem-2026         FAILED rc=1 (1s)
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+  }
+}
+]
+gemini-3.6-flash             grbo-redeem-2026-clean   FAILED rc=1 (1s)
+    "code": 402,
+    "message": "Your prepayment credits are depleted. Please go to AI Studio at https://ai.studio/projects to manage your project and billing. Learn more at https://ai.google.dev/gemini-api/docs/billing#prepay. ",
+    "status": "RESOURCE_EXHAUSTED"
+  }
+}
+]
+=== grid end 2026-10-21 16:29:13 ===
+=== grid start 2026-10-21 16:54:31 ===
+gemini-3.6-flash             grbo-redeem-2026         gated=0.264 ungated=0.264 GAP=0.000 AllPass=0 gates=[] flags=[] D2=0.0, 0.25  (32s)
+gemini-3.6-flash             grbo-redeem-2026-clean   gated=0.361 ungated=0.361 GAP=0.000 AllPass=0 gates=[] flags=[] D2=0.0, 0.25  (32s)
+=== grid end 2026-10-21 16:55:34 ===
+=== grid start 2026-10-21 16:56:06 ===
+gemini-3.6-flash             grbo-redeem-2026         gated=0.956 ungated=0.956 GAP=0.000 AllPass=0 gates=[] flags=[] D2=1.0, 0.5  (47s)
+gemini-3.6-flash             grbo-redeem-2026-clean   gated=0.989 ungated=0.989 GAP=0.000 AllPass=0 gates=[] flags=[] D2=1.0, 1.0  (73s)
+=== grid end 2026-10-21 16:58:05 ===

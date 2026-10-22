@@ -16,7 +16,7 @@
 <meta property="og:image" content="https://evals.finance/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Where can you trust an AI with finance work? Seven runnable, rubric-graded evaluations — looks right does not equal is right.">
+<meta property="og:image:alt" content="Where can you trust an AI with finance work? Eight runnable, rubric-graded evaluations — looks right does not equal is right.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Dmitry Krutous — LLM Evaluation &amp; AI Model Validation for Asset Management">
 <meta name="twitter:description" content="Runnable evaluations for finance LLMs — analyst workflows and the back office.">
@@ -75,7 +75,7 @@
 </header>
 
 <h2>TieOutBench — an open benchmark suite</h2>
-<p>Seven runnable evaluations of real asset-management workflows. Each decomposes the workflow into scored checkpoints, grades against a point-weighted rubric with auto-fail gates, cites gold answers to source documents, and runs live models end to end.</p>
+<p>Eight runnable evaluations of real asset-management workflows. Each decomposes the workflow into scored checkpoints, grades against a point-weighted rubric with auto-fail gates, cites gold answers to source documents, and runs live models end to end.</p>
 
 <div class="tablewrap">
 <table>
@@ -88,13 +88,16 @@
     <tr><td>OTC swap confirmation matching</td><td>Match two confirmations field by field — affirm only if the economics agree</td></tr>
     <tr><td>Corporate-actions processing</td><td>From a document store with amendments and distractors: pin the governing version and dates, compute the entitlement — commit only what the deadline allows</td></tr>
     <tr><td>ETF NAV oversight</td><td>Recompute a leveraged ETF's NAV from the administrator's package and the counterparty statements; find the stale swap mark and size it against the fund's error policy: hold and re-strike, or release only if it ties</td></tr>
+    <tr><td>Options-component ETF redemption tie-out</td><td>Tie out an in-kind redemption whose basket is exchange-traded options: each OCC position adjustment to the basket, the custodian's positions and the cash component — settle only if every leg ties</td></tr>
   </tbody>
 </table>
 </div>
 
-<p>The last four are back-office controls. As of October 2026 they appear to be the only public, runnable LLM evaluations of capital-markets post-trade operations, with one qualification: fund NAV work also appears, as a task family inside a general professional-work suite (Surge AI's DAYJOB, October 2026). The other prominent finance benchmarks (GDPval, Vals AI's Finance Agent, Mercor's APEX, BigFinanceBench, FrontierFinance) grade front-office analyst work.</p>
+<p>The last five are back-office controls. As of October 2026 they appear to be the only public, runnable LLM evaluations of capital-markets post-trade operations, with one qualification: fund NAV work also appears, as a task family inside a general professional-work suite (Surge AI's DAYJOB, October 2026). The other prominent finance benchmarks (GDPval, Vals AI's Finance Agent, Mercor's APEX, BigFinanceBench, FrontierFinance) grade front-office analyst work.</p>
 
 <p>The corporate-actions evaluation also runs as an agent environment: the same six cases with the tools a desk has (a document store, positions as of a date, a calculator, a test ledger) and, in two further arms, a second AI as checker. With tools, 35 of 48 runs passed every check, up from 32 with the documents in a single prompt; with a checker of the same model, 27; with a stronger checker, 25.</p>
+
+<p>The options-redemption evaluation ran on eight frontier models from three vendors in October 2026: every model held the broken redemption and settled the clean one, nine of sixteen runs passed every check, and the losses were magnitude errors one layer down — a mid-tier model sized the excess at ten times its value, and a small model valued the option legs per share instead of per contract and tripped the gate built for that confusion.</p>
 
 <ul class="facts">
   <li>7 evaluations</li>
@@ -109,7 +112,7 @@
   <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7243025">On SSRN</a> ·
   <a href="https://doi.org/10.2139/ssrn.7243025">DOI 10.2139/ssrn.7243025</a> ·
   <a href="/checker-paper">Second report: A Second AI as Checker</a> ·
-  <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7611299">on SSRN (7611299)</a> ·
+  <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7611299">on SSRN (7611299)</a> · <a href="https://doi.org/10.2139/ssrn.7611299">DOI 10.2139/ssrn.7611299</a> ·
   <a href="/checker-paper.pdf">its PDF</a> ·
   <a href="https://doi.org/10.17632/m5wfrnhdsp">Dataset snapshot (Mendeley Data)</a> ·
   <a href="https://github.com/DimaMerc/TieOutBench">Repository on GitHub</a> ·

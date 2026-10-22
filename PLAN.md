@@ -547,3 +547,94 @@ pattern is the documented stale prior-day swap price - Rydex CORRESP Feb 2024, S
       derivation (2026-10-06; Gemini break 1.000 -> 0.956, Qwen 2.5 clean 0.986 -> 0.941).
 - [ ] Site section; the planned cases (MSOX accrual, GMEY redemption-day dilution, the $0.01 floor edge, the
       CSSF 24/856 UCITS regime, a post-release case with reprocessing).
+
+---
+
+# Eval #8 — Options-component ETF redemption tie-out  *(the moat eval of the servicing lane: derivatives processing + ETF primary-market change management in one task)*
+
+The settlement tie-out of an in-kind redemption whose basket is four FLEX option legs on IWM plus a cash
+component, processed ex-clearing: tie each OCC position-transfer confirmation to the published basket (series by
+OSI identifier, side, quantity = contracts per unit x units), cross-check the custodian's post-transfer position,
+recompute the cash component from the final NAV and the marks (contracts x 100 x mark x sign), and SETTLE only if
+every leg ties. Signature = **GATE.SETTLE** (settle a redemption whose legs do not all tie -> auto-fail +
+`settle_override_fired`). Chosen 2026-10-19 (his words: "I would prefer the moat piece") from the Oct-4 research
+shortlist (item 7): the only regulator-grade verbatim statement of a still-manual create/redeem step in the
+window - NSCC SR-NSCC-2026-001 (FR Jan 29 2026, approved Mar 12 2026): redemptions "generally managed ex-clearing,
+requiring multiple manual steps ... tracking, pricing, validation and ultimate execution of options positions
+transfers at OCC", "fragmented and heavily dependent on manual intervention, which increases the potential for
+errors" - plus State Street's Ken Shaw naming "centralised clearing of options" among planned automations (ETF
+Express, Apr 2 2026). Sourcing like evals #4/#7: constructed, mechanics-faithful fixtures (fictitious Granite Ridge
+buffer fund GRBO, AP, clearing members, agent; representative prices) on REAL contract specifications (OCC root
+4IWM, multiplier 100, European, physical, last-business-day expiry 2026-09-30 - verified in eval #2 against a real
+N-PORT) and a real underlying (IWM). Before/after the NSCC-OCC automation: the case files carry
+`settlement_flow: ex_clearing`; the messaged flow is a planned case.
+
+## Phase 1 — Workflow  → `workflow/options-redemption-analysis.md`  ✅ done 2026-10-19 (stage 1)
+- [x] 8 checkpoints (P1 pin order/dates/PCF of record/series · E1 basket + agent recap as claimed · E2 OCC confirms,
+      custodian positions, NAV statement, DTC share receipt · C1 per-leg tie + position cross-check · C2 cash component
+      recomputed with the multiplier lock · C3 break quantified + direction + per-remaining-share impact · D1 settle/hold
+      + remedy · D2 calibrated refusal: the AP's P&L is not computable, the net cash due to the AP is).
+- [x] Mechanics flagged `[validate]` for domain review: OCC inter-clearing-member transfer acceptance (short legs =
+      the writer's obligation) and effective-date convention; free-of-payment share receipt; recap-vs-confirmation
+      tracking failure.
+
+## Phase 2 — Rubric  → `rubric/criteria-options-redemption.yaml`  ✅ done 2026-10-19 (stage 1)
+- [x] 42 atoms, 6 gates, rubric 1.1.0 after the gaming review (DATE, SERIES and MULTIPLIER hard but fired by evidence
+      hooks `P1.n_wrongdate` / `P1.n_wrongseries` / `C2.n_multiplier`; SIGN scoped on an inversion penalty; SETTLE scoped
+      + flag; FABRICATION figure) + the over-caution mirror `D1.n_falsehold` (-10, zeros D1 on its own). `validate.py` 18/18.
+
+## Phase 3 — Gold cases  → `cases/`  ✅ done 2026-10-19 (stage 1); awaiting domain validation
+- [x] `grbo-redeem-2026`: 2 units (100,000 sh) at NAV 30.5000; due 120 contracts per leg; three OCC confirms at 120, the
+      long put 240.00 confirms **12,000** (the order's underlying-share equivalent 120 x 100 keyed as contracts); the
+      agent's recap says 4 of 4 TRANSFERRED / READY TO SETTLE; excess 11,880 contracts = 4,692,600.00 at the 3.95 mark;
+      fund position 12,000 vs 23,880 due; 0.2358 per remaining share (0.77% of NAV); cash component 9,200.00 (8,700.00
+      net of the 500.00 fee) is right; gold **HOLD** + corrective transfer before release. `grbo-redeem-2026-clean`: all
+      four at 120 -> **SETTLE**. Packet carries two distractor PCFs (the next-day basket; the November sibling GRBN).
+      Every figure cross-checked by script (Decimal) incl. OSI-id construction and the citation's `key=value` rendering.
+
+## Phase 4 — Harness suite  → `harness/suites/options_redemption.py`  ✅ done (suite + live + selftest 2026-10-19; gaming review 2026-10-21)
+- [x] Suite registered (`harness/rubric.py` SUITE_RUBRICS, `harness/suites/__init__.py`, selftest dispatch + PASSED message).
+- [x] `harness/suites/options_redemption.py`: built on the eval-7 hardened helpers (tolerant numbers/dates, word-token
+      families, evidence-only scale gate, verbatim citations against the rendered packet, clause-level refusal checks)
+      with this eval's own settle/hold vocabulary ("release the cash", "cancel the shares", "mark settled" = SETTLE;
+      "reverse", "corrective", "pending" = HOLD; a settle conditioned on the corrective transfer = HOLD; contradictions
+      earn nothing and fire no gate); the GATE.DATE pin resolves a named PCF by its basket date (the sibling fund's
+      same-date PCF is GATE.SERIES' business); GATE.SIGN also fires when the written legs are ADDED in the cash
+      component; the refusal grader's assumed-cost regex ("bought at NAV") and asserted-figure window; 9 variants
+      (oracle 1.000 / settle_override 0.840 + flag / recap_blind 0.603 + flag / multiplier_slip 0.460 / sign_flip
+      0.754 / series_slip 0.308 / date_slip 0.351 / fabricate_pnl 0.900 / false_hold 0.840 on the clean twin).
+- [x] `harness/live_options_redemption.py`: packet (~2,600 tokens; rows rendered as `key=value` pairs joined by two
+      spaces in file order, so the gold citations are substring-checkable) + OUTPUT SCHEMA mirroring the gold key
+      paths + `oracle_to_schema` round-trip 1.000/AllPass on both cases.
+- [x] `python -m harness selftest` PASSED 2026-10-19 for all eight suites (eval-8 invariants: oracle, round-trip,
+      every gate tier, settle synonyms fire / hold phrasings and conditioned settles do not / contradictions earn
+      nothing, a release instruction in the action field fires, recap_blind < settle_override, the assumed-cost
+      fabrication, a plain refusal at G=1/R=1); fail-closed invariant clean (no unhandled atoms). Byte-invariance of
+      the seven prior suites: all 22 prior oracle case blocks and every prior summary row identical to the pre-change
+      baseline (the only diff is the two new summary rows).
+- [x] Adversarial gaming review 2026-10-19 to 2026-10-21: six Sonnet attackers, one per surface, ~1,500 graded mutations
+      (`outputs/eval8-live/gaming-review/`); findings: hard gates on notation/absence with the PCF of record unverified,
+      cross-clause negation in the decision classifier, the wrong-way remedy, unread switches, status-family precedence,
+      whitelist row keys and fabrication, a dodgeable multiplier gate, the refusal grader's share-count/negation errors.
+      ALL FIXED before any live run: suite rewritten (clause-aware classifier, evidence-only gates via penalty hooks in
+      rubric 1.1.0, verdict-vs-kind statuses, packet-membership fabrication, locale/unit numbers, rewritten refusal grader);
+      258 checks pinned in `harness/gaming_review_eval8.py` (selftest); full selftest PASSED 2026-10-21 for all eight
+      suites; the 22 prior cases byte-identical to the pre-change baseline; variant scores refreshed (series_slip 0.252,
+      date_slip 0.323; nothing else moved). Write-up: `outputs/eval8-live/TAXONOMY.md` (grader section).
+
+## Phase 5 — Live run + write-up  ✅ grid run 2026-10-21 (all eight models); write-up done; follow-on cases open
+- [x] `outputs/run_live_eval8.py` + `run_live_eval8_grid.py` + `eval8_matrix.py` + `eval8_regrade.py`; the grid on both cases
+      2026-10-21: 16 runs (Gemini's first pass hit a 402 - Google prepaid credits exhausted - then was cut off at 8,000 tokens on both
+      cases, 0.264 / 0.361 as parsed, kept under prior/; re-run at 16,000: 0.956 / 0.989). Nine of sixteen AllPass, three
+      models perfect on both cases (Opus 4.8, GPT-5.6-sol, GPT-5.5); GATE.SETTLE never fired (the honest negative); no false
+      hold; every refusal correct. GATE.MULTIPLIER fired on Haiku 4.5 both cases (legs valued per share, unit value 30.50,
+      agent's cash copied: 0.543 / 0.549); Sonnet 4.6 sized the excess x10 (0.868); GPT-5.4 moved the written legs' positions
+      the wrong way (0.988); GPT-5.4-mini's percent of NAV off by 50x (0.968).
+- [x] Grader calibration from the runs (six items; re-graded offline with provenance; eleven scores moved, no decision or gate)
+      + nine new pins (267 total). `outputs/eval8-live/TAXONOMY.md` (hardening + live sections), LEADERBOARD section, README
+      entry + live-findings section, site paragraph + table row, all in the Explanation style.
+- [x] Mechanics verified against public primary documents (`outputs/eval8-live/MECHANICS-NOTE.md`, 2026-10-21): confirmed /
+      constructed / representative / dating labelled in the case headers; NSCC's Options ETF Clearing Connect live since
+      May 15, 2026 explained.
+- [ ] The planned cases (a leg pending at the cut-off; a stale mark in the agent's cash; the sibling series on one leg; the
+      NSCC-to-OCC messaged flow); the paper section.

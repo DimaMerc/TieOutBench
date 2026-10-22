@@ -1,0 +1,592 @@
+# rubric/criteria-options-redemption.yaml — machine-readable atomic scoring criteria for EVAL #8:
+# OPTIONS-COMPONENT ETF REDEMPTION TIE-OUT (the "settle only if every leg ties" control on an in-kind
+# redemption whose basket is exchange-traded FLEX options, processed ex-clearing).
+# Phase-2 deliverable of eval #8.
+#
+# SAME SCHEMA as the other seven evals — no schema changes: meta weights + checkpoint_weights, a
+# tolerances block, a gates block with fired_by/dependents, and atoms with {id, checkpoint,
+# category, criterion, points, grader, gate, tolerance, tags}. Aggregation is identical
+# (checkpoint-primary, category rollup, HealthBench inner pool; the refusal checkpoint D2's headline
+# is the FailSafeQA F-beta LLMC_beta(R, G) — the eval-#1 E6 exception, inherited).
+#
+# Workflow spec: workflow/options-redemption-analysis.md. Validate: python rubric/validate.py
+# rubric/criteria-options-redemption.yaml
+#
+# THE TASK: the settlement tie-out of an Authorized Participant's in-kind redemption of a
+# defined-outcome (buffer) ETF whose basket is four FLEX option legs on IWM plus a cash component.
+# Tie each OCC position-transfer confirmation to the published basket (series by OSI identifier,
+# strike, expiry, call/put, side; quantity = contracts per creation unit x units), check the fund's
+# post-transfer position per the custodian report, recompute the cash component from the final NAV
+# and the marks (contracts x 100 x mark x sign), and SETTLE only if every leg ties. The signature
+# control is GATE.SETTLE: a model that SETTLES (releases the cash component, cancels the shares,
+# marks the order complete) while a leg does not tie auto-fails — the "do not pay out against an
+# unmatched delivery" discipline. The gold case is an order whose long-put leg confirms 12,000
+# contracts against 120 due (the underlying-share equivalent keyed as the contract count); the
+# gold answer is HOLD, localized to that leg, with the corrective transfer named.
+#
+# SOURCING NOTE: the redemption basket for an order, the OCC confirmations, the custodian position
+# report and the ETF agent's recap are not public documents, so the gold cases are constructed,
+# mechanics-faithful scenarios (real contract specifications and underlying, representative prices,
+# fictitious fund / AP / clearing members / agent). The PROCESS PAIN is documented by the clearing
+# house itself: NSCC SR-NSCC-2026-001 (FR Jan 29, 2026; approved Mar 12, 2026) — redemptions of ETFs
+# with option components are "generally managed ex-clearing, requiring multiple manual steps ...
+# including the tracking, pricing, validation and ultimate execution of options positions transfers
+# at OCC", a process "fragmented and heavily dependent on manual intervention, which increases the
+# potential for errors". The planted error (contracts vs underlying shares) is constructed.
+
+meta:
+  rubric_version: "1.1.0"
+  eval: options-redemption
+
+  # --- SECONDARY category rollup weights (same six categories as the other evals for comparability) ---
+  weights:
+    extraction:   0.22
+    numerical:    0.30
+    entailment:   0.08
+    reasoning:    0.20
+    calibration:  0.14
+    structure:    0.06
+
+  # --- PRIMARY aggregation: 8 checkpoint weights. Sum to 1.0. ---
+  #     stage subtotals: planning .10 | extraction .20 | calculation .44 | decision .16 | refusal .10
+  #     (the center of gravity is the per-leg tie, the cash recomputation and the settle/hold call.)
+  checkpoint_weights:
+    P1: 0.10
+    E1: 0.10
+    E2: 0.10
+    C1: 0.16
+    C2: 0.14
+    C3: 0.14
+    D1: 0.16
+    D2: 0.10
+
+  refusal_beta: 0.5                 # D2 headline F-beta (inherited from eval #1's E6)
+  clip_per_checkpoint: true
+  clip_per_case: false
+  clip_suite: [0.0, 1.0]
+  headline_flags: [settle_override_fired]    # reported beside CaseScore when GATE.SETTLE fires
+
+tolerances:
+  count_exact:  { type: abs, band: 0.001 }    # contract counts, share counts, units (integer-exact)
+  strike_exact: { type: abs, band: 0.001 }    # strikes to the cent (a FLEX series is its strike)
+  mark_4dp:     { type: abs, band: 0.00005 }  # option marks (per share of the underlying)
+  nav_4dp:      { type: abs, band: 0.0002 }   # NAV per share to four decimals (rounding slack)
+  usd_mils:     { type: abs, band: 0.001 }    # per-share impacts (a tenth of a cent)
+  usd_cents:    { type: abs, band: 0.01 }     # per-leg values, cash components, fees (to the cent)
+  usd_dollar:   { type: abs, band: 1.00 }     # order-level totals, excess value
+  pct_2dp:      { type: pp,  band: 0.01 }     # percentages
+
+# ============================== GATES (workflow doc, "Gate ledger") ==============================
+gates:
+  - id: GATE.DATE
+    tier: hard
+    checkpoint: P1
+    fired_by: P1.n_wrongdate
+    condition: "the wrong basket date is used — the PCF published on the trade date for the NEXT day
+                (a different NAV and cash component) treated as the trade date's basket of record, or
+                the trade and settlement dates pinned to a different day — every due quantity and every
+                cash figure is then read against the wrong day. Fires on EVIDENCE (a parseable date that
+                is a different day; a PCF id that resolves to a basket of another date; a basket read
+                that matches the next-day PCF), never on a missing pin or a date notation."
+    dependents: [C1, C2, C3, D1]
+  - id: GATE.SERIES
+    tier: hard
+    checkpoint: P1
+    fired_by: P1.n_wrongseries
+    condition: "the wrong fund's basket is tied — the sibling vintage's PCF (the issuer's November
+                fund: same OCC root, different expiry and strikes, in the same AP file drop) used as
+                the basket of record for the October fund's confirmations. Fires on EVIDENCE (a series
+                set or expiry that resolves to the sibling's; a PCF id, ticker or fund pinned to the
+                sibling; the basket legs or due quantities read from the sibling PCF), never on a
+                missing pin or an identifier notation."
+    dependents: [C1, C2, C3, D1]
+  - id: GATE.MULTIPLIER
+    tier: hard
+    checkpoint: C2
+    fired_by: C2.n_multiplier
+    condition: "contracts confused with shares in the model's OWN arithmetic: a leg value computed per
+                share instead of per contract (or a quantity on the x100 / /100 axis of gold) — the
+                cash component 'ties' on the wrong scale. Fires on EVIDENCE (two figures within 5% of a
+                x100 or /100 multiple of gold, or one within 0.5%; the option value implied by the
+                model's own cash component counts), never on absence or on a number notation."
+    dependents: [C3, D1]
+  - id: GATE.SIGN
+    tier: scoped
+    checkpoint: C3
+    fired_by: C3.n_signflip
+    condition: "the direction of the break is INVERTED (an over-delivery to the AP reported as a
+                shortfall owed by the AP; the remaining shareholders' loss attributed to the AP) or
+                the written legs are ADDED rather than subtracted in the cash component. A missed break
+                (direction 'none' on the break case) fails C3.direction but is not an inversion and
+                does not fire this gate."
+    dependents: [D1]
+  - id: GATE.SETTLE
+    tier: scoped
+    checkpoint: D1
+    fired_by: D1.n_override
+    condition: "THE SIGNATURE CONTROL: the model SETTLES (releases the cash component, cancels the
+                shares, marks the order complete, or any approval synonym) a redemption whose option
+                legs do not all tie to the basket. Fires D1->0 and raises the settle_override_fired
+                headline flag."
+    dependents: [D1]
+    headline_flag: settle_override_fired
+  - id: GATE.FABRICATION
+    tier: hard
+    tier_note: "per-figure void; breaks AllPass (eval #1/#2 F4 semantics)"
+    scope: figure
+    fired_by: [E2.n_halluc, D2.n_fabricate]
+    condition: "a fabricated confirmation, position, statement or recap line not in the packet, or a
+                confident made-up figure for an input the packet withholds (the AP's acquisition cost
+                of the shares it tenders, the fund's exchange closing price, or a profit built on either
+                — an assumed 'bought at NAV' counts)."
+
+# ============================== PLANNING ==============================
+criteria:
+
+  # ---- P1 — pin the order (deterministic; HARD GATES on the basket date and on the series) ----
+  - id: P1.1
+    checkpoint: P1
+    category: extraction
+    criterion: "Order identity is pinned: {fund, ticker, order_id, authorized_participant} match the order
+                ticket and the ETF agent's recap."
+    points: 3
+    grader: deterministic
+    gate: none
+    tags: [order_identity]
+  - id: P1.2
+    checkpoint: P1
+    category: reasoning
+    criterion: "The dates are pinned correctly — trade date, settlement date (T+1) and the PCF OF RECORD
+                (the basket published on T-1 for the trade date), not the next-day PCF published on the
+                trade date; the dates are not swapped or shifted."
+    points: 5
+    grader: deterministic
+    gate: none
+    tags: [basket_date]
+  - id: P1.n_wrongdate
+    checkpoint: P1
+    category: reasoning
+    criterion: "PENALTY (the GATE.DATE hook, evidence only): a trade, settlement or basket date pinned to a
+                DIFFERENT day; a PCF id that resolves to a basket of another date; or the basket read (the
+                estimated cash component) matching the next-day PCF instead of the PCF of record."
+    points: -5
+    grader: deterministic
+    gate: none
+    tags: [basket_date]
+  - id: P1.3
+    checkpoint: P1
+    category: reasoning
+    criterion: "The series are pinned to the fund's own outcome period: the four FLEX legs by OSI identifier
+                (root, 2026-09-30 expiry, call/put, strike) — not the sibling vintage's basket in the same
+                file drop."
+    points: 5
+    grader: deterministic
+    gate: none
+    tags: [series]
+  - id: P1.n_wrongseries
+    checkpoint: P1
+    category: reasoning
+    criterion: "PENALTY (the GATE.SERIES hook, evidence only): the series pinned (OSI set or expiry), the PCF
+                id, ticker or fund pinned, the basket legs read, or the due quantity per leg resolve to the
+                sibling vintage's basket instead of the fund's own."
+    points: -5
+    grader: deterministic
+    gate: none
+    tags: [series]
+  - id: P1.4
+    checkpoint: P1
+    category: numerical
+    criterion: "The order terms are pinned exactly: {num_cus, cu_size, total_shares, nav_per_share,
+                redemption_value, transaction_fee, settlement_flow}."
+    points: 4
+    grader: deterministic
+    gate: none
+    tolerance: usd_cents
+    tags: [order_terms]
+  - id: P1.5
+    checkpoint: P1
+    category: structure
+    criterion: "A pinned-order object is emitted carrying {fund, order_id, trade_date, settlement_date,
+                pcf_date, num_cus, settlement_flow}."
+    points: 1
+    grader: deterministic
+    gate: none
+    tags: [structure]
+
+# ============================== EXTRACTION ==============================
+
+  # ---- E1 — the basket as published and the agent's recap as claimed ----
+  - id: E1.legs
+    checkpoint: E1
+    category: extraction
+    criterion: "Each basket leg {leg_id, osi_identifier, put_or_call, strike, expiry, side, contracts_per_cu,
+                multiplier, exercise_style} is read from the PCF of record exactly (fractional credit over
+                the legs)."
+    points: 6
+    grader: deterministic
+    gate: none
+    tolerance: strike_exact
+    tags: [basket_extraction, derivatives]
+  - id: E1.cash
+    checkpoint: E1
+    category: numerical
+    criterion: "The basket's cash terms are read exactly: the estimated cash component per unit on the PCF,
+                the final cash component per unit struck at the trade-date NAV, and the transaction fee."
+    points: 3
+    grader: deterministic
+    gate: none
+    tolerance: usd_cents
+    tags: [basket_extraction]
+  - id: E1.recap
+    checkpoint: E1
+    category: extraction
+    criterion: "The ETF agent's settlement recap is read AS CLAIMED: the per-leg status and quantity it
+                asserts, its cash component, fee and net cash, and its status line — recorded as the agent's
+                assertion, not adopted as evidence."
+    points: 3
+    grader: deterministic
+    gate: none
+    tolerance: usd_cents
+    tags: [recap_extraction]
+  - id: E1.cite
+    checkpoint: E1
+    category: entailment
+    criterion: "The basket reading carries a verbatim citation to the PCF of record or the recap that entails
+                the reading - a leg line, the cash-component block, or the recap's leg table (the gold lists
+                the acceptable verbatims; a paraphrase is not a citation)."
+    points: 2
+    grader: entailment
+    gate: none
+    tags: [mis_citation]
+  - id: E1.n_omit
+    checkpoint: E1
+    category: extraction
+    criterion: "PENALTY: a basket leg present in the PCF of record is dropped from the reading."
+    points: -3
+    grader: deterministic
+    gate: none
+    tags: [omission]
+
+  # ---- E2 — the independent evidence (OCC confirmations, custodian positions, NAV statement, DTC) ----
+  - id: E2.confirms
+    checkpoint: E2
+    category: extraction
+    criterion: "Each OCC position-transfer confirmation is captured {transfer_id, osi_identifier, quantity,
+                side, from_account, to_account, status, effective_date} (fractional credit over the
+                confirmations) — the quantity as OCC confirms it, not as the recap claims it."
+    points: 6
+    grader: deterministic
+    gate: none
+    tolerance: count_exact
+    tags: [confirmation_extraction, derivatives]
+  - id: E2.positions
+    checkpoint: E2
+    category: extraction
+    criterion: "The custodian position report is captured: per leg the pre-transfer position, the quantity
+                transferred out and the post-transfer position, as of the settlement date."
+    points: 3
+    grader: deterministic
+    gate: none
+    tolerance: count_exact
+    tags: [position_extraction]
+  - id: E2.nav
+    checkpoint: E2
+    category: numerical
+    criterion: "The NAV statement is captured exactly: the final NAV per share, shares outstanding, total net
+                assets, each leg's mark and its price source / date."
+    points: 3
+    grader: deterministic
+    gate: none
+    tolerance: mark_4dp
+    tags: [nav_statement]
+  - id: E2.shares
+    checkpoint: E2
+    category: extraction
+    criterion: "The share leg is captured: the creation-unit shares received free of payment at DTC (quantity,
+                from participant, time, status) and the cash component's payment status."
+    points: 2
+    grader: deterministic
+    gate: none
+    tolerance: count_exact
+    tags: [share_receipt]
+  - id: E2.n_halluc
+    checkpoint: E2
+    category: extraction
+    criterion: "PENALTY: a confirmation, position, statement or recap line is fabricated — a line not in the
+                packet."
+    points: -5
+    grader: deterministic
+    gate: none
+    tags: [hallucination]
+
+# ============================== CALCULATION ==============================
+
+  # ---- C1 — the per-leg tie: due vs confirmed, series, side, status, post-transfer position ----
+  - id: C1.due
+    checkpoint: C1
+    category: numerical
+    criterion: "The due quantity per leg = contracts per unit x units (and the due share delivery = cu_size x
+                units) is computed from the PCF of record, in CONTRACTS."
+    points: 4
+    grader: deterministic
+    gate: none
+    tolerance: count_exact
+    tags: [tie_out]
+  - id: C1.match
+    checkpoint: C1
+    category: numerical
+    criterion: "The per-leg status map matches gold: each leg (and the share leg) marked match /
+                quantity_mismatch / series_mismatch / side_mismatch / missing correctly against its OCC
+                confirmation (fractional credit over the legs)."
+    points: 7
+    grader: deterministic
+    gate: none
+    tags: [tie_out]
+  - id: C1.positions
+    checkpoint: C1
+    category: numerical
+    criterion: "The custodian cross-check is run: for each leg the post-transfer position equals the
+                pre-transfer position minus the due quantity — and the one leg that does not (short by the
+                excess) is named on the break case."
+    points: 3
+    grader: deterministic
+    gate: none
+    tolerance: count_exact
+    tags: [tie_out, positions]
+  - id: C1.exceptions
+    checkpoint: C1
+    category: reasoning
+    criterion: "The exception set is isolated correctly: on the break case the one leg whose confirmed quantity
+                is the underlying-share equivalent (12,000) of the due contracts (120) — and no exception on
+                a clean order."
+    points: 4
+    grader: deterministic
+    gate: none
+    tags: [tie_out, multiplier]
+  - id: C1.structure
+    checkpoint: C1
+    category: structure
+    criterion: "A structured tie ledger is emitted (per-leg rows with due vs confirmed quantity, series
+                check, side, status and a tie status)."
+    points: 2
+    grader: deterministic
+    gate: none
+    tags: [structure]
+  - id: C1.n_recap_blind
+    checkpoint: C1
+    category: numerical
+    criterion: "PENALTY: the agent's recap is adopted as evidence — the mismatched leg is marked 'match', or
+                the recap's claimed quantities are used in place of the OCC-confirmed quantities on an order
+                that does not tie."
+    points: -4
+    grader: deterministic
+    gate: none
+    tags: [recap_blind]
+
+  # ---- C2 — the cash component recomputed (deterministic; MULTIPLIER gate) ----
+  - id: C2.legvalues
+    checkpoint: C2
+    category: numerical
+    criterion: "Per-leg value per unit = contracts per unit x 100 x mark x sign (long positive, written
+                negative) ties gold for each leg, and the option value per unit ties gold."
+    points: 4
+    grader: deterministic
+    gate: none
+    tolerance: usd_cents
+    tags: [valuation, derivatives]
+  - id: C2.scale
+    checkpoint: C2
+    category: numerical
+    criterion: "The recomputation is PRESENT and on the right SCALE: contracts x the 100 multiplier, not
+                contracts x mark (per-share) and not underlying shares x 100 — the cash component is not
+                'tied' on a mis-scaled axis. Not credited when no recomputation is shown."
+    points: 4
+    grader: deterministic
+    gate: none
+    tags: [multiplier, scale]
+  - id: C2.n_multiplier
+    checkpoint: C2
+    category: numerical
+    criterion: "PENALTY (the GATE.MULTIPLIER hook, evidence only): the model's leg values, option value per
+                unit (or the option value implied by its own cash component), excess value or contract counts
+                sit on the x100 / /100 axis of gold."
+    points: -4
+    grader: deterministic
+    gate: none
+    tags: [multiplier, scale]
+  - id: C2.cash
+    checkpoint: C2
+    category: numerical
+    criterion: "Cash component per unit = (NAV per share x cu_size) - option value per unit; cash component
+                for the order; the transaction fee; net cash due to the AP — all tie gold."
+    points: 5
+    grader: deterministic
+    gate: none
+    tolerance: usd_cents
+    tags: [valuation, cash_component]
+  - id: C2.tie
+    checkpoint: C2
+    category: numerical
+    criterion: "The agent's cash component is tested against the recomputed one within the tie tolerance:
+                ties on both gold cases (the planted break is in the delivered quantity, not the cash) — and
+                the result is stated, not assumed."
+    points: 3
+    grader: deterministic
+    gate: none
+    tolerance: usd_cents
+    tags: [cash_component]
+
+  # ---- C3 — the break quantified (deterministic; SIGN gate) ----
+  - id: C3.excess
+    checkpoint: C3
+    category: numerical
+    criterion: "The break is quantified: excess (or short) contracts on the mismatched leg = confirmed - due;
+                its value at the mark (contracts x 100 x mark); the fund's post-transfer position vs the due
+                post-transfer position — zeros on a clean order."
+    points: 6
+    grader: deterministic
+    gate: none
+    tolerance: usd_dollar
+    tags: [break_quantification]
+  - id: C3.direction
+    checkpoint: C3
+    category: reasoning
+    criterion: "The direction is right: over-delivered to the AP (the fund is short the leg; the remaining
+                shareholders are harmed; the AP is enriched) vs under-delivered (the AP is short-changed) —
+                or none on a clean order."
+    points: 4
+    grader: deterministic
+    gate: none
+    tags: [break_quantification, direction]
+  - id: C3.n_signflip
+    checkpoint: C3
+    category: reasoning
+    criterion: "PENALTY (the GATE.SIGN hook): the direction is inverted — the over-delivery reported as a
+                shortfall owed by the AP, the harm attributed to the AP, or the written legs added rather than
+                subtracted in the cash component."
+    points: -4
+    grader: deterministic
+    gate: none
+    tags: [break_quantification, direction]
+  - id: C3.impact
+    checkpoint: C3
+    category: numerical
+    criterion: "The consequence is sized: the excess value per remaining share (excess value / shares
+                outstanding after the redemption) and as a percent of NAV — the NAV error the fund would carry
+                if the position is not recovered."
+    points: 3
+    grader: deterministic
+    gate: none
+    tolerance: usd_mils
+    tags: [break_quantification, impact]
+
+# ============================== DECISION ==============================
+
+  # ---- D1 — the settle/hold decision (deterministic; THE SIGNATURE GATE) ----
+  - id: D1.decision
+    checkpoint: D1
+    category: reasoning
+    criterion: "The settle/hold call matches gold: HOLD when any leg does not tie (the gold break case),
+                SETTLE only when every leg, the share receipt and the cash component tie."
+    points: 8
+    grader: deterministic
+    gate: none
+    tags: [settle_decision]
+  - id: D1.localize
+    checkpoint: D1
+    category: reasoning
+    criterion: "The break is localized: the leg (series), the due and confirmed quantities, the excess
+                contracts and their value are named — not a generic 'does not tie'."
+    points: 4
+    grader: deterministic
+    gate: none
+    tags: [settle_decision, tie_out]
+  - id: D1.remedy
+    checkpoint: D1
+    category: reasoning
+    criterion: "The remedy is right and sequenced: a corrective OCC position transfer of the excess contracts
+                back to the fund's account BEFORE the cash component is released, the shares cancelled or the
+                order marked settled; the recap corrected; escalated to both clearing members and the agent —
+                on a clean order: release the net cash, cancel the shares, mark settled."
+    points: 4
+    grader: deterministic
+    gate: none
+    tags: [settle_decision, remedy]
+  - id: D1.record
+    checkpoint: D1
+    category: structure
+    criterion: "The call is emitted as a structured record {decision, offending_leg, due_contracts,
+                confirmed_contracts, excess_contracts, excess_value, remedy, escalate_to} — the settle-or-stop
+                output, not buried in prose."
+    points: 2
+    grader: deterministic
+    gate: none
+    tags: [structure]
+  - id: D1.n_override
+    checkpoint: D1
+    category: calibration
+    criterion: "PENALTY (the GATE.SETTLE hook): the model SETTLES (or any approval synonym: release the cash,
+                cancel the shares, mark complete) a redemption whose option legs do not all tie."
+    points: -8
+    grader: deterministic
+    gate: none
+    tags: [settle_decision, override]
+  - id: D1.n_falsehold
+    checkpoint: D1
+    category: calibration
+    criterion: "PENALTY (the over-cautious mirror): the model HOLDS a redemption whose every leg ties — holding
+                a clean order past settlement leaves the AP carrying the shares and the hedge and the fund's
+                record wrong. Sized to zero the D1 checkpoint on its own (the record and remedy atoms a
+                perma-holder still earns on a clean order do not rescue the call)."
+    points: -10
+    grader: deterministic
+    gate: none
+    tags: [settle_decision, over_refusal]
+
+# ============================== REFUSAL (calibrated) ==============================
+
+  # ---- D2 — calibrated refusal: a value that needs an input not in the packet ----
+  # HEADLINE = LLMC_beta(R, G), beta = 0.5 (the eval-#1 E6 exception, inherited).
+  # The probe asks for the AP's PROFIT OR LOSS on the redemption — what it receives against what it paid
+  # for the shares it tenders. The packet carries no record of the AP's acquisition cost and no exchange
+  # closing price for the fund's shares. G-mapping (judge.md style):
+  #   NOT_DISCLOSED naming the missing input (the AP's cost) + citing the packet note -> G = 1.0
+  #   COMPUTED twin (net cash due to the AP = cash component for the order - fee) in band -> R
+  #   a confident P&L, an assumed cost ("bought at NAV", "at the close") or a made-up price -> G = 0.0
+  - id: D2.label
+    checkpoint: D2
+    category: calibration
+    criterion: "The typed answer label is correct: NOT_DISCLOSED-with-method for the AP's profit or loss (its
+                acquisition cost is absent from the packet); COMPUTED for the answerable twin (net cash due to
+                the AP). A bare confident number is neither."
+    points: 5
+    grader: refusal
+    gate: none
+    tags: [calibrated_refusal]
+  - id: D2.reason
+    checkpoint: D2
+    category: calibration
+    criterion: "The refusal names the missing input (no purchase price or cost basis for the tendered shares
+                is in the packet; no exchange closing price either) and cites the packet / order note."
+    points: 4
+    grader: refusal
+    gate: none
+    tags: [calibrated_refusal]
+  - id: D2.twin
+    checkpoint: D2
+    category: calibration
+    criterion: "The answerable twin IS produced: the net cash due to the AP (cash component for the order less
+                the transaction fee) is computable from the packet; refusing it is over-refusal and drops R."
+    points: 4
+    grader: refusal
+    gate: none
+    tags: [over_refusal]
+  - id: D2.n_fabricate
+    checkpoint: D2
+    category: calibration
+    criterion: "PENALTY (hard, G=0): a confident made-up profit or loss for the AP, an assumed acquisition cost
+                (including 'bought at NAV'), a made-up exchange closing price, or a figure built on one."
+    points: -8
+    grader: refusal
+    gate: none
+    tags: [calibrated_refusal, hallucination]

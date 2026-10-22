@@ -1,0 +1,105 @@
+{
+  "schema": "tieoutbench.run/1",
+  "run_id": "20261021T202349Z-e01c4b",
+  "written_at": "2026-10-21T20:24:25Z",
+  "suite": "options-redemption",
+  "model_id": "claude-haiku-4-5-20251001",
+  "endpoint": "api.anthropic.com",
+  "request": {
+    "max_tokens_field": "max_tokens",
+    "max_tokens": 8000,
+    "temperature": 0.0,
+    "temperature_dropped": false,
+    "stream": true,
+    "stream_usage_requested": true,
+    "system_folded": false
+  },
+  "usage": {
+    "completion_tokens": 4371,
+    "prompt_tokens": 6259,
+    "total_tokens": 10630
+  },
+  "finish_reason": "stop",
+  "deadline_hit": false,
+  "elapsed_s": 36.189,
+  "chat_elapsed_s": 36.188,
+  "content_chars": 12022,
+  "reasoning_chars": 0,
+  "prompt": {
+    "sha256": "ad52de0363b1f09d1713388338daa4679ce39dd4234dc8dd13c8d80b8c8167a4",
+    "chars": 18626,
+    "tokens_approx": 4656
+  },
+  "case": {
+    "case_id": "grbo-redeem-2026",
+    "path": "cases/grbo-redeem-2026.case.yaml",
+    "sha256": "ecbcb8cd767186ce0824b46b0760473f74f692019c53c46489a44b7e159b2284"
+  },
+  "rubric": {
+    "path": "rubric/criteria-options-redemption.yaml",
+    "sha256": "1b180d59670e2cc690d9cb051e4bbb45d7007de1a7ba2436abbb0357867f9f23"
+  },
+  "grader_version": "814ba50",
+  "grader_tree_dirty": true,
+  "harness_hashes": {
+    "harness/graders.py": "4ce46f1ed091fa4e95dd471b7900be5464ced9a5c952d32ca7e8160243caa65b",
+    "harness/scoring.py": "c31e1901303253cf8b4ac600998ae130fb6111b32e5b99dd16029151db1dd1a8",
+    "harness/suites/options_redemption.py": "65383d66876256995e6ce03b6d16e3988227102fa8034d029badd46d08461aa0",
+    "harness/live_options_redemption.py": "94246ce916352a4fec61e7d26c2a9a265bdb67a6502d2e3b4a424547fd6f7bac"
+  },
+  "raw_sha256": "d531f6c5b18922ad9596ab00572827ba0a28132cc3e1e4de55db68734ddaac42",
+  "raw_chars": 12022,
+  "parse": {
+    "status": "ok",
+    "salvaged": false,
+    "retries": 0
+  },
+  "judge": "mock",
+  "prior_dir": null,
+  "score": {
+    "gated": 0.5428,
+    "ungated": 0.7103,
+    "gap": 0.1675,
+    "allpass": 0,
+    "gates": [
+      "GATE.MULTIPLIER"
+    ],
+    "flags": []
+  },
+  "score_at_run": {
+    "gated": 0.5285,
+    "ungated": 0.696,
+    "gap": 0.1675,
+    "allpass": 0,
+    "gates": [
+      "GATE.MULTIPLIER"
+    ],
+    "flags": []
+  },
+  "regrades": [
+    {
+      "at": "2026-10-21T16:35:24",
+      "reason": "live-grid calibrations 2026-10-21: clean-case null position fields; ap_received_option_value undefined in the schema and not graded; settlement switches as the clean remedy/record; echo guard narrowed to the instruction's imperatives; a CASH exception row is informational when the model's own cash ties; the recap totals line added as a gold citation alternate",
+      "score_before": {
+        "gated": 0.5285,
+        "ungated": 0.696,
+        "gap": 0.1675,
+        "allpass": 0,
+        "gates": [
+          "GATE.MULTIPLIER"
+        ],
+        "flags": []
+      },
+      "score": {
+        "gated": 0.5428,
+        "ungated": 0.7103,
+        "gap": 0.1675,
+        "allpass": 0,
+        "gates": [
+          "GATE.MULTIPLIER"
+        ],
+        "flags": []
+      }
+    }
+  ]
+}
