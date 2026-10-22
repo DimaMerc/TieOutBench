@@ -10,7 +10,7 @@ which describes the suite, the grading method and the first five evaluations. Ev
 here is reproducible from the accompanying repository,
 [github.com/DimaMerc/TieOutBench](https://github.com/DimaMerc/TieOutBench), where every episode's
 transcript, ledger, worksheet, verdict and run record is committed under `outputs/eval6-agent/`. Posted on
-SSRN: [papers.ssrn.com/abstract=7611299](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7611299) (October 2026).*
+SSRN: [papers.ssrn.com/abstract=7611299](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7611299), DOI [10.2139/ssrn.7611299](https://doi.org/10.2139/ssrn.7611299) (October 2026).*
 
 *The corporate-action events are real and cited to the issuers' filings by accession number. The
 accounts, positions and the ETF basket are constructed and disclosed in each case file. Bookings

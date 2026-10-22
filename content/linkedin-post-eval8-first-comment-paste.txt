@@ -1,0 +1,8 @@
+The report, with every run and the grader review: [SSRN link on posting day]
+Cases, grader and every recorded run: https://evals.finance
+Results by model: https://github.com/DimaMerc/TieOutBench/blob/main/LEADERBOARD.md
+The clearing house's own words: NSCC rule filing SR-NSCC-2026-001, Federal Register, January 29, 2026.
+
+The fund, the dealer and the settlement documents are constructed, because the real ones are not public; the option contract terms are real, and every mechanical assumption was checked against public documents and labelled in the case files.
+
+One run per model per case. These are recorded results, not rates.

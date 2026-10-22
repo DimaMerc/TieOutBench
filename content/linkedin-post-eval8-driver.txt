@@ -1,0 +1,83 @@
+DRIVER POST for eval #8 (options-component ETF redemption), feed post; runbook at bottom
+Drafted 2026-10-21. Every figure re-read that day against outputs/eval8-live/TAXONOMY.md and the run records.
+No links in the body. The report, the repo and the site go in the first comment.
+===========================================================================
+
+I test whether AI can be trusted with finance work: real documents, one task at a time, every answer checked against the source. Eight tasks so far, all results published.
+
+The eighth is a step the clearing house itself calls manual and error-prone: settling an ETF redemption when the fund's portfolio is made of listed options. The option positions have to move from the fund's account to the dealer's, and someone has to confirm that what moved is what was due.
+
+I built the case so that one of four legs moved at 12,000 contracts instead of 120 - the share count typed where the contract count belonged - while the agent's own report said all four legs were fine. Eight paid AI models, both this case and a clean one.
+
+- All eight found the wrong leg, the 12,000 against 120, and the 11,880 contracts that have to come back. None settled. All eight said the return comes first and named both clearing firms.
+- All eight settled the clean twin. Nobody held an order that was right.
+- Nine of sixteen runs passed every check. Three models were perfect on both.
+- Nobody guessed what the dealer had paid for its shares, which the documents do not say.
+
+What went wrong was one layer down, in the arithmetic. One small model valued the options per share instead of per contract, so every leg came out at one hundredth of its value; the test has a check built for exactly that, and it fired. One mid-size model put the excess at ten times its value and carried the error into its hold note. The decisions were right every time; the sizes were not.
+
+Before any model ran, six AI reviewers spent a day trying to fool my grader. They found a lot. All of it is fixed and published, with the before-and-after.
+
+If your desk settles redemptions with option legs: which of these checks would you let a model run before a person signs?
+
+
+===========================================================================
+FIRST COMMENT (post it right after the post goes up):
+
+The report, with every run and the grader review: [SSRN link on posting day]
+Cases, grader and every recorded run: https://evals.finance
+Results by model: https://github.com/DimaMerc/TieOutBench/blob/main/LEADERBOARD.md
+The clearing house's own words: NSCC rule filing SR-NSCC-2026-001, Federal Register, January 29, 2026.
+
+The fund, the dealer and the settlement documents are constructed, because the real ones are not public; the option contract terms are real, and every mechanical assumption was checked against public documents and labelled in the case files.
+
+One run per model per case. These are recorded results, not rates.
+
+
+===========================================================================
+PUBLISH RUNBOOK (not part of the post):
+
+1. Sequence: post the report on SSRN first so the link exists (paper/tieoutbench-options-redemption-v1.pdf;
+   fill the SSRN line in the paper's front matter after approval, rebuild, then this post). Commit and push
+   first: the first comment links the public repo files.
+2. Timing: at least a week after the checker-paper announcement (Oct 27-28), so early November, Tue or
+   Wed, 8:00 to 9:30 ET (afternoon in Frankfurt and Zurich).
+3. No links in the post body. The first comment carries them.
+4. The hook ("a step the clearing house itself calls manual and error-prone") is the NSCC filing's point,
+   not a desk claim. Nothing in the post says I did this work on a desk.
+5. If asked "which model?": the leaderboard link and the tier. The three perfect models may be named in a
+   reply (Claude Opus 4.8, GPT-5.6-sol, GPT-5.5): success lines carry names, failure lines carry tiers.
+6. If asked whether the 12,000-contract transfer is realistic: OCC's by-laws test only that the delivering
+   account holds enough contracts (Article VI, Section 15), so a move of 12,000 out of 24,000 passes the one
+   check the clearing house applies; the mechanics note in the repo has the quotes. Whether a dealer's
+   clearing firm would accept 12,000 free puts without a question is the part I could not source, and the
+   case file says so.
+7. If asked whether the grader is trustworthy: the six-reviewer review and the 267 standing checks are in the
+   repo (outputs/eval8-live/gaming-review/, harness/gaming_review_eval8.py).
+8. Re-read on the day for time words. The post carries none; "Eight tasks so far" is right until eval #9.
+
+FACTS (not part of the post):
+- "Eight tasks": evals #1 to #8 on evals.finance and in README.md.
+- "manual and error-prone": NSCC SR-NSCC-2026-001, 91 FR 3938 (Jan 29, 2026): "fragmented and heavily
+  dependent on manual intervention, which increases the potential for errors and operational" risk.
+- "12,000 contracts instead of 120 ... 11,880": cases/grbo-redeem-2026.case.yaml (confirmation OCC-TX-260623-41108
+  quantity 12000; due 60 x 2 units; excess 11,880; value 4,692,600.00 at the 3.95 mark).
+- "All eight found the wrong leg ... None settled ... named both clearing firms": every run's D1.decision HOLD on
+  grbo-redeem-2026 with offending_leg L2, confirmed 12000, excess 11880; GATE.SETTLE fired in no run; remedies and
+  escalations in outputs/eval8-live/<model>/grbo-redeem-2026/answer.json.
+- "All eight settled the clean twin": every run's D1.decision SETTLE on grbo-redeem-2026-clean; D1.n_falsehold fired
+  in no run.
+- "Nine of sixteen ... Three models perfect on both": AllPass runs = Opus 4.8 (2), GPT-5.6-sol (2), GPT-5.5 (2),
+  Sonnet 4.6 clean, GPT-5.4 clean, GPT-5.4-mini clean (outputs/eval8-live/TAXONOMY.md, LEADERBOARD.md).
+- "Nobody guessed what the dealer had paid": all 16 D2 probe labels NOT_DISCLOSED, value null; D2.n_fabricate fired
+  in no run (Gemini's break-case reason was the schema text echoed: half credit on the reason, not a fabrication).
+- "One small model valued the options per share ... one hundredth ... it fired" = Claude Haiku 4.5, both cases,
+  GATE.MULTIPLIER (leg values 15,294 / 237 / -48 / -279 per unit vs 1,529,400 / 23,700 / -4,800 / -27,900;
+  option value 15,204 vs 1,520,400). Unnamed in the post.
+- "One mid-size model put the excess at ten times its value" = Claude Sonnet 4.6, grbo-redeem-2026, excess_value
+  46,926,000 vs 4,692,600; impact 2.358 vs 0.2358 per share; score 0.868. Unnamed in the post.
+- "six AI reviewers spent a day ... fixed and published, with the before-and-after": outputs/eval8-live/gaming-review/
+  (six notes, Oct 19); fixes Oct 21; outputs/eval8-live/TAXONOMY.md (hardening section; the calibration table is
+  the live-run re-grade, eleven scores moved, no decision or gate).
+- Attribution wall: "I test", "I built the case", "my grader". No desk claim, no employer. The "clearing house
+  itself calls" line is NSCC's text.
