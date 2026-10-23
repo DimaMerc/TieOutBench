@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Dmitry Krutous — LLM Evaluation &amp; AI Model Validation for Asset Management</title>
-<meta name="description" content="ETF and derivatives domain expert building runnable evaluations for finance LLMs: workflow decomposition, gated grading rubrics, evidence-cited gold cases, LLM-as-judge harnesses, and live frontier-model runs. Author of TieOutBench, including public evaluations of post-trade operations (ETF creation/redemption reconciliation, OTC swap confirmation matching, corporate actions, ETF NAV oversight).">
+<meta name="description" content="ETF and derivatives domain expert building runnable evaluations for finance LLMs: workflow decomposition, gated grading rubrics, evidence-cited gold cases, LLM-as-judge harnesses, and live frontier-model runs. Author of TieOutBench, including public evaluations of post-trade operations (ETF creation/redemption reconciliation, OTC swap confirmation matching, corporate actions, ETF NAV oversight, options-component redemption settlement).">
 <meta name="keywords" content="LLM evaluation, AI model validation, AI governance, model risk management, finance LLM benchmark, post-trade operations, ETF creation redemption, confirmation matching, corporate actions, NAV oversight, fund accounting, FpML, asset management AI, GenAI validation, Boston">
 <meta name="author" content="Dmitry Krutous">
 <link rel="canonical" href="https://evals.finance/">
@@ -100,10 +100,10 @@
 <p>The options-redemption evaluation ran on eight frontier models from three vendors in October 2026: every model held the broken redemption and settled the clean one, nine of sixteen runs passed every check, and the losses were magnitude errors one layer down — a mid-tier model sized the excess at ten times its value, and a small model valued the option legs per share instead of per contract and tripped the gate built for that confusion.</p>
 
 <ul class="facts">
-  <li>7 evaluations</li>
-  <li>86 scored checkpoints</li>
-  <li>~450 rubric criteria</li>
-  <li>22 gold cases</li>
+  <li>8 evaluations</li>
+  <li>94 scored checkpoints</li>
+  <li>~500 rubric criteria</li>
+  <li>24 gold cases</li>
   <li>MIT licensed</li>
 </ul>
 
@@ -114,6 +114,9 @@
   <a href="/checker-paper">Second report: A Second AI as Checker</a> ·
   <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7611299">on SSRN (7611299)</a> · <a href="https://doi.org/10.2139/ssrn.7611299">DOI 10.2139/ssrn.7611299</a> ·
   <a href="/checker-paper.pdf">its PDF</a> ·
+  <a href="/options-paper">Third report: Settle Only If Every Leg Ties</a> ·
+  <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7655899">on SSRN (7655899)</a> · <a href="https://doi.org/10.2139/ssrn.7655899">DOI 10.2139/ssrn.7655899</a> ·
+  <a href="/options-paper.pdf">its PDF</a> ·
   <a href="https://doi.org/10.17632/m5wfrnhdsp">Dataset snapshot (Mendeley Data)</a> ·
   <a href="https://github.com/DimaMerc/TieOutBench">Repository on GitHub</a> ·
   <a href="https://github.com/DimaMerc/TieOutBench/blob/main/LEADERBOARD.md">Live model leaderboard</a>
@@ -151,7 +154,7 @@
   <p>Given a leveraged ETF's NAV package with one swap carried at the prior day's price, every one of eight frontier models held the NAV, named the swap and released the clean twin package; ten of sixteen runs passed every check. The points lost were one layer down: one small model summed the recomputed assets two million dollars short and sized the error at 25 cents a share instead of 75. It still held, because the one-cent floor was exceeded either way. Two open-weight models, running on a desktop graphics card and on a laptop, did the same work as the paid flagships.</p>
 </div>
 
-<p class="caveat">Caveats stated rather than buried: one run per model per case; evaluations 3–7 now cover eight frontier models across three vendors (evaluation 7 also five open-weight models run locally), while evaluations 1–2 have been run only against open-weight models. The leaderboard says so on its face.</p>
+<p class="caveat">Caveats stated rather than buried: one run per model per case; evaluations 3–8 now cover eight frontier models across three vendors (evaluation 7 also five open-weight models run locally), while evaluations 1–2 have been run only against open-weight models. The leaderboard says so on its face.</p>
 
 <h2>What it's for</h2>
 <p>Before a firm lets an AI do analyst or operations work, it needs to know <em>whether — and exactly where — to trust it.</em> A blended accuracy number cannot answer that. A gated, checkpoint-level evaluation can, and it serves three purposes:</p>

@@ -94,6 +94,12 @@ in [`outputs/`](outputs/), consolidated in [`LEADERBOARD.md`](LEADERBOARD.md).
 > The companion report on the maker-checker experiment (October 2026), *A Second AI as Checker: Measuring a
 > Maker-Checker Protocol for LLM Agents on Corporate-Actions Processing*, is on
 > [SSRN (abstract 7611299)](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7611299), DOI [10.2139/ssrn.7611299](https://doi.org/10.2139/ssrn.7611299); source, builder and the SSRN package are under `paper/`.
+>
+> The third report (October 2026), *Settle Only If Every Leg Ties: A Runnable Evaluation of Language Models on an
+> Options-Component ETF Redemption*, covers eval #8: the fixture, the six-attacker grader review, the check of the
+> fixture's mechanics against public documents and the eight-model grid. It is on
+> [SSRN (abstract 7655899)](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7655899), DOI [10.2139/ssrn.7655899](https://doi.org/10.2139/ssrn.7655899), with its own page at
+> [evals.finance/options-paper](https://evals.finance/options-paper); source, builder and the SSRN package are under `paper/`.
 
 ## The eight evals in detail
 

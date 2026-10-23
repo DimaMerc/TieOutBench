@@ -1,4 +1,4 @@
-The report, with every run and the grader review: [SSRN link on posting day]
+The report, with every run and the grader review: https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7655899
 Cases, grader and every recorded run: https://evals.finance
 Results by model: https://github.com/DimaMerc/TieOutBench/blob/main/LEADERBOARD.md
 The clearing house's own words: NSCC rule filing SR-NSCC-2026-001, Federal Register, January 29, 2026.

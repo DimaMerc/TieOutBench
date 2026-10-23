@@ -12,7 +12,7 @@ Everything reported here is reproducible from the accompanying repository,
 [github.com/DimaMerc/TieOutBench](https://github.com/DimaMerc/TieOutBench), where every run's answer, raw
 completion, scored report and run record is committed under `outputs/eval8-live/`, together with the six
 attacker notes of the grader review and the note that checks the fixture's mechanics against public documents.
-SSRN abstract and DOI: to be added when posted.*
+SSRN: [papers.ssrn.com/abstract=7655899](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7655899), DOI [10.2139/ssrn.7655899](https://doi.org/10.2139/ssrn.7655899) (October 2026).*
 
 *The option contract specifications are real: FLEX options on the iShares Russell 2000 ETF carry the OCC root
 `4IWM`, a contract multiplier of 100, European exercise and an expiry on the last business day of the outcome

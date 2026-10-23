@@ -41,6 +41,9 @@ PUBLISH RUNBOOK (not part of the post):
 5. If asked "would a person have done better": not tested; the paper says so in its limitations.
 6. If asked whether this is an argument against AI review: it is an argument for giving the
    reviewer the rules and letting the maker answer a finding; the next protocol is in the paper.
+7. ORDER FLIPPED 2026-10-23: the eval-8 driver post (the third report, SSRN 7655899) goes out first. Move this
+   one to the week after it and re-read "My second technical report is on SSRN" on the day: with the third
+   report already announced, "The second of my three technical reports is on SSRN" reads right.
 
 FACTS (not part of the post):
 - 32 / 35 / 27 / 25 of 48 = AllPass, plain / tools / self-review checker / fixed reviewer.

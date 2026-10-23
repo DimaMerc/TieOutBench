@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Settle Only If Every Leg Ties — technical report | evals.finance</title>
+<meta name="description" content="A runnable evaluation of language models on an options-component ETF redemption: four FLEX option legs, one moved at 12,000 contracts against 120 due, eight models from three vendors. Every model held the broken order and settled the clean one; nine of sixteen runs passed every check. Every run published.">
+<meta name="author" content="Dmitry Krutous">
+<link rel="canonical" href="https://evals.finance/options-paper">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="evals.finance">
+<meta property="og:title" content="Settle Only If Every Leg Ties: A Runnable Evaluation of Language Models on an Options-Component ETF Redemption">
+<meta property="og:description" content="An in-kind ETF redemption whose basket is four listed option legs, with one leg moved at 12,000 contracts against 120 due. Eight models from three vendors: every one held the broken order and settled the clean twin; nine of sixteen runs passed every check; the losses were arithmetic one layer down. Technical report, October 2026, on SSRN; every run published.">
+<meta property="og:url" content="https://evals.finance/options-paper">
+<meta property="og:image" content="https://evals.finance/og-options-paper.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Settle only if every leg ties. Eight models, three vendors, one run per model per case: 8 of 8 held the broken order, 8 of 8 settled the clean twin, 9 of 16 runs passed every check, 3 models perfect on both cases.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Settle Only If Every Leg Ties — technical report">
+<meta name="twitter:description" content="Eight models on an options-component ETF redemption with one leg moved at 12,000 contracts against 120 due: every one held, nine of sixteen runs passed every check, the losses were arithmetic one layer down.">
+<meta name="twitter:image" content="https://evals.finance/og-options-paper.png">
+<style>
+  :root{
+    --bg:#ffffff; --fg:#16243b; --mute:#5b6878; --line:#dbe3ec;
+    --accent:#0f4c81; --panel:#f6f9fc; --red:#b03a2e;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{ --bg:#0f1721; --fg:#e8eef6; --mute:#9dabbc; --line:#25313f;
+           --accent:#7fb2e5; --panel:#161f2b; --red:#e8836f; }
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--fg);
+    font:16px/1.62 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  .wrap{max-width:760px;margin:0 auto;padding:56px 22px 72px}
+  header{border-bottom:1px solid var(--line);padding-bottom:26px;margin-bottom:30px}
+  h1{font-size:1.72rem;line-height:1.25;margin:0 0 6px}
+  .role{color:var(--mute);font-size:1.03rem;margin:0 0 14px}
+  h2{font-size:1.16rem;margin:38px 0 12px}
+  p{margin:0 0 14px}
+  a{color:var(--accent)}
+  a:hover{text-decoration:none}
+  .meta{color:var(--mute);font-size:.94rem}
+  .links{margin:18px 0 0}
+  .panel{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:0 0 16px}
+  .panel p:last-child{margin-bottom:0}
+  .tablewrap{overflow-x:auto;margin:0 0 16px}
+  table{border-collapse:collapse;width:100%;font-size:.94rem;min-width:420px}
+  th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line)}
+  th{font-weight:600;color:var(--mute);font-size:.86rem;text-transform:uppercase;letter-spacing:.04em}
+  td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+  td.gate{color:var(--red)}
+  .caveat{color:var(--mute);font-size:.92rem;font-style:italic}
+  footer{border-top:1px solid var(--line);margin-top:46px;padding-top:22px;color:var(--mute);font-size:.93rem}
+  .crumb{font-size:.92rem;color:var(--mute);margin:0 0 22px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<p class="crumb"><a href="/">evals.finance</a> · technical reports · the third report</p>
+
+<header>
+  <h1>Settle Only If Every Leg Ties</h1>
+  <p class="role">A runnable evaluation of language models on an options-component ETF redemption</p>
+  <p class="meta">Dmitry Krutous · Technical report, October 2026 · SSRN abstract 7655899 · DOI 10.2139/ssrn.7655899 · Third in the TieOutBench series, after the suite report (DOI 10.2139/ssrn.7243025) and the checker report (DOI 10.2139/ssrn.7611299)</p>
+  <p class="links">
+    <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7655899"><strong>Read it on SSRN</strong></a> ·
+    <a href="/options-paper.pdf">PDF (12 pages)</a> ·
+    <a href="https://github.com/DimaMerc/TieOutBench/tree/main/outputs/eval8-live">Every run: answers, raw completions, scored reports, run records</a> ·
+    <a href="https://github.com/DimaMerc/TieOutBench/tree/main/outputs/eval8-live/gaming-review">The grader review</a> ·
+    <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7243025">The first report</a> ·
+    <a href="/checker-paper">The second report</a>
+  </p>
+</header>
+
+<h2>What was measured</h2>
+<p>An exchange-traded fund whose portfolio is four listed option legs is redeemed in kind. The option positions have to move at the clearing house from the fund's account to the redeeming dealer's, a step the clearing house's own rule filing of January 2026 describes as fragmented and heavily dependent on manual intervention. The task is the settlement tie-out: given the redemption order, three portfolio composition files of which one is the basket of record, the fund's final net asset value, the clearing house's record of four position moves, the custodian's positions the next morning and the agent's own status report, tie every leg to the basket, recompute the cash component and decide whether to settle.</p>
+<p>In the gold case one leg moved at 12,000 contracts against 120 due, the order's underlying-share equivalent keyed as the contract count, while the agent's report says all four legs moved. The right answer is to hold and have 11,880 contracts returned first. A clean twin settles. Eight models from three vendors ran both cases once.</p>
+
+<div class="tablewrap">
+<table>
+  <thead><tr><th>Model</th><th class="num">Broken order</th><th class="num">Clean twin</th></tr></thead>
+  <tbody>
+    <tr><td>Claude Opus 4.8</td><td class="num">1.000 · all checks</td><td class="num">1.000 · all checks</td></tr>
+    <tr><td>Claude Sonnet 4.6</td><td class="num">0.868</td><td class="num">1.000 · all checks</td></tr>
+    <tr><td>Claude Haiku 4.5</td><td class="num gate">0.543 · gate fired</td><td class="num gate">0.549 · gate fired</td></tr>
+    <tr><td>GPT-5.6-sol</td><td class="num">1.000 · all checks</td><td class="num">1.000 · all checks</td></tr>
+    <tr><td>GPT-5.5</td><td class="num">1.000 · all checks</td><td class="num">1.000 · all checks</td></tr>
+    <tr><td>GPT-5.4</td><td class="num">0.988</td><td class="num">1.000 · all checks</td></tr>
+    <tr><td>GPT-5.4-mini</td><td class="num">0.968</td><td class="num">1.000 · all checks</td></tr>
+    <tr><td>Gemini 3.6 Flash</td><td class="num">0.956</td><td class="num">0.989</td></tr>
+  </tbody>
+</table>
+</div>
+<p class="caveat">Scores out of 1.000 after the gates; "all checks" means every criterion met; "gate fired" means an automatic failure on the arithmetic the gate exists to catch. One run per model per case, October 2026.</p>
+
+<h2>What happened</h2>
+<div class="panel">
+  <p>Every model held the broken order and settled the clean one. Every model found the leg, the 12,000 against 120 and the 11,880 excess, named the return transfer before any release and escalated to both clearing members. Nine of sixteen runs met every criterion; three models were perfect on both cases. No model assumed what the dealer had paid for its shares, which the documents do not say.</p>
+</div>
+<p>The losses were arithmetic one layer down. A small model valued the option legs per share instead of per contract, so every leg came out at one hundredth of its value, and the gate built for that confusion fired on both cases. A mid-tier model sized the excess at ten times its value and carried the error into its hold note. Another moved the written legs' positions the wrong way. A small model converted a per-share impact to a percentage fifty times too small. The decisions were right every time; the sizes were not.</p>
+
+<h2>Before any model ran</h2>
+<p>Six independent attackers spent a day trying to make the grader score a wrong answer well or a right answer badly, about 1,500 graded mutations. Every gate was then moved onto an evidence hook, so that nothing fires on a missing field or a notation, and 267 of the attackers' checks were pinned as standing regressions. Every mechanical assertion of the fixture was checked against public primary documents and labelled. Running real models then found six places where the grader rejected legitimate answers; all runs were re-graded with the original scores kept, and eleven scores moved without any decision or gate changing.</p>
+
+<p class="caveat">The fund, the dealer and the settlement documents are constructed, because the real ones are not public; the option contract terms are real. One run per model per case; recorded results, not rates. Not investment advice. Everything on this page is reproducible from the repository.</p>
+
+<footer>
+  <p><a href="/">Back to evals.finance</a> · <a href="https://github.com/DimaMerc/TieOutBench">Repository on GitHub</a> · <a href="https://www.linkedin.com/in/dmitrykrutous">LinkedIn</a></p>
+</footer>
+
+</div>
+</body>
+</html>

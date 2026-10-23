@@ -1,9 +1,10 @@
 # SSRN submission package — the options-redemption report (third report in the TieOutBench series)
 
-**STATUS: not yet submitted (drafted 2026-10-22). After approval: capture the abstract ID and, when assigned, the DOI;
-fill the placeholder line "SSRN abstract and DOI: to be added when posted" in the paper's front matter, rebuild, and
-thread the ID into docs/index.html, README.md and the LinkedIn Publications and Featured sections. The driver post
-(content/linkedin-post-eval8-driver.txt) waits for the approval; its first comment takes the SSRN link.**
+**POSTED: abstract ID 7655899 — https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7655899 — submitted 2026-10-22, approved by 2026-10-23 (public view yes).
+DOI: 10.2139/ssrn.7655899, registered with Crossref 2026-10-23 05:52 UTC and already on the ORCID record through the
+auto-update; threaded on 2026-10-23 into the paper's front matter (PDF rebuilt), README.md, docs/index.html,
+the report's own page docs/options-paper.html (with docs/og-options-paper.png as the preview image) and the
+driver post's first comment. Left for the author: the LinkedIn Publications entry and the Featured card.**
 
 Everything to paste into the SSRN submission form. The PDF to upload: `paper/tieoutbench-options-redemption-v1.pdf`,
 built by `python paper/build_options.py` (twelve pages, no figures).
@@ -61,15 +62,16 @@ processing of ETF redemptions).
   document opened with its URL.
 
 ## Submission checklist
-1. [ ] Build: `python paper/build_options.py` (docx for review, pdf for upload); read the PDF once end to end.
-2. [ ] Upload `tieoutbench-options-redemption-v1.pdf`.
-3. [ ] Paste title, abstract (+ the companion line), keywords, JEL codes.
-4. [ ] Classify: Banking & Financial Institutions + cross-lists.
-5. [ ] After acceptance: capture the abstract ID (and later the DOI); fill the front-matter placeholder and
+1. [x] Build: `python paper/build_options.py` (docx for review, pdf for upload); read the PDF once end to end.
+2. [x] Upload `tieoutbench-options-redemption-v1.pdf`.
+3. [x] Paste title, abstract (+ the companion line), keywords, JEL codes.
+4. [x] Classify: Banking & Financial Institutions + cross-lists.
+5. [x] After acceptance: capture the abstract ID (and later the DOI); fill the front-matter placeholder and
        rebuild; add to docs/index.html (beside the two reports), README.md (paper pointer), the LinkedIn
        Publications section and a Featured card (SSRN gives LinkedIn no preview image: attach a 1200x630
        thumbnail as for the checker report); then publish the driver post with the SSRN link in its first
        comment.
+       (2026-10-23: all done except the LinkedIn Publications entry and the Featured card.)
 
 ## Abstract (verbatim copy, generated from the paper on 2026-10-22; 441 words)
 

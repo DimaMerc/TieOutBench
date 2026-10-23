@@ -1,6 +1,9 @@
 DRIVER POST for eval #8 (options-component ETF redemption), feed post; runbook at bottom
 Drafted 2026-10-21. Every figure re-read that day against outputs/eval8-live/TAXONOMY.md and the run records.
+Publish-day re-read 2026-10-23: no time word or superlative to change; the SSRN link filled in (abstract 7655899).
 No links in the body. The report, the repo and the site go in the first comment.
+IMAGE: assets/post-eval8-case.png (portrait 1080x1350, ledger palette; built by assets/make_card_eval8.py, every number
+read from the case file and the sixteen run records and asserted). Upload it natively with the post.
 ===========================================================================
 
 I test whether AI can be trusted with finance work: real documents, one task at a time, every answer checked against the source. Eight tasks so far, all results published.
@@ -24,7 +27,7 @@ If your desk settles redemptions with option legs: which of these checks would y
 ===========================================================================
 FIRST COMMENT (post it right after the post goes up):
 
-The report, with every run and the grader review: [SSRN link on posting day]
+The report, with every run and the grader review: https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7655899
 Cases, grader and every recorded run: https://evals.finance
 Results by model: https://github.com/DimaMerc/TieOutBench/blob/main/LEADERBOARD.md
 The clearing house's own words: NSCC rule filing SR-NSCC-2026-001, Federal Register, January 29, 2026.
@@ -37,11 +40,12 @@ One run per model per case. These are recorded results, not rates.
 ===========================================================================
 PUBLISH RUNBOOK (not part of the post):
 
-1. Sequence: post the report on SSRN first so the link exists (paper/tieoutbench-options-redemption-v1.pdf;
-   fill the SSRN line in the paper's front matter after approval, rebuild, then this post). Commit and push
-   first: the first comment links the public repo files.
-2. Timing: at least a week after the checker-paper announcement (Oct 27-28), so early November, Tue or
-   Wed, 8:00 to 9:30 ET (afternoon in Frankfurt and Zurich).
+1. Sequence: DONE 2026-10-23. The report is on SSRN (abstract 7655899, DOI 10.2139/ssrn.7655899); the paper's
+   front matter carries the link and the PDF is rebuilt; the first comment carries the link. Commit and push
+   before posting: the first comment links the public repo files, and the site now lists the report.
+2. Timing: the order was flipped on 2026-10-23 - this post goes first, the checker-paper announcement moves
+   to the week after (one technical piece per week). Best slot: Tue or Wed, 8:00 to 9:30 ET (afternoon in
+   Frankfurt and Zurich); if it goes out on a Friday, before noon ET.
 3. No links in the post body. The first comment carries them.
 4. The hook ("a step the clearing house itself calls manual and error-prone") is the NSCC filing's point,
    not a desk claim. Nothing in the post says I did this work on a desk.
@@ -55,6 +59,9 @@ PUBLISH RUNBOOK (not part of the post):
 7. If asked whether the grader is trustworthy: the six-reviewer review and the 267 standing checks are in the
    repo (outputs/eval8-live/gaming-review/, harness/gaming_review_eval8.py).
 8. Re-read on the day for time words. The post carries none; "Eight tasks so far" is right until eval #9.
+9. The image carries model names in its score table (names in tables, tiers in the text); the two failure lines in
+   the image and the post stay by tier. If the scores change (a re-grade), re-run assets/make_card_eval8.py: its
+   asserts fail on any number that moved.
 
 FACTS (not part of the post):
 - "Eight tasks": evals #1 to #8 on evals.finance and in README.md.
