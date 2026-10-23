@@ -1,16 +1,18 @@
 DRIVER POST for eval #8 (options-component ETF redemption), feed post; runbook at bottom
 Drafted 2026-10-21. Every figure re-read that day against outputs/eval8-live/TAXONOMY.md and the run records.
 Publish-day re-read 2026-10-23: no time word or superlative to change; the SSRN link filled in (abstract 7655899).
+Opening rewritten 2026-10-23 on his ask: the case first (the wrong line, then "Settle, or hold?"), the series line
+moved to the end as one sentence. No figure changed.
 No links in the body. The report, the repo and the site go in the first comment.
 IMAGE: assets/post-eval8-case.png (portrait 1080x1350, ledger palette; built by assets/make_card_eval8.py, every number
 read from the case file and the sixteen run records and asserted). Upload it natively with the post.
 ===========================================================================
 
-I test whether AI can be trusted with finance work: real documents, one task at a time, every answer checked against the source. Eight tasks so far, all results published.
+One leg of an ETF redemption moved at 12,000 option contracts. 120 were due. The agent's own report said all four legs were fine.
 
-The eighth is a step the clearing house itself calls manual and error-prone: settling an ETF redemption when the fund's portfolio is made of listed options. The option positions have to move from the fund's account to the dealer's, and someone has to confirm that what moved is what was due.
+Settle, or hold?
 
-I built the case so that one of four legs moved at 12,000 contracts instead of 120 - the share count typed where the contract count belonged - while the agent's own report said all four legs were fine. Eight paid AI models, both this case and a clean one.
+The step is one the clearing house itself calls manual and error-prone: when a fund made of listed options is redeemed, the option positions have to move from the fund's account to the dealer's, and someone has to confirm that what moved is what was due. I built the case so that the share count landed where the contract count belonged, and gave it to eight paid AI models, together with a clean twin where every leg ties.
 
 - All eight found the wrong leg, the 12,000 against 120, and the 11,880 contracts that have to come back. None settled. All eight said the return comes first and named both clearing firms.
 - All eight settled the clean twin. Nobody held an order that was right.
@@ -20,6 +22,8 @@ I built the case so that one of four legs moved at 12,000 contracts instead of 1
 What went wrong was one layer down, in the arithmetic. One small model valued the options per share instead of per contract, so every leg came out at one hundredth of its value; the test has a check built for exactly that, and it fired. One mid-size model put the excess at ten times its value and carried the error into its hold note. The decisions were right every time; the sizes were not.
 
 Before any model ran, six AI reviewers spent a day trying to fool my grader. They found a lot. All of it is fixed and published, with the before-and-after.
+
+This is the eighth finance task I have put to AI this way: one task at a time, every answer checked against the source documents, all results published.
 
 If your desk settles redemptions with option legs: which of these checks would you let a model run before a person signs?
 
@@ -58,13 +62,15 @@ PUBLISH RUNBOOK (not part of the post):
    case file says so.
 7. If asked whether the grader is trustworthy: the six-reviewer review and the 267 standing checks are in the
    repo (outputs/eval8-live/gaming-review/, harness/gaming_review_eval8.py).
-8. Re-read on the day for time words. The post carries none; "Eight tasks so far" is right until eval #9.
+8. Re-read on the day for time words. The post carries none; "the eighth finance task" is right until eval #9.
 9. The image carries model names in its score table (names in tables, tiers in the text); the two failure lines in
    the image and the post stay by tier. If the scores change (a re-grade), re-run assets/make_card_eval8.py: its
    asserts fail on any number that moved.
 
 FACTS (not part of the post):
-- "Eight tasks": evals #1 to #8 on evals.finance and in README.md.
+- "the eighth finance task": evals #1 to #8 on evals.finance and in README.md.
+- "12,000 option contracts. 120 were due ... all four legs were fine": the opening restates the case line below;
+  agent_recap status READY TO SETTLE in cases/grbo-redeem-2026.case.yaml.
 - "manual and error-prone": NSCC SR-NSCC-2026-001, 91 FR 3938 (Jan 29, 2026): "fragmented and heavily
   dependent on manual intervention, which increases the potential for errors and operational" risk.
 - "12,000 contracts instead of 120 ... 11,880": cases/grbo-redeem-2026.case.yaml (confirmation OCC-TX-260623-41108
