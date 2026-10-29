@@ -1,0 +1,14 @@
+I expected AI to be strong on arithmetic and shaky on judgment. More than 400 recorded runs later, it is the other way round.
+
+Since June I have been giving AI the work of an asset manager's analysts and back office and grading it the way an experienced professional grades work: one task at a time, every figure checked against the source documents, every run published. Eight tasks, eight paid models from three vendors. Six things I would not have predicted:
+
+- In those runs, no paid model settled the short basket, affirmed the mismatched swap, released the wrong NAV or settled the broken redemption. The exceptions all came from one small model, which booked a dividend on the old share count.
+- Where they lost points was the arithmetic, not the decision. One model refused to settle a basket that was $13,320 short and, by its own figures, described it as $186,680 over. Another read five basis points as fifty and sized a break at EUR 2.5 million against EUR 125,000.
+- On a real McDonald's valuation, the wrong method looked the safest. The textbook blunder, enterprise value divided by the share count with the debt bridge skipped, lands within 3% of the market price; the correct method lands 20% below it. To a reviewer comparing the two numbers against the price, the wrong one looks calibrated.
+- A second AI as checker made the work worse. With the tools a desk has, 35 of 48 runs passed every check; with a checker of the same model reading the work, 27. A stronger checker over-ruled ten correct "the documents do not say" answers into invented numbers.
+- An open-weight model, free to download and running on a desktop graphics card, did the NAV oversight task as well as the paid flagships: every check passed on both cases.
+- I had AI reviewers test my own grader too. They found four ways a wrong answer could score a perfect mark. All fixed and published, with the before and after.
+
+Next is the error a tie-out cannot detect: one stale option mark, where every line ties and the number is still wrong.
+
+Which of these would you have predicted?

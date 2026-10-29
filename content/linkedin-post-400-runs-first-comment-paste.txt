@@ -1,0 +1,7 @@
+Every case, the grader and every recorded run: https://evals.finance
+Results by model: https://github.com/DimaMerc/TieOutBench/blob/main/LEADERBOARD.md
+The three reports: https://doi.org/10.2139/ssrn.7243025 (the suite), https://doi.org/10.2139/ssrn.7611299 (the AI checker), https://doi.org/10.2139/ssrn.7655899 (the options redemption)
+
+Scope: one run per model per case. Tasks 3 to 8 ran on all eight paid models; tasks 1 and 2 on open-weight models only. The valuation case is a grading reference under stated, dated assumptions, not investment advice. The creation, NAV and redemption cases are constructed over real securities and real contract terms, because the real documents are not public.
+
+The picture is AI-generated. The numbers are not.

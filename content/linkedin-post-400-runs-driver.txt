@@ -1,0 +1,112 @@
+RETROSPECTIVE POST - "the other way round" (eight tasks, more than 400 recorded runs); feed post; runbook at bottom
+Drafted 2026-10-27 on his ask for a momentum piece that combines the project history. Every figure below is
+verified against the case files and the committed run records (see FACTS). Paste the body from
+content/linkedin-post-400-runs-paste.txt and the first comment from content/linkedin-post-400-runs-first-comment-paste.txt.
+No links in the body.
+POSTED around 2026-10-27/28 with the Frankfurt picture (assets/post-400-runs-frankfurt.png). His read on 2026-10-29: reach
+limited, nothing like the Welt post (a real photo of a real visit). Recorded as a data point on the image lever: an AI-made
+editorial photograph did not do what a personal photograph did.
+===========================================================================
+
+I expected AI to be strong on arithmetic and shaky on judgment. More than 400 recorded runs later, it is the other way round.
+
+Since June I have been giving AI the work of an asset manager's analysts and back office and grading it the way an experienced professional grades work: one task at a time, every figure checked against the source documents, every run published. Eight tasks, eight paid models from three vendors. Six things I would not have predicted:
+
+- In those runs, no paid model settled the short basket, affirmed the mismatched swap, released the wrong NAV or settled the broken redemption. The exceptions all came from one small model, which booked a dividend on the old share count.
+- Where they lost points was the arithmetic, not the decision. One model refused to settle a basket that was $13,320 short and, by its own figures, described it as $186,680 over. Another read five basis points as fifty and sized a break at EUR 2.5 million against EUR 125,000.
+- On a real McDonald's valuation, the wrong method looked the safest. The textbook blunder, enterprise value divided by the share count with the debt bridge skipped, lands within 3% of the market price; the correct method lands 20% below it. To a reviewer comparing the two numbers against the price, the wrong one looks calibrated.
+- A second AI as checker made the work worse. With the tools a desk has, 35 of 48 runs passed every check; with a checker of the same model reading the work, 27. A stronger checker over-ruled ten correct "the documents do not say" answers into invented numbers.
+- An open-weight model, free to download and running on a desktop graphics card, did the NAV oversight task as well as the paid flagships: every check passed on both cases.
+- I had AI reviewers test my own grader too. They found four ways a wrong answer could score a perfect mark. All fixed and published, with the before and after.
+
+Next is the error a tie-out cannot detect: one stale option mark, where every line ties and the number is still wrong.
+
+Which of these would you have predicted?
+
+
+===========================================================================
+FIRST COMMENT (post it right after the post goes up):
+
+Every case, the grader and every recorded run: https://evals.finance
+Results by model: https://github.com/DimaMerc/TieOutBench/blob/main/LEADERBOARD.md
+The three reports: https://doi.org/10.2139/ssrn.7243025 (the suite), https://doi.org/10.2139/ssrn.7611299 (the AI checker), https://doi.org/10.2139/ssrn.7655899 (the options redemption)
+
+Scope: one run per model per case. Tasks 3 to 8 ran on all eight paid models; tasks 1 and 2 on open-weight models only. The valuation case is a grading reference under stated, dated assumptions, not investment advice. The creation, NAV and redemption cases are constructed over real securities and real contract terms, because the real documents are not public.
+
+The picture is AI-generated. The numbers are not.
+
+
+===========================================================================
+PUBLISH RUNBOOK (not part of the post):
+
+1. Slot: this is the week's piece. Tue Oct 27 / Wed Oct 28, 8:00 to 9:30 ET. The checker-paper announcement
+   (content/linkedin-post-checker-paper.txt) moves to the week after; the weekend-experiment post drafted for
+   Nov 3-4 then moves a week too, or the two swap. One technical piece per week.
+2. No links in the body; the first comment carries them. Paste as plain text (Ctrl+Shift+V).
+3. Image: an AI-generated editorial-style photograph from one of the four prompts in
+   content/linkedin-post-400-runs-image-prompts.txt (he generates it; no legible text in the picture; optional
+   ledger-palette text band overlaid afterwards by a small script). If the picture is AI-generated, the first
+   comment carries the last line "The picture is AI-generated. The numbers are not." (added 2026-10-27; he generated
+   the Boston, Zurich and Frankfurt pictures; banded versions in assets/post-400-runs-*.png via assets/make_band_400_runs.py).
+   The alternative stays available:
+   a six-row ledger card built like assets/make_card_eval8.py with every figure asserted from the run records.
+4. The first line is the one sentence that is a claim about HIM (what he expected). If it is not true to him,
+   the alternative opener is the second paragraph's first sentence, and the inversion moves to the end of that
+   paragraph: "I expected the opposite."
+5. If asked "which models?": the leaderboard link and the tier. Success lines may carry names in a reply
+   (Opus 4.8, GPT-5.6-sol, GPT-5.5 perfect on eval 8; Sonnet 4.6 six of six on eval 6 plain; Gemma 4 31B the
+   open-weight model on eval 7). Failure lines stay by tier: the $186,680 model and the fifty-basis-point model
+   are both Claude Haiku 4.5, the dividend on the old share count is GPT-5.4-mini - named in the tables, not here.
+6. If asked whether "the other way round" is a general claim: it is a description of the recorded runs, one run per
+   model per case, eight tasks; the first comment says so. Never "can do independently", never a deployment claim.
+7. If asked about the valuation line: the case's stated assumptions and the real NYSE close of 2026-06-15 are in
+   cases/mcd-fy2025-dcf.case.yaml; the finding is about the method, not the stock.
+8. If asked what "the four ways" were: an external AI review on 2026-09-06 (a mismatched-decision text that read as
+   an approval, a prose amount the grader did not read, a swapped date inside a quoted citation, a settle-plus-escalate
+   answer credited as a refusal); fixed 2026-09-07 with 191 regression checks; no published score moved.
+9. Re-read on the day for time words: "Since June" and "More than 400" hold; the count grows with every grid.
+10. Attribution wall: "I have been giving AI the work", "grading it the way an experienced professional grades work",
+    "my own grader". No desk claim, no employer. "the work of an asset manager's analysts and back office" describes
+    the tasks, not his seat.
+
+FACTS (not part of the post):
+- "More than 400 recorded runs ... every run published": 409 committed answer.json files outside prior/ attempts
+  (git ls-files, 2026-10-27), plus the eval-1 and eval-2 open-weight run files; the working tree count of files named
+  exactly answer.json is 402. Evals 3-8 live grids + the eval-6 agent arms (tools 56, checker 96, fixed checker 48,
+  repeats 120) + eval-7 local models.
+- "Since June": first commit 2026-06-06.
+- "Eight tasks, eight paid models from three vendors": README.md (eight evals); LEADERBOARD.md (Opus 4.8, Sonnet 4.6,
+  Haiku 4.5, GPT-5.6-sol, GPT-5.5, GPT-5.4, GPT-5.4-mini, Gemini 3.6 Flash); evals 1-2 open-weight only (first comment).
+- "no paid model settled the short basket, affirmed the mismatched swap, released the wrong NAV or settled the broken
+  redemption": outputs/eval4-live/*/grin-create-2026/answer.json all eight D1.decision DO_NOT_SETTLE;
+  outputs/eval5-live/*/irs-confirm-2026 all eight MISMATCHED; outputs/eval7-live/*/grsl-nav-2026 all eight paid HOLD;
+  outputs/eval8-live/*/grbo-redeem-2026 all eight HOLD (scanned 2026-10-27). GATE.RECON / GATE.MATCH / GATE.RELEASE /
+  GATE.SETTLE never fired (LEADERBOARD.md, README.md "honest negative" paragraphs).
+- "The exceptions all came from one small model, which booked a dividend on the old share count": GPT-5.4-mini,
+  eval 6 corrected dividend: computed on the superseded 50,000-share position and booked $8,500 (gold $6,800 on
+  40,000); GATE.VERSION + GATE.ELECT (README "What the live runs found (eval #6)"); GATE.ELECT count across the four
+  48-cell arms = 1, 0, 0, 0 (LEADERBOARD.md "All 48 cells" row); in the tools-arm repeats the same model booked $8,500
+  twice in five attempts (README Phase 2). "Exceptions" plural = the same booking in more than one recorded run.
+- "$13,320 short ... described it as $186,680 over": eval 4, Claude Haiku 4.5, first Claude-only round: in-kind value
+  overstated by exactly $200,000, residual +$186,680 against the gold -$13,320, still DO_NOT_SETTLE (README "What the
+  live runs found (eval #4)"). Unnamed in the post.
+- "five basis points as fifty ... EUR 2.5 million against EUR 125,000": eval 5, Claude Haiku 4.5: "50 bp" -> EUR
+  2,500,000 against ~EUR 25,000 a year on EUR 50 million notional for the five-year swap (1994-12-14 to 1999-12-14) =
+  EUR 125,000 over the life (cases/irs-confirm-2026.case.yaml; README "What the live runs found (eval #5)"; the same
+  figures on evals.finance). Unnamed in the post.
+- "McDonald's ... within 3% ... 20% below": cases/mcd-fy2025-dcf.case.yaml: ev_per_share_blunder 278.60 is -2.6%
+  from the 286.12 close of 2026-06-15; per_share 227.82 is -20.38% (upside_vs_price). The same sentence is on
+  evals.finance ("The wrong method can look the safest").
+- "35 of 48 ... 27 ... over-ruled ten correct ... answers into invented numbers": outputs/eval6-agent/summary.json
+  counts tools 35, checker 27 (plain 32, fixed checker 25); ten GATE.FABRICATION fires under the fixed reviewer, each
+  a refusal replaced by a computed value after the reviewer's rejection (README Phase 2; LEADERBOARD). "invented
+  numbers" is the wording of the published checker-paper post.
+- "An open-weight model ... desktop graphics card ... every check passed on both cases": Gemma 4 31B (4-bit) on a
+  desktop RTX 5090, 1.000 AllPass on both eval-7 packages (outputs/eval7-live/TAXONOMY.md local-model table); the paid
+  flagships Opus 4.8, GPT-5.6-sol, GPT-5.5 also 1.000 AllPass on both.
+- "four ways a wrong answer could score a perfect mark": the external AI review of 2026-09-06, four confirmed ways to
+  1.000/AllPass with no gate (memory: grader-hardening-backlog-2026-09; LEADERBOARD "Grader hardening, round six");
+  fixed 2026-09-07, 191 regression checks, no published cell moved. The later six-attacker reviews (eval 7 on Oct 6,
+  eval 8 on Oct 19-21) found further ways before any model ran; "with the before and after" = the TAXONOMY tables.
+- "one stale option mark, where every line ties": the planned eval-8 follow-on case (PLAN.md, workflow planned cases);
+  the tie-out settles at the marks of record, so a stale mark passes every line (the Oct 24 discussion).

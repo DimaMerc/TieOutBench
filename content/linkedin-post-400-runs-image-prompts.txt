@@ -1,0 +1,81 @@
+IMAGE PROMPTS for the retrospective post (content/linkedin-post-400-runs-driver.txt)
+Drafted 2026-10-27. He generates the picture himself; these are the prompts. Portrait 4:5 (1080x1350) gets the most
+feed space. Every prompt asks for NO legible text: image generators garble numbers, and every figure we publish must
+trace to a run record. If the post's line should appear on the picture, overlay it afterwards (see OVERLAY).
+===========================================================================
+
+WHY THESE SCENES
+- The post's point is one line on a statement, checked by a person. A red pen on one printed line carries it without words.
+- Prompt A is the four-eyes principle (Vier-Augen-Prinzip), the name every DACH reader has for a maker-checker control,
+  and the post's checker finding in one picture.
+- The places are where the readers are: Frankfurt, Zurich, Boston; Singapore for the "exotic" variant.
+- Editorial-photography wording ("candid, not posed", "natural skin texture", "no stock-photo smile") is what keeps it
+  from reading as a stock render.
+
+---------------------------------------------------------------------------
+PROMPT A - four eyes, Frankfurt at dawn (recommended)
+---------------------------------------------------------------------------
+Editorial photograph, candid, not posed. A glass-walled meeting room on a high floor at dawn, the Frankfurt skyline
+and the river soft in the background. Two professionals at a pale oak table: a woman in her late thirties in a
+tailored navy suit, hair tied back, composed and attentive, and a man in his forties in shirt sleeves. Between them a
+single printed settlement statement; she holds a red pen and points at one line, he leans in to read it. A laptop
+open beside them shows a blurred spreadsheet. Warm low morning light from the left, cool blue window light behind,
+shallow depth of field, 50mm lens, natural skin texture, muted palette of navy, cream and oak. No legible text, no
+logos, no watermark. Portrait, 4:5 aspect ratio.
+
+Negative / avoid: text, letters, numbers, logos, watermark, extra fingers, plastic skin, stock-photo smile, lens flare,
+neon, crypto imagery.
+
+---------------------------------------------------------------------------
+PROMPT B - the checker at sunrise, Lake Zurich
+---------------------------------------------------------------------------
+Editorial photograph, candid. A hotel terrace above Lake Zurich at sunrise, the Alps faint in the haze, mist on the
+water. A woman in her thirties in a cream linen suit sits at a small table with an espresso, an open laptop and a
+printed trade confirmation; she is circling one figure with a red pen, reading glasses pushed up into her hair, calm
+concentration. Golden side light, 85mm lens, shallow depth of field, natural skin, no retouching look, quiet colours.
+No legible text, no logos, no watermark. Portrait, 4:5 aspect ratio.
+
+Negative / avoid: text, letters, numbers, logos, watermark, extra fingers, plastic skin, posed smile, oversaturation.
+
+---------------------------------------------------------------------------
+PROMPT C - the exotic variant, Singapore
+---------------------------------------------------------------------------
+Editorial photograph, documentary feel. Early morning on the veranda of a colonial-style hotel in Singapore, palms
+and the Marina Bay towers in the humid haze. A woman in her thirties in a white blouse and tailored trousers works
+through a stack of printed statements with a red pen, laptop open, a glass of iced coffee beside her; the top page has
+one line marked. Warm humid light, 35mm lens, natural skin texture, no stock-photo look. No legible text, no logos,
+no watermark. Portrait, 4:5 aspect ratio.
+
+Negative / avoid: text, letters, numbers, logos, watermark, extra fingers, plastic skin, posed smile.
+
+---------------------------------------------------------------------------
+PROMPT D - home turf, Boston Seaport at dawn
+---------------------------------------------------------------------------
+Editorial photograph, candid. A corner office in Boston's Seaport at dawn, the harbour and the Harbor Islands grey-blue
+through the glass. A woman in her forties in a charcoal suit stands at a standing desk with a printed NAV statement in
+one hand and a red pen in the other, one line marked; a second monitor shows a blurred spreadsheet. Cool early light,
+one warm desk lamp, 50mm lens, natural skin, muted palette. No legible text, no logos, no watermark. Portrait, 4:5
+aspect ratio.
+
+Negative / avoid: text, letters, numbers, logos, watermark, extra fingers, plastic skin, posed smile.
+
+---------------------------------------------------------------------------
+TOOL NOTES
+---------------------------------------------------------------------------
+- Midjourney: append "--ar 4:5 --style raw" and put the avoid-list after "--no" (e.g. "--no text, logos, watermark").
+- GPT image / Ideogram / Flux: paste the prompt as written; set the size to portrait 1080x1350 or 4:5.
+- Run three or four variations and pick the one with the most natural hands and face; discard any with text artefacts.
+- No real firm's floor, badge or logo should be recognisable (the generator will sometimes invent one; discard those).
+
+---------------------------------------------------------------------------
+OVERLAY (optional, on the finished picture)
+---------------------------------------------------------------------------
+If the post's line should be on the image, do not ask the generator for it. Send the file and a small script adds a
+band at the bottom in the series' ledger palette, like the eval-8 card: "Strong on the call, shaky on the number. I
+expected the opposite." and "TieOutBench  -  evals.finance". The text is ours, so it stays true.
+
+---------------------------------------------------------------------------
+FIRST COMMENT ADDITION (only if the picture is AI-generated)
+---------------------------------------------------------------------------
+Add as the last line of the first comment: "The picture is AI-generated. The numbers are not."
+It pre-empts the one objection a reader of this post will make, and it is in his voice (plain, wry).
