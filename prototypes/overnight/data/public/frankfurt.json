@@ -1,0 +1,668 @@
+{
+ "SXR8.DE": {
+  "name": "iShares Core S&P 500 UCITS ETF USD (Acc)",
+  "hedge": "ES=F",
+  "analysis": {
+   "sessions": 49,
+   "sessions_with_a_bar": 49,
+   "from": "2026-09-01",
+   "to": "2026-11-09",
+   "slots_before_us_open": 1254,
+   "bars_in_feed": 1254,
+   "traded_bars": 1254,
+   "traded_share": 1.0,
+   "mean_dev_bps": 0.1,
+   "median_dev_bps": 1.5,
+   "median_abs_bps": 2.1,
+   "p90_abs_bps": 5.1,
+   "by_hour_berlin": {
+    "9": {
+     "n": 147,
+     "median_abs_bps": 2.1,
+     "mean_bps": -0.0
+    },
+    "10": {
+     "n": 196,
+     "median_abs_bps": 2.0,
+     "mean_bps": 0.1
+    },
+    "11": {
+     "n": 196,
+     "median_abs_bps": 1.9,
+     "mean_bps": 0.0
+    },
+    "12": {
+     "n": 196,
+     "median_abs_bps": 2.1,
+     "mean_bps": 0.1
+    },
+    "13": {
+     "n": 196,
+     "median_abs_bps": 1.9,
+     "mean_bps": 0.1
+    },
+    "14": {
+     "n": 191,
+     "median_abs_bps": 2.1,
+     "mean_bps": -0.1
+    },
+    "15": {
+     "n": 132,
+     "median_abs_bps": 2.3,
+     "mean_bps": 0.3
+    }
+   },
+   "trading_band": {
+    "q50_bps": 2.5,
+    "q90_bps": 7.6,
+    "calibration_prints": 624,
+    "n": 630,
+    "coverage": 0.997
+   },
+   "fit_check": {
+    "beta_hedge": 0.876,
+    "gamma_fx": -0.97,
+    "r2_train": 0.859,
+    "r2_oos_fitted": 0.974,
+    "r2_oos_beta1": 0.991,
+    "mae_fitted_bps": 6.4,
+    "mae_beta1_bps": 2.9,
+    "n_train": 24,
+    "n_test": 25
+   },
+   "dividends_in_window": 0
+  }
+ },
+ "IUSA.DE": {
+  "name": "iShares Core S&P 500 UCITS ETF USD (Dist)",
+  "hedge": "ES=F",
+  "analysis": {
+   "sessions": 49,
+   "sessions_with_a_bar": 49,
+   "from": "2026-09-01",
+   "to": "2026-11-09",
+   "slots_before_us_open": 1254,
+   "bars_in_feed": 1239,
+   "traded_bars": 1229,
+   "traded_share": 0.98,
+   "mean_dev_bps": -0.0,
+   "median_dev_bps": 1.2,
+   "median_abs_bps": 3.0,
+   "p90_abs_bps": 8.5,
+   "by_hour_berlin": {
+    "9": {
+     "n": 145,
+     "median_abs_bps": 2.9,
+     "mean_bps": 0.0
+    },
+    "10": {
+     "n": 195,
+     "median_abs_bps": 3.2,
+     "mean_bps": 0.1
+    },
+    "11": {
+     "n": 193,
+     "median_abs_bps": 2.9,
+     "mean_bps": -0.4
+    },
+    "12": {
+     "n": 189,
+     "median_abs_bps": 3.2,
+     "mean_bps": 0.2
+    },
+    "13": {
+     "n": 190,
+     "median_abs_bps": 2.7,
+     "mean_bps": -0.6
+    },
+    "14": {
+     "n": 188,
+     "median_abs_bps": 3.4,
+     "mean_bps": 0.5
+    },
+    "15": {
+     "n": 129,
+     "median_abs_bps": 2.9,
+     "mean_bps": 0.2
+    }
+   },
+   "trading_band": {
+    "q50_bps": 3.4,
+    "q90_bps": 10.8,
+    "calibration_prints": 606,
+    "n": 623,
+    "coverage": 0.981
+   },
+   "fit_check": {
+    "beta_hedge": 0.87,
+    "gamma_fx": -0.956,
+    "r2_train": 0.852,
+    "r2_oos_fitted": 0.961,
+    "r2_oos_beta1": 0.97,
+    "mae_fitted_bps": 8.1,
+    "mae_beta1_bps": 5.3,
+    "n_train": 24,
+    "n_test": 25
+   },
+   "dividends_in_window": 1
+  }
+ },
+ "VUSA.DE": {
+  "name": "Vanguard S&P 500 UCITS ETF (Dist)",
+  "hedge": "ES=F",
+  "analysis": {
+   "sessions": 49,
+   "sessions_with_a_bar": 49,
+   "from": "2026-09-01",
+   "to": "2026-11-09",
+   "slots_before_us_open": 1254,
+   "bars_in_feed": 1160,
+   "traded_bars": 1154,
+   "traded_share": 0.92,
+   "mean_dev_bps": -0.4,
+   "median_dev_bps": 1.0,
+   "median_abs_bps": 3.1,
+   "p90_abs_bps": 9.6,
+   "by_hour_berlin": {
+    "9": {
+     "n": 139,
+     "median_abs_bps": 2.8,
+     "mean_bps": -0.2
+    },
+    "10": {
+     "n": 183,
+     "median_abs_bps": 3.0,
+     "mean_bps": -0.2
+    },
+    "11": {
+     "n": 180,
+     "median_abs_bps": 3.4,
+     "mean_bps": -0.8
+    },
+    "12": {
+     "n": 181,
+     "median_abs_bps": 3.1,
+     "mean_bps": -0.6
+    },
+    "13": {
+     "n": 177,
+     "median_abs_bps": 2.8,
+     "mean_bps": -0.2
+    },
+    "14": {
+     "n": 173,
+     "median_abs_bps": 3.4,
+     "mean_bps": -1.2
+    },
+    "15": {
+     "n": 121,
+     "median_abs_bps": 3.2,
+     "mean_bps": 0.4
+    }
+   },
+   "trading_band": {
+    "q50_bps": 3.5,
+    "q90_bps": 11.6,
+    "calibration_prints": 567,
+    "n": 587,
+    "coverage": 0.961
+   },
+   "fit_check": {
+    "beta_hedge": 0.876,
+    "gamma_fx": -1.036,
+    "r2_train": 0.859,
+    "r2_oos_fitted": 0.965,
+    "r2_oos_beta1": 0.987,
+    "mae_fitted_bps": 8.0,
+    "mae_beta1_bps": 4.4,
+    "n_train": 24,
+    "n_test": 25
+   },
+   "dividends_in_window": 1
+  }
+ },
+ "EQQQ.DE": {
+  "name": "Invesco EQQQ Nasdaq-100 UCITS ETF (Dist)",
+  "hedge": "NQ=F",
+  "analysis": {
+   "sessions": 49,
+   "sessions_with_a_bar": 49,
+   "from": "2026-09-01",
+   "to": "2026-11-09",
+   "slots_before_us_open": 1254,
+   "bars_in_feed": 1152,
+   "traded_bars": 1138,
+   "traded_share": 0.907,
+   "mean_dev_bps": -0.4,
+   "median_dev_bps": 1.1,
+   "median_abs_bps": 5.2,
+   "p90_abs_bps": 15.4,
+   "by_hour_berlin": {
+    "9": {
+     "n": 138,
+     "median_abs_bps": 5.5,
+     "mean_bps": -1.3
+    },
+    "10": {
+     "n": 186,
+     "median_abs_bps": 4.5,
+     "mean_bps": -0.5
+    },
+    "11": {
+     "n": 182,
+     "median_abs_bps": 5.7,
+     "mean_bps": -0.5
+    },
+    "12": {
+     "n": 179,
+     "median_abs_bps": 4.8,
+     "mean_bps": -0.5
+    },
+    "13": {
+     "n": 171,
+     "median_abs_bps": 4.7,
+     "mean_bps": 0.1
+    },
+    "14": {
+     "n": 169,
+     "median_abs_bps": 5.4,
+     "mean_bps": -0.6
+    },
+    "15": {
+     "n": 113,
+     "median_abs_bps": 6.0,
+     "mean_bps": 0.7
+    }
+   },
+   "trading_band": {
+    "q50_bps": 6.8,
+    "q90_bps": 19.7,
+    "calibration_prints": 560,
+    "n": 578,
+    "coverage": 0.986
+   },
+   "fit_check": {
+    "beta_hedge": 0.978,
+    "gamma_fx": -1.212,
+    "r2_train": 0.925,
+    "r2_oos_fitted": 0.96,
+    "r2_oos_beta1": 0.981,
+    "mae_fitted_bps": 13.1,
+    "mae_beta1_bps": 9.4,
+    "n_train": 24,
+    "n_test": 25
+   },
+   "dividends_in_window": 1
+  }
+ },
+ "SPYL.DE": {
+  "name": "SPDR S&P 500 UCITS ETF (Acc)",
+  "hedge": "ES=F",
+  "analysis": {
+   "sessions": 49,
+   "sessions_with_a_bar": 49,
+   "from": "2026-09-01",
+   "to": "2026-11-09",
+   "slots_before_us_open": 1254,
+   "bars_in_feed": 1251,
+   "traded_bars": 1251,
+   "traded_share": 0.998,
+   "mean_dev_bps": 0.2,
+   "median_dev_bps": 1.2,
+   "median_abs_bps": 2.5,
+   "p90_abs_bps": 7.7,
+   "by_hour_berlin": {
+    "9": {
+     "n": 147,
+     "median_abs_bps": 2.6,
+     "mean_bps": 0.2
+    },
+    "10": {
+     "n": 196,
+     "median_abs_bps": 2.9,
+     "mean_bps": 0.3
+    },
+    "11": {
+     "n": 196,
+     "median_abs_bps": 2.3,
+     "mean_bps": 0.1
+    },
+    "12": {
+     "n": 194,
+     "median_abs_bps": 2.3,
+     "mean_bps": 0.0
+    },
+    "13": {
+     "n": 196,
+     "median_abs_bps": 2.4,
+     "mean_bps": 0.3
+    },
+    "14": {
+     "n": 190,
+     "median_abs_bps": 2.6,
+     "mean_bps": -0.1
+    },
+    "15": {
+     "n": 132,
+     "median_abs_bps": 2.9,
+     "mean_bps": 0.7
+    }
+   },
+   "trading_band": {
+    "q50_bps": 2.9,
+    "q90_bps": 9.2,
+    "calibration_prints": 622,
+    "n": 629,
+    "coverage": 0.976
+   },
+   "fit_check": {
+    "beta_hedge": 0.874,
+    "gamma_fx": -0.985,
+    "r2_train": 0.859,
+    "r2_oos_fitted": 0.973,
+    "r2_oos_beta1": 0.989,
+    "mae_fitted_bps": 6.5,
+    "mae_beta1_bps": 4.0,
+    "n_train": 24,
+    "n_test": 25
+   },
+   "dividends_in_window": 0
+  }
+ },
+ "D5BM.DE": {
+  "name": "Xtrackers S&P 500 Swap UCITS ETF 1C",
+  "hedge": "ES=F",
+  "analysis": {
+   "sessions": 49,
+   "sessions_with_a_bar": 49,
+   "from": "2026-09-01",
+   "to": "2026-11-09",
+   "slots_before_us_open": 1254,
+   "bars_in_feed": 740,
+   "traded_bars": 705,
+   "traded_share": 0.562,
+   "mean_dev_bps": 0.1,
+   "median_dev_bps": 2.1,
+   "median_abs_bps": 5.2,
+   "p90_abs_bps": 14.5,
+   "by_hour_berlin": {
+    "9": {
+     "n": 84,
+     "median_abs_bps": 4.6,
+     "mean_bps": 1.4
+    },
+    "10": {
+     "n": 109,
+     "median_abs_bps": 4.8,
+     "mean_bps": -0.6
+    },
+    "11": {
+     "n": 105,
+     "median_abs_bps": 5.5,
+     "mean_bps": -0.1
+    },
+    "12": {
+     "n": 111,
+     "median_abs_bps": 4.6,
+     "mean_bps": -0.6
+    },
+    "13": {
+     "n": 132,
+     "median_abs_bps": 5.0,
+     "mean_bps": 0.5
+    },
+    "14": {
+     "n": 98,
+     "median_abs_bps": 6.3,
+     "mean_bps": 1.5
+    },
+    "15": {
+     "n": 66,
+     "median_abs_bps": 7.0,
+     "mean_bps": -1.6
+    }
+   },
+   "trading_band": {
+    "q50_bps": 6.1,
+    "q90_bps": 20.1,
+    "calibration_prints": 343,
+    "n": 362,
+    "coverage": 0.989
+   },
+   "fit_check": {
+    "beta_hedge": 0.919,
+    "gamma_fx": -1.11,
+    "r2_train": 0.874,
+    "r2_oos_fitted": 0.949,
+    "r2_oos_beta1": 0.979,
+    "mae_fitted_bps": 9.3,
+    "mae_beta1_bps": 6.2,
+    "n_train": 24,
+    "n_test": 25
+   },
+   "dividends_in_window": 0
+  }
+ },
+ "LYPS.DE": {
+  "name": "Amundi Core S&P 500 Swap UCITS ETF (EUR Dist)",
+  "hedge": "ES=F",
+  "analysis": {
+   "sessions": 49,
+   "sessions_with_a_bar": 49,
+   "from": "2026-09-01",
+   "to": "2026-11-09",
+   "slots_before_us_open": 1254,
+   "bars_in_feed": 589,
+   "traded_bars": 530,
+   "traded_share": 0.423,
+   "mean_dev_bps": 0.8,
+   "median_dev_bps": 1.5,
+   "median_abs_bps": 3.7,
+   "p90_abs_bps": 10.6,
+   "by_hour_berlin": {
+    "9": {
+     "n": 77,
+     "median_abs_bps": 2.7,
+     "mean_bps": -0.2
+    },
+    "10": {
+     "n": 85,
+     "median_abs_bps": 4.8,
+     "mean_bps": 2.2
+    },
+    "11": {
+     "n": 69,
+     "median_abs_bps": 4.7,
+     "mean_bps": 1.5
+    },
+    "12": {
+     "n": 77,
+     "median_abs_bps": 4.1,
+     "mean_bps": -1.0
+    },
+    "13": {
+     "n": 80,
+     "median_abs_bps": 3.3,
+     "mean_bps": 2.1
+    },
+    "14": {
+     "n": 77,
+     "median_abs_bps": 2.7,
+     "mean_bps": -0.6
+    },
+    "15": {
+     "n": 65,
+     "median_abs_bps": 4.1,
+     "mean_bps": 1.8
+    }
+   },
+   "trading_band": {
+    "q50_bps": 4.1,
+    "q90_bps": 12.4,
+    "calibration_prints": 236,
+    "n": 294,
+    "coverage": 0.966
+   },
+   "fit_check": {
+    "beta_hedge": 0.903,
+    "gamma_fx": -1.016,
+    "r2_train": 0.877,
+    "r2_oos_fitted": 0.958,
+    "r2_oos_beta1": 0.977,
+    "mae_fitted_bps": 8.5,
+    "mae_beta1_bps": 6.5,
+    "n_train": 24,
+    "n_test": 25
+   },
+   "dividends_in_window": 0
+  }
+ },
+ "H4ZF.DE": {
+  "name": "HSBC S&P 500 UCITS ETF",
+  "hedge": "ES=F",
+  "analysis": {
+   "sessions": 49,
+   "sessions_with_a_bar": 49,
+   "from": "2026-09-01",
+   "to": "2026-11-09",
+   "slots_before_us_open": 1254,
+   "bars_in_feed": 465,
+   "traded_bars": 402,
+   "traded_share": 0.321,
+   "mean_dev_bps": 1.9,
+   "median_dev_bps": 3.8,
+   "median_abs_bps": 6.4,
+   "p90_abs_bps": 17.3,
+   "by_hour_berlin": {
+    "9": {
+     "n": 75,
+     "median_abs_bps": 7.3,
+     "mean_bps": 1.8
+    },
+    "10": {
+     "n": 69,
+     "median_abs_bps": 6.2,
+     "mean_bps": 2.5
+    },
+    "11": {
+     "n": 64,
+     "median_abs_bps": 6.0,
+     "mean_bps": 0.5
+    },
+    "12": {
+     "n": 59,
+     "median_abs_bps": 6.4,
+     "mean_bps": 1.4
+    },
+    "13": {
+     "n": 58,
+     "median_abs_bps": 6.1,
+     "mean_bps": 2.4
+    },
+    "14": {
+     "n": 49,
+     "median_abs_bps": 5.9,
+     "mean_bps": 2.5
+    },
+    "15": {
+     "n": 28,
+     "median_abs_bps": 7.5,
+     "mean_bps": 2.9
+    }
+   },
+   "trading_band": {
+    "q50_bps": 6.1,
+    "q90_bps": 16.9,
+    "calibration_prints": 190,
+    "n": 212,
+    "coverage": 0.873
+   },
+   "fit_check": {
+    "beta_hedge": 0.921,
+    "gamma_fx": -1.075,
+    "r2_train": 0.894,
+    "r2_oos_fitted": 0.951,
+    "r2_oos_beta1": 0.967,
+    "mae_fitted_bps": 9.1,
+    "mae_beta1_bps": 7.8,
+    "n_train": 24,
+    "n_test": 25
+   },
+   "dividends_in_window": 0
+  }
+ },
+ "ZPRR.DE": {
+  "name": "SPDR Russell 2000 US Small Cap UCITS ETF",
+  "hedge": "RTY=F",
+  "analysis": {
+   "sessions": 49,
+   "sessions_with_a_bar": 49,
+   "from": "2026-09-01",
+   "to": "2026-11-09",
+   "slots_before_us_open": 1254,
+   "bars_in_feed": 1069,
+   "traded_bars": 1043,
+   "traded_share": 0.832,
+   "mean_dev_bps": 0.6,
+   "median_dev_bps": 1.7,
+   "median_abs_bps": 5.3,
+   "p90_abs_bps": 13.8,
+   "by_hour_berlin": {
+    "9": {
+     "n": 128,
+     "median_abs_bps": 5.5,
+     "mean_bps": 2.1
+    },
+    "10": {
+     "n": 170,
+     "median_abs_bps": 5.5,
+     "mean_bps": 1.9
+    },
+    "11": {
+     "n": 171,
+     "median_abs_bps": 5.7,
+     "mean_bps": 1.4
+    },
+    "12": {
+     "n": 166,
+     "median_abs_bps": 5.3,
+     "mean_bps": -0.2
+    },
+    "13": {
+     "n": 156,
+     "median_abs_bps": 4.7,
+     "mean_bps": -0.1
+    },
+    "14": {
+     "n": 146,
+     "median_abs_bps": 5.5,
+     "mean_bps": -1.7
+    },
+    "15": {
+     "n": 106,
+     "median_abs_bps": 6.1,
+     "mean_bps": 0.6
+    }
+   },
+   "trading_band": {
+    "q50_bps": 6.4,
+    "q90_bps": 16.0,
+    "calibration_prints": 521,
+    "n": 522,
+    "coverage": 0.96
+   },
+   "fit_check": {
+    "beta_hedge": 1.011,
+    "gamma_fx": -0.652,
+    "r2_train": 0.954,
+    "r2_oos_fitted": 0.955,
+    "r2_oos_beta1": 0.983,
+    "mae_fitted_bps": 10.9,
+    "mae_beta1_bps": 6.3,
+    "n_train": 24,
+    "n_test": 25
+   },
+   "dividends_in_window": 0
+  }
+ }
+}

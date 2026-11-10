@@ -1,0 +1,6386 @@
+{
+ "repaired_runs": null,
+ "subsets": {
+  "sonnet": {
+   "from": "haiku",
+   "sample": 0.1,
+   "selected_runs": 53
+  },
+  "local": {
+   "from": "haiku",
+   "sample": 0.1,
+   "selected_runs": 53
+  },
+  "local9b": {
+   "from": "haiku",
+   "sample": 0.1,
+   "selected_runs": 53
+  }
+ },
+ "holdings": [
+  {
+   "symbol": "AAPL",
+   "name": "APPLE INC",
+   "weight": 8.260000000000002,
+   "news_ticker": "AAPL"
+  },
+  {
+   "symbol": "NVDA",
+   "name": "NVIDIA CORP",
+   "weight": 7.8100000000000005,
+   "news_ticker": "NVDA"
+  },
+  {
+   "symbol": "MSFT",
+   "name": "MICROSOFT CORP",
+   "weight": 6.68,
+   "news_ticker": "MSFT"
+  },
+  {
+   "symbol": "AMZN",
+   "name": "AMAZON.COM INC",
+   "weight": 4.65,
+   "news_ticker": "AMZN"
+  },
+  {
+   "symbol": "MU",
+   "name": "MICRON TECHNOLOGY INC",
+   "weight": 4.01,
+   "news_ticker": "MU"
+  },
+  {
+   "symbol": "AMD",
+   "name": "ADVANCED MICRO DEVICES INC",
+   "weight": 3.5700000000000003,
+   "news_ticker": "AMD"
+  },
+  {
+   "symbol": "TSLA",
+   "name": "TESLA INC",
+   "weight": 3.2800000000000002,
+   "news_ticker": "TSLA"
+  },
+  {
+   "symbol": "META",
+   "name": "META PLATFORMS INC CLASS A",
+   "weight": 3.0300000000000002,
+   "news_ticker": "META"
+  },
+  {
+   "symbol": "WMT",
+   "name": "WALMART INC",
+   "weight": 2.81,
+   "news_ticker": "WMT"
+  },
+  {
+   "symbol": "GOOGL",
+   "name": "ALPHABET INC CLASS A",
+   "weight": 2.75,
+   "news_ticker": "GOOGL"
+  }
+ ],
+ "nights": [
+  {
+   "date": "2026-08-13",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 100,
+     "output": {
+      "flag": true,
+      "direction": "down",
+      "confidence": "medium",
+      "cited_ids": [
+       "ne451f7c8"
+      ],
+      "reason": "Supreme Court declined to pause App Store commission-rate litigation at 17:00, a fund-specific legal development at Apple (8.3% weight) that futures do not reflect."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 1134,
+      "prompt_tokens": 18800,
+      "total_tokens": 19934
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 45369
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 147,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Post-4pm holding news is mostly routine filings, commentary, or small-cap items. The Apple court ruling and Micron short-interest report are procedural or unquantified, not clear material moves beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 1127,
+      "prompt_tokens": 27403,
+      "total_tokens": 28530
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 65642
+    },
+    "sonnet@1": {
+     "model": "claude-sonnet-5-5",
+     "hour": 1,
+     "n_items": 100,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "No clear fund-specific after-4pm event at a large holding. The Apple court ruling is procedural, the Burry commentary on Nvidia and Micron is opinion, and the Berkshire Alphabet stake is too small to matter."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 389,
+      "prompt_tokens": 18800,
+      "total_tokens": 19189
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 45369
+    },
+    "local@1": {
+     "model": "qwen3.8-2b-distill",
+     "hour": 1,
+     "n_items": 100,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "No post-4pm news item mentions a fund holding (Apple, NVIDIA, Microsoft, Amazon, Micron, AMD, Tesla, Meta, Walmart, or Alphabet). The only relevant article discusses Wells Fargo's tokenized deposits offering, which is not related to QQQ holdings."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 13337,
+      "completion_tokens": 366,
+      "total_tokens": 13703,
+      "completion_tokens_details": {
+       "reasoning_tokens": 267
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 45369
+    },
+    "local9b@1": {
+     "model": "qwen3.5-9b",
+     "hour": 1,
+     "n_items": 100,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "News items are mostly about non-holdings or macro themes already reflected in futures. No specific material corporate events for top holdings occurred after 4pm."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 13339,
+      "completion_tokens": 60,
+      "total_tokens": 13399,
+      "completion_tokens_details": {
+       "reasoning_tokens": 0
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 45369
+    }
+   }
+  },
+  {
+   "date": "2026-08-14",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 550,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Post-4pm holding news is small or ambiguous in direction: NVDA guarantee cut, AAPL memory-chip warning, GOOGL Waymo approval. None is clearly material at its weight."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 1873,
+      "prompt_tokens": 102504,
+      "total_tokens": 104377
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 243367
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 585,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Post-4pm holding-specific items (Nvidia's reduced OpenAI guarantee, Berkshire's 13F, Waymo approval, Meta's $567M penalty) are small, stale, or direction-ambiguous at these weights. No clear fund-specific tilt beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 1895,
+      "prompt_tokens": 108969,
+      "total_tokens": 110864
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 258677
+    }
+   }
+  },
+  {
+   "date": "2026-08-17",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 72,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "After-4pm items at top holdings are routine filings, opinion pieces, or minor product news. The Anthropic revenue reports concern smaller software names and are largely reflected in index futures.",
+      "reason_note": ""
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 1086,
+      "prompt_tokens": 13865,
+      "total_tokens": 14951
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 33532
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 124,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "After-4pm items are mostly 13F filings, routine insider sales, lawsuits without material impact, or stale recaps. The Anthropic revenue report predates 4pm and is already in the reference value."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 1051,
+      "prompt_tokens": 23463,
+      "total_tokens": 24514
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 56008
+    }
+   }
+  },
+  {
+   "date": "2026-08-18",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 108,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Apple's EU App Store changes are the only sizable post-4pm holding event, but the expected effect is small and mixed. Other items are routine insider filings, macro-driven moves, or immaterial."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 1075,
+      "prompt_tokens": 20469,
+      "total_tokens": 21544
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 48991
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 162,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "After-4pm holding news is minor or direction-ambiguous. Tesla robotaxi limits and Apple EU fee changes are small and mixed, so nothing clearly moves the basket beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 1118,
+      "prompt_tokens": 30497,
+      "total_tokens": 31615
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 72523
+    }
+   }
+  },
+  {
+   "date": "2026-08-19",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 74,
+     "output": {
+      "flag": true,
+      "direction": "down",
+      "confidence": "low",
+      "cited_ids": [
+       "ne9ed9ac3"
+      ],
+      "reason": "Post-4pm report says AMD fell 3.7% on Google's Marvell custom-chip deal, a competitive hit specific to AMD (3.6% weight). Timing and the share of the move beyond sector hedges are unclear."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 1300,
+      "prompt_tokens": 14151,
+      "total_tokens": 15451
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 34022
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 116,
+     "output": {
+      "flag": true,
+      "direction": "down",
+      "confidence": "medium",
+      "cited_ids": [
+       "n6ece3617",
+       "ne9ed9ac3"
+      ],
+      "reason": "Walmart's post-4pm Q2 report and Q3 guidance were followed by a stock decline ('despite these results'). AMD also fell 3.7% on the Google-Marvell chip deal. Neither move is in the hedge, but the direction is inferred from truncated text."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 2180,
+      "prompt_tokens": 21995,
+      "total_tokens": 24175
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 52544
+    },
+    "sonnet@1": {
+     "model": "claude-sonnet-5-5",
+     "hour": 1,
+     "n_items": 74,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "No fund-specific news after 4pm. The AMD drop on the Google-Marvell deal looks like a regular-session move already in the 4pm value. The rest is analyst notes, insider sales or unrelated items."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 357,
+      "prompt_tokens": 14151,
+      "total_tokens": 14508
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 34022
+    },
+    "sonnet@4": {
+     "model": "claude-sonnet-5-5",
+     "hour": 4,
+     "n_items": 116,
+     "output": {
+      "flag": true,
+      "direction": "unclear",
+      "confidence": "low",
+      "cited_ids": [
+       "n6ece3617"
+      ],
+      "reason": "Walmart (2.8% weight) posted Q2 results and guidance after 4pm. This is fund-specific and not in index futures, but the snippet doesn't show a clear beat or miss, so direction is unclear."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 651,
+      "prompt_tokens": 21995,
+      "total_tokens": 22646
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 52544
+    },
+    "local@1": {
+     "model": "qwen3.8-2b-distill",
+     "hour": 1,
+     "n_items": 74,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "No fund-specific material events after 4pm exceed hedge-implied expectations. Apple investment is negligible; Nvidia/Microsoft news reflects normal market sentiment and analyst guidance already priced in."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 9967,
+      "completion_tokens": 461,
+      "total_tokens": 10428,
+      "completion_tokens_details": {
+       "reasoning_tokens": 389
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 34022
+    },
+    "local@4": {
+     "model": "qwen3.8-2b-distill",
+     "hour": 4,
+     "n_items": 116,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "No fund-specific news (guidance changes, major deals, regulatory actions) affects QQQ beyond general market-moving events already reflected in index futures prices."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 15357,
+      "completion_tokens": 303,
+      "total_tokens": 15660,
+      "completion_tokens_details": {
+       "reasoning_tokens": 226
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 52544
+    },
+    "local9b@1": {
+     "model": "qwen3.5-9b",
+     "hour": 1,
+     "n_items": 74,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "News items are mostly sector-wide moves, analyst reports, or macro events already reflected in futures. No specific fund-level corporate actions or material holding-specific news post-4pm."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 9969,
+      "completion_tokens": 64,
+      "total_tokens": 10033,
+      "completion_tokens_details": {
+       "reasoning_tokens": 0
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 34022
+    },
+    "local9b@4": {
+     "model": "qwen3.5-9b",
+     "hour": 4,
+     "n_items": 116,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "News items are mostly pre-4pm or general market commentary. No fund-specific material events (earnings, guidance, deals) for top holdings occurred after 4pm."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 15359,
+      "completion_tokens": 64,
+      "total_tokens": 15423,
+      "completion_tokens_details": {
+       "reasoning_tokens": 0
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 52544
+    }
+   }
+  },
+  {
+   "date": "2026-08-20",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 89,
+     "output": {
+      "flag": true,
+      "direction": "down",
+      "confidence": "high",
+      "cited_ids": [
+       "n80252b34",
+       "n91b291c6"
+      ],
+      "reason": "Walmart (2.8% weight) fell about 9% after its results were released after 4pm. Single-stock moves are not in index, bond, gold, bitcoin or currency hedges, so the fund should drop beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 1276,
+      "prompt_tokens": 17057,
+      "total_tokens": 18333
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 40886
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 124,
+     "output": {
+      "flag": true,
+      "direction": "down",
+      "confidence": "medium",
+      "cited_ids": [
+       "n80252b34",
+       "n91b291c6",
+       "n06f69c4a",
+       "n1a3daf8c"
+      ],
+      "reason": "Walmart (about 2.8% weight) fell about 9% on slowing US sales after its results, a fund-specific move that index futures would not capture. Timing of the drop is not fully clear."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 1321,
+      "prompt_tokens": 23535,
+      "total_tokens": 24856
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 56248
+    },
+    "sonnet@1": {
+     "model": "claude-sonnet-5-5",
+     "hour": 1,
+     "n_items": 89,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "Walmart's 9% drop came on its pre-market earnings and traded during the session, so the 4pm value already has it. The rest is routine insider sales, a minor Micron lab announcement and macro/sector noise."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 298,
+      "prompt_tokens": 17057,
+      "total_tokens": 17355
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 40886
+    },
+    "sonnet@4": {
+     "model": "claude-sonnet-5-5",
+     "hour": 4,
+     "n_items": 124,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "Walmart's earnings drop happened during the regular session, so the 4pm value already reflects it. The remaining items are minor or routine (insider sales, a Micron lab, early Nvidia talks), so nothing is fund-specific and material after 4pm."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 324,
+      "prompt_tokens": 23535,
+      "total_tokens": 23859
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 56248
+    },
+    "local@1": {
+     "model": "qwen3.8-2b-distill",
+     "hour": 1,
+     "n_items": 89,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "No news after 4pm ET on August 20, 2026 provides specific information about Apple (AAPL) or NVIDIA (NVDA) holdings that would move the fund's basket value beyond what hedge instruments already imply. All relevant company-specific events concern Tesla, Meta, or Alphabet in general, which are already priced into the QQQ hedge."
+     },
+     "violations": [
+      "reason_too_long"
+     ],
+     "usage": {
+      "prompt_tokens": 11872,
+      "completion_tokens": 474,
+      "total_tokens": 12346,
+      "completion_tokens_details": {
+       "reasoning_tokens": 363
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 40886
+    },
+    "local@4": {
+     "model": "qwen3.8-2b-distill",
+     "hour": 4,
+     "n_items": 124,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "QQQ (Invesco QQQ Trust) is a basket of top 10 NASDAQ-100 constituents already fully priced into index futures and all major hedge instruments. The post-4pm news items relate to individual stock company-specific updates, which are inherently reflected in the index-level data already available through futures contracts and indices."
+     },
+     "violations": [
+      "reason_too_long"
+     ],
+     "usage": {
+      "prompt_tokens": 16351,
+      "completion_tokens": 1700,
+      "total_tokens": 18051,
+      "completion_tokens_details": {
+       "reasoning_tokens": 1573
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 56248
+    },
+    "local9b@1": {
+     "model": "qwen3.5-9b",
+     "hour": 1,
+     "n_items": 89,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "News items are mostly macro, competitor-focused, or pre-4pm moves already reflected in futures. No specific fund-level catalysts found."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 11874,
+      "completion_tokens": 57,
+      "total_tokens": 11931,
+      "completion_tokens_details": {
+       "reasoning_tokens": 0
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 40886
+    },
+    "local9b@4": {
+     "model": "qwen3.5-9b",
+     "hour": 4,
+     "n_items": 124,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "News items are mostly macro, unrelated to fund holdings, or already reflected in futures. No specific material events for top holdings post-4pm."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 16353,
+      "completion_tokens": 64,
+      "total_tokens": 16417,
+      "completion_tokens_details": {
+       "reasoning_tokens": 0
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 56248
+    }
+   }
+  },
+  {
+   "date": "2026-08-21",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 343,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Post-4pm holding news is mostly 13F filings, routine insider sales and analyst notes. The material items (NVDA memory and pricing, MU capacity, TSLA robotaxi) point in mixed or unclear directions."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 4047,
+      "prompt_tokens": 63902,
+      "total_tokens": 67949
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 152157
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 363,
+     "output": {
+      "flag": true,
+      "direction": "up",
+      "confidence": "medium",
+      "cited_ids": [
+       "ne35b7b53"
+      ],
+      "reason": "Alphabet (2.8% weight) beat Q2 earnings estimates and rose about 4.6% in extended trading. Index futures would not capture this single-stock move."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 1593,
+      "prompt_tokens": 67583,
+      "total_tokens": 69176
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 161036
+    },
+    "sonnet@4": {
+     "model": "claude-sonnet-5-5",
+     "hour": 4,
+     "n_items": 363,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Nothing large and fund-specific after 4pm. Nvidia's reported server price hikes, Apple's small job cuts and a Walmart target cut are minor or ambiguous, and Nvidia earnings are not until Aug 26. Hedge covers the rest."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 454,
+      "prompt_tokens": 67583,
+      "total_tokens": 68037
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 161036
+    },
+    "local@4": {
+     "error": "HTTP Error 400: Bad Request: {\"error\":\"Engine protocol predict request returned 400: {\\\"error\\\":{\\\"code\\\":400,\\\"message\\\":\\\"request (47072 tokens) exceeds the available context size (40960 tokens), try increasing it\\\",\\\"type\\\":\\\"exceed_context_size_error\\\",\\\"n_prompt_tokens\\\":47072,\\\"n_ctx\\\":40960}}"
+    },
+    "local9b@4": {
+     "model": "qwen3.5-9b",
+     "hour": 4,
+     "n_items": 363,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "News items are mostly macro, analyst commentary, or pre-4pm. No specific fund-level events found after 4pm."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 47078,
+      "completion_tokens": 55,
+      "total_tokens": 47133,
+      "completion_tokens_details": {
+       "reasoning_tokens": 0
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 161036
+    }
+   }
+  },
+  {
+   "date": "2026-08-24",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 60,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Post-4pm holding news is routine partnerships, insider or legal items, or small product changes. None is material at these weights, and the Micron move appears already in the close.",
+      "scope_note": ""
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 958,
+      "prompt_tokens": 11595,
+      "total_tokens": 12553
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 28011
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 98,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "After-4pm items are mostly minor or non-material for the top holdings. The Micron and SK Hynix headlines are mixed and largely sector-wide, so they do not clearly move the basket beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 992,
+      "prompt_tokens": 18527,
+      "total_tokens": 19519
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 44591
+    },
+    "sonnet@1": {
+     "model": "claude-sonnet-5-5",
+     "hour": 1,
+     "n_items": 60,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "No fund-specific after-4pm news at a large holding. Micron's drop came before the close, the SK Hynix/KOSPI sell-off is sector-wide and should show in Nasdaq futures, and the Nvidia, Tesla and Apple items are minor."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 390,
+      "prompt_tokens": 11595,
+      "total_tokens": 11985
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 28011
+    },
+    "local@1": {
+     "model": "qwen3.8-2b-distill",
+     "hour": 1,
+     "n_items": 60,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "No fund-specific information (guidance, deals, regulatory actions) appearing in news items published after 4pm NY time that would move the basket value beyond hedge-implied values. All post-16:00 news relates to broader market events already reflected by QQQ index futures."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 7937,
+      "completion_tokens": 584,
+      "total_tokens": 8521,
+      "completion_tokens_details": {
+       "reasoning_tokens": 485
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 28011
+    },
+    "local9b@1": {
+     "model": "qwen3.5-9b",
+     "hour": 1,
+     "n_items": 60,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "News items are either pre-4pm (already priced), relate to non-holdings, or describe broad sector moves already reflected in futures."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 7939,
+      "completion_tokens": 58,
+      "total_tokens": 7997,
+      "completion_tokens_details": {
+       "reasoning_tokens": 0
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 28011
+    }
+   }
+  },
+  {
+   "date": "2026-08-25",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 82,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "After-4pm items for holdings are routine (10b5-1 insider sales, product refreshes, reiterated ratings) or stale. The Morgan Stanley NVDA note is ambiguous and not clearly material."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 1515,
+      "prompt_tokens": 15906,
+      "total_tokens": 17421
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 37640
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 110,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Post-4pm holding items are routine insider sales, analyst notes, or single-source aggregator pieces. The one possible catalyst, a Berkshire Alphabet purchase, is unverified and at 2.8% weight is not clearly material."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 1811,
+      "prompt_tokens": 20979,
+      "total_tokens": 22790
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 50008
+    }
+   }
+  },
+  {
+   "date": "2026-08-26",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 56,
+     "output": {
+      "flag": true,
+      "direction": "up",
+      "confidence": "low",
+      "cited_ids": [
+       "n3f10f829"
+      ],
+      "reason": "Meta (3.0% weight) settling a teen social media case after 4pm; Morningstar says it lifts a legal overhang. Fund-specific, not in index futures, but the $17B cost cuts against it."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 764,
+      "prompt_tokens": 11136,
+      "total_tokens": 11900
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 26390
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 61,
+     "output": {
+      "flag": true,
+      "direction": "up",
+      "confidence": "medium",
+      "cited_ids": [
+       "n3f10f829"
+      ],
+      "reason": "Meta's $17B teen social media settlement, published after 4pm, lifts a major legal overhang at a 3% holding. Index futures would not capture this company-specific news."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 480,
+      "prompt_tokens": 12006,
+      "total_tokens": 12486
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 28524
+    },
+    "sonnet@1": {
+     "model": "claude-sonnet-5-5",
+     "hour": 1,
+     "n_items": 56,
+     "output": {
+      "flag": true,
+      "direction": "up",
+      "confidence": "low",
+      "cited_ids": [
+       "n3f10f829"
+      ],
+      "reason": "Meta (3.0% weight) reportedly agreed a $17B teen social media settlement after 4pm. Morningstar says it lifts a legal overhang. Fund-specific, but the size relative to expectations is unknown."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 572,
+      "prompt_tokens": 11136,
+      "total_tokens": 11708
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 26390
+    },
+    "sonnet@4": {
+     "model": "claude-sonnet-5-5",
+     "hour": 4,
+     "n_items": 61,
+     "output": {
+      "flag": true,
+      "direction": "up",
+      "confidence": "low",
+      "cited_ids": [
+       "n3f10f829"
+      ],
+      "reason": "Meta (3.0% weight) reportedly settled the teen social media case for $17B after 4pm. Morningstar says this removes a legal overhang with minimal revenue impact. This is fund-specific, but the size is modest."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 768,
+      "prompt_tokens": 12006,
+      "total_tokens": 12774
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 28524
+    },
+    "local@1": {
+     "model": "qwen3.8-2b-distill",
+     "hour": 1,
+     "n_items": 56,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "The hedge-implied reference value at this hour (16:47 UTC/4pm EDT) already incorporates all relevant market information through index futures and bond yields available up to that point. No fund-specific news from after 4pm NY time on August 25 affects the basket beyond what is already priced into the hedge instruments."
+     },
+     "violations": [
+      "reason_too_long"
+     ],
+     "usage": {
+      "prompt_tokens": 7787,
+      "completion_tokens": 789,
+      "total_tokens": 8576,
+      "completion_tokens_details": {
+       "reasoning_tokens": 680
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 26390
+    },
+    "local@4": {
+     "model": "qwen3.8-2b-distill",
+     "hour": 4,
+     "n_items": 61,
+     "output": {
+      "flag": true,
+      "direction": "up",
+      "confidence": "high",
+      "cited_ids": [
+       "ne20a2c7f"
+      ],
+      "reason": "Corning (AAPL) announced glass/fiber optics business development following the market close at 4pm ET. This company-specific announcement is not captured in index or futures prices and could cause AAPL to exceed its hedge-implied value."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 8396,
+      "completion_tokens": 437,
+      "total_tokens": 8833,
+      "completion_tokens_details": {
+       "reasoning_tokens": 296
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 28524
+    },
+    "local9b@1": {
+     "model": "qwen3.5-9b",
+     "hour": 1,
+     "n_items": 56,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "News items are mostly institutional trades in non-holdings or pre-4pm events. No fund-specific material news for top holdings post-4pm."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 7789,
+      "completion_tokens": 60,
+      "total_tokens": 7849,
+      "completion_tokens_details": {
+       "reasoning_tokens": 0
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 26390
+    },
+    "local9b@4": {
+     "model": "qwen3.5-9b",
+     "hour": 4,
+     "n_items": 61,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "News items are mostly institutional trades in non-holdings or pre-4pm events. No fund-specific material news for top holdings post-4pm."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 8398,
+      "completion_tokens": 66,
+      "total_tokens": 8464,
+      "completion_tokens_details": {
+       "reasoning_tokens": 0
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 28524
+    }
+   }
+  },
+  {
+   "date": "2026-08-27",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 97,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Post-4pm items are mostly 13F filings and recaps. The Nvidia and Meta news was already in the regular session. The Micron capex item is ambiguous in direction and too small at 4% weight to justify a flag."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 1193,
+      "prompt_tokens": 19156,
+      "total_tokens": 20349
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 44710
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 109,
+     "output": {
+      "flag": true,
+      "direction": "up",
+      "confidence": "medium",
+      "cited_ids": [
+       "n3e5cb213"
+      ],
+      "reason": "Micron (about 4% of fund) announced after 4pm that it is doubling capex and expects over $45B in fiscal 2027 spending amid an AI memory shortage. Index futures would not fully capture this company-specific news."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 1603,
+      "prompt_tokens": 21401,
+      "total_tokens": 23004
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 49867
+    },
+    "sonnet@4": {
+     "model": "claude-sonnet-5-5",
+     "hour": 4,
+     "n_items": 109,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "Nvidia's results and the stock surge were priced in the regular session before 4pm. The Meta settlement dates from Wednesday. The rest is institutional filings, insider-sale notes and rehashes, with no new fund-specific news at a large holding."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 310,
+      "prompt_tokens": 21401,
+      "total_tokens": 21711
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 49867
+    },
+    "local@4": {
+     "model": "qwen3.8-2b-distill",
+     "hour": 4,
+     "n_items": 109,
+     "output": {
+      "flag": true,
+      "direction": "down",
+      "confidence": "medium",
+      "cited_ids": [
+       "AAPL"
+      ],
+      "reason": "Apple reported selling pressure after 4pm NY time (16:30) with market sentiment indicating down move beyond implied value. Multiple other holdings show mixed signals but less clear directional impact."
+     },
+     "violations": [
+      "cited_unknown_ids:AAPL"
+     ],
+     "usage": {
+      "prompt_tokens": 15111,
+      "completion_tokens": 817,
+      "total_tokens": 15928,
+      "completion_tokens_details": {
+       "reasoning_tokens": 648
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 49867
+    },
+    "local9b@4": {
+     "model": "qwen3.5-9b",
+     "hour": 4,
+     "n_items": 109,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "All news items are either pre-4pm (already in hedge), fund-specific but not material to QQQ holdings, or general macro/insider trading unrelated to the specific large-cap tech stocks."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 15113,
+      "completion_tokens": 75,
+      "total_tokens": 15188,
+      "completion_tokens_details": {
+       "reasoning_tokens": 0
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 49867
+    }
+   }
+  },
+  {
+   "date": "2026-08-28",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 424,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Post-4pm holding-specific items are minor or unrelated to the holdings. The META $17B settlement has ambiguous direction and is likely already partly priced in."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 1935,
+      "prompt_tokens": 80651,
+      "total_tokens": 82586
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 188125
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 429,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Post-4pm items on top holdings are minor or already known. The Meta $17B AG settlement has ambiguous net direction, so no fund-level move beyond the hedge is clearly indicated."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 1651,
+      "prompt_tokens": 81550,
+      "total_tokens": 83201
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 190328
+    }
+   }
+  },
+  {
+   "date": "2026-08-31",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 113,
+     "output": {
+      "flag": true,
+      "direction": "up",
+      "confidence": "low",
+      "cited_ids": [
+       "n0c6ea46b",
+       "n101cf61f"
+      ],
+      "reason": "After-4pm Nvidia-specific deal news: $35B Anthropic cloud deal backed by Nvidia and a MediaTek partnership. Nvidia is 7.8% of the fund. Direction is a judgment call, not a sized estimate."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 1242,
+      "prompt_tokens": 21936,
+      "total_tokens": 23178
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 51577
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 167,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "After-4pm holding news is small or stale, or has no clear directional read for the fund. The Alphabet capex/share-drop item looks like a rehash of earlier earnings news. Nvidia's Anthropic cloud deal is ambiguous in direction."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 1328,
+      "prompt_tokens": 32177,
+      "total_tokens": 33505
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 75293
+    },
+    "sonnet@1": {
+     "model": "claude-sonnet-5-5",
+     "hour": 1,
+     "n_items": 113,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "No fund-specific, post-4pm event at a major holding. Items are institutional filings, minor layoffs, partnerships and commentary, none material at these weights beyond what futures already imply."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 99,
+      "prompt_tokens": 21936,
+      "total_tokens": 22035
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 51577
+    },
+    "local@1": {
+     "model": "qwen3.8-2b-distill",
+     "hour": 1,
+     "n_items": 113,
+     "output": {
+      "flag": true,
+      "direction": "up",
+      "confidence": "medium",
+      "cited_ids": [
+       "nfc12a53b"
+      ],
+      "reason": "MSFT faces earnings test after Rezolve AI revenue surge draws negative analyst sentiment on RZLV. Also Primecap Management CA added $56.6M in Synaptics ($SYNA), increasing its 1.17% position and introducing beta exposure to AMD."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 15518,
+      "completion_tokens": 511,
+      "total_tokens": 16029,
+      "completion_tokens_details": {
+       "reasoning_tokens": 398
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 51577
+    },
+    "local9b@1": {
+     "model": "qwen3.5-9b",
+     "hour": 1,
+     "n_items": 113,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "News items are mostly institutional trades in non-holdings or broad macro/tech trends already reflected in futures. No specific fund-level events found."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 15520,
+      "completion_tokens": 70,
+      "total_tokens": 15590,
+      "completion_tokens_details": {
+       "reasoning_tokens": 0
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 51577
+    }
+   }
+  },
+  {
+   "date": "2026-09-01",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 38,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "After-4pm items are insider filings, analyst notes, or small-cap news. The Broadcom earnings item is a modest beat with unclear direction, and it is not a top-ten holding."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 797,
+      "prompt_tokens": 7806,
+      "total_tokens": 8603
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 18806
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 87,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "No material after-4pm fund-specific news for the top holdings. Broadcom's slight beat has no stated after-hours price move, and the other items are routine filings, institutional holdings, or macro-driven moves."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 998,
+      "prompt_tokens": 17073,
+      "total_tokens": 18071
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 40427
+    }
+   }
+  },
+  {
+   "date": "2026-09-02",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 51,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "low",
+      "cited_ids": [],
+      "reason": "Post-4pm holding news is mostly routine: segment reporting, an analyst target raise, a model launch, and a peer beat. None is a clear, sized fund-specific surprise beyond the hedge.",
+      "reason_note": ""
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 1151,
+      "prompt_tokens": 10032,
+      "total_tokens": 11183
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 24600
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 81,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "After-4pm items for top holdings are analyst notes, 13F filings, or minor product news. Microsoft's Azure disclosure and segment reorganization were announced with guidance maintained, so no clear fund-specific move beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 1094,
+      "prompt_tokens": 15605,
+      "total_tokens": 16699
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 37712
+    },
+    "sonnet@4": {
+     "model": "claude-sonnet-5-5",
+     "hour": 4,
+     "n_items": 81,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Microsoft's segment and Azure disclosure kept guidance unchanged. Meta's model release, the HPE and Broadcom read-throughs and the institutional-holding items are not clearly directional beyond what the hedge implies."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 364,
+      "prompt_tokens": 15605,
+      "total_tokens": 15969
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 37712
+    },
+    "local@4": {
+     "model": "qwen3.8-2b-distill",
+     "hour": 4,
+     "n_items": 81,
+     "output": {
+      "flag": true,
+      "direction": "down",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "The hedge-implied price of $709.91 already captures broad market moves and index-level corrections. No fund-specific holding changes or post-4pm events indicate a move beyond the hedge's implied value."
+     },
+     "violations": [
+      "flag_without_citation"
+     ],
+     "usage": {
+      "prompt_tokens": 10632,
+      "completion_tokens": 422,
+      "total_tokens": 11054,
+      "completion_tokens_details": {
+       "reasoning_tokens": 202
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 37712
+    },
+    "local9b@4": {
+     "model": "qwen3.5-9b",
+     "hour": 4,
+     "n_items": 81,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "News items are mostly macro, analyst commentary, or minor corporate actions already reflected in futures prices."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 10634,
+      "completion_tokens": 48,
+      "total_tokens": 10682,
+      "completion_tokens_details": {
+       "reasoning_tokens": 0
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 37712
+    }
+   }
+  },
+  {
+   "date": "2026-09-03",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 32,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "After-4pm items at top holdings are small or already known: NVDA's $12.9B Hugging Face deal is minor relative to its size, and the Tesla Cybercab items are known and lack a clear direction."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 1150,
+      "prompt_tokens": 6456,
+      "total_tokens": 7606
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 16138
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 52,
+     "output": {
+      "flag": true,
+      "direction": "up",
+      "confidence": "medium",
+      "cited_ids": [
+       "na4fe29d8",
+       "nb1ab660e"
+      ],
+      "reason": "Overnight stock-specific gains: Tesla up 6% ahead of Cybercab event, Meta up 4% on Muse Spark claim. Both are QQQ holdings and not in index hedges."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 1134,
+      "prompt_tokens": 10252,
+      "total_tokens": 11386
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 24906
+    },
+    "sonnet@4": {
+     "model": "claude-sonnet-5-5",
+     "hour": 4,
+     "n_items": 52,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Tesla and Meta moves look like regular-session moves already in the 4pm value. The Nvidia-Hugging Face deal is small against Nvidia's size. The rest is filler or immaterial."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 863,
+      "prompt_tokens": 10252,
+      "total_tokens": 11115
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 24906
+    },
+    "local@4": {
+     "model": "qwen3.8-2b-distill",
+     "hour": 4,
+     "n_items": 52,
+     "output": {
+      "flag": true,
+      "direction": "up",
+      "confidence": "medium",
+      "cited_ids": [
+       "n4111dbc7"
+      ],
+      "reason": "Nvidia PAIR tool enables household data centers for agentic AI, a new exposure not captured in the hedge-implied value."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 7182,
+      "completion_tokens": 1155,
+      "total_tokens": 8337,
+      "completion_tokens_details": {
+       "reasoning_tokens": 625
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 24906
+    },
+    "local9b@4": {
+     "model": "qwen3.5-9b",
+     "hour": 4,
+     "n_items": 52,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "News items are mostly macro, non-holdings, or already reflected in pre-4pm prices and futures."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 7184,
+      "completion_tokens": 52,
+      "total_tokens": 7236,
+      "completion_tokens_details": {
+       "reasoning_tokens": 0
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 24906
+    }
+   }
+  },
+  {
+   "date": "2026-09-04",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 275,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Post-4pm items at holdings are repeats, previews, or immaterial (Walmart's $50M opioid settlement, described as immaterial). Nothing fund-specific should move the basket beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 1120,
+      "prompt_tokens": 51461,
+      "total_tokens": 52581
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 122744
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 292,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Post-4pm holding news is immaterial or already known: WMT's $50M settlement is called immaterial, NVDA's Hugging Face deal is small, and the Apple event is after the window."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 1698,
+      "prompt_tokens": 54635,
+      "total_tokens": 56333
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 130142
+    }
+   }
+  },
+  {
+   "date": "2026-09-08",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 58,
+     "output": {
+      "flag": true,
+      "direction": "up",
+      "confidence": "medium",
+      "cited_ids": [
+       "n93094b29",
+       "n939e681d",
+       "n479e4159"
+      ],
+      "reason": "After-close AMD guidance for $70B 2027 data center revenue, plus Meta's litigation settlement and Muse subscription launch, are fund-specific upside catalysts at 6.6% combined weight beyond index futures."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 1522,
+      "prompt_tokens": 11361,
+      "total_tokens": 12883
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 27171
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 87,
+     "output": {
+      "flag": true,
+      "direction": "up",
+      "confidence": "medium",
+      "cited_ids": [
+       "n93094b29",
+       "n939e681d"
+      ],
+      "reason": "AMD guided to $70B 2027 data center revenue after 4pm, and Meta settled youth-safety litigation and launched Muse, with shares reported opening up 5.63%. Neither move is in index futures."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 1560,
+      "prompt_tokens": 16727,
+      "total_tokens": 18287
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 39849
+    },
+    "sonnet@1": {
+     "model": "claude-sonnet-5-5",
+     "hour": 1,
+     "n_items": 58,
+     "output": {
+      "flag": true,
+      "direction": "up",
+      "confidence": "medium",
+      "cited_ids": [
+       "n939e681d",
+       "n479e4159"
+      ],
+      "reason": "Meta (3.0% weight) settled a major youth-safety case and launched its Muse AI subscription after 4pm, with the stock reported opening sharply higher. This is Meta-specific, so index futures would not capture it."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 898,
+      "prompt_tokens": 11361,
+      "total_tokens": 12259
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 27171
+    },
+    "sonnet@4": {
+     "model": "claude-sonnet-5-5",
+     "hour": 4,
+     "n_items": 87,
+     "output": {
+      "flag": true,
+      "direction": "up",
+      "confidence": "low",
+      "cited_ids": [
+       "n939e681d",
+       "n479e4159",
+       "n93094b29"
+      ],
+      "reason": "Meta's youth-safety litigation settlement and Muse subscription launch, plus AMD's $70B 2027 data-center guidance, are fund-specific and posted after 4pm. Timing is uncertain, so confidence is low."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 1018,
+      "prompt_tokens": 16727,
+      "total_tokens": 17745
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 39849
+    },
+    "local@1": {
+     "model": "qwen3.8-2b-distill",
+     "hour": 1,
+     "n_items": 58,
+     "output": {
+      "flag": true,
+      "direction": "up",
+      "confidence": "high",
+      "cited_ids": [
+       "nf0849ef4"
+      ],
+      "reason": "Insider purchase at Vanguard Corp (Palladyne AI) by CEO Wolff confirms strategic direction beyond what market indices imply. This is fund-specific information published after 4pm that should move the ETF's basket value upward."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 7790,
+      "completion_tokens": 764,
+      "total_tokens": 8554,
+      "completion_tokens_details": {
+       "reasoning_tokens": 565
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 27171
+    },
+    "local@4": {
+     "model": "qwen3.8-2b-distill",
+     "hour": 4,
+     "n_items": 87,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "No fund-specific after-hours news mentioned in the list indicates a movement beyond hedge-implied values. All news relates to holdings already accounted for or unrelated (e.g., TSLA news about Elon Musk's car company, not Apple; GOOGL news is about Alphabet parent). No large holder of any listed fund was mentioned in after-hours news."
+     },
+     "violations": [
+      "reason_too_long"
+     ],
+     "usage": {
+      "prompt_tokens": 11539,
+      "completion_tokens": 399,
+      "total_tokens": 11938,
+      "completion_tokens_details": {
+       "reasoning_tokens": 204
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 39849
+    },
+    "local9b@1": {
+     "model": "qwen3.5-9b",
+     "hour": 1,
+     "n_items": 58,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "News items are mostly pre-market or general macro. Specific fund-moving events (like Apple's product launch) will be reflected in the hedge-implied value."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 7792,
+      "completion_tokens": 60,
+      "total_tokens": 7852,
+      "completion_tokens_details": {
+       "reasoning_tokens": 0
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 27171
+    },
+    "local9b@4": {
+     "model": "qwen3.5-9b",
+     "hour": 4,
+     "n_items": 87,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "cited_ids": [],
+      "reason": "News items are mostly pre-4pm or general market commentary. No specific fund-level corporate actions or material holding-specific events occurred after 4pm."
+     },
+     "violations": [
+      "confidence_invalid"
+     ],
+     "usage": {
+      "prompt_tokens": 11541,
+      "completion_tokens": 58,
+      "total_tokens": 11599,
+      "completion_tokens_details": {
+       "reasoning_tokens": 0
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 39849
+    }
+   }
+  },
+  {
+   "date": "2026-09-09",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 39,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Post-4pm items are routine (dividend, analyst notes, product launch, shareholder complaint, monthly TSMC sales) with no clear directional read beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 542,
+      "prompt_tokens": 8091,
+      "total_tokens": 8633
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 19081
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 57,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Post-4pm holding news is mostly anticipated product launches, routine filings, analyst notes, or small JV and lawsuit items. None is clearly material enough at its weight to move the basket beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 1039,
+      "prompt_tokens": 11358,
+      "total_tokens": 12397
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 26897
+    },
+    "sonnet@4": {
+     "model": "claude-sonnet-5-5",
+     "hour": 4,
+     "n_items": 57,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "The Apple launch was likely priced in before 4pm. TSMC's strong August revenue is sector-wide and probably in the futures. The rest is minor or non-fund-specific: Meta's routine dividend, Alphabet/Blackstone delays, a Microsoft suit, and ARK trades."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 414,
+      "prompt_tokens": 11358,
+      "total_tokens": 11772
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 26897
+    },
+    "local@4": {
+     "model": "qwen3.8-2b-distill",
+     "hour": 4,
+     "n_items": 57,
+     "output": {
+      "flag": true,
+      "direction": "down",
+      "confidence": "high",
+      "cited_ids": [
+       "n2face5ae"
+      ],
+      "reason": "ARK Investment Management divested ~$27.9M in Alphabet (GOOGL) while purchasing ~$26.4M worth of Meta Platforms shares - the latter being a QQQ holding (3% weight). This moves Meta's position beyond its current weight."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 7898,
+      "completion_tokens": 1089,
+      "total_tokens": 8987,
+      "completion_tokens_details": {
+       "reasoning_tokens": 870
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 26897
+    },
+    "local9b@4": {
+     "model": "qwen3.5-9b",
+     "hour": 4,
+     "n_items": 57,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "News items are mostly macro, unrelated to fund holdings, or pre-4pm events already reflected in futures. No specific post-4pm fundamental moves for top holdings detected."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 7900,
+      "completion_tokens": 64,
+      "total_tokens": 7964,
+      "completion_tokens_details": {
+       "reasoning_tokens": 0
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 26897
+    }
+   }
+  },
+  {
+   "date": "2026-09-10",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 42,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "After-4pm items are mostly peripheral to the largest holdings, or reiterate known results or routine corporate actions. None is clearly material to basket value beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 584,
+      "prompt_tokens": 8373,
+      "total_tokens": 8957
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 20250
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 61,
+     "output": {
+      "flag": true,
+      "direction": "up",
+      "confidence": "low",
+      "cited_ids": [
+       "n31c8ff75"
+      ],
+      "reason": "Post-4pm CEO forecast of about 70% revenue growth to roughly $680B for NVDA, a 7.8% holding. Not index-driven, but it may restate known views, so confidence is low."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 1104,
+      "prompt_tokens": 12085,
+      "total_tokens": 13189
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 28643
+    },
+    "sonnet@4": {
+     "model": "claude-sonnet-5-5",
+     "hour": 4,
+     "n_items": 61,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "No fund-specific, post-4pm event at a major holding. Items are commentary, insider 10b5-1 sales, routine 13F filings, a routine dividend, and sector or other-company news already reflected in futures."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 108,
+      "prompt_tokens": 12085,
+      "total_tokens": 12193
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 28643
+    },
+    "local@4": {
+     "model": "qwen3.8-2b-distill",
+     "hour": 4,
+     "n_items": 61,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "All relevant news items regarding the listed holdings (AAPL, NVDA, MSFT, AMZN, MU, AMD, TSLA, META) were either published before 4pm NY time on September 10 (already reflected in hedge value) or were not specific to significant institutional actions at those weights (e.g., Meta's COO personal transaction isn't a substantial holding change). No post-4pm news specifically about these holdings was found that would move beyond the implied hedge."
+     },
+     "violations": [
+      "reason_too_long"
+     ],
+     "usage": {
+      "prompt_tokens": 8435,
+      "completion_tokens": 2973,
+      "total_tokens": 11408,
+      "completion_tokens_details": {
+       "reasoning_tokens": 2820
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 28643
+    },
+    "local9b@4": {
+     "model": "qwen3.5-9b",
+     "hour": 4,
+     "n_items": 61,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "News items are mostly macro, competitor-focused, or pre-4pm. No fund-specific material events for top holdings occurred after 4pm."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 8437,
+      "completion_tokens": 58,
+      "total_tokens": 8495,
+      "completion_tokens_details": {
+       "reasoning_tokens": 0
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 28643
+    }
+   }
+  },
+  {
+   "date": "2026-09-11",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 160,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "No fund-specific, material news on top holdings after the 4pm Sep 13 close; the post-close items are minor or unrelated ETFs and small-caps."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 811,
+      "prompt_tokens": 30272,
+      "total_tokens": 31083
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 71517
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 188,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "The main post-4pm holding item is NVDA's premarket surge after earnings. NVDA is a near-identical index weight and trades in overnight index futures, so the hedge already reflects it. No residual fund-specific move is evident."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 2104,
+      "prompt_tokens": 35519,
+      "total_tokens": 37623
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 83735
+    }
+   }
+  },
+  {
+   "date": "2026-09-14",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 46,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "After-4pm items are mainly sector-wide AI-slowdown coverage that Nasdaq futures would reflect. Holding-specific items are minor or routine, such as the Micron union dispute and insider sales."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 675,
+      "prompt_tokens": 8997,
+      "total_tokens": 9672
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 21953
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 73,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Post-4pm items are mostly sector-wide AI-slowdown sentiment that index futures already reflect, plus routine insider sales and minor corporate notices. No holding-specific shock large enough to move the basket."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 615,
+      "prompt_tokens": 14003,
+      "total_tokens": 14618
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 33696
+    }
+   }
+  },
+  {
+   "date": "2026-09-15",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 40,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "After-4pm items on top holdings are routine appointments, dividends, product launches, or remarks without material fund-specific impact beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 463,
+      "prompt_tokens": 8021,
+      "total_tokens": 8484
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 19540
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 68,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Post-4pm items are routine: 13F position filings, a dividend declaration, product launches, and executive appointments. None is a material fund-specific event at a large holding."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 445,
+      "prompt_tokens": 13277,
+      "total_tokens": 13722
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 31885
+    }
+   }
+  },
+  {
+   "date": "2026-09-16",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 65,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "After-4pm items are minor or not fund-specific at holding scale: Generac/Amazon supply deal, Microsoft lawsuit ruling, Apple leasing, and Kroger/Walmart items. None looks material enough to move the basket beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 684,
+      "prompt_tokens": 12097,
+      "total_tokens": 12781
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 28970
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 98,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "After-4pm items are mostly small or not fund-specific at holding scale: Generac is not a QQQ holding, the Microsoft lawsuit ruling is partial, and the Meta and Tesla items are forward-looking."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 695,
+      "prompt_tokens": 18215,
+      "total_tokens": 18910
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 43368
+    }
+   }
+  },
+  {
+   "date": "2026-09-17",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 45,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Post-4pm holding news is mostly routine: analyst notes, minor deals, recalls, and reiterated or vague NVDA statements. Nothing clearly new, material, and fund-specific at these weights."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 858,
+      "prompt_tokens": 8918,
+      "total_tokens": 9776
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 21684
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 82,
+     "output": {
+      "flag": true,
+      "direction": "unclear",
+      "confidence": "low",
+      "cited_ids": [
+       "n2d57a06c",
+       "n2ce8d609"
+      ],
+      "reason": "Post-4pm NVDA-specific DOJ antitrust probe news points lower, while Micron jumped about 5% on memory-price comments. Net effect on QQQ beyond the hedge is ambiguous."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 1298,
+      "prompt_tokens": 15861,
+      "total_tokens": 17159
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 37961
+    },
+    "sonnet@1": {
+     "model": "claude-sonnet-5-5",
+     "hour": 1,
+     "n_items": 45,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "No fund-specific, post-4pm event at a major holding. Items are commentary, analyst reiterations, minor partnerships, a small Walmart recall, or irrelevant mentions. Nvidia's sales comments are not new material information."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 115,
+      "prompt_tokens": 8918,
+      "total_tokens": 9033
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 21684
+    },
+    "sonnet@4": {
+     "model": "claude-sonnet-5-5",
+     "hour": 4,
+     "n_items": 82,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "No clearly fund-specific, post-4pm event. The Nvidia antitrust and Micron moves look like Thursday session news already in the 4pm value. The Walmart recall is minor, and the rest is noise or reiteration."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 354,
+      "prompt_tokens": 15861,
+      "total_tokens": 16215
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 37961
+    },
+    "local@1": {
+     "model": "qwen3.8-2b-distill",
+     "hour": 1,
+     "n_items": 45,
+     "output": {
+      "flag": true,
+      "direction": "down",
+      "confidence": "medium",
+      "cited_ids": [
+       "n165a7f86"
+      ],
+      "reason": "NVIDIA (NVDA) article reports CEO Jensen Huang emphasizing AI safety concerns and potential delays to chip launches. While this is primarily a holding-specific news item, it signals broader industry headwinds for the AI sector that all three top holdings (AAPL, NVDA, MSFT) would be exposed to."
+     },
+     "violations": [
+      "reason_too_long"
+     ],
+     "usage": {
+      "prompt_tokens": 6313,
+      "completion_tokens": 750,
+      "total_tokens": 7063,
+      "completion_tokens_details": {
+       "reasoning_tokens": 526
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 21684
+    },
+    "local@4": {
+     "model": "qwen3.8-2b-distill",
+     "hour": 4,
+     "n_items": 82,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "The fund's largest holdings (Apple, NVIDIA, Microsoft, etc.) are all covered by the ETF itself or traded via index futures, capturing broad market movements already priced in. No fund-specific fund-level event occurs after 4pm that would cause QQQ to move significantly beyond what hedge instruments imply."
+     },
+     "violations": [
+      "reason_too_long"
+     ],
+     "usage": {
+      "prompt_tokens": 11119,
+      "completion_tokens": 376,
+      "total_tokens": 11495,
+      "completion_tokens_details": {
+       "reasoning_tokens": 277
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 37961
+    },
+    "local9b@1": {
+     "model": "qwen3.5-9b",
+     "hour": 1,
+     "n_items": 45,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "All news items are either pre-4pm (already in hedge), broad macro/sector news already reflected in futures, or fund-specific events too small to move the basket beyond the index."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 6315,
+      "completion_tokens": 73,
+      "total_tokens": 6388,
+      "completion_tokens_details": {
+       "reasoning_tokens": 0
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 21684
+    },
+    "local9b@4": {
+     "model": "qwen3.5-9b",
+     "hour": 4,
+     "n_items": 82,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "News items are mostly macro, unrelated companies, or already reflected in futures. No specific fund-level events found."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 11121,
+      "completion_tokens": 51,
+      "total_tokens": 11172,
+      "completion_tokens_details": {
+       "reasoning_tokens": 0
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 37961
+    }
+   }
+  },
+  {
+   "date": "2026-09-18",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 191,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Post-4pm holding news is minor: a $250M Apple settlement, an AirTag lawsuit, and a sector-wide chip sell-off that futures already reflect. Nothing material."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 1040,
+      "prompt_tokens": 36043,
+      "total_tokens": 37083
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 85909
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 214,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "After-4pm items are immaterial lawsuits, settlements, recaps, or 13F-type filings. The AI-slowdown chip rotation is sector-wide and already reflected in futures."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 897,
+      "prompt_tokens": 40366,
+      "total_tokens": 41263
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 96074
+    }
+   }
+  },
+  {
+   "date": "2026-09-21",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 80,
+     "output": {
+      "flag": true,
+      "direction": "up",
+      "confidence": "medium",
+      "cited_ids": [
+       "n7fb601bf",
+       "n59293dee"
+      ],
+      "reason": "After 4pm, AMD rose about 5% on a report of higher chip prices, and Wells Fargo raised its Meta target to $796. Both are company-specific moves that futures would not show, though the AMD report is unconfirmed."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 1409,
+      "prompt_tokens": 15038,
+      "total_tokens": 16447
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 36790
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 116,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Post-4pm items for top holdings are analyst notes, small deals, or moves that appear to occur in the regular session, not material fund-specific shocks beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 1109,
+      "prompt_tokens": 21586,
+      "total_tokens": 22695
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 52430
+    },
+    "sonnet@1": {
+     "model": "claude-sonnet-5-5",
+     "hour": 1,
+     "n_items": 80,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "AMD's surge and the chip rally appear to be regular-session moves tied to US-China talks, so they are already in the 4pm value or the hedge. Other items are minor, analyst notes, or unconfirmed."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 405,
+      "prompt_tokens": 15038,
+      "total_tokens": 15443
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 36790
+    },
+    "local@1": {
+     "model": "qwen3.8-2b-distill",
+     "hour": 1,
+     "n_items": 80,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "None of the news items reference any holding in the fund's largest 20 positions (AAPL, NVDA, MSFT, AMZN, MU, AMD, TSLA, META, WMT, GOOGL) specifically. The hedge instruments already capture broad market and sector moves. No specific events or disclosures at these holdings exceed what index/futures prices already reflect."
+     },
+     "violations": [
+      "reason_too_long"
+     ],
+     "usage": {
+      "prompt_tokens": 10377,
+      "completion_tokens": 644,
+      "total_tokens": 11021,
+      "completion_tokens_details": {
+       "reasoning_tokens": 520
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 36790
+    },
+    "local9b@1": {
+     "model": "qwen3.5-9b",
+     "hour": 1,
+     "n_items": 80,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "News items are mostly macro, competitor-focused, or pre-4pm. No specific fund-level events (guidance, deals, recalls) for top holdings occurred after 4pm."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 10379,
+      "completion_tokens": 66,
+      "total_tokens": 10445,
+      "completion_tokens_details": {
+       "reasoning_tokens": 0
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 36790
+    }
+   }
+  },
+  {
+   "date": "2026-09-22",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 81,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "After-4pm items are mostly commentary, routine filings, or non-holdings news. The Apple amicus brief (n0e350fed) is too minor to move the basket beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 930,
+      "prompt_tokens": 15204,
+      "total_tokens": 16134
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 37105
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 158,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Post-4pm holding news is routine: institutional 13F filings, insider sales, a minor Walmart recall, and a government amicus brief in Apple's case. None is a material fund-specific event."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 723,
+      "prompt_tokens": 29232,
+      "total_tokens": 29955
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 70383
+    }
+   }
+  },
+  {
+   "date": "2026-09-23",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 81,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "After-4pm holding news is mixed or minor. NVDA's Hugging Face deal and META's Muse monetization have no clear directional read beyond the hedge, so no flag.",
+      "warnings": []
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 993,
+      "prompt_tokens": 15240,
+      "total_tokens": 16233
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 37077
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 120,
+     "output": {
+      "flag": true,
+      "direction": "down",
+      "confidence": "low",
+      "cited_ids": [
+       "n9c316176"
+      ],
+      "reason": "Chinese regulatory audit of Broadcom's networking hardware is fund-specific, reported after 4pm and tied to a premarket drop. Broadcom is a material QQQ holding not in the list, so its weight is unverified."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 1823,
+      "prompt_tokens": 22338,
+      "total_tokens": 24161
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 54056
+    },
+    "sonnet@4": {
+     "model": "claude-sonnet-5-5",
+     "hour": 4,
+     "n_items": 120,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "No clearly new, material, fund-specific news after 4pm. Items such as the Nvidia/Hugging Face deal, Meta Connect and the Qualcomm-Apple license renewal are small at these weights or unclear in direction."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 500,
+      "prompt_tokens": 22338,
+      "total_tokens": 22838
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 54056
+    },
+    "local@4": {
+     "model": "qwen3.8-2b-distill",
+     "hour": 4,
+     "n_items": 120,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "No fund-specific events after 4pm NY time are occurring that would move QQQ beyond the hedge-implied reference value. The largest Apple holding (~8.3% of $142M) is not covered by any post-4pm news item, and no major individual stock moves occur that would significantly impact QQQ at current levels."
+     },
+     "violations": [
+      "reason_too_long"
+     ],
+     "usage": {
+      "prompt_tokens": 15595,
+      "completion_tokens": 655,
+      "total_tokens": 16250,
+      "completion_tokens_details": {
+       "reasoning_tokens": 534
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 54056
+    },
+    "local9b@4": {
+     "model": "qwen3.5-9b",
+     "hour": 4,
+     "n_items": 120,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "News items are mostly pre-4pm or general market commentary. Specific fund-specific events (like recalls or major deals) for top holdings occurred before the 4pm cutoff and are already reflected in futures."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 15597,
+      "completion_tokens": 70,
+      "total_tokens": 15667,
+      "completion_tokens_details": {
+       "reasoning_tokens": 0
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 54056
+    }
+   }
+  },
+  {
+   "date": "2026-09-24",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 67,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "After-4pm items are routine or minor: an insider 10b5-1 sale, a communications reshuffle, Tesla Semi rollout, and Musk's Nvidia chip expansion. None is material enough at these weights to move the basket beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 1056,
+      "prompt_tokens": 12578,
+      "total_tokens": 13634
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 31062
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 106,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "After-4pm items are mostly 13F filings, recaps, or non-holding news. The AMD target raise is too small at 3.6% weight to clearly move the basket beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 998,
+      "prompt_tokens": 19732,
+      "total_tokens": 20730
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 47843
+    }
+   }
+  },
+  {
+   "date": "2026-09-25",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 321,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Post-4pm holding news (Apple's $5.7B patent verdict, Nvidia China GPU reports) looks too small at these weights to move the fund beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 1933,
+      "prompt_tokens": 58411,
+      "total_tokens": 60344
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 142336
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 361,
+     "output": {
+      "flag": true,
+      "direction": "up",
+      "confidence": "low",
+      "cited_ids": [
+       "naab9b9fa",
+       "nceb1da93",
+       "n690d53bd",
+       "n4fc8b047"
+      ],
+      "reason": "Post-4pm Sunday reports that China may let ByteDance and Alibaba buy Nvidia RTX PRO 5500 chips. Fund-specific at NVDA's 7.8% weight; index futures would not capture it. Size unclear."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 2918,
+      "prompt_tokens": 65858,
+      "total_tokens": 68776
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 159741
+    },
+    "sonnet@4": {
+     "model": "claude-sonnet-5-5",
+     "hour": 4,
+     "n_items": 361,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "The Apple $5.7B verdict is too small at its weight. The report of China weighing Nvidia chip sales is unconfirmed and largely in Nasdaq futures. Nothing else is fund-specific and material."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 499,
+      "prompt_tokens": 65858,
+      "total_tokens": 66357
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 159741
+    },
+    "local@4": {
+     "error": "HTTP Error 400: Bad Request: {\"error\":\"Engine protocol predict request returned 400: {\\\"error\\\":{\\\"code\\\":400,\\\"message\\\":\\\"request (45110 tokens) exceeds the available context size (40960 tokens), try increasing it\\\",\\\"type\\\":\\\"exceed_context_size_error\\\",\\\"n_prompt_tokens\\\":45110,\\\"n_ctx\\\":40960}}"
+    },
+    "local9b@4": {
+     "model": "qwen3.5-9b",
+     "hour": 4,
+     "n_items": 361,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "News items are mostly general market commentary, analyst reports on non-holdings, or events already reflected in futures (e.g., Apple patent verdict). No specific fund-moving corporate actions for top holdings occurred after 4pm."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 45116,
+      "completion_tokens": 74,
+      "total_tokens": 45190,
+      "completion_tokens_details": {
+       "reasoning_tokens": 0
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 159741
+    }
+   }
+  },
+  {
+   "date": "2026-09-28",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 99,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "After-4pm holding news is small or immaterial at these weights: the $5.7B Apple verdict (about 0.15% of market cap), AMD's all-stock World Labs deal, and minor Microsoft and Nvidia items. Nothing clearly moves the basket beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 1465,
+      "prompt_tokens": 18086,
+      "total_tokens": 19551
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 44837
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 148,
+     "output": {
+      "flag": true,
+      "direction": "down",
+      "confidence": "low",
+      "cited_ids": [
+       "ncf888645",
+       "ndad4130a"
+      ],
+      "reason": "After-4pm items: Meta's stock fell following its enterprise platform launch (3% weight), and Apple faces a $5.7B jury verdict (8.3% weight). Neither move is quantified."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 1510,
+      "prompt_tokens": 27219,
+      "total_tokens": 28729
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 66020
+    },
+    "sonnet@4": {
+     "model": "claude-sonnet-5-5",
+     "hour": 4,
+     "n_items": 148,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "AMD's $8.2B all-stock deal and Apple's $5.7B verdict are under 1% of each market cap. Meta's drop appears to predate 4pm. Nothing else is material at holding weights."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 486,
+      "prompt_tokens": 27219,
+      "total_tokens": 27705
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 66020
+    },
+    "local@4": {
+     "model": "qwen3.8-2b-distill",
+     "hour": 4,
+     "n_items": 148,
+     "output": {
+      "flag": true,
+      "direction": "up",
+      "confidence": "high",
+      "cited_ids": [
+       "n4133753d",
+       "ncf888645",
+       "ndf24af18"
+      ],
+      "reason": "Several fund-specific developments will move the basket value beyond hedge-implied levels. AMD is acquiring World Labs for $8.2B (holding ~3.6% of portfolio), Apple faces a record $5.7B patent loss case, Microsoft reinvested its $5M incentive into operations (holding ~6.7%), and Meta launched enterprise AI services (holding ~3%). These are all non-hedge-specific events affecting these top holdings."
+     },
+     "violations": [
+      "reason_too_long"
+     ],
+     "usage": {
+      "prompt_tokens": 18810,
+      "completion_tokens": 797,
+      "total_tokens": 19607,
+      "completion_tokens_details": {
+       "reasoning_tokens": 610
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 66020
+    },
+    "local9b@4": {
+     "model": "qwen3.5-9b",
+     "hour": 4,
+     "n_items": 148,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "News items are either pre-4pm (already in hedge), fund-specific but immaterial (e.g., $5M incentive forgone, small insider trades), or general macro/sector news already reflected in futures."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 18812,
+      "completion_tokens": 73,
+      "total_tokens": 18885,
+      "completion_tokens_details": {
+       "reasoning_tokens": 0
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 66020
+    }
+   }
+  },
+  {
+   "date": "2026-09-29",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 76,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Post-4pm items are analyst notes, insider sales, financing and routine filings with no clear fund-specific result or corporate action at a large holding that moves the basket beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 801,
+      "prompt_tokens": 14605,
+      "total_tokens": 15406
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 35347
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 120,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "No after-4pm fund-specific item at a large holding gives a clear directional signal. Micron's earnings result is not in the list, and the Meta +3.24% line is an unreliable placeholder."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 1408,
+      "prompt_tokens": 22694,
+      "total_tokens": 24102
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 54682
+    }
+   }
+  },
+  {
+   "date": "2026-09-30",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 67,
+     "output": {
+      "flag": true,
+      "direction": "up",
+      "confidence": "medium",
+      "cited_ids": [
+       "n2f2b0382",
+       "nabba7d64",
+       "n6996a86a"
+      ],
+      "reason": "Micron (4.0% weight) reported a record FY26, a Q4 beat, and a Q1 outlook above estimates after the 4pm close. Index futures would not capture this single-name result."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 577,
+      "prompt_tokens": 12667,
+      "total_tokens": 13244
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 31084
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 113,
+     "output": {
+      "flag": true,
+      "direction": "down",
+      "confidence": "medium",
+      "cited_ids": [
+       "n21f9cd71",
+       "n68b42657"
+      ],
+      "reason": "Micron (4.0% weight) fell after hours on a higher capex forecast despite the earnings beat. Index futures would not capture this stock-specific drop."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 1335,
+      "prompt_tokens": 21208,
+      "total_tokens": 22543
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 51092
+    },
+    "sonnet@1": {
+     "model": "claude-sonnet-5-5",
+     "hour": 1,
+     "n_items": 67,
+     "output": {
+      "flag": true,
+      "direction": "up",
+      "confidence": "medium",
+      "cited_ids": [
+       "n2f2b0382",
+       "nabd03b74",
+       "n6996a86a"
+      ],
+      "reason": "Micron (4.0% weight) reported after 4pm, beating estimates with a strong AI-driven forecast. Nasdaq futures likely reflect only part of this single-stock move; margin pressure from pay raises is a minor offset."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 380,
+      "prompt_tokens": 12667,
+      "total_tokens": 13047
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 31084
+    },
+    "sonnet@4": {
+     "model": "claude-sonnet-5-5",
+     "hour": 4,
+     "n_items": 113,
+     "output": {
+      "flag": true,
+      "direction": "down",
+      "confidence": "medium",
+      "cited_ids": [
+       "n21f9cd71",
+       "n2f2b0382"
+      ],
+      "reason": "Micron (4.0% weight) reported after 4pm; the stock fell after hours as its higher capex forecast outweighed the Q4 beat and strong guidance. This stock-specific move may not be fully in the futures."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 601,
+      "prompt_tokens": 21208,
+      "total_tokens": 21809
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 51092
+    },
+    "local@1": {
+     "model": "qwen3.8-2b-distill",
+     "hour": 1,
+     "n_items": 67,
+     "output": {
+      "_raw": "**No flag.** Nothing in the news suggests the fund's basket value would move beyond the hedge-implied reference value of $746.27 per share at this hour (01:00 NY time). The largest holdings\u2014AAPL, NVDA, and MSFT\u2014all reported positive developments in this window with no adverse events that would pressure QQQ below its implied value."
+     },
+     "violations": [
+      "flag_not_bool",
+      "direction_invalid",
+      "confidence_invalid"
+     ],
+     "usage": {
+      "prompt_tokens": 8844,
+      "completion_tokens": 315,
+      "total_tokens": 9159,
+      "completion_tokens_details": {
+       "reasoning_tokens": 226
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 31084
+    },
+    "local@4": {
+     "model": "qwen3.8-2b-distill",
+     "hour": 4,
+     "n_items": 113,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "No fund-specific post-4pm news items exist for October 1st (all relevant news is dated September 30). Hedge instruments already reflect the known movements. No additional information exists to warrant a direction flag beyond the hedge-implied value."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 14738,
+      "completion_tokens": 343,
+      "total_tokens": 15081,
+      "completion_tokens_details": {
+       "reasoning_tokens": 249
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 51092
+    },
+    "local9b@1": {
+     "model": "qwen3.5-9b",
+     "hour": 1,
+     "n_items": 67,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "News items are mostly macro, indirect partners, or pre-4pm events. No specific material corporate actions for top holdings occurred after 4pm."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 8846,
+      "completion_tokens": 59,
+      "total_tokens": 8905,
+      "completion_tokens_details": {
+       "reasoning_tokens": 0
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 31084
+    },
+    "local9b@4": {
+     "model": "qwen3.5-9b",
+     "hour": 4,
+     "n_items": 113,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "News items are mostly macro, index-level, or concern non-holdings. Fund-specific events for top holdings (AAPL, NVDA, MSFT) are either pre-4pm or already reflected in futures."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 14740,
+      "completion_tokens": 73,
+      "total_tokens": 14813,
+      "completion_tokens_details": {
+       "reasoning_tokens": 0
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 51092
+    }
+   }
+  },
+  {
+   "date": "2026-10-01",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 87,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Holding-specific after-4pm items (GOOGL after-hours slide, Micron/Nvidia news) would be reflected in Nasdaq-100 futures at similar weights, so no residual beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 1829,
+      "prompt_tokens": 16591,
+      "total_tokens": 18420
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 40010
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 134,
+     "output": {
+      "flag": true,
+      "direction": "down",
+      "confidence": "medium",
+      "cited_ids": [
+       "n4cf38671",
+       "nf1d05a25"
+      ],
+      "reason": "Alphabet (2.8% weight) fell 3.76% in an after-4pm session, and a later report of a judge clearing $3.2B in ad-tech claims shows a slight dip. Both are Alphabet-specific."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 1490,
+      "prompt_tokens": 25217,
+      "total_tokens": 26707
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 60490
+    },
+    "sonnet@4": {
+     "model": "claude-sonnet-5-5",
+     "hour": 4,
+     "n_items": 134,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "No clear fund-specific, post-4pm catalyst at a large holding. The Alphabet after-hours drop is ambiguous in timing and small at 2.8% weight. Other items are stale, minor, or macro."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 683,
+      "prompt_tokens": 25217,
+      "total_tokens": 25900
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 60490
+    },
+    "local@4": {
+     "model": "qwen3.8-2b-distill",
+     "hour": 4,
+     "n_items": 134,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "News items focus on other companies (Apple, Nvidia, Tesla) and broader market events already reflected in hedge instruments. No fund-specific information targets QQQ holdings."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 17479,
+      "completion_tokens": 384,
+      "total_tokens": 17863,
+      "completion_tokens_details": {
+       "reasoning_tokens": 309
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 60490
+    },
+    "local9b@4": {
+     "model": "qwen3.5-9b",
+     "hour": 4,
+     "n_items": 134,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "All news items are either pre-4pm (already in hedge), unrelated to QQQ holdings, or general macro/analyst commentary already reflected in futures."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 17481,
+      "completion_tokens": 67,
+      "total_tokens": 17548,
+      "completion_tokens_details": {
+       "reasoning_tokens": 0
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 60490
+    }
+   }
+  },
+  {
+   "date": "2026-10-02",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 315,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "No after-4pm news on a top-ten holding is material enough to move the basket beyond the hedge. Tesla's overnight 1% move and META analyst reiterations are minor at these weights."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 1843,
+      "prompt_tokens": 56908,
+      "total_tokens": 58751
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 138658
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 358,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Post-4pm fund-specific items are minor or concern non-holdings (PTC, HPE, Intel, Qualcomm). Tesla's +1% overnight move on TSMC talk is too small at 3.3% weight to flag."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 2684,
+      "prompt_tokens": 64872,
+      "total_tokens": 67556
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 157445
+    }
+   }
+  },
+  {
+   "date": "2026-10-05",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 85,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "After-4pm items are routine filings, insider sales, or small contract news. None is material at these holdings' weights beyond what the hedge implies."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 373,
+      "prompt_tokens": 16274,
+      "total_tokens": 16647
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 39132
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 123,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "After-4pm holding-specific items (GOOGL suits, MU settlement, MSFT upgrade and Claude-spend report) are small or offsetting relative to holding size. Nothing material beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 1388,
+      "prompt_tokens": 23163,
+      "total_tokens": 24551
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 55536
+    },
+    "sonnet@1": {
+     "model": "claude-sonnet-5-5",
+     "hour": 1,
+     "n_items": 85,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "Only routine insider sales, boilerplate Alphabet class-action notices on old events, minor deal chatter and analyst commentary. Nothing is a material fund-specific event after 4pm beyond what the hedge implies."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 226,
+      "prompt_tokens": 16274,
+      "total_tokens": 16500
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 39132
+    },
+    "local@1": {
+     "model": "qwen3.8-2b-distill",
+     "hour": 1,
+     "n_items": 85,
+     "output": {
+      "flag": true,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [
+       "nf0eeb432"
+      ],
+      "reason": "MU share buyback program authorized (5% of outstanding shares) is fund-specific information affecting NAV. CEO sale under pre-arranged plan is also fund-specific."
+     },
+     "violations": [
+      "flag_without_direction"
+     ],
+     "usage": {
+      "prompt_tokens": 11239,
+      "completion_tokens": 628,
+      "total_tokens": 11867,
+      "completion_tokens_details": {
+       "reasoning_tokens": 459
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 39132
+    },
+    "local9b@1": {
+     "model": "qwen3.5-9b",
+     "hour": 1,
+     "n_items": 85,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "News items are mostly macro, analyst commentary, or unrelated. Specific holding news (lawsuits, insider sales) is already priced in by futures."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 11241,
+      "completion_tokens": 64,
+      "total_tokens": 11305,
+      "completion_tokens_details": {
+       "reasoning_tokens": 0
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 39132
+    }
+   }
+  },
+  {
+   "date": "2026-10-06",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 72,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "low",
+      "cited_ids": [],
+      "reason": "Post-4pm holding news is minor or already priced: analyst reiterations, a lawsuit, a PPA, and a $184M Masimo interest award. The SpaceX chip-financing report is the closest candidate but is not clearly material."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 966,
+      "prompt_tokens": 13706,
+      "total_tokens": 14672
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 33442
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 117,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "After-4pm holding news is minor or early-stage: Micron strike authorization, SpaceX chip-financing talks, and Apple/LG are small or offsetting, with no clear fund-level impact beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 856,
+      "prompt_tokens": 21769,
+      "total_tokens": 22625
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 52985
+    }
+   }
+  },
+  {
+   "date": "2026-10-07",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 90,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "After-4pm items are routine: product launches, a Tesla FSD class action, Amazon job cuts, and an FCC spectrum vote. None is material at these weights beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 553,
+      "prompt_tokens": 16906,
+      "total_tokens": 17459
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 41091
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 123,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "After-4pm items for top holdings are routine: insider sales, layoffs under 1000, product launches, recalls, and 13F filings. None is material at these weights."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 388,
+      "prompt_tokens": 22849,
+      "total_tokens": 23237
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 55297
+    }
+   }
+  },
+  {
+   "date": "2026-10-08",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 97,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "No clearly material, fund-specific after-4pm news for the top holdings. Most items are routine filings, sector or macro commentary, or affect non-holdings, and the rest is already in the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 1125,
+      "prompt_tokens": 18467,
+      "total_tokens": 19592
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 44411
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 143,
+     "output": {
+      "flag": true,
+      "direction": "down",
+      "confidence": "medium",
+      "cited_ids": [
+       "n520c4635",
+       "n559235f9"
+      ],
+      "reason": "Post-4pm reports of Apple cutting iPhone 18 Pro orders on weak demand, plus UBS data on shorter wait times, are Apple-specific and at 8.3% weight not captured by index hedges."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 1291,
+      "prompt_tokens": 26902,
+      "total_tokens": 28193
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 64488
+    },
+    "sonnet@4": {
+     "model": "claude-sonnet-5-5",
+     "hour": 4,
+     "n_items": 143,
+     "output": {
+      "flag": true,
+      "direction": "down",
+      "confidence": "low",
+      "cited_ids": [
+       "n520c4635",
+       "n559235f9"
+      ],
+      "reason": "Overnight reports of Apple cutting iPhone 18 Pro orders and UBS noting shorter wait times suggest weaker demand at an 8.3% holding. Index futures wouldn't reflect this. The original report's timing is unclear."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 684,
+      "prompt_tokens": 26902,
+      "total_tokens": 27586
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 64488
+    },
+    "local@4": {
+     "model": "qwen3.8-2b-distill",
+     "hour": 4,
+     "n_items": 143,
+     "output": {
+      "flag": true,
+      "direction": "down",
+      "confidence": "low",
+      "cited_ids": [
+       "nba974830"
+      ],
+      "reason": "After-hours institutional buying (Winton Group) at AMZN may not be enough to counterbalance selling by the hedge fund's underlying portfolio, potentially keeping the net short position positive."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 18759,
+      "completion_tokens": 516,
+      "total_tokens": 19275,
+      "completion_tokens_details": {
+       "reasoning_tokens": 351
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 64488
+    },
+    "local9b@4": {
+     "model": "qwen3.5-9b",
+     "hour": 4,
+     "n_items": 143,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "News items are mostly macro, unrelated companies, or already reflected in futures. No specific fund-level events found."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 18761,
+      "completion_tokens": 51,
+      "total_tokens": 18812,
+      "completion_tokens_details": {
+       "reasoning_tokens": 0
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 64488
+    }
+   }
+  },
+  {
+   "date": "2026-10-09",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 362,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Post-4pm holding items are early-stage talks or small deals (Amazon-Decart, Nvidia-Reflection), already reported or too small to move the basket beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 1492,
+      "prompt_tokens": 65705,
+      "total_tokens": 67197
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 158786
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 398,
+     "output": {
+      "flag": true,
+      "direction": "down",
+      "confidence": "medium",
+      "cited_ids": [
+       "n30cf386d",
+       "n525ddbec"
+      ],
+      "reason": "After-4pm Friday reports of a 15% iPhone 18 Pro component order cut, corroborated by Morgan Stanley, hit AAPL (8.3% weight). Futures do not capture this, so the fund likely moves down beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 3708,
+      "prompt_tokens": 72060,
+      "total_tokens": 75768
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 174167
+    },
+    "sonnet@4": {
+     "model": "claude-sonnet-5-5",
+     "hour": 4,
+     "n_items": 398,
+     "output": {
+      "flag": true,
+      "direction": "down",
+      "confidence": "medium",
+      "cited_ids": [
+       "n4e3306f5",
+       "nf833921b",
+       "n525ddbec",
+       "n5d95241f"
+      ],
+      "reason": "Micron fell overnight on CXMT's DRAM progress (4% weight). Apple slipped premarket after Morgan Stanley corroborated the iPhone 18 Pro order cut (8.3% weight). Both are holding-specific and post-4pm."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 951,
+      "prompt_tokens": 72060,
+      "total_tokens": 73011
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 174167
+    },
+    "local@4": {
+     "error": "HTTP Error 400: Bad Request: {\"error\":\"Engine protocol predict request returned 400: {\\\"error\\\":{\\\"code\\\":400,\\\"message\\\":\\\"request (50312 tokens) exceeds the available context size (40960 tokens), try increasing it\\\",\\\"type\\\":\\\"exceed_context_size_error\\\",\\\"n_prompt_tokens\\\":50312,\\\"n_ctx\\\":40960}}"
+    },
+    "local9b@4": {
+     "error": "HTTP Error 400: Bad Request"
+    }
+   }
+  },
+  {
+   "date": "2026-10-12",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 93,
+     "output": {
+      "flag": true,
+      "direction": "down",
+      "confidence": "low",
+      "cited_ids": [
+       "n16e9776c"
+      ],
+      "reason": "Micron (4.0% weight) fell after hours on Musk's remarks that advanced memory will be harder to solve; a memory-specific move not in the futures hedge. Size is uncertain."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 1027,
+      "prompt_tokens": 18012,
+      "total_tokens": 19039
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 42703
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 145,
+     "output": {
+      "flag": true,
+      "direction": "down",
+      "confidence": "medium",
+      "cited_ids": [
+       "n16e9776c",
+       "ned3c3fda"
+      ],
+      "reason": "Micron fell after hours on China CXMT DRAM progress, a fund-specific memory selloff beyond the index hedge. Micron is a 4.0% holding."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 1483,
+      "prompt_tokens": 27416,
+      "total_tokens": 28899
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 65145
+    },
+    "sonnet@1": {
+     "model": "claude-sonnet-5-5",
+     "hour": 1,
+     "n_items": 93,
+     "output": {
+      "flag": true,
+      "direction": "down",
+      "confidence": "low",
+      "cited_ids": [
+       "n16e9776c",
+       "n6d3c49c1"
+      ],
+      "reason": "Micron (4.0% weight) fell after hours on China memory-competition worries, and Korean memory stocks sold off overnight. This is sector-specific, so index futures likely under-reflect it."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 714,
+      "prompt_tokens": 18012,
+      "total_tokens": 18726
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 42703
+    },
+    "sonnet@4": {
+     "model": "claude-sonnet-5-5",
+     "hour": 4,
+     "n_items": 145,
+     "output": {
+      "flag": true,
+      "direction": "down",
+      "confidence": "low",
+      "cited_ids": [
+       "n16e9776c",
+       "ned3c3fda",
+       "n7b96e2de"
+      ],
+      "reason": "Micron (4.0%) fell after hours, and SK Hynix and the Kospi sank overnight on China DRAM worries. Nasdaq futures likely under-reflect this memory-specific hit, so a modest extra downside is plausible."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 995,
+      "prompt_tokens": 27416,
+      "total_tokens": 28411
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 65145
+    },
+    "local@1": {
+     "model": "qwen3.8-2b-distill",
+     "hour": 1,
+     "n_items": 93,
+     "output": {
+      "flag": true,
+      "direction": "up",
+      "confidence": "high",
+      "cited_ids": [
+       "nabb79276"
+      ],
+      "reason": "Applied Materials' $5B EPIC Center represents new capital commitment by the largest holding (8% of fund) that hasn't been priced into yet. The SPX 500 futures already reflect sector expectations, but this specific development adds material information about actual asset deployment."
+     },
+     "violations": [
+      "reason_too_long"
+     ],
+     "usage": {
+      "prompt_tokens": 12201,
+      "completion_tokens": 936,
+      "total_tokens": 13137,
+      "completion_tokens_details": {
+       "reasoning_tokens": 836
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 42703
+    },
+    "local@4": {
+     "model": "qwen3.8-2b-distill",
+     "hour": 4,
+     "n_items": 145,
+     "output": {
+      "flag": true,
+      "direction": "down",
+      "confidence": "high",
+      "cited_ids": [
+       "n2b583761",
+       "ndb0e5e55"
+      ],
+      "reason": "Two specific institutional fund transactions directly impact AAPL beyond general market movements. Cim Investment Management (450k shares sold) and Wellington Altus USA (4.7M shares bought) represent large, targeted portfolio rebalancing actions that would move the ETF's basket value."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 18734,
+      "completion_tokens": 517,
+      "total_tokens": 19251,
+      "completion_tokens_details": {
+       "reasoning_tokens": 310
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 65145
+    },
+    "local9b@1": {
+     "model": "qwen3.5-9b",
+     "hour": 1,
+     "n_items": 93,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "News items reflect broad macro trends or events already priced in by futures; no specific fund-level catalysts identified after 4pm."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 12203,
+      "completion_tokens": 55,
+      "total_tokens": 12258,
+      "completion_tokens_details": {
+       "reasoning_tokens": 0
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 42703
+    },
+    "local9b@4": {
+     "model": "qwen3.5-9b",
+     "hour": 4,
+     "n_items": 145,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "News items are mostly macro, index-level moves already in futures, or unrelated to QQQ holdings. No specific fund-moving events found."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 18736,
+      "completion_tokens": 56,
+      "total_tokens": 18792,
+      "completion_tokens_details": {
+       "reasoning_tokens": 0
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 65145
+    }
+   }
+  },
+  {
+   "date": "2026-10-13",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 94,
+     "output": {
+      "flag": true,
+      "direction": "down",
+      "confidence": "medium",
+      "cited_ids": [
+       "nc90b78ba",
+       "nd422aba4"
+      ],
+      "reason": "Micron fell about 5% after hours on China's CXMT entering server memory, a fund-specific competitive threat at a 4% weight. Index futures would not show it."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 1801,
+      "prompt_tokens": 17960,
+      "total_tokens": 19761
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 42870
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 137,
+     "output": {
+      "flag": true,
+      "direction": "up",
+      "confidence": "medium",
+      "cited_ids": [
+       "nf835a6d6",
+       "n1e47482a"
+      ],
+      "reason": "Apple (8.3% weight) post-4pm news: all-time highs, iPhone Duo supply orders raised 30%, analysts lifting targets. Not in index, bond, gold, bitcoin or currency hedges."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 2357,
+      "prompt_tokens": 25721,
+      "total_tokens": 28078
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 61488
+    },
+    "sonnet@1": {
+     "model": "claude-sonnet-5-5",
+     "hour": 1,
+     "n_items": 94,
+     "output": {
+      "flag": true,
+      "direction": "down",
+      "confidence": "medium",
+      "cited_ids": [
+       "nc90b78ba",
+       "nd422aba4"
+      ],
+      "reason": "CXMT's server-memory announcement after the US close hit SK Hynix, Western Digital and Seagate, and Micron (4% weight) reportedly fell about 5%. This is a stock-specific move that index futures likely under-reflect."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 757,
+      "prompt_tokens": 17960,
+      "total_tokens": 18717
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 42870
+    },
+    "sonnet@4": {
+     "model": "claude-sonnet-5-5",
+     "hour": 4,
+     "n_items": 137,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Micron's CXMT-driven drop happened in Tuesday's regular session, so it is already in the 4pm value. Other items are minor or routine, or already in the futures. Nothing is fund-specific and after 4pm."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 913,
+      "prompt_tokens": 25721,
+      "total_tokens": 26634
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 61488
+    },
+    "local@1": {
+     "model": "qwen3.8-2b-distill",
+     "hour": 1,
+     "n_items": 94,
+     "output": {
+      "flag": true,
+      "direction": "down",
+      "confidence": "high",
+      "cited_ids": [
+       "nd81f1f2b"
+      ],
+      "reason": "Micron (MU) faces a direct supply threat from CXMT's new $40B server memory design. This material event beyond the hedge implied would materially impact QQQ value as the largest holding is at 4%."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 12417,
+      "completion_tokens": 853,
+      "total_tokens": 13270,
+      "completion_tokens_details": {
+       "reasoning_tokens": 673
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 42870
+    },
+    "local@4": {
+     "model": "qwen3.8-2b-distill",
+     "hour": 4,
+     "n_items": 137,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "No news items mention any of the ETF's top holdings (AAPL, NVDA, MSFT, AMZN, MU, AMD) in a fund-specific way that would move QQQ beyond the hedge-implied reference value. The referenced stock movements relate to individual companies unrelated to QQQ components."
+     },
+     "violations": [
+      "reason_too_long"
+     ],
+     "usage": {
+      "prompt_tokens": 17776,
+      "completion_tokens": 412,
+      "total_tokens": 18188,
+      "completion_tokens_details": {
+       "reasoning_tokens": 309
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 61488
+    },
+    "local9b@1": {
+     "model": "qwen3.5-9b",
+     "hour": 1,
+     "n_items": 94,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "News items are mostly macro sector moves, unrelated corporate actions, or pre-4pm events already reflected in futures. No specific fund-level catalysts found."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 12419,
+      "completion_tokens": 60,
+      "total_tokens": 12479,
+      "completion_tokens_details": {
+       "reasoning_tokens": 0
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 42870
+    },
+    "local9b@4": {
+     "model": "qwen3.5-9b",
+     "hour": 4,
+     "n_items": 137,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "News items are mostly macro, sector-wide, or pre-4pm. No specific fund-level events (guidance, deals, recalls) for top holdings occurred after 4pm that would move the basket beyond hedge instruments."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 17778,
+      "completion_tokens": 74,
+      "total_tokens": 17852,
+      "completion_tokens_details": {
+       "reasoning_tokens": 0
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 61488
+    }
+   }
+  },
+  {
+   "date": "2026-10-14",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 87,
+     "output": {
+      "flag": true,
+      "direction": "up",
+      "confidence": "low",
+      "cited_ids": [
+       "n4d19ff52"
+      ],
+      "reason": "Apple reportedly cleared Chinese regulatory hurdles for Apple Intelligence at 16:38, after the 4pm reference. Apple is 8.3% of the fund and index futures would not capture this."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 1095,
+      "prompt_tokens": 16457,
+      "total_tokens": 17552
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 39727
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 133,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "After-4pm holding news is routine (insider sales, filings, 13F notes), product or legal items are small relative to holding size, and sector moves are already in the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 1184,
+      "prompt_tokens": 25235,
+      "total_tokens": 26419
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 59869
+    },
+    "sonnet@1": {
+     "model": "claude-sonnet-5-5",
+     "hour": 1,
+     "n_items": 87,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "No clear fund-specific after-4pm event. The Apple China AI approval is minor. The chip selloff and AI-debt worries are sector or macro news that Nasdaq futures should already reflect."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 391,
+      "prompt_tokens": 16457,
+      "total_tokens": 16848
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 39727
+    },
+    "local@1": {
+     "model": "qwen3.8-2b-distill",
+     "hour": 1,
+     "n_items": 87,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "Hedge-implied reference value (723.86) and market data already price in the current market conditions for QQQ through futures and broad index movements. No fund-specific news indicates a fundamental driver sufficient to push the ETF beyond hedge implied values."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 11658,
+      "completion_tokens": 309,
+      "total_tokens": 11967,
+      "completion_tokens_details": {
+       "reasoning_tokens": 182
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 39727
+    },
+    "local9b@1": {
+     "model": "qwen3.5-9b",
+     "hour": 1,
+     "n_items": 87,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "News items are mostly macro, ETF-specific, or pre-4pm. No fund-specific material events for top holdings occurred after 4pm."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 11660,
+      "completion_tokens": 58,
+      "total_tokens": 11718,
+      "completion_tokens_details": {
+       "reasoning_tokens": 0
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 39727
+    }
+   }
+  },
+  {
+   "date": "2026-10-15",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 97,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Post-4pm items are routine filings, sector summaries, or minor news. The Micron labor dispute is a potential strike with talks ongoing, not a concrete fund-moving event."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 1053,
+      "prompt_tokens": 18686,
+      "total_tokens": 19739
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 44543
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 153,
+     "output": {
+      "flag": true,
+      "direction": "up",
+      "confidence": "low",
+      "cited_ids": [
+       "n06482a9a"
+      ],
+      "reason": "Apple (8.3% weight) received China approval for Apple Intelligence after 4pm, a fund-specific positive that index futures would not show. Modest signal; the Micron strike item is a partial offset.",
+      "risk_note": ""
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 1118,
+      "prompt_tokens": 29117,
+      "total_tokens": 30235
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 69111
+    },
+    "sonnet@4": {
+     "model": "claude-sonnet-5-5",
+     "hour": 4,
+     "n_items": 153,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "The overnight news is mostly sector-wide AI/chip selloff coverage, insider filings and filler, which index futures already reflect. The Micron Taiwan labor dispute is only a potential strike, and the Apple China AI item has unclear timing."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 465,
+      "prompt_tokens": 29117,
+      "total_tokens": 29582
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 69111
+    },
+    "local@4": {
+     "model": "qwen3.8-2b-distill",
+     "hour": 4,
+     "n_items": 153,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "All provided news items occur at or before 03:45 PM ET on October 16, 2026, which is the stated 4pm New York time cutoff. None of the fund-specific events (earnings releases, insider trades, regulatory filings) are published after 4pm NY time, so they would already be incorporated into the hedge-implied reference value. No additional flagging is warranted."
+     },
+     "violations": [
+      "reason_too_long"
+     ],
+     "usage": {
+      "prompt_tokens": 20561,
+      "completion_tokens": 331,
+      "total_tokens": 20892,
+      "completion_tokens_details": {
+       "reasoning_tokens": 210
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 69111
+    },
+    "local9b@4": {
+     "model": "qwen3.5-9b",
+     "hour": 4,
+     "n_items": 153,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "News items are mostly macro, unrelated companies, or already reflected in futures. No specific fund-level events found."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 20563,
+      "completion_tokens": 51,
+      "total_tokens": 20614,
+      "completion_tokens_details": {
+       "reasoning_tokens": 0
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 69111
+    }
+   }
+  },
+  {
+   "date": "2026-10-16",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 424,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "No new fund-specific, after-4pm news at a large holding. Microsoft/Nscale items repeat earlier, already-priced reports; Tesla overnight move stems from old comments."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 2183,
+      "prompt_tokens": 77224,
+      "total_tokens": 79407
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 185122
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 462,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Post-4pm holding news is routine or already digested: Nscale/Microsoft reprints, a UBS target raise, and small after-hours Tesla and Meta moves. Nothing large enough to move the basket beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 2081,
+      "prompt_tokens": 84152,
+      "total_tokens": 86233
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 201610
+    },
+    "sonnet@4": {
+     "model": "claude-sonnet-5-5",
+     "hour": 4,
+     "n_items": 462,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "No material fund-specific news after 4pm Friday. The semiconductor selloff, Micron/CXMT worries, Tesla Roadster and iPhone Duo demand were already priced. The Microsoft/Nscale cancellation is too small at its weight."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 508,
+      "prompt_tokens": 84152,
+      "total_tokens": 84660
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 201610
+    },
+    "local@4": {
+     "error": "HTTP Error 400: Bad Request: {\"error\":\"Engine protocol predict request returned 400: {\\\"error\\\":{\\\"code\\\":400,\\\"message\\\":\\\"request (59523 tokens) exceeds the available context size (40960 tokens), try increasing it\\\",\\\"type\\\":\\\"exceed_context_size_error\\\",\\\"n_prompt_tokens\\\":59523,\\\"n_ctx\\\":40960}}"
+    },
+    "local9b@4": {
+     "error": "HTTP Error 400: Bad Request"
+    }
+   }
+  },
+  {
+   "date": "2026-10-19",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 103,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "No material fund-specific after-4pm news at the large holdings. The 3M warrant deal is small relative to Amazon, and the Meta, Tesla and Micron items are analyst notes, speculation or sector moves."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 1124,
+      "prompt_tokens": 19272,
+      "total_tokens": 20396
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 46454
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 142,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "After-4pm items are routine analyst target changes, earnings previews, insider sales, or lawsuit reminders at holdings. None looks material enough to move QQQ beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 1014,
+      "prompt_tokens": 26375,
+      "total_tokens": 27389
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 63370
+    }
+   }
+  },
+  {
+   "date": "2026-10-20",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 93,
+     "output": {
+      "flag": true,
+      "direction": "up",
+      "confidence": "medium",
+      "cited_ids": [
+       "n8bcade47"
+      ],
+      "reason": "Nvidia (7.8% weight) rose over 2% after hours on a reported SpaceX plan to integrate about 200000 GB300 chips monthly. That is Nvidia-specific and after 4pm, so index futures would not capture it."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 702,
+      "prompt_tokens": 16943,
+      "total_tokens": 17645
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 41913
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 118,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Post-4pm holding news (NVDA after-hours jump, Tesla/SpaceX merger committees) moves stocks that are inside index futures, so the hedge already captures it. No fund-specific gap found."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 1543,
+      "prompt_tokens": 21494,
+      "total_tokens": 23037
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 52823
+    },
+    "sonnet@1": {
+     "model": "claude-sonnet-5-5",
+     "hour": 1,
+     "n_items": 93,
+     "output": {
+      "flag": true,
+      "direction": "up",
+      "confidence": "low",
+      "cited_ids": [
+       "n8bcade47"
+      ],
+      "reason": "Nvidia (7.8% weight) rose over 2% after hours on SpaceX's confirmed GB300 chip plan, a stock-specific after-4pm move futures likely only partly capture. Tesla merger and earnings news is directionally unclear."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 651,
+      "prompt_tokens": 16943,
+      "total_tokens": 17594
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 41913
+    },
+    "local@1": {
+     "model": "qwen3.8-2b-distill",
+     "hour": 1,
+     "n_items": 93,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "No fund-specific information was found that would move QQQ beyond hedge-implied values. All news items pertain to companies not in the QQQ top 10 (Tesla, Apple, NVIDIA, Microsoft). The only relevant item is TSLA stock price movement unrelated to QQQ holdings."
+     },
+     "violations": [
+      "reason_too_long"
+     ],
+     "usage": {
+      "prompt_tokens": 11959,
+      "completion_tokens": 345,
+      "total_tokens": 12304,
+      "completion_tokens_details": {
+       "reasoning_tokens": 157
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 41913
+    },
+    "local9b@1": {
+     "model": "qwen3.5-9b",
+     "hour": 1,
+     "n_items": 93,
+     "output": {
+      "flag": true,
+      "direction": "up",
+      "confidence": "high",
+      "cited_ids": [
+       "n2dde4c07",
+       "n8bcade47"
+      ],
+      "reason": "SpaceX confirmed integrating ~200k Nvidia chips/month. This specific large-scale demand is fund-specific and likely exceeds broad index futures pricing."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 11961,
+      "completion_tokens": 74,
+      "total_tokens": 12035,
+      "completion_tokens_details": {
+       "reasoning_tokens": 0
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 41913
+    }
+   }
+  },
+  {
+   "date": "2026-10-21",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 98,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "QQQ tracks the Nasdaq-100, so after-hours moves in its holdings (Meta, Tesla) are already in the index futures hedge. No non-index, fund-specific item found."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 1144,
+      "prompt_tokens": 18396,
+      "total_tokens": 19540
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 44531
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 128,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "After-4pm holding news (Meta results, Tesla results, Meta fine reports) moves NDX-weighted futures and is already in the hedge. No residual fund-specific move identified."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 1113,
+      "prompt_tokens": 23874,
+      "total_tokens": 24987
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 57729
+    }
+   }
+  },
+  {
+   "date": "2026-10-22",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 82,
+     "output": {
+      "flag": true,
+      "direction": "unclear",
+      "confidence": "low",
+      "cited_ids": [
+       "n-nbd5fa1ba",
+       "nf8177637"
+      ],
+      "reason": "Meta (3.0%) earnings reaction after 4pm looks positive, but Tesla (3.3%) fell after its capex cut. The offsetting fund-specific moves leave direction unclear."
+     },
+     "violations": [
+      "cited_unknown_ids:n-nbd5fa1ba"
+     ],
+     "usage": {
+      "completion_tokens": 1792,
+      "prompt_tokens": 15470,
+      "total_tokens": 17262
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 37677
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 110,
+     "output": {
+      "flag": true,
+      "direction": "down",
+      "confidence": "medium",
+      "cited_ids": [
+       "nf8177637"
+      ],
+      "reason": "Tesla cut its 2026 capex forecast and shares fell after 4pm, a company-specific guidance change at a 3.3% weight that index futures would not capture."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 1439,
+      "prompt_tokens": 20475,
+      "total_tokens": 21914
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 49901
+    },
+    "sonnet@1": {
+     "model": "claude-sonnet-5-5",
+     "hour": 1,
+     "n_items": 82,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "low",
+      "cited_ids": [],
+      "reason": "Tesla's capex cut (down) and Meta's strong results (up) are both fund-specific, but each is about 3% of the fund and they roughly offset. The rest is routine filings or broad AI-selloff news already in futures."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 883,
+      "prompt_tokens": 15470,
+      "total_tokens": 16353
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 37677
+    },
+    "sonnet@4": {
+     "model": "claude-sonnet-5-5",
+     "hour": 4,
+     "n_items": 110,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Tesla's capex cut is fund-specific but small at a 3.3% weight. Meta news is mixed (strong results versus a penalty). Other items are broad AI-selloff or immaterial, so nothing clearly beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 991,
+      "prompt_tokens": 20475,
+      "total_tokens": 21466
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 49901
+    },
+    "local@1": {
+     "model": "qwen3.8-2b-distill",
+     "hour": 1,
+     "n_items": 82,
+     "output": {
+      "flag": true,
+      "direction": "down",
+      "confidence": "medium",
+      "cited_ids": [
+       "nc2ed1efa"
+      ],
+      "reason": "Micron (MU) holds 4% weight in QQQ and the LOI to acquire GPU cloud infrastructure represents fund-specific investment decisions not reflected in NASDAQ-100 futures or index prices."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 10994,
+      "completion_tokens": 686,
+      "total_tokens": 11680,
+      "completion_tokens_details": {
+       "reasoning_tokens": 496
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 37677
+    },
+    "local@4": {
+     "model": "qwen3.8-2b-distill",
+     "hour": 4,
+     "n_items": 110,
+     "output": {
+      "flag": true,
+      "direction": "up",
+      "confidence": "high",
+      "cited_ids": [
+       "n1bc2fe01"
+      ],
+      "reason": "Institutional investor Adams Diversified Equity Fund purchased 10,400 shares of Johnson Controls International (JCI) at ~$163/share post-merger. This institutional buying action directly increases JCI stock price, which positively impacts the fund's underlying positions."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 14471,
+      "completion_tokens": 453,
+      "total_tokens": 14924,
+      "completion_tokens_details": {
+       "reasoning_tokens": 348
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 49901
+    },
+    "local9b@1": {
+     "model": "qwen3.5-9b",
+     "hour": 1,
+     "n_items": 82,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "News items are mostly macro, unrelated to fund holdings, or already reflected in futures. No specific material events for top holdings detected."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 10996,
+      "completion_tokens": 55,
+      "total_tokens": 11051,
+      "completion_tokens_details": {
+       "reasoning_tokens": 0
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 37677
+    },
+    "local9b@4": {
+     "model": "qwen3.5-9b",
+     "hour": 4,
+     "n_items": 110,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "News items are mostly broad macro trends, unrelated third-party company events, or already reflected in futures prices."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 14473,
+      "completion_tokens": 50,
+      "total_tokens": 14523,
+      "completion_tokens_details": {
+       "reasoning_tokens": 0
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 49901
+    }
+   }
+  },
+  {
+   "date": "2026-10-23",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 241,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Post-4pm items are routine filings, speculation, or minor lawsuits at holdings. None is a material fund-specific corporate, regulatory, or guidance event beyond what the hedge implies."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 1017,
+      "prompt_tokens": 44260,
+      "total_tokens": 45277
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 107051
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 262,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "No fund-specific after-4pm news at a top holding is new enough to move the basket beyond the hedge. Earnings for GOOGL and MSFT fall after this hour, and the TSLA overnight move is small at 3.3% weight."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 1749,
+      "prompt_tokens": 48173,
+      "total_tokens": 49922
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 116342
+    },
+    "sonnet@4": {
+     "model": "claude-sonnet-5-5",
+     "hour": 4,
+     "n_items": 262,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "No fund-specific after-4pm event at a major holding. Items are routine filings, stale recaps, institutional-holdings posts, earnings previews and discussion of earlier moves; none is new material news beyond the futures."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 109,
+      "prompt_tokens": 48173,
+      "total_tokens": 48282
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 116342
+    },
+    "local@4": {
+     "model": "qwen3.8-2b-distill",
+     "hour": 4,
+     "n_items": 262,
+     "output": {
+      "_raw": "## Flag: **YES** \u2014 Meta Platforms' CEO Fired Should Move the Basket Value Beyond Hedge Implications\n\n### Reasoning:\n\nMeta Platforms (META) had its CEO fired at **03:14 ET on October 26**, which is **7:14 PM New York time** \u2014 well after the 4 PM NY cutoff. This event affects any fund with META as a position, meaning the fund's value should be adjusted beyond what hedge instruments (including S&P 500 futures) already imply.\n\nMeta owns approximately **3% of Apple** and **8% of Microsoft**, so this "
+     },
+     "violations": [
+      "flag_not_bool",
+      "direction_invalid",
+      "confidence_invalid"
+     ],
+     "usage": {
+      "prompt_tokens": 33592,
+      "completion_tokens": 582,
+      "total_tokens": 34174,
+      "completion_tokens_details": {
+       "reasoning_tokens": 429
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 116342
+    },
+    "local9b@4": {
+     "model": "qwen3.5-9b",
+     "hour": 4,
+     "n_items": 262,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "News items are mostly macro, ETF-specific, or pre-4pm. No fund-specific material events for top holdings occurred after 4pm."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 33594,
+      "completion_tokens": 58,
+      "total_tokens": 33652,
+      "completion_tokens_details": {
+       "reasoning_tokens": 0
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 116342
+    }
+   }
+  },
+  {
+   "date": "2026-10-26",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 104,
+     "output": {
+      "flag": true,
+      "direction": "down",
+      "confidence": "medium",
+      "cited_ids": [
+       "n2aedf5a1"
+      ],
+      "reason": "Meta priced a $25B common forward sale plus $12.5B mandatory convertible preferred after 4pm. Large dilutive equity supply at a 3% holding is not reflected in index or hedge futures."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 1494,
+      "prompt_tokens": 19394,
+      "total_tokens": 20888
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 47304
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 144,
+     "output": {
+      "flag": true,
+      "direction": "down",
+      "confidence": "low",
+      "cited_ids": [
+       "n2838d573",
+       "n2aedf5a1"
+      ],
+      "reason": "Meta priced a $25B common offering plus $12.5B mandatory convertible preferred after 4pm, adding dilution and funding strain. The hedge does not capture this company-specific supply. Direction is down, but the effect is likely small at 3% weight."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 1683,
+      "prompt_tokens": 26630,
+      "total_tokens": 28313
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 65080
+    },
+    "sonnet@1": {
+     "model": "claude-sonnet-5-5",
+     "hour": 1,
+     "n_items": 104,
+     "output": {
+      "flag": true,
+      "direction": "down",
+      "confidence": "low",
+      "cited_ids": [
+       "n2aedf5a1"
+      ],
+      "reason": "Meta priced $12.5B mandatory convertible preferred and a $25B forward equity sale after hours. This is fund-specific dilutive supply at a 3% holding, which usually pressures the stock beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 555,
+      "prompt_tokens": 19394,
+      "total_tokens": 19949
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 47304
+    },
+    "sonnet@4": {
+     "model": "claude-sonnet-5-5",
+     "hour": 4,
+     "n_items": 144,
+     "output": {
+      "flag": true,
+      "direction": "unclear",
+      "confidence": "low",
+      "cited_ids": [
+       "n2838d573",
+       "n39fd9173",
+       "n84d33522",
+       "ne67dc664",
+       "ne03a35d3"
+      ],
+      "reason": "Meta priced a $25B equity forward sale plus $12.5B mandatory preferred and raised capex, partly offset by Nvidia's $3B investment. Microsoft's 60000 buyout offers are also stock-specific. Net direction is ambiguous."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 987,
+      "prompt_tokens": 26630,
+      "total_tokens": 27617
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 65080
+    },
+    "local@1": {
+     "model": "qwen3.8-2b-distill",
+     "hour": 1,
+     "n_items": 104,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "No news provides fund-specific information (earnings beat/miss, guidance changes, buybacks) that would cause QQQ to move beyond its hedge-implied value. All relevant catalysts are already priced into the ETF through index futures and forward premiums."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 13359,
+      "completion_tokens": 502,
+      "total_tokens": 13861,
+      "completion_tokens_details": {
+       "reasoning_tokens": 391
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 47304
+    },
+    "local@4": {
+     "model": "qwen3.8-2b-distill",
+     "hour": 4,
+     "n_items": 144,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "No fund-specific news after 4pm NY time that would move basket value beyond hedge-implied levels."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 18426,
+      "completion_tokens": 537,
+      "total_tokens": 18963,
+      "completion_tokens_details": {
+       "reasoning_tokens": 473
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 65080
+    },
+    "local9b@1": {
+     "model": "qwen3.5-9b",
+     "hour": 1,
+     "n_items": 104,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "News items are mostly macro, indirect partners, or already reflected in futures. No specific fund-level catalysts found."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 13361,
+      "completion_tokens": 52,
+      "total_tokens": 13413,
+      "completion_tokens_details": {
+       "reasoning_tokens": 0
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 47304
+    },
+    "local9b@4": {
+     "model": "qwen3.5-9b",
+     "hour": 4,
+     "n_items": 144,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "News items are mostly broad macro, unrelated third parties, or pre-4pm events. No specific fund-level catalysts found."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 18432,
+      "completion_tokens": 55,
+      "total_tokens": 18487,
+      "completion_tokens_details": {
+       "reasoning_tokens": 0
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 65080
+    }
+   }
+  },
+  {
+   "date": "2026-10-27",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 99,
+     "output": {
+      "flag": true,
+      "direction": "down",
+      "confidence": "medium",
+      "cited_ids": [
+       "n9e47c430"
+      ],
+      "reason": "Alphabet (2.8% weight) missed revenue and earnings expectations and fell in after-hours trading at 22:06. That idiosyncratic move is not captured by index futures, so the fund's basket should drift lower beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 976,
+      "prompt_tokens": 18343,
+      "total_tokens": 19319
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 44832
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 130,
+     "output": {
+      "flag": true,
+      "direction": "down",
+      "confidence": "medium",
+      "cited_ids": [
+       "n9e47c430",
+       "nb3d272f6"
+      ],
+      "reason": "Alphabet (GOOGL, 2.8% weight) missed Q3 revenue and EPS expectations and fell in after-hours trading. This is a fund-specific result, so the stock's move is likely not fully captured by the index hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 1938,
+      "prompt_tokens": 23915,
+      "total_tokens": 25853
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 58177
+    },
+    "sonnet@1": {
+     "model": "claude-sonnet-5-5",
+     "hour": 1,
+     "n_items": 99,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "The Alphabet 'miss' article looks stale, with no corroboration in other items, and GOOGL is only 2.8% of the fund. The Meta stake news was already out before 4pm. The rest is index-level or non-holding noise."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 916,
+      "prompt_tokens": 18343,
+      "total_tokens": 19259
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 44832
+    },
+    "sonnet@4": {
+     "model": "claude-sonnet-5-5",
+     "hour": 4,
+     "n_items": 130,
+     "output": {
+      "flag": true,
+      "direction": "down",
+      "confidence": "low",
+      "cited_ids": [
+       "n9e47c430",
+       "nb3d272f6"
+      ],
+      "reason": "Two reports say Alphabet (2.8%) missed Q3 revenue and earnings and fell after hours, a fund-specific post-4pm event. Later previews describing the report as upcoming conflict, so confidence is low."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 1341,
+      "prompt_tokens": 23915,
+      "total_tokens": 25256
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 58177
+    },
+    "local@1": {
+     "model": "qwen3.8-2b-distill",
+     "hour": 1,
+     "n_items": 99,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "All post-4pm news items are either pre-determined by the hedge-implied reference value at this hour or relate to unrelated stocks (AAPL, AMZN, MSFT, GOOGL) with no fund-specific impact on QQQ. The hedge instruments already capture all available market information up to 16:00 New York time."
+     },
+     "violations": [
+      "reason_too_long"
+     ],
+     "usage": {
+      "prompt_tokens": 12907,
+      "completion_tokens": 433,
+      "total_tokens": 13340,
+      "completion_tokens_details": {
+       "reasoning_tokens": 313
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 44832
+    },
+    "local@4": {
+     "model": "qwen3.8-2b-distill",
+     "hour": 4,
+     "n_items": 130,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "The provided news items are all general stock price updates or commentary on individual tech companies (NVDA, AAPL, MU). None represent fund-specific information such as new earnings guidance, deal announcements, regulatory actions at holdings large enough to matter, or events in the fund's home market that would move the basket beyond what hedge instruments already imply. Hedge instruments and futures already capture expected price movements from these fundamentals."
+     },
+     "violations": [
+      "reason_too_long"
+     ],
+     "usage": {
+      "prompt_tokens": 16689,
+      "completion_tokens": 409,
+      "total_tokens": 17098,
+      "completion_tokens_details": {
+       "reasoning_tokens": 288
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 58177
+    },
+    "local9b@1": {
+     "model": "qwen3.5-9b",
+     "hour": 1,
+     "n_items": 99,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "News items are mostly about third-party companies or general market commentary. No specific material corporate events for the fund's top holdings occurred after 4pm."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 12909,
+      "completion_tokens": 65,
+      "total_tokens": 12974,
+      "completion_tokens_details": {
+       "reasoning_tokens": 0
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 44832
+    },
+    "local9b@4": {
+     "model": "qwen3.5-9b",
+     "hour": 4,
+     "n_items": 130,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "News items are mostly broad macro, index-level moves already in futures, or unrelated companies. No specific fund holdings events found."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 16691,
+      "completion_tokens": 54,
+      "total_tokens": 16745,
+      "completion_tokens_details": {
+       "reasoning_tokens": 0
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 58177
+    }
+   }
+  },
+  {
+   "date": "2026-10-28",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 120,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Post-4pm moves in top holdings (Alphabet down, Microsoft up) are large index constituents that overnight index futures already reflect. No fund-specific item outside the hedge stands out."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 711,
+      "prompt_tokens": 22302,
+      "total_tokens": 23013
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 54241
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 150,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Post-4pm holding news (Alphabet miss, Microsoft beat, Amazon FCC approval) moves index constituents that index futures already capture at roughly the fund's weights. No unhedged fund-specific shock found."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 1028,
+      "prompt_tokens": 27812,
+      "total_tokens": 28840
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 67265
+    },
+    "sonnet@4": {
+     "model": "claude-sonnet-5-5",
+     "hour": 4,
+     "n_items": 150,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Alphabet's after-hours drop and Microsoft's gain are both mega-cap moves already in Nasdaq futures, and they roughly offset at their weights. Nothing else fund-specific and after 4pm is large enough to matter."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 553,
+      "prompt_tokens": 27812,
+      "total_tokens": 28365
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 67265
+    },
+    "local@4": {
+     "model": "qwen3.8-2b-distill",
+     "hour": 4,
+     "n_items": 150,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "No fund-specific information beyond what is captured by the hedge-implied reference price of $716.52 per share. The Apple holding at 8.3% weight and any subsequent movements are already reflected in the hedge instruments."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 19461,
+      "completion_tokens": 455,
+      "total_tokens": 19916,
+      "completion_tokens_details": {
+       "reasoning_tokens": 281
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 67265
+    },
+    "local9b@4": {
+     "model": "qwen3.5-9b",
+     "hour": 4,
+     "n_items": 150,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "News items are mostly about peers or non-holdings. Alphabet's miss is already in futures; other items lack direct impact on QQQ holdings."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 19463,
+      "completion_tokens": 59,
+      "total_tokens": 19522,
+      "completion_tokens_details": {
+       "reasoning_tokens": 0
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 67265
+    }
+   }
+  },
+  {
+   "date": "2026-10-29",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 121,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Post-4pm holding news (Amazon results, Meta offering, Nvidia probe headlines) moves the index and should already appear in overnight index futures. No clear fund-specific residual beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 1863,
+      "prompt_tokens": 21890,
+      "total_tokens": 23753
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 52986
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 156,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Post-4pm company news is mostly index constituent moves that Nasdaq-100 futures already capture. No fund-specific, non-hedged event stands out."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 1053,
+      "prompt_tokens": 28164,
+      "total_tokens": 29217
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 68033
+    }
+   }
+  },
+  {
+   "date": "2026-10-30",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 362,
+     "output": {
+      "flag": true,
+      "direction": "down",
+      "confidence": "medium",
+      "cited_ids": [
+       "nf105917f",
+       "nfb050202",
+       "n3031ebb9"
+      ],
+      "reason": "Meta-specific after-4pm news: reported up-to-$95B equity raise and S&P outlook cut to negative. Dilution and funding concerns are not in index futures; Meta is about 3% of the fund."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 2412,
+      "prompt_tokens": 65212,
+      "total_tokens": 67624
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 158774
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 395,
+     "output": {
+      "flag": true,
+      "direction": "down",
+      "confidence": "medium",
+      "cited_ids": [
+       "nfb050202",
+       "nf105917f",
+       "n249774e0"
+      ],
+      "reason": "Meta (3.0% weight) reported plans for a roughly $95\u201397.5B share sale after the 4pm close. Dilutive equity issuance is fund-specific and not reflected in index hedges."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 3653,
+      "prompt_tokens": 71082,
+      "total_tokens": 74735
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 173099
+    },
+    "sonnet@1": {
+     "model": "claude-sonnet-5-5",
+     "hour": 1,
+     "n_items": 362,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "The AI-capex selloff and the Alphabet, Intel and Amazon results are market-wide and already in futures. Meta's S&P outlook cut is minor at a 3% weight, and its equity raise looks previously known. Apple and AMD earnings are still ahead."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 703,
+      "prompt_tokens": 65212,
+      "total_tokens": 65915
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 158774
+    },
+    "sonnet@4": {
+     "model": "claude-sonnet-5-5",
+     "hour": 4,
+     "n_items": 395,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "No clearly new, fund-specific, post-4pm event at a major holding. The Meta S&P outlook cut and equity-raise reports are small at a 3% weight; Apple and AMD earnings are still ahead; the rest is macro or AI-trade commentary."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 710,
+      "prompt_tokens": 71082,
+      "total_tokens": 71792
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 173099
+    },
+    "local@1": {
+     "error": "HTTP Error 400: Bad Request: {\"error\":\"Engine protocol predict request returned 400: {\\\"error\\\":{\\\"code\\\":400,\\\"message\\\":\\\"request (45767 tokens) exceeds the available context size (40960 tokens), try increasing it\\\",\\\"type\\\":\\\"exceed_context_size_error\\\",\\\"n_prompt_tokens\\\":45767,\\\"n_ctx\\\":40960}}"
+    },
+    "local@4": {
+     "error": "HTTP Error 400: Bad Request: {\"error\":\"Engine protocol predict request returned 400: {\\\"error\\\":{\\\"code\\\":400,\\\"message\\\":\\\"request (49848 tokens) exceeds the available context size (40960 tokens), try increasing it\\\",\\\"type\\\":\\\"exceed_context_size_error\\\",\\\"n_prompt_tokens\\\":49848,\\\"n_ctx\\\":40960}}"
+    },
+    "local9b@1": {
+     "model": "qwen3.5-9b",
+     "hour": 1,
+     "n_items": 362,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "News items are mostly macro market moves or unrelated to QQQ holdings. No specific fund-level events found."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 45773,
+      "completion_tokens": 50,
+      "total_tokens": 45823,
+      "completion_tokens_details": {
+       "reasoning_tokens": 0
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 158774
+    },
+    "local9b@4": {
+     "error": "HTTP Error 400: Bad Request"
+    }
+   }
+  },
+  {
+   "date": "2026-11-02",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 127,
+     "output": {
+      "flag": true,
+      "direction": "down",
+      "confidence": "medium",
+      "cited_ids": [
+       "n7a0cd593",
+       "n4f71d87d"
+      ],
+      "reason": "Apple, an 8.3% holding, fell about 3% after hours on weak iPhone guidance and a revenue forecast below expectations. Index futures reflect only part of this idiosyncratic move."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 720,
+      "prompt_tokens": 23032,
+      "total_tokens": 23752
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 56535
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 164,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Apple's after-hours post-earnings drop is a fund-specific result, but Nasdaq-100 futures carry Apple at similar weight and already reflect it. Other holding news is minor or market-wide."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 1024,
+      "prompt_tokens": 29784,
+      "total_tokens": 30808
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 72785
+    },
+    "sonnet@1": {
+     "model": "claude-sonnet-5-5",
+     "hour": 1,
+     "n_items": 127,
+     "output": {
+      "flag": true,
+      "direction": "down",
+      "confidence": "medium",
+      "cited_ids": [
+       "n7a0cd593",
+       "n4f71d87d"
+      ],
+      "reason": "Apple (8.3% weight) reported after 4pm and fell about 3% in extended trading on weak iPhone and guidance. This is holding-specific and may be only partly reflected in index futures."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 500,
+      "prompt_tokens": 23032,
+      "total_tokens": 23532
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 56535
+    },
+    "local@1": {
+     "model": "qwen3.8-2b-distill",
+     "hour": 1,
+     "n_items": 127,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "No Apple-related news items were found among the 127 recent headlines; therefore, there is no fund-specific information that could move QQQ beyond hedge-implied values."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 16234,
+      "completion_tokens": 221,
+      "total_tokens": 16455,
+      "completion_tokens_details": {
+       "reasoning_tokens": 151
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 56535
+    },
+    "local9b@1": {
+     "model": "qwen3.5-9b",
+     "hour": 1,
+     "n_items": 127,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "News items are mostly about non-holdings or broad market sentiment already reflected in futures. No specific fund-level events found."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 16236,
+      "completion_tokens": 54,
+      "total_tokens": 16290,
+      "completion_tokens_details": {
+       "reasoning_tokens": 0
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 56535
+    }
+   }
+  },
+  {
+   "date": "2026-11-03",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 138,
+     "output": {
+      "flag": true,
+      "direction": "unclear",
+      "confidence": "medium",
+      "cited_ids": [
+       "n611b8889"
+      ],
+      "reason": "Apple's after-hours earnings beat (revenue, EPS) is offset by guidance for lower December-quarter gross margin. The fund-specific reaction is not in the index hedge, but its direction is ambiguous."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 1311,
+      "prompt_tokens": 25629,
+      "total_tokens": 26940
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 61484
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 181,
+     "output": {
+      "flag": true,
+      "direction": "unclear",
+      "confidence": "low",
+      "cited_ids": [
+       "n21bb6c30",
+       "n611b8889",
+       "n96ae3286",
+       "n9c2e0034"
+      ],
+      "reason": "Apple, 8.3% weight, fell about 2.2% overnight on margin and cost concerns. AMD rose after hours on earnings, while Tesla fell on midterm politics. Net direction is unclear."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 1646,
+      "prompt_tokens": 33263,
+      "total_tokens": 34909
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 80060
+    },
+    "sonnet@1": {
+     "model": "claude-sonnet-5-5",
+     "hour": 1,
+     "n_items": 138,
+     "output": {
+      "flag": true,
+      "direction": "up",
+      "confidence": "medium",
+      "cited_ids": [
+       "n138aee1a",
+       "n96ae3286",
+       "n21407be9"
+      ],
+      "reason": "AMD (3.6% weight) reported after 4pm, beating on data-center growth with an optimistic Q4 outlook, and traded higher after hours. This is stock-specific and only partly captured by index futures."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 605,
+      "prompt_tokens": 25629,
+      "total_tokens": 26234
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 61484
+    },
+    "sonnet@4": {
+     "model": "claude-sonnet-5-5",
+     "hour": 4,
+     "n_items": 181,
+     "output": {
+      "flag": true,
+      "direction": "up",
+      "confidence": "medium",
+      "cited_ids": [
+       "n138aee1a",
+       "n96ae3286",
+       "nfb8527a3"
+      ],
+      "reason": "AMD (3.6% weight) beat Q3 estimates after 4pm and raised its 2027 outlook, and the stock rose after hours. Tesla's midterm-related dip partly offsets this."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 730,
+      "prompt_tokens": 33263,
+      "total_tokens": 33993
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 80060
+    },
+    "local@1": {
+     "model": "qwen3.8-2b-distill",
+     "hour": 1,
+     "n_items": 138,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "None of the news mentions any of QQQ's largest holdings (AAPL, NVDA, MSFT, AMZN, MU, AMD, TSLA, META). All other references are to non-largest holdings like WMT or general company performance. Hedge instruments already capture all material moves from top holdings."
+     },
+     "violations": [
+      "reason_too_long"
+     ],
+     "usage": {
+      "prompt_tokens": 18287,
+      "completion_tokens": 380,
+      "total_tokens": 18667,
+      "completion_tokens_details": {
+       "reasoning_tokens": 281
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 61484
+    },
+    "local@4": {
+     "model": "qwen3.8-2b-distill",
+     "hour": 4,
+     "n_items": 181,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "All post-4pm NY news on November 3, 2026 relates to pre-market data released that day (Apple earnings miss by $0.02, NVIDIA Q3 beat, AMD record data center growth). No significant new information emerged after the 9am London open on Nov 4th that would move QQQ beyond the hedge-guided floor of $686.44/share."
+     },
+     "violations": [
+      "reason_too_long"
+     ],
+     "usage": {
+      "prompt_tokens": 23665,
+      "completion_tokens": 551,
+      "total_tokens": 24216,
+      "completion_tokens_details": {
+       "reasoning_tokens": 369
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 80060
+    },
+    "local9b@1": {
+     "model": "qwen3.5-9b",
+     "hour": 1,
+     "n_items": 138,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "News items are mostly about non-holdings or already reflected in futures. No specific fund-level event found."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 18289,
+      "completion_tokens": 51,
+      "total_tokens": 18340,
+      "completion_tokens_details": {
+       "reasoning_tokens": 0
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 61484
+    },
+    "local9b@4": {
+     "model": "qwen3.5-9b",
+     "hour": 4,
+     "n_items": 181,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "News items are mostly about non-holdings or already reflected in futures. No specific fund-level events found."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 23667,
+      "completion_tokens": 51,
+      "total_tokens": 23718,
+      "completion_tokens_details": {
+       "reasoning_tokens": 0
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 80060
+    }
+   }
+  },
+  {
+   "date": "2026-11-04",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 139,
+     "output": {
+      "flag": true,
+      "direction": "down",
+      "confidence": "low",
+      "cited_ids": [
+       "n6ddc09c7",
+       "nad2c54a6"
+      ],
+      "reason": "After-4pm fund-specific negatives: Microsoft reportedly walked away from a tens-of-billions AI deal (7.8% NVDA target cut to $315 from $420 by Melius). Both are large holdings; the effect is uncertain."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 1658,
+      "prompt_tokens": 25783,
+      "total_tokens": 27441
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 61860
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 186,
+     "output": {
+      "flag": true,
+      "direction": "up",
+      "confidence": "low",
+      "cited_ids": [
+       "nbdcbb236"
+      ],
+      "reason": "Amazon post-close Q3 beat: $201.9B revenue, AWS up 39%, capex guide held. Offset by Alphabet's Zacks miss and the Melius NVDA target cut, so low confidence."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 2646,
+      "prompt_tokens": 34374,
+      "total_tokens": 37020
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 82484
+    },
+    "sonnet@1": {
+     "model": "claude-sonnet-5-5",
+     "hour": 1,
+     "n_items": 139,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "No clear fund-specific after-4pm news at a large holding. The semiconductor index move and the Democratic sweep rally are market-wide and already in futures. The Microsoft/Nscale report is too minor and ambiguous to flag."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 588,
+      "prompt_tokens": 25783,
+      "total_tokens": 26371
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 61860
+    },
+    "sonnet@4": {
+     "model": "claude-sonnet-5-5",
+     "hour": 4,
+     "n_items": 186,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "No after-4pm, fund-specific news at a large holding. Earnings from AMD, Apple and Amazon were already out before the close. Qualcomm and Arm moves are not QQQ holdings, and macro or semiconductor moves are in the futures."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 630,
+      "prompt_tokens": 34374,
+      "total_tokens": 35004
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 82484
+    },
+    "local@1": {
+     "model": "qwen3.8-2b-distill",
+     "hour": 1,
+     "n_items": 139,
+     "output": {
+      "flag": true,
+      "direction": "down",
+      "confidence": "medium",
+      "cited_ids": [
+       "[nd56abdf4]"
+      ],
+      "reason": "AMD (3.6% weight) reported Q3 earnings below consensus, missing estimates. After-hours trading showed AMD down ~17% in the hour following the 4pm NY close."
+     },
+     "violations": [
+      "cited_unknown_ids:[nd56abdf4]"
+     ],
+     "usage": {
+      "prompt_tokens": 18391,
+      "completion_tokens": 408,
+      "total_tokens": 18799,
+      "completion_tokens_details": {
+       "reasoning_tokens": 320
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 61860
+    },
+    "local@4": {
+     "model": "qwen3.8-2b-distill",
+     "hour": 4,
+     "n_items": 186,
+     "output": {
+      "_raw": "**[flag]: true**, **direction**: \"down\", **confidence**: \"medium\" (since META is not flagged in any source but is explicitly confirmed as a holding through news that details its sale by an investor), **cited_ids**: [\"ne5840e63\"], **reason**: Meta Platforms (META) is one of QQQ's largest holdings (4.7% weight). News item [ne5840e63] confirms this holding exists and explicitly discusses the selling of META shares by an Andreessen Horowitz fund after a market rally, confirming it trades as part of "
+     },
+     "violations": [
+      "flag_not_bool",
+      "direction_invalid",
+      "confidence_invalid"
+     ],
+     "usage": {
+      "prompt_tokens": 24356,
+      "completion_tokens": 578,
+      "total_tokens": 24934,
+      "completion_tokens_details": {
+       "reasoning_tokens": 436
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 82484
+    },
+    "local9b@1": {
+     "model": "qwen3.5-9b",
+     "hour": 1,
+     "n_items": 139,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "News items are mostly about non-holdings or broad market moves already reflected in futures. No specific fund-level events found."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 18393,
+      "completion_tokens": 54,
+      "total_tokens": 18447,
+      "completion_tokens_details": {
+       "reasoning_tokens": 0
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 61860
+    },
+    "local9b@4": {
+     "model": "qwen3.5-9b",
+     "hour": 4,
+     "n_items": 186,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "News items are mostly about non-holdings or broad market moves already reflected in futures. No specific fund-level events found."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 24358,
+      "completion_tokens": 54,
+      "total_tokens": 24412,
+      "completion_tokens_details": {
+       "reasoning_tokens": 0
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 82484
+    }
+   }
+  },
+  {
+   "date": "2026-11-05",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 127,
+     "output": {
+      "flag": true,
+      "direction": "unclear",
+      "confidence": "low",
+      "cited_ids": [
+       "n83d3bc78",
+       "n72e7965b"
+      ],
+      "reason": "After-4pm Micron plant pause (negative) conflicts with after-hours MU rebound of about 4% (positive). Fund-specific at 4% weight, but signals offset."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 1597,
+      "prompt_tokens": 23235,
+      "total_tokens": 24832
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 55953
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 166,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "low",
+      "cited_ids": [],
+      "reason": "Post-4pm holding-specific items (Micron Taiwan plant pause, Nvidia Congress briefing request, Cybertruck wind-down) are small or offsetting at these weights; no clear net direction beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 1752,
+      "prompt_tokens": 30213,
+      "total_tokens": 31965
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 72788
+    },
+    "sonnet@1": {
+     "model": "claude-sonnet-5-5",
+     "hour": 1,
+     "n_items": 127,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Evening news is dominated by the post-election AI/semiconductor selloff, which index futures already show. The Micron plant pause and Nvidia's Huang briefing request are ambiguous in timing or too small to move the basket beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 444,
+      "prompt_tokens": 23235,
+      "total_tokens": 23679
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 55953
+    },
+    "local@1": {
+     "model": "qwen3.8-2b-distill",
+     "hour": 1,
+     "n_items": 127,
+     "output": {
+      "flag": true,
+      "direction": "up",
+      "confidence": "medium",
+      "cited_ids": [
+       "nd0674f0c"
+      ],
+      "reason": "Nvidia AGI Robotics IPO raises $465M for humanoid robot tech. Directly impacts QQQ as NVDA is the largest holding (7.8% weight). This is fund-specific and post-4pm, moving beyond index/futures price already implied."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 16776,
+      "completion_tokens": 633,
+      "total_tokens": 17409,
+      "completion_tokens_details": {
+       "reasoning_tokens": 461
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 55953
+    },
+    "local9b@1": {
+     "model": "qwen3.5-9b",
+     "hour": 1,
+     "n_items": 127,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "Broad market selloffs and macro news (election fallout) are already reflected in the hedge instruments. No specific fund-level events or large holding-specific material moves occurred after 4pm."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 16778,
+      "completion_tokens": 66,
+      "total_tokens": 16844,
+      "completion_tokens_details": {
+       "reasoning_tokens": 0
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 55953
+    }
+   }
+  }
+ ],
+ "partial": false,
+ "news_items": 22729
+}

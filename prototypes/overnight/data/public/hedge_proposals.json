@@ -1,0 +1,1188 @@
+{
+ "SPY": {
+  "sonnet": {
+   "proposal": {
+    "model": "claude-sonnet-5-5",
+    "output": {
+     "instruments": [
+      {
+       "symbol": "ES=F",
+       "weight": 0.85,
+       "role": "equity"
+      },
+      {
+       "symbol": "NQ=F",
+       "weight": 0.15,
+       "role": "equity"
+      }
+     ],
+     "rationale": "SPY is almost entirely US large-cap equity, so ES=F (nearly 23-hour S&P future) is the core hedge. NQ=F adds a small tilt for the heavy mega-cap tech/semiconductor weights. Weights sum to about 1.0 equity exposure; no cash indices needed."
+    },
+    "instruments": [
+     {
+      "symbol": "ES=F",
+      "weight": 0.85,
+      "role": "equity"
+     },
+     {
+      "symbol": "NQ=F",
+      "weight": 0.15,
+      "role": "equity"
+     }
+    ],
+    "violations": [],
+    "usage": {
+     "completion_tokens": 179,
+     "prompt_tokens": 1940,
+     "total_tokens": 2119
+    },
+    "holdings_used": 15
+   },
+   "evaluation": {
+    "test_from": "2026-08-13",
+    "test_to_morning": "2026-11-06",
+    "baseline_cols": [
+     "ES=F"
+    ],
+    "baseline": {
+     "r2_oos": 0.977,
+     "mae_bps": 5.2,
+     "r2_train": 0.895,
+     "n_train": 434,
+     "n_test": 60,
+     "coef": {
+      "ES=F": 0.932
+     }
+    },
+    "proposal_cols": [
+     "ES=F",
+     "NQ=F"
+    ],
+    "proposal_missing_data": [],
+    "proposal_free": {
+     "r2_oos": 0.981,
+     "mae_bps": 4.7,
+     "r2_train": 0.895,
+     "n_train": 434,
+     "n_test": 60,
+     "coef": {
+      "ES=F": 0.873,
+      "NQ=F": 0.045
+     }
+    },
+    "proposal_fixed": {
+     "r2_oos": 0.977,
+     "mae_bps": 5.2,
+     "r2_train": 0.894,
+     "n_train": 434,
+     "n_test": 60,
+     "coef": {
+      "ES=F": 0.889
+     }
+    },
+    "union_cols": [
+     "ES=F",
+     "NQ=F"
+    ],
+    "union_free": {
+     "r2_oos": 0.981,
+     "mae_bps": 4.7,
+     "r2_train": 0.895,
+     "n_train": 434,
+     "n_test": 60,
+     "coef": {
+      "ES=F": 0.873,
+      "NQ=F": 0.045
+     }
+    },
+    "late_prints_vs_added_instruments": {
+     "n_nights": 60,
+     "added_instruments": [
+      "NQ=F"
+     ],
+     "coef_added": {
+      "NQ=F": 0.045
+     },
+     "corr_print_deviation_vs_added": 0.51,
+     "median_abs_print_deviation_bps": 2.5,
+     "median_abs_after_added_bps": 1.9,
+     "mean_print_deviation_bps": 1.4,
+     "mean_after_added_bps": 1.5,
+     "definition": "last same-instant traded print 02:00-03:59 against the published close-anchored reference; added = training-fitted coefficients times the added instruments' returns to the print's time"
+    }
+   }
+  }
+ },
+ "QQQ": {
+  "sonnet": {
+   "proposal": {
+    "model": "claude-sonnet-5-5",
+    "output": {
+     "instruments": [
+      {
+       "symbol": "NQ=F",
+       "weight": 0.95,
+       "role": "equity"
+      }
+     ],
+     "rationale": "QQQ tracks the Nasdaq-100, and NQ=F is the same index future trading nearly 23 hours, covering the 4pm-9:30am window. Holdings are US-centric, so other instruments add little explanatory power or only noise. Weight near 1 for roughly full equity exposure."
+    },
+    "instruments": [
+     {
+      "symbol": "NQ=F",
+      "weight": 0.95,
+      "role": "equity"
+     }
+    ],
+    "violations": [],
+    "usage": {
+     "completion_tokens": 145,
+     "prompt_tokens": 1896,
+     "total_tokens": 2041
+    },
+    "holdings_used": 15
+   },
+   "evaluation": {
+    "test_from": "2026-08-13",
+    "test_to_morning": "2026-11-06",
+    "baseline_cols": [
+     "NQ=F"
+    ],
+    "baseline": {
+     "r2_oos": 0.975,
+     "mae_bps": 10.4,
+     "r2_train": 0.92,
+     "n_train": 434,
+     "n_test": 60,
+     "coef": {
+      "NQ=F": 0.931
+     }
+    },
+    "proposal_cols": [
+     "NQ=F"
+    ],
+    "proposal_missing_data": [],
+    "proposal_free": {
+     "r2_oos": 0.975,
+     "mae_bps": 10.4,
+     "r2_train": 0.92,
+     "n_train": 434,
+     "n_test": 60,
+     "coef": {
+      "NQ=F": 0.931
+     }
+    },
+    "proposal_fixed": {
+     "r2_oos": 0.975,
+     "mae_bps": 10.4,
+     "r2_train": 0.92,
+     "n_train": 434,
+     "n_test": 60,
+     "coef": {
+      "NQ=F": 0.98
+     }
+    },
+    "union_cols": [
+     "NQ=F"
+    ],
+    "union_free": {
+     "note": "proposal adds nothing to the baseline set"
+    }
+   }
+  }
+ },
+ "SMH": {
+  "sonnet": {
+   "proposal": {
+    "model": "claude-sonnet-5-5",
+    "output": {
+     "instruments": [
+      {
+       "symbol": "NQ=F",
+       "weight": 1.2,
+       "role": "equity"
+      }
+     ],
+     "rationale": "SMH is almost entirely US-listed, Nvidia-led large-cap tech, so the Nasdaq-100 future, which trades nearly 24 hours, tracks it best. Weight is slightly above 1 because semiconductors have higher beta than the Nasdaq-100. Other instruments would add mostly noise."
+    },
+    "instruments": [
+     {
+      "symbol": "NQ=F",
+      "weight": 1.2,
+      "role": "equity"
+     }
+    ],
+    "violations": [],
+    "usage": {
+     "completion_tokens": 606,
+     "prompt_tokens": 1936,
+     "total_tokens": 2542
+    },
+    "holdings_used": 15
+   },
+   "evaluation": {
+    "test_from": "2026-08-13",
+    "test_to_morning": "2026-11-06",
+    "baseline_cols": [
+     "NQ=F"
+    ],
+    "baseline": {
+     "r2_oos": 0.771,
+     "mae_bps": 70.0,
+     "r2_train": 0.78,
+     "n_train": 434,
+     "n_test": 60,
+     "coef": {
+      "NQ=F": 1.625
+     }
+    },
+    "proposal_cols": [
+     "NQ=F"
+    ],
+    "proposal_missing_data": [],
+    "proposal_free": {
+     "r2_oos": 0.771,
+     "mae_bps": 70.0,
+     "r2_train": 0.78,
+     "n_train": 434,
+     "n_test": 60,
+     "coef": {
+      "NQ=F": 1.625
+     }
+    },
+    "proposal_fixed": {
+     "r2_oos": 0.771,
+     "mae_bps": 70.0,
+     "r2_train": 0.78,
+     "n_train": 434,
+     "n_test": 60,
+     "coef": {
+      "NQ=F": 1.354
+     }
+    },
+    "union_cols": [
+     "NQ=F"
+    ],
+    "union_free": {
+     "note": "proposal adds nothing to the baseline set"
+    }
+   }
+  }
+ },
+ "EWJ": {
+  "sonnet": {
+   "proposal": {
+    "model": "claude-sonnet-5-5",
+    "output": {
+     "instruments": [
+      {
+       "symbol": "NIY=F",
+       "weight": 0.98,
+       "role": "equity"
+      },
+      {
+       "symbol": "JPY=X",
+       "weight": -0.95,
+       "role": "fx"
+      }
+     ],
+     "rationale": "Japan-only holdings: the yen Nikkei future trades nearly 23 hours and carries the equity move. USD/JPY with a negative weight converts the fund's yen assets to dollars. This keeps the prototype's pair and matches near-full equity exposure."
+    },
+    "instruments": [
+     {
+      "symbol": "NIY=F",
+      "weight": 0.98,
+      "role": "equity"
+     },
+     {
+      "symbol": "JPY=X",
+      "weight": -0.95,
+      "role": "fx"
+     }
+    ],
+    "violations": [],
+    "usage": {
+     "completion_tokens": 722,
+     "prompt_tokens": 2048,
+     "total_tokens": 2770
+    },
+    "holdings_used": 15
+   },
+   "evaluation": {
+    "test_from": "2026-08-13",
+    "test_to_morning": "2026-11-06",
+    "baseline_cols": [
+     "NIY=F",
+     "JPY=X"
+    ],
+    "baseline": {
+     "r2_oos": 0.636,
+     "mae_bps": 44.4,
+     "r2_train": 0.815,
+     "n_train": 434,
+     "n_test": 60,
+     "coef": {
+      "NIY=F": 0.747,
+      "JPY=X": -0.838
+     }
+    },
+    "proposal_cols": [
+     "NIY=F",
+     "JPY=X"
+    ],
+    "proposal_missing_data": [],
+    "proposal_free": {
+     "r2_oos": 0.636,
+     "mae_bps": 44.4,
+     "r2_train": 0.815,
+     "n_train": 434,
+     "n_test": 60,
+     "coef": {
+      "NIY=F": 0.747,
+      "JPY=X": -0.838
+     }
+    },
+    "proposal_fixed": {
+     "r2_oos": 0.619,
+     "mae_bps": 45.8,
+     "r2_train": 0.812,
+     "n_train": 434,
+     "n_test": 60,
+     "coef": {
+      "NIY=F": 0.766
+     }
+    },
+    "union_cols": [
+     "NIY=F",
+     "JPY=X"
+    ],
+    "union_free": {
+     "note": "proposal adds nothing to the baseline set"
+    }
+   }
+  }
+ },
+ "EWG": {
+  "sonnet": {
+   "proposal": {
+    "model": "claude-sonnet-5-5",
+    "output": {
+     "instruments": [
+      {
+       "symbol": "^GDAXI",
+       "weight": 0.7,
+       "role": "equity"
+      },
+      {
+       "symbol": "ES=F",
+       "weight": 0.25,
+       "role": "equity"
+      },
+      {
+       "symbol": "EURUSD=X",
+       "weight": 1.0,
+       "role": "fx"
+      }
+     ],
+     "rationale": "Exception to the overnight-futures preference: ^GDAXI is a cash index but is the closest proxy for the German holdings and prices 3am to 9:30am ET. ES=F covers the US-driven hours before Frankfurt opens. EURUSD carries the euro exposure of the USD-denominated fund."
+    },
+    "instruments": [
+     {
+      "symbol": "^GDAXI",
+      "weight": 0.7,
+      "role": "equity"
+     },
+     {
+      "symbol": "ES=F",
+      "weight": 0.25,
+      "role": "equity"
+     },
+     {
+      "symbol": "EURUSD=X",
+      "weight": 1.0,
+      "role": "fx"
+     }
+    ],
+    "violations": [],
+    "usage": {
+     "completion_tokens": 786,
+     "prompt_tokens": 2029,
+     "total_tokens": 2815
+    },
+    "holdings_used": 15
+   },
+   "evaluation": {
+    "test_from": "2026-08-13",
+    "test_to_morning": "2026-11-06",
+    "baseline_cols": [
+     "ES=F",
+     "EURUSD=X"
+    ],
+    "baseline": {
+     "r2_oos": 0.55,
+     "mae_bps": 37.5,
+     "r2_train": 0.537,
+     "n_train": 434,
+     "n_test": 60,
+     "coef": {
+      "ES=F": 0.889,
+      "EURUSD=X": 1.13
+     }
+    },
+    "proposal_cols": [
+     "^GDAXI",
+     "ES=F",
+     "EURUSD=X"
+    ],
+    "proposal_missing_data": [],
+    "proposal_free": {
+     "r2_oos": 0.865,
+     "mae_bps": 22.8,
+     "r2_train": 0.77,
+     "n_train": 426,
+     "n_test": 60,
+     "coef": {
+      "^GDAXI": 0.559,
+      "ES=F": 0.398,
+      "EURUSD=X": 0.937
+     }
+    },
+    "proposal_fixed": {
+     "r2_oos": 0.875,
+     "mae_bps": 22.5,
+     "r2_train": 0.761,
+     "n_train": 426,
+     "n_test": 60,
+     "coef": {
+      "^GDAXI": 0.91
+     }
+    },
+    "union_cols": [
+     "ES=F",
+     "EURUSD=X",
+     "^GDAXI"
+    ],
+    "union_free": {
+     "r2_oos": 0.865,
+     "mae_bps": 22.8,
+     "r2_train": 0.77,
+     "n_train": 426,
+     "n_test": 60,
+     "coef": {
+      "ES=F": 0.398,
+      "EURUSD=X": 0.937,
+      "^GDAXI": 0.559
+     }
+    },
+    "session_cols": [
+     "^GDAXI:session",
+     "ES=F",
+     "EURUSD=X"
+    ],
+    "proposal_session_free": {
+     "r2_oos": 0.776,
+     "mae_bps": 27.8,
+     "r2_train": 0.698,
+     "n_train": 426,
+     "n_test": 60,
+     "coef": {
+      "^GDAXI:session": 0.545,
+      "ES=F": 0.707,
+      "EURUSD=X": 1.084
+     }
+    },
+    "proposal_session_fixed": {
+     "r2_oos": 0.791,
+     "mae_bps": 26.4,
+     "r2_train": 0.611,
+     "n_train": 426,
+     "n_test": 60,
+     "coef": {
+      "^GDAXI:session": 1.076
+     }
+    },
+    "union_session_cols": [
+     "ES=F",
+     "EURUSD=X",
+     "^GDAXI:session"
+    ],
+    "union_session_free": {
+     "r2_oos": 0.776,
+     "mae_bps": 27.8,
+     "r2_train": 0.698,
+     "n_train": 426,
+     "n_test": 60,
+     "coef": {
+      "ES=F": 0.707,
+      "EURUSD=X": 1.084,
+      "^GDAXI:session": 0.545
+     }
+    },
+    "baseline_same_nights": {
+     "r2_oos": 0.549,
+     "mae_bps": 37.5,
+     "r2_train": 0.537,
+     "n_train": 426,
+     "n_test": 60,
+     "coef": {
+      "ES=F": 0.889,
+      "EURUSD=X": 1.133
+     }
+    },
+    "baseline_same_nights_session": {
+     "r2_oos": 0.549,
+     "mae_bps": 37.5,
+     "r2_train": 0.537,
+     "n_train": 426,
+     "n_test": 60,
+     "coef": {
+      "ES=F": 0.889,
+      "EURUSD=X": 1.133
+     }
+    },
+    "cash_index_measure_by_training_fit": "previous_close",
+    "late_prints_vs_added_instruments": {
+     "n_nights": 5,
+     "note": "too few nights with a late print for a comparison"
+    }
+   }
+  }
+ },
+ "EEM": {
+  "sonnet": {
+   "proposal": {
+    "model": "claude-sonnet-5-5",
+    "output": {
+     "instruments": [
+      {
+       "symbol": "^HSI",
+       "weight": 0.32,
+       "role": "equity"
+      },
+      {
+       "symbol": "^TWII",
+       "weight": 0.25,
+       "role": "equity"
+      },
+      {
+       "symbol": "^KS11",
+       "weight": 0.18,
+       "role": "equity"
+      },
+      {
+       "symbol": "^BSESN",
+       "weight": 0.15,
+       "role": "equity"
+      }
+     ],
+     "rationale": "Exception to the overnight-futures preference: no EM Asia future is in the universe, and Asian sessions fall inside the 4pm-9:30am window. Weights follow China, Taiwan, Korea and India exposure, summing to about 0.9 of equity exposure."
+    },
+    "instruments": [
+     {
+      "symbol": "^HSI",
+      "weight": 0.32,
+      "role": "equity"
+     },
+     {
+      "symbol": "^TWII",
+      "weight": 0.25,
+      "role": "equity"
+     },
+     {
+      "symbol": "^KS11",
+      "weight": 0.18,
+      "role": "equity"
+     },
+     {
+      "symbol": "^BSESN",
+      "weight": 0.15,
+      "role": "equity"
+     }
+    ],
+    "violations": [],
+    "usage": {
+     "completion_tokens": 859,
+     "prompt_tokens": 2129,
+     "total_tokens": 2988
+    },
+    "holdings_used": 15
+   },
+   "evaluation": {
+    "test_from": "2026-08-13",
+    "test_to_morning": "2026-11-06",
+    "baseline_cols": [
+     "ES=F"
+    ],
+    "baseline": {
+     "r2_oos": 0.429,
+     "mae_bps": 75.2,
+     "r2_train": 0.438,
+     "n_train": 434,
+     "n_test": 60,
+     "coef": {
+      "ES=F": 1.125
+     }
+    },
+    "proposal_cols": [
+     "^HSI",
+     "^TWII",
+     "^KS11",
+     "^BSESN"
+    ],
+    "proposal_missing_data": [],
+    "proposal_free": {
+     "r2_oos": 0.165,
+     "mae_bps": 85.2,
+     "r2_train": 0.29,
+     "n_train": 370,
+     "n_test": 47,
+     "coef": {
+      "^HSI": 0.188,
+      "^TWII": 0.049,
+      "^KS11": 0.122,
+      "^BSESN": 0.175
+     }
+    },
+    "proposal_fixed": {
+     "r2_oos": 0.156,
+     "mae_bps": 85.9,
+     "r2_train": 0.278,
+     "n_train": 370,
+     "n_test": 47,
+     "coef": {
+      "^HSI": 0.534
+     }
+    },
+    "union_cols": [
+     "ES=F",
+     "^HSI",
+     "^TWII",
+     "^KS11",
+     "^BSESN"
+    ],
+    "union_free": {
+     "r2_oos": 0.512,
+     "mae_bps": 64.0,
+     "r2_train": 0.554,
+     "n_train": 365,
+     "n_test": 47,
+     "coef": {
+      "ES=F": 0.969,
+      "^HSI": 0.165,
+      "^TWII": -0.015,
+      "^KS11": 0.114,
+      "^BSESN": 0.009
+     }
+    },
+    "session_cols": [
+     "^HSI:session",
+     "^TWII:session",
+     "^KS11:session",
+     "^BSESN:session"
+    ],
+    "proposal_session_free": {
+     "r2_oos": 0.369,
+     "mae_bps": 78.1,
+     "r2_train": 0.369,
+     "n_train": 370,
+     "n_test": 47,
+     "coef": {
+      "^HSI:session": 0.379,
+      "^TWII:session": 0.275,
+      "^KS11:session": 0.148,
+      "^BSESN:session": 0.219
+     }
+    },
+    "proposal_session_fixed": {
+     "r2_oos": 0.397,
+     "mae_bps": 76.5,
+     "r2_train": 0.363,
+     "n_train": 370,
+     "n_test": 47,
+     "coef": {
+      "^HSI:session": 1.02
+     }
+    },
+    "union_session_cols": [
+     "ES=F",
+     "^HSI:session",
+     "^TWII:session",
+     "^KS11:session",
+     "^BSESN:session"
+    ],
+    "union_session_free": {
+     "r2_oos": 0.619,
+     "mae_bps": 57.8,
+     "r2_train": 0.634,
+     "n_train": 365,
+     "n_test": 47,
+     "coef": {
+      "ES=F": 0.943,
+      "^HSI:session": 0.331,
+      "^TWII:session": 0.161,
+      "^KS11:session": 0.129,
+      "^BSESN:session": 0.108
+     }
+    },
+    "baseline_same_nights": {
+     "r2_oos": 0.459,
+     "mae_bps": 71.8,
+     "r2_train": 0.428,
+     "n_train": 365,
+     "n_test": 47,
+     "coef": {
+      "ES=F": 1.146
+     }
+    },
+    "baseline_same_nights_session": {
+     "r2_oos": 0.459,
+     "mae_bps": 71.8,
+     "r2_train": 0.428,
+     "n_train": 365,
+     "n_test": 47,
+     "coef": {
+      "ES=F": 1.146
+     }
+    },
+    "cash_index_measure_by_training_fit": "session",
+    "late_prints_vs_added_instruments": {
+     "n_nights": 25,
+     "added_instruments": [
+      "^HSI:session",
+      "^TWII:session",
+      "^KS11:session",
+      "^BSESN:session"
+     ],
+     "coef_added": {
+      "^HSI:session": 0.331,
+      "^TWII:session": 0.161,
+      "^KS11:session": 0.129,
+      "^BSESN:session": 0.108
+     },
+     "corr_print_deviation_vs_added": 0.72,
+     "median_abs_print_deviation_bps": 60.8,
+     "median_abs_after_added_bps": 34.5,
+     "mean_print_deviation_bps": -22.6,
+     "mean_after_added_bps": -5.1,
+     "definition": "last same-instant traded print 02:00-03:59 against the published close-anchored reference; added = training-fitted coefficients times the added instruments' returns to the print's time"
+    }
+   }
+  }
+ },
+ "TLT": {
+  "sonnet": {
+   "proposal": {
+    "model": "claude-sonnet-5-5",
+    "output": {
+     "instruments": [
+      {
+       "symbol": "ZB=F",
+       "weight": 1.0,
+       "role": "rates"
+      }
+     ],
+     "rationale": "TLT holds long-dated Treasuries with duration near the 30-year bond future's. ZB=F trades about 23 hours, so it covers the whole overnight window. Beta is roughly 1, and no equity exposure is needed."
+    },
+    "instruments": [
+     {
+      "symbol": "ZB=F",
+      "weight": 1.0,
+      "role": "rates"
+     }
+    ],
+    "violations": [],
+    "usage": {
+     "completion_tokens": 393,
+     "prompt_tokens": 1541,
+     "total_tokens": 1934
+    },
+    "holdings_used": 0
+   },
+   "evaluation": {
+    "test_from": "2026-08-13",
+    "test_to_morning": "2026-11-06",
+    "baseline_cols": [
+     "ZB=F"
+    ],
+    "baseline": {
+     "r2_oos": 0.884,
+     "mae_bps": 12.8,
+     "r2_train": 0.864,
+     "n_train": 434,
+     "n_test": 60,
+     "coef": {
+      "ZB=F": 1.159
+     }
+    },
+    "proposal_cols": [
+     "ZB=F"
+    ],
+    "proposal_missing_data": [],
+    "proposal_free": {
+     "r2_oos": 0.884,
+     "mae_bps": 12.8,
+     "r2_train": 0.864,
+     "n_train": 434,
+     "n_test": 60,
+     "coef": {
+      "ZB=F": 1.159
+     }
+    },
+    "proposal_fixed": {
+     "r2_oos": 0.884,
+     "mae_bps": 12.8,
+     "r2_train": 0.864,
+     "n_train": 434,
+     "n_test": 60,
+     "coef": {
+      "ZB=F": 1.159
+     }
+    },
+    "union_cols": [
+     "ZB=F"
+    ],
+    "union_free": {
+     "note": "proposal adds nothing to the baseline set"
+    }
+   }
+  }
+ },
+ "LQD": {
+  "sonnet": {
+   "proposal": {
+    "model": "claude-sonnet-5-5",
+    "output": {
+     "instruments": [
+      {
+       "symbol": "ZN=F",
+       "weight": 0.75,
+       "role": "rates"
+      },
+      {
+       "symbol": "ZB=F",
+       "weight": 0.2,
+       "role": "rates"
+      },
+      {
+       "symbol": "ES=F",
+       "weight": 0.06,
+       "role": "equity"
+      }
+     ],
+     "rationale": "LQD is mostly duration (about 8 years), so Treasury futures carry the overnight move, 10-year most heavily plus some 30-year. A small ES weight proxies credit-spread risk-on/off. No equity holdings, so equity weight is minimal."
+    },
+    "instruments": [
+     {
+      "symbol": "ZN=F",
+      "weight": 0.75,
+      "role": "rates"
+     },
+     {
+      "symbol": "ZB=F",
+      "weight": 0.2,
+      "role": "rates"
+     },
+     {
+      "symbol": "ES=F",
+      "weight": 0.06,
+      "role": "equity"
+     }
+    ],
+    "violations": [],
+    "usage": {
+     "completion_tokens": 599,
+     "prompt_tokens": 1544,
+     "total_tokens": 2143
+    },
+    "holdings_used": 0
+   },
+   "evaluation": {
+    "test_from": "2026-08-13",
+    "test_to_morning": "2026-11-06",
+    "baseline_cols": [
+     "ZN=F"
+    ],
+    "baseline": {
+     "r2_oos": 0.74,
+     "mae_bps": 11.7,
+     "r2_train": 0.653,
+     "n_train": 434,
+     "n_test": 60,
+     "coef": {
+      "ZN=F": 1.083
+     }
+    },
+    "proposal_cols": [
+     "ZN=F",
+     "ZB=F",
+     "ES=F"
+    ],
+    "proposal_missing_data": [],
+    "proposal_free": {
+     "r2_oos": 0.839,
+     "mae_bps": 9.4,
+     "r2_train": 0.852,
+     "n_train": 434,
+     "n_test": 60,
+     "coef": {
+      "ZN=F": 0.266,
+      "ZB=F": 0.445,
+      "ES=F": 0.143
+     }
+    },
+    "proposal_fixed": {
+     "r2_oos": 0.805,
+     "mae_bps": 10.3,
+     "r2_train": 0.788,
+     "n_train": 434,
+     "n_test": 60,
+     "coef": {
+      "ZN=F": 1.038
+     }
+    },
+    "union_cols": [
+     "ZN=F",
+     "ZB=F",
+     "ES=F"
+    ],
+    "union_free": {
+     "r2_oos": 0.839,
+     "mae_bps": 9.4,
+     "r2_train": 0.852,
+     "n_train": 434,
+     "n_test": 60,
+     "coef": {
+      "ZN=F": 0.266,
+      "ZB=F": 0.445,
+      "ES=F": 0.143
+     }
+    },
+    "late_prints_vs_added_instruments": {
+     "n_nights": 18,
+     "added_instruments": [
+      "ZB=F",
+      "ES=F"
+     ],
+     "coef_added": {
+      "ZB=F": 0.445,
+      "ES=F": 0.143
+     },
+     "corr_print_deviation_vs_added": 0.16,
+     "median_abs_print_deviation_bps": 9.1,
+     "median_abs_after_added_bps": 14.2,
+     "mean_print_deviation_bps": -4.4,
+     "mean_after_added_bps": -0.3,
+     "definition": "last same-instant traded print 02:00-03:59 against the published close-anchored reference; added = training-fitted coefficients times the added instruments' returns to the print's time"
+    }
+   }
+  }
+ },
+ "GLD": {
+  "sonnet": {
+   "proposal": {
+    "model": "claude-sonnet-5-5",
+    "output": {
+     "instruments": [
+      {
+       "symbol": "GC=F",
+       "weight": 0.98,
+       "role": "commodity"
+      },
+      {
+       "symbol": "SI=F",
+       "weight": 0.05,
+       "role": "commodity"
+      },
+      {
+       "symbol": "EURUSD=X",
+       "weight": 0.04,
+       "role": "fx"
+      }
+     ],
+     "rationale": "GLD holds physical gold, so COMEX gold futures, trading nearly 24 hours, should carry almost all the weight. Small silver and EUR/USD terms capture precious-metals co-movement and dollar sensitivity overnight. No equity exposure, so no equity hedge."
+    },
+    "instruments": [
+     {
+      "symbol": "GC=F",
+      "weight": 0.98,
+      "role": "commodity"
+     },
+     {
+      "symbol": "SI=F",
+      "weight": 0.05,
+      "role": "commodity"
+     },
+     {
+      "symbol": "EURUSD=X",
+      "weight": 0.04,
+      "role": "fx"
+     }
+    ],
+    "violations": [],
+    "usage": {
+     "completion_tokens": 204,
+     "prompt_tokens": 1531,
+     "total_tokens": 1735
+    },
+    "holdings_used": 0
+   },
+   "evaluation": {
+    "test_from": "2026-08-13",
+    "test_to_morning": "2026-11-06",
+    "baseline_cols": [
+     "GC=F"
+    ],
+    "baseline": {
+     "r2_oos": 0.951,
+     "mae_bps": 21.9,
+     "r2_train": 0.929,
+     "n_train": 434,
+     "n_test": 60,
+     "coef": {
+      "GC=F": 0.961
+     }
+    },
+    "proposal_cols": [
+     "GC=F",
+     "SI=F",
+     "EURUSD=X"
+    ],
+    "proposal_missing_data": [],
+    "proposal_free": {
+     "r2_oos": 0.951,
+     "mae_bps": 21.9,
+     "r2_train": 0.93,
+     "n_train": 434,
+     "n_test": 60,
+     "coef": {
+      "GC=F": 0.926,
+      "SI=F": 0.017,
+      "EURUSD=X": 0.081
+     }
+    },
+    "proposal_fixed": {
+     "r2_oos": 0.949,
+     "mae_bps": 21.9,
+     "r2_train": 0.928,
+     "n_train": 434,
+     "n_test": 60,
+     "coef": {
+      "GC=F": 0.902
+     }
+    },
+    "union_cols": [
+     "GC=F",
+     "SI=F",
+     "EURUSD=X"
+    ],
+    "union_free": {
+     "r2_oos": 0.951,
+     "mae_bps": 21.9,
+     "r2_train": 0.93,
+     "n_train": 434,
+     "n_test": 60,
+     "coef": {
+      "GC=F": 0.926,
+      "SI=F": 0.017,
+      "EURUSD=X": 0.081
+     }
+    },
+    "late_prints_vs_added_instruments": {
+     "n_nights": 60,
+     "added_instruments": [
+      "SI=F",
+      "EURUSD=X"
+     ],
+     "coef_added": {
+      "SI=F": 0.017,
+      "EURUSD=X": 0.081
+     },
+     "corr_print_deviation_vs_added": 0.49,
+     "median_abs_print_deviation_bps": 3.3,
+     "median_abs_after_added_bps": 2.9,
+     "mean_print_deviation_bps": 1.3,
+     "mean_after_added_bps": 1.5,
+     "definition": "last same-instant traded print 02:00-03:59 against the published close-anchored reference; added = training-fitted coefficients times the added instruments' returns to the print's time"
+    }
+   }
+  }
+ },
+ "IBIT": {
+  "sonnet": {
+   "proposal": {
+    "model": "claude-sonnet-5-5",
+    "output": {
+     "instruments": [
+      {
+       "symbol": "BTC-USD",
+       "weight": 1.0,
+       "role": "crypto"
+      }
+     ],
+     "rationale": "IBIT holds spot bitcoin directly, so BTC-USD, which trades 24/7, tracks the overnight move almost one-to-one. Other instruments in the universe would add noise rather than explanatory power, so a single-instrument hedge is best."
+    },
+    "instruments": [
+     {
+      "symbol": "BTC-USD",
+      "weight": 1.0,
+      "role": "crypto"
+     }
+    ],
+    "violations": [],
+    "usage": {
+     "completion_tokens": 132,
+     "prompt_tokens": 1539,
+     "total_tokens": 1671
+    },
+    "holdings_used": 0
+   },
+   "evaluation": {
+    "test_from": "2026-08-13",
+    "test_to_morning": "2026-11-06",
+    "baseline_cols": [
+     "BTC-USD"
+    ],
+    "baseline": {
+     "r2_oos": 0.974,
+     "mae_bps": 25.0,
+     "r2_train": 0.968,
+     "n_train": 437,
+     "n_test": 60,
+     "coef": {
+      "BTC-USD": 1.008
+     }
+    },
+    "proposal_cols": [
+     "BTC-USD"
+    ],
+    "proposal_missing_data": [],
+    "proposal_free": {
+     "r2_oos": 0.974,
+     "mae_bps": 25.0,
+     "r2_train": 0.968,
+     "n_train": 437,
+     "n_test": 60,
+     "coef": {
+      "BTC-USD": 1.008
+     }
+    },
+    "proposal_fixed": {
+     "r2_oos": 0.974,
+     "mae_bps": 25.0,
+     "r2_train": 0.968,
+     "n_train": 437,
+     "n_test": 60,
+     "coef": {
+      "BTC-USD": 1.008
+     }
+    },
+    "union_cols": [
+     "BTC-USD"
+    ],
+    "union_free": {
+     "note": "proposal adds nothing to the baseline set"
+    }
+   }
+  }
+ }
+}

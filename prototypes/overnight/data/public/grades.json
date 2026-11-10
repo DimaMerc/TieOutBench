@@ -1,0 +1,2535 @@
+{
+ "SPY": {
+  "ticker": "SPY",
+  "kind": "A",
+  "hedge": "ES=F",
+  "n_test_nights": 60,
+  "n_train_nights": 434,
+  "beta": 0.925,
+  "gamma": 0.0,
+  "r2_train": 0.896,
+  "sigma_resid_bps": 21.4,
+  "mae_ref_bps_all_hours": 26.4,
+  "mae_naive_bps": 35.9,
+  "mae_ref_close_anchor_bps_all_hours": 26.3,
+  "mae_naive_close_anchor_bps": 35.7,
+  "coverage_all_hours": 0.957,
+  "coverage_emp_all_hours": 0.951,
+  "sigma_resid_test_bps": 6.9,
+  "nominal_coverage": 0.9,
+  "static_band_ever_binding": false,
+  "nights_moved_over_100bps": 3,
+  "share_usable": 0.991,
+  "by_hour": {
+   "20": {
+    "n": 59,
+    "mae_ref_bps": 28.8,
+    "mae_naive_bps": 36.0,
+    "median_ref_bps": 19.1,
+    "coverage": 0.966,
+    "mean_half_bps": 82.7,
+    "coverage_emp": 0.949,
+    "mean_half_emp_bps": 78.5,
+    "usable_share": 1.0
+   },
+   "21": {
+    "n": 59,
+    "mae_ref_bps": 28.5,
+    "mae_naive_bps": 36.0,
+    "median_ref_bps": 17.6,
+    "coverage": 0.966,
+    "mean_half_bps": 80.0,
+    "coverage_emp": 0.966,
+    "mean_half_emp_bps": 76.1,
+    "usable_share": 1.0
+   },
+   "22": {
+    "n": 59,
+    "mae_ref_bps": 28.4,
+    "mae_naive_bps": 36.0,
+    "median_ref_bps": 20.4,
+    "coverage": 0.983,
+    "mean_half_bps": 77.3,
+    "coverage_emp": 0.932,
+    "mean_half_emp_bps": 73.2,
+    "usable_share": 1.0
+   },
+   "23": {
+    "n": 59,
+    "mae_ref_bps": 28.4,
+    "mae_naive_bps": 36.0,
+    "median_ref_bps": 20.7,
+    "coverage": 0.966,
+    "mean_half_bps": 74.5,
+    "coverage_emp": 0.966,
+    "mean_half_emp_bps": 73.7,
+    "usable_share": 1.0
+   },
+   "0": {
+    "n": 59,
+    "mae_ref_bps": 26.7,
+    "mae_naive_bps": 36.0,
+    "median_ref_bps": 17.6,
+    "coverage": 0.966,
+    "mean_half_bps": 71.5,
+    "coverage_emp": 0.966,
+    "mean_half_emp_bps": 77.1,
+    "usable_share": 1.0
+   },
+   "1": {
+    "n": 60,
+    "mae_ref_bps": 26.8,
+    "mae_naive_bps": 35.7,
+    "median_ref_bps": 21.0,
+    "coverage": 0.95,
+    "mean_half_bps": 68.4,
+    "coverage_emp": 0.95,
+    "mean_half_emp_bps": 71.0,
+    "usable_share": 1.0
+   },
+   "2": {
+    "n": 60,
+    "mae_ref_bps": 25.2,
+    "mae_naive_bps": 35.7,
+    "median_ref_bps": 16.8,
+    "coverage": 0.917,
+    "mean_half_bps": 65.2,
+    "coverage_emp": 0.933,
+    "mean_half_emp_bps": 69.8,
+    "usable_share": 1.0
+   },
+   "3": {
+    "n": 60,
+    "mae_ref_bps": 24.0,
+    "mae_naive_bps": 35.7,
+    "median_ref_bps": 16.2,
+    "coverage": 0.933,
+    "mean_half_bps": 61.8,
+    "coverage_emp": 0.933,
+    "mean_half_emp_bps": 62.5,
+    "usable_share": 1.0
+   },
+   "4": {
+    "n": 60,
+    "mae_ref_bps": 21.2,
+    "mae_naive_bps": 35.7,
+    "median_ref_bps": 17.5,
+    "coverage": 0.967,
+    "mean_half_bps": 58.2,
+    "coverage_emp": 0.967,
+    "mean_half_emp_bps": 63.1,
+    "usable_share": 1.0
+   }
+  },
+  "nav_source": "file",
+  "dividend_source": "issuer_file",
+  "tape": "tiingo_boats",
+  "input_facts": {
+   "test_from": "2026-08-13",
+   "test_to_morning": "2026-11-06",
+   "nights_spanning_weekend_or_holiday": 12,
+   "close_vs_official_nav_median_abs_bps": 2.0,
+   "close_vs_official_nav_max_abs_bps": 5.9,
+   "fair_value_adjustment_median_abs_bps": null,
+   "fair_value_adjustment_max_abs_bps": null,
+   "fair_value_adjustment_max_date": null,
+   "ex_dividend_mornings": [
+    {
+     "ex_date": "2026-09-18",
+     "amount": 1.889,
+     "bps_of_close": 24.8
+    }
+   ],
+   "static_band_min_room_bps": 1874,
+   "sale_1945_times_used": [
+    "",
+    "16:00",
+    "18:00",
+    "18:45",
+    "19:30"
+   ]
+  },
+  "overnight_prints": {
+   "anchor": "close",
+   "session_slots": 5760,
+   "bars_in_feed": 5760,
+   "traded_bars": 5719,
+   "traded_share": 0.9929,
+   "traded_share_15min_slots": 0.9943,
+   "nights_with_a_trade": 60,
+   "total_volume": 5156946.0,
+   "same_instant": {
+    "n": 4572,
+    "mean_premium_bps": 1.5,
+    "median_abs_bps": 2.4,
+    "p90_abs_bps": 5.8,
+    "share_outside_open_band": 0.0
+   },
+   "same_instant_nav_anchor": {
+    "n": 4572,
+    "mean_premium_bps": 2.6,
+    "median_abs_bps": 3.7,
+    "p90_abs_bps": 7.5
+   },
+   "lagged_reference": {
+    "n": 1099,
+    "mean_premium_bps": 1.4,
+    "median_abs_bps": 3.7,
+    "p90_abs_bps": 10.0
+   },
+   "traded_bars_by_hedge_resolution": {
+    "1h": 1151,
+    "5m": 4520
+   },
+   "trading_band": {
+    "calibration_from": "2026-08-13",
+    "calibration_to": "2026-09-24",
+    "evaluation_from": "2026-09-25",
+    "evaluation_to": "2026-11-05",
+    "n_calibration_prints": 1754,
+    "q50_pooled_bps": 2.4,
+    "q90_pooled_bps": 5.6,
+    "q90_by_hour_bps": {
+     "20": 5.3,
+     "21": 5.5,
+     "22": 5.4,
+     "23": 5.5,
+     "0": 5.5,
+     "1": 5.5,
+     "2": 6.9,
+     "3": 7.0
+    },
+    "evaluation_traded_prints": 2818,
+    "evaluation_prints_inside": 2499,
+    "coverage_traded_prints": 0.887,
+    "mean_half_trade_bps": 5.8,
+    "mean_half_open_bps": 71.7
+   },
+   "by_hour": {
+    "20": {
+     "n": 575,
+     "mean_bps": 1.5,
+     "median_abs_bps": 2.2
+    },
+    "21": {
+     "n": 574,
+     "mean_bps": 1.4,
+     "median_abs_bps": 2.4
+    },
+    "22": {
+     "n": 575,
+     "mean_bps": 1.4,
+     "median_abs_bps": 2.4
+    },
+    "23": {
+     "n": 569,
+     "mean_bps": 1.4,
+     "median_abs_bps": 2.4
+    },
+    "0": {
+     "n": 537,
+     "mean_bps": 1.5,
+     "median_abs_bps": 2.3
+    },
+    "1": {
+     "n": 575,
+     "mean_bps": 1.5,
+     "median_abs_bps": 2.4
+    },
+    "2": {
+     "n": 580,
+     "mean_bps": 1.5,
+     "median_abs_bps": 2.4
+    },
+    "3": {
+     "n": 587,
+     "mean_bps": 1.5,
+     "median_abs_bps": 2.7
+    }
+   },
+   "late_print_vs_open": {
+    "n_nights": 60,
+    "corr": 0.2,
+    "median_abs_print_bps": 2.5,
+    "definition": "last same-instant traded print 02:00-03:59 vs the open, both as deviations from the close-anchored reference"
+   }
+  }
+ },
+ "QQQ": {
+  "ticker": "QQQ",
+  "kind": "A",
+  "hedge": "NQ=F",
+  "n_test_nights": 60,
+  "n_train_nights": 434,
+  "beta": 0.931,
+  "gamma": 0.0,
+  "r2_train": 0.92,
+  "sigma_resid_bps": 25.4,
+  "mae_ref_bps_all_hours": 43.8,
+  "mae_naive_bps": 67.1,
+  "mae_ref_close_anchor_bps_all_hours": 43.8,
+  "mae_naive_close_anchor_bps": 67.1,
+  "coverage_all_hours": 0.897,
+  "coverage_emp_all_hours": 0.918,
+  "sigma_resid_test_bps": 13.5,
+  "nominal_coverage": 0.9,
+  "static_band_ever_binding": false,
+  "nights_moved_over_100bps": 13,
+  "share_usable": 0.991,
+  "by_hour": {
+   "20": {
+    "n": 59,
+    "mae_ref_bps": 51.8,
+    "mae_naive_bps": 67.4,
+    "median_ref_bps": 45.4,
+    "coverage": 0.898,
+    "mean_half_bps": 107.0,
+    "coverage_emp": 0.915,
+    "mean_half_emp_bps": 117.4,
+    "usable_share": 1.0
+   },
+   "21": {
+    "n": 59,
+    "mae_ref_bps": 50.0,
+    "mae_naive_bps": 67.4,
+    "median_ref_bps": 43.2,
+    "coverage": 0.932,
+    "mean_half_bps": 103.4,
+    "coverage_emp": 0.949,
+    "mean_half_emp_bps": 114.5,
+    "usable_share": 1.0
+   },
+   "22": {
+    "n": 59,
+    "mae_ref_bps": 47.7,
+    "mae_naive_bps": 67.4,
+    "median_ref_bps": 39.5,
+    "coverage": 0.898,
+    "mean_half_bps": 99.8,
+    "coverage_emp": 0.898,
+    "mean_half_emp_bps": 99.2,
+    "usable_share": 1.0
+   },
+   "23": {
+    "n": 59,
+    "mae_ref_bps": 48.3,
+    "mae_naive_bps": 67.4,
+    "median_ref_bps": 44.8,
+    "coverage": 0.898,
+    "mean_half_bps": 96.0,
+    "coverage_emp": 0.915,
+    "mean_half_emp_bps": 101.8,
+    "usable_share": 1.0
+   },
+   "0": {
+    "n": 59,
+    "mae_ref_bps": 43.6,
+    "mae_naive_bps": 67.4,
+    "median_ref_bps": 38.6,
+    "coverage": 0.898,
+    "mean_half_bps": 92.0,
+    "coverage_emp": 0.915,
+    "mean_half_emp_bps": 98.4,
+    "usable_share": 1.0
+   },
+   "1": {
+    "n": 60,
+    "mae_ref_bps": 42.2,
+    "mae_naive_bps": 66.7,
+    "median_ref_bps": 32.5,
+    "coverage": 0.867,
+    "mean_half_bps": 87.8,
+    "coverage_emp": 0.9,
+    "mean_half_emp_bps": 94.4,
+    "usable_share": 1.0
+   },
+   "2": {
+    "n": 60,
+    "mae_ref_bps": 40.3,
+    "mae_naive_bps": 66.7,
+    "median_ref_bps": 29.5,
+    "coverage": 0.883,
+    "mean_half_bps": 83.5,
+    "coverage_emp": 0.9,
+    "mean_half_emp_bps": 89.5,
+    "usable_share": 1.0
+   },
+   "3": {
+    "n": 60,
+    "mae_ref_bps": 38.3,
+    "mae_naive_bps": 66.7,
+    "median_ref_bps": 29.5,
+    "coverage": 0.9,
+    "mean_half_bps": 78.9,
+    "coverage_emp": 0.9,
+    "mean_half_emp_bps": 85.6,
+    "usable_share": 1.0
+   },
+   "4": {
+    "n": 60,
+    "mae_ref_bps": 32.7,
+    "mae_naive_bps": 66.7,
+    "median_ref_bps": 27.8,
+    "coverage": 0.9,
+    "mean_half_bps": 74.0,
+    "coverage_emp": 0.967,
+    "mean_half_emp_bps": 82.1,
+    "usable_share": 1.0
+   }
+  },
+  "nav_source": "proxy_close",
+  "dividend_source": "feed_or_none",
+  "tape": "tiingo_boats",
+  "input_facts": {
+   "test_from": "2026-08-13",
+   "test_to_morning": "2026-11-06",
+   "nights_spanning_weekend_or_holiday": 12,
+   "close_vs_official_nav_median_abs_bps": null,
+   "close_vs_official_nav_max_abs_bps": null,
+   "fair_value_adjustment_median_abs_bps": null,
+   "fair_value_adjustment_max_abs_bps": null,
+   "fair_value_adjustment_max_date": null,
+   "ex_dividend_mornings": [
+    {
+     "ex_date": "2026-09-21",
+     "amount": 0.751,
+     "bps_of_close": 10.4
+    }
+   ],
+   "static_band_min_room_bps": 1794,
+   "sale_1945_times_used": [
+    "",
+    "16:00",
+    "18:45",
+    "19:00",
+    "19:30"
+   ]
+  },
+  "overnight_prints": {
+   "anchor": "close",
+   "session_slots": 5760,
+   "bars_in_feed": 5760,
+   "traded_bars": 5689,
+   "traded_share": 0.9877,
+   "traded_share_15min_slots": 0.9885,
+   "nights_with_a_trade": 60,
+   "total_volume": 17469516.0,
+   "same_instant": {
+    "n": 4542,
+    "mean_premium_bps": 1.4,
+    "median_abs_bps": 3.3,
+    "p90_abs_bps": 8.9,
+    "share_outside_open_band": 0.0
+   },
+   "same_instant_nav_anchor": {
+    "n": 4542,
+    "mean_premium_bps": 1.4,
+    "median_abs_bps": 3.3,
+    "p90_abs_bps": 8.9
+   },
+   "lagged_reference": {
+    "n": 1099,
+    "mean_premium_bps": 1.9,
+    "median_abs_bps": 7.3,
+    "p90_abs_bps": 19.8
+   },
+   "traded_bars_by_hedge_resolution": {
+    "1h": 1152,
+    "5m": 4489
+   },
+   "trading_band": {
+    "calibration_from": "2026-08-13",
+    "calibration_to": "2026-09-24",
+    "evaluation_from": "2026-09-25",
+    "evaluation_to": "2026-11-05",
+    "n_calibration_prints": 1719,
+    "q50_pooled_bps": 2.6,
+    "q90_pooled_bps": 6.8,
+    "q90_by_hour_bps": {
+     "20": 6.3,
+     "21": 6.2,
+     "22": 5.9,
+     "23": 6.4,
+     "0": 6.6,
+     "1": 6.7,
+     "2": 7.1,
+     "3": 7.6
+    },
+    "evaluation_traded_prints": 2823,
+    "evaluation_prints_inside": 2004,
+    "coverage_traded_prints": 0.71,
+    "mean_half_trade_bps": 6.6,
+    "mean_half_open_bps": 98.1
+   },
+   "by_hour": {
+    "20": {
+     "n": 563,
+     "mean_bps": 1.5,
+     "median_abs_bps": 2.8
+    },
+    "21": {
+     "n": 562,
+     "mean_bps": 1.4,
+     "median_abs_bps": 3.0
+    },
+    "22": {
+     "n": 562,
+     "mean_bps": 1.2,
+     "median_abs_bps": 3.4
+    },
+    "23": {
+     "n": 573,
+     "mean_bps": 1.2,
+     "median_abs_bps": 3.5
+    },
+    "0": {
+     "n": 538,
+     "mean_bps": 1.5,
+     "median_abs_bps": 3.4
+    },
+    "1": {
+     "n": 576,
+     "mean_bps": 1.5,
+     "median_abs_bps": 3.1
+    },
+    "2": {
+     "n": 580,
+     "mean_bps": 1.4,
+     "median_abs_bps": 3.7
+    },
+    "3": {
+     "n": 588,
+     "mean_bps": 1.7,
+     "median_abs_bps": 4.0
+    }
+   },
+   "late_print_vs_open": {
+    "n_nights": 60,
+    "corr": 0.27,
+    "median_abs_print_bps": 4.1,
+    "definition": "last same-instant traded print 02:00-03:59 vs the open, both as deviations from the close-anchored reference"
+   }
+  }
+ },
+ "SMH": {
+  "ticker": "SMH",
+  "kind": "A",
+  "hedge": "NQ=F",
+  "n_test_nights": 60,
+  "n_train_nights": 434,
+  "beta": 1.625,
+  "gamma": 0.0,
+  "r2_train": 0.78,
+  "sigma_resid_bps": 80.0,
+  "mae_ref_bps_all_hours": 117.3,
+  "mae_naive_bps": 158.1,
+  "mae_ref_close_anchor_bps_all_hours": 117.3,
+  "mae_naive_close_anchor_bps": 158.1,
+  "coverage_all_hours": 0.856,
+  "coverage_emp_all_hours": 0.888,
+  "sigma_resid_test_bps": 97.4,
+  "nominal_coverage": 0.9,
+  "static_band_ever_binding": false,
+  "nights_moved_over_100bps": 38,
+  "share_usable": 0.991,
+  "by_hour": {
+   "20": {
+    "n": 59,
+    "mae_ref_bps": 127.6,
+    "mae_naive_bps": 157.7,
+    "median_ref_bps": 123.5,
+    "coverage": 0.881,
+    "mean_half_bps": 216.5,
+    "coverage_emp": 0.915,
+    "mean_half_emp_bps": 248.7,
+    "usable_share": 1.0
+   },
+   "21": {
+    "n": 59,
+    "mae_ref_bps": 124.2,
+    "mae_naive_bps": 157.7,
+    "median_ref_bps": 114.3,
+    "coverage": 0.915,
+    "mean_half_bps": 211.2,
+    "coverage_emp": 0.915,
+    "mean_half_emp_bps": 244.0,
+    "usable_share": 1.0
+   },
+   "22": {
+    "n": 59,
+    "mae_ref_bps": 122.0,
+    "mae_naive_bps": 157.7,
+    "median_ref_bps": 96.6,
+    "coverage": 0.898,
+    "mean_half_bps": 205.7,
+    "coverage_emp": 0.915,
+    "mean_half_emp_bps": 225.8,
+    "usable_share": 1.0
+   },
+   "23": {
+    "n": 59,
+    "mae_ref_bps": 123.5,
+    "mae_naive_bps": 157.7,
+    "median_ref_bps": 106.4,
+    "coverage": 0.864,
+    "mean_half_bps": 200.1,
+    "coverage_emp": 0.915,
+    "mean_half_emp_bps": 228.6,
+    "usable_share": 1.0
+   },
+   "0": {
+    "n": 59,
+    "mae_ref_bps": 117.7,
+    "mae_naive_bps": 157.7,
+    "median_ref_bps": 104.1,
+    "coverage": 0.864,
+    "mean_half_bps": 194.4,
+    "coverage_emp": 0.915,
+    "mean_half_emp_bps": 234.5,
+    "usable_share": 1.0
+   },
+   "1": {
+    "n": 60,
+    "mae_ref_bps": 117.1,
+    "mae_naive_bps": 158.5,
+    "median_ref_bps": 95.8,
+    "coverage": 0.833,
+    "mean_half_bps": 188.4,
+    "coverage_emp": 0.833,
+    "mean_half_emp_bps": 212.9,
+    "usable_share": 1.0
+   },
+   "2": {
+    "n": 60,
+    "mae_ref_bps": 113.4,
+    "mae_naive_bps": 158.5,
+    "median_ref_bps": 95.4,
+    "coverage": 0.833,
+    "mean_half_bps": 182.3,
+    "coverage_emp": 0.883,
+    "mean_half_emp_bps": 203.3,
+    "usable_share": 1.0
+   },
+   "3": {
+    "n": 60,
+    "mae_ref_bps": 109.1,
+    "mae_naive_bps": 158.5,
+    "median_ref_bps": 103.1,
+    "coverage": 0.8,
+    "mean_half_bps": 176.0,
+    "coverage_emp": 0.867,
+    "mean_half_emp_bps": 199.3,
+    "usable_share": 1.0
+   },
+   "4": {
+    "n": 60,
+    "mae_ref_bps": 101.7,
+    "mae_naive_bps": 158.5,
+    "median_ref_bps": 80.4,
+    "coverage": 0.817,
+    "mean_half_bps": 169.4,
+    "coverage_emp": 0.833,
+    "mean_half_emp_bps": 179.6,
+    "usable_share": 1.0
+   }
+  },
+  "nav_source": "proxy_close",
+  "dividend_source": "feed_or_none",
+  "tape": "tiingo_boats",
+  "input_facts": {
+   "test_from": "2026-08-13",
+   "test_to_morning": "2026-11-06",
+   "nights_spanning_weekend_or_holiday": 12,
+   "close_vs_official_nav_median_abs_bps": null,
+   "close_vs_official_nav_max_abs_bps": null,
+   "fair_value_adjustment_median_abs_bps": null,
+   "fair_value_adjustment_max_abs_bps": null,
+   "fair_value_adjustment_max_date": null,
+   "ex_dividend_mornings": [],
+   "static_band_min_room_bps": 1349,
+   "sale_1945_times_used": [
+    "",
+    "16:00",
+    "18:45",
+    "19:15",
+    "19:30"
+   ]
+  },
+  "overnight_prints": {
+   "anchor": "close",
+   "session_slots": 5760,
+   "bars_in_feed": 5760,
+   "traded_bars": 5331,
+   "traded_share": 0.9255,
+   "traded_share_15min_slots": 0.9854,
+   "nights_with_a_trade": 60,
+   "total_volume": 1618657.0,
+   "same_instant": {
+    "n": 4263,
+    "mean_premium_bps": 5.4,
+    "median_abs_bps": 22.7,
+    "p90_abs_bps": 73.1,
+    "share_outside_open_band": 0.0
+   },
+   "same_instant_nav_anchor": {
+    "n": 4263,
+    "mean_premium_bps": 5.4,
+    "median_abs_bps": 22.7,
+    "p90_abs_bps": 73.1
+   },
+   "lagged_reference": {
+    "n": 1020,
+    "mean_premium_bps": 14.3,
+    "median_abs_bps": 30.1,
+    "p90_abs_bps": 78.7
+   },
+   "traded_bars_by_hedge_resolution": {
+    "1h": 1068,
+    "5m": 4215
+   },
+   "trading_band": {
+    "calibration_from": "2026-08-13",
+    "calibration_to": "2026-09-24",
+    "evaluation_from": "2026-09-25",
+    "evaluation_to": "2026-11-05",
+    "n_calibration_prints": 1549,
+    "q50_pooled_bps": 18.3,
+    "q90_pooled_bps": 55.6,
+    "q90_by_hour_bps": {
+     "20": 34.4,
+     "21": 40.5,
+     "22": 45.2,
+     "23": 42.7,
+     "0": 53.6,
+     "1": 61.6,
+     "2": 65.5,
+     "3": 74.7
+    },
+    "evaluation_traded_prints": 2714,
+    "evaluation_prints_inside": 2077,
+    "coverage_traded_prints": 0.765,
+    "mean_half_trade_bps": 52.7,
+    "mean_half_open_bps": 219.6
+   },
+   "by_hour": {
+    "20": {
+     "n": 537,
+     "mean_bps": 6.7,
+     "median_abs_bps": 18.6
+    },
+    "21": {
+     "n": 540,
+     "mean_bps": 6.5,
+     "median_abs_bps": 17.2
+    },
+    "22": {
+     "n": 538,
+     "mean_bps": 2.9,
+     "median_abs_bps": 20.0
+    },
+    "23": {
+     "n": 526,
+     "mean_bps": 2.9,
+     "median_abs_bps": 18.7
+    },
+    "0": {
+     "n": 493,
+     "mean_bps": 4.6,
+     "median_abs_bps": 19.2
+    },
+    "1": {
+     "n": 532,
+     "mean_bps": 4.5,
+     "median_abs_bps": 24.1
+    },
+    "2": {
+     "n": 547,
+     "mean_bps": 6.8,
+     "median_abs_bps": 32.9
+    },
+    "3": {
+     "n": 550,
+     "mean_bps": 8.0,
+     "median_abs_bps": 35.8
+    }
+   },
+   "late_print_vs_open": {
+    "n_nights": 60,
+    "corr": 0.61,
+    "median_abs_print_bps": 36.3,
+    "definition": "last same-instant traded print 02:00-03:59 vs the open, both as deviations from the close-anchored reference"
+   }
+  }
+ },
+ "EWJ": {
+  "ticker": "EWJ",
+  "kind": "B",
+  "hedge": "NIY=F",
+  "n_test_nights": 60,
+  "n_train_nights": 434,
+  "beta": 0.765,
+  "gamma": 0.835,
+  "r2_train": 0.783,
+  "sigma_resid_bps": 55.3,
+  "mae_ref_bps_all_hours": 70.2,
+  "mae_naive_bps": 74.9,
+  "mae_ref_close_anchor_bps_all_hours": 65.8,
+  "mae_naive_close_anchor_bps": 71.8,
+  "coverage_all_hours": 0.931,
+  "coverage_emp_all_hours": 0.893,
+  "sigma_resid_test_bps": 66.6,
+  "nominal_coverage": 0.9,
+  "static_band_ever_binding": false,
+  "nights_moved_over_100bps": 15,
+  "share_usable": 0.989,
+  "by_hour": {
+   "20": {
+    "n": 58,
+    "mae_ref_bps": 78.1,
+    "mae_naive_bps": 75.7,
+    "median_ref_bps": 66.6,
+    "coverage": 0.948,
+    "mean_half_bps": 181.3,
+    "coverage_emp": 0.862,
+    "mean_half_emp_bps": 149.2,
+    "usable_share": 1.0
+   },
+   "21": {
+    "n": 59,
+    "mae_ref_bps": 79.4,
+    "mae_naive_bps": 75.1,
+    "median_ref_bps": 65.2,
+    "coverage": 0.898,
+    "mean_half_bps": 176.0,
+    "coverage_emp": 0.881,
+    "mean_half_emp_bps": 151.2,
+    "usable_share": 1.0
+   },
+   "22": {
+    "n": 59,
+    "mae_ref_bps": 74.7,
+    "mae_naive_bps": 75.1,
+    "median_ref_bps": 57.1,
+    "coverage": 0.932,
+    "mean_half_bps": 170.5,
+    "coverage_emp": 0.881,
+    "mean_half_emp_bps": 149.9,
+    "usable_share": 1.0
+   },
+   "23": {
+    "n": 59,
+    "mae_ref_bps": 73.2,
+    "mae_naive_bps": 75.1,
+    "median_ref_bps": 57.2,
+    "coverage": 0.932,
+    "mean_half_bps": 164.9,
+    "coverage_emp": 0.898,
+    "mean_half_emp_bps": 144.3,
+    "usable_share": 1.0
+   },
+   "0": {
+    "n": 59,
+    "mae_ref_bps": 69.5,
+    "mae_naive_bps": 75.1,
+    "median_ref_bps": 58.7,
+    "coverage": 0.949,
+    "mean_half_bps": 159.1,
+    "coverage_emp": 0.932,
+    "mean_half_emp_bps": 144.5,
+    "usable_share": 1.0
+   },
+   "1": {
+    "n": 60,
+    "mae_ref_bps": 68.7,
+    "mae_naive_bps": 74.6,
+    "median_ref_bps": 59.9,
+    "coverage": 0.917,
+    "mean_half_bps": 153.0,
+    "coverage_emp": 0.883,
+    "mean_half_emp_bps": 136.7,
+    "usable_share": 1.0
+   },
+   "2": {
+    "n": 60,
+    "mae_ref_bps": 65.3,
+    "mae_naive_bps": 74.6,
+    "median_ref_bps": 59.3,
+    "coverage": 0.95,
+    "mean_half_bps": 146.7,
+    "coverage_emp": 0.917,
+    "mean_half_emp_bps": 136.9,
+    "usable_share": 1.0
+   },
+   "3": {
+    "n": 60,
+    "mae_ref_bps": 61.8,
+    "mae_naive_bps": 74.6,
+    "median_ref_bps": 48.9,
+    "coverage": 0.917,
+    "mean_half_bps": 140.1,
+    "coverage_emp": 0.883,
+    "mean_half_emp_bps": 126.8,
+    "usable_share": 1.0
+   },
+   "4": {
+    "n": 60,
+    "mae_ref_bps": 61.4,
+    "mae_naive_bps": 74.6,
+    "median_ref_bps": 51.4,
+    "coverage": 0.933,
+    "mean_half_bps": 133.2,
+    "coverage_emp": 0.9,
+    "mean_half_emp_bps": 123.2,
+    "usable_share": 1.0
+   }
+  },
+  "nav_source": "file",
+  "dividend_source": "feed_or_none",
+  "tape": "tiingo_boats",
+  "input_facts": {
+   "test_from": "2026-08-13",
+   "test_to_morning": "2026-11-06",
+   "nights_spanning_weekend_or_holiday": 12,
+   "close_vs_official_nav_median_abs_bps": 18.4,
+   "close_vs_official_nav_max_abs_bps": 101.5,
+   "fair_value_adjustment_median_abs_bps": 52.5,
+   "fair_value_adjustment_max_abs_bps": 451.3,
+   "fair_value_adjustment_max_date": "2026-11-05",
+   "ex_dividend_mornings": [],
+   "static_band_min_room_bps": 1768,
+   "sale_1945_times_used": [
+    "",
+    "16:00",
+    "16:15",
+    "16:45",
+    "17:00",
+    "17:30",
+    "17:45",
+    "18:00",
+    "18:15",
+    "18:30",
+    "18:45",
+    "19:00",
+    "19:15",
+    "19:30"
+   ]
+  },
+  "overnight_prints": {
+   "anchor": "close",
+   "session_slots": 5760,
+   "bars_in_feed": 5760,
+   "traded_bars": 1086,
+   "traded_share": 0.1885,
+   "traded_share_15min_slots": 0.4089,
+   "nights_with_a_trade": 59,
+   "total_volume": 231032.0,
+   "same_instant": {
+    "n": 855,
+    "mean_premium_bps": -10.4,
+    "median_abs_bps": 41.3,
+    "p90_abs_bps": 86.3,
+    "share_outside_open_band": 0.0456
+   },
+   "same_instant_nav_anchor": {
+    "n": 855,
+    "mean_premium_bps": 2.2,
+    "median_abs_bps": 45.1,
+    "p90_abs_bps": 104.0
+   },
+   "lagged_reference": {
+    "n": 203,
+    "mean_premium_bps": -12.9,
+    "median_abs_bps": 31.6,
+    "p90_abs_bps": 95.1
+   },
+   "traded_bars_by_hedge_resolution": {
+    "1h": 206,
+    "5m": 852
+   },
+   "trading_band": {
+    "calibration_from": "2026-08-13",
+    "calibration_to": "2026-09-24",
+    "evaluation_from": "2026-09-25",
+    "evaluation_to": "2026-11-05",
+    "n_calibration_prints": 308,
+    "q50_pooled_bps": 43.9,
+    "q90_pooled_bps": 86.4,
+    "q90_by_hour_bps": {
+     "21": 83.3,
+     "1": 88.1,
+     "20": 73.8,
+     "23": 81.9,
+     "0": 86.4,
+     "3": 86.4,
+     "2": 77.0,
+     "22": 89.7
+    },
+    "evaluation_traded_prints": 547,
+    "evaluation_prints_inside": 488,
+    "coverage_traded_prints": 0.892,
+    "mean_half_trade_bps": 83.7,
+    "mean_half_open_bps": 140.3
+   },
+   "by_hour": {
+    "20": {
+     "n": 177,
+     "mean_bps": -1.5,
+     "median_abs_bps": 29.2
+    },
+    "21": {
+     "n": 157,
+     "mean_bps": -14.9,
+     "median_abs_bps": 46.7
+    },
+    "22": {
+     "n": 93,
+     "mean_bps": -14.3,
+     "median_abs_bps": 41.3
+    },
+    "23": {
+     "n": 83,
+     "mean_bps": -10.0,
+     "median_abs_bps": 48.8
+    },
+    "0": {
+     "n": 69,
+     "mean_bps": -7.8,
+     "median_abs_bps": 51.7
+    },
+    "1": {
+     "n": 87,
+     "mean_bps": -12.0,
+     "median_abs_bps": 46.6
+    },
+    "2": {
+     "n": 107,
+     "mean_bps": -14.4,
+     "median_abs_bps": 40.4
+    },
+    "3": {
+     "n": 82,
+     "mean_bps": -12.4,
+     "median_abs_bps": 44.7
+    }
+   },
+   "late_print_vs_open": {
+    "n_nights": 51,
+    "corr": 0.61,
+    "median_abs_print_bps": 42.5,
+    "definition": "last same-instant traded print 02:00-03:59 vs the open, both as deviations from the close-anchored reference"
+   }
+  }
+ },
+ "EWG": {
+  "ticker": "EWG",
+  "kind": "B",
+  "hedge": "ES=F",
+  "n_test_nights": 60,
+  "n_train_nights": 434,
+  "beta": 0.876,
+  "gamma": 1.148,
+  "r2_train": 0.552,
+  "sigma_resid_bps": 65.5,
+  "mae_ref_bps_all_hours": 57.1,
+  "mae_naive_bps": 62.9,
+  "mae_ref_close_anchor_bps_all_hours": 55.4,
+  "mae_naive_close_anchor_bps": 61.3,
+  "coverage_all_hours": 0.933,
+  "coverage_emp_all_hours": 0.938,
+  "sigma_resid_test_bps": 56.0,
+  "nominal_coverage": 0.9,
+  "static_band_ever_binding": false,
+  "nights_moved_over_100bps": 9,
+  "share_usable": 0.989,
+  "by_hour": {
+   "20": {
+    "n": 58,
+    "mae_ref_bps": 60.4,
+    "mae_naive_bps": 62.7,
+    "median_ref_bps": 46.8,
+    "coverage": 0.948,
+    "mean_half_bps": 128.9,
+    "coverage_emp": 0.948,
+    "mean_half_emp_bps": 138.6,
+    "usable_share": 1.0
+   },
+   "21": {
+    "n": 59,
+    "mae_ref_bps": 60.6,
+    "mae_naive_bps": 63.2,
+    "median_ref_bps": 46.2,
+    "coverage": 0.949,
+    "mean_half_bps": 127.4,
+    "coverage_emp": 0.949,
+    "mean_half_emp_bps": 143.2,
+    "usable_share": 1.0
+   },
+   "22": {
+    "n": 59,
+    "mae_ref_bps": 60.0,
+    "mae_naive_bps": 63.2,
+    "median_ref_bps": 45.2,
+    "coverage": 0.932,
+    "mean_half_bps": 125.9,
+    "coverage_emp": 0.949,
+    "mean_half_emp_bps": 142.2,
+    "usable_share": 1.0
+   },
+   "23": {
+    "n": 59,
+    "mae_ref_bps": 59.1,
+    "mae_naive_bps": 63.2,
+    "median_ref_bps": 42.6,
+    "coverage": 0.932,
+    "mean_half_bps": 124.3,
+    "coverage_emp": 0.932,
+    "mean_half_emp_bps": 133.0,
+    "usable_share": 1.0
+   },
+   "0": {
+    "n": 59,
+    "mae_ref_bps": 57.9,
+    "mae_naive_bps": 63.2,
+    "median_ref_bps": 42.9,
+    "coverage": 0.932,
+    "mean_half_bps": 122.8,
+    "coverage_emp": 0.932,
+    "mean_half_emp_bps": 140.1,
+    "usable_share": 1.0
+   },
+   "1": {
+    "n": 60,
+    "mae_ref_bps": 56.4,
+    "mae_naive_bps": 62.5,
+    "median_ref_bps": 42.5,
+    "coverage": 0.917,
+    "mean_half_bps": 121.2,
+    "coverage_emp": 0.933,
+    "mean_half_emp_bps": 132.6,
+    "usable_share": 1.0
+   },
+   "2": {
+    "n": 60,
+    "mae_ref_bps": 56.2,
+    "mae_naive_bps": 62.5,
+    "median_ref_bps": 42.0,
+    "coverage": 0.917,
+    "mean_half_bps": 119.6,
+    "coverage_emp": 0.933,
+    "mean_half_emp_bps": 129.2,
+    "usable_share": 1.0
+   },
+   "3": {
+    "n": 60,
+    "mae_ref_bps": 53.2,
+    "mae_naive_bps": 62.5,
+    "median_ref_bps": 42.7,
+    "coverage": 0.917,
+    "mean_half_bps": 118.0,
+    "coverage_emp": 0.917,
+    "mean_half_emp_bps": 132.7,
+    "usable_share": 1.0
+   },
+   "4": {
+    "n": 60,
+    "mae_ref_bps": 50.2,
+    "mae_naive_bps": 62.5,
+    "median_ref_bps": 39.4,
+    "coverage": 0.95,
+    "mean_half_bps": 116.3,
+    "coverage_emp": 0.95,
+    "mean_half_emp_bps": 123.2,
+    "usable_share": 1.0
+   }
+  },
+  "nav_source": "file",
+  "dividend_source": "feed_or_none",
+  "tape": "tiingo_boats",
+  "input_facts": {
+   "test_from": "2026-08-13",
+   "test_to_morning": "2026-11-06",
+   "nights_spanning_weekend_or_holiday": 12,
+   "close_vs_official_nav_median_abs_bps": 9.5,
+   "close_vs_official_nav_max_abs_bps": 26.5,
+   "fair_value_adjustment_median_abs_bps": 29.0,
+   "fair_value_adjustment_max_abs_bps": 96.4,
+   "fair_value_adjustment_max_date": "2026-09-16",
+   "ex_dividend_mornings": [],
+   "static_band_min_room_bps": 1689,
+   "sale_1945_times_used": [
+    "",
+    "16:00",
+    "17:00",
+    "17:15",
+    "17:30",
+    "18:00",
+    "18:15",
+    "18:45",
+    "19:00",
+    "19:15",
+    "19:30"
+   ]
+  },
+  "overnight_prints": {
+   "anchor": "close",
+   "session_slots": 5760,
+   "bars_in_feed": 5527,
+   "traded_bars": 28,
+   "traded_share": 0.0049,
+   "traded_share_15min_slots": 0.0141,
+   "nights_with_a_trade": 18,
+   "total_volume": 2303.0,
+   "same_instant": {
+    "n": 23,
+    "mean_premium_bps": -32.3,
+    "median_abs_bps": 44.3,
+    "p90_abs_bps": 224.7,
+    "share_outside_open_band": 0.1739
+   },
+   "same_instant_nav_anchor": {
+    "n": 23,
+    "mean_premium_bps": -29.2,
+    "median_abs_bps": 39.8,
+    "p90_abs_bps": 215.4
+   },
+   "lagged_reference": {
+    "n": 5,
+    "mean_premium_bps": 20.5,
+    "median_abs_bps": 58.7,
+    "p90_abs_bps": 59.2
+   },
+   "traded_bars_by_hedge_resolution": {
+    "1h": 6,
+    "5m": 22
+   },
+   "trading_band": {
+    "insufficient_prints": 7
+   },
+   "by_hour": {
+    "20": {
+     "n": 3,
+     "mean_bps": -46.8,
+     "median_abs_bps": 230.4
+    },
+    "21": {
+     "n": 4,
+     "mean_bps": -28.7,
+     "median_abs_bps": 34.8
+    },
+    "22": {
+     "n": 1,
+     "mean_bps": -15.6,
+     "median_abs_bps": 15.6
+    },
+    "23": {
+     "n": 2,
+     "mean_bps": 2.9,
+     "median_abs_bps": 14.3
+    },
+    "0": {
+     "n": 3,
+     "mean_bps": -8.9,
+     "median_abs_bps": 51.6
+    },
+    "1": {
+     "n": 5,
+     "mean_bps": -77.3,
+     "median_abs_bps": 21.3
+    },
+    "2": {
+     "n": 3,
+     "mean_bps": -22.1,
+     "median_abs_bps": 26.7
+    },
+    "3": {
+     "n": 2,
+     "mean_bps": 1.4,
+     "median_abs_bps": 69.1
+    }
+   },
+   "late_print_vs_open": {
+    "n_nights": 5,
+    "corr": -0.27,
+    "median_abs_print_bps": 31.3,
+    "definition": "last same-instant traded print 02:00-03:59 vs the open, both as deviations from the close-anchored reference"
+   }
+  }
+ },
+ "EEM": {
+  "ticker": "EEM",
+  "kind": "B",
+  "hedge": "ES=F",
+  "n_test_nights": 60,
+  "n_train_nights": 434,
+  "beta": 1.102,
+  "gamma": 0.0,
+  "r2_train": 0.386,
+  "sigma_resid_bps": 94.6,
+  "mae_ref_bps_all_hours": 89.3,
+  "mae_naive_bps": 99.0,
+  "mae_ref_close_anchor_bps_all_hours": 88.2,
+  "mae_naive_close_anchor_bps": 97.0,
+  "coverage_all_hours": 0.893,
+  "coverage_emp_all_hours": 0.873,
+  "sigma_resid_test_bps": 96.3,
+  "nominal_coverage": 0.9,
+  "static_band_ever_binding": false,
+  "nights_moved_over_100bps": 25,
+  "share_usable": 0.991,
+  "by_hour": {
+   "20": {
+    "n": 59,
+    "mae_ref_bps": 92.1,
+    "mae_naive_bps": 99.0,
+    "median_ref_bps": 79.8,
+    "coverage": 0.881,
+    "mean_half_bps": 179.3,
+    "coverage_emp": 0.881,
+    "mean_half_emp_bps": 174.5,
+    "usable_share": 1.0
+   },
+   "21": {
+    "n": 59,
+    "mae_ref_bps": 91.2,
+    "mae_naive_bps": 99.0,
+    "median_ref_bps": 78.0,
+    "coverage": 0.915,
+    "mean_half_bps": 177.6,
+    "coverage_emp": 0.881,
+    "mean_half_emp_bps": 169.4,
+    "usable_share": 1.0
+   },
+   "22": {
+    "n": 59,
+    "mae_ref_bps": 91.9,
+    "mae_naive_bps": 99.0,
+    "median_ref_bps": 76.9,
+    "coverage": 0.864,
+    "mean_half_bps": 175.9,
+    "coverage_emp": 0.847,
+    "mean_half_emp_bps": 164.8,
+    "usable_share": 1.0
+   },
+   "23": {
+    "n": 59,
+    "mae_ref_bps": 90.7,
+    "mae_naive_bps": 99.0,
+    "median_ref_bps": 77.3,
+    "coverage": 0.898,
+    "mean_half_bps": 174.1,
+    "coverage_emp": 0.864,
+    "mean_half_emp_bps": 169.3,
+    "usable_share": 1.0
+   },
+   "0": {
+    "n": 59,
+    "mae_ref_bps": 89.3,
+    "mae_naive_bps": 99.0,
+    "median_ref_bps": 75.2,
+    "coverage": 0.898,
+    "mean_half_bps": 172.4,
+    "coverage_emp": 0.898,
+    "mean_half_emp_bps": 169.7,
+    "usable_share": 1.0
+   },
+   "1": {
+    "n": 60,
+    "mae_ref_bps": 89.9,
+    "mae_naive_bps": 99.0,
+    "median_ref_bps": 77.8,
+    "coverage": 0.9,
+    "mean_half_bps": 170.6,
+    "coverage_emp": 0.867,
+    "mean_half_emp_bps": 163.2,
+    "usable_share": 1.0
+   },
+   "2": {
+    "n": 60,
+    "mae_ref_bps": 89.7,
+    "mae_naive_bps": 99.0,
+    "median_ref_bps": 83.6,
+    "coverage": 0.883,
+    "mean_half_bps": 168.8,
+    "coverage_emp": 0.867,
+    "mean_half_emp_bps": 162.8,
+    "usable_share": 1.0
+   },
+   "3": {
+    "n": 60,
+    "mae_ref_bps": 86.0,
+    "mae_naive_bps": 99.0,
+    "median_ref_bps": 78.2,
+    "coverage": 0.9,
+    "mean_half_bps": 166.9,
+    "coverage_emp": 0.85,
+    "mean_half_emp_bps": 155.3,
+    "usable_share": 1.0
+   },
+   "4": {
+    "n": 60,
+    "mae_ref_bps": 83.5,
+    "mae_naive_bps": 99.0,
+    "median_ref_bps": 68.3,
+    "coverage": 0.9,
+    "mean_half_bps": 165.1,
+    "coverage_emp": 0.9,
+    "mean_half_emp_bps": 156.6,
+    "usable_share": 1.0
+   }
+  },
+  "nav_source": "file",
+  "dividend_source": "feed_or_none",
+  "tape": "tiingo_boats",
+  "input_facts": {
+   "test_from": "2026-08-13",
+   "test_to_morning": "2026-11-06",
+   "nights_spanning_weekend_or_holiday": 12,
+   "close_vs_official_nav_median_abs_bps": 18.7,
+   "close_vs_official_nav_max_abs_bps": 63.9,
+   "fair_value_adjustment_median_abs_bps": 58.9,
+   "fair_value_adjustment_max_abs_bps": 411.9,
+   "fair_value_adjustment_max_date": "2026-11-05",
+   "ex_dividend_mornings": [],
+   "static_band_min_room_bps": 1717,
+   "sale_1945_times_used": [
+    "",
+    "16:00",
+    "17:30",
+    "17:45",
+    "18:00",
+    "18:15",
+    "18:30",
+    "18:45",
+    "19:00",
+    "19:15",
+    "19:30"
+   ]
+  },
+  "overnight_prints": {
+   "anchor": "close",
+   "session_slots": 5760,
+   "bars_in_feed": 5760,
+   "traded_bars": 319,
+   "traded_share": 0.0554,
+   "traded_share_15min_slots": 0.1432,
+   "nights_with_a_trade": 56,
+   "total_volume": 144373.0,
+   "same_instant": {
+    "n": 262,
+    "mean_premium_bps": -19.9,
+    "median_abs_bps": 62.2,
+    "p90_abs_bps": 139.7,
+    "share_outside_open_band": 0.0267
+   },
+   "same_instant_nav_anchor": {
+    "n": 262,
+    "mean_premium_bps": -29.9,
+    "median_abs_bps": 62.6,
+    "p90_abs_bps": 144.1
+   },
+   "lagged_reference": {
+    "n": 52,
+    "mean_premium_bps": -4.0,
+    "median_abs_bps": 45.1,
+    "p90_abs_bps": 89.7
+   },
+   "traded_bars_by_hedge_resolution": {
+    "1h": 57,
+    "5m": 257
+   },
+   "trading_band": {
+    "calibration_from": "2026-08-13",
+    "calibration_to": "2026-09-24",
+    "evaluation_from": "2026-09-25",
+    "evaluation_to": "2026-11-05",
+    "n_calibration_prints": 80,
+    "q50_pooled_bps": 37.2,
+    "q90_pooled_bps": 98.3,
+    "q90_by_hour_bps": {
+     "21": 98.3,
+     "22": 98.3,
+     "2": 98.3,
+     "1": 98.3,
+     "20": 98.3,
+     "0": 98.3,
+     "3": 98.3,
+     "23": 98.3
+    },
+    "evaluation_traded_prints": 182,
+    "evaluation_prints_inside": 109,
+    "coverage_traded_prints": 0.599,
+    "mean_half_trade_bps": 98.3,
+    "mean_half_open_bps": 165.1
+   },
+   "by_hour": {
+    "20": {
+     "n": 47,
+     "mean_bps": -18.9,
+     "median_abs_bps": 46.8
+    },
+    "21": {
+     "n": 44,
+     "mean_bps": -7.6,
+     "median_abs_bps": 55.5
+    },
+    "22": {
+     "n": 34,
+     "mean_bps": -30.7,
+     "median_abs_bps": 66.7
+    },
+    "23": {
+     "n": 21,
+     "mean_bps": -54.8,
+     "median_abs_bps": 77.4
+    },
+    "0": {
+     "n": 8,
+     "mean_bps": -55.1,
+     "median_abs_bps": 97.1
+    },
+    "1": {
+     "n": 34,
+     "mean_bps": -0.3,
+     "median_abs_bps": 55.2
+    },
+    "2": {
+     "n": 48,
+     "mean_bps": -23.7,
+     "median_abs_bps": 57.4
+    },
+    "3": {
+     "n": 26,
+     "mean_bps": -7.8,
+     "median_abs_bps": 96.3
+    }
+   },
+   "late_print_vs_open": {
+    "n_nights": 33,
+    "corr": 0.87,
+    "median_abs_print_bps": 64.1,
+    "definition": "last same-instant traded print 02:00-03:59 vs the open, both as deviations from the close-anchored reference"
+   }
+  }
+ },
+ "TLT": {
+  "ticker": "TLT",
+  "kind": "A",
+  "hedge": "ZB=F",
+  "n_test_nights": 60,
+  "n_train_nights": 434,
+  "beta": 1.155,
+  "gamma": 0.0,
+  "r2_train": 0.864,
+  "sigma_resid_bps": 20.4,
+  "mae_ref_bps_all_hours": 36.6,
+  "mae_naive_bps": 40.9,
+  "mae_ref_close_anchor_bps_all_hours": 36.6,
+  "mae_naive_close_anchor_bps": 40.9,
+  "coverage_all_hours": 0.815,
+  "coverage_emp_all_hours": 0.893,
+  "sigma_resid_test_bps": 19.0,
+  "nominal_coverage": 0.9,
+  "static_band_ever_binding": false,
+  "nights_moved_over_100bps": 3,
+  "share_usable": 0.991,
+  "by_hour": {
+   "20": {
+    "n": 59,
+    "mae_ref_bps": 38.3,
+    "mae_naive_bps": 41.0,
+    "median_ref_bps": 28.3,
+    "coverage": 0.881,
+    "mean_half_bps": 72.7,
+    "coverage_emp": 0.932,
+    "mean_half_emp_bps": 83.6,
+    "usable_share": 1.0
+   },
+   "21": {
+    "n": 59,
+    "mae_ref_bps": 38.2,
+    "mae_naive_bps": 41.0,
+    "median_ref_bps": 32.3,
+    "coverage": 0.864,
+    "mean_half_bps": 70.5,
+    "coverage_emp": 0.881,
+    "mean_half_emp_bps": 77.9,
+    "usable_share": 1.0
+   },
+   "22": {
+    "n": 59,
+    "mae_ref_bps": 37.1,
+    "mae_naive_bps": 41.0,
+    "median_ref_bps": 35.0,
+    "coverage": 0.864,
+    "mean_half_bps": 68.2,
+    "coverage_emp": 0.898,
+    "mean_half_emp_bps": 76.1,
+    "usable_share": 1.0
+   },
+   "23": {
+    "n": 59,
+    "mae_ref_bps": 37.1,
+    "mae_naive_bps": 41.0,
+    "median_ref_bps": 30.3,
+    "coverage": 0.814,
+    "mean_half_bps": 65.8,
+    "coverage_emp": 0.881,
+    "mean_half_emp_bps": 72.7,
+    "usable_share": 1.0
+   },
+   "0": {
+    "n": 59,
+    "mae_ref_bps": 37.0,
+    "mae_naive_bps": 41.0,
+    "median_ref_bps": 35.0,
+    "coverage": 0.797,
+    "mean_half_bps": 63.3,
+    "coverage_emp": 0.864,
+    "mean_half_emp_bps": 73.3,
+    "usable_share": 1.0
+   },
+   "1": {
+    "n": 60,
+    "mae_ref_bps": 36.1,
+    "mae_naive_bps": 40.8,
+    "median_ref_bps": 29.8,
+    "coverage": 0.817,
+    "mean_half_bps": 60.7,
+    "coverage_emp": 0.867,
+    "mean_half_emp_bps": 71.9,
+    "usable_share": 1.0
+   },
+   "2": {
+    "n": 60,
+    "mae_ref_bps": 36.0,
+    "mae_naive_bps": 40.8,
+    "median_ref_bps": 31.4,
+    "coverage": 0.767,
+    "mean_half_bps": 58.0,
+    "coverage_emp": 0.9,
+    "mean_half_emp_bps": 70.8,
+    "usable_share": 1.0
+   },
+   "3": {
+    "n": 60,
+    "mae_ref_bps": 35.6,
+    "mae_naive_bps": 40.8,
+    "median_ref_bps": 33.5,
+    "coverage": 0.733,
+    "mean_half_bps": 55.2,
+    "coverage_emp": 0.917,
+    "mean_half_emp_bps": 69.8,
+    "usable_share": 1.0
+   },
+   "4": {
+    "n": 60,
+    "mae_ref_bps": 33.8,
+    "mae_naive_bps": 40.8,
+    "median_ref_bps": 30.8,
+    "coverage": 0.8,
+    "mean_half_bps": 52.2,
+    "coverage_emp": 0.9,
+    "mean_half_emp_bps": 66.4,
+    "usable_share": 1.0
+   }
+  },
+  "nav_source": "file",
+  "dividend_source": "issuer_file",
+  "tape": "tiingo_boats",
+  "input_facts": {
+   "test_from": "2026-08-13",
+   "test_to_morning": "2026-11-06",
+   "nights_spanning_weekend_or_holiday": 12,
+   "close_vs_official_nav_median_abs_bps": 3.9,
+   "close_vs_official_nav_max_abs_bps": 11.7,
+   "fair_value_adjustment_median_abs_bps": null,
+   "fair_value_adjustment_max_abs_bps": null,
+   "fair_value_adjustment_max_date": null,
+   "ex_dividend_mornings": [
+    {
+     "ex_date": "2026-09-01",
+     "amount": 0.314686,
+     "bps_of_close": 38.1
+    },
+    {
+     "ex_date": "2026-10-01",
+     "amount": 0.311581,
+     "bps_of_close": 40.1
+    },
+    {
+     "ex_date": "2026-11-02",
+     "amount": 0.343177,
+     "bps_of_close": 41.9
+    }
+   ],
+   "static_band_min_room_bps": 1776,
+   "sale_1945_times_used": [
+    "",
+    "16:00",
+    "18:45",
+    "19:15",
+    "19:30"
+   ]
+  },
+  "overnight_prints": {
+   "anchor": "close",
+   "session_slots": 5760,
+   "bars_in_feed": 5760,
+   "traded_bars": 4873,
+   "traded_share": 0.846,
+   "traded_share_15min_slots": 0.9542,
+   "nights_with_a_trade": 58,
+   "total_volume": 9112813.0,
+   "same_instant": {
+    "n": 3951,
+    "mean_premium_bps": -2.4,
+    "median_abs_bps": 4.9,
+    "p90_abs_bps": 15.8,
+    "share_outside_open_band": 0.0
+   },
+   "same_instant_nav_anchor": {
+    "n": 3951,
+    "mean_premium_bps": 1.5,
+    "median_abs_bps": 5.8,
+    "p90_abs_bps": 14.5
+   },
+   "lagged_reference": {
+    "n": 881,
+    "mean_premium_bps": 1.6,
+    "median_abs_bps": 5.0,
+    "p90_abs_bps": 11.7
+   },
+   "traded_bars_by_hedge_resolution": {
+    "1h": 920,
+    "5m": 3912
+   },
+   "trading_band": {
+    "calibration_from": "2026-08-13",
+    "calibration_to": "2026-09-24",
+    "evaluation_from": "2026-09-25",
+    "evaluation_to": "2026-11-05",
+    "n_calibration_prints": 1335,
+    "q50_pooled_bps": 4.2,
+    "q90_pooled_bps": 14.5,
+    "q90_by_hour_bps": {
+     "21": 16.1,
+     "22": 14.8,
+     "1": 11.5,
+     "2": 12.1,
+     "3": 15.7,
+     "20": 13.8,
+     "23": 13.9,
+     "0": 12.7
+    },
+    "evaluation_traded_prints": 2616,
+    "evaluation_prints_inside": 2276,
+    "coverage_traded_prints": 0.87,
+    "mean_half_trade_bps": 13.9,
+    "mean_half_open_bps": 73.6
+   },
+   "by_hour": {
+    "20": {
+     "n": 525,
+     "mean_bps": -1.6,
+     "median_abs_bps": 4.9
+    },
+    "21": {
+     "n": 514,
+     "mean_bps": -2.5,
+     "median_abs_bps": 4.8
+    },
+    "22": {
+     "n": 494,
+     "mean_bps": -2.8,
+     "median_abs_bps": 5.1
+    },
+    "23": {
+     "n": 476,
+     "mean_bps": -2.7,
+     "median_abs_bps": 5.1
+    },
+    "0": {
+     "n": 462,
+     "mean_bps": -2.6,
+     "median_abs_bps": 5.3
+    },
+    "1": {
+     "n": 488,
+     "mean_bps": -2.9,
+     "median_abs_bps": 4.8
+    },
+    "2": {
+     "n": 490,
+     "mean_bps": -2.4,
+     "median_abs_bps": 4.6
+    },
+    "3": {
+     "n": 502,
+     "mean_bps": -2.0,
+     "median_abs_bps": 4.6
+    }
+   },
+   "late_print_vs_open": {
+    "n_nights": 58,
+    "corr": -0.0,
+    "median_abs_print_bps": 4.5,
+    "definition": "last same-instant traded print 02:00-03:59 vs the open, both as deviations from the close-anchored reference"
+   }
+  }
+ },
+ "LQD": {
+  "ticker": "LQD",
+  "kind": "A",
+  "hedge": "ZN=F",
+  "n_test_nights": 60,
+  "n_train_nights": 434,
+  "beta": 1.093,
+  "gamma": 0.0,
+  "r2_train": 0.671,
+  "sigma_resid_bps": 17.5,
+  "mae_ref_bps_all_hours": 21.7,
+  "mae_naive_bps": 24.3,
+  "mae_ref_close_anchor_bps_all_hours": 21.5,
+  "mae_naive_close_anchor_bps": 23.2,
+  "coverage_all_hours": 0.822,
+  "coverage_emp_all_hours": 0.882,
+  "sigma_resid_test_bps": 15.6,
+  "nominal_coverage": 0.9,
+  "static_band_ever_binding": false,
+  "nights_moved_over_100bps": 0,
+  "share_usable": 0.991,
+  "by_hour": {
+   "20": {
+    "n": 59,
+    "mae_ref_bps": 22.6,
+    "mae_naive_bps": 24.3,
+    "median_ref_bps": 21.0,
+    "coverage": 0.814,
+    "mean_half_bps": 41.1,
+    "coverage_emp": 0.898,
+    "mean_half_emp_bps": 48.2,
+    "usable_share": 1.0
+   },
+   "21": {
+    "n": 59,
+    "mae_ref_bps": 22.5,
+    "mae_naive_bps": 24.3,
+    "median_ref_bps": 19.1,
+    "coverage": 0.797,
+    "mean_half_bps": 40.3,
+    "coverage_emp": 0.881,
+    "mean_half_emp_bps": 46.0,
+    "usable_share": 1.0
+   },
+   "22": {
+    "n": 59,
+    "mae_ref_bps": 21.8,
+    "mae_naive_bps": 24.3,
+    "median_ref_bps": 18.6,
+    "coverage": 0.831,
+    "mean_half_bps": 39.5,
+    "coverage_emp": 0.864,
+    "mean_half_emp_bps": 45.8,
+    "usable_share": 1.0
+   },
+   "23": {
+    "n": 59,
+    "mae_ref_bps": 21.3,
+    "mae_naive_bps": 24.3,
+    "median_ref_bps": 19.5,
+    "coverage": 0.814,
+    "mean_half_bps": 38.6,
+    "coverage_emp": 0.847,
+    "mean_half_emp_bps": 45.0,
+    "usable_share": 1.0
+   },
+   "0": {
+    "n": 59,
+    "mae_ref_bps": 21.9,
+    "mae_naive_bps": 24.3,
+    "median_ref_bps": 19.9,
+    "coverage": 0.814,
+    "mean_half_bps": 37.8,
+    "coverage_emp": 0.847,
+    "mean_half_emp_bps": 44.8,
+    "usable_share": 1.0
+   },
+   "1": {
+    "n": 60,
+    "mae_ref_bps": 22.0,
+    "mae_naive_bps": 24.3,
+    "median_ref_bps": 18.8,
+    "coverage": 0.817,
+    "mean_half_bps": 36.9,
+    "coverage_emp": 0.883,
+    "mean_half_emp_bps": 44.8,
+    "usable_share": 1.0
+   },
+   "2": {
+    "n": 60,
+    "mae_ref_bps": 21.9,
+    "mae_naive_bps": 24.3,
+    "median_ref_bps": 20.2,
+    "coverage": 0.833,
+    "mean_half_bps": 36.0,
+    "coverage_emp": 0.9,
+    "mean_half_emp_bps": 45.0,
+    "usable_share": 1.0
+   },
+   "3": {
+    "n": 60,
+    "mae_ref_bps": 21.2,
+    "mae_naive_bps": 24.3,
+    "median_ref_bps": 20.0,
+    "coverage": 0.833,
+    "mean_half_bps": 35.0,
+    "coverage_emp": 0.9,
+    "mean_half_emp_bps": 43.4,
+    "usable_share": 1.0
+   },
+   "4": {
+    "n": 60,
+    "mae_ref_bps": 20.1,
+    "mae_naive_bps": 24.3,
+    "median_ref_bps": 16.8,
+    "coverage": 0.85,
+    "mean_half_bps": 34.1,
+    "coverage_emp": 0.917,
+    "mean_half_emp_bps": 41.2,
+    "usable_share": 1.0
+   }
+  },
+  "nav_source": "file",
+  "dividend_source": "issuer_file",
+  "tape": "tiingo_boats",
+  "input_facts": {
+   "test_from": "2026-08-13",
+   "test_to_morning": "2026-11-06",
+   "nights_spanning_weekend_or_holiday": 12,
+   "close_vs_official_nav_median_abs_bps": 4.5,
+   "close_vs_official_nav_max_abs_bps": 17.5,
+   "fair_value_adjustment_median_abs_bps": null,
+   "fair_value_adjustment_max_abs_bps": null,
+   "fair_value_adjustment_max_date": null,
+   "ex_dividend_mornings": [
+    {
+     "ex_date": "2026-09-01",
+     "amount": 0.443669,
+     "bps_of_close": 41.8
+    },
+    {
+     "ex_date": "2026-10-01",
+     "amount": 0.43866,
+     "bps_of_close": 42.9
+    },
+    {
+     "ex_date": "2026-11-02",
+     "amount": 0.39995,
+     "bps_of_close": 38.4
+    }
+   ],
+   "static_band_min_room_bps": 1921,
+   "sale_1945_times_used": [
+    "",
+    "16:00",
+    "16:15",
+    "16:45",
+    "17:00",
+    "17:15",
+    "17:30",
+    "17:45",
+    "18:00",
+    "18:15",
+    "18:30",
+    "18:45",
+    "19:15",
+    "19:30"
+   ]
+  },
+  "overnight_prints": {
+   "anchor": "close",
+   "session_slots": 5760,
+   "bars_in_feed": 5760,
+   "traded_bars": 131,
+   "traded_share": 0.0227,
+   "traded_share_15min_slots": 0.0557,
+   "nights_with_a_trade": 45,
+   "total_volume": 21899.0,
+   "same_instant": {
+    "n": 113,
+    "mean_premium_bps": -3.6,
+    "median_abs_bps": 6.2,
+    "p90_abs_bps": 24.4,
+    "share_outside_open_band": 0.0177
+   },
+   "same_instant_nav_anchor": {
+    "n": 113,
+    "mean_premium_bps": 0.2,
+    "median_abs_bps": 8.4,
+    "p90_abs_bps": 20.3
+   },
+   "lagged_reference": {
+    "n": 17,
+    "mean_premium_bps": 6.8,
+    "median_abs_bps": 5.4,
+    "p90_abs_bps": 13.7
+   },
+   "traded_bars_by_hedge_resolution": {
+    "1h": 18,
+    "5m": 112
+   },
+   "trading_band": {
+    "insufficient_prints": 44
+   },
+   "by_hour": {
+    "20": {
+     "n": 16,
+     "mean_bps": 0.5,
+     "median_abs_bps": 5.6
+    },
+    "21": {
+     "n": 25,
+     "mean_bps": -7.9,
+     "median_abs_bps": 6.6
+    },
+    "22": {
+     "n": 9,
+     "mean_bps": -4.4,
+     "median_abs_bps": 4.2
+    },
+    "23": {
+     "n": 9,
+     "mean_bps": 0.5,
+     "median_abs_bps": 5.7
+    },
+    "0": {
+     "n": 5,
+     "mean_bps": 2.7,
+     "median_abs_bps": 4.9
+    },
+    "1": {
+     "n": 13,
+     "mean_bps": -4.0,
+     "median_abs_bps": 5.3
+    },
+    "2": {
+     "n": 26,
+     "mean_bps": 1.3,
+     "median_abs_bps": 5.9
+    },
+    "3": {
+     "n": 10,
+     "mean_bps": -17.6,
+     "median_abs_bps": 17.2
+    }
+   },
+   "late_print_vs_open": {
+    "n_nights": 18,
+    "corr": -0.22,
+    "median_abs_print_bps": 9.1,
+    "definition": "last same-instant traded print 02:00-03:59 vs the open, both as deviations from the close-anchored reference"
+   }
+  }
+ },
+ "GLD": {
+  "ticker": "GLD",
+  "kind": "A",
+  "hedge": "GC=F",
+  "n_test_nights": 60,
+  "n_train_nights": 434,
+  "beta": 0.961,
+  "gamma": 0.0,
+  "r2_train": 0.929,
+  "sigma_resid_bps": 32.6,
+  "mae_ref_bps_all_hours": 73.4,
+  "mae_naive_bps": 96.6,
+  "mae_ref_close_anchor_bps_all_hours": 73.4,
+  "mae_naive_close_anchor_bps": 96.6,
+  "coverage_all_hours": 0.893,
+  "coverage_emp_all_hours": 0.836,
+  "sigma_resid_test_bps": 27.6,
+  "nominal_coverage": 0.9,
+  "static_band_ever_binding": false,
+  "nights_moved_over_100bps": 25,
+  "share_usable": 0.991,
+  "by_hour": {
+   "20": {
+    "n": 59,
+    "mae_ref_bps": 95.2,
+    "mae_naive_bps": 96.7,
+    "median_ref_bps": 80.0,
+    "coverage": 0.847,
+    "mean_half_bps": 172.8,
+    "coverage_emp": 0.847,
+    "mean_half_emp_bps": 164.7,
+    "usable_share": 1.0
+   },
+   "21": {
+    "n": 59,
+    "mae_ref_bps": 87.4,
+    "mae_naive_bps": 96.7,
+    "median_ref_bps": 73.7,
+    "coverage": 0.898,
+    "mean_half_bps": 166.7,
+    "coverage_emp": 0.797,
+    "mean_half_emp_bps": 155.1,
+    "usable_share": 1.0
+   },
+   "22": {
+    "n": 59,
+    "mae_ref_bps": 85.9,
+    "mae_naive_bps": 96.7,
+    "median_ref_bps": 74.2,
+    "coverage": 0.915,
+    "mean_half_bps": 160.4,
+    "coverage_emp": 0.729,
+    "mean_half_emp_bps": 137.4,
+    "usable_share": 1.0
+   },
+   "23": {
+    "n": 59,
+    "mae_ref_bps": 77.8,
+    "mae_naive_bps": 96.7,
+    "median_ref_bps": 51.8,
+    "coverage": 0.881,
+    "mean_half_bps": 153.7,
+    "coverage_emp": 0.881,
+    "mean_half_emp_bps": 139.1,
+    "usable_share": 1.0
+   },
+   "0": {
+    "n": 59,
+    "mae_ref_bps": 73.5,
+    "mae_naive_bps": 96.7,
+    "median_ref_bps": 53.9,
+    "coverage": 0.898,
+    "mean_half_bps": 146.8,
+    "coverage_emp": 0.831,
+    "mean_half_emp_bps": 129.7,
+    "usable_share": 1.0
+   },
+   "1": {
+    "n": 60,
+    "mae_ref_bps": 69.3,
+    "mae_naive_bps": 96.4,
+    "median_ref_bps": 52.4,
+    "coverage": 0.917,
+    "mean_half_bps": 139.6,
+    "coverage_emp": 0.9,
+    "mean_half_emp_bps": 131.0,
+    "usable_share": 1.0
+   },
+   "2": {
+    "n": 60,
+    "mae_ref_bps": 62.1,
+    "mae_naive_bps": 96.4,
+    "median_ref_bps": 45.9,
+    "coverage": 0.9,
+    "mean_half_bps": 131.9,
+    "coverage_emp": 0.883,
+    "mean_half_emp_bps": 118.9,
+    "usable_share": 1.0
+   },
+   "3": {
+    "n": 60,
+    "mae_ref_bps": 57.3,
+    "mae_naive_bps": 96.4,
+    "median_ref_bps": 46.7,
+    "coverage": 0.9,
+    "mean_half_bps": 123.8,
+    "coverage_emp": 0.833,
+    "mean_half_emp_bps": 106.1,
+    "usable_share": 1.0
+   },
+   "4": {
+    "n": 60,
+    "mae_ref_bps": 53.1,
+    "mae_naive_bps": 96.4,
+    "median_ref_bps": 43.2,
+    "coverage": 0.883,
+    "mean_half_bps": 115.1,
+    "coverage_emp": 0.817,
+    "mean_half_emp_bps": 103.9,
+    "usable_share": 1.0
+   }
+  },
+  "nav_source": "close_anchor",
+  "dividend_source": "feed_or_none",
+  "tape": "tiingo_boats",
+  "input_facts": {
+   "test_from": "2026-08-13",
+   "test_to_morning": "2026-11-06",
+   "nights_spanning_weekend_or_holiday": 12,
+   "close_vs_official_nav_median_abs_bps": 46.8,
+   "close_vs_official_nav_max_abs_bps": 239.8,
+   "fair_value_adjustment_median_abs_bps": null,
+   "fair_value_adjustment_max_abs_bps": null,
+   "fair_value_adjustment_max_date": null,
+   "ex_dividend_mornings": [],
+   "static_band_min_room_bps": 1699,
+   "sale_1945_times_used": [
+    "",
+    "16:00",
+    "18:00",
+    "18:45",
+    "19:15",
+    "19:30"
+   ]
+  },
+  "overnight_prints": {
+   "anchor": "close",
+   "session_slots": 5760,
+   "bars_in_feed": 5760,
+   "traded_bars": 5675,
+   "traded_share": 0.9852,
+   "traded_share_15min_slots": 0.9943,
+   "nights_with_a_trade": 60,
+   "total_volume": 5524773.0,
+   "same_instant": {
+    "n": 4570,
+    "mean_premium_bps": 2.0,
+    "median_abs_bps": 2.6,
+    "p90_abs_bps": 7.3,
+    "share_outside_open_band": 0.0
+   },
+   "same_instant_nav_anchor": {
+    "n": 4570,
+    "mean_premium_bps": 2.0,
+    "median_abs_bps": 2.6,
+    "p90_abs_bps": 7.3
+   },
+   "lagged_reference": {
+    "n": 1057,
+    "mean_premium_bps": -1.1,
+    "median_abs_bps": 10.6,
+    "p90_abs_bps": 32.2
+   },
+   "traded_bars_by_hedge_resolution": {
+    "1h": 1149,
+    "5m": 4478
+   },
+   "trading_band": {
+    "calibration_from": "2026-08-13",
+    "calibration_to": "2026-09-24",
+    "evaluation_from": "2026-09-25",
+    "evaluation_to": "2026-11-05",
+    "n_calibration_prints": 1761,
+    "q50_pooled_bps": 2.5,
+    "q90_pooled_bps": 6.5,
+    "q90_by_hour_bps": {
+     "20": 5.6,
+     "21": 6.2,
+     "22": 6.4,
+     "23": 5.8,
+     "0": 6.1,
+     "1": 6.5,
+     "2": 7.0,
+     "3": 7.2
+    },
+    "evaluation_traded_prints": 2809,
+    "evaluation_prints_inside": 2323,
+    "coverage_traded_prints": 0.827,
+    "mean_half_trade_bps": 6.4,
+    "mean_half_open_bps": 131.8
+   },
+   "by_hour": {
+    "20": {
+     "n": 571,
+     "mean_bps": 1.6,
+     "median_abs_bps": 2.2
+    },
+    "21": {
+     "n": 573,
+     "mean_bps": 1.8,
+     "median_abs_bps": 2.5
+    },
+    "22": {
+     "n": 570,
+     "mean_bps": 1.9,
+     "median_abs_bps": 2.6
+    },
+    "23": {
+     "n": 563,
+     "mean_bps": 2.1,
+     "median_abs_bps": 2.7
+    },
+    "0": {
+     "n": 560,
+     "mean_bps": 2.3,
+     "median_abs_bps": 2.6
+    },
+    "1": {
+     "n": 572,
+     "mean_bps": 2.3,
+     "median_abs_bps": 2.8
+    },
+    "2": {
+     "n": 578,
+     "mean_bps": 2.2,
+     "median_abs_bps": 2.7
+    },
+    "3": {
+     "n": 583,
+     "mean_bps": 2.1,
+     "median_abs_bps": 3.0
+    }
+   },
+   "late_print_vs_open": {
+    "n_nights": 60,
+    "corr": 0.24,
+    "median_abs_print_bps": 3.3,
+    "definition": "last same-instant traded print 02:00-03:59 vs the open, both as deviations from the close-anchored reference"
+   }
+  }
+ },
+ "IBIT": {
+  "ticker": "IBIT",
+  "kind": "C",
+  "hedge": "BTC-USD",
+  "n_test_nights": 60,
+  "n_train_nights": 437,
+  "beta": 1.012,
+  "gamma": 0.0,
+  "r2_train": 0.951,
+  "sigma_resid_bps": 47.3,
+  "mae_ref_bps_all_hours": 100.7,
+  "mae_naive_bps": 140.3,
+  "mae_ref_close_anchor_bps_all_hours": 98.7,
+  "mae_naive_close_anchor_bps": 138.9,
+  "coverage_all_hours": 0.924,
+  "coverage_emp_all_hours": 0.907,
+  "sigma_resid_test_bps": 32.0,
+  "nominal_coverage": 0.9,
+  "static_band_ever_binding": false,
+  "nights_moved_over_100bps": 31,
+  "share_usable": 1.0,
+  "by_hour": {
+   "20": {
+    "n": 60,
+    "mae_ref_bps": 122.4,
+    "mae_naive_bps": 140.3,
+    "median_ref_bps": 92.8,
+    "coverage": 0.95,
+    "mean_half_bps": 287.8,
+    "coverage_emp": 0.95,
+    "mean_half_emp_bps": 276.6,
+    "usable_share": 1.0
+   },
+   "21": {
+    "n": 60,
+    "mae_ref_bps": 119.5,
+    "mae_naive_bps": 140.3,
+    "median_ref_bps": 93.8,
+    "coverage": 0.95,
+    "mean_half_bps": 277.4,
+    "coverage_emp": 0.917,
+    "mean_half_emp_bps": 260.6,
+    "usable_share": 1.0
+   },
+   "22": {
+    "n": 60,
+    "mae_ref_bps": 109.9,
+    "mae_naive_bps": 140.3,
+    "median_ref_bps": 91.0,
+    "coverage": 0.933,
+    "mean_half_bps": 266.5,
+    "coverage_emp": 0.917,
+    "mean_half_emp_bps": 241.2,
+    "usable_share": 1.0
+   },
+   "23": {
+    "n": 60,
+    "mae_ref_bps": 103.8,
+    "mae_naive_bps": 140.3,
+    "median_ref_bps": 84.7,
+    "coverage": 0.933,
+    "mean_half_bps": 255.2,
+    "coverage_emp": 0.917,
+    "mean_half_emp_bps": 234.7,
+    "usable_share": 1.0
+   },
+   "0": {
+    "n": 60,
+    "mae_ref_bps": 99.9,
+    "mae_naive_bps": 140.3,
+    "median_ref_bps": 86.2,
+    "coverage": 0.933,
+    "mean_half_bps": 243.4,
+    "coverage_emp": 0.9,
+    "mean_half_emp_bps": 228.3,
+    "usable_share": 1.0
+   },
+   "1": {
+    "n": 60,
+    "mae_ref_bps": 96.5,
+    "mae_naive_bps": 140.3,
+    "median_ref_bps": 82.3,
+    "coverage": 0.917,
+    "mean_half_bps": 230.9,
+    "coverage_emp": 0.9,
+    "mean_half_emp_bps": 223.5,
+    "usable_share": 1.0
+   },
+   "2": {
+    "n": 60,
+    "mae_ref_bps": 93.4,
+    "mae_naive_bps": 140.3,
+    "median_ref_bps": 66.2,
+    "coverage": 0.883,
+    "mean_half_bps": 217.7,
+    "coverage_emp": 0.883,
+    "mean_half_emp_bps": 196.0,
+    "usable_share": 1.0
+   },
+   "3": {
+    "n": 60,
+    "mae_ref_bps": 85.8,
+    "mae_naive_bps": 140.3,
+    "median_ref_bps": 62.7,
+    "coverage": 0.9,
+    "mean_half_bps": 203.7,
+    "coverage_emp": 0.883,
+    "mean_half_emp_bps": 191.1,
+    "usable_share": 1.0
+   },
+   "4": {
+    "n": 60,
+    "mae_ref_bps": 75.6,
+    "mae_naive_bps": 140.3,
+    "median_ref_bps": 50.5,
+    "coverage": 0.917,
+    "mean_half_bps": 188.7,
+    "coverage_emp": 0.9,
+    "mean_half_emp_bps": 164.2,
+    "usable_share": 1.0
+   }
+  },
+  "nav_source": "file",
+  "dividend_source": "feed_or_none",
+  "tape": "tiingo_boats",
+  "input_facts": {
+   "test_from": "2026-08-13",
+   "test_to_morning": "2026-11-06",
+   "nights_spanning_weekend_or_holiday": 12,
+   "close_vs_official_nav_median_abs_bps": 11.9,
+   "close_vs_official_nav_max_abs_bps": 46.8,
+   "fair_value_adjustment_median_abs_bps": null,
+   "fair_value_adjustment_max_abs_bps": null,
+   "fair_value_adjustment_max_date": null,
+   "ex_dividend_mornings": [],
+   "static_band_min_room_bps": 1384,
+   "sale_1945_times_used": [
+    "",
+    "16:00",
+    "18:45",
+    "19:00",
+    "19:30"
+   ]
+  },
+  "overnight_prints": {
+   "anchor": "close",
+   "session_slots": 5760,
+   "bars_in_feed": 5760,
+   "traded_bars": 5529,
+   "traded_share": 0.9599,
+   "traded_share_15min_slots": 0.9932,
+   "nights_with_a_trade": 60,
+   "total_volume": 54603651.0,
+   "same_instant": {
+    "n": 3838,
+    "mean_premium_bps": -1.3,
+    "median_abs_bps": 3.6,
+    "p90_abs_bps": 7.4,
+    "share_outside_open_band": 0.0
+   },
+   "same_instant_nav_anchor": {
+    "n": 3838,
+    "mean_premium_bps": 6.0,
+    "median_abs_bps": 10.9,
+    "p90_abs_bps": 29.2
+   },
+   "lagged_reference": {
+    "n": 1691,
+    "mean_premium_bps": 0.7,
+    "median_abs_bps": 14.8,
+    "p90_abs_bps": 44.0
+   },
+   "traded_bars_by_hedge_resolution": {
+    "1h": 1844,
+    "5m": 3685
+   },
+   "trading_band": {
+    "calibration_from": "2026-08-13",
+    "calibration_to": "2026-09-24",
+    "evaluation_from": "2026-09-25",
+    "evaluation_to": "2026-11-05",
+    "n_calibration_prints": 1094,
+    "q50_pooled_bps": 3.3,
+    "q90_pooled_bps": 9.9,
+    "q90_by_hour_bps": {
+     "20": 9.2,
+     "21": 7.2,
+     "22": 8.5,
+     "23": 9.6,
+     "0": 8.6,
+     "1": 9.5,
+     "2": 7.9,
+     "3": 7.8
+    },
+    "evaluation_traded_prints": 2744,
+    "evaluation_prints_inside": 2572,
+    "coverage_traded_prints": 0.937,
+    "mean_half_trade_bps": 8.7,
+    "mean_half_open_bps": 224.0
+   },
+   "by_hour": {
+    "20": {
+     "n": 485,
+     "mean_bps": -1.3,
+     "median_abs_bps": 3.3
+    },
+    "21": {
+     "n": 489,
+     "mean_bps": -1.3,
+     "median_abs_bps": 3.5
+    },
+    "22": {
+     "n": 488,
+     "mean_bps": -1.3,
+     "median_abs_bps": 3.8
+    },
+    "23": {
+     "n": 476,
+     "mean_bps": -1.0,
+     "median_abs_bps": 3.5
+    },
+    "0": {
+     "n": 472,
+     "mean_bps": -1.3,
+     "median_abs_bps": 3.6
+    },
+    "1": {
+     "n": 470,
+     "mean_bps": -1.3,
+     "median_abs_bps": 3.6
+    },
+    "2": {
+     "n": 474,
+     "mean_bps": -1.5,
+     "median_abs_bps": 3.9
+    },
+    "3": {
+     "n": 484,
+     "mean_bps": -1.3,
+     "median_abs_bps": 3.4
+    }
+   },
+   "late_print_vs_open": {
+    "n_nights": 60,
+    "corr": -0.21,
+    "median_abs_print_bps": 2.6,
+    "definition": "last same-instant traded print 02:00-03:59 vs the open, both as deviations from the close-anchored reference"
+   }
+  }
+ }
+}

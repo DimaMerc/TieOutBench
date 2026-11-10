@@ -1,0 +1,144 @@
+{
+ "ticker": "EWG",
+ "source_file": "EWG_holdings.csv",
+ "n_equity_rows": 50,
+ "top_weight_sum": 75.56,
+ "unmapped": [],
+ "holdings": [
+  {
+   "symbol": "SAP",
+   "name": "SAP",
+   "weight": 12.68,
+   "sector": "Information Technology",
+   "location": "Germany",
+   "exchange": "Xetra",
+   "news_ticker": "SAP"
+  },
+  {
+   "symbol": "SIE",
+   "name": "SIEMENS N AG",
+   "weight": 11.32,
+   "sector": "Industrials",
+   "location": "Germany",
+   "exchange": "Xetra",
+   "news_ticker": "SIEGY"
+  },
+  {
+   "symbol": "ALV",
+   "name": "ALLIANZ",
+   "weight": 10.19,
+   "sector": "Financials",
+   "location": "Germany",
+   "exchange": "Xetra",
+   "news_ticker": "ALIZY"
+  },
+  {
+   "symbol": "ENR",
+   "name": "SIEMENS ENERGY N AG",
+   "weight": 5.43,
+   "sector": "Industrials",
+   "location": "Germany",
+   "exchange": "Xetra",
+   "news_ticker": "SMNEY"
+  },
+  {
+   "symbol": "DTE",
+   "name": "DEUTSCHE TELEKOM N AG",
+   "weight": 5.22,
+   "sector": "Communication",
+   "location": "Germany",
+   "exchange": "Xetra",
+   "news_ticker": "DTEGY"
+  },
+  {
+   "symbol": "MUV2",
+   "name": "MUENCHENER RUECKVERSICHERUNGS-GESE",
+   "weight": 4.29,
+   "sector": "Financials",
+   "location": "Germany",
+   "exchange": "Xetra",
+   "news_ticker": "MURGY"
+  },
+  {
+   "symbol": "IFX",
+   "name": "INFINEON TECHNOLOGIES AG",
+   "weight": 3.55,
+   "sector": "Information Technology",
+   "location": "Germany",
+   "exchange": "Xetra",
+   "news_ticker": "IFNNY"
+  },
+  {
+   "symbol": "DB1",
+   "name": "DEUTSCHE BOERSE AG",
+   "weight": 3.45,
+   "sector": "Financials",
+   "location": "Germany",
+   "exchange": "Xetra",
+   "news_ticker": "DBOEY"
+  },
+  {
+   "symbol": "BAYN",
+   "name": "BAYER AG",
+   "weight": 3.24,
+   "sector": "Health Care",
+   "location": "Germany",
+   "exchange": "Xetra",
+   "news_ticker": "BAYRY"
+  },
+  {
+   "symbol": "DBK",
+   "name": "DEUTSCHE BANK AG",
+   "weight": 3.22,
+   "sector": "Financials",
+   "location": "Germany",
+   "exchange": "Xetra",
+   "news_ticker": "DB"
+  },
+  {
+   "symbol": "DHL",
+   "name": "DHL AG",
+   "weight": 3.17,
+   "sector": "Industrials",
+   "location": "Germany",
+   "exchange": "Xetra",
+   "news_ticker": "DHLGY"
+  },
+  {
+   "symbol": "BAS",
+   "name": "BASF N",
+   "weight": 2.8,
+   "sector": "Materials",
+   "location": "Germany",
+   "exchange": "Xetra",
+   "news_ticker": "BASFY"
+  },
+  {
+   "symbol": "EOAN",
+   "name": "E.ON N",
+   "weight": 2.54,
+   "sector": "Utilities",
+   "location": "Germany",
+   "exchange": "Xetra",
+   "news_ticker": "EONGY"
+  },
+  {
+   "symbol": "RHM",
+   "name": "RHEINMETALL AG",
+   "weight": 2.26,
+   "sector": "Industrials",
+   "location": "Germany",
+   "exchange": "Xetra",
+   "news_ticker": "RNMBY"
+  },
+  {
+   "symbol": "RWE",
+   "name": "RWE AG",
+   "weight": 2.2,
+   "sector": "Utilities",
+   "location": "Germany",
+   "exchange": "Xetra",
+   "news_ticker": "RWEOY"
+  }
+ ]
+}

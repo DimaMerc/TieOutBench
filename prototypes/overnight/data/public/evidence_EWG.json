@@ -1,0 +1,3852 @@
+{
+ "repaired_runs": null,
+ "subsets": {
+  "sonnet": {
+   "from": "haiku",
+   "sample": 0.1,
+   "selected_runs": 15
+  },
+  "local": {
+   "from": "haiku",
+   "sample": 0.1,
+   "selected_runs": 15
+  },
+  "local9b": {
+   "from": "haiku",
+   "sample": 0.1,
+   "selected_runs": 15
+  }
+ },
+ "holdings": [
+  {
+   "symbol": "SAP",
+   "name": "SAP",
+   "weight": 12.68,
+   "sector": "Information Technology",
+   "location": "Germany",
+   "exchange": "Xetra",
+   "news_ticker": "SAP"
+  },
+  {
+   "symbol": "SIE",
+   "name": "SIEMENS N AG",
+   "weight": 11.32,
+   "sector": "Industrials",
+   "location": "Germany",
+   "exchange": "Xetra",
+   "news_ticker": "SIEGY"
+  },
+  {
+   "symbol": "ALV",
+   "name": "ALLIANZ",
+   "weight": 10.19,
+   "sector": "Financials",
+   "location": "Germany",
+   "exchange": "Xetra",
+   "news_ticker": "ALIZY"
+  },
+  {
+   "symbol": "ENR",
+   "name": "SIEMENS ENERGY N AG",
+   "weight": 5.43,
+   "sector": "Industrials",
+   "location": "Germany",
+   "exchange": "Xetra",
+   "news_ticker": "SMNEY"
+  },
+  {
+   "symbol": "DTE",
+   "name": "DEUTSCHE TELEKOM N AG",
+   "weight": 5.22,
+   "sector": "Communication",
+   "location": "Germany",
+   "exchange": "Xetra",
+   "news_ticker": "DTEGY"
+  },
+  {
+   "symbol": "MUV2",
+   "name": "MUENCHENER RUECKVERSICHERUNGS-GESE",
+   "weight": 4.29,
+   "sector": "Financials",
+   "location": "Germany",
+   "exchange": "Xetra",
+   "news_ticker": "MURGY"
+  },
+  {
+   "symbol": "IFX",
+   "name": "INFINEON TECHNOLOGIES AG",
+   "weight": 3.55,
+   "sector": "Information Technology",
+   "location": "Germany",
+   "exchange": "Xetra",
+   "news_ticker": "IFNNY"
+  },
+  {
+   "symbol": "DB1",
+   "name": "DEUTSCHE BOERSE AG",
+   "weight": 3.45,
+   "sector": "Financials",
+   "location": "Germany",
+   "exchange": "Xetra",
+   "news_ticker": "DBOEY"
+  },
+  {
+   "symbol": "BAYN",
+   "name": "BAYER AG",
+   "weight": 3.24,
+   "sector": "Health Care",
+   "location": "Germany",
+   "exchange": "Xetra",
+   "news_ticker": "BAYRY"
+  },
+  {
+   "symbol": "DBK",
+   "name": "DEUTSCHE BANK AG",
+   "weight": 3.22,
+   "sector": "Financials",
+   "location": "Germany",
+   "exchange": "Xetra",
+   "news_ticker": "DB"
+  }
+ ],
+ "nights": [
+  {
+   "date": "2026-08-13",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 0,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "No news items since 4pm New York time, so there is no fund-specific information beyond what the hedge instruments already imply."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 76,
+      "prompt_tokens": 880,
+      "total_tokens": 956
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2051
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 1,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "The only item is a recap of SAP's August 13 close and a Q2 EPS miss already reflected in the 4pm value. It contains no new post-4pm fund-specific information."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 365,
+      "prompt_tokens": 1067,
+      "total_tokens": 1432
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2469
+    }
+   }
+  },
+  {
+   "date": "2026-08-14",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 3,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Post-4pm items are a bond listing page, a Deutsche Bank rating on Antofagasta (not a holding), and a generic SAP ratings overview. None is a material holding-specific event.",
+      "timestamp": "2026-08-17T01:00-04:00"
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 222,
+      "prompt_tokens": 1412,
+      "total_tokens": 1634
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 3311
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 3,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "No material fund-specific event. Items are a Deutsche Bank bond listing, a DB rating on Antofagasta, and a generic SAP ratings overview, none of which is a holding-level result, guidance, deal or regulatory action."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 199,
+      "prompt_tokens": 1412,
+      "total_tokens": 1611
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 3311
+    }
+   }
+  },
+  {
+   "date": "2026-08-17",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 1,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Only item is a MarketBeat short-interest report on Deutsche Bank's US ADR. It is routine data, not a material corporate event, and its price move predates 4pm."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 205,
+      "prompt_tokens": 1079,
+      "total_tokens": 1284
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2477
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 2,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "Neither item is material. The Deutsche Bank item is stale July short-interest data plus a price move from the US session. The SAP item is a third-party product launch, not SAP news."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 292,
+      "prompt_tokens": 1249,
+      "total_tokens": 1541
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2942
+    }
+   }
+  },
+  {
+   "date": "2026-08-18",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 0,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "No news items were published since 4pm New York time, so there is no fund-specific post-4pm information to move the basket beyond the hedge-implied value."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 85,
+      "prompt_tokens": 880,
+      "total_tokens": 965
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2051
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 1,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "The only post-4pm item is SAP's routine buyback disclosure covering trades from August 10-14. It is immaterial at SAP's weight and was not news for the basket value."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 180,
+      "prompt_tokens": 1031,
+      "total_tokens": 1211
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2451
+    }
+   }
+  },
+  {
+   "date": "2026-08-19",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 0,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "No news items were published since 4pm New York time, so there is no fund-specific information to move the value beyond the hedge-implied reference."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 80,
+      "prompt_tokens": 880,
+      "total_tokens": 960
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2051
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 0,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "No news items were published since 4pm New York time, so there is no fund-specific post-close information to move the basket beyond the hedge-implied value."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 83,
+      "prompt_tokens": 880,
+      "total_tokens": 963
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2051
+    }
+   }
+  },
+  {
+   "date": "2026-08-20",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 1,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Deutsche Bank (3.2% weight) item n77851789 releases an old 2017 FX consent order with the fine already paid. Immaterial to basket value beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 263,
+      "prompt_tokens": 1031,
+      "total_tokens": 1294
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2466
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 1,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Only DBK news: release from a 2017 Fed FX consent order. Old, housekeeping-level, and too small to move a 3.2% holding beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 264,
+      "prompt_tokens": 1031,
+      "total_tokens": 1295
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2466
+    }
+   }
+  },
+  {
+   "date": "2026-08-21",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 5,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "News is routine 13F-style position reports, a bond price listing, and a general SAP investment-thesis piece. No material fund-specific result, guidance, deal, or corporate action after 4pm."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 181,
+      "prompt_tokens": 1785,
+      "total_tokens": 1966
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 4177
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 10,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "Items are 13F-style position filings about Deutsche Bank's US stock holdings, a bond quote page, or SAP commentary and buyback recaps published before 4pm. None is a material post-4pm holding-specific event."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 328,
+      "prompt_tokens": 2680,
+      "total_tokens": 3008
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 6322
+    }
+   }
+  },
+  {
+   "date": "2026-08-24",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 0,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "No news items since 4pm New York time were provided, so there is no fund-specific post-4pm information to move the basket beyond the hedge-implied value."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 86,
+      "prompt_tokens": 880,
+      "total_tokens": 966
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2051
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 0,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "No news items were published since 4pm New York time, so there is no fund-specific information to move the basket beyond the hedge-implied value."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 80,
+      "prompt_tokens": 880,
+      "total_tokens": 960
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2051
+    }
+   }
+  },
+  {
+   "date": "2026-08-25",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 1,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Deutsche Bank's buyback completion and new \u20ac500M program is a routine, largely anticipated continuation at a 3.2% weight. It is unlikely to move the basket beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 296,
+      "prompt_tokens": 1049,
+      "total_tokens": 1345
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2508
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 1,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Only item is a routine Deutsche Bank buyback completion and new program at 3.2% weight. Largely expected capital return, not a material surprise beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 249,
+      "prompt_tokens": 1049,
+      "total_tokens": 1298
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2508
+    }
+   }
+  },
+  {
+   "date": "2026-08-26",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 1,
+     "output": {
+      "flag": true,
+      "direction": "down",
+      "confidence": "medium",
+      "cited_ids": [
+       "n27c048ea"
+      ],
+      "reason": "UBS downgraded SAP (12.7% weight) after 4pm ET on AI monetization concerns. Index futures would not capture this single-stock move, and SAP shares were reported falling."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 823,
+      "prompt_tokens": 1046,
+      "total_tokens": 1869
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2467
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 2,
+     "output": {
+      "flag": true,
+      "direction": "down",
+      "confidence": "medium",
+      "cited_ids": [
+       "n27c048ea"
+      ],
+      "reason": "UBS downgraded SAP (12.7% weight) to Neutral after 4pm on AI monetization concerns. Index futures would not reflect this, so it pressures the fund below the hedge value."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 655,
+      "prompt_tokens": 1198,
+      "total_tokens": 1853
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2891
+    },
+    "sonnet@1": {
+     "model": "claude-sonnet-5-5",
+     "hour": 1,
+     "n_items": 1,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "low",
+      "cited_ids": [],
+      "reason": "Only item is a UBS analyst downgrade of SAP. The headline says shares already fell, so it was likely priced in the German session before the 4pm value. Timing is unclear and the evidence is weak."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 633,
+      "prompt_tokens": 1046,
+      "total_tokens": 1679
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2467
+    },
+    "sonnet@4": {
+     "model": "claude-sonnet-5-5",
+     "hour": 4,
+     "n_items": 2,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "The UBS SAP downgrade was likely priced during the European session, before the 4pm value, and is an analyst opinion. The Deutsche Bank tech update is minor. Neither is a new fund-specific event."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 391,
+      "prompt_tokens": 1198,
+      "total_tokens": 1589
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2891
+    },
+    "local@1": {
+     "model": "qwen3.8-2b-distill",
+     "hour": 1,
+     "n_items": 1,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "The hedge-implied price reflects market consensus for Friday's close. The SAP downgrade occurred yesterday (before 4pm), so its impact has already been priced into the hedge instruments. No new directional signal emerges at this moment beyond what is already implied."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 741,
+      "completion_tokens": 400,
+      "total_tokens": 1141,
+      "completion_tokens_details": {
+       "reasoning_tokens": 310
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2467
+    },
+    "local@4": {
+     "model": "qwen3.8-2b-distill",
+     "hour": 4,
+     "n_items": 2,
+     "output": {
+      "flag": true,
+      "direction": "up",
+      "confidence": "medium",
+      "cited_ids": [
+       "n746fc228"
+      ],
+      "reason": "Deutsche Bank (DBK) holds 3.2% of the fund and reported a positive development with its retail division's technology revamp following the news at 08:56 EDT, which occurred after the 4pm cutoff."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 846,
+      "completion_tokens": 264,
+      "total_tokens": 1110,
+      "completion_tokens_details": {
+       "reasoning_tokens": 170
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2891
+    },
+    "local9b@1": {
+     "model": "qwen3.5-9b",
+     "hour": 1,
+     "n_items": 1,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "The news item occurred before 4pm ET. Any market impact from the downgrade is already reflected in the fund's price and the hedge-implied reference value."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 743,
+      "completion_tokens": 61,
+      "total_tokens": 804,
+      "completion_tokens_details": {
+       "reasoning_tokens": 0
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2467
+    },
+    "local9b@4": {
+     "model": "qwen3.5-9b",
+     "hour": 4,
+     "n_items": 2,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "News items are either pre-4pm (SAP downgrade) or fund-specific impact is negligible relative to hedge instruments."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 848,
+      "completion_tokens": 53,
+      "total_tokens": 901,
+      "completion_tokens_details": {
+       "reasoning_tokens": 0
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2891
+    }
+   }
+  },
+  {
+   "date": "2026-08-27",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 0,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "No news items were published since 4pm New York time, so there is no fund-specific information to move the value beyond the hedge-implied reference."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 80,
+      "prompt_tokens": 880,
+      "total_tokens": 960
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2051
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 0,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "No news items since 4pm New York time, so there is no fund-specific post-4pm information to move the basket beyond the hedge-implied value."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 83,
+      "prompt_tokens": 880,
+      "total_tokens": 963
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2051
+    }
+   }
+  },
+  {
+   "date": "2026-08-28",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 4,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "All four items are MarketBeat notes on Deutsche Bank's US-stock 13F-style position changes, not material corporate, guidance, or regulatory events at any EWG holding."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 159,
+      "prompt_tokens": 1625,
+      "total_tokens": 1784
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 3754
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 4,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "All four items are routine MarketBeat 13F-style stake reports about Deutsche Bank's US holdings. None is a material corporate, regulatory or earnings event for a EWG holding."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 242,
+      "prompt_tokens": 1625,
+      "total_tokens": 1867
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 3754
+    }
+   }
+  },
+  {
+   "date": "2026-08-31",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 0,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "No news items were published since 4pm New York time, so there is no fund-specific information to move the value beyond the hedge-implied reference."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 80,
+      "prompt_tokens": 880,
+      "total_tokens": 960
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2051
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 0,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "No news items since 4pm New York time, so no fund-specific information exists to move the basket beyond the hedge-implied value."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 78,
+      "prompt_tokens": 880,
+      "total_tokens": 958
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2051
+    }
+   }
+  },
+  {
+   "date": "2026-09-01",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 0,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "No news items were published since 4pm New York time, so there is no fund-specific information to move the value beyond the hedge-implied reference."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 80,
+      "prompt_tokens": 880,
+      "total_tokens": 960
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2051
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 2,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Only Deutsche Bank items after 4pm: a Goldman upgrade (3.2% weight, small fund effect) and an executive hire, which is immaterial. Neither is large enough to move the basket beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 490,
+      "prompt_tokens": 1208,
+      "total_tokens": 1698
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2812
+    }
+   }
+  },
+  {
+   "date": "2026-09-02",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 0,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "No news items were published since 4pm New York time, so there is no fund-specific information to move the basket beyond the hedge-implied value."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 80,
+      "prompt_tokens": 880,
+      "total_tokens": 960
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2051
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 0,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "No news items since 4pm New York time, so there is no fund-specific information beyond the hedge-implied reference value.",
+      "reason_note": ""
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 84,
+      "prompt_tokens": 880,
+      "total_tokens": 964
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2051
+    }
+   }
+  },
+  {
+   "date": "2026-09-03",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 1,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "The only post-4pm item is a court criticizing a Deutsche Bank subsidiary's lawyers over AI-fabricated citations. It is immaterial to a 3.2% holding's value, so no fund-specific move is implied.",
+      "unclear": false
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 240,
+      "prompt_tokens": 1055,
+      "total_tokens": 1295
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2474
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 1,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "Only item is a court criticizing a Deutsche Bank subsidiary's lawyers over AI-generated citations. This is immaterial to the 3.2% holding's value and not a result, guidance, or deal."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 188,
+      "prompt_tokens": 1055,
+      "total_tokens": 1243
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2474
+    }
+   }
+  },
+  {
+   "date": "2026-09-04",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 4,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Items are immaterial to holdings at these weights: a customer's SAP migration story, a small Deutsche Bank settlement, macro rate commentary, and a seminar. Nothing fund-specific beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 303,
+      "prompt_tokens": 1540,
+      "total_tokens": 1843
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 3759
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 6,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "Post-4pm items are immaterial: a Deutsche Bank seminar, a UBS reiteration on SAP, and a DB initiation on a US lessor. The Deutsche Bank settlement and Fed commentary predate 4pm and are already in the reference value."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 546,
+      "prompt_tokens": 1880,
+      "total_tokens": 2426
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 4579
+    }
+   }
+  },
+  {
+   "date": "2026-09-08",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 0,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "No news items were published since 4pm New York time, so there is no fund-specific information to move the value beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 76,
+      "prompt_tokens": 880,
+      "total_tokens": 956
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2051
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 0,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "No news items since 4pm New York time; nothing fund-specific to move the basket beyond the hedge-implied value.",
+      "analysis": "No flag."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 87,
+      "prompt_tokens": 880,
+      "total_tokens": 967
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2051
+    }
+   }
+  },
+  {
+   "date": "2026-09-09",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 0,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "No news items were published since 4pm New York time, so there is no fund-specific information to move the basket beyond the hedge-implied value."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 80,
+      "prompt_tokens": 880,
+      "total_tokens": 960
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2051
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 0,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "No news items were published since 4pm New York time, so there is no fund-specific post-4pm information to move the basket beyond the hedge-implied value."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 85,
+      "prompt_tokens": 880,
+      "total_tokens": 965
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2051
+    }
+   }
+  },
+  {
+   "date": "2026-09-10",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 0,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "No news items were published since 4pm New York time, so there is no fund-specific information to move the value beyond the hedge-implied reference."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 80,
+      "prompt_tokens": 880,
+      "total_tokens": 960
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2051
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 0,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "No news items since 4pm New York time, so no fund-specific information exists to move the basket beyond the hedge-implied value."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 78,
+      "prompt_tokens": 880,
+      "total_tokens": 958
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2051
+    }
+   }
+  },
+  {
+   "date": "2026-09-11",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 2,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "Neither item is a material fund-specific event: one concerns a tokenized DB product, the other is generic technical commentary on SAP. No corporate, regulatory or earnings news after 4pm."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 101,
+      "prompt_tokens": 1203,
+      "total_tokens": 1304
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2894
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 2,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Neither item is a material fund-specific event: one is a tokenized-stock listing page, the other generic technical trading commentary on SAP with no new fundamental news."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 92,
+      "prompt_tokens": 1203,
+      "total_tokens": 1295
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2894
+    },
+    "sonnet@4": {
+     "model": "claude-sonnet-5-5",
+     "hour": 4,
+     "n_items": 2,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "Both items are generic market-data or technical-analysis content with no fund-specific event such as results, guidance, a deal or a regulatory action. Nothing here goes beyond what the hedge implies."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 101,
+      "prompt_tokens": 1203,
+      "total_tokens": 1304
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2894
+    },
+    "local@4": {
+     "model": "qwen3.8-2b-distill",
+     "hour": 4,
+     "n_items": 2,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "EWG trades at a premium to hedge prices (4-9% above), but this is already reflected in index futures and spot prices. No fund-specific or post-4pm news items provide unpriced information about holdings."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 854,
+      "completion_tokens": 327,
+      "total_tokens": 1181,
+      "completion_tokens_details": {
+       "reasoning_tokens": 245
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2894
+    },
+    "local9b@4": {
+     "model": "qwen3.5-9b",
+     "hour": 4,
+     "n_items": 2,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "News items are pre-4pm or discuss tokenized versions/technical analysis already reflected in futures. No new fund-specific fundamental events."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 856,
+      "completion_tokens": 56,
+      "total_tokens": 912,
+      "completion_tokens_details": {
+       "reasoning_tokens": 0
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2894
+    }
+   }
+  },
+  {
+   "date": "2026-09-14",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 0,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "No news items were published since 4pm New York time, so there is no fund-specific post-4pm information to move the basket beyond the hedge-implied value."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 85,
+      "prompt_tokens": 880,
+      "total_tokens": 965
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2051
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 0,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "No news items were published since 4pm New York time, so there is no fund-specific post-4pm information to move the basket beyond the hedge-implied value."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 85,
+      "prompt_tokens": 880,
+      "total_tokens": 965
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2051
+    }
+   }
+  },
+  {
+   "date": "2026-09-15",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 0,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "No news items since 4pm New York time; nothing fund-specific to move the basket beyond the hedge-implied value."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 76,
+      "prompt_tokens": 880,
+      "total_tokens": 956
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2051
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 0,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "No news items were published since 4pm, so there is no fund-specific post-4pm information to move the basket beyond the hedge-implied value."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 82,
+      "prompt_tokens": 880,
+      "total_tokens": 962
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2051
+    }
+   }
+  },
+  {
+   "date": "2026-09-16",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 1,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Deutsche Bank's NY branch prime rate change is a routine, mechanical US lending-rate adjustment. It is not material to a 3.2% holding and gives no basis for a directional move beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 261,
+      "prompt_tokens": 1054,
+      "total_tokens": 1315
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2457
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 2,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Both items concern Deutsche Bank (3.2% weight). A US prime rate change and a planned crypto custody launch are routine and not large enough to move the fund beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 195,
+      "prompt_tokens": 1216,
+      "total_tokens": 1411
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2916
+    }
+   }
+  },
+  {
+   "date": "2026-09-17",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 0,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "No news items were published since 4pm New York time, so there is no fund-specific information to move the basket beyond the hedge-implied value."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 80,
+      "prompt_tokens": 880,
+      "total_tokens": 960
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2051
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 0,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "No news items were published since 4pm New York time, so there is no fund-specific information to move the basket beyond the hedge-implied value."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 80,
+      "prompt_tokens": 880,
+      "total_tokens": 960
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2051
+    }
+   }
+  },
+  {
+   "date": "2026-09-18",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 1,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "The only item is a dated valuation opinion on Deutsche Bank from 2026-09-18, before the post-4pm window. It is not a material corporate event, so it does not move the basket beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 325,
+      "prompt_tokens": 1060,
+      "total_tokens": 1385
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2494
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 1,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "The only item is a valuation-model article on Deutsche Bank, published before the window and not a material corporate event. Nothing fund-specific after 4pm."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 196,
+      "prompt_tokens": 1060,
+      "total_tokens": 1256
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2494
+    }
+   }
+  },
+  {
+   "date": "2026-09-21",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 0,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "No news items since 4pm New York time, so no fund-specific information exists beyond the hedge-implied reference value."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 75,
+      "prompt_tokens": 880,
+      "total_tokens": 955
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2051
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 4,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Deutsche Bank items are routine capital issuance, a buyback disclosure and a generic survey. None is a material surprise at a 3.2% weight beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 200,
+      "prompt_tokens": 1552,
+      "total_tokens": 1752
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 3752
+    }
+   }
+  },
+  {
+   "date": "2026-09-22",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 0,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "No news items were published since 4pm New York time, so there is no fund-specific information to move the basket beyond the hedge-implied value."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 80,
+      "prompt_tokens": 880,
+      "total_tokens": 960
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2051
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 0,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "No news items were published since 4pm New York time, so there is no fund-specific information to move the basket beyond the hedge-implied value."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 80,
+      "prompt_tokens": 880,
+      "total_tokens": 960
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2051
+    }
+   }
+  },
+  {
+   "date": "2026-09-23",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 2,
+     "output": {
+      "flag": true,
+      "direction": "down",
+      "confidence": "medium",
+      "cited_ids": [
+       "ne6056890"
+      ],
+      "reason": "Deutsche Bank (3.2% weight) fell after a cautious Q3 investment banking outlook from its CFO, published after 4pm and not reflected in index hedges."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 493,
+      "prompt_tokens": 1195,
+      "total_tokens": 1688
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2883
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 3,
+     "output": {
+      "flag": true,
+      "direction": "down",
+      "confidence": "medium",
+      "cited_ids": [
+       "ne6056890"
+      ],
+      "reason": "Post-4pm cautious Q3 investment banking outlook from Deutsche Bank's CFO, with shares dipping. A fund-specific guidance move at a 3.2% holding that index futures would not reflect."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 754,
+      "prompt_tokens": 1351,
+      "total_tokens": 2105
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 3304
+    },
+    "sonnet@1": {
+     "model": "claude-sonnet-5-5",
+     "hour": 1,
+     "n_items": 2,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "The SAP item is a generic quote page with no news. The Deutsche Bank outlook comment says shares already fell, so it was likely priced during European trading before 4pm. At a 3.2% weight it is small."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 523,
+      "prompt_tokens": 1195,
+      "total_tokens": 1718
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2883
+    },
+    "sonnet@4": {
+     "model": "claude-sonnet-5-5",
+     "hour": 4,
+     "n_items": 3,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "The SAP items are generic quote pages with no new information. The Deutsche Bank outlook comment likely moved shares during European trading, so it is already in the 4pm value, and DBK is only 3.2% of the fund."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 366,
+      "prompt_tokens": 1351,
+      "total_tokens": 1717
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 3304
+    },
+    "local@1": {
+     "model": "qwen3.8-2b-distill",
+     "hour": 1,
+     "n_items": 2,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "Both news items describe market-wide moves (SAP stock price, DBK stock decline) already reflected in index futures and hedge-implied values. No fund-specific or fund-basket-moving information requiring flagging."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 848,
+      "completion_tokens": 336,
+      "total_tokens": 1184,
+      "completion_tokens_details": {
+       "reasoning_tokens": 257
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2883
+    },
+    "local@4": {
+     "model": "qwen3.8-2b-distill",
+     "hour": 4,
+     "n_items": 3,
+     "output": {
+      "flag": true,
+      "direction": "up",
+      "confidence": "medium",
+      "cited_ids": [
+       "nad6b0721"
+      ],
+      "reason": "SAP (12.7% weight) is a top holding of EWG. After-hours news on SAP could push the fund value beyond what hedge instruments already capture."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 957,
+      "completion_tokens": 382,
+      "total_tokens": 1339,
+      "completion_tokens_details": {
+       "reasoning_tokens": 300
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 3304
+    },
+    "local9b@1": {
+     "model": "qwen3.5-9b",
+     "hour": 1,
+     "n_items": 2,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "News items are general overviews or pre-4pm market reactions already reflected in futures; no new fund-specific events post-4pm."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 850,
+      "completion_tokens": 57,
+      "total_tokens": 907,
+      "completion_tokens_details": {
+       "reasoning_tokens": 0
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2883
+    },
+    "local9b@4": {
+     "model": "qwen3.5-9b",
+     "hour": 4,
+     "n_items": 3,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "News items are generic overviews or pre-4pm data already reflected in futures. No specific post-4pm fund-specific events found."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 959,
+      "completion_tokens": 57,
+      "total_tokens": 1016,
+      "completion_tokens_details": {
+       "reasoning_tokens": 0
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 3304
+    }
+   }
+  },
+  {
+   "date": "2026-09-24",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 0,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "No news items since 4pm New York time were published, so there is no fund-specific post-4pm information to move the basket beyond the hedge-implied value."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 85,
+      "prompt_tokens": 880,
+      "total_tokens": 965
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2051
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 1,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "The only post-4pm item is a MarketBeat report of a third-party pension fund's 13F-style stake change in Deutsche Bank's NYSE ADR. It is not a corporate, regulatory or earnings event for DBK, so it does not move the basket beyond the hedge."
+     },
+     "violations": [
+      "reason_too_long"
+     ],
+     "usage": {
+      "completion_tokens": 202,
+      "prompt_tokens": 1076,
+      "total_tokens": 1278
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2478
+    }
+   }
+  },
+  {
+   "date": "2026-09-25",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 4,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Post-4pm items are routine filings, commentary, a minor SAP India support dispute, and an old Deutsche Bank fraud story. None is material enough at these weights to move the basket beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 342,
+      "prompt_tokens": 1601,
+      "total_tokens": 1943
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 3806
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 4,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "The items are routine or immaterial: a legal-consent filing, a follow-up on a known Deutsche Bank fraud loss, and minor SAP customer news. None is large enough to move the basket beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 484,
+      "prompt_tokens": 1601,
+      "total_tokens": 2085
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 3806
+    }
+   }
+  },
+  {
+   "date": "2026-09-28",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 1,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Only one post-4pm item: Deutsche Bank completing a previously announced buyback. Routine, already anticipated, and too small to move the fund beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 193,
+      "prompt_tokens": 1033,
+      "total_tokens": 1226
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2468
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 2,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Deutsche Bank's buyback completion was a pre-announced, routine program close at a 3.2% holding. The tech-rotation note is generic sector commentary, not a fund-specific event."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 300,
+      "prompt_tokens": 1193,
+      "total_tokens": 1493
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2887
+    }
+   }
+  },
+  {
+   "date": "2026-09-29",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 0,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "No news items since 4pm New York time were published, so there is no fund-specific post-4pm information to move the basket beyond the hedge-implied value."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 85,
+      "prompt_tokens": 880,
+      "total_tokens": 965
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2051
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 0,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "No news items were published since 4pm New York time, so there is no fund-specific information to move the basket beyond the hedge-implied value."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 80,
+      "prompt_tokens": 880,
+      "total_tokens": 960
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2051
+    },
+    "sonnet@1": {
+     "model": "claude-sonnet-5-5",
+     "hour": 1,
+     "n_items": 0,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "No news items since 4pm New York time mention the fund's holdings, so nothing fund-specific goes beyond the hedge-implied value."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 83,
+      "prompt_tokens": 880,
+      "total_tokens": 963
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2051
+    },
+    "local@1": {
+     "model": "qwen3.8-2b-distill",
+     "hour": 1,
+     "n_items": 0,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "No significant fund-specific news or events occurred after 4pm that would move the ETF beyond the hedge-implied reference value of 41.95 per share."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 634,
+      "completion_tokens": 402,
+      "total_tokens": 1036,
+      "completion_tokens_details": {
+       "reasoning_tokens": 326
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2051
+    },
+    "local9b@1": {
+     "model": "qwen3.5-9b",
+     "hour": 1,
+     "n_items": 0,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "No news items were provided to analyze for fund-specific impacts beyond the hedge instruments."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 636,
+      "completion_tokens": 45,
+      "total_tokens": 681,
+      "completion_tokens_details": {
+       "reasoning_tokens": 0
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2051
+    }
+   }
+  },
+  {
+   "date": "2026-09-30",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 1,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "The only post-4pm item is a generic trade article on SAP RISE security responsibility model; it carries no results, guidance, deal, or regulatory action, so no fund-specific basket move is implied.",
+      "reason_limit": ""
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 112,
+      "prompt_tokens": 1029,
+      "total_tokens": 1141
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2468
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 2,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Neither item is fund-specific material news: one is a generic SAP security explainer, the other a routine 13F-style stake change in NVIDIA by Deutsche Bank. No market-moving holding event after 4pm."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 119,
+      "prompt_tokens": 1204,
+      "total_tokens": 1323
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2887
+    }
+   }
+  },
+  {
+   "date": "2026-10-01",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 0,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "No news items since 4pm New York time, so there is no fund-specific information to move the basket beyond the hedge-implied value."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 78,
+      "prompt_tokens": 880,
+      "total_tokens": 958
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2051
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 2,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "Neither item reports a material Germany-specific event at a holding. One is a generic DBK quote page; the other is a broker rating on Polar Capital, not a fund holding."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 227,
+      "prompt_tokens": 1262,
+      "total_tokens": 1489
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2919
+    }
+   }
+  },
+  {
+   "date": "2026-10-02",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 2,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "The Deutsche Bank item is an analyst call on Meta, not a DBK corporate event. The SAP item reports a move on Xetra before the 4pm cutoff, so it is already in the reference value."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 360,
+      "prompt_tokens": 1199,
+      "total_tokens": 1559
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2829
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 2,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "The DBK item is a third-party research call on Meta, not a Deutsche Bank corporate event. The SAP item reports a Xetra move that occurred before the 4pm value, so it is already priced in."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 364,
+      "prompt_tokens": 1199,
+      "total_tokens": 1563
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2829
+    }
+   }
+  },
+  {
+   "date": "2026-10-05",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 2,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Only a SAP Pay product launch and a generic SAP quote page after 4pm. Neither is a material result, guidance, deal, or regulatory event at SAP's weight."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 212,
+      "prompt_tokens": 1192,
+      "total_tokens": 1404
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2886
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 2,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Post-4pm items are a product launch and a generic stock quote page; no material fund-specific result, guidance or corporate action that the hedge would miss."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 88,
+      "prompt_tokens": 1192,
+      "total_tokens": 1280
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2886
+    }
+   }
+  },
+  {
+   "date": "2026-10-06",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 3,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Post-4pm SAP items are a small tuck-in acquisition and a product showcase, unlikely to move SAP's price beyond the hedge, so no flag."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 193,
+      "prompt_tokens": 1393,
+      "total_tokens": 1586
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 3315
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 4,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Post-4pm SAP items are a small tuck-in acquisition, a product showcase and a partner's IBM offering. None is material enough to move SAP beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 228,
+      "prompt_tokens": 1572,
+      "total_tokens": 1800
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 3759
+    }
+   }
+  },
+  {
+   "date": "2026-10-07",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 1,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "Only item is a law-firm note on SAP's small TechWolf acquisition, pending approval. Not material enough to move SAP beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 174,
+      "prompt_tokens": 1034,
+      "total_tokens": 1208
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2425
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 1,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "The only post-4pm item is a law firm notice of SAP's small TechWolf acquisition, which is immaterial to SAP's value and not a fund-moving event."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 149,
+      "prompt_tokens": 1034,
+      "total_tokens": 1183
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2425
+    }
+   }
+  },
+  {
+   "date": "2026-10-08",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 1,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Only item is a BMO Buy reiteration with a target raise on SAP. That is an analyst opinion, not a result, guidance, deal, or corporate action, so it does not justify a move beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 354,
+      "prompt_tokens": 1049,
+      "total_tokens": 1403
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2468
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 3,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "SAP target raise is routine analyst action. The BaFin deadline extension for Deutsche Bank (3.2%) is minor and has no clear direction. Nothing material enough to move the basket beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 450,
+      "prompt_tokens": 1385,
+      "total_tokens": 1835
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 3372
+    }
+   }
+  },
+  {
+   "date": "2026-10-09",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 5,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "No fund-specific news after 4pm. Items are analyst ratings, price recaps, a tokenized SAP quote, and Deutsche Bank commentary, all dated before the 4pm reference or not a material holding event."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 478,
+      "prompt_tokens": 1772,
+      "total_tokens": 2250
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 4238
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 6,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Post-4pm items are routine: SAP buyback updates and a minor court appeal, plus stale or political commentary already priced. No material fund-specific news beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 582,
+      "prompt_tokens": 1938,
+      "total_tokens": 2520
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 4670
+    }
+   }
+  },
+  {
+   "date": "2026-10-12",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 0,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "No news items since 4pm New York time were published, so there is no fund-specific information to move the basket beyond the hedge-implied value."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 80,
+      "prompt_tokens": 880,
+      "total_tokens": 960
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2051
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 0,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "No news items were published since 4pm New York time, so there is no fund-specific post-4pm information to move the basket beyond the hedge-implied value."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 85,
+      "prompt_tokens": 880,
+      "total_tokens": 965
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2051
+    },
+    "sonnet@1": {
+     "model": "claude-sonnet-5-5",
+     "hour": 1,
+     "n_items": 0,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "No news items since 4pm New York time mention any holdings, so nothing fund-specific goes beyond what the hedge instruments already imply."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 83,
+      "prompt_tokens": 880,
+      "total_tokens": 963
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2051
+    },
+    "local@1": {
+     "model": "qwen3.8-2b-distill",
+     "hour": 1,
+     "n_items": 0,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "No news items since 4pm mention any of the largest holdings (SAP, SIEMENS, Allianz, Siemens Energy, Deutsche Telekom, Munich Re, Infineon, DB1, Bayer, or Deutsche Bank). No fund-specific events require flagging."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 634,
+      "completion_tokens": 481,
+      "total_tokens": 1115,
+      "completion_tokens_details": {
+       "reasoning_tokens": 382
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2051
+    },
+    "local9b@1": {
+     "model": "qwen3.5-9b",
+     "hour": 1,
+     "n_items": 0,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "No news items were provided for analysis; therefore, no fund-specific events have occurred to move the value beyond hedge implications."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 636,
+      "completion_tokens": 53,
+      "total_tokens": 689,
+      "completion_tokens_details": {
+       "reasoning_tokens": 0
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2051
+    }
+   }
+  },
+  {
+   "date": "2026-10-13",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 5,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "The only holding-specific item is a 1MDB settlement proposal to Deutsche Bank (3.2% weight). It is an unconfirmed claimant demand, with unclear direction and small likely impact. The other items are tokenized-stock, ownership, and price-tracker noise."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 487,
+      "prompt_tokens": 1758,
+      "total_tokens": 2245
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 4158
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 5,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Items are mostly noise: tokenized-stock page, institutional buying, technical commentary. The 1MDB settlement proposal is a $1.1B claim at a 3.2% holding, with no clear direction for the fund."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 395,
+      "prompt_tokens": 1758,
+      "total_tokens": 2153
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 4158
+    }
+   }
+  },
+  {
+   "date": "2026-10-14",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 0,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "No news items were published since 4pm New York time, so there is no fund-specific information to move the basket beyond the hedge-implied value."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 80,
+      "prompt_tokens": 880,
+      "total_tokens": 960
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2051
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 0,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "No news items were published since 4pm New York time, so there is no fund-specific post-4pm information to move the basket beyond the hedge-implied value."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 85,
+      "prompt_tokens": 880,
+      "total_tokens": 965
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2051
+    }
+   }
+  },
+  {
+   "date": "2026-10-15",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 2,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "Deutsche Bank awards are minor non-financial news at a 3.2% weight, and the SAP item is only a scheduled earnings date announcement with no new results or guidance. Nothing fund-specific moves the basket beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 118,
+      "prompt_tokens": 1171,
+      "total_tokens": 1289
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2825
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 5,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "Post-4pm items are routine: a bank awards list, an SAP earnings date preview, tokenized-stock price pages, and a 13F-style holding update. None is a material fund-specific event."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 249,
+      "prompt_tokens": 1730,
+      "total_tokens": 1979
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 4160
+    }
+   }
+  },
+  {
+   "date": "2026-10-16",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 3,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Deutsche Bank crypto custody items are a small product launch for a 3.2% holding. The SAP recap mostly repackages earlier Q2 results and buyback news, with no clear new fund-specific shock."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 317,
+      "prompt_tokens": 1378,
+      "total_tokens": 1695
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 3278
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 4,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Deutsche Bank crypto custody items are previously announced strategy. The SAP recap restates Q2 results and an upgrade already public. The 1MDB talks have no clear direction. Nothing material and new is fund-specific after 4pm."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 470,
+      "prompt_tokens": 1563,
+      "total_tokens": 2033
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 3707
+    }
+   }
+  },
+  {
+   "date": "2026-10-19",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 0,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "No news items were published since 4pm New York time, so there is no fund-specific information to move the basket beyond the hedge-implied value."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 80,
+      "prompt_tokens": 880,
+      "total_tokens": 960
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2051
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 1,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "Only item is a MarketBeat 13F-style stake report on Deutsche Bank, a routine institutional holding change with no new company-specific result, guidance, or corporate action affecting the basket."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 102,
+      "prompt_tokens": 1098,
+      "total_tokens": 1200
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2497
+    }
+   }
+  },
+  {
+   "date": "2026-10-20",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 0,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "No news items were published since 4pm New York time, so there is no fund-specific information to move the value beyond the hedge-implied reference."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 80,
+      "prompt_tokens": 880,
+      "total_tokens": 960
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2051
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 4,
+     "output": {
+      "flag": true,
+      "direction": "up",
+      "confidence": "medium",
+      "cited_ids": [
+       "n9e97968d"
+      ],
+      "reason": "SAP, a 12.7% holding, released Q3 results at 02:41 ET with cloud backlog up 28%, cloud revenue up 26%, and a raised-looking outlook. Index futures only partly capture this company-specific beat."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 778,
+      "prompt_tokens": 1584,
+      "total_tokens": 2362
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 3731
+    },
+    "sonnet@4": {
+     "model": "claude-sonnet-5-5",
+     "hour": 4,
+     "n_items": 4,
+     "output": {
+      "_raw": "The SAP Q3 results (id n9e97968d) came out at 02:41 NY time, after the 4pm close, and SAP is 12.7% of the fund. Reported cloud backlog growth was 28% and cloud revenue growth was 26%. Quarterly revenue passed \u20ac10bn, and the company updated its outlook. The headline reads strong, but the guidance change is cut off, and I can't tell whether the market had already priced in this strength. The direction is probably up, but my confidence is only moderate.\n\nThe Deutsche Bank items are CEO commentary a"
+     },
+     "violations": [
+      "flag_not_bool",
+      "direction_invalid",
+      "confidence_invalid"
+     ],
+     "usage": {
+      "completion_tokens": 385,
+      "prompt_tokens": 1584,
+      "total_tokens": 1969
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 3731
+    },
+    "local@4": {
+     "model": "qwen3.8-2b-distill",
+     "hour": 4,
+     "n_items": 4,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "All three news items were published before 4pm NY time (02:14, 02:45, and 03:41), meaning they are already reflected in the hedge-implied reference value. No fund-specific events have occurred after 4pm that would warrant flagging a move beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 1106,
+      "completion_tokens": 368,
+      "total_tokens": 1474,
+      "completion_tokens_details": {
+       "reasoning_tokens": 261
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 3731
+    },
+    "local9b@4": {
+     "model": "qwen3.5-9b",
+     "hour": 4,
+     "n_items": 4,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "All news items occurred before 4pm NY time (02:14, 02:41, 02:45, and 03:41). Market moves from these events are already reflected in the hedge-implied reference value."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 1108,
+      "completion_tokens": 84,
+      "total_tokens": 1192,
+      "completion_tokens_details": {
+       "reasoning_tokens": 0
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 3731
+    }
+   }
+  },
+  {
+   "date": "2026-10-21",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 5,
+     "output": {
+      "flag": true,
+      "direction": "up",
+      "confidence": "medium",
+      "cited_ids": [
+       "nc28732f8",
+       "ndf5fa3f4",
+       "n628f5c6d",
+       "n5fbd0393"
+      ],
+      "reason": "SAP (12.7% weight) beat Q3 EPS estimates and guided cloud revenue toward the upper end of range after 4pm NY, which index futures would not reflect."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 698,
+      "prompt_tokens": 1735,
+      "total_tokens": 2433
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 3920
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 6,
+     "output": {
+      "flag": true,
+      "direction": "up",
+      "confidence": "medium",
+      "cited_ids": [
+       "nc28732f8",
+       "ndf5fa3f4",
+       "n628f5c6d",
+       "n5fbd0393"
+      ],
+      "reason": "SAP (12.7% weight) reported Q3 after the German close, beating EPS consensus and raising its cloud outlook. Index futures would not capture this idiosyncratic move."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 704,
+      "prompt_tokens": 1904,
+      "total_tokens": 2608
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 4352
+    },
+    "sonnet@1": {
+     "model": "claude-sonnet-5-5",
+     "hour": 1,
+     "n_items": 5,
+     "output": {
+      "flag": true,
+      "direction": "up",
+      "confidence": "medium",
+      "cited_ids": [
+       "n628f5c6d",
+       "n5fbd0393",
+       "nc28732f8"
+      ],
+      "reason": "SAP (12.7% weight) reported after the European close: EPS beat (1.89 vs 1.81), cloud backlog up 28%, and cloud outlook raised toward the upper end. This is fund-specific and not in index futures."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 540,
+      "prompt_tokens": 1735,
+      "total_tokens": 2275
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 3920
+    },
+    "sonnet@4": {
+     "model": "claude-sonnet-5-5",
+     "hour": 4,
+     "n_items": 6,
+     "output": {
+      "flag": true,
+      "direction": "up",
+      "confidence": "medium",
+      "cited_ids": [
+       "nc28732f8",
+       "n628f5c6d",
+       "n5fbd0393"
+      ],
+      "reason": "SAP (12.7% weight) reported Q3 after the German close and after DAX futures stopped trading: EPS beat, cloud backlog up 28%, and cloud outlook at the upper end of its range. Fund-specific and not in the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 524,
+      "prompt_tokens": 1904,
+      "total_tokens": 2428
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 4352
+    },
+    "local@1": {
+     "model": "qwen3.8-2b-distill",
+     "hour": 1,
+     "n_items": 5,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "The largest holdings (SAP at 12.7% and Siemens AG at 11.3%) are priced into the hedge price already. SAP announced Q3 results consistent with already-implied guidance in the hedge, so no additional movement beyond the $41.51 reference value is warranted."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 1249,
+      "completion_tokens": 498,
+      "total_tokens": 1747,
+      "completion_tokens_details": {
+       "reasoning_tokens": 397
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 3920
+    },
+    "local@4": {
+     "model": "qwen3.8-2b-distill",
+     "hour": 4,
+     "n_items": 6,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "No fund-specific post-4pm news items that would move the basket beyond hedge-implied values. The SAP price target revision is a market-wide factor already reflected in futures."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 1397,
+      "completion_tokens": 348,
+      "total_tokens": 1745,
+      "completion_tokens_details": {
+       "reasoning_tokens": 271
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 4352
+    },
+    "local9b@1": {
+     "model": "qwen3.5-9b",
+     "hour": 1,
+     "n_items": 5,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "News items are dated before 4pm NY time; market moves are already reflected in the hedge-implied reference value."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 1251,
+      "completion_tokens": 53,
+      "total_tokens": 1304,
+      "completion_tokens_details": {
+       "reasoning_tokens": 0
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 3920
+    },
+    "local9b@4": {
+     "model": "qwen3.5-9b",
+     "hour": 4,
+     "n_items": 6,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "All news items are dated before 4pm NY time or represent analyst sentiment already reflected in futures. No new fund-specific events occurred after the cutoff."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 1399,
+      "completion_tokens": 59,
+      "total_tokens": 1458,
+      "completion_tokens_details": {
+       "reasoning_tokens": 0
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 4352
+    }
+   }
+  },
+  {
+   "date": "2026-10-22",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 1,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "The only post-4pm item is a generic London quote page for Deutsche Bank with no new information, so nothing fund-specific moves beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 88,
+      "prompt_tokens": 1045,
+      "total_tokens": 1133
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2460
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 2,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "The SAP item is an analyst price-target raise following Q3 results that were already public, so it adds no new fund-specific information. The Deutsche Bank item is a routine quote page.",
+      "tool_calls": []
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 450,
+      "prompt_tokens": 1214,
+      "total_tokens": 1664
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2889
+    },
+    "sonnet@4": {
+     "model": "claude-sonnet-5-5",
+     "hour": 4,
+     "n_items": 2,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "The Goldman SAP target raise follows Q3 results that were most likely already public and priced before 4pm New York. The Deutsche Bank item is only a price quote page with no news."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 600,
+      "prompt_tokens": 1214,
+      "total_tokens": 1814
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2889
+    },
+    "local@4": {
+     "model": "qwen3.8-2b-distill",
+     "hour": 4,
+     "n_items": 2,
+     "output": {
+      "flag": true,
+      "direction": "up",
+      "confidence": "high",
+      "cited_ids": [
+       "n09cae9cd"
+      ],
+      "reason": "Goldman Sachs raised SAP price target to \u20ac258 on cloud growth, a fund-specific signal after 4pm that hedge-implied instruments would not reflect."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 872,
+      "completion_tokens": 391,
+      "total_tokens": 1263,
+      "completion_tokens_details": {
+       "reasoning_tokens": 319
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2889
+    },
+    "local9b@4": {
+     "model": "qwen3.5-9b",
+     "hour": 4,
+     "n_items": 2,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "News items are pre-4pm or index-level analyst upgrades already reflected in futures; no new fund-specific events."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 874,
+      "completion_tokens": 52,
+      "total_tokens": 926,
+      "completion_tokens_details": {
+       "reasoning_tokens": 0
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2889
+    }
+   }
+  },
+  {
+   "date": "2026-10-23",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 2,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "Both post-4pm items are licensable stock photos of Deutsche Bank with no new corporate, earnings, or regulatory information. Nothing fund-specific to move basket value beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 104,
+      "prompt_tokens": 1277,
+      "total_tokens": 1381
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 3085
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 2,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "Both post-4pm items are licensable stock photos of Deutsche Bank with no new fund-specific news, results, guidance, or corporate action to move the basket beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 98,
+      "prompt_tokens": 1277,
+      "total_tokens": 1375
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 3085
+    }
+   }
+  },
+  {
+   "date": "2026-10-26",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 0,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "No news items were published since 4pm New York time, so there is no fund-specific information to move the value beyond the hedge-implied reference."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 80,
+      "prompt_tokens": 880,
+      "total_tokens": 960
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2051
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 3,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "All three items are SAP product and TechEd announcements (Joule agents, SAP-RPT on ISS). None is a result, guidance, deal, or regulatory event large enough to move SAP's 12.7% weight beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 278,
+      "prompt_tokens": 1363,
+      "total_tokens": 1641
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 3338
+    },
+    "sonnet@4": {
+     "model": "claude-sonnet-5-5",
+     "hour": 4,
+     "n_items": 3,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "SAP items are routine product and conference announcements (Joule agents, TechEd, HPE space demo) with no results, guidance, or deal. Nothing fund-specific beyond what the hedge implies."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 104,
+      "prompt_tokens": 1363,
+      "total_tokens": 1467
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 3338
+    },
+    "local@4": {
+     "model": "qwen3.8-2b-distill",
+     "hour": 4,
+     "n_items": 3,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "No fund-specific corporate action (earnings, buybacks, regulatory changes) or price-moving event in these items. These are product development announcements unrelated to the ETF's value."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 961,
+      "completion_tokens": 357,
+      "total_tokens": 1318,
+      "completion_tokens_details": {
+       "reasoning_tokens": 285
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 3338
+    },
+    "local9b@4": {
+     "model": "qwen3.5-9b",
+     "hour": 4,
+     "n_items": 3,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "All news items occurred at 03:40 NY time, which is before the 4pm cutoff. Therefore, these events are already reflected in the hedge-implied reference value."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 963,
+      "completion_tokens": 67,
+      "total_tokens": 1030,
+      "completion_tokens_details": {
+       "reasoning_tokens": 0
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 3338
+    }
+   }
+  },
+  {
+   "date": "2026-10-27",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 1,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "The only post-4pm item is an SAP product announcement at TechEd: routine, with no results, guidance, deal, or regulatory action that would move the basket beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 185,
+      "prompt_tokens": 1050,
+      "total_tokens": 1235
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2498
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 5,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Deutsche Bank's results are mixed (EPS beat, revenue miss, muted reaction) at a 3.2% weight. SAP items are product and partnership news, not material at SAP's weight. No clear directional edge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 826,
+      "prompt_tokens": 1808,
+      "total_tokens": 2634
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 4273
+    }
+   }
+  },
+  {
+   "date": "2026-10-28",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 2,
+     "output": {
+      "flag": true,
+      "direction": "up",
+      "confidence": "medium",
+      "cited_ids": [
+       "ncefee3f4"
+      ],
+      "reason": "Deutsche Bank (3.2% weight) beat Q3 expectations and raised its outlook at 16:10 NY, after the Eurex DAX futures close, so the hedge does not reflect it."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 818,
+      "prompt_tokens": 1231,
+      "total_tokens": 2049
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2887
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 2,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "DBK earnings beat likely released during European hours and already traded before the 4pm reference. The HKMA liquidity appointment is minor for a 3.2% holding and has no clear directional impact."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 822,
+      "prompt_tokens": 1231,
+      "total_tokens": 2053
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2887
+    },
+    "sonnet@1": {
+     "model": "claude-sonnet-5-5",
+     "hour": 1,
+     "n_items": 2,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "The Deutsche Bank outlook item (3.2% weight) looks like a late republish of earnings released during European hours, so it is likely already priced in. The HKMA appointment is immaterial at this weight."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 533,
+      "prompt_tokens": 1231,
+      "total_tokens": 1764
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2887
+    },
+    "sonnet@4": {
+     "model": "claude-sonnet-5-5",
+     "hour": 4,
+     "n_items": 2,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Deutsche Bank's earnings beat and outlook raise were most likely released in the European morning and already priced in at the 4pm value; the HKMA liquidity role is minor at a 3.2% weight."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 398,
+      "prompt_tokens": 1231,
+      "total_tokens": 1629
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2887
+    },
+    "local@1": {
+     "model": "qwen3.8-2b-distill",
+     "hour": 1,
+     "n_items": 2,
+     "output": {
+      "flag": true,
+      "direction": "up",
+      "confidence": "medium",
+      "cited_ids": [
+       "ncefee3f4"
+      ],
+      "reason": "Positive news on Deutsche Bank (earnings beat, revenue boost) and liquidity designation supports fund holdings, creating upward pressure beyond the hedge-implied reference value."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 862,
+      "completion_tokens": 282,
+      "total_tokens": 1144,
+      "completion_tokens_details": {
+       "reasoning_tokens": 211
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2887
+    },
+    "local@4": {
+     "model": "qwen3.8-2b-distill",
+     "hour": 4,
+     "n_items": 2,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "No new fund-specific events after 4pm NY time are disclosed. The hedge-implied reference value already reflects all known movements including DAX changes, index futures, macro factors, and corporate announcements at Deutsche Bank."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 862,
+      "completion_tokens": 414,
+      "total_tokens": 1276,
+      "completion_tokens_details": {
+       "reasoning_tokens": 329
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2887
+    },
+    "local9b@1": {
+     "model": "qwen3.5-9b",
+     "hour": 1,
+     "n_items": 2,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "News items are from Deutsche Bank (3.2% holding). Both earnings beat and HKMA appointment are already reflected in index futures and do not constitute unique fund-specific events warranting a flag."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 864,
+      "completion_tokens": 68,
+      "total_tokens": 932,
+      "completion_tokens_details": {
+       "reasoning_tokens": 0
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2887
+    },
+    "local9b@4": {
+     "model": "qwen3.5-9b",
+     "hour": 4,
+     "n_items": 2,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "News items are from before the 4pm cutoff or already reflected in index futures. No new fund-specific impact."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 864,
+      "completion_tokens": 52,
+      "total_tokens": 916,
+      "completion_tokens_details": {
+       "reasoning_tokens": 0
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2887
+    }
+   }
+  },
+  {
+   "date": "2026-10-29",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 1,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "Only item is a seasonal returns chart for Deutsche Bank; no new corporate event, guidance, or deal. Pre-4pm price move is already in the reference value."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 103,
+      "prompt_tokens": 1057,
+      "total_tokens": 1160
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2472
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 1,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "The only item is a generic seasonal returns chart page for Deutsche Bank with no new company-specific event after 4pm; nothing moves the basket beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 94,
+      "prompt_tokens": 1057,
+      "total_tokens": 1151
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2472
+    },
+    "sonnet@4": {
+     "model": "claude-sonnet-5-5",
+     "hour": 4,
+     "n_items": 1,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "The only item is a seasonal returns chart for Deutsche Bank. It carries no new fund-specific information, and the cited price move happened during the trading day, before 4pm."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 94,
+      "prompt_tokens": 1057,
+      "total_tokens": 1151
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2472
+    },
+    "local@4": {
+     "model": "qwen3.8-2b-distill",
+     "hour": 4,
+     "n_items": 1,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "The only news item (dated Oct 29) predates the current time of 04:00 NY. No fund-specific events occurred after 4pm to affect the value beyond what hedge instruments already imply."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 764,
+      "completion_tokens": 300,
+      "total_tokens": 1064,
+      "completion_tokens_details": {
+       "reasoning_tokens": 220
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2472
+    },
+    "local9b@4": {
+     "model": "qwen3.5-9b",
+     "hour": 4,
+     "n_items": 1,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "News is a historical chart analysis published before the cutoff; it does not contain new fund-specific events or price moves affecting holdings."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 766,
+      "completion_tokens": 54,
+      "total_tokens": 820,
+      "completion_tokens_details": {
+       "reasoning_tokens": 0
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2472
+    }
+   }
+  },
+  {
+   "date": "2026-10-30",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 6,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Post-4pm items are routine SAP product, deployment, and feature stories, plus a macro FX note. None is a material fund-specific corporate event at a holding's weight."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 333,
+      "prompt_tokens": 1914,
+      "total_tokens": 2247
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 4553
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 6,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Post-4pm items are routine SAP partnership, product and recap news, plus a macro dollar note. None is a new result, guidance, deal or action large enough to move the basket beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 262,
+      "prompt_tokens": 1914,
+      "total_tokens": 2176
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 4553
+    }
+   }
+  },
+  {
+   "date": "2026-11-02",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 1,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "Only item is a routine voting-rights total update for Deutsche Bank with no comparison or explanation; not a material fund-specific event at a 3.2% weight."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 91,
+      "prompt_tokens": 1032,
+      "total_tokens": 1123
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2426
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 2,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "Deutsche Bank voting-rights filing is routine with no price implication; SAP item is a minor 13F-style institutional holding report, not fund-specific corporate news."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 94,
+      "prompt_tokens": 1210,
+      "total_tokens": 1304
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2852
+    }
+   }
+  },
+  {
+   "date": "2026-11-03",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 1,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Regulatory approval of a previously announced sale of Deutsche Bank's small India retail unit. Immaterial to a 3.2% holding and largely expected, so no basket adjustment beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 282,
+      "prompt_tokens": 1062,
+      "total_tokens": 1344
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2491
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 4,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "low",
+      "cited_ids": [],
+      "reason": "Post-4pm items are a previously agreed DBK India sale approval, an art event, a Clariant note (not a holding), and a modest SAP Dutch defense cloud contract. None looks material beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 429,
+      "prompt_tokens": 1595,
+      "total_tokens": 2024
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 3814
+    }
+   }
+  },
+  {
+   "date": "2026-11-04",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 0,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "No news items were published since 4pm New York time, so there is no fund-specific information to move the basket beyond the hedge-implied value."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 80,
+      "prompt_tokens": 880,
+      "total_tokens": 960
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2051
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 1,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Only news item is a routine SAP customer partnership announcement (ComfortDelGro RISE deal), not material enough to move SAP or the fund beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 95,
+      "prompt_tokens": 1043,
+      "total_tokens": 1138
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2475
+    }
+   }
+  },
+  {
+   "date": "2026-11-05",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 0,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "No news items were published since 4pm New York time, so there is no fund-specific information to move the value beyond the hedge-implied reference."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 80,
+      "prompt_tokens": 880,
+      "total_tokens": 960
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2051
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 0,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "No news items since 4pm New York time, so nothing fund-specific arrives after the close to move the basket beyond the hedge-implied value."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 83,
+      "prompt_tokens": 880,
+      "total_tokens": 963
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2051
+    }
+   }
+  }
+ ],
+ "partial": false,
+ "news_items": 302
+}

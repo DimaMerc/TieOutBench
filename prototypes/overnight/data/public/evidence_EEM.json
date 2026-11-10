@@ -1,0 +1,4269 @@
+{
+ "repaired_runs": null,
+ "subsets": {
+  "sonnet": {
+   "from": "haiku",
+   "sample": 0.1,
+   "selected_runs": 21
+  },
+  "local": {
+   "from": "haiku",
+   "sample": 0.1,
+   "selected_runs": 21
+  },
+  "local9b": {
+   "from": "haiku",
+   "sample": 0.1,
+   "selected_runs": 21
+  }
+ },
+ "holdings": [
+  {
+   "symbol": "2330",
+   "name": "TAIWAN SEMICONDUCTOR MANUFACTURING",
+   "weight": 14.84,
+   "sector": "Information Technology",
+   "location": "Taiwan",
+   "exchange": "Taiwan Stock Exchange",
+   "news_ticker": "TSM"
+  },
+  {
+   "symbol": "005930",
+   "name": "SAMSUNG ELECTRONICS LTD",
+   "weight": 6.0,
+   "sector": "Information Technology",
+   "location": "Korea (South)",
+   "exchange": "Korea Exchange (Stock Market)",
+   "news_ticker": ""
+  },
+  {
+   "symbol": "000660",
+   "name": "SK HYNIX",
+   "weight": 4.25,
+   "sector": "Information Technology",
+   "location": "Korea (South)",
+   "exchange": "Korea Exchange (Stock Market)",
+   "news_ticker": ""
+  },
+  {
+   "symbol": "700",
+   "name": "TENCENT HOLDINGS",
+   "weight": 3.03,
+   "sector": "Communication",
+   "location": "China",
+   "exchange": "Hong Kong Exchanges And Clearing Ltd",
+   "news_ticker": "TCEHY"
+  },
+  {
+   "symbol": "9988",
+   "name": "ALIBABA GROUP HOLDING",
+   "weight": 2.07,
+   "sector": "Consumer Discretionary",
+   "location": "China",
+   "exchange": "Hong Kong Exchanges And Clearing Ltd",
+   "news_ticker": "BABA"
+  },
+  {
+   "symbol": "2454",
+   "name": "MEDIATEK",
+   "weight": 1.38,
+   "sector": "Information Technology",
+   "location": "Taiwan",
+   "exchange": "Taiwan Stock Exchange",
+   "news_ticker": ""
+  },
+  {
+   "symbol": "939",
+   "name": "CHINA CONSTRUCTION BANK CORP H",
+   "weight": 1.04,
+   "sector": "Financials",
+   "location": "China",
+   "exchange": "Hong Kong Exchanges And Clearing Ltd",
+   "news_ticker": "CICHY"
+  },
+  {
+   "symbol": "HDFCBANK",
+   "name": "HDFC BANK",
+   "weight": 0.88,
+   "sector": "Financials",
+   "location": "India",
+   "exchange": "National Stock Exchange Of India",
+   "news_ticker": "HDB"
+  },
+  {
+   "symbol": "005935",
+   "name": "SAMSUNG ELECTRONICS NON VOTING PRE",
+   "weight": 0.82,
+   "sector": "Information Technology",
+   "location": "Korea (South)",
+   "exchange": "Korea Exchange (Stock Market)",
+   "news_ticker": ""
+  },
+  {
+   "symbol": "ICICIBANK",
+   "name": "ICICI BANK",
+   "weight": 0.82,
+   "sector": "Financials",
+   "location": "India",
+   "exchange": "National Stock Exchange Of India",
+   "news_ticker": "IBN"
+  }
+ ],
+ "nights": [
+  {
+   "date": "2026-08-13",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 2,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "TSMC item recycles July revenue already published before 4pm; HDFC item is a routine law-firm class action notice at 0.9% weight. Neither is new, material fund-specific information."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 732,
+      "prompt_tokens": 1308,
+      "total_tokens": 2040
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 3058
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 6,
+     "output": {
+      "flag": true,
+      "direction": "up",
+      "confidence": "medium",
+      "cited_ids": [
+       "n1af3b9e2"
+      ],
+      "reason": "TSMC (14.8% weight) reported July revenue up 45% y/y, above full-year guidance. Fund-specific and post-4pm, so not in the hedge. Capex raise is a partial offset."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 1170,
+      "prompt_tokens": 1997,
+      "total_tokens": 3167
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 4633
+    },
+    "sonnet@4": {
+     "model": "claude-sonnet-5-5",
+     "hour": 4,
+     "n_items": 6,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "The TSMC item looks like a stale 2024 story (45% July growth, 2024 capex outlook), not new information. The HDFC and ICICI items are minor-weight, routine or old, and the Indian price moves are small."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 360,
+      "prompt_tokens": 1997,
+      "total_tokens": 2357
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 4633
+    },
+    "local@4": {
+     "model": "qwen3.8-2b-distill",
+     "hour": 4,
+     "n_items": 6,
+     "output": {
+      "flag": true,
+      "direction": "unclear",
+      "confidence": "medium",
+      "cited_ids": [
+       "n1ed691f1",
+       "n3280310a"
+      ],
+      "reason": "HDFC Bank (largest holding 0.9%) and ICICI Bank (second largest 0.8%) class action lawsuits could materially affect the ETF's value beyond what index hedges already reflect."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 1458,
+      "completion_tokens": 421,
+      "total_tokens": 1879,
+      "completion_tokens_details": {
+       "reasoning_tokens": 319
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 4633
+    },
+    "local9b@4": {
+     "model": "qwen3.5-9b",
+     "hour": 4,
+     "n_items": 6,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "News items are pre-4pm or reflect broad market moves already captured by futures; no new fund-specific material events occurred after 4pm."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 1460,
+      "completion_tokens": 58,
+      "total_tokens": 1518,
+      "completion_tokens_details": {
+       "reasoning_tokens": 0
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 4633
+    }
+   }
+  },
+  {
+   "date": "2026-08-14",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 17,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Post-4pm items are routine filings, lawsuit reminders, or small items. The Alibaba Lingxi sale (about $1.5B) is immaterial at its size, and the TSMC and HDFC items are not new information."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 484,
+      "prompt_tokens": 4245,
+      "total_tokens": 4729
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 9812
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 20,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Post-4pm items are mostly law-firm reminders, 13F stake reports, or stale recaps. The Alibaba Lingxi sale is small versus the holding and was previewed earlier. HDFC fines are minor at 0.9%."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 596,
+      "prompt_tokens": 4805,
+      "total_tokens": 5401
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 11085
+    }
+   }
+  },
+  {
+   "date": "2026-08-17",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 4,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Post-4pm items are law-firm solicitations and a TSMC revenue analysis. None is a new fund-specific corporate, regulatory or earnings event large enough to move the basket beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 326,
+      "prompt_tokens": 1679,
+      "total_tokens": 2005
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 3970
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 11,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Post-4pm items are law-firm solicitations, 13F holding reports, valuation commentary, and a routine bond pricing. None is a material fund-specific event at these weights, and the Indian stock moves predate 4pm."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 406,
+      "prompt_tokens": 3032,
+      "total_tokens": 3438
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 7062
+    }
+   }
+  },
+  {
+   "date": "2026-08-18",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 5,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Post-4pm items are routine: an analyst reiteration on TSMC, a law-firm solicitation for HDFC Bank, and ICICI bond issuance. The TSMC 4% drop was intraday, before 4pm.",
+      "trace": "n840b6ec0"
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 375,
+      "prompt_tokens": 1855,
+      "total_tokens": 2230
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 4408
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 8,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Post-4pm items are routine analyst notes, a law-firm solicitation, and a bond issuance. The TSMC drop occurred before 4pm, and the ICICI move is too small at 0.8% weight to matter."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 617,
+      "prompt_tokens": 2404,
+      "total_tokens": 3021
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 5624
+    },
+    "sonnet@4": {
+     "model": "claude-sonnet-5-5",
+     "hour": 4,
+     "n_items": 8,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "No fund-specific new event after 4pm. TSM's 4% drop happened in Tuesday's session before the close. The rest is reiterated analyst ratings, ICICI debt news, a class action suit, and routine market commentary."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 113,
+      "prompt_tokens": 2404,
+      "total_tokens": 2517
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 5624
+    },
+    "local@4": {
+     "model": "qwen3.8-2b-distill",
+     "hour": 4,
+     "n_items": 8,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "EEM tracks the CRSP CAC 40 (emerging markets developed market proxy). Its $65.37 hedge price already reflects movements in India and other EM equities including ICICI Bank. The news items are index-level or analyst opinion changes that are already priced into the hedge value."
+     },
+     "violations": [
+      "reason_too_long"
+     ],
+     "usage": {
+      "prompt_tokens": 1694,
+      "completion_tokens": 636,
+      "total_tokens": 2330,
+      "completion_tokens_details": {
+       "reasoning_tokens": 536
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 5624
+    },
+    "local9b@4": {
+     "model": "qwen3.5-9b",
+     "hour": 4,
+     "n_items": 8,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "All news items are either pre-4pm (already priced), analyst commentary already reflected in futures, or general market moves captured by the hedge instruments."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 1696,
+      "completion_tokens": 59,
+      "total_tokens": 1755,
+      "completion_tokens_details": {
+       "reasoning_tokens": 0
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 5624
+    }
+   }
+  },
+  {
+   "date": "2026-08-19",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 4,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Post-4pm items are law-firm class-action solicitations about older lawsuits at HDFC Bank and Alibaba. They report no new results, guidance, or regulatory action, so they are not new information for the basket."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 183,
+      "prompt_tokens": 1752,
+      "total_tokens": 1935
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 4041
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 5,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Post-4pm items are routine law-firm class-action reminders for HDFC Bank and Alibaba, not new corporate or regulatory events. The ICICI item reports a move that index futures already reflect."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 266,
+      "prompt_tokens": 1934,
+      "total_tokens": 2200
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 4414
+    },
+    "sonnet@1": {
+     "model": "claude-sonnet-5-5",
+     "hour": 1,
+     "n_items": 4,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "Only law-firm class action reminders about past events at Alibaba and HDFC Bank, small weights. No new results, guidance or corporate actions; nothing fund-specific beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 102,
+      "prompt_tokens": 1752,
+      "total_tokens": 1854
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 4041
+    },
+    "local@1": {
+     "model": "qwen3.8-2b-distill",
+     "hour": 1,
+     "n_items": 4,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "EEM tracks emerging markets index and its hedge price reflects expected returns for such assets. All four news items either relate to non-holding companies (HDFC Bank), or are general investor notices for future lawsuits that do not indicate material harm or fund-specific risk exceeding the hedge's expectation."
+     },
+     "violations": [
+      "reason_too_long"
+     ],
+     "usage": {
+      "prompt_tokens": 1179,
+      "completion_tokens": 550,
+      "total_tokens": 1729,
+      "completion_tokens_details": {
+       "reasoning_tokens": 456
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 4041
+    },
+    "local9b@1": {
+     "model": "qwen3.5-9b",
+     "hour": 1,
+     "n_items": 4,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "News items are generic class action notices already priced in by futures; no specific fund-specific event or material price move detected after 4pm."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 1181,
+      "completion_tokens": 57,
+      "total_tokens": 1238,
+      "completion_tokens_details": {
+       "reasoning_tokens": 0
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 4041
+    }
+   }
+  },
+  {
+   "date": "2026-08-20",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 1,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Only item is a speculative Simply Wall Street analysis on TSMC capacity, not a concrete result, guidance, deal, or corporate action. Nothing beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 202,
+      "prompt_tokens": 1091,
+      "total_tokens": 1293
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2563
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 3,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "cited_ids": [],
+      "reason": "Post-4pm items are a speculative TSMC capacity opinion piece with no new corporate action, plus a minor ICICI financing approval at 0.8% weight. Nothing material beyond the hedge."
+     },
+     "violations": [
+      "confidence_invalid"
+     ],
+     "usage": {
+      "completion_tokens": 416,
+      "prompt_tokens": 1424,
+      "total_tokens": 1840
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 3303
+    },
+    "sonnet@1": {
+     "model": "claude-sonnet-5-5",
+     "hour": 1,
+     "n_items": 1,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Single Simply Wall Street commentary on TSMC capacity constraints and order diversification is a thematic analysis, not a discrete fund-specific event such as results, guidance or a deal; no clear new directional information beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 116,
+      "prompt_tokens": 1091,
+      "total_tokens": 1207
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2563
+    },
+    "local@1": {
+     "model": "qwen3.8-2b-distill",
+     "hour": 1,
+     "n_items": 1,
+     "output": {
+      "flag": true,
+      "direction": "down",
+      "confidence": "high",
+      "cited_ids": [
+       "n0a5c7d94"
+      ],
+      "reason": "TSMC's 23.3% holding faces capacity constraints for AI chips; major customers diversifying to Samsung, potentially reducing TSMC exposure."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 765,
+      "completion_tokens": 302,
+      "total_tokens": 1067,
+      "completion_tokens_details": {
+       "reasoning_tokens": 221
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2563
+    },
+    "local9b@1": {
+     "model": "qwen3.5-9b",
+     "hour": 1,
+     "n_items": 1,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "News is about TSM capacity constraints affecting customer diversification. This is broad industry news already reflected in futures and does not constitute a specific fund-level event or corporate action for the holding."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 767,
+      "completion_tokens": 66,
+      "total_tokens": 833,
+      "completion_tokens_details": {
+       "reasoning_tokens": 0
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2563
+    }
+   }
+  },
+  {
+   "date": "2026-08-21",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 14,
+     "output": {
+      "flag": true,
+      "direction": "down",
+      "confidence": "medium",
+      "cited_ids": [
+       "n937e9640",
+       "n63473170"
+      ],
+      "reason": "Alibaba (2.1% weight) fell about 8% on a discounted US$10.2bn share placement after 4pm, a stock-specific move that index futures would not capture."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 899,
+      "prompt_tokens": 3697,
+      "total_tokens": 4596
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 8760
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 15,
+     "output": {
+      "flag": true,
+      "direction": "down",
+      "confidence": "medium",
+      "cited_ids": [
+       "n937e9640",
+       "n63473170"
+      ],
+      "reason": "Alibaba (2.1% weight) fell about 8% after a discounted US$10.2bn share placement. Index futures do not capture this stock-specific dilution, so the basket should drift below the hedge value."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 1253,
+      "prompt_tokens": 3863,
+      "total_tokens": 5116
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 9106
+    },
+    "sonnet@1": {
+     "model": "claude-sonnet-5-5",
+     "hour": 1,
+     "n_items": 14,
+     "output": {
+      "flag": true,
+      "direction": "down",
+      "confidence": "medium",
+      "cited_ids": [
+       "n937e9640",
+       "n63473170"
+      ],
+      "reason": "Alibaba (2.1% weight) priced an HK$80B placement at an 8.4% discount and fell about 8.1% in Hong Kong trading after Friday's close. This is stock-specific and not in US index hedges."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 415,
+      "prompt_tokens": 3697,
+      "total_tokens": 4112
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 8760
+    },
+    "sonnet@4": {
+     "model": "claude-sonnet-5-5",
+     "hour": 4,
+     "n_items": 15,
+     "output": {
+      "flag": true,
+      "direction": "down",
+      "confidence": "medium",
+      "cited_ids": [
+       "n937e9640",
+       "n63473170"
+      ],
+      "reason": "Alibaba (2.1% weight) priced an HK$80B placement at a discount after Friday's close and fell about 8% in Hong Kong trading. This is stock-specific and not captured by index hedges."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 421,
+      "prompt_tokens": 3863,
+      "total_tokens": 4284
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 9106
+    },
+    "local@1": {
+     "model": "qwen3.8-2b-distill",
+     "hour": 1,
+     "n_items": 14,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "All news items concern holdings (TSMC, ASML, Alibaba, HDFCBANK) already represented in EEM's basket. Index futures and bond markets already price these positions, so no fund-specific information exists that would move the basket beyond what hedging instruments reflect."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 2519,
+      "completion_tokens": 381,
+      "total_tokens": 2900,
+      "completion_tokens_details": {
+       "reasoning_tokens": 285
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 8760
+    },
+    "local@4": {
+     "model": "qwen3.8-2b-distill",
+     "hour": 4,
+     "n_items": 15,
+     "output": {
+      "flag": true,
+      "direction": "up",
+      "confidence": "medium",
+      "cited_ids": [
+       "n9a7c0820",
+       "ne109d549"
+      ],
+      "reason": "TSMC (largest holding at 14.8%) is the subject of positive news about AI demand growth and its $100B Arizona expansion, which should boost the fund's value beyond the hedge reference level."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 2658,
+      "completion_tokens": 618,
+      "total_tokens": 3276,
+      "completion_tokens_details": {
+       "reasoning_tokens": 517
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 9106
+    },
+    "local9b@1": {
+     "model": "qwen3.5-9b",
+     "hour": 1,
+     "n_items": 14,
+     "output": {
+      "flag": true,
+      "direction": "down",
+      "confidence": "high",
+      "cited_ids": [
+       "n63473170",
+       "n937e9640"
+      ],
+      "reason": "Alibaba announced a $10.2B equity placement at an 8.4% discount, causing an immediate ~8% share price drop due to dilution concerns."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 2521,
+      "completion_tokens": 86,
+      "total_tokens": 2607,
+      "completion_tokens_details": {
+       "reasoning_tokens": 0
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 8760
+    },
+    "local9b@4": {
+     "model": "qwen3.5-9b",
+     "hour": 4,
+     "n_items": 15,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "HDFC and ICICI news are class action reminders or minor market moves already in futures. Alibaba's dilution is priced in. TSMC expansion is positive but broad macro/geopolitical."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 2660,
+      "completion_tokens": 75,
+      "total_tokens": 2735,
+      "completion_tokens_details": {
+       "reasoning_tokens": 0
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 9106
+    }
+   }
+  },
+  {
+   "date": "2026-08-24",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 1,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "Only item is a routine law-firm lead-plaintiff reminder on HDFC Bank, a 0.9% holding. It reports no new fund-specific event, ruling, or financial impact."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 190,
+      "prompt_tokens": 1102,
+      "total_tokens": 1292
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2549
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 3,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Post-4pm items are routine: a law-firm lawsuit reminder for HDFC Bank, a minor ICICI price move, and ICICI debt issuance. None is material at these weights."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 223,
+      "prompt_tokens": 1497,
+      "total_tokens": 1720
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 3423
+    },
+    "sonnet@1": {
+     "model": "claude-sonnet-5-5",
+     "hour": 1,
+     "n_items": 1,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "The only item is a law firm reminder about an existing HDFC Bank securities lawsuit, a routine solicitation. HDFC is only 0.9% of the fund, and nothing new or fund-specific has happened after 4pm."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 113,
+      "prompt_tokens": 1102,
+      "total_tokens": 1215
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2549
+    },
+    "local@1": {
+     "model": "qwen3.8-2b-distill",
+     "hour": 1,
+     "n_items": 1,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "No news mentions any of the fund's largest holdings (Taiwan Semiconductor Manufacturing, Samsung Electronics, SK Hynix, Tencent, Alibaba, MediaTek, China Construction Bank). The only mentioned holding is HDFC BANK, which has no specific impact on the ETF price beyond what hedge instruments already price in."
+     },
+     "violations": [
+      "reason_too_long"
+     ],
+     "usage": {
+      "prompt_tokens": 789,
+      "completion_tokens": 336,
+      "total_tokens": 1125,
+      "completion_tokens_details": {
+       "reasoning_tokens": 236
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2549
+    },
+    "local9b@1": {
+     "model": "qwen3.5-9b",
+     "hour": 1,
+     "n_items": 1,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "News item is pre-4pm and relates to a class action lawsuit announcement rather than a specific fund-moving event or price impact at this holding's weight."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 791,
+      "completion_tokens": 60,
+      "total_tokens": 851,
+      "completion_tokens_details": {
+       "reasoning_tokens": 0
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2549
+    }
+   }
+  },
+  {
+   "date": "2026-08-25",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 1,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Only item is a law-firm class-action solicitation on HDFC Bank (0.9% weight). It reports no new company fact, so it should not move the basket beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 223,
+      "prompt_tokens": 1062,
+      "total_tokens": 1285
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2527
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 2,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "The HDFC Bank item is a routine law-firm class action solicitation at 0.9% weight, with no new company fact. The ICICI item is a routine price report from before 4pm."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 282,
+      "prompt_tokens": 1245,
+      "total_tokens": 1527
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2945
+    },
+    "sonnet@4": {
+     "model": "claude-sonnet-5-5",
+     "hour": 4,
+     "n_items": 2,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "The HDFC Bank item is a law-firm class action solicitation about past conduct, at a 0.9% weight. The ICICI item is routine price commentary at 0.8%. Neither is material fund-specific news beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 115,
+      "prompt_tokens": 1245,
+      "total_tokens": 1360
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2945
+    },
+    "local@4": {
+     "model": "qwen3.8-2b-distill",
+     "hour": 4,
+     "n_items": 2,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "No post-4pm NY time news affecting this ETF was published on 2026-08-26 (all listed news items are from 08/25). The only major holding-specific event mentioned is the securities fraud class action against HDFC Bank filed at 19:40, which occurred before 4pm and does not impact the current reference value."
+     },
+     "violations": [
+      "reason_too_long"
+     ],
+     "usage": {
+      "prompt_tokens": 899,
+      "completion_tokens": 1136,
+      "total_tokens": 2035,
+      "completion_tokens_details": {
+       "reasoning_tokens": 1016
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2945
+    },
+    "local9b@4": {
+     "model": "qwen3.5-9b",
+     "hour": 4,
+     "n_items": 2,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "HDFC Bank lawsuit is pre-4pm and broad market impact is already in futures. ICICI Bank move is minor and reflected in index futures."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 901,
+      "completion_tokens": 60,
+      "total_tokens": 961,
+      "completion_tokens_details": {
+       "reasoning_tokens": 0
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2945
+    }
+   }
+  },
+  {
+   "date": "2026-08-26",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 0,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "No news items were published since 4pm New York time, so there is no fund-specific information to move the basket beyond the hedge-implied value."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 80,
+      "prompt_tokens": 896,
+      "total_tokens": 976
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2110
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 0,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "No news items since 4pm New York time; nothing fund-specific to move the basket beyond the hedge-implied value."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 76,
+      "prompt_tokens": 896,
+      "total_tokens": 972
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2110
+    }
+   }
+  },
+  {
+   "date": "2026-08-27",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 1,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "Only one post-4pm item, an analytical comparison of HDFC Bank and ICICI Bank with no new results, guidance, or corporate action; combined weight is under 2%, so no fund-specific move beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 113,
+      "prompt_tokens": 1094,
+      "total_tokens": 1207
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2559
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 1,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "Only news item is a feature comparing HDFC Bank and ICICI Bank historical performance; not a new fund-specific event at a holding after 4pm, and immaterial at under 1% weights."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 102,
+      "prompt_tokens": 1094,
+      "total_tokens": 1196
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2559
+    }
+   }
+  },
+  {
+   "date": "2026-08-28",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 1,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "The only item is TSMC's $100B Arizona capex expansion. Its price direction is ambiguous and it was largely anticipated, so no clear beyond-hedge move."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 611,
+      "prompt_tokens": 1061,
+      "total_tokens": 1672
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2532
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 2,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "TSMC's Arizona expansion is a capex announcement with no clear direction for the stock. The ICICI item is a 0.8%-weight daily recap, immaterial at fund level."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 884,
+      "prompt_tokens": 1239,
+      "total_tokens": 2123
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2938
+    },
+    "sonnet@1": {
+     "model": "claude-sonnet-5-5",
+     "hour": 1,
+     "n_items": 1,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "TSMC's Arizona capex item is an investment pledge from a minor outlet, not a result, guidance or deal. Its price effect is ambiguous and may be recycled news, so nothing to add beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 443,
+      "prompt_tokens": 1061,
+      "total_tokens": 1504
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2532
+    },
+    "local@1": {
+     "model": "qwen3.8-2b-distill",
+     "hour": 1,
+     "n_items": 1,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "The only news item (TSMC $10B Arizona investment) was published on August 29 after the hedge-implied value hour but did not create a significant additional price move beyond what existing hedge instruments already implied for EEM."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 762,
+      "completion_tokens": 607,
+      "total_tokens": 1369,
+      "completion_tokens_details": {
+       "reasoning_tokens": 520
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2532
+    },
+    "local9b@1": {
+     "model": "qwen3.5-9b",
+     "hour": 1,
+     "n_items": 1,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "The news item is dated 2026-08-29, which is before the current hour of 2026-08-31. Therefore, this information was already priced into the market and reflected in the hedge-implied reference value."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 764,
+      "completion_tokens": 85,
+      "total_tokens": 849,
+      "completion_tokens_details": {
+       "reasoning_tokens": 0
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2532
+    }
+   }
+  },
+  {
+   "date": "2026-08-31",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 0,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "No news items since 4pm New York time, so no fund-specific post-4pm information exists to move the basket beyond the hedge-implied value."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 83,
+      "prompt_tokens": 896,
+      "total_tokens": 979
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2110
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 1,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "Only item is a routine HDFC Bank price-move report (+0.43%) with no corporate, regulatory or earnings event. Not material at 0.9% weight."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 363,
+      "prompt_tokens": 1054,
+      "total_tokens": 1417
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2428
+    }
+   }
+  },
+  {
+   "date": "2026-09-01",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 1,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "The only post-4pm item is a Bloomberg explainer on HDFC Bank's CEO exit. It gives no new event or direction, and HDFC is only 0.9% of the fund."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 444,
+      "prompt_tokens": 1094,
+      "total_tokens": 1538
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2554
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 2,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "HDFC Bank CEO news is fund-specific but the holding is only 0.9% of the fund and its direction is unclear. The ICICI item is a routine intraday market report with no new information."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 663,
+      "prompt_tokens": 1259,
+      "total_tokens": 1922
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2912
+    }
+   }
+  },
+  {
+   "date": "2026-09-02",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 0,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "No news items since 4pm New York time, so nothing fund-specific arrives beyond what the hedge instruments already imply."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 78,
+      "prompt_tokens": 896,
+      "total_tokens": 974
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2110
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 1,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "Only item is a routine wrap of HDFC Bank's 0.44% move in a session already closed. At a 0.9% weight that is immaterial, and nothing fund-specific is new."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 357,
+      "prompt_tokens": 1046,
+      "total_tokens": 1403
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2426
+    }
+   }
+  },
+  {
+   "date": "2026-09-03",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 1,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Only item is a MarketBeat 13F-style piece on an institutional Alibaba position, citing already-reported quarterly results. No new fund-specific corporate, regulatory or guidance event after 4pm."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 199,
+      "prompt_tokens": 1078,
+      "total_tokens": 1277
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2529
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 3,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "Nykredit item is stale 13F-type position news. HDFC and ICICI moves are small, offsetting, and at sub-1% weights, so they don't move the basket beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 674,
+      "prompt_tokens": 1405,
+      "total_tokens": 2079
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 3243
+    }
+   }
+  },
+  {
+   "date": "2026-09-04",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 6,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Post-4pm items are commentary, a minor analyst target cut on Alibaba (2.1% weight), or a 13F-style note. None is a material fund-specific event beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 630,
+      "prompt_tokens": 1968,
+      "total_tokens": 2598
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 4648
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 6,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Items are mostly old commentary, analyst notes, or 13F-style filings. None is a new, material, fund-specific event at a large holding after the 4pm cutoff."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 407,
+      "prompt_tokens": 1968,
+      "total_tokens": 2375
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 4648
+    },
+    "sonnet@1": {
+     "model": "claude-sonnet-5-5",
+     "hour": 1,
+     "n_items": 6,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "Alibaba's share placement was announced before the Friday close, so it is already priced in. The Bernstein target cut and other items are commentary or stale, with no new fund-specific event after 4pm."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 464,
+      "prompt_tokens": 1968,
+      "total_tokens": 2432
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 4648
+    },
+    "local@1": {
+     "model": "qwen3.8-2b-distill",
+     "hour": 1,
+     "n_items": 6,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [
+       "n74486a89"
+      ],
+      "reason": "While Alibaba received a price target cut on Sep 7 (fundspecific), its small 2.1% weight means it won't materially affect EEM's value. HDFC Bank position change is fund-specific but not directional."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 1379,
+      "completion_tokens": 670,
+      "total_tokens": 2049,
+      "completion_tokens_details": {
+       "reasoning_tokens": 572
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 4648
+    },
+    "local9b@1": {
+     "model": "qwen3.5-9b",
+     "hour": 1,
+     "n_items": 6,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "News items are either pre-4pm (already priced), broad macro/analyst sentiment (reflected in futures), or lack specific fund-level impact on large holdings."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 1381,
+      "completion_tokens": 63,
+      "total_tokens": 1444,
+      "completion_tokens_details": {
+       "reasoning_tokens": 0
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 4648
+    }
+   }
+  },
+  {
+   "date": "2026-09-08",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 0,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "No news items since 4pm New York time, so no fund-specific information exists to move the basket beyond the hedge-implied value."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 78,
+      "prompt_tokens": 896,
+      "total_tokens": 974
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2110
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 1,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "The only post-4pm item recaps ICICI Bank's Wednesday Indian close, which predates the 4pm value. The holding is 0.8% weight and the move is not new information.",
+      "rule_check": "Not applicable"
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 231,
+      "prompt_tokens": 1064,
+      "total_tokens": 1295
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2493
+    }
+   }
+  },
+  {
+   "date": "2026-09-09",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 1,
+     "output": {
+      "flag": true,
+      "direction": "up",
+      "confidence": "medium",
+      "cited_ids": [
+       "ndafc468c"
+      ],
+      "reason": "TSMC, a 14.8% holding, reported record August revenue up over 53% y/y after 4pm, fund-specific news the index futures would not capture. Consensus expectations are not given."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 674,
+      "prompt_tokens": 1061,
+      "total_tokens": 1735
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2546
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 2,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "TSMC's August revenue was released during Taiwan's Sept 10 session, so its reaction is already in local prices. HDFC item is routine, low-weight commentary."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 936,
+      "prompt_tokens": 1236,
+      "total_tokens": 2172
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2898
+    },
+    "sonnet@1": {
+     "model": "claude-sonnet-5-5",
+     "hour": 1,
+     "n_items": 1,
+     "output": {
+      "flag": true,
+      "direction": "up",
+      "confidence": "low",
+      "cited_ids": [
+       "ndafc468c"
+      ],
+      "reason": "TSMC (14.8% weight) reported record August revenue, up 53% year on year, after 4pm. This is fund-specific and US index futures would not show it, though it may already be expected."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 539,
+      "prompt_tokens": 1061,
+      "total_tokens": 1600
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2546
+    },
+    "local@1": {
+     "model": "qwen3.8-2b-distill",
+     "hour": 1,
+     "n_items": 1,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "The only news item cited (ndafc468c) occurred on 2026-09-09 at 9:33 PM EST, which is BEFORE the target time of 4pm New York time. This information was already reflected in the 4pm hedge-implied reference value."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 773,
+      "completion_tokens": 281,
+      "total_tokens": 1054,
+      "completion_tokens_details": {
+       "reasoning_tokens": 152
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2546
+    },
+    "local9b@1": {
+     "model": "qwen3.5-9b",
+     "hour": 1,
+     "n_items": 1,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "News is from before 4pm and already reflected in futures; no new fund-specific impact."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 775,
+      "completion_tokens": 48,
+      "total_tokens": 823,
+      "completion_tokens_details": {
+       "reasoning_tokens": 0
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2546
+    }
+   }
+  },
+  {
+   "date": "2026-09-10",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 0,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "No news items since 4pm New York time, so nothing fund-specific arrived beyond what the hedge instruments already imply."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 78,
+      "prompt_tokens": 896,
+      "total_tokens": 974
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2110
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 1,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "Only item is a routine ICICI Bank price recap of a session that closed before 4pm; no material fund-specific event after 4pm."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 182,
+      "prompt_tokens": 1052,
+      "total_tokens": 1234
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2453
+    },
+    "sonnet@4": {
+     "model": "claude-sonnet-5-5",
+     "hour": 4,
+     "n_items": 1,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "The only item is a routine ICICI Bank price recap (-0.35%, 0.8% weight) with no fund-specific catalyst. Market moves are already reflected in the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 98,
+      "prompt_tokens": 1052,
+      "total_tokens": 1150
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2453
+    },
+    "local@4": {
+     "model": "qwen3.8-2b-distill",
+     "hour": 4,
+     "n_items": 1,
+     "output": {
+      "flag": true,
+      "direction": "up",
+      "confidence": "low",
+      "cited_ids": [
+       "n8fc533a2"
+      ],
+      "reason": "ICICI Bank is only 0.9% of fund's largest holdings (~1-2%). A single day price drop reflects normal market movement already priced into hedge data and index futures."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 777,
+      "completion_tokens": 349,
+      "total_tokens": 1126,
+      "completion_tokens_details": {
+       "reasoning_tokens": 268
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2453
+    },
+    "local9b@4": {
+     "model": "qwen3.5-9b",
+     "hour": 4,
+     "n_items": 1,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "News item is from before the 4pm cutoff and reflects general market movement already captured by futures."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 779,
+      "completion_tokens": 49,
+      "total_tokens": 828,
+      "completion_tokens_details": {
+       "reasoning_tokens": 0
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2453
+    }
+   }
+  },
+  {
+   "date": "2026-09-11",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 2,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Alibaba item is a routine law-firm lawsuit notice dated before 4pm. The ICICI item is generic macro and flow commentary that index futures already reflect, at a 0.8% weight."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 293,
+      "prompt_tokens": 1311,
+      "total_tokens": 1604
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 3061
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 2,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Alibaba item is a routine law-firm lawsuit notice, not material. ICICI item reflects macro outflows and an auto-generated price recap, already covered by hedges at 0.8% weight."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 327,
+      "prompt_tokens": 1311,
+      "total_tokens": 1638
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 3061
+    }
+   }
+  },
+  {
+   "date": "2026-09-14",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 1,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Single news item is a general analytical feature on Taiwan's silicon shield, not a discrete fund-specific result, guidance, deal, or regulatory action at a holding."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 95,
+      "prompt_tokens": 1077,
+      "total_tokens": 1172
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2532
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 2,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Taiwan silicon-shield piece is general commentary. HDFC item is a newsletter mention of a CEO search at 0.9% weight, not a material event."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 211,
+      "prompt_tokens": 1284,
+      "total_tokens": 1495
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2978
+    }
+   }
+  },
+  {
+   "date": "2026-09-15",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 1,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "Only news item is a generic Alibaba vs. Uber comparison article with no new fund-specific event, guidance, or corporate action after 4pm."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 87,
+      "prompt_tokens": 1051,
+      "total_tokens": 1138
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2506
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 3,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "No material fund-specific holding event after 4pm. Items are a generic Alibaba comparison, a routine ICICI FX-lending story, and an HDFC intraday price move at small weight.",
+      "rule": ""
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 376,
+      "prompt_tokens": 1422,
+      "total_tokens": 1798
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 3342
+    }
+   }
+  },
+  {
+   "date": "2026-09-16",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 0,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "No news items were published since 4pm New York time, so there is no fund-specific post-4pm information to move the basket beyond the hedge-implied value."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 85,
+      "prompt_tokens": 896,
+      "total_tokens": 981
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2110
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 1,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "Only news item is routine ICICI Bank investor meeting schedule announcement at 0.8% weight; no material fund-specific result, guidance, or corporate action."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 92,
+      "prompt_tokens": 1055,
+      "total_tokens": 1147
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2524
+    },
+    "sonnet@4": {
+     "model": "claude-sonnet-5-5",
+     "hour": 4,
+     "n_items": 1,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "The only item is a routine notice of ICICI Bank investor meetings. It is not fund-specific news, and at a 0.8% weight it would not move the basket beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 97,
+      "prompt_tokens": 1055,
+      "total_tokens": 1152
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2524
+    },
+    "local@4": {
+     "model": "qwen3.8-2b-distill",
+     "hour": 4,
+     "n_items": 1,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "No fund-specific news after 4pm NY time affects basket value beyond hedge-implied reference of $66.28 per share."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 766,
+      "completion_tokens": 339,
+      "total_tokens": 1105,
+      "completion_tokens_details": {
+       "reasoning_tokens": 262
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2524
+    },
+    "local9b@4": {
+     "model": "qwen3.5-9b",
+     "hour": 4,
+     "n_items": 1,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "News item occurred before 4pm NY time and is general corporate governance news already reflected in futures."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 768,
+      "completion_tokens": 49,
+      "total_tokens": 817,
+      "completion_tokens_details": {
+       "reasoning_tokens": 0
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2524
+    }
+   }
+  },
+  {
+   "date": "2026-09-17",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 0,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "No news items were published since 4pm New York time, so there is no fund-specific post-4pm information to move the basket beyond the hedge-implied value."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 85,
+      "prompt_tokens": 896,
+      "total_tokens": 981
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2110
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 0,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "No news items were published since 4pm New York time, so there is no fund-specific post-4pm information to move the basket beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 81,
+      "prompt_tokens": 896,
+      "total_tokens": 977
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2110
+    }
+   }
+  },
+  {
+   "date": "2026-09-18",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 2,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "Both items are timestamped before the 4pm cutoff and are routine: a 2nm production update and HDFC executive governance matters. Nothing fund-specific and material arrived after 4pm."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 394,
+      "prompt_tokens": 1247,
+      "total_tokens": 1641
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2971
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 3,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "The TSMC and HDFC items are dated before 4pm and already priced in. The ICICI item is a routine price report on a 0.8% holding, not a material event.",
+      "source": "evidence_reader"
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 363,
+      "prompt_tokens": 1437,
+      "total_tokens": 1800
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 3388
+    }
+   }
+  },
+  {
+   "date": "2026-09-21",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 3,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Post-4pm items are small-weight or unconfirmed: Alibaba product news (2.1%), an unconfirmed AMD pricing report, and HDFC Bank CEO speculation (0.9%). None looks large enough to move the basket beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 575,
+      "prompt_tokens": 1498,
+      "total_tokens": 2073
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 3439
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 6,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Post-4pm items are product launches, an unconfirmed TSMC-cost report, or small moves at 0.9% or smaller weights. None is material enough to move the basket beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 723,
+      "prompt_tokens": 2035,
+      "total_tokens": 2758
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 4663
+    }
+   }
+  },
+  {
+   "date": "2026-09-22",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 4,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Post-4pm items are routine: Alibaba AGM mandates, HDFC results-date notice, Alibaba data-center expansion, and a TSMC valuation opinion. None is a material fund-specific event at these weights."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 219,
+      "prompt_tokens": 1608,
+      "total_tokens": 1827
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 3835
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 4,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "Post-4pm items are routine: Alibaba AGM resolutions, HDFC results-date notice, a minor Alibaba data-center expansion, and a TSMC valuation opinion. None is material at these weights."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 212,
+      "prompt_tokens": 1608,
+      "total_tokens": 1820
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 3835
+    }
+   }
+  },
+  {
+   "date": "2026-09-23",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 1,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Only item is an HDFC Bank early-trade dip of about 1% on a proposed IRDAI commission rule. At a 0.9% weight that is immaterial to the fund basket."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 587,
+      "prompt_tokens": 1075,
+      "total_tokens": 1662
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2546
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 1,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Only item is a roughly 1% HDFC Bank drop at 0.9% weight, about 0.01% of fund NAV. Too small to move the basket beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 451,
+      "prompt_tokens": 1075,
+      "total_tokens": 1526
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2546
+    }
+   }
+  },
+  {
+   "date": "2026-09-24",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 2,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Seeking Alpha TSMC opinion recaps old Q2 results. Alibaba item is a routine law-firm class-action solicitation. Neither is material fund-specific news after 4pm."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 173,
+      "prompt_tokens": 1296,
+      "total_tokens": 1469
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 3035
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 4,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "Post-4pm items are routine: an opinion piece on TSMC, a law-firm class-action notice, a recap of ICICI's session move, and a routine HDFC ESOP allotment. None is a material fund-specific event."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 387,
+      "prompt_tokens": 1636,
+      "total_tokens": 2023
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 3816
+    },
+    "sonnet@1": {
+     "model": "claude-sonnet-5-5",
+     "hour": 1,
+     "n_items": 2,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "The TSMC item is an analyst opinion piece that recaps already-reported Q2 results. The Alibaba item is a routine law-firm class-action solicitation. Neither is new fund-specific information after 4pm."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 109,
+      "prompt_tokens": 1296,
+      "total_tokens": 1405
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 3035
+    },
+    "local@1": {
+     "model": "qwen3.8-2b-distill",
+     "hour": 1,
+     "n_items": 2,
+     "output": {
+      "flag": true,
+      "direction": "up",
+      "confidence": "high",
+      "cited_ids": [
+       "n28910fd5"
+      ],
+      "reason": "Taiwan Semiconductor reported Q2 2026 results with 36% YoY revenue growth and 67.7% gross margin due to high-performance computing demand, which is positive for EEM's Taiwan Semiconductor manufacturing position."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 921,
+      "completion_tokens": 394,
+      "total_tokens": 1315,
+      "completion_tokens_details": {
+       "reasoning_tokens": 300
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 3035
+    },
+    "local9b@1": {
+     "model": "qwen3.5-9b",
+     "hour": 1,
+     "n_items": 2,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "News items are analyst commentary and class action solicitation, not fund-specific corporate events or material results affecting the basket value beyond hedge implications."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 923,
+      "completion_tokens": 56,
+      "total_tokens": 979,
+      "completion_tokens_details": {
+       "reasoning_tokens": 0
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 3035
+    }
+   }
+  },
+  {
+   "date": "2026-09-25",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 6,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "Post-4pm items are routine law-firm reminders, a director RSU award, and a generic quote page. The one substantive Alibaba chip report predates 4pm and is unconfirmed."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 294,
+      "prompt_tokens": 2067,
+      "total_tokens": 2361
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 4912
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 6,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "Post-4pm items are routine Alibaba lawsuit reminders, a director RSU award, and a generic quote page. The one substantive item (China GPU report) predates 4pm, so it is already in the reference value."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 387,
+      "prompt_tokens": 2067,
+      "total_tokens": 2454
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 4912
+    }
+   }
+  },
+  {
+   "date": "2026-09-28",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 1,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "Only one post-4pm item: a technical-analysis note on HDFC Bank (0.9% weight). No results, guidance, deal, or regulatory event, so nothing moves the basket beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 179,
+      "prompt_tokens": 1079,
+      "total_tokens": 1258
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2581
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 2,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "HDFC Bank item is technical analysis, and the ICICI Bank GST notice (about \u20b916.76 crore) is immaterial at a 0.8% weight. No material fund-specific news after 4pm."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 201,
+      "prompt_tokens": 1263,
+      "total_tokens": 1464
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 3035
+    },
+    "sonnet@4": {
+     "model": "claude-sonnet-5-5",
+     "hour": 4,
+     "n_items": 2,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "HDFC item is technical-analysis commentary, not fund-specific news. ICICI's GST notice (\u20b916.76 crore) is immaterial for a 0.8% holding. Nothing here moves the basket beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 115,
+      "prompt_tokens": 1263,
+      "total_tokens": 1378
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 3035
+    },
+    "local@4": {
+     "model": "qwen3.8-2b-distill",
+     "hour": 4,
+     "n_items": 2,
+     "output": {
+      "flag": true,
+      "direction": "up",
+      "confidence": "low",
+      "cited_ids": [
+       "nef8af4df"
+      ],
+      "reason": "HDFC Bank article indicates stock breaking out from falling wedge with short-term targets of Rs 770-830, suggesting upward price movement for the holding that could move EEM beyond the hedge-implied value."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 912,
+      "completion_tokens": 686,
+      "total_tokens": 1598,
+      "completion_tokens_details": {
+       "reasoning_tokens": 591
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 3035
+    },
+    "local9b@4": {
+     "model": "qwen3.5-9b",
+     "hour": 4,
+     "n_items": 2,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "News items are technical analysis (HDFC) and a routine tax notice (ICICI), neither representing material fundamental events or specific fund-level impacts."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 914,
+      "completion_tokens": 59,
+      "total_tokens": 973,
+      "completion_tokens_details": {
+       "reasoning_tokens": 0
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 3035
+    }
+   }
+  },
+  {
+   "date": "2026-09-29",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 4,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Post-4pm items are routine filings, a generic aggregator page, an opinion piece, and a law-firm solicitation. None is a material fund-specific event at these weights."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 203,
+      "prompt_tokens": 1676,
+      "total_tokens": 1879
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 3944
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 6,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Post-4pm items are routine filings, a shareholder-suit reminder, opinion pieces, and insider RSU vesting. None is a material fund-specific event at these weights."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 193,
+      "prompt_tokens": 2065,
+      "total_tokens": 2258
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 4835
+    }
+   }
+  },
+  {
+   "date": "2026-09-30",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 3,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "TSMC's post-4pm capex and US investment items are ambiguous in direction and largely already-known context. The Elara ICICI note is a minor brokerage pick at 0.8% weight. Nothing clearly moves the basket beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 458,
+      "prompt_tokens": 1442,
+      "total_tokens": 1900
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 3444
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 4,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "TSMC items look like recaps or earnings-date reminders, not new post-4pm news. HDFC and ICICI items are minor analyst or personnel notes at small weights."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 603,
+      "prompt_tokens": 1618,
+      "total_tokens": 2221
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 3890
+    }
+   }
+  },
+  {
+   "date": "2026-10-01",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 0,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "No news items were published since 4pm New York time, so there is no fund-specific information to move the value beyond the hedge.",
+      "_": ""
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 81,
+      "prompt_tokens": 896,
+      "total_tokens": 977
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2110
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 1,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "The only item is a generic HDFC Bank quote and profile page with no new result, guidance, deal, or regulatory event. At a 0.9% weight it does not justify a move beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 229,
+      "prompt_tokens": 1067,
+      "total_tokens": 1296
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2534
+    }
+   }
+  },
+  {
+   "date": "2026-10-02",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 9,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "low",
+      "cited_ids": [],
+      "reason": "Post-4pm items concern HDFC Bank (0.9%) and ICICI Bank (0.8%), with mixed or minor fund-specific content. Net effect on the fund is too small and direction unclear."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 975,
+      "prompt_tokens": 2515,
+      "total_tokens": 3490
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 5988
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 10,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "No after-4pm news on the top holdings (TSMC, Samsung, SK Hynix, Tencent) that index futures would miss. HDFC and ICICI items concern sub-1% weights and are mostly already-known or minor."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 701,
+      "prompt_tokens": 2715,
+      "total_tokens": 3416
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 6452
+    }
+   }
+  },
+  {
+   "date": "2026-10-05",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 4,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "The TSM 52-week-high item reflects a session already in the 4pm value. The HDFC Bank items are routine brokerage commentary, and the opinion piece has no new information."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 340,
+      "prompt_tokens": 1631,
+      "total_tokens": 1971
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 3833
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 7,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "The TSMC high was set in the pre-4pm US session. The HDFC and ICICI moves are small, and their relative effect at under 1% weights is negligible. No material after-4pm holding-specific news."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 773,
+      "prompt_tokens": 2124,
+      "total_tokens": 2897
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 4891
+    }
+   }
+  },
+  {
+   "date": "2026-10-06",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 3,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "The TSM item is a routine 13F position note. The ICICI Life CEO change and the HDFC Bank CEO commentary are minor at 0.8\u20130.9% weights with no clear directional impact."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 349,
+      "prompt_tokens": 1432,
+      "total_tokens": 1781
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 3407
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 4,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Items are a small-fund 13F trim, a subsidiary CEO change, a CEO analysis piece, and a recap of an Indian session move that predates 4pm. None is a material fund-specific event after 4pm."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 492,
+      "prompt_tokens": 1610,
+      "total_tokens": 2102
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 3793
+    },
+    "sonnet@4": {
+     "model": "claude-sonnet-5-5",
+     "hour": 4,
+     "n_items": 4,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "No fund-specific catalyst. The items are a small 13F position change, a subsidiary CEO appointment, an HDFC CEO feature, and a routine price move in line with the market. None matter at these weights."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 105,
+      "prompt_tokens": 1610,
+      "total_tokens": 1715
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 3793
+    },
+    "local@4": {
+     "model": "qwen3.8-2b-distill",
+     "hour": 4,
+     "n_items": 4,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "The fund's basket value already incorporates all hedge-implied positions including Moody's cut in TSM (financial institution action), ICICI Bank appointment, and HDFC Bank share price movement. None of these represent fund-specific events or movements beyond the existing hedge-implied reference value."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 1160,
+      "completion_tokens": 310,
+      "total_tokens": 1470,
+      "completion_tokens_details": {
+       "reasoning_tokens": 223
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 3793
+    },
+    "local9b@4": {
+     "model": "qwen3.5-9b",
+     "hour": 4,
+     "n_items": 4,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "News items are either pre-4pm (already priced in hedge) or general market/analyst sentiment not specific to the fund's holdings performance."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 1162,
+      "completion_tokens": 59,
+      "total_tokens": 1221,
+      "completion_tokens_details": {
+       "reasoning_tokens": 0
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 3793
+    }
+   }
+  },
+  {
+   "date": "2026-10-07",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 4,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Post-4pm items concern ICICI Bank (0.8% weight): a minor after-hours quote move and a subsidiary leadership change. Nothing material enough to move the basket beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 280,
+      "prompt_tokens": 1633,
+      "total_tokens": 1913
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 3827
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 6,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "News is limited to ICICI and HDFC Bank, each under 1% of the fund, plus a subsidiary leadership change. The Indian market move is index-level and largely in the hedge. No holding-level event is material."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 578,
+      "prompt_tokens": 1947,
+      "total_tokens": 2525
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 4522
+    }
+   }
+  },
+  {
+   "date": "2026-10-08",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 0,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "No news items since 4pm New York time were provided, so there is no fund-specific information to move the value beyond the hedge.",
+      "conflicts": []
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 84,
+      "prompt_tokens": 896,
+      "total_tokens": 980
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2110
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 1,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "Only item is a stale recap of ICICI's Friday close, up 0.01% on an already-completed session. Immaterial at 0.8% weight, with no new fund-specific event after 4pm."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 343,
+      "prompt_tokens": 1061,
+      "total_tokens": 1404
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2484
+    }
+   }
+  },
+  {
+   "date": "2026-10-09",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 9,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Post-4pm items are recaps or routine analyst notes. TSMC's record revenue predates the 4pm value, and the Alibaba and ICICI items carry no new fund-specific information."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 449,
+      "prompt_tokens": 2631,
+      "total_tokens": 3080
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 6058
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 13,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Post-4pm items are analyst ratings, routine market recaps, or TSMC results and deal news already public before the cutoff. None is new, fund-specific, and unpriced by the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 816,
+      "prompt_tokens": 3390,
+      "total_tokens": 4206
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 7713
+    }
+   }
+  },
+  {
+   "date": "2026-10-12",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 0,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "No news items since 4pm New York time were provided, so there is no fund-specific post-4pm information to move the basket beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 82,
+      "prompt_tokens": 896,
+      "total_tokens": 978
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2110
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 2,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "Both items are routine recaps of the Indian session's Tuesday close, which predates the 4pm reference. They report no new fund-specific event at a holding of meaningful weight."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 202,
+      "prompt_tokens": 1234,
+      "total_tokens": 1436
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2836
+    }
+   }
+  },
+  {
+   "date": "2026-10-13",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 1,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "The only post-4pm item concerns Meta and Ark trades, not any listed holding. Its 9988 tag is mismatched to the content, so it is not a material Alibaba event."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 182,
+      "prompt_tokens": 1105,
+      "total_tokens": 1287
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2576
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 5,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "No post-4pm, fund-specific event at a material holding. The TSMC items are earnings previews of already-announced revenue, and the ICICI move predates 4pm.",
+      "reason_note": ""
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 557,
+      "prompt_tokens": 1817,
+      "total_tokens": 2374
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 4234
+    }
+   }
+  },
+  {
+   "date": "2026-10-14",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 2,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "ICICI item is a routine call schedule. The Apple-China report is a reported plan with Alibaba as a partner, not a material Alibaba event at a 2.1% weight."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 395,
+      "prompt_tokens": 1250,
+      "total_tokens": 1645
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2996
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 8,
+     "output": {
+      "flag": true,
+      "direction": "unclear",
+      "confidence": "low",
+      "cited_ids": [
+       "nbc5c2296",
+       "n3a399a68"
+      ],
+      "reason": "TSMC (14.8% weight) released post-4pm results: record profit and strong Q4 outlook, but cautious 2027 commentary. Net direction for the fund beyond the hedge is ambiguous."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 1267,
+      "prompt_tokens": 2263,
+      "total_tokens": 3530
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 5327
+    },
+    "sonnet@4": {
+     "model": "claude-sonnet-5-5",
+     "hour": 4,
+     "n_items": 8,
+     "output": {
+      "flag": true,
+      "direction": "unclear",
+      "confidence": "low",
+      "cited_ids": [
+       "nbc5c2296"
+      ],
+      "reason": "TSMC (14.8% weight) reported after 4pm: a record sixth quarter and strong Q4 guidance, but caution on 2027. The net effect beyond the hedge is ambiguous."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 551,
+      "prompt_tokens": 2263,
+      "total_tokens": 2814
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 5327
+    },
+    "local@4": {
+     "model": "qwen3.8-2b-distill",
+     "hour": 4,
+     "n_items": 8,
+     "output": {
+      "flag": true,
+      "direction": "up",
+      "confidence": "medium",
+      "cited_ids": [
+       "n43deca0c"
+      ],
+      "reason": "ICICI Bank earnings call scheduled Oct 17 at 5 PM IST (after-hours) after 4pm NY time on Oct 15. HDFCBANK is a material holding of EEM; its announcement could move the fund's basket value beyond the hedge-implied reference value."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 1703,
+      "completion_tokens": 374,
+      "total_tokens": 2077,
+      "completion_tokens_details": {
+       "reasoning_tokens": 272
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 5327
+    },
+    "local9b@4": {
+     "model": "qwen3.5-9b",
+     "hour": 4,
+     "n_items": 8,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "All news items are either pre-4pm (already priced) or reflect broad market moves captured by index futures. No fund-specific events occurred after 4pm."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 1705,
+      "completion_tokens": 62,
+      "total_tokens": 1767,
+      "completion_tokens_details": {
+       "reasoning_tokens": 0
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 5327
+    }
+   }
+  },
+  {
+   "date": "2026-10-15",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 3,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "The ICICI move occurred before the 4pm reference, and the Alibaba smart-glasses launch is product news with no price impact. Nothing fund-specific and material after 4pm."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 283,
+      "prompt_tokens": 1452,
+      "total_tokens": 1735
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 3404
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 5,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "No material fund-specific post-4pm event at a large holding. Alibaba's glasses launch is immaterial at 2.1%, and the ICICI and HDFC items are routine small-weight moves already reflected in the reference value."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 543,
+      "prompt_tokens": 1804,
+      "total_tokens": 2347
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 4211
+    }
+   }
+  },
+  {
+   "date": "2026-10-16",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 19,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Post-4pm items are mostly reiterations of already-released results or non-news. Holdings like ICICI and HDFC are under 1% each, and nothing new is fund-specific at a material weight."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 430,
+      "prompt_tokens": 4345,
+      "total_tokens": 4775
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 10380
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 24,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Post-4pm items are minor or already priced: ICICI analyst buy ratings follow results from Oct 17, HDFC CEO change was known, and Alibaba's Dongshan cornerstone role is immaterial at 2.1%."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 834,
+      "prompt_tokens": 5294,
+      "total_tokens": 6128
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 12474
+    }
+   }
+  },
+  {
+   "date": "2026-10-19",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 5,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Items are analyst commentary, routine filings, or restatements of earlier results. None is a new, material, fund-specific post-4pm event at a large holding."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 464,
+      "prompt_tokens": 1847,
+      "total_tokens": 2311
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 4288
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 5,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Post-4pm items are routine analyst notes, valuation commentary, a recap of a TSMC forecast already public, and a small Alibaba share filing. None is new, material fund-specific information."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 523,
+      "prompt_tokens": 1847,
+      "total_tokens": 2370
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 4288
+    }
+   }
+  },
+  {
+   "date": "2026-10-20",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 2,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Both items are feature commentary or a price-page listing with no new fund-specific event (earnings, guidance, deal, or regulatory action) at a material holding after 4pm."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 212,
+      "prompt_tokens": 1262,
+      "total_tokens": 1474
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2984
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 5,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "No material fund-specific event after 4pm. TSMC item is a commentary piece on fund managers' trading, not a result, guidance or corporate action. Indian bank items are routine intraday recaps at small weights.",
+      "suggested_action": "none"
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 360,
+      "prompt_tokens": 1740,
+      "total_tokens": 2100
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 3987
+    }
+   }
+  },
+  {
+   "date": "2026-10-21",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 0,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "No news items were published since 4pm, so there is no fund-specific post-4pm information to move the basket beyond the hedge-implied value."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 82,
+      "prompt_tokens": 896,
+      "total_tokens": 978
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2110
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 2,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "Both items are routine ICICI Bank daily price-move reports at 0.8% weight, with no company-specific event such as results, guidance, or a deal."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 267,
+      "prompt_tokens": 1228,
+      "total_tokens": 1495
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2806
+    }
+   }
+  },
+  {
+   "date": "2026-10-22",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 0,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "No news items were published since 4pm, so there is no fund-specific post-4pm information to move the basket beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 78,
+      "prompt_tokens": 896,
+      "total_tokens": 974
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2110
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 2,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "Only two routine market-wrap items on HDFC Bank and ICICI Bank (under 1% weights each). No material corporate, regulatory or guidance event, and the moves are index-like."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 280,
+      "prompt_tokens": 1223,
+      "total_tokens": 1503
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2803
+    }
+   }
+  },
+  {
+   "date": "2026-10-23",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 11,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "Items are stale analyst targets, routine holdings disclosures, or data pages. The ICICI Q2 beat was timestamped before 4pm. Nothing fund-specific and material arrived after 4pm."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 408,
+      "prompt_tokens": 2944,
+      "total_tokens": 3352
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 6940
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 15,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "News since 4pm is routine: a TSMC price-target cut with a still-positive consensus, a congressional trade filing, quote pages, and Indian session recaps. No material fund-specific event beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 295,
+      "prompt_tokens": 3638,
+      "total_tokens": 3933
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 8466
+    }
+   }
+  },
+  {
+   "date": "2026-10-26",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 3,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Post-4pm items are commentary on HDFC Bank's CEO transition and a broker rating on ICICI Bank. Both holdings are under 1%, and neither is a new result, guidance, deal, or regulatory action."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 240,
+      "prompt_tokens": 1469,
+      "total_tokens": 1709
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 3408
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 5,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "The post-4pm items are background commentary on HDFC Bank's CEO change and an ICICI analyst rating, plus a recap of a pre-4pm price move. None is a new material holding-specific event at a meaningful weight."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 359,
+      "prompt_tokens": 1853,
+      "total_tokens": 2212
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 4262
+    }
+   }
+  },
+  {
+   "date": "2026-10-27",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 1,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "The only post-4pm item is a general analysis piece on TSMC's past month of share moves, with no new results, guidance, or corporate action."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 206,
+      "prompt_tokens": 1083,
+      "total_tokens": 1289
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2546
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 5,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Post-4pm items are either retrospective TSMC commentary or small Indian bank moves that net to a negligible, offsetting effect on the fund."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 904,
+      "prompt_tokens": 1851,
+      "total_tokens": 2755
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 4199
+    },
+    "sonnet@1": {
+     "model": "claude-sonnet-5-5",
+     "hour": 1,
+     "n_items": 1,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "The only item is a commentary piece on TSMC and Nvidia stock moves after earlier results. It contains no new fund-specific event after 4pm, so the hedge already covers it."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 97,
+      "prompt_tokens": 1083,
+      "total_tokens": 1180
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2546
+    },
+    "local@1": {
+     "model": "qwen3.8-2b-distill",
+     "hour": 1,
+     "n_items": 1,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "News published before hedge timestamp already in the 4pm reference value. No fund-specific events after 4pm NY time that would move the basket beyond implied values."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 766,
+      "completion_tokens": 277,
+      "total_tokens": 1043,
+      "completion_tokens_details": {
+       "reasoning_tokens": 212
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2546
+    },
+    "local9b@1": {
+     "model": "qwen3.5-9b",
+     "hour": 1,
+     "n_items": 1,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "News discusses general AI sector risk and Nvidia/TSMC comparison; no specific fund-level event or price move for TSMC after 4pm NY time."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 768,
+      "completion_tokens": 61,
+      "total_tokens": 829,
+      "completion_tokens_details": {
+       "reasoning_tokens": 0
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2546
+    }
+   }
+  },
+  {
+   "date": "2026-10-28",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 0,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "No news items since 4pm New York time were provided, so there is no fund-specific post-4pm information to move the basket beyond the hedge-implied value."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 86,
+      "prompt_tokens": 896,
+      "total_tokens": 982
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2110
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 2,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "Neither item is a material fund-specific event. The PHARMAIETF listing is unrelated to fund holdings, and the ICICI Bank price move is small at 0.8% weight and largely market-driven."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 437,
+      "prompt_tokens": 1268,
+      "total_tokens": 1705
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2936
+    }
+   }
+  },
+  {
+   "date": "2026-10-29",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 7,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Items are seasonal-chart pages, an analyst buy/hold note, and a small institutional stake change. None is a material fund-specific event at these holdings' weights after 4pm."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 189,
+      "prompt_tokens": 2199,
+      "total_tokens": 2388
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 5160
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 10,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "Items are seasonal charts, analyst picks, a small institutional stake, and routine Indian market recaps. None is a material fund-specific event at these weights after 4pm."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 228,
+      "prompt_tokens": 2699,
+      "total_tokens": 2927
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 6306
+    }
+   }
+  },
+  {
+   "date": "2026-10-30",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 10,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Post-4pm items are routine ownership, real estate, and local price reports with no material holding-level event. The Apple-Alibaba AI news predates the 4pm reference and is not a new after-4pm catalyst."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 1881,
+      "prompt_tokens": 2662,
+      "total_tokens": 4543
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 6290
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 11,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "News after 4pm is minor, generic, or already priced. The ICICI GST penalty reduction is immaterial at 0.8% weight, and the TSMC Texas and Apple/Alibaba items predate the 4pm value."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 434,
+      "prompt_tokens": 2837,
+      "total_tokens": 3271
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 6720
+    }
+   }
+  },
+  {
+   "date": "2026-11-02",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 3,
+     "output": {
+      "flag": true,
+      "direction": "down",
+      "confidence": "medium",
+      "cited_ids": [
+       "n17d1fda1"
+      ],
+      "reason": "TSMC, at 14.8% weight, fell after 4pm; the Taiwan index drop in its home market is likely not fully captured by US index futures. Alibaba's gain is too small to offset it."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 1079,
+      "prompt_tokens": 1462,
+      "total_tokens": 2541
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 3418
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 7,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Post-4pm items are mostly small-weight holdings or analyst commentary. The Taiwan semiconductor selloff, the largest exposure, is broad enough that index futures should already reflect it."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 1189,
+      "prompt_tokens": 2222,
+      "total_tokens": 3411
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 5269
+    },
+    "sonnet@1": {
+     "model": "claude-sonnet-5-5",
+     "hour": 1,
+     "n_items": 3,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "The TSMC and Taiwan selloff is sector-wide and already in the EM futures hedge. The ICICI item is routine price commentary. The Alibaba rise is unclear on timing and small at a 2.1% weight."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 691,
+      "prompt_tokens": 1462,
+      "total_tokens": 2153
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 3418
+    },
+    "sonnet@4": {
+     "model": "claude-sonnet-5-5",
+     "hour": 4,
+     "n_items": 7,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "The Taiwan selloff is a market-wide semiconductor move that EM and index futures should already show. The Alibaba and ICICI items are small at their weights or are analyst picks and rate articles with no new fund-specific information."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 994,
+      "prompt_tokens": 2222,
+      "total_tokens": 3216
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 5269
+    },
+    "local@1": {
+     "model": "qwen3.8-2b-distill",
+     "hour": 1,
+     "n_items": 3,
+     "output": {
+      "flag": true,
+      "direction": "up",
+      "confidence": "medium",
+      "cited_ids": [
+       "ne8c6f0fc"
+      ],
+      "reason": "Alibaba Group Holding (9988) rose 5% following Apple Intelligence integration with Alibaba's Tongyi Qianwen. This fund-specific event moves the holding beyond what index/futures already imply."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 1067,
+      "completion_tokens": 411,
+      "total_tokens": 1478,
+      "completion_tokens_details": {
+       "reasoning_tokens": 329
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 3418
+    },
+    "local@4": {
+     "model": "qwen3.8-2b-distill",
+     "hour": 4,
+     "n_items": 7,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "All relevant information about EEM holdings (Taiwan semiconductors, ICICI Bank, Tencent/Alibaba) is already reflected in hedge instruments because these assets and their movements are captured by index futures, bond/futures, gold, and forex positions. The only EM-related news is the semiconductor selloff, which has already caused price moves."
+     },
+     "violations": [
+      "reason_too_long"
+     ],
+     "usage": {
+      "prompt_tokens": 1588,
+      "completion_tokens": 524,
+      "total_tokens": 2112,
+      "completion_tokens_details": {
+       "reasoning_tokens": 416
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 5269
+    },
+    "local9b@1": {
+     "model": "qwen3.5-9b",
+     "hour": 1,
+     "n_items": 3,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "News items are either pre-4pm (TSMC) or already reflected in broad index futures (Alibaba/ICICI). No fund-specific event warrants a move beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 1069,
+      "completion_tokens": 67,
+      "total_tokens": 1136,
+      "completion_tokens_details": {
+       "reasoning_tokens": 0
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 3418
+    },
+    "local9b@4": {
+     "model": "qwen3.5-9b",
+     "hour": 4,
+     "n_items": 7,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "News items are pre-4pm or reflect broad market moves already captured in the hedge-implied reference value."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 1590,
+      "completion_tokens": 51,
+      "total_tokens": 1641,
+      "completion_tokens_details": {
+       "reasoning_tokens": 0
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 5269
+    }
+   }
+  },
+  {
+   "date": "2026-11-03",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 3,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Alibaba Qwen item is old, non-earnings commentary. TSMC insider buy is trivial. The Taiwan rebound follows US semis and index moves that hedge instruments already capture."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 460,
+      "prompt_tokens": 1496,
+      "total_tokens": 1956
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 3492
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 3,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Post-4pm items are a commentary piece, a 1000-share insider buy, and a Taiwan open move tied to the US semiconductor rebound that futures would also show. No material fund-specific event."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 560,
+      "prompt_tokens": 1496,
+      "total_tokens": 2056
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 3492
+    }
+   }
+  },
+  {
+   "date": "2026-11-04",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 5,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Post-4pm items are stake changes, a sector-wide semiconductor move that futures already reflect, old commentary, or broker stock picks. None is a fund-specific holding event."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 479,
+      "prompt_tokens": 1844,
+      "total_tokens": 2323
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 4361
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 9,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "The SOX plunge and TSMC decline occurred in the Nov 4 US session before 4pm, so they are already in the hedge-implied value. The remaining items are old filings, analyst picks or technical commentary."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 677,
+      "prompt_tokens": 2629,
+      "total_tokens": 3306
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 6153
+    }
+   }
+  },
+  {
+   "date": "2026-11-05",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 2,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Neither item reports a new fund-specific event. The ICICI rally recap describes moves already made over prior sessions, and the advisory note is a generic 'Hold' view. Both are immaterial at 0.8% weight."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 265,
+      "prompt_tokens": 1302,
+      "total_tokens": 1567
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 3018
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 3,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Only ICICI Bank items, at 0.8% weight. The 3.23% intraday move is a session price move with no company-specific catalyst, and the other items are recommendations or past-rally recaps. Too small to matter."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 932,
+      "prompt_tokens": 1505,
+      "total_tokens": 2437
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 3484
+    },
+    "sonnet@1": {
+     "model": "claude-sonnet-5-5",
+     "hour": 1,
+     "n_items": 2,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "Both items are about ICICI Bank (0.8% weight): analyst opinion and a recap of a rally already priced in. Neither is a fund-specific, post-4pm corporate event that matters at this weight."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 106,
+      "prompt_tokens": 1302,
+      "total_tokens": 1408
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 3018
+    },
+    "local@1": {
+     "model": "qwen3.8-2b-distill",
+     "hour": 1,
+     "n_items": 2,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Hedge-implied reference value already reflects recent Indian stock rally in ICICI Bank and others (news before 4pm NY). No fund-specific event at these holdings requires flagging."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 932,
+      "completion_tokens": 533,
+      "total_tokens": 1465,
+      "completion_tokens_details": {
+       "reasoning_tokens": 350
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 3018
+    },
+    "local9b@1": {
+     "model": "qwen3.5-9b",
+     "hour": 1,
+     "n_items": 2,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "News items are analyst recommendations and general market commentary already reflected in futures. No specific fund-level corporate event or material price move post-4pm identified."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 934,
+      "completion_tokens": 59,
+      "total_tokens": 993,
+      "completion_tokens_details": {
+       "reasoning_tokens": 0
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 3018
+    }
+   }
+  }
+ ],
+ "partial": false,
+ "news_items": 633
+}

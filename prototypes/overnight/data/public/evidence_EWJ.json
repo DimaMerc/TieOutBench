@@ -1,0 +1,3810 @@
+{
+ "repaired_runs": null,
+ "subsets": {
+  "sonnet": {
+   "from": "haiku",
+   "sample": 0.1,
+   "selected_runs": 14
+  },
+  "local": {
+   "from": "haiku",
+   "sample": 0.1,
+   "selected_runs": 14
+  },
+  "local9b": {
+   "from": "haiku",
+   "sample": 0.1,
+   "selected_runs": 14
+  }
+ },
+ "holdings": [
+  {
+   "symbol": "8306",
+   "name": "MITSUBISHI UFJ FINANCIAL GROUP",
+   "weight": 4.55,
+   "sector": "Financials",
+   "location": "Japan",
+   "exchange": "Tokyo Stock Exchange",
+   "news_ticker": "MUFG"
+  },
+  {
+   "symbol": "7203",
+   "name": "TOYOTA MOTOR",
+   "weight": 4.18,
+   "sector": "Consumer Discretionary",
+   "location": "Japan",
+   "exchange": "Tokyo Stock Exchange",
+   "news_ticker": "TM"
+  },
+  {
+   "symbol": "6758",
+   "name": "SONY GROUP",
+   "weight": 3.18,
+   "sector": "Consumer Discretionary",
+   "location": "Japan",
+   "exchange": "Tokyo Stock Exchange",
+   "news_ticker": "SONY"
+  },
+  {
+   "symbol": "6098",
+   "name": "RECRUIT HOLDINGS",
+   "weight": 2.98,
+   "sector": "Industrials",
+   "location": "Japan",
+   "exchange": "Tokyo Stock Exchange",
+   "news_ticker": "RCRUY"
+  },
+  {
+   "symbol": "8316",
+   "name": "SUMITOMO MITSUI FINANCIAL GROUP",
+   "weight": 2.89,
+   "sector": "Financials",
+   "location": "Japan",
+   "exchange": "Tokyo Stock Exchange",
+   "news_ticker": "SMFG"
+  },
+  {
+   "symbol": "6857",
+   "name": "ADVANTEST",
+   "weight": 2.71,
+   "sector": "Information Technology",
+   "location": "Japan",
+   "exchange": "Tokyo Stock Exchange",
+   "news_ticker": "ATEYY"
+  },
+  {
+   "symbol": "6501",
+   "name": "HITACHI",
+   "weight": 2.65,
+   "sector": "Industrials",
+   "location": "Japan",
+   "exchange": "Tokyo Stock Exchange",
+   "news_ticker": "HTHIY"
+  },
+  {
+   "symbol": "8035",
+   "name": "TOKYO ELECTRON",
+   "weight": 2.43,
+   "sector": "Information Technology",
+   "location": "Japan",
+   "exchange": "Tokyo Stock Exchange",
+   "news_ticker": "TOELY"
+  },
+  {
+   "symbol": "8411",
+   "name": "MIZUHO FINANCIAL GROUP",
+   "weight": 2.21,
+   "sector": "Financials",
+   "location": "Japan",
+   "exchange": "Tokyo Stock Exchange",
+   "news_ticker": "MFG"
+  },
+  {
+   "symbol": "8766",
+   "name": "TOKIO MARINE HOLDINGS",
+   "weight": 2.02,
+   "sector": "Financials",
+   "location": "Japan",
+   "exchange": "Tokyo Stock Exchange",
+   "news_ticker": "TKOMY"
+  }
+ ],
+ "nights": [
+  {
+   "date": "2026-08-13",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 1,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "Single news item is a strategy interview about MUFG wealth management in Asia; no results, guidance, deal, or corporate action that would move the basket beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 93,
+      "prompt_tokens": 1070,
+      "total_tokens": 1163
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2502
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 5,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Post-4pm items are routine disclosures (Basel ratios, 13F, a small Karoon stake change) or a strategy interview. None is a material result, guidance, or deal at a large holding."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 376,
+      "prompt_tokens": 1887,
+      "total_tokens": 2263
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 4317
+    }
+   }
+  },
+  {
+   "date": "2026-08-14",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 11,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "No fresh, material holding-specific event after 4pm. Toyota margin commentary and Okuda's death are stale or non-financial; MUFG asset-management item is strategic, not guidance."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 321,
+      "prompt_tokens": 2853,
+      "total_tokens": 3174
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 6904
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 11,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Items are routine or stale (Okuda obituary, capital ratio filing, strategy comments, local Toyota plant news). None is a material fund-specific result, guidance, or corporate action after 4pm."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 373,
+      "prompt_tokens": 2853,
+      "total_tokens": 3226
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 6904
+    }
+   }
+  },
+  {
+   "date": "2026-08-17",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 3,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "Mizuho target change uses an Aug 14 price, the Sony ADR drop occurred in the pre-4pm session, and the SMFG bond profile is not material. Nothing fund-specific and post-4pm."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 262,
+      "prompt_tokens": 1401,
+      "total_tokens": 1663
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 3326
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 3,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "Mizuho item is a routine sponsored price-target update; Sony move occurred during the Monday session, before 4pm; SMFG item is a bond profile. No material post-4pm fund-specific event.",
+      "parse_error": false
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 244,
+      "prompt_tokens": 1401,
+      "total_tokens": 1645
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 3326
+    }
+   }
+  },
+  {
+   "date": "2026-08-18",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 3,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "low",
+      "cited_ids": [],
+      "reason": "Toyota's 3.1% drop was framed as largely sector-wide and the Tacoma recall is small. BOJ hike expectations are macro. Nothing clearly fund-specific beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 1253,
+      "prompt_tokens": 1391,
+      "total_tokens": 2644
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 3362
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 4,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Toyota's 3.1% drop occurred in the Tokyo session before this hour, and it was largely sector-wide. Mizuho's BOJ view is macro. Nothing fund-specific remains beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 1158,
+      "prompt_tokens": 1618,
+      "total_tokens": 2776
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 3825
+    }
+   }
+  },
+  {
+   "date": "2026-08-19",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 3,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "The SMFG items describe the August 19 move already in the 4pm value, and the Sony item is a routine option exercise with no sales, so nothing new is fund-specific."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 353,
+      "prompt_tokens": 1474,
+      "total_tokens": 1827
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 3375
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 4,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "The SMFG declines in n22d3e1fb and nf8d8ce99 occurred in the Aug 19 Tokyo session, before 4pm. Sony option exercise and MUFG bond profile are immaterial."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 293,
+      "prompt_tokens": 1646,
+      "total_tokens": 1939
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 3773
+    }
+   }
+  },
+  {
+   "date": "2026-08-20",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 1,
+     "output": {
+      "flag": true,
+      "direction": "up",
+      "confidence": "low",
+      "cited_ids": [
+       "ne5d757d8"
+      ],
+      "reason": "Sony (3.2% weight) reported a 32% profit rise and raised its full-year forecast after 4pm. Index hedges don't capture this. Low confidence: weak source, and the move may already be in Tokyo trading."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 995,
+      "prompt_tokens": 1057,
+      "total_tokens": 2052
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2487
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 1,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Sony's results (ne5d757d8) reached the market during the Tokyo session, so the reaction should already be in the Tokyo closing prices behind the 4pm value. No clear post-close, fund-specific move remains."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 991,
+      "prompt_tokens": 1057,
+      "total_tokens": 2048
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2487
+    },
+    "sonnet@1": {
+     "model": "claude-sonnet-5-5",
+     "hour": 1,
+     "n_items": 1,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "The Sony item is a late blog recap of first-quarter results, which Sony normally reports in early August, so the news is likely already priced in. No fresh fund-specific after-4pm event."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 343,
+      "prompt_tokens": 1057,
+      "total_tokens": 1400
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2487
+    },
+    "local@1": {
+     "model": "qwen3.8-2b-distill",
+     "hour": 1,
+     "n_items": 1,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "No fund-specific information found for EWJ holdings since 4pm NY time. The only news item (Sony profit announcement) occurs at 6pm and is already reflected in the hedge-implied value of $94.76/share."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 775,
+      "completion_tokens": 361,
+      "total_tokens": 1136,
+      "completion_tokens_details": {
+       "reasoning_tokens": 231
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2487
+    },
+    "local9b@1": {
+     "model": "qwen3.5-9b",
+     "hour": 1,
+     "n_items": 1,
+     "output": {
+      "flag": true,
+      "direction": "up",
+      "confidence": "high",
+      "cited_ids": [
+       "ne5d757d8"
+      ],
+      "reason": "Sony's significant profit jump and raised forecast directly impact a top 3.2% holding, moving value beyond hedge implications."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 777,
+      "completion_tokens": 63,
+      "total_tokens": 840,
+      "completion_tokens_details": {
+       "reasoning_tokens": 0
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2487
+    }
+   }
+  },
+  {
+   "date": "2026-08-21",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 10,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "Items are bond profiles, 13F-style holdings notes, stale analyst/price commentary, or a subsidiary CP rating. None is a material fund-specific holding event after 4pm."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 411,
+      "prompt_tokens": 2739,
+      "total_tokens": 3150
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 6313
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 10,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Post-4pm items are bond profiles, 13F-style holdings notes, a routine Moody's CP rating, and a Sony target raise. None is a material holding-specific event that the hedge would miss."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 398,
+      "prompt_tokens": 2739,
+      "total_tokens": 3137
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 6313
+    }
+   }
+  },
+  {
+   "date": "2026-08-24",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 2,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "The Sony ADR move occurred during the pre-4pm US session, so it is already in the 4pm value. The Toyota Brazil biofuel funding is immaterial to its valuation."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 234,
+      "prompt_tokens": 1204,
+      "total_tokens": 1438
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2896
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 3,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "The Sony ADR move is a US-session price move, not new information. The Toyota funding and Sony AI product items are immaterial at these weights."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 463,
+      "prompt_tokens": 1366,
+      "total_tokens": 1829
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 3313
+    }
+   }
+  },
+  {
+   "date": "2026-08-25",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 1,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "Only news item is a Sony entertainment technology showcase promotion with no earnings, guidance, deal, or corporate action affecting valuation after 4pm."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 90,
+      "prompt_tokens": 1037,
+      "total_tokens": 1127
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2491
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 1,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "The only post-4pm item is a Sony entertainment technology showcase promo with no earnings, guidance, deal, or regulatory impact on the fund's basket value."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 92,
+      "prompt_tokens": 1037,
+      "total_tokens": 1129
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2491
+    }
+   }
+  },
+  {
+   "date": "2026-08-26",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 0,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "No news items since 4pm New York time; nothing fund-specific to move the basket beyond the hedge-implied value.",
+      "tool_calls": []
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 85,
+      "prompt_tokens": 876,
+      "total_tokens": 961
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2064
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 0,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "No news items since 4pm New York time; nothing fund-specific to move the basket beyond the hedge-implied value."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 76,
+      "prompt_tokens": 876,
+      "total_tokens": 952
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2064
+    }
+   }
+  },
+  {
+   "date": "2026-08-27",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 2,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Sumitomo Mitsui's RCBC Leasing stake is a small, already-approved deal. Mizuho's suit against Radiant World is a minor litigation with no clear size or direction for the fund."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 290,
+      "prompt_tokens": 1236,
+      "total_tokens": 1526
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2880
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 2,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Both after-4pm items are minor: a finalized small Philippine leasing stake and a routine bank lawsuit against a trader. Neither looks material to its holding's value at this weight."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 227,
+      "prompt_tokens": 1236,
+      "total_tokens": 1463
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2880
+    }
+   }
+  },
+  {
+   "date": "2026-08-28",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 6,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Holdings news is either small (MUFG acquisition, ROE comments), stale Toyota monthly sales data, or an SMFG ADR technical note. None is a clear fund-specific shock after 4pm."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 860,
+      "prompt_tokens": 1897,
+      "total_tokens": 2757
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 4648
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 6,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Most items predate the 4pm cutoff. The one later item is general MUFG strategy commentary, not a result, guidance, deal or corporate action."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 454,
+      "prompt_tokens": 1897,
+      "total_tokens": 2351
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 4648
+    }
+   }
+  },
+  {
+   "date": "2026-08-31",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 1,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "The only post-4pm item is an MUFG asset-management growth target for an upcoming plan. It is not a result, guidance change, or deal, so it is unlikely to move the basket beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 241,
+      "prompt_tokens": 1044,
+      "total_tokens": 1285
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2486
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 4,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Post-4pm items are minor: an MUFG asset-management growth target, an ADR short-interest note, an ADR moving-average note, and a small Australian stake. None is material to a top holding's value."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 281,
+      "prompt_tokens": 1638,
+      "total_tokens": 1919
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 3832
+    },
+    "sonnet@4": {
+     "model": "claude-sonnet-5-5",
+     "hour": 4,
+     "n_items": 4,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "News is routine: a medium-term growth target, short-interest and moving-average commentary, and a small passive stake disclosure. None is a material fund-specific event beyond what the hedge already implies."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 100,
+      "prompt_tokens": 1638,
+      "total_tokens": 1738
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 3832
+    },
+    "local@4": {
+     "model": "qwen3.8-2b-distill",
+     "hour": 4,
+     "n_items": 4,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "No specific fund-related news items after 4pm NY time mention MITSUBISHI UFJ FINANCIAL GROUP (8306), and all hedge instruments already incorporate the relevant index movements."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 1193,
+      "completion_tokens": 241,
+      "total_tokens": 1434,
+      "completion_tokens_details": {
+       "reasoning_tokens": 161
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 3832
+    },
+    "local9b@4": {
+     "model": "qwen3.5-9b",
+     "hour": 4,
+     "n_items": 4,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "News items are either pre-4pm (already priced in futures) or generic analyst commentary/strategic targets that do not constitute immediate fund-specific price moves."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 1195,
+      "completion_tokens": 61,
+      "total_tokens": 1256,
+      "completion_tokens_details": {
+       "reasoning_tokens": 0
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 3832
+    }
+   }
+  },
+  {
+   "date": "2026-09-01",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 2,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Both post-4pm items are immaterial to large holdings: a Sony Music stake in GungHo and an MUFG 5.94% stake in oOh!media. Neither should move the basket beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 345,
+      "prompt_tokens": 1239,
+      "total_tokens": 1584
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2952
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 2,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Neither item is material to a top holding's value: a Sony Music subsidiary buying a GungHo stake and MUFG's small oOh!media substantial-holder filing are both immaterial at these weights."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 261,
+      "prompt_tokens": 1239,
+      "total_tokens": 1500
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2952
+    },
+    "sonnet@4": {
+     "model": "claude-sonnet-5-5",
+     "hour": 4,
+     "n_items": 2,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "Sony Music's ~$179M GungHo stake is small relative to Sony's size. MUFG's 5.94% oOh!media holding is a routine substantial-holder filing via asset-management units. Neither is material at these weights."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 113,
+      "prompt_tokens": 1239,
+      "total_tokens": 1352
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2952
+    },
+    "local@4": {
+     "model": "qwen3.8-2b-distill",
+     "hour": 4,
+     "n_items": 2,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "The news items (GungHo acquisition and MITSUBISHI UFJ oOh!media stake) involve holdings already priced into the iShares MSCI Japan ETF's basket through its index futures. These corporate actions are reflected in the hedge-implied reference value."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 912,
+      "completion_tokens": 473,
+      "total_tokens": 1385,
+      "completion_tokens_details": {
+       "reasoning_tokens": 272
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2952
+    },
+    "local9b@4": {
+     "model": "qwen3.5-9b",
+     "hour": 4,
+     "n_items": 2,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "Sony's stake in GungHo is pre-4pm and index futures reflect broad market moves. Mitsubishi UFJ's oOh!media holding occurred before 4pm."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 914,
+      "completion_tokens": 64,
+      "total_tokens": 978,
+      "completion_tokens_details": {
+       "reasoning_tokens": 0
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2952
+    }
+   }
+  },
+  {
+   "date": "2026-09-02",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 0,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "No news items since 4pm New York time, so there is no fund-specific information to move the basket beyond the hedge-implied value."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 78,
+      "prompt_tokens": 876,
+      "total_tokens": 954
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2064
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 1,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Only item is a Toyota hydrogen-truck industry collaboration with no financial terms, guidance, or material corporate action. Unlikely to move the basket beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 195,
+      "prompt_tokens": 1047,
+      "total_tokens": 1242
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2482
+    }
+   }
+  },
+  {
+   "date": "2026-09-03",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 0,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "No news items since 4pm New York time, so nothing fund-specific falls outside the hedge-implied value.",
+      "reasoning_effort": "low"
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 86,
+      "prompt_tokens": 876,
+      "total_tokens": 962
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2064
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 0,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "No news items were published since 4pm, so there is no fund-specific post-4pm information to move the value beyond the hedge.",
+      "uncited": []
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 84,
+      "prompt_tokens": 876,
+      "total_tokens": 960
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2064
+    }
+   }
+  },
+  {
+   "date": "2026-09-04",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 5,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "All five items are routine: a strategy interview, a non-binding MoU, an ADR stake purchase, a small ASX holding, and savings-rate changes. None is material at holding weights.",
+      "fund_specific": false
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 266,
+      "prompt_tokens": 1828,
+      "total_tokens": 2094
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 4264
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 5,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Post-4pm items are routine: an interview, a non-binding MoU, a small stake purchase, a substantial-holder filing, and a retail savings strategy. None is material at these weights."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 242,
+      "prompt_tokens": 1828,
+      "total_tokens": 2070
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 4263
+    }
+   }
+  },
+  {
+   "date": "2026-09-08",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 0,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "No news items were published since 4pm New York time, so there is no fund-specific information to move the value beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 76,
+      "prompt_tokens": 876,
+      "total_tokens": 952
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2064
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 0,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "No news items since 4pm New York time, so nothing fund-specific arrived that the hedge instruments do not already reflect."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 87,
+      "prompt_tokens": 876,
+      "total_tokens": 963
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2064
+    }
+   }
+  },
+  {
+   "date": "2026-09-09",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 1,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "Only item is a scheduled MUFG ex-dividend date of Sept 29, a known future event with no present price impact or surprise."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 154,
+      "prompt_tokens": 1062,
+      "total_tokens": 1216
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2472
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 2,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "Neither item is material to basket value: MUFG's ex-dividend date is a future routine event, and its 5.37% Jumbo Interactive stake is immaterial to MUFG."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 217,
+      "prompt_tokens": 1266,
+      "total_tokens": 1483
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2924
+    }
+   }
+  },
+  {
+   "date": "2026-09-10",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 0,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "No news items since 4pm New York time; nothing fund-specific to move the basket beyond the hedge-implied value."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 76,
+      "prompt_tokens": 876,
+      "total_tokens": 952
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2064
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 0,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "No news items since 4pm New York time; no fund-specific information exists to move the basket beyond the hedge-implied value."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 77,
+      "prompt_tokens": 876,
+      "total_tokens": 953
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2064
+    },
+    "sonnet@4": {
+     "model": "claude-sonnet-5-5",
+     "hour": 4,
+     "n_items": 0,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "No news items since 4pm New York time mention the fund's holdings, so nothing fund-specific goes beyond the hedge-implied value."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 83,
+      "prompt_tokens": 876,
+      "total_tokens": 959
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2064
+    },
+    "local@4": {
+     "model": "qwen3.8-2b-distill",
+     "hour": 4,
+     "n_items": 0,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "No post-4pm news items were published for EWJ's holdings at 8%+ weight levels. Hedge instruments already capture index-level moves and broad market sentiment."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 645,
+      "completion_tokens": 248,
+      "total_tokens": 893,
+      "completion_tokens_details": {
+       "reasoning_tokens": 177
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2064
+    },
+    "local9b@4": {
+     "model": "qwen3.5-9b",
+     "hour": 4,
+     "n_items": 0,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "No news items were provided to analyze for fund-specific impacts beyond the hedge instruments."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 647,
+      "completion_tokens": 45,
+      "total_tokens": 692,
+      "completion_tokens_details": {
+       "reasoning_tokens": 0
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2064
+    }
+   }
+  },
+  {
+   "date": "2026-09-11",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 2,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "Neither item is a fresh, material holding-level event: one is a general Toyota SWOT analysis, the other a routine institutional stake report for Mizuho."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 198,
+      "prompt_tokens": 1242,
+      "total_tokens": 1440
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2945
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 2,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "Toyota SWOT analysis is general commentary on old results; Mizuho item is an institutional holdings report. Neither is a new fund-specific event after 4pm."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 93,
+      "prompt_tokens": 1242,
+      "total_tokens": 1335
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2945
+    },
+    "sonnet@4": {
+     "model": "claude-sonnet-5-5",
+     "hour": 4,
+     "n_items": 2,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "Both items are generic analysis and institutional holdings filings, not fund-specific new events after 4pm. Neither is a result, guidance, deal or regulatory action that would move the basket beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 105,
+      "prompt_tokens": 1242,
+      "total_tokens": 1347
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2945
+    },
+    "local@4": {
+     "model": "qwen3.8-2b-distill",
+     "hour": 4,
+     "n_items": 2,
+     "output": {
+      "flag": true,
+      "direction": "down",
+      "confidence": "medium",
+      "cited_ids": [
+       "nc9d72ba0"
+      ],
+      "reason": "Winton Group increased stake in Mizuho Financial Group by $2.19M post-4pm NY time, a real trade likely to offset fund NAV."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 895,
+      "completion_tokens": 361,
+      "total_tokens": 1256,
+      "completion_tokens_details": {
+       "reasoning_tokens": 281
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2945
+    },
+    "local9b@4": {
+     "model": "qwen3.5-9b",
+     "hour": 4,
+     "n_items": 2,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "News items are dated September 12, which is before the current hour of September 14. Market moves from two days ago are already reflected in futures and fund prices."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 897,
+      "completion_tokens": 65,
+      "total_tokens": 962,
+      "completion_tokens_details": {
+       "reasoning_tokens": 0
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2945
+    }
+   }
+  },
+  {
+   "date": "2026-09-14",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 4,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Post-4pm items are routine: an SME service launch, an executive appointment, a 13F-style stake cut, and a product launch with generic valuation commentary. None is material at these weights."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 204,
+      "prompt_tokens": 1596,
+      "total_tokens": 1800
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 3791
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 4,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "All four post-4pm items are routine: a product launch, a personnel appointment, an institutional stake change, and a lens launch. None is a material result, guidance, deal, or regulatory action."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 206,
+      "prompt_tokens": 1596,
+      "total_tokens": 1802
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 3791
+    }
+   }
+  },
+  {
+   "date": "2026-09-15",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 0,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "No news items since 4pm New York time, so there is no fund-specific information beyond the hedge-implied reference value.",
+      "reading": "No flag."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 85,
+      "prompt_tokens": 876,
+      "total_tokens": 961
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2064
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 2,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "Sony executive option exercise is routine insider activity, and the Toyota hydrogen consortium item is industry collaboration with no material financial effect. Neither is fund-specific enough to move the basket beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 166,
+      "prompt_tokens": 1245,
+      "total_tokens": 1411
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2936
+    }
+   }
+  },
+  {
+   "date": "2026-09-16",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 1,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Only holding-specific item is an MUFG digital bank plan report, a strategic intention rather than a result, guidance change, or deal. Not material enough to move the basket beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 196,
+      "prompt_tokens": 1061,
+      "total_tokens": 1257
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2505
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 2,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Neither item is material at MUFG's weight: a planned digital bank is a strategy plan, and the Waypoint REIT stake change is immaterial."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 159,
+      "prompt_tokens": 1252,
+      "total_tokens": 1411
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2946
+    },
+    "sonnet@4": {
+     "model": "claude-sonnet-5-5",
+     "hour": 4,
+     "n_items": 2,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "Both items are minor MUFG news: a planned digital bank strategy comment and a small substantial-holding change in an Australian REIT. Neither is a material fund-specific catalyst beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 105,
+      "prompt_tokens": 1252,
+      "total_tokens": 1357
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2946
+    },
+    "local@4": {
+     "model": "qwen3.8-2b-distill",
+     "hour": 4,
+     "n_items": 2,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "Hedge-implied reference value already reflects all available market data up to this hour. MUFG's digital bank announcement (23:16 and 03:09) occurs after the hedge calculation time and is not yet incorporated. No fund-specific event at or before 4pm suggests a move beyond hedge prices."
+     },
+     "violations": [
+      "reason_too_long"
+     ],
+     "usage": {
+      "prompt_tokens": 919,
+      "completion_tokens": 472,
+      "total_tokens": 1391,
+      "completion_tokens_details": {
+       "reasoning_tokens": 370
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2946
+    },
+    "local9b@4": {
+     "model": "qwen3.5-9b",
+     "hour": 4,
+     "n_items": 2,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "News items are fund-specific but occurred before the 4pm cutoff or relate to holdings too small to materially impact the ETF basket value beyond hedge implications."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 921,
+      "completion_tokens": 59,
+      "total_tokens": 980,
+      "completion_tokens_details": {
+       "reasoning_tokens": 0
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2946
+    }
+   }
+  },
+  {
+   "date": "2026-09-17",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 2,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "The GAC/FAW-Toyota JV stake item is a minor, unclear-direction Chinese JV reshuffle. The TEAM JAPAN sponsorship is immaterial. Neither clearly moves Toyota beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 339,
+      "prompt_tokens": 1262,
+      "total_tokens": 1601
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2976
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 3,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Toyota items are minor or ambiguous in direction. The JV stake and sponsorship are immaterial at 4.2% weight, and the automation cost estimate has no clear sign for the fund."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 431,
+      "prompt_tokens": 1427,
+      "total_tokens": 1858
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 3411
+    }
+   }
+  },
+  {
+   "date": "2026-09-18",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 7,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Post-4pm items are routine: a CEATEC exhibition notice, a preset-plan insider sale, a small cellcentric JV agreement, and filler. None is material enough at these weights to move the basket beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 328,
+      "prompt_tokens": 2153,
+      "total_tokens": 2481
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 5090
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 7,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "Post-4pm items are routine: a preset-plan insider sale, a trade show notice, a minor JV agreement, and fund stake filings. None is material at these weights."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 304,
+      "prompt_tokens": 2153,
+      "total_tokens": 2457
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 5090
+    }
+   }
+  },
+  {
+   "date": "2026-09-21",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 2,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Post-4pm items are routine: an MUFG digital bank and merger recap, and a Toyota robotics plan for 2028. Neither looks like a material surprise to fund value."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 235,
+      "prompt_tokens": 1219,
+      "total_tokens": 1454
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2913
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 3,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "low",
+      "cited_ids": [],
+      "reason": "Post-4pm items are routine or technical: a MUFG weekly recap, a Toyota robotics plan with no clear price direction, and an SMFG moving-average note. None is material enough to move the basket beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 421,
+      "prompt_tokens": 1433,
+      "total_tokens": 1854
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 3387
+    }
+   }
+  },
+  {
+   "date": "2026-09-22",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 1,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "The only post-4pm item is a generic Yahoo Finance quote page for MUFG with no new result, guidance, deal, or corporate action. Nothing moves the basket beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 140,
+      "prompt_tokens": 1044,
+      "total_tokens": 1184
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2512
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 1,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "The only post-4pm item is a generic MUFG quote page with no corporate, earnings, or regulatory event. Nothing fund-specific should move the basket beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 135,
+      "prompt_tokens": 1044,
+      "total_tokens": 1179
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2512
+    }
+   }
+  },
+  {
+   "date": "2026-09-23",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 4,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "No material post-4pm, fund-specific news at the large holdings. The MUFG item is a routine price recap, and the others are background or lender-exposure items with no clear impact on holding values.",
+      "reason_note": ""
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 250,
+      "prompt_tokens": 1548,
+      "total_tokens": 1798
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 3765
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 4,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "News after 4pm is routine: a stale MUFG ADR price recap, a lender exposure filing at Mizuho's counterparty, and generic Sony and MUFG profile pieces. No fund-specific material event at a large holding."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 114,
+      "prompt_tokens": 1548,
+      "total_tokens": 1662
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 3765
+    }
+   }
+  },
+  {
+   "date": "2026-09-24",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 3,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Mizuho item is a generic quote page, the MUFG item is a routine bond profile, and the SMBC VPBank stake talks are unconfirmed and immaterial to the holding's value."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 269,
+      "prompt_tokens": 1390,
+      "total_tokens": 1659
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 3347
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 3,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Item nbddd1e96 reports only talks to raise a VPBank stake, not a deal, and is unlikely to move SMFG materially. The other two items are a stock quote page and a bond profile with no price-relevant news."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 302,
+      "prompt_tokens": 1390,
+      "total_tokens": 1692
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 3347
+    }
+   }
+  },
+  {
+   "date": "2026-09-25",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 21,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Post-4pm items are mostly bond profiles or stale. SMFG split and MUFG ex-dividend are mechanical, not news-driven value moves beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 598,
+      "prompt_tokens": 4541,
+      "total_tokens": 5139
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 11065
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 24,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Post-4pm items are minor or mechanical: Sony's CES skip is immaterial at 3.2% weight, and the SMFG split and MUFG ex-dividend don't change value. Nothing moves the basket beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 509,
+      "prompt_tokens": 5074,
+      "total_tokens": 5583
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 12347
+    }
+   }
+  },
+  {
+   "date": "2026-09-28",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 2,
+     "output": {
+      "flag": true,
+      "direction": "down",
+      "confidence": "low",
+      "cited_ids": [
+       "n6e85cf51"
+      ],
+      "reason": "Toyota's post-4pm release shows a seventh straight monthly sales decline, with China down 22.8%. Toyota is a 4.2% holding not fully captured by index hedges. The news may already be expected."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 965,
+      "prompt_tokens": 1247,
+      "total_tokens": 2212
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2961
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 6,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Items are routine: a ratings affirmation, a vague subsidiary share-exchange notice with no terms, and Toyota monthly sales already expected. None clearly moves basket value beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 882,
+      "prompt_tokens": 1953,
+      "total_tokens": 2835
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 4707
+    },
+    "sonnet@1": {
+     "model": "claude-sonnet-5-5",
+     "hour": 1,
+     "n_items": 2,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "The SMFG item is a routine closing-price report with no new corporate action, and that close came before 4pm New York. Toyota's monthly sales data is routine and its decline is a continuing trend, so it is unlikely to move the fund beyond the hedge."
+     },
+     "violations": [
+      "reason_too_long"
+     ],
+     "usage": {
+      "completion_tokens": 432,
+      "prompt_tokens": 1247,
+      "total_tokens": 1679
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2961
+    },
+    "local@1": {
+     "model": "qwen3.8-2b-distill",
+     "hour": 1,
+     "n_items": 2,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [
+       "7203"
+      ],
+      "reason": "Toyota's share price ($689.15) far exceeds the hedge-implied reference value of $96.05. MITSUBISHI UFJ FINANCIAL GROUP is a Japanese company whose JPY valuation cannot be directly compared to USD-based hedge values without knowing the basis."
+     },
+     "violations": [
+      "cited_unknown_ids:7203"
+     ],
+     "usage": {
+      "prompt_tokens": 946,
+      "completion_tokens": 466,
+      "total_tokens": 1412,
+      "completion_tokens_details": {
+       "reasoning_tokens": 368
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2961
+    },
+    "local9b@1": {
+     "model": "qwen3.5-9b",
+     "hour": 1,
+     "n_items": 2,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "News items reflect price movements already captured in the 4pm close and index futures. No new fund-specific events detected."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 948,
+      "completion_tokens": 53,
+      "total_tokens": 1001,
+      "completion_tokens_details": {
+       "reasoning_tokens": 0
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2961
+    }
+   }
+  },
+  {
+   "date": "2026-09-29",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 3,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Items are a stale 13F-style holdings note, a generic quote page, and a price snapshot. None is a new fund-specific event after 4pm that the hedge would miss."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 531,
+      "prompt_tokens": 1435,
+      "total_tokens": 1966
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 3420
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 5,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Items are routine: a 13F-style stake increase, a generic stock overview, a pre-market quote, and an affirmed rating with stable outlook. None is a material fund-specific change beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 757,
+      "prompt_tokens": 1829,
+      "total_tokens": 2586
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 4295
+    }
+   }
+  },
+  {
+   "date": "2026-09-30",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 1,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "Only item is a routine bond profile for SMFG with no earnings, guidance, deal or corporate action; not material at 2.9% weight."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 93,
+      "prompt_tokens": 1029,
+      "total_tokens": 1122
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2465
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 2,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "The SMFG item is a routine bond profile. The Mizuho item reports a 2.44% drop in a EUR listing at 03:27 NY, after the Tokyo close. At 2.2% weight that is too small and too thinly traded to move the basket beyond the hedge."
+     },
+     "violations": [
+      "reason_too_long"
+     ],
+     "usage": {
+      "completion_tokens": 830,
+      "prompt_tokens": 1220,
+      "total_tokens": 2050
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2902
+    }
+   }
+  },
+  {
+   "date": "2026-10-01",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 3,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "All three post-4pm items are routine bond profile articles about SMFG debt issues, with no earnings, guidance, deal, or regulatory news affecting the equity or the fund's basket."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 99,
+      "prompt_tokens": 1383,
+      "total_tokens": 1482
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 3281
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 4,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "Items are routine bond profile pages and an unconfirmed credit-line renewal talk for Nidec, which is not a top holding. None is material to the fund's basket."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 191,
+      "prompt_tokens": 1595,
+      "total_tokens": 1786
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 3738
+    }
+   }
+  },
+  {
+   "date": "2026-10-02",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 23,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "After-4pm items are stale, routine bond profiles, or immaterial. Moody's affirmation of Mizuho with stable outlook is not a change, and the Toyota bus launch is minor. Nothing moves the basket beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 425,
+      "prompt_tokens": 4984,
+      "total_tokens": 5409
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 11843
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 23,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Post-4pm items are bond profiles, a Toyota bus launch, and a routine Moody's affirmation of Mizuho. None is a material fund-specific shock at these weights."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 389,
+      "prompt_tokens": 4984,
+      "total_tokens": 5373
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 11843
+    },
+    "sonnet@1": {
+     "model": "claude-sonnet-5-5",
+     "hour": 1,
+     "n_items": 23,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "News is mostly bond profiles, stock-page summaries, routine buyback updates, an affirmed Moody's rating, and a minor Toyota bus launch. SMFG's SMBC Nikko restructuring is internal and weighs little. Nothing material or fund-specific beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 136,
+      "prompt_tokens": 4984,
+      "total_tokens": 5120
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 11843
+    },
+    "local@1": {
+     "model": "qwen3.8-2b-distill",
+     "hour": 1,
+     "n_items": 23,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "The hedge-implied reference value of 98.78 per share already incorporates Sony Group's negative performance (stock fell below its yearly high). Since EWJ tracks Japanese equity indices and major holdings like Sony are part of the basket, any decline in Japanese equities is reflected through index movements, making this news already captured by hedges."
+     },
+     "violations": [
+      "reason_too_long"
+     ],
+     "usage": {
+      "prompt_tokens": 3699,
+      "completion_tokens": 419,
+      "total_tokens": 4118,
+      "completion_tokens_details": {
+       "reasoning_tokens": 312
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 11843
+    },
+    "local9b@1": {
+     "model": "qwen3.5-9b",
+     "hour": 1,
+     "n_items": 23,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "News items are pre-4pm or reflect broad market moves already in futures. No fund-specific post-4pm events found."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 3701,
+      "completion_tokens": 55,
+      "total_tokens": 3756,
+      "completion_tokens_details": {
+       "reasoning_tokens": 0
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 11843
+    }
+   }
+  },
+  {
+   "date": "2026-10-05",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 1,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Only item is a routine 5.01% shareholding disclosure in Ai HD by MUFG. Too small to move MUFG or the fund's basket beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 177,
+      "prompt_tokens": 1031,
+      "total_tokens": 1208
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2437
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 3,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "The MUFG item concerns a stake MUFG holds in another company. The Sony buyback is routine and its stock gain predates the Tokyo close. The Toyota bus launch is immaterial. None moves the basket beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 533,
+      "prompt_tokens": 1390,
+      "total_tokens": 1923
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 3271
+    }
+   }
+  },
+  {
+   "date": "2026-10-06",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 0,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "No news items since 4pm New York time, so nothing fund-specific arrived beyond what the hedge already implies."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 75,
+      "prompt_tokens": 876,
+      "total_tokens": 951
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2064
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 4,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Post-4pm items are immaterial or already priced: MUFG's Guzman y Gomez stake is trivial, the Mizuho and Sony buybacks are routine, and the Mizuho guidance stock reaction occurred before 4pm."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 1328,
+      "prompt_tokens": 1615,
+      "total_tokens": 2943
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 3816
+    }
+   }
+  },
+  {
+   "date": "2026-10-07",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 3,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "No fund-specific news at a large holding. The Mizuho item is an ADR price recap, the Toyota item is a routine quote page, and the bond profile is immaterial.",
+      "tokyo_note": ""
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 317,
+      "prompt_tokens": 1414,
+      "total_tokens": 1731
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 3347
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 7,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Post-4pm items are routine: rating affirmations, a bond profile, a minor stake disclosure, and technical commentary. None is a material fund-specific event for a top holding.",
+      "outcome_note": ""
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 279,
+      "prompt_tokens": 2173,
+      "total_tokens": 2452
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 5053
+    }
+   }
+  },
+  {
+   "date": "2026-10-08",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 6,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "low",
+      "cited_ids": [],
+      "reason": "Post-4pm items are routine: a Fitch affirmation, a bond quote page, a general MUFG strategy report and a Toyota JV streamlining. None gives a clear, material, fund-specific direction beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 618,
+      "prompt_tokens": 1944,
+      "total_tokens": 2562
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 4569
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 7,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Post-4pm items are routine (Fitch affirmation, bond listing), pre-4pm (Sony ADR), or strategic reports with unclear direction (MUFG, Toyota China alliances). No clear fund-specific move beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 464,
+      "prompt_tokens": 2110,
+      "total_tokens": 2574
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 4998
+    }
+   }
+  },
+  {
+   "date": "2026-10-09",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 12,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Post-4pm items are mostly bond profiles and repeated data pages. The Toyota/FAW JV stake news has no clear directional effect on the fund's value beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 512,
+      "prompt_tokens": 2921,
+      "total_tokens": 3433
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 7123
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 13,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Holdings news is routine: bond profiles, a Sony earnings-date notice, and a Toyota China JV ownership shuffle that is unlikely to move the stock materially. Nothing fund-specific and material after 4pm."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 858,
+      "prompt_tokens": 3093,
+      "total_tokens": 3951
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 7532
+    },
+    "sonnet@1": {
+     "model": "claude-sonnet-5-5",
+     "hour": 1,
+     "n_items": 12,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "Items are mostly bond profiles, quote pages and a scheduled Sony earnings date. The GAC/FAW Toyota JV stake shuffle doesn't clearly change Toyota's value, so nothing is material beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 203,
+      "prompt_tokens": 2921,
+      "total_tokens": 3124
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 7123
+    },
+    "local@1": {
+     "model": "qwen3.8-2b-distill",
+     "hour": 1,
+     "n_items": 12,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "No fund-specific information (post-4pm) exists in the news list that moves EWJ's basket value beyond the hedge-implied reference. The Toyota/Mitsubishi news is general automotive sector info already reflected in futures; Sony/SMFG bond items are not fund-specific to this ETF."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 2181,
+      "completion_tokens": 441,
+      "total_tokens": 2622,
+      "completion_tokens_details": {
+       "reasoning_tokens": 349
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 7123
+    },
+    "local9b@1": {
+     "model": "qwen3.5-9b",
+     "hour": 1,
+     "n_items": 12,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "News items are pre-4pm or describe bond profiles and general company info already reflected in futures. No fund-specific post-market events found."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 2183,
+      "completion_tokens": 57,
+      "total_tokens": 2240,
+      "completion_tokens_details": {
+       "reasoning_tokens": 0
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 7123
+    }
+   }
+  },
+  {
+   "date": "2026-10-12",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 6,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Post-4pm items are mostly recaps or minor holdings. The Sony outlook item is a small credit positive, and the MUFG items are immaterial at fund level."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 737,
+      "prompt_tokens": 1990,
+      "total_tokens": 2727
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 4695
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 9,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Post-4pm items are minor or stale: a small Sony buyback, a weekly-recap rating note, and bank background. None looks large enough to move the basket beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 756,
+      "prompt_tokens": 2575,
+      "total_tokens": 3331
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 6039
+    }
+   }
+  },
+  {
+   "date": "2026-10-13",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 4,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Post-4pm items are routine bond profiles, a generic Mizuho quote page, and a Toyota ADR recap with no material corporate event. Nothing fund-specific beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 188,
+      "prompt_tokens": 1568,
+      "total_tokens": 1756
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 3777
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 8,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Post-4pm items are bond profiles, AI trade setups, a stock quote page, and a minor MUFG stake change in an ASX company. None is a material fund-specific event at these weights."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 347,
+      "prompt_tokens": 2287,
+      "total_tokens": 2634
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 5468
+    }
+   }
+  },
+  {
+   "date": "2026-10-14",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 4,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Post-4pm items are bond profiles, a valuation note on Mizuho's ADR, and a Toyota Philippines flood-supply warning. None is material to these holdings' value at their weights."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 294,
+      "prompt_tokens": 1574,
+      "total_tokens": 1868
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 3741
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 7,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Post-4pm items are immaterial: a small Toyota Philippines supply warning, a minor MUFG Australian stake, Mizuho bond profiles and an AI training program. None is a material holding-level event."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 393,
+      "prompt_tokens": 2128,
+      "total_tokens": 2521
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 5103
+    }
+   }
+  },
+  {
+   "date": "2026-10-15",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 3,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Post-4pm items are routine: a Sony startup showcase, a Toyota Canada production plan, and an MUFG hire. None is a material fund-specific result, guidance, or deal change."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 218,
+      "prompt_tokens": 1434,
+      "total_tokens": 1652
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 3373
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 6,
+     "output": {
+      "flag": true,
+      "direction": "up",
+      "confidence": "low",
+      "cited_ids": [
+       "n1e66e6fb"
+      ],
+      "reason": "Mizuho (2.2% weight) reportedly raised its FY2026 profit target after 4pm, a company-specific positive not in index futures. Source is weak and the timing is unverified."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 881,
+      "prompt_tokens": 1952,
+      "total_tokens": 2833
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 4678
+    },
+    "sonnet@4": {
+     "model": "claude-sonnet-5-5",
+     "hour": 4,
+     "n_items": 6,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "News is routine: a trade show, a plant commitment, an executive hire, a bond profile, a long-term software target, and a stale Mizuho target raise from an earlier Q1 report. None is a new fund-specific shock beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 117,
+      "prompt_tokens": 1952,
+      "total_tokens": 2069
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 4678
+    },
+    "local@4": {
+     "model": "qwen3.8-2b-distill",
+     "hour": 4,
+     "n_items": 6,
+     "output": {
+      "flag": true,
+      "direction": "up",
+      "confidence": "medium",
+      "cited_ids": [
+       "n1e66e6fb"
+      ],
+      "reason": "Mizuho Financial Group raised its FY2026 profit target to JPY 1.40 trillion, providing specific positive earnings guidance for the fund's largest holding."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 1431,
+      "completion_tokens": 535,
+      "total_tokens": 1966,
+      "completion_tokens_details": {
+       "reasoning_tokens": 453
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 4678
+    },
+    "local9b@4": {
+     "model": "qwen3.5-9b",
+     "hour": 4,
+     "n_items": 6,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "All news items are either pre-4pm (already priced in futures) or describe general corporate strategy/analyst targets rather than immediate fund-specific value moves."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 1433,
+      "completion_tokens": 61,
+      "total_tokens": 1494,
+      "completion_tokens_details": {
+       "reasoning_tokens": 0
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 4678
+    }
+   }
+  },
+  {
+   "date": "2026-10-16",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 9,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Post-4pm items are bond profiles, analyst commentary, product reviews, or minor Toyota UK and Subaru EV news. None is a material fund-specific event at these weights.",
+      "pivot": null
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 387,
+      "prompt_tokens": 2396,
+      "total_tokens": 2783
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 5918
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 12,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Post-4pm items are a Sony brokerage target cut (still bullish), a bank stablecoin proof-of-concept, and minor or non-holding stories. None is material guidance, a deal, or a regulatory action."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 417,
+      "prompt_tokens": 2936,
+      "total_tokens": 3353
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 7187
+    }
+   }
+  },
+  {
+   "date": "2026-10-19",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 4,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Post-4pm items are minor: a bond listing, a small MUFG stake sale in a real-estate company, a previously reported Shriram stake, and Mizuho's China unit approval. None looks large enough to move the basket beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 513,
+      "prompt_tokens": 1598,
+      "total_tokens": 2111
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 3799
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 6,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Post-4pm items are minor: a MUFG stake deal of modest size, a Mizuho China securities approval, a small shareholding change, and a bond listing. None looks material at these weights."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 366,
+      "prompt_tokens": 1947,
+      "total_tokens": 2313
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 4715
+    }
+   }
+  },
+  {
+   "date": "2026-10-20",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 1,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "The only post-4pm item is a Benzinga commentary on Toyota's already-reported fiscal 2026 results. It contains no new result, guidance, or corporate action, so it should not move the basket beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 205,
+      "prompt_tokens": 1045,
+      "total_tokens": 1250
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2463
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 6,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Post-4pm items are immaterial: a small Toyota recall (about 106k US vehicles), an AUM target, a minor stake change, and a bond profile. None is large enough to move the basket beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 336,
+      "prompt_tokens": 1961,
+      "total_tokens": 2297
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 4628
+    }
+   }
+  },
+  {
+   "date": "2026-10-21",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 1,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Only item is Toyota lobbying for EU 'Made in Europe' rule changes. It is advocacy, not a result, guidance, deal, or regulatory action, so it doesn't move the basket beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 219,
+      "prompt_tokens": 1037,
+      "total_tokens": 1256
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2464
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 2,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Toyota item is policy advocacy, not a result, guidance or deal. Mizuho item is a minor rating upgrade citing already-published results. Neither is material enough to move the basket beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 323,
+      "prompt_tokens": 1227,
+      "total_tokens": 1550
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2883
+    }
+   }
+  },
+  {
+   "date": "2026-10-22",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 0,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "No news items since 4pm New York time, so there is no fund-specific information to move the basket beyond the hedge-implied value."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 87,
+      "prompt_tokens": 876,
+      "total_tokens": 963
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2064
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 0,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "No news items were published since 4pm New York time, so there is no fund-specific post-close information to move the basket beyond the hedge-implied value."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 83,
+      "prompt_tokens": 876,
+      "total_tokens": 959
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2064
+    }
+   }
+  },
+  {
+   "date": "2026-10-23",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 6,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "All six items are routine: data-aggregator pages, a bond profile, a 13F-style stake sale in a US ADR, and a stale insider Form 4. None is a material holding-level event after 4pm."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 168,
+      "prompt_tokens": 1975,
+      "total_tokens": 2143
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 4648
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 6,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "All six post-4pm items are routine data pages, a bond profile, a 13F-style holding change, or an old insider Form 4. None is a material holding event.",
+      "fund_specific": false
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 168,
+      "prompt_tokens": 1975,
+      "total_tokens": 2143
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 4648
+    }
+   }
+  },
+  {
+   "date": "2026-10-26",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 1,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "Only item is a generic backward-looking 10-year return piece on MUFG; no new fund-specific result, guidance, deal or regulatory action after 4pm."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 91,
+      "prompt_tokens": 1064,
+      "total_tokens": 1155
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2507
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 4,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "After-4pm items are generic return commentary, a minor ASX stake cessation, and earnings analysis with no new material holding-level event beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 298,
+      "prompt_tokens": 1650,
+      "total_tokens": 1948
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 3879
+    }
+   }
+  },
+  {
+   "date": "2026-10-27",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 1,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "Only item is a generic chart/profile page for MUFG with no new results, guidance, or corporate action; nothing fund-specific beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 88,
+      "prompt_tokens": 1031,
+      "total_tokens": 1119
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2466
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 4,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "Post-4pm items are routine MUFG substantial-holder filings in small ASX names and a chart page. None is material to a 4.5% holding or to the fund's basket."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 164,
+      "prompt_tokens": 1653,
+      "total_tokens": 1817
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 3803
+    }
+   }
+  },
+  {
+   "date": "2026-10-28",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 5,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Post-4pm items are routine: a Mizuho stock-return piece, a broker's REIT note, a Toyota plant milestone, and Toyota's monthly sales dip with mixed regional results. None is a material fund-specific surprise."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 423,
+      "prompt_tokens": 1761,
+      "total_tokens": 2184
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 4295
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 7,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Toyota's September sales decline was released during the Tokyo session and is largely priced by the close. Other items are immaterial or stale."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 845,
+      "prompt_tokens": 2137,
+      "total_tokens": 2982
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 5214
+    }
+   }
+  },
+  {
+   "date": "2026-10-29",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 0,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "No news items were published since 4pm New York time, so there is no fund-specific information to move the basket beyond the hedge-implied value."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 80,
+      "prompt_tokens": 876,
+      "total_tokens": 956
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2064
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 2,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Toyota-Waymo autonomous testing plans for 2027 are a partnership update, not a material result, guidance, or corporate action at a 4.2% holding. Nothing fund-specific to move value beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 412,
+      "prompt_tokens": 1252,
+      "total_tokens": 1664
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 2968
+    }
+   }
+  },
+  {
+   "date": "2026-10-30",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 11,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Post-4pm items are analyst notes on non-holdings, a minor Toyota-Waymo trial partnership, a Sony RSU grant, and price-chart pages. None is material enough to move the basket beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 760,
+      "prompt_tokens": 2850,
+      "total_tokens": 3610
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 6785
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 14,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Post-4pm items are mostly stale price pages or analyst notes on non-holdings. The Toyota-Waymo trial, Sony RSU award and MUFG stake disclosure are not material enough to move holdings beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 620,
+      "prompt_tokens": 3376,
+      "total_tokens": 3996
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 8096
+    }
+   }
+  },
+  {
+   "date": "2026-11-02",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 3,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Post-4pm items are a minor analyst initiation on MUFG, a Toyota-Waymo manufacturing deal without financial terms, and an unrelated Adani loan story. None is material enough to move the basket beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 376,
+      "prompt_tokens": 1408,
+      "total_tokens": 1784
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 3340
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 4,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Toyota-Waymo manufacturing deal is fund-specific but low financial impact for a 4.2% holding. MUFG items are a routine initiation and a minor Australian holder notice. Nothing material enough to move the basket beyond the hedge."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 541,
+      "prompt_tokens": 1589,
+      "total_tokens": 2130
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 3754
+    }
+   }
+  },
+  {
+   "date": "2026-11-03",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 3,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "medium",
+      "cited_ids": [],
+      "reason": "Items are a stock profile page, a scheduled earnings-briefing notice with no results, and a minor MUFG digital-bank product plan. None is a material fund-specific surprise after 4pm."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 208,
+      "prompt_tokens": 1428,
+      "total_tokens": 1636
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 3379
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 4,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "Post-4pm items are a stock quote page, a scheduled earnings-briefing date, and minor MUFG office and product news. None is material at these weights."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 220,
+      "prompt_tokens": 1604,
+      "total_tokens": 1824
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 3820
+    }
+   }
+  },
+  {
+   "date": "2026-11-04",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 3,
+     "output": {
+      "flag": true,
+      "direction": "down",
+      "confidence": "medium",
+      "cited_ids": [
+       "nb161c2b8"
+      ],
+      "reason": "Post-4pm report of Toyota (4.2% weight) down 5.8% on weak October sales. Stock-specific move not in index-based hedge. Sony results are mixed-direction and not flagged."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 1828,
+      "prompt_tokens": 1470,
+      "total_tokens": 3298
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 3478
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 5,
+     "output": {
+      "flag": true,
+      "direction": "down",
+      "confidence": "low",
+      "cited_ids": [
+       "nb161c2b8"
+      ],
+      "reason": "Toyota (4.2% weight) October Japan sales fell 3.4% with minivehicles down 10%, a home-market, fund-specific negative released after 4pm that futures would not reflect. Sony results are offsetting and ambiguous."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 1794,
+      "prompt_tokens": 1879,
+      "total_tokens": 3673
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 4397
+    },
+    "sonnet@1": {
+     "model": "claude-sonnet-5-5",
+     "hour": 1,
+     "n_items": 3,
+     "output": {
+      "flag": true,
+      "direction": "up",
+      "confidence": "low",
+      "cited_ids": [
+       "n757b63f8",
+       "na40babb8"
+      ],
+      "reason": "Sony (3.2% weight) reported a 44% quarterly profit surge after 4pm NY, which is fund-specific news. Consensus expectations are unknown, so the upside beyond the hedge is uncertain."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 566,
+      "prompt_tokens": 1470,
+      "total_tokens": 2036
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 3478
+    },
+    "sonnet@4": {
+     "model": "claude-sonnet-5-5",
+     "hour": 4,
+     "n_items": 5,
+     "output": {
+      "flag": true,
+      "direction": "up",
+      "confidence": "low",
+      "cited_ids": [
+       "n757b63f8",
+       "na40babb8"
+      ],
+      "reason": "Sony (3.2% weight) reported a 44% jump in quarterly profit after 4pm NY. Index futures would not capture this stock-specific result, but how it compares with expectations is unknown."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 754,
+      "prompt_tokens": 1879,
+      "total_tokens": 2633
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 4397
+    },
+    "local@1": {
+     "model": "qwen3.8-2b-distill",
+     "hour": 1,
+     "n_items": 3,
+     "output": {
+      "flag": true,
+      "direction": "down",
+      "confidence": "medium",
+      "cited_ids": [
+       "7203",
+       "6758"
+      ],
+      "reason": "News items after 4pm NY time relate to basket holdings (Toyota [7203] and Sony [6758]), creating potential value beyond hedge-implied value. Toyota's sales decline is negative; Sony's profit boost partially offsets. Overall slight downside risk."
+     },
+     "violations": [
+      "cited_unknown_ids:7203,6758"
+     ],
+     "usage": {
+      "prompt_tokens": 1067,
+      "completion_tokens": 873,
+      "total_tokens": 1940,
+      "completion_tokens_details": {
+       "reasoning_tokens": 649
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 3478
+    },
+    "local@4": {
+     "model": "qwen3.8-2b-distill",
+     "hour": 4,
+     "n_items": 5,
+     "output": {
+      "flag": true,
+      "direction": "down",
+      "confidence": "medium",
+      "cited_ids": [
+       "8306"
+      ],
+      "reason": "Mitsubishi UFJ Financial Group ceases to be a substantial holder of Credit Corp Group as of Nov 2, 2026 (Form 605 lodged Nov 5), affecting the ETF basket value beyond what hedge instruments already reflect."
+     },
+     "violations": [
+      "cited_unknown_ids:8306"
+     ],
+     "usage": {
+      "prompt_tokens": 1372,
+      "completion_tokens": 657,
+      "total_tokens": 2029,
+      "completion_tokens_details": {
+       "reasoning_tokens": 558
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 4397
+    },
+    "local9b@1": {
+     "model": "qwen3.5-9b",
+     "hour": 1,
+     "n_items": 3,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "News items are already reflected in the hedge-implied reference value as they concern broad market movements and index constituents rather than fund-specific events."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 1069,
+      "completion_tokens": 56,
+      "total_tokens": 1125,
+      "completion_tokens_details": {
+       "reasoning_tokens": 0
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 3478
+    },
+    "local9b@4": {
+     "model": "qwen3.5-9b",
+     "hour": 4,
+     "n_items": 5,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "News is already reflected in futures or irrelevant to fund value (Sony profit is quarterly; MUFG news concerns unrelated Australian entities)."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 1374,
+      "completion_tokens": 54,
+      "total_tokens": 1428,
+      "completion_tokens_details": {
+       "reasoning_tokens": 0
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 4397
+    }
+   }
+  },
+  {
+   "date": "2026-11-05",
+   "runs": {
+    "haiku@1": {
+     "model": "claude-haiku-5-5",
+     "hour": 1,
+     "n_items": 8,
+     "output": {
+      "flag": true,
+      "direction": "up",
+      "confidence": "medium",
+      "cited_ids": [
+       "n8b173d30",
+       "na7b7ce94"
+      ],
+      "reason": "Sony (3.2% weight) reported a strong Q2 beat and raised its FY net profit outlook after 4pm NY. The stock-specific reaction in Tokyo should exceed what index futures imply."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 744,
+      "prompt_tokens": 2308,
+      "total_tokens": 3052
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 5612
+    },
+    "haiku@4": {
+     "model": "claude-haiku-5-5",
+     "hour": 4,
+     "n_items": 10,
+     "output": {
+      "flag": true,
+      "direction": "up",
+      "confidence": "medium",
+      "cited_ids": [
+       "n8b173d30",
+       "na7b7ce94"
+      ],
+      "reason": "Sony, a 3.2% holding, reported strong Q2 earnings and raised its FY net profit outlook after the US close, ahead of the Tokyo open. Index futures would not reflect this."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 704,
+      "prompt_tokens": 2693,
+      "total_tokens": 3397
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 6499
+    },
+    "sonnet@1": {
+     "model": "claude-sonnet-5-5",
+     "hour": 1,
+     "n_items": 8,
+     "output": {
+      "flag": true,
+      "direction": "up",
+      "confidence": "medium",
+      "cited_ids": [
+       "na7b7ce94",
+       "n8b173d30"
+      ],
+      "reason": "Sony (3.2% weight) raised its FY net profit outlook and posted strong Q2 results after the 4pm close. This is fund-specific news that index futures would only partly reflect."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 431,
+      "prompt_tokens": 2308,
+      "total_tokens": 2739
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 5612
+    },
+    "sonnet@4": {
+     "model": "claude-sonnet-5-5",
+     "hour": 4,
+     "n_items": 10,
+     "output": {
+      "flag": true,
+      "direction": "up",
+      "confidence": "medium",
+      "cited_ids": [
+       "n8b173d30",
+       "na7b7ce94"
+      ],
+      "reason": "Sony (3.2% weight) beat Q2 expectations and raised its FY net profit outlook after 4pm. This is fund-specific and likely not fully captured by index futures."
+     },
+     "violations": [],
+     "usage": {
+      "completion_tokens": 976,
+      "prompt_tokens": 2693,
+      "total_tokens": 3669
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 6499
+    },
+    "local@1": {
+     "model": "qwen3.8-2b-distill",
+     "hour": 1,
+     "n_items": 8,
+     "output": {
+      "flag": true,
+      "direction": "down",
+      "confidence": "high",
+      "cited_ids": [
+       "n5bdb7e9a"
+      ],
+      "reason": "MUFG exits substantial holding in Region Group, reducing basket exposure and bringing value below hedge-implied level of 88.36."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 1680,
+      "completion_tokens": 580,
+      "total_tokens": 2260,
+      "completion_tokens_details": {
+       "reasoning_tokens": 507
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 5612
+    },
+    "local@4": {
+     "model": "qwen3.8-2b-distill",
+     "hour": 4,
+     "n_items": 10,
+     "output": {
+      "flag": true,
+      "direction": "up",
+      "confidence": "medium",
+      "cited_ids": [
+       "na7b7ce94"
+      ],
+      "reason": "Sony Group reported stronger Q2 earnings with 47.9% YoY growth in EPS and 10.3% net sales increase, raising FY26 profit forecast to \u00a51.33T. This positive performance directly benefits the fund."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 1942,
+      "completion_tokens": 679,
+      "total_tokens": 2621,
+      "completion_tokens_details": {
+       "reasoning_tokens": 493
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 6499
+    },
+    "local9b@1": {
+     "model": "qwen3.5-9b",
+     "hour": 1,
+     "n_items": 8,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "News items are either pre-4pm (already priced), index-level macro moves (reflected in futures), or minor corporate/tech updates insufficient to move the fund beyond hedge instruments."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 1682,
+      "completion_tokens": 72,
+      "total_tokens": 1754,
+      "completion_tokens_details": {
+       "reasoning_tokens": 0
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 5612
+    },
+    "local9b@4": {
+     "model": "qwen3.5-9b",
+     "hour": 4,
+     "n_items": 10,
+     "output": {
+      "flag": false,
+      "direction": "none",
+      "confidence": "high",
+      "cited_ids": [],
+      "reason": "News items are either pre-4pm, relate to non-holdings (AIG, Snap), or describe events already reflected in market prices and index futures."
+     },
+     "violations": [],
+     "usage": {
+      "prompt_tokens": 1944,
+      "completion_tokens": 62,
+      "total_tokens": 2006,
+      "completion_tokens_details": {
+       "reasoning_tokens": 0
+      }
+     },
+     "finish_reason": "stop",
+     "prompt_chars": 6499
+    }
+   }
+  }
+ ],
+ "partial": false,
+ "news_items": 648
+}

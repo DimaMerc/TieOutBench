@@ -1,0 +1,7 @@
+data/cache/
+data/out/
+data/nav/*
+!data/nav/.gitkeep
+data/holdings/*.csv
+__pycache__/
+# data/public/ is the committed copy of every cited statistic, with licensed bars removed (run.py publish)

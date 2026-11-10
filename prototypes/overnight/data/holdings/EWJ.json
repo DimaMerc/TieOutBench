@@ -1,0 +1,144 @@
+{
+ "ticker": "EWJ",
+ "source_file": "EWJ_holdings.csv",
+ "n_equity_rows": 167,
+ "top_weight_sum": 38.81,
+ "unmapped": [],
+ "holdings": [
+  {
+   "symbol": "8306",
+   "name": "MITSUBISHI UFJ FINANCIAL GROUP",
+   "weight": 4.55,
+   "sector": "Financials",
+   "location": "Japan",
+   "exchange": "Tokyo Stock Exchange",
+   "news_ticker": "MUFG"
+  },
+  {
+   "symbol": "7203",
+   "name": "TOYOTA MOTOR",
+   "weight": 4.18,
+   "sector": "Consumer Discretionary",
+   "location": "Japan",
+   "exchange": "Tokyo Stock Exchange",
+   "news_ticker": "TM"
+  },
+  {
+   "symbol": "6758",
+   "name": "SONY GROUP",
+   "weight": 3.18,
+   "sector": "Consumer Discretionary",
+   "location": "Japan",
+   "exchange": "Tokyo Stock Exchange",
+   "news_ticker": "SONY"
+  },
+  {
+   "symbol": "6098",
+   "name": "RECRUIT HOLDINGS",
+   "weight": 2.98,
+   "sector": "Industrials",
+   "location": "Japan",
+   "exchange": "Tokyo Stock Exchange",
+   "news_ticker": "RCRUY"
+  },
+  {
+   "symbol": "8316",
+   "name": "SUMITOMO MITSUI FINANCIAL GROUP",
+   "weight": 2.89,
+   "sector": "Financials",
+   "location": "Japan",
+   "exchange": "Tokyo Stock Exchange",
+   "news_ticker": "SMFG"
+  },
+  {
+   "symbol": "6857",
+   "name": "ADVANTEST",
+   "weight": 2.71,
+   "sector": "Information Technology",
+   "location": "Japan",
+   "exchange": "Tokyo Stock Exchange",
+   "news_ticker": "ATEYY"
+  },
+  {
+   "symbol": "6501",
+   "name": "HITACHI",
+   "weight": 2.65,
+   "sector": "Industrials",
+   "location": "Japan",
+   "exchange": "Tokyo Stock Exchange",
+   "news_ticker": "HTHIY"
+  },
+  {
+   "symbol": "8035",
+   "name": "TOKYO ELECTRON",
+   "weight": 2.43,
+   "sector": "Information Technology",
+   "location": "Japan",
+   "exchange": "Tokyo Stock Exchange",
+   "news_ticker": "TOELY"
+  },
+  {
+   "symbol": "8411",
+   "name": "MIZUHO FINANCIAL GROUP",
+   "weight": 2.21,
+   "sector": "Financials",
+   "location": "Japan",
+   "exchange": "Tokyo Stock Exchange",
+   "news_ticker": "MFG"
+  },
+  {
+   "symbol": "8766",
+   "name": "TOKIO MARINE HOLDINGS",
+   "weight": 2.02,
+   "sector": "Financials",
+   "location": "Japan",
+   "exchange": "Tokyo Stock Exchange",
+   "news_ticker": "TKOMY"
+  },
+  {
+   "symbol": "8058",
+   "name": "MITSUBISHI",
+   "weight": 2.01,
+   "sector": "Industrials",
+   "location": "Japan",
+   "exchange": "Tokyo Stock Exchange",
+   "news_ticker": "MSBHF"
+  },
+  {
+   "symbol": "9983",
+   "name": "FAST RETAILING",
+   "weight": 1.89,
+   "sector": "Consumer Discretionary",
+   "location": "Japan",
+   "exchange": "Tokyo Stock Exchange",
+   "news_ticker": "FRCOY"
+  },
+  {
+   "symbol": "9984",
+   "name": "SOFTBANK GROUP CORP",
+   "weight": 1.74,
+   "sector": "Communication",
+   "location": "Japan",
+   "exchange": "Tokyo Stock Exchange",
+   "news_ticker": "SFTBY"
+  },
+  {
+   "symbol": "6861",
+   "name": "KEYENCE",
+   "weight": 1.73,
+   "sector": "Information Technology",
+   "location": "Japan",
+   "exchange": "Tokyo Stock Exchange",
+   "news_ticker": "KYCCF"
+  },
+  {
+   "symbol": "8001",
+   "name": "ITOCHU",
+   "weight": 1.64,
+   "sector": "Industrials",
+   "location": "Japan",
+   "exchange": "Tokyo Stock Exchange",
+   "news_ticker": "ITOCY"
+  }
+ ]
+}

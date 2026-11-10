@@ -1,0 +1,151 @@
+{
+ "ticker": "EEM",
+ "source_file": "EEM_holdings.csv",
+ "n_equity_rows": 1182,
+ "top_weight_sum": 38.46,
+ "unmapped": [
+  "005930 SAMSUNG ELECTRONICS LTD",
+  "000660 SK HYNIX",
+  "2454 MEDIATEK",
+  "005935 SAMSUNG ELECTRONICS NON VOTING PRE",
+  "RELIANCE RELIANCE INDUSTRIES LTD",
+  "BHARTIARTL BHARTI AIRTEL LTD"
+ ],
+ "holdings": [
+  {
+   "symbol": "2330",
+   "name": "TAIWAN SEMICONDUCTOR MANUFACTURING",
+   "weight": 14.84,
+   "sector": "Information Technology",
+   "location": "Taiwan",
+   "exchange": "Taiwan Stock Exchange",
+   "news_ticker": "TSM"
+  },
+  {
+   "symbol": "005930",
+   "name": "SAMSUNG ELECTRONICS LTD",
+   "weight": 6.0,
+   "sector": "Information Technology",
+   "location": "Korea (South)",
+   "exchange": "Korea Exchange (Stock Market)",
+   "news_ticker": ""
+  },
+  {
+   "symbol": "000660",
+   "name": "SK HYNIX",
+   "weight": 4.25,
+   "sector": "Information Technology",
+   "location": "Korea (South)",
+   "exchange": "Korea Exchange (Stock Market)",
+   "news_ticker": ""
+  },
+  {
+   "symbol": "700",
+   "name": "TENCENT HOLDINGS",
+   "weight": 3.03,
+   "sector": "Communication",
+   "location": "China",
+   "exchange": "Hong Kong Exchanges And Clearing Ltd",
+   "news_ticker": "TCEHY"
+  },
+  {
+   "symbol": "9988",
+   "name": "ALIBABA GROUP HOLDING",
+   "weight": 2.07,
+   "sector": "Consumer Discretionary",
+   "location": "China",
+   "exchange": "Hong Kong Exchanges And Clearing Ltd",
+   "news_ticker": "BABA"
+  },
+  {
+   "symbol": "2454",
+   "name": "MEDIATEK",
+   "weight": 1.38,
+   "sector": "Information Technology",
+   "location": "Taiwan",
+   "exchange": "Taiwan Stock Exchange",
+   "news_ticker": ""
+  },
+  {
+   "symbol": "939",
+   "name": "CHINA CONSTRUCTION BANK CORP H",
+   "weight": 1.04,
+   "sector": "Financials",
+   "location": "China",
+   "exchange": "Hong Kong Exchanges And Clearing Ltd",
+   "news_ticker": "CICHY"
+  },
+  {
+   "symbol": "HDFCBANK",
+   "name": "HDFC BANK",
+   "weight": 0.88,
+   "sector": "Financials",
+   "location": "India",
+   "exchange": "National Stock Exchange Of India",
+   "news_ticker": "HDB"
+  },
+  {
+   "symbol": "005935",
+   "name": "SAMSUNG ELECTRONICS NON VOTING PRE",
+   "weight": 0.82,
+   "sector": "Information Technology",
+   "location": "Korea (South)",
+   "exchange": "Korea Exchange (Stock Market)",
+   "news_ticker": ""
+  },
+  {
+   "symbol": "ICICIBANK",
+   "name": "ICICI BANK",
+   "weight": 0.82,
+   "sector": "Financials",
+   "location": "India",
+   "exchange": "National Stock Exchange Of India",
+   "news_ticker": "IBN"
+  },
+  {
+   "symbol": "2317",
+   "name": "HON HAI PRECISION INDUSTRY",
+   "weight": 0.78,
+   "sector": "Information Technology",
+   "location": "Taiwan",
+   "exchange": "Taiwan Stock Exchange",
+   "news_ticker": "HNHPF"
+  },
+  {
+   "symbol": "RELIANCE",
+   "name": "RELIANCE INDUSTRIES LTD",
+   "weight": 0.75,
+   "sector": "Energy",
+   "location": "India",
+   "exchange": "National Stock Exchange Of India",
+   "news_ticker": ""
+  },
+  {
+   "symbol": "1810",
+   "name": "XIAOMI",
+   "weight": 0.61,
+   "sector": "Information Technology",
+   "location": "China",
+   "exchange": "Hong Kong Exchanges And Clearing Ltd",
+   "news_ticker": "XIACY"
+  },
+  {
+   "symbol": "1398",
+   "name": "INDUSTRIAL AND COMMERCIAL BANK OF",
+   "weight": 0.61,
+   "sector": "Financials",
+   "location": "China",
+   "exchange": "Hong Kong Exchanges And Clearing Ltd",
+   "news_ticker": "IDCBY"
+  },
+  {
+   "symbol": "BHARTIARTL",
+   "name": "BHARTI AIRTEL LTD",
+   "weight": 0.58,
+   "sector": "Communication",
+   "location": "India",
+   "exchange": "National Stock Exchange Of India",
+   "news_ticker": ""
+  }
+ ]
+}
