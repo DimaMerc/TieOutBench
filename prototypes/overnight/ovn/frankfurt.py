@@ -18,7 +18,7 @@ from zoneinfo import ZoneInfo
 
 from . import yahoo
 from .model import ols, empirical_quantiles
-from .util import Series, OUT, write_json, window_end
+from .util import Series, OUT, stored, write_json, window_end
 
 BERLIN = ZoneInfo("Europe/Berlin")
 NY = ZoneInfo("America/New_York")
@@ -141,7 +141,7 @@ def analyse(doc: dict, calendar: list | None = None) -> dict:
     cov = None
     if band:
         ev_tr = [p for r in evl for p in r["prints"] if (p.get("volume") or 0) > 0]
-        cov = {"n": len(ev_tr), "coverage": round(sum(1 for p in ev_tr if abs(p["dev_bps"]) / 1e4 <= band["q90"]) / len(ev_tr), 3) if ev_tr else None}
+        cov = {"n": len(ev_tr), "coverage": stored(sum(1 for p in ev_tr if abs(p["dev_bps"]) / 1e4 <= band["q90"]) / len(ev_tr), 3) if ev_tr else None}
     # fitted beta check: y_morning on hedge and fx over the first half, scored on the second
     fit = None
     try:
@@ -153,22 +153,22 @@ def analyse(doc: dict, calendar: list | None = None) -> dict:
         sse = sum((a - p) ** 2 for a, p in zip(y, pred)); sst = sum((a - ybar) ** 2 for a in y) or 1e-18
         naive = [(1 + r["rh_morning"]) / (1 + r["rfx_morning"]) - 1 for r in te]   # beta 1, fx one-for-one
         sse_n = sum((a - p) ** 2 for a, p in zip(y, naive))
-        fit = {"beta_hedge": round(b[1], 3), "gamma_fx": round(b[2], 3), "r2_train": round(f["r2"], 3),
-               "r2_oos_fitted": round(1 - sse / sst, 3), "r2_oos_beta1": round(1 - sse_n / sst, 3),
-               "mae_fitted_bps": round(statistics.fmean(abs(a - p) for a, p in zip(y, pred)) * 1e4, 1),
-               "mae_beta1_bps": round(statistics.fmean(abs(a - p) for a, p in zip(y, naive)) * 1e4, 1), "n_train": len(tr), "n_test": len(te)}
+        fit = {"beta_hedge": stored(b[1], 3), "gamma_fx": stored(b[2], 3), "r2_train": stored(f["r2"], 3),
+               "r2_oos_fitted": stored(1 - sse / sst, 3), "r2_oos_beta1": stored(1 - sse_n / sst, 3),
+               "mae_fitted_bps": stored(statistics.fmean(abs(a - p) for a, p in zip(y, pred)) * 1e4, 1),
+               "mae_beta1_bps": stored(statistics.fmean(abs(a - p) for a, p in zip(y, naive)) * 1e4, 1), "n_train": len(tr), "n_test": len(te)}
     except Exception as e:  # noqa: BLE001
         fit = {"error": str(e)[:120]}
     return {
         "sessions": len(days), "sessions_with_a_bar": len(recs), "from": recs[0]["date"], "to": recs[-1]["date"],
         "slots_before_us_open": slots, "bars_in_feed": len(all_bars), "traded_bars": len(traded),
-        "traded_share": round(len(traded) / slots, 3) if slots else None,
-        "mean_dev_bps": round(statistics.fmean(devs), 1) if devs else None,
-        "median_dev_bps": round(statistics.median(devs), 1) if devs else None,
-        "median_abs_bps": round(statistics.median(ab), 1) if ab else None,
-        "p90_abs_bps": round(ab[int(0.9 * (len(ab) - 1))], 1) if ab else None,
-        "by_hour_berlin": {str(h): {"n": len(v), "median_abs_bps": round(statistics.median(abs(x) for x in v), 1), "mean_bps": round(statistics.fmean(v), 1)} for h, v in sorted(by_hour.items())},
-        "trading_band": ({"q50_bps": round(band["q50"] * 1e4, 1), "q90_bps": round(band["q90"] * 1e4, 1), "calibration_prints": len(cal_abs), **(cov or {})} if band else {"insufficient_prints": len(cal_abs)}),
+        "traded_share": stored(len(traded) / slots, 3) if slots else None,
+        "mean_dev_bps": stored(statistics.fmean(devs), 1) if devs else None,
+        "median_dev_bps": stored(statistics.median(devs), 1) if devs else None,
+        "median_abs_bps": stored(statistics.median(ab), 1) if ab else None,
+        "p90_abs_bps": stored(ab[int(0.9 * (len(ab) - 1))], 1) if ab else None,
+        "by_hour_berlin": {str(h): {"n": len(v), "median_abs_bps": stored(statistics.median(abs(x) for x in v), 1), "mean_bps": stored(statistics.fmean(v), 1)} for h, v in sorted(by_hour.items())},
+        "trading_band": ({"q50_bps": stored(band["q50"] * 1e4, 1), "q90_bps": stored(band["q90"] * 1e4, 1), "calibration_prints": len(cal_abs), **(cov or {})} if band else {"insufficient_prints": len(cal_abs)}),
         "fit_check": fit,
         "dividends_in_window": sum(1 for r in recs if r["dividend"]),
     }

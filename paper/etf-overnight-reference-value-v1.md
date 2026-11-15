@@ -6,7 +6,7 @@
 MBA, PMP · Independent · Greater Boston  
 [evals.finance](https://evals.finance) · welt.management.solutions@gmail.com · ORCID [0009-0003-7594-4671](https://orcid.org/0009-0003-7594-4671)
 
-*Version 1 (November 2026). This is a short technical report, the fourth in a series. The TieOutBench
+*Version 1.1 (November 2026). This is a short technical report, the fourth in a series. The TieOutBench
 report (SSRN, DOI [10.2139/ssrn.7243025](https://doi.org/10.2139/ssrn.7243025)) describes a suite of
 runnable finance evaluations; the checker report (DOI [10.2139/ssrn.7611299](https://doi.org/10.2139/ssrn.7611299))
 and the options-redemption report (DOI [10.2139/ssrn.7655899](https://doi.org/10.2139/ssrn.7655899)) grade
@@ -14,7 +14,7 @@ language models on ETF processing tasks. This report measures a market rather th
 shares trade, against what they are worth, in the hours when the mechanism that keeps the two together
 does not operate. Every figure in it is written by the code in the accompanying repository,
 [github.com/DimaMerc/TieOutBench](https://github.com/DimaMerc/TieOutBench), under `prototypes/overnight/`;
-Section 10 says what a reader can and cannot regenerate, and why. SSRN: [to be assigned].*
+Section 10 says what a reader can and cannot regenerate, and why. SSRN: [papers.ssrn.com/abstract=7688088](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7688088), DOI [10.2139/ssrn.7688088](https://doi.org/10.2139/ssrn.7688088) (November 2026), where the report is listed under its subtitle. Appendix C lists what changed after version 1.*
 
 *All market data in this report is real: exchange and venue prices from public and subscription feeds, net
 asset values and holdings from the issuers' own published files. Nothing is simulated. Where a value stands
@@ -27,7 +27,7 @@ in for another, the text says so. Nothing here is advice regarding any security.
 On December 6, 2026 five US exchanges are due to begin trading 23 hours a day. Exchange-traded funds
 already make up most of the small overnight market that exists today, and in those hours the arbitrage
 that keeps an ETF's price at the value of its holdings does not operate: a creation or redemption placed at
-night is an order for the next day's net asset value, no indicative value is updated, and the only
+night is an order for the next day's net asset value, no indicative value is required, and the only
 reference the exchanges will supply is a static band 20% either side of the close. This report measures how far prices move
 from that value in those hours, before the market changes. For ten US ETFs over sixty nights, every five-minute bar of overnight trading
 on Blue Ocean, the main overnight venue, was compared with a reference value built from the instruments
@@ -116,6 +116,9 @@ away.
 session quotes the exchange's extended-hours disclosure rule, under which a broker must tell customers
 that "the absence of an updated underlying index value or intraday indicative value" is a risk of trading
 outside regular hours. A search of the order found no requirement that anyone supply such a value [5].
+Indicative values are also sold as a service, and one vendor's brochure describes its calculations as
+running "23.5 hours, 6 days per week" [24]; no announcement that any fund's value will be published
+during the new sessions was found (Appendix B).
 One data vendor sells a 24x5 reference price derived from quote and trade messages in the security itself
 across exchanges, alternative trading systems and over-the-counter venues [9]. That measures where the
 ETF is quoted and traded, not what its basket is worth, and the difference between the two is what this
@@ -201,9 +204,10 @@ official NAV is itself an estimate: the issuer fair-values the home-market close
 basis points over the window, and by more than 400 for Japan and emerging markets on November 5, when
 the US market fell more than four percent after Asia had closed. Starting from that NAV instead of the
 close made the error against the next open slightly worse, 70 against 66 basis points for Japan, 57
-against 55 for Germany, 89 against 88 for emerging markets, and the overnight prints sat further from a
-NAV-anchored value than from a close-anchored one, 3.7 against 2.4 basis points for the S&P fund and 10.9
-against 3.6 for bitcoin. Overnight prices follow the fund's own last trade, and the premium or discount at the close persists
+against 55 for Germany, 89 against 88 for emerging markets. In six of the seven funds that start from an
+official NAV the overnight prints also sat further from a NAV-anchored value than from a close-anchored
+one, 3.7 against 2.4 basis points for the S&P fund and 10.9 against 3.6 for bitcoin; the exception is the
+Germany fund, on 23 prints. Overnight prices follow the fund's own last trade, and the premium or discount at the close persists
 through the night. The report therefore keeps two values: the official continuation from the NAV, graded
 against the open, and the market continuation from the close, which the trading band and the print
 comparisons use.
@@ -239,7 +243,7 @@ reference is built on S&P futures alone, while Hong Kong, Taipei, Seoul and Mumb
 US night. On the 25 nights with a late trade and all four Asian sessions available, the print's
 deviation from the reference had a correlation of 0.72 with what those sessions add to the fund's
 overnight move, the weights fitted on the training nights only. Taking that contribution out, the median
-distance fell from 61 to 35 basis points and the mean from -23 to -5. More than two fifths of the
+distance fell from 61 to 34 basis points and the mean from -23 to -5. More than two fifths of the
 distance and most of the apparent discount came from leaving out markets that were open.
 
 The same reading is likely for Japan, whose reference follows Nikkei 225 futures while the fund holds a
@@ -332,13 +336,13 @@ nights. It proposed no symbol that did not exist. For five funds it chose exactl
 already used, and for gold it added small silver and euro weights that changed nothing. For the S&P fund
 it added a Nasdaq future and the fit edged from 0.977 to 0.981. For Germany it chose the DAX cash index,
 S&P futures and the euro, and the fit rose from 0.550 to 0.865, and to 0.875 with the model's own
-weights, the error against the open falling from 38 to 23 basis points; the DAX prices from 3am New York, so this
+weights, the error against the open falling from 37 to 23 basis points; the DAX prices from 3am New York, so this
 improves the morning estimate and not the midnight one, as the model's own rationale said. For
 investment-grade credit it chose ten- and thirty-year Treasury futures with a small S&P weight, and the
 fit rose from 0.74 to 0.84.
 
 For emerging markets it chose four Asian cash indices weighted by country, and the first scoring
-appeared to reject the choice: 0.17, against 0.46 for S&P futures alone on the same 47 nights. That
+appeared to reject the choice: 0.16, against 0.46 for S&P futures alone on the same 47 nights. That
 verdict was the author's error, not the model's. The first scoring measured each cash index from its
 previous local close to its latest one, which also contains the index's reaction to the US session that
 had just ended, something the fund's 4pm price already holds. Measured over the indices' own sessions
@@ -362,7 +366,7 @@ on all nine.
 |---|---|---|---|---|---|---|
 | iShares Core S&P 500 (SXR8) | S&P 500 | 100% | 2.1 | 5 | +0.1 | 8 bps, 99.7% |
 | SPDR S&P 500 (SPYL) | S&P 500 | 99.8% | 2.5 | 8 | +0.2 | 9 bps, 97.6% |
-| iShares Core S&P 500 Dist (IUSA) | S&P 500 | 98.0% | 3.0 | 9 | 0.0 | 11 bps, 98.1% |
+| iShares Core S&P 500 Dist (IUSA) | S&P 500 | 98.0% | 3.0 | 8 | 0.0 | 11 bps, 98.1% |
 | Vanguard S&P 500 (VUSA) | S&P 500 | 92.0% | 3.1 | 10 | -0.4 | 12 bps, 96.1% |
 | Invesco EQQQ (EQQQ) | Nasdaq 100 | 90.7% | 5.2 | 15 | -0.4 | 20 bps, 98.6% |
 | SPDR Russell 2000 (ZPRR) | Russell 2000 | 83.2% | 5.3 | 14 | +0.6 | 16 bps, 96.0% |
@@ -386,7 +390,11 @@ trading time each month within a maximum spread and a minimum quote size set for
 loses the mandate in that fund after six consecutive months below the minimum [15, 16]; Blue Ocean's
 2021 regulatory filing discloses no liquidity-provider arrangements and its published trading rules
 describe no quoting obligation [22], and on Nasdaq a market maker's obligation to quote both sides applies
-"during regular market hours", which the SEC's order for the night session leaves unchanged [5, 23]. The
+"during regular market hours", which the SEC's order for the night session leaves unchanged [5, 23].
+Cboe EDGX's published answers on its overnight session say that "there will be no specific market maker
+requirements for the Overnight Trading Session" [25]. 24X has filed an incentive under which a
+participant's trading in its overnight session receives "quintuple credit" in a warrant program [26];
+that rewards trading and is not an obligation to quote. The
 Frankfurt funds' primary market is open during the hours
 measured. Their hedge is a future on their own index. And the Frankfurt morning is those listings' main
 session, not an off-hours one. The data cannot separate these four, and a tape of trades cannot show
@@ -417,6 +425,10 @@ a one-line reason for every change, with its purpose stated per fund.
    [17].
 7. **Keep the record.** Every night's values, inputs, trades and the next morning's official NAV, so the
    value can be graded.
+
+An order priced from an indicative value has been proposed before: in October 2012 Nasdaq filed for an
+"INAV Pegged Order" for ETFs, and in June 2013 it withdrew the filing after the SEC had instituted
+proceedings on it [27].
 
 ## 6. Where a model belongs, and where it does not
 
@@ -459,7 +471,7 @@ a hedge on the fund's own index, an open primary market, an obligation to quote.
 One venue and one period. Everything measured on the US side is Blue Ocean, Sunday to Thursday, before the
 exchanges began overnight sessions; the exchange sessions will have more venues and the funds' own stocks
 trading overnight for the first time, and may have quoting obligations of their own, although Nasdaq's
-approved rules add none. December 6 is the expected
+approved rules add none and Cboe EDGX has said its session will have none [25]. December 6 is the expected
 start, not a certain one.
 
 Trades, not quotes. The tape has no order book, so the report cannot say whether a thin fund had a
@@ -511,7 +523,7 @@ From December 6 the same code captures the exchange sessions night by night, wit
 alongside as the control. Three things are worth measuring in the new regime: whether the thin funds
 start to trade; whether, with a reference rebuilt from home-market prices, any distance or discount
 remains for the foreign funds; and whether the exchanges attach quoting obligations to their overnight
-sessions, which Nasdaq's approved rules do not, and, if any do, whether trading in the thin funds follows. Sixty nights of the new regime
+sessions, which Nasdaq's approved rules and Cboe EDGX's published answers do not, and, if any do, whether trading in the thin funds follows. Sixty nights of the new regime
 reach into early March 2027.
 
 ## 10. Reproducibility
@@ -582,6 +594,10 @@ number is written by the published code from the named data sources.
 | Xetra: at least one Designated Sponsor required for continuous trading in each ETF; quoting in at least 80% of effective trading time, measured monthly; maximum spread and minimum quote size set per instrument; mandate ended after six consecutive months below the requirement | [15], [16] |
 | Blue Ocean ATS: Form ATS-N of 2021 answers "no" on liquidity-provider arrangements; trading rules of May 2021 describe a 15% price band and no quoting obligation | [22] |
 | Nasdaq: a market maker must be willing to buy and sell "on a continuous basis during regular market hours" (Two-Sided Quote Obligation); the order approving 23-hour trading lists market-maker obligations among what will not change, and makes the Market Maker Peg order type unavailable in the night session | [23], [5] |
+| Cboe EDGX: "there will be no specific market maker requirements for the Overnight Trading Session" (questions and answers current as of September 23, 2026) | [25] |
+| 24X: a participant's trading during 24X Overnight Trading receives "quintuple credit (i.e., multiplied by five)" in its Warrant Performance Incentive Program; the multiplier "is intended to incentivize participation in 24X Overnight Trading" (notice of filing, September 23, 2025) | [26] |
+| A vendor's indicative-value calculation service is described as running "23.5 hours, 6 days per week" | [24] |
+| Nasdaq filed for an "INAV Pegged Order" for ETFs (notice October 12, 2012); the SEC instituted proceedings on January 16, 2013; notice of withdrawal June 7, 2013 | [27] |
 | Window: 60 nights, evening of August 13 to morning of November 6, 2026, 12 spanning a weekend or holiday; training 434 nights (437 for IBIT) | `grades.json` (`input_facts`), `fits.json` |
 | Overnight 5-minute bars, 8pm to 3:59am, Sunday to Thursday sessions; 5,760 slots per fund (60 nights of 96); slots with a trade: SPY 5,719; QQQ 5,689; GLD 5,675; IBIT 5,529; SMH 5,331; TLT 4,873; EWJ 1,086; EEM 319; LQD 131; EWG 28. In quarter-hour slots: EWJ 40.9%; EEM 14.3%; LQD 5.6%; EWG 1.4% | [14]; `grades.json` (`overnight_prints`) |
 | Daily opens and closes, two years; 15-minute fund bars with pre- and post-market prints and 5-minute bars for the hedge instruments, about sixty trading days; hourly bars for ES, NQ, NIY, ZB, ZN, GC futures, BTC-USD, JPY=X, EURUSD=X and the cash indices, two years; 15-minute Xetra bars, about sixty trading days; all as downloaded November 9, 2026 | [20] |
@@ -591,7 +607,7 @@ number is written by the published code from the named data sources.
 | Ex-dividend mornings in the window, bps of the prior close: SPY September 18 (24.8); QQQ September 21 (10.4); TLT September 1, October 1, November 2 (38.1, 40.1, 41.9); LQD September 1, October 1, November 2 (41.8, 42.9, 38.4). The feed lacked the two November 2 ex-dates | `grades.json` (`input_facts`); NAV files; [20] |
 | Betas and training R-squared: SPY 0.92/0.90; QQQ 0.93/0.92; SMH 1.62/0.78; EWJ 0.77/0.78; EWG 0.88/0.55; EEM 1.10/0.39; TLT 1.15/0.86; LQD 1.09/0.67; GLD 0.96/0.93; IBIT 1.01/0.95 | `fits.json` |
 | Mean absolute error against the 9:30 open, all grid hours, flat carry vs reference, bps: SPY 36/26; QQQ 67/44; SMH 158/117; EWJ 75/70; EWG 63/57; EEM 99/89; TLT 41/37; LQD 24/22; GLD 97/73; IBIT 140/101. The same reference started from the 4pm close: EWJ 65.8; EWG 55.4; EEM 88.2; IBIT 98.7; SPY 26.3. Open-band coverage: SPY .951; QQQ .918; SMH .888; EWJ .893; EWG .938; EEM .873; TLT .893; LQD .882; GLD .836; IBIT .907 | `grades.json` |
-| Same-instant traded bars against the close-anchored reference: count, median and 90th percentile distance in bps, mean premium: SPY 4,572, 2.4/5.8/+1.5; QQQ 4,542, 3.3/8.9/+1.4; GLD 4,570, 2.6/7.3/+2.0; IBIT 3,838, 3.6/7.4/-1.3; TLT 3,951, 4.9/15.8/-2.4; SMH 4,263, 22.7/73.1/+5.4; EWJ 855, 41.3/86.3/-10.4; EEM 262, 62.2/139.7/-19.9; LQD 113, 6.2/24.4/-3.6; EWG 23, 44.3/224.7/-32.3. Against the NAV-anchored reference, median: SPY 3.7; IBIT 10.9; EWJ 45.1. SPY by hour, 8pm to 3am: 2.2, 2.4, 2.4, 2.4, 2.3, 2.4, 2.4, 2.7 | `grades.json` (`overnight_prints.same_instant`, `.same_instant_nav_anchor`, `.by_hour`) |
+| Same-instant traded bars against the close-anchored reference: count, median and 90th percentile distance in bps, mean premium: SPY 4,572, 2.4/5.8/+1.5; QQQ 4,542, 3.3/8.9/+1.4; GLD 4,570, 2.6/7.3/+2.0; IBIT 3,838, 3.6/7.4/-1.3; TLT 3,951, 4.9/15.8/-2.4; SMH 4,263, 22.7/73.1/+5.4; EWJ 855, 41.3/86.3/-10.4; EEM 262, 62.2/139.7/-19.9; LQD 113, 6.2/24.4/-3.6; EWG 23, 44.3/224.7/-32.3. Against the NAV-anchored reference, median, for the seven funds with an official NAV: SPY 3.7; IBIT 10.9; TLT 5.8; LQD 8.4; EWJ 45.1; EEM 62.6; EWG 39.8 (23 bars). SPY by hour, 8pm to 3am: 2.2, 2.4, 2.4, 2.4, 2.3, 2.4, 2.4, 2.7 | `grades.json` (`overnight_prints.same_instant`, `.same_instant_nav_anchor`, `.by_hour`) |
 | Traded bars left out of the distances because their futures price was older than the print (hourly bars only), with their median distance: SPY 1,099, 3.7; QQQ 1,099, 7.3; GLD 1,057, 10.6; IBIT 1,691, 14.8; TLT 881, 5.0; SMH 1,020, 30.1; EWJ 203, 31.6; EEM 52, 45.1; LQD 17, 5.4; EWG 5, 58.7 | `grades.json` (`overnight_prints.lagged_reference`) |
 | Correlation between the last same-instant traded print's deviation (2am to 4am) and the open's deviation, both from the close-anchored reference, with nights: EEM 0.87 (33); EWJ 0.61 (51); SMH 0.61 (60); QQQ 0.27 (60); GLD 0.24 (60); SPY 0.20 (60); TLT 0.00 (58); IBIT -0.21 (60); LQD -0.22 (18); EWG 5 nights | `grades.json` (`overnight_prints.late_print_vs_open`) |
 | Emerging markets, 25 nights with a late print and all four Asian sessions: correlation of the print's deviation with the sessions' fitted contribution 0.72; median absolute deviation 60.8 bps, 34.5 after removing the contribution; mean -22.6, then -5.1 | `hedge_proposals.json` (`late_prints_vs_added_instruments`) |
@@ -618,11 +634,42 @@ number is written by the published code from the named data sources.
   overnight volume was not verified; secondary summaries of a 2024 regulatory settlement put it at
   about 95%.
 - The approval status of NYSE Arca's and MEMX's overnight sessions is taken from [4]; their individual
-  filings were not read. Market-maker obligations at night were checked for Nasdaq only.
+  filings were not read. Market-maker obligations at night were checked for Nasdaq and Cboe EDGX only.
+- That no indicative value has been announced for the new sessions rests on a web search of November 11,
+  2026 across index and data vendors. A vendor may calculate one for subscribers without announcing it
+  [24].
 - The issuers' fair-value policies were not read; the size of the adjustment is measured from the
   issuers' own two NAV columns.
 - The mapping from foreign holdings to US news tickers was built by hand for the largest fifteen holdings
   of three funds and checked by name; it is in the repository.
+
+## Appendix C. Changes in version 1.1
+
+Version 1 was submitted to SSRN on November 10, 2026 and was listed there by November 13. Version 1.1 adds the
+SSRN identifier to the front matter and changes the passages below. No finding changed. Four figures
+changed by one unit in their last digit (item 6), and one statement now says in how many funds it held
+(item 7).
+
+1. Abstract: "no indicative value is updated" now reads "no indicative value is required". Indicative
+   values are sold as a service that one vendor describes as calculating 23.5 hours a day [24], so the
+   earlier wording claimed more than had been checked.
+2. Section 2: a sentence on that service, with a note in Appendix B on what the search behind it covered.
+3. Finding 8, Section 8 and Section 9: Cboe EDGX's statement that its overnight session will have no
+   specific market-maker requirements [25], and 24X's incentive for overnight trading [26]. Version 1
+   had checked Nasdaq only.
+4. Section 5: the 2012 filing for an order pegged to an indicative value [27].
+5. Appendix A and the references: the four sources behind these changes.
+6. Four figures were one unit too high in version 1. Each had been rounded twice: once when the result
+   files were written and again in the text, so that an 8.48 stored as 8.5 was printed as 9. They are, in
+   Finding 3, the median distance after the Asian sessions are taken out (34 basis points, not 35); in
+   Finding 7, the error of the German estimate before the model's choice (37 basis points, not 38) and
+   the first scoring of the emerging-markets choice (0.16, not 0.17); and in the table of Finding 8, the
+   90th percentile of one fund (8 basis points, not 9). The result files now keep three more digits than
+   the text quotes, so the tie-out compares each figure with a value that has not been rounded before.
+7. Finding 1 said that the overnight prints sat further from a NAV-anchored value than from a
+   close-anchored one and gave two funds as examples. It now gives the count: six of the seven funds
+   that start from an official NAV, the exception being the Germany fund on 23 prints. Appendix A lists
+   all seven.
 
 ## References
 
@@ -649,3 +696,7 @@ number is written by the published code from the named data sources.
 21. Securities and Exchange Commission. Release No. 34-88558, April 2020, SR-CboeBZX-2020-007 (removal of the intraday indicative value requirement from the exchange's ETF listing rules); K&L Gates, *New Listing Rules Adopted for ETFs Relying on Rule 6c-11*, May 5, 2020.
 22. Blue Ocean ATS, LLC. Form ATS-N, effective June 1, 2021 (SEC EDGAR, CIK 1795131); *BOATS Trading Rules*, May 2021.
 23. The Nasdaq Stock Market LLC. Rules, Equity 2, Section 5(a)(1), Two-Sided Quote Obligation; text as set out in Exhibit 5 to SR-NASDAQ-2025-101.
+24. Intercontinental Exchange. *ICE IOPV Calculation Services* (brochure, file dated May 2023). ice.com/publicdocs/ICE_IOPV_Calculation_Services.pdf.
+25. Cboe Global Markets. *Cboe U.S. Equities Overnight Trading FAQ*, version current as of September 23, 2026. cboe.com/document/tech-spec/content/technical-specifications/cboe-u.s.-equities-overnight-trading-faq.
+26. Securities and Exchange Commission. Release No. 34-104018, September 23, 2025, notice of filing of SR-24X-2025-04 (24X National Exchange, Warrant Performance Incentive Program).
+27. Securities and Exchange Commission. Release No. 34-68042, October 12, 2012, notice of filing of SR-NASDAQ-2012-117 (INAV Pegged Orders for ETFs); Release No. 34-68672, January 16, 2013, order instituting proceedings; Release No. 34-69718, June 7, 2013, notice of withdrawal.

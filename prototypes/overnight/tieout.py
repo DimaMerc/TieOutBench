@@ -144,6 +144,31 @@ def main() -> int:
            g["SPY"]["overnight_prints"]["same_instant_nav_anchor"]["median_abs_bps"], spy["same_instant"]["median_abs_bps"],
            g["IBIT"]["overnight_prints"]["same_instant_nav_anchor"]["median_abs_bps"], g["IBIT"]["overnight_prints"]["same_instant"]["median_abs_bps"],
            what="prints, NAV vs close anchor")
+    words = {w: i for i, w in enumerate("zero one two three four five six seven eight nine ten".split())}
+
+    def counted(pattern: str, *actuals, what: str):
+        """As `quoted`, for counts the report writes as words ('six of the seven')."""
+        global FAILS, CHECKS
+        m = re.search(pattern, md, re.S)
+        if not m or any(w.lower() not in words for w in m.groups()):
+            FAILS += 1; CHECKS += 1
+            print(f"  FAIL {what}: sentence not found in the report")
+            return
+        for k, a in enumerate(actuals):
+            check(f"{what} [{k + 1}]", (words[m.group(k + 1).lower()], 0), a)
+
+    def nav_median(t: str) -> float:
+        return g[t]["overnight_prints"]["same_instant_nav_anchor"]["median_abs_bps"]
+
+    with_nav = [t for t in g if g[t]["nav_source"] == "file"]          # the funds whose night starts from an official NAV
+    further = [t for t in with_nav if nav_median(t) > g[t]["overnight_prints"]["same_instant"]["median_abs_bps"]]
+    counted(r"In (\w+) of the (\w+) funds that start from an\s+official NAV the overnight prints also sat further",
+            len(further), len(with_nav), what="funds whose prints sat further from the NAV-anchored value")
+    check("the exception among them is the Germany fund", (1, 0), 1 if set(with_nav) - set(further) == {"EWG"} else 0)
+    quoted(r"the exception is the\s+Germany fund, on (\d+) prints", g["EWG"]["overnight_prints"]["same_instant"]["n"], what="the Germany fund's prints")
+    quoted(r"for the seven funds with an official NAV: SPY ([\d.]+); IBIT ([\d.]+); TLT ([\d.]+); LQD ([\d.]+); EWJ ([\d.]+); EEM ([\d.]+); EWG ([\d.]+) \((\d+) bars\)",
+           nav_median("SPY"), nav_median("IBIT"), nav_median("TLT"), nav_median("LQD"), nav_median("EWJ"), nav_median("EEM"), nav_median("EWG"),
+           g["EWG"]["overnight_prints"]["same_instant_nav_anchor"]["n"], what="Appendix A, NAV-anchored medians")
     quoted(r"On the (\d+) nights with a late trade and all four Asian sessions available, the print's\s+deviation from the reference had a correlation of ([\d.]+)",
            lp["n_nights"], lp["corr_print_deviation_vs_added"], what="emerging markets, late prints")
     quoted(r"median\s+distance fell from (\d+) to (\d+) basis points and the mean from (-\d+) to (-\d+)",

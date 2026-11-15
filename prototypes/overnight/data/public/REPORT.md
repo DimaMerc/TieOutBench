@@ -1,6 +1,6 @@
 # Overnight reference value — backtest summary
 
-Generated 2026-11-09T16:00. All inputs are real market data; see the footnotes for proxies. The reference value is the 4pm NAV moved by the fund's hedge instrument (and currency) since 4pm, with an overnight beta estimated on nights before the test window. The band is nominally 90%. Truth is the next morning's 9:30 opening price.
+Generated 2026-11-15T14:00. All inputs are real market data; see the footnotes for proxies. The reference value is the 4pm NAV moved by the fund's hedge instrument (and currency) since 4pm, with an overnight beta estimated on nights before the test window. The band is nominally 90%. Truth is the next morning's 9:30 opening price.
 
 ## By fund
 
@@ -25,7 +25,7 @@ Reading the table: *MAE naive* is the error of carrying the 4pm NAV flat through
 |---|---|---|---|---|---|---|---|---|---|---|
 | SPY | 5760 | 5719 | 99.3% | 99.4% | 4572 | 1.5 | 2.4 | 5.8 | 0.0000 | 0.20 (60) |
 | QQQ | 5760 | 5689 | 98.8% | 98.9% | 4542 | 1.4 | 3.3 | 8.9 | 0.0000 | 0.27 (60) |
-| SMH | 5760 | 5331 | 92.5% | 98.5% | 4263 | 5.4 | 22.7 | 73.1 | 0.0000 | 0.61 (60) |
+| SMH | 5760 | 5331 | 92.6% | 98.5% | 4263 | 5.4 | 22.7 | 73.1 | 0.0000 | 0.61 (60) |
 | EWJ | 5760 | 1086 | 18.9% | 40.9% | 855 | -10.4 | 41.3 | 86.3 | 0.0456 | 0.61 (51) |
 | EWG | 5760 | 28 | 0.5% | 1.4% | 23 | -32.3 | 44.3 | 224.7 | 0.1739 | -0.27 (5) |
 | EEM | 5760 | 319 | 5.5% | 14.3% | 262 | -19.9 | 62.2 | 139.7 | 0.0267 | 0.87 (33) |

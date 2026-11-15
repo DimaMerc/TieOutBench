@@ -168,7 +168,7 @@ def t_frankfurt_slots():
             for d in (2, 3, 4, 5, 6, 9, 10, 11, 12, 13)]
     a = analyse({"records": recs}, calendar=[r["date"] for r in recs])
     check("share of slots traded is counted against the session's slots, not the bars returned",
-          a["slots_before_us_open"] == 260 and a["traded_bars"] == 40 and abs(a["traded_share"] - 0.154) < 1e-9, str({k: a[k] for k in ("slots_before_us_open", "traded_bars", "traded_share")}))
+          a["slots_before_us_open"] == 260 and a["traded_bars"] == 40 and abs(a["traded_share"] - 40 / 260) < 1e-6, str({k: a[k] for k in ("slots_before_us_open", "traded_bars", "traded_share")}))
 
 
 def t_hedge_session():

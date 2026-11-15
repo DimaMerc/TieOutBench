@@ -19,6 +19,7 @@ sys.path.insert(0, HERE)
 from build_checker import CSS, find_pandoc  # noqa: E402  (the shared print stylesheet and pandoc lookup)
 
 STEM = "etf-overnight-reference-value-v1"
+PAGETITLE = "After the Close: overnight ETF reference value report"     # the PDF's document title
 SRC = os.path.join(HERE, STEM + ".md")
 EDGE = r"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe"
 PANDOC = find_pandoc()
@@ -48,7 +49,7 @@ def build_pdf(md: str) -> str:
     try:
         subprocess.run([PANDOC, tmp_md, "-o", tmp_html, "--from", "markdown", "--to", "html5",
                         "--standalone", "--embed-resources", "--resource-path", HERE,
-                        "--css", tmp_css, "--metadata", "pagetitle=After the Close: overnight ETF reference value report"],
+                        "--css", tmp_css, "--metadata", "pagetitle=" + PAGETITLE],
                        check=True, cwd=HERE)
         # Print to a fresh file and wait for it. With another Edge window open the launcher can return
         # before the page is printed (or without printing at all); validating the old PDF at `out` would

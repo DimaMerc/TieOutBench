@@ -27,6 +27,16 @@ for _d in (CACHE, OUT, NAV_DIR, HOLD_DIR):
 
 UA = "TieOutBench overnight prototype (research; standard library urllib)"
 
+KEEP = 3   # digits kept in the result files beyond the precision a figure is quoted at
+
+
+def stored(x, nd: int):
+    """A figure for a result file. `nd` is the precision the report quotes it at; the file keeps KEEP
+    digits more, so that the report rounds a figure once. Stored at `nd`, an 8.48 kept as 8.5 is rounded a
+    second time on its way into the text and comes out as 9."""
+    return None if x is None else round(x, nd + KEEP)
+
+
 # ---------------- pins: which snapshot of the feeds, and where the window ends ----------------
 # The public chart feed serves a rolling window (about sixty trading days of intraday bars), so the
 # same command gives a different answer on a different day. Two pins make a run repeatable:

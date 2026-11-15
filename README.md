@@ -100,6 +100,14 @@ in [`outputs/`](outputs/), consolidated in [`LEADERBOARD.md`](LEADERBOARD.md).
 > fixture's mechanics against public documents and the eight-model grid. It is on
 > [SSRN (abstract 7655899)](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7655899), DOI [10.2139/ssrn.7655899](https://doi.org/10.2139/ssrn.7655899), with its own page at
 > [evals.finance/options-paper](https://evals.finance/options-paper); source, builder and the SSRN package are under `paper/`.
+>
+> The fourth report (November 2026), *After the Close: What ETF Shares Are Worth When Nobody Can Create or Redeem*,
+> measures a market rather than a model: sixty nights of overnight trading in ten US ETFs against a reference value
+> built from futures, with a Frankfurt control, before the exchanges begin overnight sessions. It is on
+> [SSRN (abstract 7688088)](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7688088), DOI [10.2139/ssrn.7688088](https://doi.org/10.2139/ssrn.7688088),
+> where it is listed under its subtitle, with its own page at
+> [evals.finance/overnight-paper](https://evals.finance/overnight-paper). The code, its self-test, the result files behind
+> every table and the script that checks the report against them are under [`prototypes/overnight/`](prototypes/overnight/).
 
 ## The eight evals in detail
 

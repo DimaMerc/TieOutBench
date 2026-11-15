@@ -5,7 +5,7 @@ import os
 import statistics
 
 from .config import FUNDS, GRID_HOURS, BAND_CONFIDENCE
-from .util import OUT, read_json, write_json
+from .util import OUT, read_json, stored, write_json
 
 
 def _bps(a: float, b: float) -> float:
@@ -45,8 +45,8 @@ def _dist(xs: list) -> dict:
     if not xs:
         return {"n": 0, "mean_premium_bps": None, "median_abs_bps": None, "p90_abs_bps": None}
     ab = sorted(abs(x) for x in xs)
-    return {"n": len(xs), "mean_premium_bps": round(statistics.fmean(xs), 1),
-            "median_abs_bps": round(statistics.median(ab), 1), "p90_abs_bps": round(ab[int(0.9 * (len(ab) - 1))], 1)}
+    return {"n": len(xs), "mean_premium_bps": stored(statistics.fmean(xs), 1),
+            "median_abs_bps": stored(statistics.median(ab), 1), "p90_abs_bps": stored(ab[int(0.9 * (len(ab) - 1))], 1)}
 
 
 def _trading_band_summary(doc: dict) -> dict | None:
@@ -67,9 +67,9 @@ def _trading_band_summary(doc: dict) -> dict | None:
             if g.get("half_trade_bps") is not None and g.get("half_emp_bps") is not None:
                 halves_trade.append(g["half_trade_bps"]); halves_open.append(g["half_emp_bps"])
     return dict(tb, evaluation_traded_prints=total, evaluation_prints_inside=inside,
-                coverage_traded_prints=round(inside / total, 3) if total else None,
-                mean_half_trade_bps=round(statistics.fmean(halves_trade), 1) if halves_trade else None,
-                mean_half_open_bps=round(statistics.fmean(halves_open), 1) if halves_open else None)
+                coverage_traded_prints=stored(inside / total, 3) if total else None,
+                mean_half_trade_bps=stored(statistics.fmean(halves_trade), 1) if halves_trade else None,
+                mean_half_open_bps=stored(statistics.fmean(halves_open), 1) if halves_open else None)
 
 
 def grade_fund(doc: dict) -> dict:
@@ -105,14 +105,14 @@ def grade_fund(doc: dict) -> dict:
             continue
         by_hour[str(h)] = {
             "n": len(hr),
-            "mae_ref_bps": round(_mae([x["err_ref"] for x in hr]), 1),
-            "mae_naive_bps": round(_mae([x["err_naive"] for x in hr]), 1),
-            "median_ref_bps": round(_median([x["err_ref"] for x in hr]), 1),
-            "coverage": round(sum(1 for x in hr if x["covered"]) / len(hr), 3),
-            "mean_half_bps": round(statistics.fmean(x["half_bps"] for x in hr), 1),
-            "coverage_emp": round(sum(1 for x in hr if x["covered_emp"]) / len(hr), 3) if all(x["covered_emp"] is not None for x in hr) else None,
-            "mean_half_emp_bps": round(statistics.fmean(x["half_emp_bps"] for x in hr), 1) if all(x["half_emp_bps"] is not None for x in hr) else None,
-            "usable_share": round(sum(1 for x in hr if x["status"] == "usable") / len(hr), 3),
+            "mae_ref_bps": stored(_mae([x["err_ref"] for x in hr]), 1),
+            "mae_naive_bps": stored(_mae([x["err_naive"] for x in hr]), 1),
+            "median_ref_bps": stored(_median([x["err_ref"] for x in hr]), 1),
+            "coverage": stored(sum(1 for x in hr if x["covered"]) / len(hr), 3),
+            "mean_half_bps": stored(statistics.fmean(x["half_bps"] for x in hr), 1),
+            "coverage_emp": stored(sum(1 for x in hr if x["covered_emp"]) / len(hr), 3) if all(x["covered_emp"] is not None for x in hr) else None,
+            "mean_half_emp_bps": stored(statistics.fmean(x["half_emp_bps"] for x in hr), 1) if all(x["half_emp_bps"] is not None for x in hr) else None,
+            "usable_share": stored(sum(1 for x in hr if x["status"] == "usable") / len(hr), 3),
         }
 
     usable = [x for x in rows if x["err_ref"] is not None]
@@ -121,20 +121,20 @@ def grade_fund(doc: dict) -> dict:
     summary = {
         "ticker": doc["ticker"], "kind": doc["spec"]["kind"], "hedge": doc["fit"]["hedge"],
         "n_test_nights": len(nights), "n_train_nights": doc["n_train"],
-        "beta": round(doc["fit"]["beta"], 3), "gamma": round(doc["fit"].get("gamma", 0.0), 3),
-        "r2_train": round(doc["fit"]["r2"], 3),
-        "sigma_resid_bps": round(doc["fit"]["sigma_resid"] * 1e4, 1),
-        "mae_ref_bps_all_hours": round(_mae([x["err_ref"] for x in usable]), 1) if usable else None,
-        "mae_naive_bps": round(_mae([x["err_naive"] for x in usable]), 1) if usable else None,
-        "mae_ref_close_anchor_bps_all_hours": round(_mae([x["err_ref_close"] for x in usable]), 1) if usable else None,
-        "mae_naive_close_anchor_bps": round(_mae([x["err_naive_close"] for x in usable]), 1) if usable else None,
-        "coverage_all_hours": round(sum(1 for x in usable if x["covered"]) / len(usable), 3) if usable else None,
-        "coverage_emp_all_hours": round(sum(1 for x in usable if x["covered_emp"]) / len(usable), 3) if usable and all(x["covered_emp"] is not None for x in usable) else None,
-        "sigma_resid_test_bps": round(doc["fit"]["sigma_resid_test"] * 1e4, 1) if doc["fit"].get("sigma_resid_test") else None,
+        "beta": stored(doc["fit"]["beta"], 3), "gamma": stored(doc["fit"].get("gamma", 0.0), 3),
+        "r2_train": stored(doc["fit"]["r2"], 3),
+        "sigma_resid_bps": stored(doc["fit"]["sigma_resid"] * 1e4, 1),
+        "mae_ref_bps_all_hours": stored(_mae([x["err_ref"] for x in usable]), 1) if usable else None,
+        "mae_naive_bps": stored(_mae([x["err_naive"] for x in usable]), 1) if usable else None,
+        "mae_ref_close_anchor_bps_all_hours": stored(_mae([x["err_ref_close"] for x in usable]), 1) if usable else None,
+        "mae_naive_close_anchor_bps": stored(_mae([x["err_naive_close"] for x in usable]), 1) if usable else None,
+        "coverage_all_hours": stored(sum(1 for x in usable if x["covered"]) / len(usable), 3) if usable else None,
+        "coverage_emp_all_hours": stored(sum(1 for x in usable if x["covered_emp"]) / len(usable), 3) if usable and all(x["covered_emp"] is not None for x in usable) else None,
+        "sigma_resid_test_bps": stored(doc["fit"]["sigma_resid_test"] * 1e4, 1) if doc["fit"].get("sigma_resid_test") else None,
         "nominal_coverage": BAND_CONFIDENCE,
         "static_band_ever_binding": any(not x["static_covers"] for x in rows),
         "nights_moved_over_100bps": len(big),
-        "share_usable": round(len(usable) / len(rows), 3) if rows else None,
+        "share_usable": stored(len(usable) / len(rows), 3) if rows else None,
         "by_hour": by_hour,
         "nav_source": doc["test"][0].get("nav_source") or ("file" if not any("nav_proxy_close" in r["flags"] for r in doc["test"]) else "proxy_close"),
         "dividend_source": "issuer_file" if any(f.startswith("exdiv") for r in doc["test"] for f in r["flags"]) and doc["test"][0].get("nav_source") == "file" else "feed_or_none",
@@ -152,13 +152,13 @@ def grade_fund(doc: dict) -> dict:
     summary["input_facts"] = {
         "test_from": doc["test"][0]["date"], "test_to_morning": doc["test"][-1]["next_date"],
         "nights_spanning_weekend_or_holiday": sum(1 for r in doc["test"] if r.get("weekend_or_holiday_gap")),
-        "close_vs_official_nav_median_abs_bps": round(statistics.median(cv), 1) if cv else None,
-        "close_vs_official_nav_max_abs_bps": round(max(cv), 1) if cv else None,
-        "fair_value_adjustment_median_abs_bps": round(statistics.median(x for x, _ in fv), 1) if fv else None,
-        "fair_value_adjustment_max_abs_bps": round(max(fv)[0], 1) if fv else None,
+        "close_vs_official_nav_median_abs_bps": stored(statistics.median(cv), 1) if cv else None,
+        "close_vs_official_nav_max_abs_bps": stored(max(cv), 1) if cv else None,
+        "fair_value_adjustment_median_abs_bps": stored(statistics.median(x for x, _ in fv), 1) if fv else None,
+        "fair_value_adjustment_max_abs_bps": stored(max(fv)[0], 1) if fv else None,
         "fair_value_adjustment_max_date": max(fv)[1] if fv else None,
         "ex_dividend_mornings": [{"ex_date": r["next_date"], "amount": r["dividend_next"],
-                                  "bps_of_close": round(r["dividend_next"] / r["close"] * 1e4, 1)}
+                                  "bps_of_close": stored(r["dividend_next"] / r["close"] * 1e4, 1)}
                                  for r in doc["test"] if r.get("dividend_next")],
         "static_band_min_room_bps": round(min(room)) if room else None,
         "sale_1945_times_used": sorted({(r.get("sale_1945_time") or "none")[11:16] for r in doc["test"]}),
@@ -205,22 +205,22 @@ def grade_fund(doc: dict) -> dict:
         summary["overnight_prints"] = {
             "anchor": "close",
             "session_slots": slots, "bars_in_feed": bars, "traded_bars": traded,
-            "traded_share": round(traded / slots, 4) if slots else None,
-            "traded_share_15min_slots": round(slots15_traded / (slots / 3), 4) if slots else None,
+            "traded_share": stored(traded / slots, 4) if slots else None,
+            "traded_share_15min_slots": stored(slots15_traded / (slots / 3), 4) if slots else None,
             "nights_with_a_trade": nights_with_trade, "total_volume": vol,
             # the headline figures: traded bars whose futures price is of the same instant
-            "same_instant": dict(_dist(same), share_outside_open_band=round(sum(outside) / len(outside), 4) if outside else None),
+            "same_instant": dict(_dist(same), share_outside_open_band=stored(sum(outside) / len(outside), 4) if outside else None),
             "same_instant_nav_anchor": _dist(same_nav),
             # traded bars on nights with hourly futures bars only, not ending on the hour: the futures
             # price is up to 55 minutes older than the print. Reported, not used.
             "lagged_reference": _dist(lagged),
             "traded_bars_by_hedge_resolution": res_count,
             "trading_band": _trading_band_summary(doc),
-            "by_hour": {str(h): {"n": len(v), "mean_bps": round(statistics.fmean(v), 1),
-                                 "median_abs_bps": round(statistics.median(abs(x) for x in v), 1)}
+            "by_hour": {str(h): {"n": len(v), "mean_bps": stored(statistics.fmean(v), 1),
+                                 "median_abs_bps": stored(statistics.median(abs(x) for x in v), 1)}
                         for h, v in sorted(by_hour_p.items(), key=lambda kv: (kv[0] < 12, kv[0]))},
-            "late_print_vs_open": {"n_nights": len(late_x), "corr": round(c, 2) if c is not None else None,
-                                   "median_abs_print_bps": round(statistics.median(abs(x) for x in late_x), 1) if late_x else None,
+            "late_print_vs_open": {"n_nights": len(late_x), "corr": stored(c, 2) if c is not None else None,
+                                   "median_abs_print_bps": stored(statistics.median(abs(x) for x in late_x), 1) if late_x else None,
                                    "definition": "last same-instant traded print 02:00-03:59 vs the open, both as deviations from the close-anchored reference"},
         }
     return {"summary": summary, "rows": rows}
@@ -275,15 +275,15 @@ def grade_evidence_fund(ticker: str) -> dict | None:
         scored = m["runs"] - m["errors"]
         out[mk] = {
             "runs": m["runs"], "scored": scored, "errors": m["errors"],
-            "violation_rate": round(m["violations"] / scored, 3) if scored else None,
-            "flag_rate": round(m["flags"] / scored, 3) if scored else None,
-            "event_rate": round(m["events"] / scored, 3) if scored else None,
-            "precision": round(m["flag_and_event"] / m["flags"], 3) if m["flags"] else None,
-            "recall": round(m["flag_and_event"] / m["events"], 3) if m["events"] else None,
-            "sign_accuracy": round(m["sign_hits"] / m["sign_checks"], 3) if m["sign_checks"] else None,
+            "violation_rate": stored(m["violations"] / scored, 3) if scored else None,
+            "flag_rate": stored(m["flags"] / scored, 3) if scored else None,
+            "event_rate": stored(m["events"] / scored, 3) if scored else None,
+            "precision": stored(m["flag_and_event"] / m["flags"], 3) if m["flags"] else None,
+            "recall": stored(m["flag_and_event"] / m["events"], 3) if m["events"] else None,
+            "sign_accuracy": stored(m["sign_hits"] / m["sign_checks"], 3) if m["sign_checks"] else None,
             "sign_checks": m["sign_checks"],
-            "median_abs_dev_quiet_bps": round(statistics.median(m["dev_quiet"]), 1) if m["dev_quiet"] else None,
-            "median_abs_dev_flagged_bps": round(statistics.median(m["dev_flag"]), 1) if m["dev_flag"] else None,
+            "median_abs_dev_quiet_bps": stored(statistics.median(m["dev_quiet"]), 1) if m["dev_quiet"] else None,
+            "median_abs_dev_flagged_bps": stored(statistics.median(m["dev_flag"]), 1) if m["dev_flag"] else None,
             "tokens_in": m["tokens_in"], "tokens_out": m["tokens_out"],
             "by_hour": m["by_hour"],
         }

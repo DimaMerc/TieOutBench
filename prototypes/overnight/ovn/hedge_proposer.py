@@ -21,7 +21,7 @@ from . import yahoo
 from .config import FUNDS, EVIDENCE_MODELS
 from .model import ols
 from .nights import trading_days, _ret, fund_dividends
-from .util import OUT, at, write_json, read_json
+from .util import OUT, at, stored, write_json, read_json
 from . import evidence as ev
 
 UNIVERSE = {
@@ -213,8 +213,8 @@ def _oos(train: list, test: list, cols: list, fixed_weights: dict | None, requir
     ybar = sum(y) / len(y)
     sse = sum((a - p) ** 2 for a, p in zip(y, pred)); sst = sum((a - ybar) ** 2 for a in y) or 1e-18
     mae = statistics.fmean(abs(a - p) for a, p in zip(y, pred)) * 1e4
-    return {"r2_oos": round(1 - sse / sst, 3), "mae_bps": round(mae, 1), "r2_train": round(f["r2"], 3),
-            "n_train": len(tr), "n_test": len(te), "coef": {s: round(c, 3) for s, c in zip(cols, b[1:])}}
+    return {"r2_oos": stored(1 - sse / sst, 3), "mae_bps": stored(mae, 1), "r2_train": stored(f["r2"], 3),
+            "n_train": len(tr), "n_test": len(te), "coef": {s: stored(c, 3) for s, c in zip(cols, b[1:])}}
 
 
 def late_print_check(ticker: str, base_cols: list, all_cols: list, nights: int = 60) -> dict | None:
@@ -269,12 +269,12 @@ def late_print_check(ticker: str, base_cols: list, all_cols: list, nights: int =
         return {"n_nights": len(xs), "note": "too few nights with a late print for a comparison"}
     res = [x - z for x, z in zip(xs, zs)]
     c = _corr(xs, zs)
-    return {"n_nights": len(xs), "added_instruments": extra, "coef_added": {k: round(coef[k], 3) for k in extra},
-            "corr_print_deviation_vs_added": round(c, 2) if c is not None else None,
-            "median_abs_print_deviation_bps": round(statistics.median(abs(x) for x in xs), 1),
-            "median_abs_after_added_bps": round(statistics.median(abs(x) for x in res), 1),
-            "mean_print_deviation_bps": round(statistics.fmean(xs), 1),
-            "mean_after_added_bps": round(statistics.fmean(res), 1),
+    return {"n_nights": len(xs), "added_instruments": extra, "coef_added": {k: stored(coef[k], 3) for k in extra},
+            "corr_print_deviation_vs_added": stored(c, 2) if c is not None else None,
+            "median_abs_print_deviation_bps": stored(statistics.median(abs(x) for x in xs), 1),
+            "median_abs_after_added_bps": stored(statistics.median(abs(x) for x in res), 1),
+            "mean_print_deviation_bps": stored(statistics.fmean(xs), 1),
+            "mean_after_added_bps": stored(statistics.fmean(res), 1),
             "definition": "last same-instant traded print 02:00-03:59 against the published close-anchored reference; "
                           "added = training-fitted coefficients times the added instruments' returns to the print's time"}
 

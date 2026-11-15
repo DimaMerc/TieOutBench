@@ -76,6 +76,11 @@ can be rebuilt only from the downloads of November 9, 2026, which are the feed's
 repository. On a later day the same commands, without `--asof`, measure a later window. `tieout.py` and
 `selftest.py` need no data beyond what is committed.
 
+The result files keep three more digits than the report quotes (`ovn/util.py: stored`), so the report
+rounds each figure once. Version 1 of the report was written from files that stored figures at the
+quoted precision, and four of its figures were rounded twice and came out one unit too high; version 1.1
+corrects them (the report's Appendix C).
+
 Keys are read from the environment or the repo-root `.env` (gitignored), as the harness does:
 `TIINGO_API_KEY`, `ALPHAVANTAGE_API_KEY` (or `ALPHA_VANTAGE_API_KEY`), and for the models
 `ANTHROPIC_API_KEY`, `OPENAI_API_KEY`, `GEMINI_API_KEY`. No key is written to disk by this code.

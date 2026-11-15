@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>After the Close — technical report | evals.finance</title>
+<meta name="description" content="What ETF shares are worth when nobody can create or redeem: sixty nights of overnight trading in ten US ETFs, measured against a reference value built from futures, before the exchanges begin overnight sessions, with a Frankfurt control. The liquid funds trade at their value all night; the thin funds mostly do not trade.">
+<meta name="author" content="Dmitry Krutous">
+<link rel="canonical" href="https://evals.finance/overnight-paper">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="evals.finance">
+<meta property="og:title" content="After the Close: What ETF Shares Are Worth When Nobody Can Create or Redeem">
+<meta property="og:description" content="Sixty nights of overnight trading in ten US ETFs against a reference value built from futures, before the exchanges begin overnight sessions. The S&amp;P 500 fund trades within a median 2.4 basis points of its value in every hour of the night; the German stocks fund traded in one five-minute window in two hundred. Technical report, November 2026, on SSRN; real market data, every table checked against the published result files.">
+<meta property="og:url" content="https://evals.finance/overnight-paper">
+<meta property="og:image" content="https://evals.finance/og-overnight-paper.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="After the close: what is an ETF worth? Ten US ETFs, sixty nights, August 13 to November 6, 2026: 6 of 10 funds traded nearly all night; the S&amp;P 500 fund a median 2.4 basis points from its value; one five-minute window in 200 traded for the German stocks fund; nine Frankfurt funds a median 2 to 6 basis points from value.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="After the Close — technical report">
+<meta name="twitter:description" content="Sixty nights of overnight trading in ten US ETFs against a reference value built from futures: the liquid funds trade at their value all night, the thin funds mostly do not trade.">
+<meta name="twitter:image" content="https://evals.finance/og-overnight-paper.png">
+<style>
+  :root{
+    --bg:#ffffff; --fg:#16243b; --mute:#5b6878; --line:#dbe3ec;
+    --accent:#0f4c81; --panel:#f6f9fc; --red:#b03a2e;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{ --bg:#0f1721; --fg:#e8eef6; --mute:#9dabbc; --line:#25313f;
+           --accent:#7fb2e5; --panel:#161f2b; --red:#e8836f; }
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--fg);
+    font:16px/1.62 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  .wrap{max-width:760px;margin:0 auto;padding:56px 22px 72px}
+  header{border-bottom:1px solid var(--line);padding-bottom:26px;margin-bottom:30px}
+  h1{font-size:1.72rem;line-height:1.25;margin:0 0 6px}
+  .role{color:var(--mute);font-size:1.03rem;margin:0 0 14px}
+  h2{font-size:1.16rem;margin:38px 0 12px}
+  p{margin:0 0 14px}
+  a{color:var(--accent)}
+  a:hover{text-decoration:none}
+  .meta{color:var(--mute);font-size:.94rem}
+  .links{margin:18px 0 0}
+  .panel{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:0 0 16px}
+  .panel p:last-child{margin-bottom:0}
+  .tablewrap{overflow-x:auto;margin:0 0 16px}
+  table{border-collapse:collapse;width:100%;font-size:.94rem;min-width:420px}
+  th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line)}
+  th{font-weight:600;color:var(--mute);font-size:.86rem;text-transform:uppercase;letter-spacing:.04em}
+  td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+  td.gate{color:var(--red)}
+  .caveat{color:var(--mute);font-size:.92rem;font-style:italic}
+  footer{border-top:1px solid var(--line);margin-top:46px;padding-top:22px;color:var(--mute);font-size:.93rem}
+  .crumb{font-size:.92rem;color:var(--mute);margin:0 0 22px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<p class="crumb"><a href="/">evals.finance</a> · technical reports · the fourth report</p>
+
+<header>
+  <h1>After the Close</h1>
+  <p class="role">What ETF shares are worth when nobody can create or redeem</p>
+  <p class="meta">Dmitry Krutous · Technical report, November 2026, version 1.1 · SSRN abstract 7688088 · DOI 10.2139/ssrn.7688088 · Fourth in the TieOutBench series. On SSRN the report is listed under its subtitle, "Sixty Nights of Overnight Trading in Ten US ETFs, Measured Before the Exchanges Begin Overnight Sessions, With a Frankfurt Control".</p>
+  <p class="links">
+    <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7688088"><strong>Read it on SSRN</strong></a> ·
+    <a href="/overnight-paper.pdf">PDF (23 pages)</a> ·
+    <a href="https://github.com/DimaMerc/TieOutBench/tree/main/prototypes/overnight">The code and its self-test</a> ·
+    <a href="https://github.com/DimaMerc/TieOutBench/tree/main/prototypes/overnight/data/public">The result files behind every table</a> ·
+    <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7243025">The first report</a> ·
+    <a href="/checker-paper">The second report</a> ·
+    <a href="/options-paper">The third report</a>
+  </p>
+</header>
+
+<h2>What was measured</h2>
+<p>On December 6, 2026 five US exchanges are due to begin trading 23 hours a day. During the day an ETF's price stays close to the value of its holdings because large dealers can create or redeem shares against that value. At night they cannot: a creation or redemption placed at night is an order for the next day's net asset value, no indicative value is required, and the only reference the exchanges will supply is a static band 20% either side of the close.</p>
+<p>This report measures how far prices move from value in those hours, before the market changes. For ten US ETFs over sixty nights, August 13 to November 6, 2026, every five-minute bar of overnight trading on Blue Ocean, the main overnight venue, was compared with a reference value built from the instruments that do trade through the night: index, Treasury and gold futures, bitcoin, and the yen and euro.</p>
+
+<div class="tablewrap">
+<table>
+  <thead><tr><th>Fund</th><th class="num">Five-minute windows with a trade</th><th class="num">Median distance from the reference</th></tr></thead>
+  <tbody>
+    <tr><td>S&amp;P 500 (SPY)</td><td class="num">99.3%</td><td class="num">2.4 bps</td></tr>
+    <tr><td>Nasdaq 100 (QQQ)</td><td class="num">98.8%</td><td class="num">3.3 bps</td></tr>
+    <tr><td>Gold (GLD)</td><td class="num">98.5%</td><td class="num">2.6 bps</td></tr>
+    <tr><td>Bitcoin (IBIT)</td><td class="num">96.0%</td><td class="num">3.6 bps</td></tr>
+    <tr><td>Semiconductors (SMH)</td><td class="num">92.6%</td><td class="num">23 bps</td></tr>
+    <tr><td>Long Treasuries (TLT)</td><td class="num">84.6%</td><td class="num">4.9 bps</td></tr>
+    <tr><td>Japan (EWJ)</td><td class="num">18.9%</td><td class="num">41 bps</td></tr>
+    <tr><td>Emerging markets (EEM)</td><td class="num">5.5%</td><td class="num">62 bps</td></tr>
+    <tr><td>Investment-grade credit (LQD)</td><td class="num">2.3%</td><td class="num">6 bps</td></tr>
+    <tr><td>Germany (EWG)</td><td class="num">0.5%</td><td class="num">44 bps</td></tr>
+  </tbody>
+</table>
+</div>
+<p class="caveat">Windows: 8pm to 4am New York time, Sunday to Thursday sessions. Distance: the median gap, in basis points, between a traded bar and the reference value at the same instant.</p>
+
+<h2>What happened</h2>
+<div class="panel">
+  <p>The liquid funds already trade at their value all night, the S&amp;P 500 fund within a median 2.4 basis points in every hour, with no creation window open. The funds holding foreign stocks and corporate bonds mostly do not trade: in one five-minute window in two hundred for Germany and one in eighteen for emerging markets.</p>
+</div>
+<p>When the foreign funds do trade, the prints are forty to sixty basis points from the reference, and the evidence indicates that the reference is at fault, not the prints. The deviations predict the next morning's open, and for emerging markets more than two fifths of the distance disappears once the Asian sessions, which a futures-only reference ignores, are added.</p>
+<p>A reference value with two calibrated bands was built and tested out of sample. The band for where a fund will open covered the open between 84% and 95% of the time across the ten funds, against a promise of 90%. The band for where a fund should trade now is about ten times tighter for the liquid funds and holds only while volatility stays where it was calibrated.</p>
+<p>Four language models reading the night's news for the funds' holdings added no information beyond futures and the tape. A model choosing a fund's hedge instruments, scored on a held-out test, improved the fit for Germany and for investment-grade credit.</p>
+
+<h2>The Frankfurt control</h2>
+<p>Nine Xetra-listed funds on US indices are priced every morning while New York is closed. They trade within two to six basis points of futures-implied value on every listing, including listings that trade in a third of the quarter-hours. A closed underlying does not move prices away from value where a futures hedge trades. What the thin US funds lack at night is trading, and whether quoting obligations of the kind Frankfurt has would supply it is a question this data cannot answer and the December sessions may.</p>
+
+<p class="caveat">One venue and one period, before the exchange sessions exist. All market data is real; the overnight bars are licensed and are not in the repository, the result files behind every table are, with a script that checks 259 figures of the report against them. Not advice regarding any security.</p>
+
+<footer>
+  <p><a href="/">Back to evals.finance</a> · <a href="https://github.com/DimaMerc/TieOutBench">Repository on GitHub</a> · <a href="https://www.linkedin.com/in/dmitrykrutous">LinkedIn</a></p>
+</footer>
+
+</div>
+<script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>
