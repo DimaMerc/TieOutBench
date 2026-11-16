@@ -37,6 +37,16 @@ cannot undo it (read on 2026-11-15 as search summaries of elsevier.support/ssrn/
 .../how-do-i-revise-a-submission; the pages themselves did not open). Left for the author: that upload, the LinkedIn
 Publications entry and the Featured card.
 
+**Status on 2026-11-16: the revision is live.** Step (1) was done on 2026-11-15 (commit d6be05b, pushed; the site page
+and the served PDF were live afterwards). On the morning of 2026-11-16 the public page showed "Posted: 13 Nov 2026",
+"Last revised: 16 Nov 2026", 23 pages (the length of version 1.1; the version 1 build of 2026-11-10 was recorded at 21
+pages) and the abstract with "no indicative value is required". This is from the author's screenshots of the page and
+of the My Papers table; the page refuses automated requests and was not read from here, and the PDF's first page was
+not in the screenshots. In the table: last updated 11/16/2026, status APPROVED (the three earlier reports show
+DISTRIBUTED), 90 abstract views and 41 downloads. The page's related alerts are "Mutual Funds, Hedge Funds &
+Investment Industry" and "Capital Markets: Market Microstructure". A note above the table says "Revising a paper does
+not make it eligible for re-distribution in our Alerts". The driver post was published the same morning.
+
 Everything to paste into the SSRN submission form. The PDF to upload: `paper/etf-overnight-reference-value-v1.pdf`,
 built by `python paper/build_overnight.py` (23 pages, tables only, no figures; current build 2026-11-15, version 1.1).
 If the PDF is open in a viewer the build cannot replace it: it prints a NOTE and writes

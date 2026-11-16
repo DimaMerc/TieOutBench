@@ -1,0 +1,5 @@
+The report: Sixty Nights of Overnight Trading in Ten US ETFs, Measured Before the Exchanges Begin Overnight Sessions, With a Frankfurt Control. SSRN: https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7688088
+
+Code and the result files behind every table: github.com/DimaMerc/TieOutBench, folder prototypes/overnight. Standard-library Python, with a script that checks the report's tables against the files. The overnight bars themselves are licensed market data and are not in the repository.
+
+Earlier reports in the series: the TieOutBench suite (DOI 10.2139/ssrn.7243025), the checker report (10.2139/ssrn.7611299) and the options-redemption report (10.2139/ssrn.7655899).

@@ -1,0 +1,188 @@
+Runbook for the overnight-ETF report and post (drafted Nov 9, 2026; revised Nov 9 after the recheck and Nov 10 after his read)
+STATUS: POSTED on the morning of Monday Nov 16, 2026 (ET), by his report ("it's out"). The revision of the report
+on SSRN (version 1.1) was submitted before it. The notes below are kept as the record and for replies.
+
+WHICH FILE IS THE POST
+- Post body: content/linkedin-post-overnight-paste.txt (plain ASCII, paste as plain text). Rewritten Nov 10: one
+  result per team (issuers, exchanges, Frankfurt, fund administrators, AI teams), each with a number and
+  what it means for that team.
+- First comment: content/linkedin-post-overnight-first-comment-paste.txt. Since Nov 15 it carries the live SSRN
+  link and names the report by the title SSRN lists it under ("Sixty Nights of Overnight Trading in Ten US
+  ETFs, ..."), so the comment matches the page it opens. The PDF's first line is still "After the Close: ...".
+- content/linkedin-post-overnight-driver.txt = the same body under a short header (not for pasting).
+- Image: assets/post-overnight-windows.png (1080x1350), built by assets/make_card_overnight.py from
+  prototypes/overnight/data/public/grades.json: share of five-minute windows with a trade, by fund.
+
+State after the recheck (Nov 9) and the wording pass (Nov 10)
+- The report, the code and the post were rechecked end to end. Several figures and three readings changed;
+  the report as it stood before is kept at paper/etf-overnight-reference-value-v1.pre-recheck.md
+  (local, not for the repository).
+- Nov 10: fifty sentences of the report reworded from figurative to literal (no figure changed), the subtitle
+  now reads "measured before the exchanges begin overnight sessions", and one sourced sentence added to
+  Finding 8 on Nasdaq's market-maker obligation. The version before that pass is kept at
+  paper/etf-overnight-reference-value-v1.before-wording-pass.md (local). The .docx was rebuilt on Nov 10.
+  SSRN entries: paper/ssrn/SUBMISSION-overnight.md.
+- prototypes/overnight: selftest passes; tieout.py checks 259 figures of the report against
+  data/public and passes (247 until Nov 15; twelve added with the count in Finding 1, see step 5).
+- The fact-check of the outside claims is in research_notes/overnight-paper-factcheck-2026-11-09.md
+  (local, never committed).
+
+Before posting on SSRN
+1. Read the revised report once, start to finish. The changed readings are Finding 3 (the foreign funds'
+   distance is mostly the reference's weakness), Finding 7 (the emerging-markets proposal was not wrong;
+   the first measurement was) and Finding 8 (Frankfurt shows that a closed underlying is not the cause;
+   it does not show that quoting obligations are).
+2. DONE 2026-11-10 (commit 59330e2, pushed; the push also carried the earlier local commit da4d2e8).
+   Commit and push, by explicit path:
+     prototypes/overnight   (code, README, selftest.py, tieout.py, data/public, data/holdings/*.json;
+                             .gitignore keeps data/cache, data/out, data/nav and the issuer CSVs out)
+     paper/etf-overnight-reference-value-v1.md
+     paper/build_overnight.py
+   Not for the repository: the earlier drafts (paper/etf-overnight-reference-value-v0-draft.md and
+   -v1-draft.md), the .pre-recheck.md and .before-wording-pass.md copies, the .docx and .pdf in paper/ (the
+   earlier reports keep those local and serve the PDF from docs/), research_notes/, the content/ files
+   until you decide.
+   The report says its figures are written by the code in the repository; that is true after the push.
+3. Keep a copy of prototypes/overnight/data/cache somewhere safe. It is the only copy of the November 9
+   downloads, and the report's exact window can be rebuilt only from it (--asof 2026-11-09). From Nov 10
+   on, every run for the report's figures needs --asof 2026-11-09 --end 2026-11-06; without --asof the
+   commands fetch a later window.
+4. Close the paper's .docx in Word, then run python paper/build_overnight.py so the Word file matches the
+   PDF. Upload paper/etf-overnight-reference-value-v1.pdf to SSRN. Title and abstract are the first lines
+   of the .md. JEL/keywords suggestion: G14, G23; exchange-traded funds, overnight trading, market
+   microstructure, fair value, LLM evaluation.
+5. DONE 2026-11-15, committed and pushed that evening (d6be05b): SSRN abstract 7688088, DOI 10.2139/ssrn.7688088 (approved Nov 13;
+   listed there under the subtitle "Sixty Nights of Overnight Trading in Ten US ETFs, ..."). Threaded into the
+   .md front matter (version 1.1, PDF rebuilt, 23 pages), README.md, docs/index.html, docs/overnight-paper.html
+   with docs/og-overnight-paper.png and docs/overnight-paper.pdf, docs/sitemap.xml, and the first comment.
+   Version 1.1 differs from the SSRN copy in the passages of the paper's Appendix C: four sourced additions
+   (items 1 to 5), four figures that were one unit too high (item 6) and the count in Finding 1 (item 7).
+   The revised PDF was submitted on SSRN ("Revise") by the morning of Nov 16, and the revision is live: his
+   screenshots of that morning show "Last revised: 16 Nov 2026", 23 pages and the abstract with "no indicative
+   value is required". The post's figures are the same in both versions.
+
+ORDER HE CHOSE ON NOV 15: revise on SSRN first, then post. One step came before both and is DONE: on his
+"commit and push" (Nov 15, evening) the fourth report's files were committed as d6be05b and pushed
+(origin/main = d6be05b; 23 files: the 17 modified ones and docs/overnight-paper.html, docs/overnight-paper.pdf,
+docs/og-overnight-paper.png, assets/make_og_overnight_paper.py, assets/og-overnight-paper.png,
+paper/ssrn/SUBMISSION-overnight.md). Version 1.1 describes result files that are on GitHub only after that
+push. The working tree passed the self-test and the tie-out (259) just before the commit.
+Both of his steps followed: he reported the revision as submitted and the post as out on the morning of
+Monday Nov 16 (steps for the revision: paper/ssrn/SUBMISSION-overnight.md). The post files and the card are
+committed after the post, on his word, as with the eval-8 post, with the revision recorded in
+SUBMISSION-overnight.md.
+
+Posting day
+6. Re-read the post for time words ("December 6", "are due to start", "From December") and anything that
+   reads as a superlative. If the exchanges have moved the date, change the first line and the report's
+   Section 2.
+7. Image: assets/post-overnight-windows.png, uploaded natively. (A photo of your own reaches further, as the
+   Welt post showed, but this is a technical piece and the chart carries the first result.) No AI imagery.
+8. Post body = linkedin-post-overnight-paste.txt, pasted as plain text. Immediately add the first comment
+   from linkedin-post-overnight-first-comment-paste.txt with the live SSRN link.
+9. Do not claim desk or market-making experience in replies; the author note in the report states the
+   boundary and the replies should match it.
+
+POSTING-DAY CHECK, DONE ON SUNDAY NOV 15, 2026 (repeat a and b on the morning the post goes out)
+a. The date. Searches found no postponement. The latest items seen: Cooley, Nov 10 ("23x5 Trading Is Almost
+   Here"); InvestmentNews, Nov 13. The UTP SIP vendor alerts (2026-20, 2026-24, 2026-30) keep December 6 as
+   the production date, with industry tests on Nov 20 and Dec 4; Nasdaq's wording is still "on or about".
+   "are due to start" stays. A postponement would most likely follow one of the two tests.
+b. "I could not find a public value": a search for an announced overnight indicative value found none.
+   It also surfaced S&P Global's iNAV calculation page (not read); if a reader names it, treat it like the
+   ICE and Virtu services below and check before answering.
+c. The Nasdaq line: a search found one November filing on the Night Session (SR-NASDAQ-2026-096, about
+   ports and fees, read as a search summary only) and nothing on market-maker obligations.
+d. Figures: every figure in the body was compared with data/public as rerun on Nov 15, and all match. One
+   sentence changed. "Overnight prices follow the 4pm closing price more closely than the official NAV"
+   stood without a count; it holds in six of the seven funds that start from an official NAV, and the
+   post now says so. Median distance in bps, close-anchored against NAV-anchored: SPY 2.4 / 3.7,
+   IBIT 3.6 / 10.9, TLT 4.9 / 5.8, LQD 6.2 / 8.4, EWJ 41.3 / 45.1, EEM 62.2 / 62.6; the exception is
+   EWG, 44.3 / 39.8 on 23 prints. The report's Finding 1 carried the same uncounted sentence and was
+   corrected the same day (Appendix C item 7; tie-out 259 figures; PDF rebuilt, 23 pages).
+   A second sentence changed by one word: "four language models read each night's news" now reads "the
+   night's news", as the report's abstract does. One model read all sixty nights for six funds (720
+   readings); the other three read the 198 readings selected from those.
+e. Image: unchanged since Nov 10; its ten percentages and the Germany callout match grades.json.
+f. Body: 410 words, ASCII, LF.
+
+REPEATED ON MONDAY NOV 16, 2026, about 9:50am ET, after he wrote "The revision is in" and that he posts today
+a. The date: no postponement found. Newest items seen: a Nasdaq Equity Trader Alert on the files for the new
+   hours (2026-64, reposted Nov 1), a news item of Nov 3 and one of Nov 15; the latter still gives December 6
+   and calls it conditional for NYSE Arca. Two industry tests remain, Nov 20 and Dec 4. "are due to start"
+   stays. All read as search summaries; no exchange notice dated in the last week was seen either way.
+b. "I could not find a public value": still no announcement of a public overnight indicative value.
+d. The check script passed again against data/public (unchanged since commit d6be05b). Body 410 words, ASCII,
+   LF; the post files have not changed since Nov 15, 17:25.
+NOT CHECKED BY ME: the SSRN page. It answers automated requests with HTTP 403, and that was not worked around.
+He looks at the public page himself: the PDF's first page should say "Version 1.1".
+CONFIRMED BY HIS SCREENSHOTS, the same morning, after the post went out: the public page shows "Last revised:
+16 Nov 2026", 23 pages (version 1.1's length) and the abstract with "is required". SSRN counts at that moment,
+the baseline for the post: 90 abstract views, 41 downloads, status APPROVED (not yet DISTRIBUTED); the three
+earlier reports: 256 / 153, 158 / 85, 146 / 47. If SSRN's alert for the report goes out in the same week, its
+effect on the counts cannot be separated from the post's.
+
+FACT ANCHORS for the post (every figure is in prototypes/overnight/data/public or a cited document)
+- "due to start ... December 6": expected, conditional on the consolidated feeds; five exchanges (report ref 4).
+- "could not find a public value": searched Nov 6-11, 2026 (the wording was "anyone who publishes" until
+  Nov 11). The SEC's Nasdaq order treats the absence of an updated indicative value as a disclosed risk;
+  no exchange or vendor has announced one for the overnight session. Two subscription services come
+  closest and a reader may name them: ICE's IOPV service says it calculates "23.5 hours, 6 days per week"
+  with fair-value prices when a holding's home market is closed (brochure, file dated May 2023), and Virtu's
+  eNAV streams fair-value ETF prices to subscribers (2020). Neither is public, and neither is confirmed for
+  the US overnight session. If a reader names a publisher, thank them and check.
+- More on quoting duties, verified Nov 11: Cboe EDGX's overnight FAQ (current as of Sept 23, 2026) says
+  "there will be no specific market maker requirements for the Overnight Trading Session" and that EDGX
+  "will not allow market orders or unpriced pegged orders" overnight. The post says "Nasdaq"; a reply may
+  add Cboe EDGX. 24X has an incentive (a "5X Overnight Multiplier" in its warrant program, filed 2025), which
+  is an incentive, not a duty.
+- Germany fund (EWG): grades.json, overnight_prints: total_volume 2303 shares, nights_with_a_trade 18 of 60
+  (so 42 without), traded_bars 28 of 5,760. One venue (Blue Ocean), vendor's 5-minute bars.
+- S&P 500 fund (SPY): traded_bars 5,719 of 5,760; same_instant median 2.4 bps, by hour 2.2 to 2.7.
+- Premium and discount history: Rule 6c-11, market price = official closing price or the bid-ask midpoint
+  when the NAV is calculated. Night session 9pm to 4am = seven hours.
+- Band: 20% below the lower / above the higher of the close and the 7:45pm sale, temporary (LULD Plan
+  amendment 27, approved Aug 5, 2026). SPY trading band 5.8 bps covered 2,499 of 2,818 later prints (88.7%);
+  the 90th percentile over all sixty nights is also 5.8 bps.
+- Nasdaq: Equity 2, Section 5(a)(1): "willing to buy and sell such security for its own account on a
+  continuous basis during regular market hours". SEC Release 34-105199 (Apr 10, 2026): the aspects that
+  "will not change when trading equities and ETPs on a 23/5 basis" include "Market Maker obligations"; the
+  Market Maker Peg order type is not available in the night session. Checked for Nasdaq only: say
+  "Nasdaq", never "the exchanges".
+- Frankfurt: frankfurt.json, nine funds, 49 mornings, median distance 2.1 to 6.4 bps. Designated Sponsor
+  Guide of Nov 10, 2025: at least one Designated Sponsor required for continuous trading in each ETF; 80% of
+  effective trading time, measured monthly.
+- Close against NAV: same_instant median 3.6 bps (close anchor) against same_instant_nav_anchor 10.9 for IBIT;
+  SPY 2.4 against 3.7; TLT 4.9 against 5.8; LQD 6.2 against 8.4; EWJ 41.3 against 45.1; EEM 62.2 against 62.6;
+  EWG the other way, 44.3 against 39.8 on 23 prints. Seven funds have an official NAV as their 4pm value
+  (nav_source = file); QQQ and SMH start from the close, and so does GLD, whose NAV is not a 4pm value.
+  "six of the seven" in the post = these.
+- Missing ex-date: the chart feed downloaded Nov 9 had no Nov 2 ex-date for TLT (0.343177) or LQD (0.39995);
+  the issuer's files had both. 41.9 and 38.4 bps of the prior close.
+- AI: evidence_grades.json (four models; the most selective kept 56 flags, 7 of them events, of 26 events);
+  hedge_proposals.json: Germany 0.550 -> 0.865, credit 0.740 -> 0.839 ("improved two funds"); emerging
+  markets first scored 0.165 against 0.459, then 0.369 alone and 0.619 with S&P futures once the indices
+  were measured over their own sessions ("the error was in my test").
+
+ALTERNATIVE FIRST PARAGRAPH (leads with the number instead of the date)
+A Germany ETF traded 2,303 shares in sixty nights on the US overnight market. On December 6 the exchanges
+are due to open that market 23 hours a day, so I measured what it looks like today: ten funds, sixty
+nights, every trade against a value built from futures prices. Five results, each for a different team.
+
+Expected questions and honest answers
+- "Isn't 2 to 3 bps just the spread?" No: it is the typical distance of actual trades from the
+  futures-implied value. The tape has trades only, so the report says nothing about spreads.
+- "So the thin funds are mispriced at night?" The data does not show that. Their trades were far from a
+  futures-only reference, and for emerging markets more than 40% of that distance was the reference
+  missing the Asian markets. What the data does show is that they rarely trade.
+- "Are you saying quoting obligations would fix it?" No. Frankfurt has them, an open primary market, an
+  exact futures hedge and a main session, all at once; the data cannot separate these. It is the one of
+  the four the US exchanges could choose to add.
+- "Is 20% against 6 basis points a fair comparison?" They do different jobs: the band stops extreme prices,
+  it does not estimate value. The point is that nothing published does the second job at night.
+- "Which feed missed the ex-date?" The public chart feed named in the report's references. The issuer's
+  own file had it; the report uses the issuer's dates.
+- "Why didn't the news models help?" Because the futures and the fund's own trades already carried the
+  information; four models, two cloud and two local, agreed on that.
+- "What about after December 6?" Unknown; the same code captures the exchange sessions and compares the
+  two periods, with Frankfurt as the control. Results in March.

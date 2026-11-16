@@ -1,0 +1,13 @@
+On December 6, US exchanges are due to start trading ETFs 23 hours a day. I could not find a public value for what an ETF's holdings are worth at night. So I built that value from futures prices and checked sixty nights of trading in ten funds against it. Five results, each for a different team.
+
+For ETF issuers: the Germany fund in my sample traded 2,303 shares in sixty nights, and on 42 of those nights it did not trade at all. The S&P 500 fund traded in almost every five-minute window, typically within 2 to 3 basis points of the value. Neither fact appears in the premium and discount history a fund publishes, because that is measured once a day, at the close. From December there are seven more trading hours a night that it does not cover.
+
+For exchanges: the only overnight reference you are due to publish is a band 20% either side of the close, there to stop extreme prices. The S&P 500 fund's own trades stayed within 6 basis points of the futures-implied value nine times in ten. And a Nasdaq market maker's duty to quote applies "during regular market hours"; the SEC's order for the night session leaves that unchanged.
+
+For Frankfurt: Xetra already trades ETFs while their home market is closed. Nine funds on US indices trade there every morning before New York opens, typically within 2 to 6 basis points of the futures-implied value. Each must have a Designated Sponsor who quotes at least 80% of the time.
+
+For fund administrators: overnight prices follow the 4pm closing price more closely than the official NAV. That held in six of the seven funds where I could compare the two; for the bitcoin fund the distance was 4 basis points against 11. And the public price feed I used was still missing a November ex-dividend date for two large bond funds a week later. Without the issuer's own file, that looks like a 40 basis point pricing error.
+
+For AI teams: four language models read the night's news and could not tell which nights the futures would miss. A model asked to choose a fund's hedge instruments did better and improved two funds. I scored its third proposal as wrong, and the error was in my test, not in the proposal.
+
+The report and the code are in the first comment. Which of these would your team want to see every morning?
