@@ -29,7 +29,7 @@ def _fold_system(messages):
         rest = [{"role": "user", "content": sys_text + "\n\n" + rest[0]["content"]}] + rest[1:]
     return rest
 
-UA = "TieOutBench research welt.management.solutions@gmail.com"
+DEFAULT_UA = "TieOutBench harness (research; standard library urllib)"
 DEFAULT_ENDPOINT = "http://localhost:1234/v1"
 
 
@@ -53,6 +53,12 @@ def _load_env_file():
 
 
 _load_env_file()
+
+# The User-Agent of the document fetches further down (the model calls do not send it). Generic by default: no
+# person's address is kept in the repository. SEC EDGAR asks automated clients to declare who they are, with a
+# contact address, and may refuse a client that does not; whoever runs the live fetches sets their own declaration
+# in TIEOUTBENCH_USER_AGENT (the environment, or the gitignored .env).
+UA = os.environ.get("TIEOUTBENCH_USER_AGENT") or DEFAULT_UA
 
 
 def resolve_key(endpoint, api_key=None):
