@@ -1,0 +1,29 @@
+{
+ "fund": "swap",
+ "reader": "gemini-3.6-flash",
+ "mode": "draft",
+ "draft_arm": "plain",
+ "drafter": "claude-opus-4-8",
+ "draft_run": 1,
+ "started": "2026-11-16T17:03:24",
+ "prompt": {
+  "sha256": "6eb2ec9a62cbd66e6647f1cb8a4ba2d0b3512b15c052df8835860d5b03a63bbb",
+  "chars": 35686,
+  "tokens_approx": 8921
+ },
+ "max_tokens": 32000,
+ "finish_reason": "stop",
+ "usage": {
+  "completion_tokens": 2122,
+  "prompt_tokens": 10871,
+  "total_tokens": 20319
+ },
+ "content_chars": 6193,
+ "reasoning_chars": 0,
+ "elapsed_s": 42.281,
+ "deadline_hit": false,
+ "temperature": 0.0,
+ "temperature_dropped": false,
+ "token_field": "max_tokens",
+ "endpoint_host": "generativelanguage.googleapis.com"
+}

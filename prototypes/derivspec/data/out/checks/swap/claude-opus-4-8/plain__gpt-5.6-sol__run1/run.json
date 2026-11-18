@@ -1,0 +1,29 @@
+{
+ "fund": "swap",
+ "reader": "claude-opus-4-8",
+ "mode": "draft",
+ "draft_arm": "plain",
+ "drafter": "gpt-5.6-sol",
+ "draft_run": 1,
+ "started": "2026-11-16T17:03:49",
+ "prompt": {
+  "sha256": "ce0f8333a73c64822fb46ab57e284f71db41733b6d0e1071412bc077d4556b8c",
+  "chars": 39604,
+  "tokens_approx": 9901
+ },
+ "max_tokens": 24000,
+ "finish_reason": "stop",
+ "usage": {
+  "completion_tokens": 2202,
+  "prompt_tokens": 14436,
+  "total_tokens": 16638
+ },
+ "content_chars": 5561,
+ "reasoning_chars": 0,
+ "elapsed_s": 22.188,
+ "deadline_hit": false,
+ "temperature": "omitted",
+ "temperature_dropped": true,
+ "token_field": "max_tokens",
+ "endpoint_host": "api.anthropic.com"
+}

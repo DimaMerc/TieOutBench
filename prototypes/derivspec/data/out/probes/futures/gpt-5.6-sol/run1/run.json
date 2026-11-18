@@ -1,0 +1,31 @@
+{
+ "fund": "futures",
+ "reader": "gpt-5.6-sol",
+ "mode": "probe",
+ "started": "2026-11-16T18:32:30",
+ "prompt": {
+  "sha256": "99b7b96d3c3bc09842a956aa2eafb30011b1c83f94276aaf35ac0744f8324f81",
+  "chars": 104437,
+  "tokens_approx": 26109
+ },
+ "max_tokens": 24000,
+ "finish_reason": "stop",
+ "usage": {
+  "prompt_tokens": 20154,
+  "completion_tokens": 4139,
+  "total_tokens": 24293,
+  "prompt_tokens_details": {
+   "cached_tokens": 0,
+   "cache_write_tokens": 20151,
+   "audio_tokens": 0
+  },
+  "completion_tokens_details": {
+   "reasoning_tokens": 3073,
+   "audio_tokens": 0,
+   "accepted_prediction_tokens": 0,
+   "rejected_prediction_tokens": 0
+  }
+ },
+ "content_chars": 5305,
+ "elapsed_s": 44.625
+}

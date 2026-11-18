@@ -1,0 +1,29 @@
+{
+ "fund": "swap",
+ "reader": "gemini-3.6-flash",
+ "mode": "draft",
+ "draft_arm": "ask",
+ "drafter": "gemini-3.6-flash",
+ "draft_run": 1,
+ "started": "2026-11-16T17:07:05",
+ "prompt": {
+  "sha256": "9e75f3941b34dfa9d32ab2595ef49ed58d44967367b9066d0568c10d6edfbe64",
+  "chars": 40718,
+  "tokens_approx": 10179
+ },
+ "max_tokens": 32000,
+ "finish_reason": "stop",
+ "usage": {
+  "completion_tokens": 1879,
+  "prompt_tokens": 11002,
+  "total_tokens": 24079
+ },
+ "content_chars": 6163,
+ "reasoning_chars": 0,
+ "elapsed_s": 56.203,
+ "deadline_hit": false,
+ "temperature": 0.0,
+ "temperature_dropped": false,
+ "token_field": "max_tokens",
+ "endpoint_host": "generativelanguage.googleapis.com"
+}

@@ -1,0 +1,306 @@
+{
+ "scenarios": {
+  "T01": {
+   "premium_paid": {
+    "verdict": "supported",
+    "missing": ""
+   },
+   "premium_received": {
+    "verdict": "supported",
+    "missing": ""
+   },
+   "cash_after": {
+    "verdict": "supported",
+    "missing": ""
+   },
+   "liability_for_written_options": {
+    "verdict": "supported",
+    "missing": ""
+   },
+   "net_assets_after": {
+    "verdict": "supported",
+    "missing": ""
+   }
+  },
+  "T02": {
+   "value_of_purchased_options": {
+    "verdict": "supported",
+    "missing": ""
+   },
+   "value_of_written_options": {
+    "verdict": "supported",
+    "missing": ""
+   },
+   "unrealized_on_purchased": {
+    "verdict": "supported",
+    "missing": ""
+   },
+   "unrealized_on_written": {
+    "verdict": "supported",
+    "missing": ""
+   },
+   "net_assets": {
+    "verdict": "supported",
+    "missing": ""
+   },
+   "nav_per_share_published": {
+    "verdict": "supported",
+    "missing": ""
+   }
+  },
+  "T03": {
+   "price_case_a": {
+    "verdict": "supported",
+    "missing": ""
+   },
+   "price_case_b": {
+    "verdict": "supported",
+    "missing": ""
+   },
+   "price_case_c": {
+    "verdict": "supported",
+    "missing": ""
+   },
+   "value_difference_b_minus_a": {
+    "verdict": "supported",
+    "missing": ""
+   }
+  },
+  "T04": {
+   "fee_one_day": {
+    "verdict": "not supported",
+    "missing": "Day-count convention for daily management fee accrual"
+   },
+   "fee_weekend": {
+    "verdict": "not supported",
+    "missing": "Day-count convention and weekend accrual rules for management fee"
+   },
+   "interest_one_day": {
+    "verdict": "not supported",
+    "missing": "Day-count convention for interest accrual"
+   },
+   "interest_weekend": {
+    "verdict": "not supported",
+    "missing": "Day-count convention and weekend accrual rules for interest accrual"
+   }
+  },
+  "T05": {
+   "amount_paid": {
+    "verdict": "supported",
+    "missing": ""
+   },
+   "realized": {
+    "verdict": "supported",
+    "missing": ""
+   },
+   "premium_remaining": {
+    "verdict": "supported",
+    "missing": ""
+   }
+  },
+  "T06": {
+   "contracts_delivered_per_position": {
+    "verdict": "supported",
+    "missing": ""
+   },
+   "value_of_options_delivered": {
+    "verdict": "supported",
+    "missing": ""
+   },
+   "cash_amount": {
+    "verdict": "supported",
+    "missing": ""
+   },
+   "net_cash_to_redeemer": {
+    "verdict": "supported",
+    "missing": ""
+   },
+   "realized_on_options_delivered": {
+    "verdict": "supported",
+    "missing": ""
+   },
+   "nav_per_share_published_after": {
+    "verdict": "supported",
+    "missing": ""
+   },
+   "price_of_purchased_put_if_also_traded_for_cash": {
+    "verdict": "supported",
+    "missing": ""
+   }
+  },
+  "T07": {
+   "price_of_purchased_call": {
+    "verdict": "supported",
+    "missing": ""
+   },
+   "price_of_written_call": {
+    "verdict": "supported",
+    "missing": ""
+   },
+   "nav_per_share_published": {
+    "verdict": "supported",
+    "missing": ""
+   },
+   "cash_for_shares": {
+    "verdict": "supported",
+    "missing": ""
+   },
+   "net_cost_of_new_contracts": {
+    "verdict": "supported",
+    "missing": ""
+   },
+   "net_assets_after": {
+    "verdict": "supported",
+    "missing": ""
+   }
+  },
+  "T08": {
+   "proceeds": {
+    "verdict": "supported",
+    "missing": ""
+   },
+   "realized": {
+    "verdict": "not supported",
+    "missing": "Identification of which tax lot was sold"
+   },
+   "cost_remaining": {
+    "verdict": "not supported",
+    "missing": "Identification of which tax lot was sold"
+   }
+  },
+  "T09": {
+   "cash_from_purchased_call": {
+    "verdict": "supported",
+    "missing": ""
+   },
+   "cash_from_purchased_put": {
+    "verdict": "supported",
+    "missing": ""
+   },
+   "cash_owed_on_written_call": {
+    "verdict": "supported",
+    "missing": ""
+   },
+   "net_cash_received": {
+    "verdict": "supported",
+    "missing": ""
+   },
+   "realized_on_purchased_put": {
+    "verdict": "supported",
+    "missing": ""
+   },
+   "realized_on_written_put": {
+    "verdict": "supported",
+    "missing": ""
+   },
+   "realized_total": {
+    "verdict": "supported",
+    "missing": ""
+   }
+  },
+  "T10": {
+   "pro_rata_contracts_per_unit": {
+    "verdict": "supported",
+    "missing": ""
+   },
+   "contracts_in_basket": {
+    "verdict": "not supported",
+    "missing": "Rounding rule for fractional pro-rata basket contracts"
+   },
+   "cash_amount_per_unit": {
+    "verdict": "not supported",
+    "missing": "Rounding rule for fractional pro-rata basket contracts"
+   }
+  },
+  "T11": {
+   "right_net_assets": {
+    "verdict": "supported",
+    "missing": ""
+   },
+   "misstatement": {
+    "verdict": "supported",
+    "missing": ""
+   },
+   "misstatement_per_share": {
+    "verdict": "supported",
+    "missing": ""
+   },
+   "misstatement_percent": {
+    "verdict": "supported",
+    "missing": ""
+   },
+   "correction_threshold": {
+    "verdict": "not supported",
+    "missing": "NAV error correction threshold policy"
+   }
+  },
+  "T12": {
+   "contracts_after": {
+    "verdict": "not supported",
+    "missing": "OCC contract adjustment rules for reference asset stock splits"
+   },
+   "strike_after": {
+    "verdict": "not supported",
+    "missing": "OCC contract adjustment rules for reference asset stock splits"
+   },
+   "value_after": {
+    "verdict": "not supported",
+    "missing": "OCC contract adjustment rules for reference asset stock splits"
+   },
+   "value_before": {
+    "verdict": "supported",
+    "missing": ""
+   },
+   "wrong_value": {
+    "verdict": "supported",
+    "missing": ""
+   }
+  },
+  "T13": {
+   "income_accrued": {
+    "verdict": "supported",
+    "missing": ""
+   },
+   "change_in_net_assets": {
+    "verdict": "supported",
+    "missing": ""
+   }
+  },
+  "T14": {
+   "cash_from_purchased_put": {
+    "verdict": "supported",
+    "missing": ""
+   },
+   "cash_owed_on_written_put": {
+    "verdict": "supported",
+    "missing": ""
+   },
+   "net_cash_received": {
+    "verdict": "supported",
+    "missing": ""
+   },
+   "realized_total": {
+    "verdict": "supported",
+    "missing": ""
+   }
+  },
+  "T15": {
+   "change_in_value_of_options": {
+    "verdict": "supported",
+    "missing": ""
+   },
+   "net_assets_at_close": {
+    "verdict": "not supported",
+    "missing": "Day-count convention for management fee and interest accruals"
+   },
+   "nav_per_share_published": {
+    "verdict": "not supported",
+    "missing": "Day-count convention for management fee and interest accruals"
+   },
+   "return_percent": {
+    "verdict": "not supported",
+    "missing": "Day-count convention for management fee and interest accruals"
+   }
+  }
+ }
+}

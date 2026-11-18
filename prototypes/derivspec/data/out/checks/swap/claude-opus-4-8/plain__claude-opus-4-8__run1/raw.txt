@@ -1,0 +1,95 @@
+I'll analyze each answer field, checking what the passages actually settle.
+
+Key recurring issues:
+- **Day-count convention** (360 vs 365, and whether weekends accrue): passages say financing/expenses "recognized on the accrual basis" / "accrued daily" but never state the day-count basis or divisor. So any dollar figure for financing/expense is NOT supported.
+- **Rebalancing to 2x of net assets**: passages say "rebalance daily to keep exposure consistent," reposition at end of day. They don't give the exact mechanic (target exposure = 2x × net assets using closing price, add/remove at closing price). Direction (grow after gain) is plausible, but the precise formula/price used isn't stated.
+- **Which units realize on rebalance/redemption** and unrealized after: identified cost method is stated, but the reset-price mechanic isn't.
+
+{"scenarios": {
+"S01": {
+  "units": {"verdict": "supported", "missing": ""},
+  "notional": {"verdict": "supported", "missing": ""}
+},
+"S02": {
+  "unrealized_gain": {"verdict": "supported", "missing": ""},
+  "per_share": {"verdict": "supported", "missing": ""},
+  "price_to_use": {"verdict": "supported", "missing": ""}
+},
+"S03": {
+  "one_day": {"verdict": "not supported", "missing": "day-count divisor (360/365) not stated"},
+  "weekend": {"verdict": "not supported", "missing": "day-count basis and whether weekends accrue not stated"}
+},
+"S04": {
+  "total": {"verdict": "not supported", "missing": "day-count divisor not stated"},
+  "third_day": {"verdict": "not supported", "missing": "day-count divisor not stated"}
+},
+"S05": {
+  "income_owed": {"verdict": "supported", "missing": ""},
+  "change_in_unrealized": {"verdict": "supported", "missing": ""},
+  "net_effect_on_net_assets_on_ex_date": {"verdict": "supported", "missing": ""},
+  "error_per_share_if_omitted": {"verdict": "supported", "missing": ""},
+  "error_percent_if_omitted": {"verdict": "supported", "missing": ""}
+},
+"S06": {
+  "exposure_before": {"verdict": "supported", "missing": ""},
+  "target_exposure": {"verdict": "not supported", "missing": "that target exposure = 2x × net assets (not reset to daily objective off NAV) is not explicitly stated"},
+  "units_added": {"verdict": "not supported", "missing": "rebalance mechanic and price used to compute units not stated"},
+  "units_after": {"verdict": "not supported", "missing": "depends on unsupported units_added"},
+  "unrealized_after": {"verdict": "not supported", "missing": "whether existing units are reset at rebalance not stated"}
+},
+"S07": {
+  "exposure_before": {"verdict": "supported", "missing": ""},
+  "target_exposure": {"verdict": "not supported", "missing": "target = 2x × net assets mechanic not explicitly stated"},
+  "units_removed": {"verdict": "not supported", "missing": "rebalance mechanic/price not stated"},
+  "realized": {"verdict": "not supported", "missing": "cost basis of removed units (reset price) and that removal realizes gain not stated for intraday rebalance"},
+  "unrealized_after": {"verdict": "not supported", "missing": "depends on unsupported units_removed"}
+},
+"S08": {
+  "financing_accrued": {"verdict": "not supported", "missing": "day-count divisor not stated"},
+  "payment_to_fund": {"verdict": "not supported", "missing": "depends on unsupported financing figure"},
+  "notional_after": {"verdict": "not supported", "missing": "that notional resets to units × current price is not stated"},
+  "accruals_after": {"verdict": "supported", "missing": ""}
+},
+"S09": {
+  "cash_for_shares": {"verdict": "supported", "missing": ""},
+  "fee_received": {"verdict": "supported", "missing": ""},
+  "units_added": {"verdict": "not supported", "missing": "price used to convert cash to units and 2x mechanic not stated"},
+  "nav_per_share_published": {"verdict": "supported", "missing": ""}
+},
+"S10": {
+  "cash_paid": {"verdict": "supported", "missing": ""},
+  "units_removed": {"verdict": "not supported", "missing": "price used to convert cash to units and 2x mechanic not stated"},
+  "realized": {"verdict": "not supported", "missing": "cost basis of removed units and that removal realizes gain vs reset price not stated"},
+  "nav_per_share_published": {"verdict": "supported", "missing": ""}
+},
+"S11": {
+  "cash_after": {"verdict": "supported", "missing": ""},
+  "collateral_posted_after": {"verdict": "supported", "missing": ""},
+  "change_in_net_assets": {"verdict": "supported", "missing": ""}
+},
+"S12": {
+  "one_day": {"verdict": "not supported", "missing": "day-count divisor not stated"},
+  "weekend": {"verdict": "not supported", "missing": "day-count basis and weekend accrual not stated"}
+},
+"S13": {
+  "right_net_assets": {"verdict": "supported", "missing": ""},
+  "misstatement": {"verdict": "supported", "missing": ""},
+  "per_share": {"verdict": "supported", "missing": ""},
+  "percent": {"verdict": "supported", "missing": ""},
+  "correction_threshold": {"verdict": "supported", "missing": ""}
+},
+"S14": {
+  "units_after": {"verdict": "not supported", "missing": "split-adjustment mechanic (multiply units, divide reset price) not stated in passages"},
+  "reset_price_after": {"verdict": "not supported", "missing": "split-adjustment of reset price not stated"},
+  "unrealized_after": {"verdict": "not supported", "missing": "depends on unsupported split adjustment"},
+  "unrealized_before": {"verdict": "supported", "missing": ""},
+  "wrong_unrealized": {"verdict": "supported", "missing": ""}
+},
+"S15": {
+  "net_assets_at_close": {"verdict": "not supported", "missing": "financing and expense day-count divisors not stated"},
+  "nav_per_share_published": {"verdict": "not supported", "missing": "depends on unsupported net_assets_at_close"},
+  "return_percent": {"verdict": "not supported", "missing": "depends on unsupported net_assets_at_close"},
+  "twice_reference_percent": {"verdict": "supported", "missing": ""},
+  "shortfall_basis_points": {"verdict": "not supported", "missing": "depends on unsupported return_percent"}
+}
+}}

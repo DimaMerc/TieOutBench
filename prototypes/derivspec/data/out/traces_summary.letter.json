@@ -1,0 +1,1231 @@
+{
+ "tracings": 18,
+ "all_finished_and_parsed": true,
+ "answers_that_were_not_valid_json_and_were_read_as_text": 0,
+ "verdicts": 405,
+ "verdicts_that_agree_with_the_key_on_stated_or_not": 364,
+ "verdicts_outside_the_conflict_rules": 378,
+ "tokens": 219425,
+ "all": {
+  "answers": 405,
+  "answers_not_stated": 105,
+  "answers_not_stated_with_a_quote": 0,
+  "answers_that_name_a_passage": 300,
+  "answers_that_name_a_passage_without_a_quote": 0,
+  "quotes_found_short": 6,
+  "quotes_too_short_to_check": 0,
+  "open_rules": 207,
+  "caught": 195,
+  "called_stated": 12,
+  "stated_rules": 171,
+  "false_alarms": 2,
+  "no_verdict": 0,
+  "exact_status": 331,
+  "rules_without_the_conflict_pair": 378,
+  "conflict_rules": 27,
+  "conflict_reported": 8,
+  "conflict_called_stated": 19,
+  "conflicting_elsewhere": 0,
+  "quotes": 300,
+  "quotes_found": 300,
+  "quotes_partly_found": 0,
+  "quotes_not_found": 0
+ },
+ "by_reader": {
+  "claude-opus-4-8": {
+   "answers": 135,
+   "answers_not_stated": 27,
+   "answers_not_stated_with_a_quote": 0,
+   "answers_that_name_a_passage": 108,
+   "answers_that_name_a_passage_without_a_quote": 0,
+   "quotes_found_short": 1,
+   "quotes_too_short_to_check": 0,
+   "open_rules": 69,
+   "caught": 60,
+   "called_stated": 9,
+   "stated_rules": 57,
+   "false_alarms": 1,
+   "no_verdict": 0,
+   "exact_status": 107,
+   "rules_without_the_conflict_pair": 126,
+   "conflict_rules": 9,
+   "conflict_reported": 0,
+   "conflict_called_stated": 9,
+   "conflicting_elsewhere": 0,
+   "quotes": 108,
+   "quotes_found": 108,
+   "quotes_partly_found": 0,
+   "quotes_not_found": 0
+  },
+  "gpt-5.6-sol": {
+   "answers": 135,
+   "answers_not_stated": 38,
+   "answers_not_stated_with_a_quote": 0,
+   "answers_that_name_a_passage": 97,
+   "answers_that_name_a_passage_without_a_quote": 0,
+   "quotes_found_short": 2,
+   "quotes_too_short_to_check": 0,
+   "open_rules": 69,
+   "caught": 69,
+   "called_stated": 0,
+   "stated_rules": 57,
+   "false_alarms": 1,
+   "no_verdict": 0,
+   "exact_status": 113,
+   "rules_without_the_conflict_pair": 126,
+   "conflict_rules": 9,
+   "conflict_reported": 8,
+   "conflict_called_stated": 1,
+   "conflicting_elsewhere": 0,
+   "quotes": 97,
+   "quotes_found": 97,
+   "quotes_partly_found": 0,
+   "quotes_not_found": 0
+  },
+  "gemini-3.6-flash": {
+   "answers": 135,
+   "answers_not_stated": 40,
+   "answers_not_stated_with_a_quote": 0,
+   "answers_that_name_a_passage": 95,
+   "answers_that_name_a_passage_without_a_quote": 0,
+   "quotes_found_short": 3,
+   "quotes_too_short_to_check": 0,
+   "open_rules": 69,
+   "caught": 66,
+   "called_stated": 3,
+   "stated_rules": 57,
+   "false_alarms": 0,
+   "no_verdict": 0,
+   "exact_status": 111,
+   "rules_without_the_conflict_pair": 126,
+   "conflict_rules": 9,
+   "conflict_reported": 0,
+   "conflict_called_stated": 9,
+   "conflicting_elsewhere": 0,
+   "quotes": 95,
+   "quotes_found": 95,
+   "quotes_partly_found": 0,
+   "quotes_not_found": 0
+  }
+ },
+ "by_fund": {
+  "swap": {
+   "answers": 189,
+   "answers_not_stated": 74,
+   "answers_not_stated_with_a_quote": 0,
+   "answers_that_name_a_passage": 115,
+   "answers_that_name_a_passage_without_a_quote": 0,
+   "quotes_found_short": 0,
+   "quotes_too_short_to_check": 0,
+   "open_rules": 117,
+   "caught": 115,
+   "called_stated": 2,
+   "stated_rules": 72,
+   "false_alarms": 1,
+   "no_verdict": 0,
+   "exact_status": 166,
+   "rules_without_the_conflict_pair": 189,
+   "conflict_rules": 0,
+   "conflict_reported": 0,
+   "conflict_called_stated": 0,
+   "conflicting_elsewhere": 0,
+   "quotes": 115,
+   "quotes_found": 115,
+   "quotes_partly_found": 0,
+   "quotes_not_found": 0
+  },
+  "options": {
+   "answers": 216,
+   "answers_not_stated": 31,
+   "answers_not_stated_with_a_quote": 0,
+   "answers_that_name_a_passage": 185,
+   "answers_that_name_a_passage_without_a_quote": 0,
+   "quotes_found_short": 6,
+   "quotes_too_short_to_check": 0,
+   "open_rules": 90,
+   "caught": 80,
+   "called_stated": 10,
+   "stated_rules": 99,
+   "false_alarms": 1,
+   "no_verdict": 0,
+   "exact_status": 165,
+   "rules_without_the_conflict_pair": 189,
+   "conflict_rules": 27,
+   "conflict_reported": 8,
+   "conflict_called_stated": 19,
+   "conflicting_elsewhere": 0,
+   "quotes": 185,
+   "quotes_found": 185,
+   "quotes_partly_found": 0,
+   "quotes_not_found": 0
+  },
+  "futures": {
+   "answers": 0,
+   "answers_not_stated": 0,
+   "answers_not_stated_with_a_quote": 0,
+   "answers_that_name_a_passage": 0,
+   "answers_that_name_a_passage_without_a_quote": 0,
+   "quotes_found_short": 0,
+   "quotes_too_short_to_check": 0,
+   "open_rules": 0,
+   "caught": 0,
+   "called_stated": 0,
+   "stated_rules": 0,
+   "false_alarms": 0,
+   "no_verdict": 0,
+   "exact_status": 0,
+   "rules_without_the_conflict_pair": 0,
+   "conflict_rules": 0,
+   "conflict_reported": 0,
+   "conflict_called_stated": 0,
+   "conflicting_elsewhere": 0,
+   "quotes": 0,
+   "quotes_found": 0,
+   "quotes_partly_found": 0,
+   "quotes_not_found": 0
+  }
+ },
+ "by_kind_of_gap": {
+  "when swap income is accrued": {
+   "verdicts": 9,
+   "caught": 8
+  },
+  "how the transaction fee is booked": {
+   "verdicts": 18,
+   "caught": 17
+  },
+  "what a reduction of the swap realizes": {
+   "verdicts": 9,
+   "caught": 9
+  },
+  "what a reset or payment date does": {
+   "verdicts": 9,
+   "caught": 9
+  },
+  "what an increase of the swap does to the gain so far": {
+   "verdicts": 9,
+   "caught": 9
+  },
+  "day counts and day bases": {
+   "verdicts": 54,
+   "caught": 54
+  },
+  "lot order, basket rounding, correction threshold, split of the reference": {
+   "verdicts": 54,
+   "caught": 51
+  }
+ },
+ "by_rule": {
+  "swap": {
+   "R01": {
+    "status": "specified",
+    "stated": 9,
+    "partly": 0,
+    "not stated": 0,
+    "conflicting": 0,
+    "unclear": 0,
+    "missing": 0
+   },
+   "R02": {
+    "status": "specified",
+    "stated": 9,
+    "partly": 0,
+    "not stated": 0,
+    "conflicting": 0,
+    "unclear": 0,
+    "missing": 0
+   },
+   "R03": {
+    "status": "specified",
+    "stated": 9,
+    "partly": 0,
+    "not stated": 0,
+    "conflicting": 0,
+    "unclear": 0,
+    "missing": 0
+   },
+   "R04": {
+    "status": "specified",
+    "stated": 9,
+    "partly": 0,
+    "not stated": 0,
+    "conflicting": 0,
+    "unclear": 0,
+    "missing": 0
+   },
+   "R05": {
+    "status": "absent",
+    "stated": 0,
+    "partly": 0,
+    "not stated": 9,
+    "conflicting": 0,
+    "unclear": 0,
+    "missing": 0
+   },
+   "R06": {
+    "status": "absent",
+    "stated": 0,
+    "partly": 0,
+    "not stated": 9,
+    "conflicting": 0,
+    "unclear": 0,
+    "missing": 0
+   },
+   "R07": {
+    "status": "absent",
+    "stated": 0,
+    "partly": 1,
+    "not stated": 8,
+    "conflicting": 0,
+    "unclear": 0,
+    "missing": 0
+   },
+   "R08": {
+    "status": "specified",
+    "stated": 8,
+    "partly": 1,
+    "not stated": 0,
+    "conflicting": 0,
+    "unclear": 0,
+    "missing": 0
+   },
+   "R09": {
+    "status": "specified",
+    "stated": 9,
+    "partly": 0,
+    "not stated": 0,
+    "conflicting": 0,
+    "unclear": 0,
+    "missing": 0
+   },
+   "R10": {
+    "status": "absent",
+    "stated": 0,
+    "partly": 0,
+    "not stated": 9,
+    "conflicting": 0,
+    "unclear": 0,
+    "missing": 0
+   },
+   "R11": {
+    "status": "partly",
+    "stated": 0,
+    "partly": 9,
+    "not stated": 0,
+    "conflicting": 0,
+    "unclear": 0,
+    "missing": 0
+   },
+   "R12": {
+    "status": "specified",
+    "stated": 9,
+    "partly": 0,
+    "not stated": 0,
+    "conflicting": 0,
+    "unclear": 0,
+    "missing": 0
+   },
+   "R13": {
+    "status": "partly",
+    "stated": 0,
+    "partly": 4,
+    "not stated": 5,
+    "conflicting": 0,
+    "unclear": 0,
+    "missing": 0
+   },
+   "R14": {
+    "status": "specified",
+    "stated": 9,
+    "partly": 0,
+    "not stated": 0,
+    "conflicting": 0,
+    "unclear": 0,
+    "missing": 0
+   },
+   "R15": {
+    "status": "absent",
+    "stated": 0,
+    "partly": 0,
+    "not stated": 9,
+    "conflicting": 0,
+    "unclear": 0,
+    "missing": 0
+   },
+   "R16": {
+    "status": "absent",
+    "stated": 0,
+    "partly": 0,
+    "not stated": 9,
+    "conflicting": 0,
+    "unclear": 0,
+    "missing": 0
+   },
+   "R17": {
+    "status": "partly",
+    "stated": 1,
+    "partly": 8,
+    "not stated": 0,
+    "conflicting": 0,
+    "unclear": 0,
+    "missing": 0
+   },
+   "R18": {
+    "status": "partly",
+    "stated": 0,
+    "partly": 7,
+    "not stated": 2,
+    "conflicting": 0,
+    "unclear": 0,
+    "missing": 0
+   },
+   "R19": {
+    "status": "partly",
+    "stated": 1,
+    "partly": 4,
+    "not stated": 4,
+    "conflicting": 0,
+    "unclear": 0,
+    "missing": 0
+   },
+   "R20": {
+    "status": "absent",
+    "stated": 0,
+    "partly": 8,
+    "not stated": 1,
+    "conflicting": 0,
+    "unclear": 0,
+    "missing": 0
+   },
+   "R21": {
+    "status": "absent",
+    "stated": 0,
+    "partly": 0,
+    "not stated": 9,
+    "conflicting": 0,
+    "unclear": 0,
+    "missing": 0
+   }
+  },
+  "options": {
+   "O01": {
+    "status": "specified",
+    "stated": 9,
+    "partly": 0,
+    "not stated": 0,
+    "conflicting": 0,
+    "unclear": 0,
+    "missing": 0
+   },
+   "O02": {
+    "status": "specified",
+    "stated": 9,
+    "partly": 0,
+    "not stated": 0,
+    "conflicting": 0,
+    "unclear": 0,
+    "missing": 0
+   },
+   "O03": {
+    "status": "specified",
+    "stated": 9,
+    "partly": 0,
+    "not stated": 0,
+    "conflicting": 0,
+    "unclear": 0,
+    "missing": 0
+   },
+   "O04": {
+    "status": "specified",
+    "stated": 9,
+    "partly": 0,
+    "not stated": 0,
+    "conflicting": 0,
+    "unclear": 0,
+    "missing": 0
+   },
+   "O05": {
+    "status": "specified",
+    "stated": 7,
+    "partly": 0,
+    "not stated": 0,
+    "conflicting": 2,
+    "unclear": 0,
+    "missing": 0
+   },
+   "O06": {
+    "status": "specified",
+    "stated": 6,
+    "partly": 0,
+    "not stated": 0,
+    "conflicting": 3,
+    "unclear": 0,
+    "missing": 0
+   },
+   "O07": {
+    "status": "specified",
+    "stated": 6,
+    "partly": 0,
+    "not stated": 0,
+    "conflicting": 3,
+    "unclear": 0,
+    "missing": 0
+   },
+   "O08": {
+    "status": "specified",
+    "stated": 9,
+    "partly": 0,
+    "not stated": 0,
+    "conflicting": 0,
+    "unclear": 0,
+    "missing": 0
+   },
+   "O09": {
+    "status": "partly",
+    "stated": 3,
+    "partly": 6,
+    "not stated": 0,
+    "conflicting": 0,
+    "unclear": 0,
+    "missing": 0
+   },
+   "O10": {
+    "status": "partly",
+    "stated": 3,
+    "partly": 6,
+    "not stated": 0,
+    "conflicting": 0,
+    "unclear": 0,
+    "missing": 0
+   },
+   "O11": {
+    "status": "specified",
+    "stated": 9,
+    "partly": 0,
+    "not stated": 0,
+    "conflicting": 0,
+    "unclear": 0,
+    "missing": 0
+   },
+   "O12": {
+    "status": "partly",
+    "stated": 3,
+    "partly": 6,
+    "not stated": 0,
+    "conflicting": 0,
+    "unclear": 0,
+    "missing": 0
+   },
+   "O13": {
+    "status": "specified",
+    "stated": 8,
+    "partly": 1,
+    "not stated": 0,
+    "conflicting": 0,
+    "unclear": 0,
+    "missing": 0
+   },
+   "O14": {
+    "status": "partly",
+    "stated": 0,
+    "partly": 9,
+    "not stated": 0,
+    "conflicting": 0,
+    "unclear": 0,
+    "missing": 0
+   },
+   "O15": {
+    "status": "specified",
+    "stated": 9,
+    "partly": 0,
+    "not stated": 0,
+    "conflicting": 0,
+    "unclear": 0,
+    "missing": 0
+   },
+   "O16": {
+    "status": "partly",
+    "stated": 0,
+    "partly": 5,
+    "not stated": 4,
+    "conflicting": 0,
+    "unclear": 0,
+    "missing": 0
+   },
+   "O17": {
+    "status": "specified",
+    "stated": 9,
+    "partly": 0,
+    "not stated": 0,
+    "conflicting": 0,
+    "unclear": 0,
+    "missing": 0
+   },
+   "O18": {
+    "status": "absent",
+    "stated": 0,
+    "partly": 5,
+    "not stated": 4,
+    "conflicting": 0,
+    "unclear": 0,
+    "missing": 0
+   },
+   "O19": {
+    "status": "specified",
+    "stated": 9,
+    "partly": 0,
+    "not stated": 0,
+    "conflicting": 0,
+    "unclear": 0,
+    "missing": 0
+   },
+   "O20": {
+    "status": "absent",
+    "stated": 0,
+    "partly": 4,
+    "not stated": 5,
+    "conflicting": 0,
+    "unclear": 0,
+    "missing": 0
+   },
+   "O21": {
+    "status": "absent",
+    "stated": 0,
+    "partly": 0,
+    "not stated": 9,
+    "conflicting": 0,
+    "unclear": 0,
+    "missing": 0
+   },
+   "O22": {
+    "status": "absent",
+    "stated": 0,
+    "partly": 0,
+    "not stated": 9,
+    "conflicting": 0,
+    "unclear": 0,
+    "missing": 0
+   },
+   "O23": {
+    "status": "specified",
+    "stated": 9,
+    "partly": 0,
+    "not stated": 0,
+    "conflicting": 0,
+    "unclear": 0,
+    "missing": 0
+   },
+   "O24": {
+    "status": "partly",
+    "stated": 1,
+    "partly": 8,
+    "not stated": 0,
+    "conflicting": 0,
+    "unclear": 0,
+    "missing": 0
+   }
+  }
+ },
+ "implied_by_figure": {
+  "all": {
+   "unsettled": 459,
+   "caught": 429,
+   "settled": 657,
+   "false_alarms": 9
+  },
+  "claude-opus-4-8": {
+   "unsettled": 153,
+   "caught": 126,
+   "settled": 219,
+   "false_alarms": 6
+  },
+  "gpt-5.6-sol": {
+   "unsettled": 153,
+   "caught": 153,
+   "settled": 219,
+   "false_alarms": 3
+  },
+  "gemini-3.6-flash": {
+   "unsettled": 153,
+   "caught": 150,
+   "settled": 219,
+   "false_alarms": 0
+  }
+ },
+ "repeated": {
+  "swap/claude-opus-4-8": {
+   "runs": 3,
+   "rules": 21,
+   "same_verdict_in_every_run": 19,
+   "same_flag_in_every_run": 21
+  },
+  "swap/gpt-5.6-sol": {
+   "runs": 3,
+   "rules": 21,
+   "same_verdict_in_every_run": 19,
+   "same_flag_in_every_run": 20
+  },
+  "swap/gemini-3.6-flash": {
+   "runs": 3,
+   "rules": 21,
+   "same_verdict_in_every_run": 18,
+   "same_flag_in_every_run": 19
+  },
+  "options/claude-opus-4-8": {
+   "runs": 3,
+   "rules": 24,
+   "same_verdict_in_every_run": 23,
+   "same_flag_in_every_run": 23
+  },
+  "options/gpt-5.6-sol": {
+   "runs": 3,
+   "rules": 24,
+   "same_verdict_in_every_run": 21,
+   "same_flag_in_every_run": 23
+  },
+  "options/gemini-3.6-flash": {
+   "runs": 3,
+   "rules": 24,
+   "same_verdict_in_every_run": 21,
+   "same_flag_in_every_run": 23
+  }
+ },
+ "by_group_of_gap": {
+  "accounting treatment": {
+   "verdicts": 54,
+   "caught": 52
+  },
+  "terms and parameters": {
+   "verdicts": 108,
+   "caught": 105
+  },
+  "in no kind": {
+   "verdicts": 45,
+   "caught": 38
+  }
+ },
+ "stated_in_the_table_but_not_for_most_readers": {
+  "rules": [],
+  "figures": {
+   "swap": {
+    "figures": 56,
+    "not_settled_in_the_table": 28,
+    "more_on_the_readers_standard": 0
+   },
+   "options": {
+    "figures": 68,
+    "not_settled_in_the_table": 23,
+    "more_on_the_readers_standard": 0
+   },
+   "futures": {
+    "figures": 0,
+    "not_settled_in_the_table": 0,
+    "more_on_the_readers_standard": 0
+   }
+  }
+ },
+ "across_the_nine_tracings_of_a_fund": {
+  "open_rules": 23,
+  "flagged_in_all": 17,
+  "flagged_in_most": 23,
+  "flagged_in_none": 0,
+  "stated_rules": 19,
+  "flagged_in_most_although_stated": 0,
+  "never_flagged_stated": 17
+ },
+ "third_fund": {
+  "tracings": 9,
+  "all_finished_and_parsed": true,
+  "answers_that_were_not_valid_json_and_were_read_as_text": 1,
+  "verdicts": 225,
+  "verdicts_that_agree_with_the_key_on_stated_or_not": 191,
+  "verdicts_outside_the_conflict_rules": 225,
+  "tokens": 297486,
+  "all": {
+   "answers": 225,
+   "answers_not_stated": 31,
+   "answers_not_stated_with_a_quote": 0,
+   "answers_that_name_a_passage": 194,
+   "answers_that_name_a_passage_without_a_quote": 0,
+   "quotes_found_short": 0,
+   "quotes_too_short_to_check": 0,
+   "open_rules": 189,
+   "caught": 164,
+   "called_stated": 25,
+   "stated_rules": 36,
+   "false_alarms": 9,
+   "no_verdict": 0,
+   "exact_status": 167,
+   "rules_without_the_conflict_pair": 225,
+   "conflict_rules": 0,
+   "conflict_reported": 0,
+   "conflict_called_stated": 0,
+   "conflicting_elsewhere": 0,
+   "quotes": 194,
+   "quotes_found": 194,
+   "quotes_partly_found": 0,
+   "quotes_not_found": 0
+  },
+  "by_reader": {
+   "claude-opus-4-8": {
+    "answers": 75,
+    "answers_not_stated": 7,
+    "answers_not_stated_with_a_quote": 0,
+    "answers_that_name_a_passage": 68,
+    "answers_that_name_a_passage_without_a_quote": 0,
+    "quotes_found_short": 0,
+    "quotes_too_short_to_check": 0,
+    "open_rules": 63,
+    "caught": 55,
+    "called_stated": 8,
+    "stated_rules": 12,
+    "false_alarms": 3,
+    "no_verdict": 0,
+    "exact_status": 54,
+    "rules_without_the_conflict_pair": 75,
+    "conflict_rules": 0,
+    "conflict_reported": 0,
+    "conflict_called_stated": 0,
+    "conflicting_elsewhere": 0,
+    "quotes": 68,
+    "quotes_found": 68,
+    "quotes_partly_found": 0,
+    "quotes_not_found": 0
+   },
+   "gpt-5.6-sol": {
+    "answers": 75,
+    "answers_not_stated": 16,
+    "answers_not_stated_with_a_quote": 0,
+    "answers_that_name_a_passage": 59,
+    "answers_that_name_a_passage_without_a_quote": 0,
+    "quotes_found_short": 0,
+    "quotes_too_short_to_check": 0,
+    "open_rules": 63,
+    "caught": 56,
+    "called_stated": 7,
+    "stated_rules": 12,
+    "false_alarms": 6,
+    "no_verdict": 0,
+    "exact_status": 57,
+    "rules_without_the_conflict_pair": 75,
+    "conflict_rules": 0,
+    "conflict_reported": 0,
+    "conflict_called_stated": 0,
+    "conflicting_elsewhere": 0,
+    "quotes": 59,
+    "quotes_found": 59,
+    "quotes_partly_found": 0,
+    "quotes_not_found": 0
+   },
+   "gemini-3.6-flash": {
+    "answers": 75,
+    "answers_not_stated": 8,
+    "answers_not_stated_with_a_quote": 0,
+    "answers_that_name_a_passage": 67,
+    "answers_that_name_a_passage_without_a_quote": 0,
+    "quotes_found_short": 0,
+    "quotes_too_short_to_check": 0,
+    "open_rules": 63,
+    "caught": 53,
+    "called_stated": 10,
+    "stated_rules": 12,
+    "false_alarms": 0,
+    "no_verdict": 0,
+    "exact_status": 56,
+    "rules_without_the_conflict_pair": 75,
+    "conflict_rules": 0,
+    "conflict_reported": 0,
+    "conflict_called_stated": 0,
+    "conflicting_elsewhere": 0,
+    "quotes": 67,
+    "quotes_found": 67,
+    "quotes_partly_found": 0,
+    "quotes_not_found": 0
+   }
+  },
+  "by_rule": {
+   "futures": {
+    "F01": {
+     "status": "specified",
+     "stated": 9,
+     "partly": 0,
+     "not stated": 0,
+     "conflicting": 0,
+     "unclear": 0,
+     "missing": 0
+    },
+    "F02": {
+     "status": "partly",
+     "stated": 0,
+     "partly": 9,
+     "not stated": 0,
+     "conflicting": 0,
+     "unclear": 0,
+     "missing": 0
+    },
+    "F03": {
+     "status": "partly",
+     "stated": 3,
+     "partly": 6,
+     "not stated": 0,
+     "conflicting": 0,
+     "unclear": 0,
+     "missing": 0
+    },
+    "F04": {
+     "status": "absent",
+     "stated": 0,
+     "partly": 4,
+     "not stated": 5,
+     "conflicting": 0,
+     "unclear": 0,
+     "missing": 0
+    },
+    "F05": {
+     "status": "partly",
+     "stated": 8,
+     "partly": 1,
+     "not stated": 0,
+     "conflicting": 0,
+     "unclear": 0,
+     "missing": 0
+    },
+    "F06": {
+     "status": "partly",
+     "stated": 0,
+     "partly": 9,
+     "not stated": 0,
+     "conflicting": 0,
+     "unclear": 0,
+     "missing": 0
+    },
+    "F07": {
+     "status": "specified",
+     "stated": 6,
+     "partly": 3,
+     "not stated": 0,
+     "conflicting": 0,
+     "unclear": 0,
+     "missing": 0
+    },
+    "F08": {
+     "status": "partly",
+     "stated": 0,
+     "partly": 9,
+     "not stated": 0,
+     "conflicting": 0,
+     "unclear": 0,
+     "missing": 0
+    },
+    "F09": {
+     "status": "partly",
+     "stated": 6,
+     "partly": 3,
+     "not stated": 0,
+     "conflicting": 0,
+     "unclear": 0,
+     "missing": 0
+    },
+    "F10": {
+     "status": "partly",
+     "stated": 0,
+     "partly": 4,
+     "not stated": 5,
+     "conflicting": 0,
+     "unclear": 0,
+     "missing": 0
+    },
+    "F11": {
+     "status": "partly",
+     "stated": 0,
+     "partly": 9,
+     "not stated": 0,
+     "conflicting": 0,
+     "unclear": 0,
+     "missing": 0
+    },
+    "F12": {
+     "status": "absent",
+     "stated": 0,
+     "partly": 6,
+     "not stated": 3,
+     "conflicting": 0,
+     "unclear": 0,
+     "missing": 0
+    },
+    "F13": {
+     "status": "partly",
+     "stated": 0,
+     "partly": 9,
+     "not stated": 0,
+     "conflicting": 0,
+     "unclear": 0,
+     "missing": 0
+    },
+    "F14": {
+     "status": "partly",
+     "stated": 0,
+     "partly": 9,
+     "not stated": 0,
+     "conflicting": 0,
+     "unclear": 0,
+     "missing": 0
+    },
+    "F15": {
+     "status": "absent",
+     "stated": 0,
+     "partly": 4,
+     "not stated": 5,
+     "conflicting": 0,
+     "unclear": 0,
+     "missing": 0
+    },
+    "F16": {
+     "status": "partly",
+     "stated": 0,
+     "partly": 9,
+     "not stated": 0,
+     "conflicting": 0,
+     "unclear": 0,
+     "missing": 0
+    },
+    "F17": {
+     "status": "partly",
+     "stated": 0,
+     "partly": 9,
+     "not stated": 0,
+     "conflicting": 0,
+     "unclear": 0,
+     "missing": 0
+    },
+    "F18": {
+     "status": "specified",
+     "stated": 9,
+     "partly": 0,
+     "not stated": 0,
+     "conflicting": 0,
+     "unclear": 0,
+     "missing": 0
+    },
+    "F19": {
+     "status": "partly",
+     "stated": 1,
+     "partly": 8,
+     "not stated": 0,
+     "conflicting": 0,
+     "unclear": 0,
+     "missing": 0
+    },
+    "F20": {
+     "status": "partly",
+     "stated": 0,
+     "partly": 9,
+     "not stated": 0,
+     "conflicting": 0,
+     "unclear": 0,
+     "missing": 0
+    },
+    "F21": {
+     "status": "partly",
+     "stated": 0,
+     "partly": 9,
+     "not stated": 0,
+     "conflicting": 0,
+     "unclear": 0,
+     "missing": 0
+    },
+    "F22": {
+     "status": "specified",
+     "stated": 3,
+     "partly": 6,
+     "not stated": 0,
+     "conflicting": 0,
+     "unclear": 0,
+     "missing": 0
+    },
+    "F23": {
+     "status": "absent",
+     "stated": 0,
+     "partly": 5,
+     "not stated": 4,
+     "conflicting": 0,
+     "unclear": 0,
+     "missing": 0
+    },
+    "F24": {
+     "status": "absent",
+     "stated": 0,
+     "partly": 0,
+     "not stated": 9,
+     "conflicting": 0,
+     "unclear": 0,
+     "missing": 0
+    },
+    "F25": {
+     "status": "partly",
+     "stated": 7,
+     "partly": 2,
+     "not stated": 0,
+     "conflicting": 0,
+     "unclear": 0,
+     "missing": 0
+    }
+   }
+  },
+  "repeated": {
+   "futures/claude-opus-4-8": {
+    "runs": 3,
+    "rules": 25,
+    "same_verdict_in_every_run": 21,
+    "same_flag_in_every_run": 24
+   },
+   "futures/gpt-5.6-sol": {
+    "runs": 3,
+    "rules": 25,
+    "same_verdict_in_every_run": 22,
+    "same_flag_in_every_run": 24
+   },
+   "futures/gemini-3.6-flash": {
+    "runs": 3,
+    "rules": 25,
+    "same_verdict_in_every_run": 21,
+    "same_flag_in_every_run": 24
+   }
+  },
+  "across_the_nine_tracings_of_a_fund": {
+   "open_rules": 21,
+   "flagged_in_all": 16,
+   "flagged_in_most": 18,
+   "flagged_in_none": 0,
+   "stated_rules": 4,
+   "flagged_in_most_although_stated": 1,
+   "never_flagged_stated": 2
+  },
+  "disagreements_with_the_key": {
+   "total": 34,
+   "by_question": {
+    "F09": 6,
+    "F22": 6,
+    "F25": 7,
+    "F05": 8,
+    "F03": 3,
+    "F07": 3,
+    "F19": 1
+   },
+   "as_read_by_hand": {
+    "a question in two parts, one part stated": 10,
+    "the reader asked for more than the question": 9,
+    "the key was wrong": 15
+   }
+  },
+  "what_the_list_leaves_out": {
+   "readers": 3,
+   "additions": 22,
+   "stated": 17,
+   "partly": 5,
+   "not stated": 0,
+   "other": 0,
+   "readers_that_ask_on_which_day_a_trade_first_enters_the_nav": 3,
+   "questions": {
+    "claude-opus-4-8": [
+     {
+      "verdict": "partly",
+      "question": "On which exchange(s) and under which product specification are the Fund's U.S. Treasury futures traded, so the system knows which contract and settlement price source to reference?"
+     },
+     {
+      "verdict": "stated",
+      "question": "On what basis are the open futures positions reported in the financial statements (notional value, unrealized appreciation/depreciation) classified by underlying risk type?"
+     },
+     {
+      "verdict": "stated",
+      "question": "Which custodian/futures broker holds the margin and which party's segregated account is it held in?"
+     },
+     {
+      "verdict": "stated",
+      "question": "On which day are investment (futures) transactions recognized for daily NAV determination versus financial reporting?"
+     },
+     {
+      "verdict": "stated",
+      "question": "At what fair-value hierarchy level are the Fund's exchange-traded futures contracts categorized for disclosure?"
+     },
+     {
+      "verdict": "stated",
+      "question": "When the required margin is not satisfied by the deposit on hand, what obligation is triggered and may the Fund have to sell portfolio securities to meet it?"
+     },
+     {
+      "verdict": "stated",
+      "question": "What distribution frequency applies to the Fund's net investment income, which affects timing of income recognition tied to the futures strategy?"
+     },
+     {
+      "verdict": "stated",
+      "question": "Does the Fund's use of futures, options and swaps trigger special character/timing tax adjustments (mark-to-market, straddle, wash sale, short sale) that the books must apply beyond the section 1256 year-end rule?"
+     }
+    ],
+    "gemini-3.6-flash": [
+     {
+      "verdict": "stated",
+      "question": "How frequently are net investment income dividends declared and paid for the fund?"
+     },
+     {
+      "verdict": "stated",
+      "question": "On what day relative to trade date are futures transactions reflected in daily NAV calculations versus financial statements?"
+     },
+     {
+      "verdict": "stated",
+      "question": "Which level under the U.S. GAAP fair value hierarchy is assigned to open exchange-traded futures contracts for financial reporting disclosures?"
+     },
+     {
+      "verdict": "stated",
+      "question": "How frequently are net realized capital gains distributed by the fund to shareholders?"
+     },
+     {
+      "verdict": "stated",
+      "question": "How are exchange-traded options on futures valued for daily NAV calculation?"
+     },
+     {
+      "verdict": "stated",
+      "question": "What commodity pool operator (CPO) regulatory status or exemption under the Commodity Exchange Act applies to the fund?"
+     }
+    ],
+    "gpt-5.6-sol": [
+     {
+      "verdict": "partly",
+      "question": "Which U.S. Treasury futures contracts are eligible by underlying, maturity and exchange, and may the Fund hold both long and short positions?"
+     },
+     {
+      "verdict": "stated",
+      "question": "On what accounting date are futures transactions recognized for financial reporting and reflected in daily NAV?"
+     },
+     {
+      "verdict": "partly",
+      "question": "Which Treasury futures are treated as section 1256 contracts, and what tax character applies to their gains and losses?"
+     },
+     {
+      "verdict": "partly",
+      "question": "Which special tax rules other than year-end mark-to-market must be applied to the Fund's futures, and what elections or identification methods govern them?"
+     },
+     {
+      "verdict": "stated",
+      "question": "At which fair-value-hierarchy level are exchange-traded futures classified?"
+     },
+     {
+      "verdict": "partly",
+      "question": "Under which derivative-risk category and financial-statement gain or loss accounts are the Fund's Treasury futures reported?"
+     },
+     {
+      "verdict": "stated",
+      "question": "How frequently are net investment income and net realized capital gains distributed, including any special year-end distribution?"
+     },
+     {
+      "verdict": "stated",
+      "question": "Is the Fund operated as a registered commodity pool or under a CFTC Rule 4.5 exemption?"
+     }
+    ]
+   }
+  },
+  "same_flag_in_every_run": {
+   "rules": 75,
+   "same": 72
+  }
+ }
+}

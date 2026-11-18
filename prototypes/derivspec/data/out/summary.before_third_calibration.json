@@ -1,0 +1,2492 @@
+{
+ "swap": {
+  "label": "a leveraged ETF that holds a total return swap (documents of the AdvisorShares MSOS Daily Leveraged ETF)",
+  "figures_per_run": {
+   "settled": 33,
+   "not_settled": 23
+  },
+  "runs": 18,
+  "runs_per_cell": [
+   3
+  ],
+  "all_finished": true,
+  "tokens": 305420,
+  "arms": {
+   "plain": {
+    "per_model": {
+     "claude-opus-4-8": {
+      "settled_right": 96,
+      "settled_figures": 99,
+      "settled_wrong": 2,
+      "settled_wrong_with_the_figure_in_its_own_words": 2,
+      "settled_no_number": 1,
+      "open_figures": 69,
+      "open_bare": 66,
+      "open_bare_per_run": [
+       22,
+       22,
+       22
+      ],
+      "open_bare_but_words_say_assumed": 0,
+      "open_with_its_assumption": 1,
+      "of_which_only_names_a_practice": 1,
+      "open_asked": 2,
+      "open_missing": 0,
+      "open_figures_whose_value_changes_between_runs": 12,
+      "figures_presented_alike_in_all_runs": 54,
+      "figures": 56
+     },
+     "gemini-3.6-flash": {
+      "settled_right": 98,
+      "settled_figures": 99,
+      "settled_wrong": 1,
+      "settled_wrong_with_the_figure_in_its_own_words": 0,
+      "settled_no_number": 0,
+      "open_figures": 69,
+      "open_bare": 67,
+      "open_bare_per_run": [
+       23,
+       22,
+       22
+      ],
+      "open_bare_but_words_say_assumed": 0,
+      "open_with_its_assumption": 2,
+      "of_which_only_names_a_practice": 2,
+      "open_asked": 0,
+      "open_missing": 0,
+      "open_figures_whose_value_changes_between_runs": 0,
+      "figures_presented_alike_in_all_runs": 55,
+      "figures": 56
+     },
+     "gpt-5.6-sol": {
+      "settled_right": 99,
+      "settled_figures": 99,
+      "settled_wrong": 0,
+      "settled_wrong_with_the_figure_in_its_own_words": 0,
+      "settled_no_number": 0,
+      "open_figures": 69,
+      "open_bare": 63,
+      "open_bare_per_run": [
+       23,
+       22,
+       18
+      ],
+      "open_bare_but_words_say_assumed": 0,
+      "open_with_its_assumption": 4,
+      "of_which_only_names_a_practice": 0,
+      "open_asked": 2,
+      "open_missing": 0,
+      "open_figures_whose_value_changes_between_runs": 12,
+      "figures_presented_alike_in_all_runs": 51,
+      "figures": 56
+     }
+    },
+    "open_total": {
+     "figures": 207,
+     "bare": 196,
+     "with_its_assumption": 7,
+     "of_which_only_names_a_practice": 3,
+     "bare_but_words_say_assumed": 0,
+     "asked": 4
+    },
+    "settled_total": {
+     "figures": 297,
+     "right": 293,
+     "wrong": 3,
+     "no_number": 1,
+     "wrong_with_the_reference_figure_in_its_words": 2
+    }
+   },
+   "ask": {
+    "per_model": {
+     "claude-opus-4-8": {
+      "settled_right": 97,
+      "settled_figures": 99,
+      "settled_wrong": 2,
+      "settled_wrong_with_the_figure_in_its_own_words": 1,
+      "settled_no_number": 0,
+      "open_figures": 69,
+      "open_bare": 26,
+      "open_bare_per_run": [
+       10,
+       5,
+       11
+      ],
+      "open_bare_but_words_say_assumed": 4,
+      "open_with_its_assumption": 40,
+      "of_which_only_names_a_practice": 0,
+      "open_asked": 3,
+      "open_missing": 0,
+      "open_figures_whose_value_changes_between_runs": 7,
+      "figures_presented_alike_in_all_runs": 34,
+      "figures": 56
+     },
+     "gemini-3.6-flash": {
+      "settled_right": 98,
+      "settled_figures": 99,
+      "settled_wrong": 1,
+      "settled_wrong_with_the_figure_in_its_own_words": 0,
+      "settled_no_number": 0,
+      "open_figures": 69,
+      "open_bare": 29,
+      "open_bare_per_run": [
+       10,
+       12,
+       7
+      ],
+      "open_bare_but_words_say_assumed": 0,
+      "open_with_its_assumption": 40,
+      "of_which_only_names_a_practice": 0,
+      "open_asked": 0,
+      "open_missing": 0,
+      "open_figures_whose_value_changes_between_runs": 2,
+      "figures_presented_alike_in_all_runs": 34,
+      "figures": 56
+     },
+     "gpt-5.6-sol": {
+      "settled_right": 99,
+      "settled_figures": 99,
+      "settled_wrong": 0,
+      "settled_wrong_with_the_figure_in_its_own_words": 0,
+      "settled_no_number": 0,
+      "open_figures": 69,
+      "open_bare": 4,
+      "open_bare_per_run": [
+       1,
+       1,
+       2
+      ],
+      "open_bare_but_words_say_assumed": 0,
+      "open_with_its_assumption": 62,
+      "of_which_only_names_a_practice": 0,
+      "open_asked": 3,
+      "open_missing": 0,
+      "open_figures_whose_value_changes_between_runs": 11,
+      "figures_presented_alike_in_all_runs": 43,
+      "figures": 56
+     }
+    },
+    "open_total": {
+     "figures": 207,
+     "bare": 59,
+     "with_its_assumption": 142,
+     "of_which_only_names_a_practice": 0,
+     "bare_but_words_say_assumed": 4,
+     "asked": 6
+    },
+    "settled_total": {
+     "figures": 297,
+     "right": 294,
+     "wrong": 3,
+     "no_number": 0,
+     "wrong_with_the_reference_figure_in_its_words": 1
+    }
+   }
+  },
+  "shown": {
+   "S03.one_day": {
+    "plain": {
+     "claude-opus-4-8": [
+      [
+       17500.0,
+       "bare"
+      ],
+      [
+       17260.27,
+       "bare"
+      ],
+      [
+       17500.0,
+       "bare"
+      ]
+     ],
+     "gemini-3.6-flash": [
+      [
+       17500.0,
+       "bare"
+      ],
+      [
+       17500.0,
+       "bare"
+      ],
+      [
+       17500.0,
+       "bare"
+      ]
+     ],
+     "gpt-5.6-sol": [
+      [
+       17260.273973,
+       "bare"
+      ],
+      [
+       17500.0,
+       "bare"
+      ],
+      [
+       17500.0,
+       "with its assumption"
+      ]
+     ]
+    },
+    "ask": {
+     "claude-opus-4-8": [
+      [
+       17500.0,
+       "with its assumption"
+      ],
+      [
+       17500.0,
+       "with its assumption"
+      ],
+      [
+       17500.0,
+       "with its assumption"
+      ]
+     ],
+     "gemini-3.6-flash": [
+      [
+       17500.0,
+       "with its assumption"
+      ],
+      [
+       17500.0,
+       "with its assumption"
+      ],
+      [
+       17500.0,
+       "with its assumption"
+      ]
+     ],
+     "gpt-5.6-sol": [
+      [
+       17500.0,
+       "with its assumption"
+      ],
+      [
+       17500.0,
+       "with its assumption"
+      ],
+      [
+       17260.273973,
+       "with its assumption"
+      ]
+     ]
+    }
+   },
+   "S12.one_day": {
+    "plain": {
+     "claude-opus-4-8": [
+      [
+       1319.44,
+       "bare"
+      ],
+      [
+       1301.37,
+       "bare"
+      ],
+      [
+       1319.44,
+       "bare"
+      ]
+     ],
+     "gemini-3.6-flash": [
+      [
+       1301.37,
+       "bare"
+      ],
+      [
+       1301.37,
+       "bare"
+      ],
+      [
+       1301.37,
+       "bare"
+      ]
+     ],
+     "gpt-5.6-sol": [
+      [
+       1301.369863,
+       "bare"
+      ],
+      [
+       1301.369863,
+       "bare"
+      ],
+      [
+       1301.369863,
+       "bare"
+      ]
+     ]
+    },
+    "ask": {
+     "claude-opus-4-8": [
+      [
+       1301.37,
+       "bare"
+      ],
+      [
+       1301.37,
+       "bare"
+      ],
+      [
+       1301.37,
+       "bare"
+      ]
+     ],
+     "gemini-3.6-flash": [
+      [
+       1301.37,
+       "with its assumption"
+      ],
+      [
+       1301.37,
+       "with its assumption"
+      ],
+      [
+       1301.37,
+       "bare"
+      ]
+     ],
+     "gpt-5.6-sol": [
+      [
+       1301.3698630136987,
+       "with its assumption"
+      ],
+      [
+       1301.369863,
+       "with its assumption"
+      ],
+      [
+       1301.369863,
+       "with its assumption"
+      ]
+     ]
+    }
+   },
+   "S09.units_added": {
+    "plain": {
+     "claude-opus-4-8": [
+      [
+       62500.0,
+       "bare"
+      ],
+      [
+       62500.0,
+       "bare"
+      ],
+      [
+       62500.0,
+       "bare"
+      ]
+     ],
+     "gemini-3.6-flash": [
+      [
+       62500.0,
+       "bare"
+      ],
+      [
+       62500.0,
+       "bare"
+      ],
+      [
+       62500.0,
+       "bare"
+      ]
+     ],
+     "gpt-5.6-sol": [
+      [
+       62523.809524,
+       "bare"
+      ],
+      [
+       62523.809524,
+       "bare"
+      ],
+      [
+       62500.0,
+       "bare"
+      ]
+     ]
+    },
+    "ask": {
+     "claude-opus-4-8": [
+      [
+       62500.0,
+       "bare"
+      ],
+      [
+       62500.0,
+       "with its assumption"
+      ],
+      [
+       62500.0,
+       "bare"
+      ]
+     ],
+     "gemini-3.6-flash": [
+      [
+       62500.0,
+       "bare"
+      ],
+      [
+       62500.0,
+       "bare"
+      ],
+      [
+       62500.0,
+       "with its assumption"
+      ]
+     ],
+     "gpt-5.6-sol": [
+      [
+       62500.0,
+       "with its assumption"
+      ],
+      [
+       62523.809524,
+       "with its assumption"
+      ],
+      [
+       62523.809524,
+       "with its assumption"
+      ]
+     ]
+    }
+   },
+   "S13.correction_threshold": {
+    "plain": {
+     "claude-opus-4-8": [
+      [
+       null,
+       "asked"
+      ],
+      [
+       null,
+       "asked"
+      ],
+      [
+       0.005,
+       "with its assumption"
+      ]
+     ],
+     "gemini-3.6-flash": [
+      [
+       0.005,
+       "bare"
+      ],
+      [
+       0.005,
+       "with its assumption"
+      ],
+      [
+       0.01,
+       "with its assumption"
+      ]
+     ],
+     "gpt-5.6-sol": [
+      [
+       0.0,
+       "bare"
+      ],
+      [
+       null,
+       "asked"
+      ],
+      [
+       null,
+       "asked"
+      ]
+     ]
+    },
+    "ask": {
+     "claude-opus-4-8": [
+      [
+       null,
+       "asked"
+      ],
+      [
+       null,
+       "asked"
+      ],
+      [
+       null,
+       "asked"
+      ]
+     ],
+     "gemini-3.6-flash": [
+      [
+       0.005,
+       "with its assumption"
+      ],
+      [
+       0.005,
+       "with its assumption"
+      ],
+      [
+       0.5,
+       "with its assumption"
+      ]
+     ],
+     "gpt-5.6-sol": [
+      [
+       null,
+       "asked"
+      ],
+      [
+       null,
+       "asked"
+      ],
+      [
+       null,
+       "asked"
+      ]
+     ]
+    }
+   },
+   "S05.net_effect_on_net_assets_on_ex_date": {
+    "plain": {
+     "claude-opus-4-8": [
+      [
+       0.0,
+       "bare"
+      ],
+      [
+       0.0,
+       "bare"
+      ],
+      [
+       0.0,
+       "bare"
+      ]
+     ],
+     "gemini-3.6-flash": [
+      [
+       0.0,
+       "bare"
+      ],
+      [
+       0.0,
+       "bare"
+      ],
+      [
+       0.0,
+       "bare"
+      ]
+     ],
+     "gpt-5.6-sol": [
+      [
+       0.0,
+       "bare"
+      ],
+      [
+       0.0,
+       "bare"
+      ],
+      [
+       0.0,
+       "bare"
+      ]
+     ]
+    },
+    "ask": {
+     "claude-opus-4-8": [
+      [
+       0.0,
+       "with its assumption"
+      ],
+      [
+       0.0,
+       "bare"
+      ],
+      [
+       0.0,
+       "bare"
+      ]
+     ],
+     "gemini-3.6-flash": [
+      [
+       0.0,
+       "bare"
+      ],
+      [
+       0.0,
+       "bare"
+      ],
+      [
+       0.0,
+       "bare"
+      ]
+     ],
+     "gpt-5.6-sol": [
+      [
+       0.0,
+       "bare"
+      ],
+      [
+       0.0,
+       "with its assumption"
+      ],
+      [
+       0.0,
+       "bare"
+      ]
+     ]
+    }
+   },
+   "S15.nav_per_share_published": {
+    "plain": {
+     "claude-opus-4-8": [
+      [
+       26.24,
+       "bare"
+      ],
+      [
+       26.24,
+       "bare"
+      ],
+      [
+       26.24,
+       "bare"
+      ]
+     ],
+     "gemini-3.6-flash": [
+      [
+       26.24,
+       "bare"
+      ],
+      [
+       26.24,
+       "bare"
+      ],
+      [
+       26.24,
+       "bare"
+      ]
+     ],
+     "gpt-5.6-sol": [
+      [
+       26.24,
+       "bare"
+      ],
+      [
+       26.24,
+       "bare"
+      ],
+      [
+       26.24,
+       "bare"
+      ]
+     ]
+    },
+    "ask": {
+     "claude-opus-4-8": [
+      [
+       26.24,
+       "bare"
+      ],
+      [
+       26.24,
+       "bare"
+      ],
+      [
+       26.2406,
+       "bare"
+      ]
+     ],
+     "gemini-3.6-flash": [
+      [
+       26.24,
+       "bare"
+      ],
+      [
+       26.24,
+       "bare"
+      ],
+      [
+       26.24,
+       "bare"
+      ]
+     ],
+     "gpt-5.6-sol": [
+      [
+       26.24,
+       "bare"
+      ],
+      [
+       26.24,
+       "bare"
+      ],
+      [
+       26.24,
+       "bare"
+      ]
+     ]
+    }
+   }
+  },
+  "by_open_rule": {
+   "R05": {
+    "plain": {
+     "claude-opus-4-8": {
+      "bare": 27,
+      "with its assumption": 0,
+      "asked": 0,
+      "missing": 0,
+      "n": 27
+     },
+     "gemini-3.6-flash": {
+      "bare": 27,
+      "with its assumption": 0,
+      "asked": 0,
+      "missing": 0,
+      "n": 27
+     },
+     "gpt-5.6-sol": {
+      "bare": 23,
+      "with its assumption": 4,
+      "asked": 0,
+      "missing": 0,
+      "n": 27
+     }
+    },
+    "ask": {
+     "claude-opus-4-8": {
+      "bare": 5,
+      "with its assumption": 22,
+      "asked": 0,
+      "missing": 0,
+      "n": 27
+     },
+     "gemini-3.6-flash": {
+      "bare": 6,
+      "with its assumption": 21,
+      "asked": 0,
+      "missing": 0,
+      "n": 27
+     },
+     "gpt-5.6-sol": {
+      "bare": 2,
+      "with its assumption": 25,
+      "asked": 0,
+      "missing": 0,
+      "n": 27
+     }
+    }
+   },
+   "R06": {
+    "plain": {
+     "claude-opus-4-8": {
+      "bare": 9,
+      "with its assumption": 0,
+      "asked": 0,
+      "missing": 0,
+      "n": 9
+     },
+     "gemini-3.6-flash": {
+      "bare": 9,
+      "with its assumption": 0,
+      "asked": 0,
+      "missing": 0,
+      "n": 9
+     },
+     "gpt-5.6-sol": {
+      "bare": 7,
+      "with its assumption": 2,
+      "asked": 0,
+      "missing": 0,
+      "n": 9
+     }
+    },
+    "ask": {
+     "claude-opus-4-8": {
+      "bare": 3,
+      "with its assumption": 6,
+      "asked": 0,
+      "missing": 0,
+      "n": 9
+     },
+     "gemini-3.6-flash": {
+      "bare": 3,
+      "with its assumption": 6,
+      "asked": 0,
+      "missing": 0,
+      "n": 9
+     },
+     "gpt-5.6-sol": {
+      "bare": 2,
+      "with its assumption": 7,
+      "asked": 0,
+      "missing": 0,
+      "n": 9
+     }
+    }
+   },
+   "R07": {
+    "plain": {
+     "claude-opus-4-8": {
+      "bare": 6,
+      "with its assumption": 0,
+      "asked": 0,
+      "missing": 0,
+      "n": 6
+     },
+     "gemini-3.6-flash": {
+      "bare": 6,
+      "with its assumption": 0,
+      "asked": 0,
+      "missing": 0,
+      "n": 6
+     },
+     "gpt-5.6-sol": {
+      "bare": 5,
+      "with its assumption": 1,
+      "asked": 0,
+      "missing": 0,
+      "n": 6
+     }
+    },
+    "ask": {
+     "claude-opus-4-8": {
+      "bare": 0,
+      "with its assumption": 6,
+      "asked": 0,
+      "missing": 0,
+      "n": 6
+     },
+     "gemini-3.6-flash": {
+      "bare": 0,
+      "with its assumption": 6,
+      "asked": 0,
+      "missing": 0,
+      "n": 6
+     },
+     "gpt-5.6-sol": {
+      "bare": 0,
+      "with its assumption": 6,
+      "asked": 0,
+      "missing": 0,
+      "n": 6
+     }
+    }
+   },
+   "R19": {
+    "plain": {
+     "claude-opus-4-8": {
+      "bare": 3,
+      "with its assumption": 0,
+      "asked": 0,
+      "missing": 0,
+      "n": 3
+     },
+     "gemini-3.6-flash": {
+      "bare": 3,
+      "with its assumption": 0,
+      "asked": 0,
+      "missing": 0,
+      "n": 3
+     },
+     "gpt-5.6-sol": {
+      "bare": 3,
+      "with its assumption": 0,
+      "asked": 0,
+      "missing": 0,
+      "n": 3
+     }
+    },
+    "ask": {
+     "claude-opus-4-8": {
+      "bare": 2,
+      "with its assumption": 1,
+      "asked": 0,
+      "missing": 0,
+      "n": 3
+     },
+     "gemini-3.6-flash": {
+      "bare": 3,
+      "with its assumption": 0,
+      "asked": 0,
+      "missing": 0,
+      "n": 3
+     },
+     "gpt-5.6-sol": {
+      "bare": 2,
+      "with its assumption": 1,
+      "asked": 0,
+      "missing": 0,
+      "n": 3
+     }
+    }
+   },
+   "R10": {
+    "plain": {
+     "claude-opus-4-8": {
+      "bare": 9,
+      "with its assumption": 0,
+      "asked": 0,
+      "missing": 0,
+      "n": 9
+     },
+     "gemini-3.6-flash": {
+      "bare": 9,
+      "with its assumption": 0,
+      "asked": 0,
+      "missing": 0,
+      "n": 9
+     },
+     "gpt-5.6-sol": {
+      "bare": 9,
+      "with its assumption": 0,
+      "asked": 0,
+      "missing": 0,
+      "n": 9
+     }
+    },
+    "ask": {
+     "claude-opus-4-8": {
+      "bare": 6,
+      "with its assumption": 3,
+      "asked": 0,
+      "missing": 0,
+      "n": 9
+     },
+     "gemini-3.6-flash": {
+      "bare": 8,
+      "with its assumption": 1,
+      "asked": 0,
+      "missing": 0,
+      "n": 9
+     },
+     "gpt-5.6-sol": {
+      "bare": 0,
+      "with its assumption": 9,
+      "asked": 0,
+      "missing": 0,
+      "n": 9
+     }
+    }
+   },
+   "R11": {
+    "plain": {
+     "claude-opus-4-8": {
+      "bare": 9,
+      "with its assumption": 0,
+      "asked": 0,
+      "missing": 0,
+      "n": 9
+     },
+     "gemini-3.6-flash": {
+      "bare": 9,
+      "with its assumption": 0,
+      "asked": 0,
+      "missing": 0,
+      "n": 9
+     },
+     "gpt-5.6-sol": {
+      "bare": 9,
+      "with its assumption": 0,
+      "asked": 0,
+      "missing": 0,
+      "n": 9
+     }
+    },
+    "ask": {
+     "claude-opus-4-8": {
+      "bare": 7,
+      "with its assumption": 2,
+      "asked": 0,
+      "missing": 0,
+      "n": 9
+     },
+     "gemini-3.6-flash": {
+      "bare": 8,
+      "with its assumption": 1,
+      "asked": 0,
+      "missing": 0,
+      "n": 9
+     },
+     "gpt-5.6-sol": {
+      "bare": 2,
+      "with its assumption": 7,
+      "asked": 0,
+      "missing": 0,
+      "n": 9
+     }
+    }
+   },
+   "R18": {
+    "plain": {
+     "claude-opus-4-8": {
+      "bare": 6,
+      "with its assumption": 0,
+      "asked": 0,
+      "missing": 0,
+      "n": 6
+     },
+     "gemini-3.6-flash": {
+      "bare": 6,
+      "with its assumption": 0,
+      "asked": 0,
+      "missing": 0,
+      "n": 6
+     },
+     "gpt-5.6-sol": {
+      "bare": 6,
+      "with its assumption": 0,
+      "asked": 0,
+      "missing": 0,
+      "n": 6
+     }
+    },
+    "ask": {
+     "claude-opus-4-8": {
+      "bare": 4,
+      "with its assumption": 2,
+      "asked": 0,
+      "missing": 0,
+      "n": 6
+     },
+     "gemini-3.6-flash": {
+      "bare": 4,
+      "with its assumption": 2,
+      "asked": 0,
+      "missing": 0,
+      "n": 6
+     },
+     "gpt-5.6-sol": {
+      "bare": 0,
+      "with its assumption": 6,
+      "asked": 0,
+      "missing": 0,
+      "n": 6
+     }
+    }
+   },
+   "R20": {
+    "plain": {
+     "claude-opus-4-8": {
+      "bare": 15,
+      "with its assumption": 0,
+      "asked": 0,
+      "missing": 0,
+      "n": 15
+     },
+     "gemini-3.6-flash": {
+      "bare": 15,
+      "with its assumption": 0,
+      "asked": 0,
+      "missing": 0,
+      "n": 15
+     },
+     "gpt-5.6-sol": {
+      "bare": 15,
+      "with its assumption": 0,
+      "asked": 0,
+      "missing": 0,
+      "n": 15
+     }
+    },
+    "ask": {
+     "claude-opus-4-8": {
+      "bare": 7,
+      "with its assumption": 8,
+      "asked": 0,
+      "missing": 0,
+      "n": 15
+     },
+     "gemini-3.6-flash": {
+      "bare": 5,
+      "with its assumption": 10,
+      "asked": 0,
+      "missing": 0,
+      "n": 15
+     },
+     "gpt-5.6-sol": {
+      "bare": 0,
+      "with its assumption": 15,
+      "asked": 0,
+      "missing": 0,
+      "n": 15
+     }
+    }
+   },
+   "R15": {
+    "plain": {
+     "claude-opus-4-8": {
+      "bare": 0,
+      "with its assumption": 1,
+      "asked": 2,
+      "missing": 0,
+      "n": 3
+     },
+     "gemini-3.6-flash": {
+      "bare": 1,
+      "with its assumption": 2,
+      "asked": 0,
+      "missing": 0,
+      "n": 3
+     },
+     "gpt-5.6-sol": {
+      "bare": 1,
+      "with its assumption": 0,
+      "asked": 2,
+      "missing": 0,
+      "n": 3
+     }
+    },
+    "ask": {
+     "claude-opus-4-8": {
+      "bare": 0,
+      "with its assumption": 0,
+      "asked": 3,
+      "missing": 0,
+      "n": 3
+     },
+     "gemini-3.6-flash": {
+      "bare": 0,
+      "with its assumption": 3,
+      "asked": 0,
+      "missing": 0,
+      "n": 3
+     },
+     "gpt-5.6-sol": {
+      "bare": 0,
+      "with its assumption": 0,
+      "asked": 3,
+      "missing": 0,
+      "n": 3
+     }
+    }
+   },
+   "R16": {
+    "plain": {
+     "claude-opus-4-8": {
+      "bare": 9,
+      "with its assumption": 0,
+      "asked": 0,
+      "missing": 0,
+      "n": 9
+     },
+     "gemini-3.6-flash": {
+      "bare": 9,
+      "with its assumption": 0,
+      "asked": 0,
+      "missing": 0,
+      "n": 9
+     },
+     "gpt-5.6-sol": {
+      "bare": 9,
+      "with its assumption": 0,
+      "asked": 0,
+      "missing": 0,
+      "n": 9
+     }
+    },
+    "ask": {
+     "claude-opus-4-8": {
+      "bare": 0,
+      "with its assumption": 9,
+      "asked": 0,
+      "missing": 0,
+      "n": 9
+     },
+     "gemini-3.6-flash": {
+      "bare": 1,
+      "with its assumption": 8,
+      "asked": 0,
+      "missing": 0,
+      "n": 9
+     },
+     "gpt-5.6-sol": {
+      "bare": 0,
+      "with its assumption": 9,
+      "asked": 0,
+      "missing": 0,
+      "n": 9
+     }
+    }
+   }
+  }
+ },
+ "options": {
+  "label": "a defined-outcome ETF that holds four FLEX option positions (documents of the Innovator U.S. Small Cap Power Buffer ETF - October)",
+  "figures_per_run": {
+   "settled": 53,
+   "not_settled": 15
+  },
+  "runs": 18,
+  "runs_per_cell": [
+   3
+  ],
+  "all_finished": true,
+  "tokens": 444251,
+  "arms": {
+   "plain": {
+    "per_model": {
+     "claude-opus-4-8": {
+      "settled_right": 110,
+      "settled_figures": 159,
+      "settled_wrong": 48,
+      "settled_wrong_with_the_figure_in_its_own_words": 17,
+      "settled_no_number": 1,
+      "open_figures": 45,
+      "open_bare": 42,
+      "open_bare_per_run": [
+       14,
+       14,
+       14
+      ],
+      "open_bare_but_words_say_assumed": 0,
+      "open_with_its_assumption": 3,
+      "of_which_only_names_a_practice": 3,
+      "open_asked": 0,
+      "open_missing": 0,
+      "open_figures_whose_value_changes_between_runs": 8,
+      "figures_presented_alike_in_all_runs": 67,
+      "figures": 68
+     },
+     "gemini-3.6-flash": {
+      "settled_right": 159,
+      "settled_figures": 159,
+      "settled_wrong": 0,
+      "settled_wrong_with_the_figure_in_its_own_words": 0,
+      "settled_no_number": 0,
+      "open_figures": 45,
+      "open_bare": 43,
+      "open_bare_per_run": [
+       15,
+       14,
+       14
+      ],
+      "open_bare_but_words_say_assumed": 0,
+      "open_with_its_assumption": 2,
+      "of_which_only_names_a_practice": 2,
+      "open_asked": 0,
+      "open_missing": 0,
+      "open_figures_whose_value_changes_between_runs": 3,
+      "figures_presented_alike_in_all_runs": 67,
+      "figures": 68
+     },
+     "gpt-5.6-sol": {
+      "settled_right": 159,
+      "settled_figures": 159,
+      "settled_wrong": 0,
+      "settled_wrong_with_the_figure_in_its_own_words": 0,
+      "settled_no_number": 0,
+      "open_figures": 45,
+      "open_bare": 30,
+      "open_bare_per_run": [
+       11,
+       10,
+       9
+      ],
+      "open_bare_but_words_say_assumed": 0,
+      "open_with_its_assumption": 4,
+      "of_which_only_names_a_practice": 0,
+      "open_asked": 11,
+      "open_missing": 0,
+      "open_figures_whose_value_changes_between_runs": 2,
+      "figures_presented_alike_in_all_runs": 63,
+      "figures": 68
+     }
+    },
+    "open_total": {
+     "figures": 135,
+     "bare": 115,
+     "with_its_assumption": 9,
+     "of_which_only_names_a_practice": 5,
+     "bare_but_words_say_assumed": 0,
+     "asked": 11
+    },
+    "settled_total": {
+     "figures": 477,
+     "right": 428,
+     "wrong": 48,
+     "no_number": 1,
+     "wrong_with_the_reference_figure_in_its_words": 17
+    }
+   },
+   "ask": {
+    "per_model": {
+     "claude-opus-4-8": {
+      "settled_right": 122,
+      "settled_figures": 159,
+      "settled_wrong": 37,
+      "settled_wrong_with_the_figure_in_its_own_words": 33,
+      "settled_no_number": 0,
+      "open_figures": 45,
+      "open_bare": 26,
+      "open_bare_per_run": [
+       6,
+       9,
+       11
+      ],
+      "open_bare_but_words_say_assumed": 14,
+      "open_with_its_assumption": 16,
+      "of_which_only_names_a_practice": 0,
+      "open_asked": 3,
+      "open_missing": 0,
+      "open_figures_whose_value_changes_between_runs": 7,
+      "figures_presented_alike_in_all_runs": 47,
+      "figures": 68
+     },
+     "gemini-3.6-flash": {
+      "settled_right": 158,
+      "settled_figures": 159,
+      "settled_wrong": 1,
+      "settled_wrong_with_the_figure_in_its_own_words": 0,
+      "settled_no_number": 0,
+      "open_figures": 45,
+      "open_bare": 25,
+      "open_bare_per_run": [
+       11,
+       7,
+       7
+      ],
+      "open_bare_but_words_say_assumed": 2,
+      "open_with_its_assumption": 19,
+      "of_which_only_names_a_practice": 0,
+      "open_asked": 1,
+      "open_missing": 0,
+      "open_figures_whose_value_changes_between_runs": 1,
+      "figures_presented_alike_in_all_runs": 58,
+      "figures": 68
+     },
+     "gpt-5.6-sol": {
+      "settled_right": 158,
+      "settled_figures": 159,
+      "settled_wrong": 1,
+      "settled_wrong_with_the_figure_in_its_own_words": 0,
+      "settled_no_number": 0,
+      "open_figures": 45,
+      "open_bare": 1,
+      "open_bare_per_run": [
+       0,
+       0,
+       1
+      ],
+      "open_bare_but_words_say_assumed": 0,
+      "open_with_its_assumption": 33,
+      "of_which_only_names_a_practice": 0,
+      "open_asked": 11,
+      "open_missing": 0,
+      "open_figures_whose_value_changes_between_runs": 5,
+      "figures_presented_alike_in_all_runs": 60,
+      "figures": 68
+     }
+    },
+    "open_total": {
+     "figures": 135,
+     "bare": 52,
+     "with_its_assumption": 68,
+     "of_which_only_names_a_practice": 0,
+     "bare_but_words_say_assumed": 16,
+     "asked": 15
+    },
+    "settled_total": {
+     "figures": 477,
+     "right": 438,
+     "wrong": 39,
+     "no_number": 0,
+     "wrong_with_the_reference_figure_in_its_words": 33
+    }
+   }
+  },
+  "shown": {
+   "T08.realized": {
+    "plain": {
+     "claude-opus-4-8": [
+      [
+       -1055000.0,
+       "bare"
+      ],
+      [
+       -1055000.0,
+       "bare"
+      ],
+      [
+       -1055000.0,
+       "bare"
+      ]
+     ],
+     "gemini-3.6-flash": [
+      [
+       -1055000.0,
+       "bare"
+      ],
+      [
+       -1055000.0,
+       "bare"
+      ],
+      [
+       -1055000.0,
+       "bare"
+      ]
+     ],
+     "gpt-5.6-sol": [
+      [
+       null,
+       "asked"
+      ],
+      [
+       null,
+       "asked"
+      ],
+      [
+       null,
+       "asked"
+      ]
+     ]
+    },
+    "ask": {
+     "claude-opus-4-8": [
+      [
+       -1055000.0,
+       "bare"
+      ],
+      [
+       -1138333.33,
+       "bare"
+      ],
+      [
+       -1055000.0,
+       "bare"
+      ]
+     ],
+     "gemini-3.6-flash": [
+      [
+       -1055000.0,
+       "bare"
+      ],
+      [
+       -1055000.0,
+       "bare"
+      ],
+      [
+       -1055000.0,
+       "bare"
+      ]
+     ],
+     "gpt-5.6-sol": [
+      [
+       null,
+       "asked"
+      ],
+      [
+       -1055000.0,
+       "with its assumption"
+      ],
+      [
+       null,
+       "asked"
+      ]
+     ]
+    }
+   },
+   "T10.contracts_in_basket": {
+    "plain": {
+     "claude-opus-4-8": [
+      [
+       60.0,
+       "bare"
+      ],
+      [
+       60.0,
+       "bare"
+      ],
+      [
+       60.0,
+       "bare"
+      ]
+     ],
+     "gemini-3.6-flash": [
+      [
+       60.0,
+       "bare"
+      ],
+      [
+       60.0,
+       "bare"
+      ],
+      [
+       60.0,
+       "bare"
+      ]
+     ],
+     "gpt-5.6-sol": [
+      [
+       60.0,
+       "with its assumption"
+      ],
+      [
+       null,
+       "asked"
+      ],
+      [
+       61.0,
+       "bare"
+      ]
+     ]
+    },
+    "ask": {
+     "claude-opus-4-8": [
+      [
+       60.0,
+       "with its assumption"
+      ],
+      [
+       60.0,
+       "bare"
+      ],
+      [
+       60.0,
+       "bare"
+      ]
+     ],
+     "gemini-3.6-flash": [
+      [
+       60.0,
+       "bare"
+      ],
+      [
+       60.0,
+       "bare"
+      ],
+      [
+       60.0,
+       "bare"
+      ]
+     ],
+     "gpt-5.6-sol": [
+      [
+       null,
+       "asked"
+      ],
+      [
+       60.0,
+       "with its assumption"
+      ],
+      [
+       null,
+       "asked"
+      ]
+     ]
+    }
+   },
+   "T07.net_assets_after": {
+    "plain": {
+     "claude-opus-4-8": [
+      [
+       611844000.0,
+       "bare"
+      ],
+      [
+       613050000.0,
+       "bare"
+      ],
+      [
+       613050000.0,
+       "bare"
+      ]
+     ],
+     "gemini-3.6-flash": [
+      [
+       613460500.0,
+       "bare"
+      ],
+      [
+       613460500.0,
+       "bare"
+      ],
+      [
+       613460500.0,
+       "bare"
+      ]
+     ],
+     "gpt-5.6-sol": [
+      [
+       613460500.0,
+       "bare"
+      ],
+      [
+       613460500.0,
+       "bare"
+      ],
+      [
+       613460500.0,
+       "bare"
+      ]
+     ]
+    },
+    "ask": {
+     "claude-opus-4-8": [
+      [
+       613450000.0,
+       "bare"
+      ],
+      [
+       613291500.0,
+       "bare"
+      ],
+      [
+       613291000.0,
+       "bare"
+      ]
+     ],
+     "gemini-3.6-flash": [
+      [
+       613460500.0,
+       "bare"
+      ],
+      [
+       613460500.0,
+       "bare"
+      ],
+      [
+       613460500.0,
+       "bare"
+      ]
+     ],
+     "gpt-5.6-sol": [
+      [
+       613460500.0,
+       "with its assumption"
+      ],
+      [
+       613460540.0,
+       "with its assumption"
+      ],
+      [
+       613460500.0,
+       "bare"
+      ]
+     ]
+    }
+   },
+   "T11.correction_threshold": {
+    "plain": {
+     "claude-opus-4-8": [
+      [
+       0.5,
+       "with its assumption"
+      ],
+      [
+       0.005,
+       "with its assumption"
+      ],
+      [
+       0.5,
+       "with its assumption"
+      ]
+     ],
+     "gemini-3.6-flash": [
+      [
+       0.5,
+       "bare"
+      ],
+      [
+       0.5,
+       "with its assumption"
+      ],
+      [
+       0.005,
+       "with its assumption"
+      ]
+     ],
+     "gpt-5.6-sol": [
+      [
+       null,
+       "asked"
+      ],
+      [
+       null,
+       "asked"
+      ],
+      [
+       null,
+       "asked"
+      ]
+     ]
+    },
+    "ask": {
+     "claude-opus-4-8": [
+      [
+       null,
+       "asked"
+      ],
+      [
+       null,
+       "asked"
+      ],
+      [
+       null,
+       "asked"
+      ]
+     ],
+     "gemini-3.6-flash": [
+      [
+       0.005,
+       "with its assumption"
+      ],
+      [
+       0.5,
+       "with its assumption"
+      ],
+      [
+       null,
+       "asked"
+      ]
+     ],
+     "gpt-5.6-sol": [
+      [
+       null,
+       "asked"
+      ],
+      [
+       null,
+       "asked"
+      ],
+      [
+       null,
+       "asked"
+      ]
+     ]
+    }
+   },
+   "T04.fee_one_day": {
+    "plain": {
+     "claude-opus-4-8": [
+      [
+       13202.74,
+       "bare"
+      ],
+      [
+       13205.48,
+       "bare"
+      ],
+      [
+       132054.79,
+       "bare"
+      ]
+     ],
+     "gemini-3.6-flash": [
+      [
+       13202.74,
+       "bare"
+      ],
+      [
+       13202.74,
+       "bare"
+      ],
+      [
+       13202.74,
+       "bare"
+      ]
+     ],
+     "gpt-5.6-sol": [
+      [
+       13202.74,
+       "bare"
+      ],
+      [
+       13202.739726,
+       "bare"
+      ],
+      [
+       13202.739726,
+       "bare"
+      ]
+     ]
+    },
+    "ask": {
+     "claude-opus-4-8": [
+      [
+       13205.48,
+       "with its assumption"
+      ],
+      [
+       13202.74,
+       "bare"
+      ],
+      [
+       13205.48,
+       "bare"
+      ]
+     ],
+     "gemini-3.6-flash": [
+      [
+       13202.74,
+       "bare"
+      ],
+      [
+       13202.74,
+       "with its assumption"
+      ],
+      [
+       13202.74,
+       "with its assumption"
+      ]
+     ],
+     "gpt-5.6-sol": [
+      [
+       13202.739726,
+       "with its assumption"
+      ],
+      [
+       13202.74,
+       "with its assumption"
+      ],
+      [
+       13202.74,
+       "with its assumption"
+      ]
+     ]
+    }
+   },
+   "T07.nav_per_share_published": {
+    "plain": {
+     "claude-opus-4-8": [
+      [
+       30.44,
+       "bare"
+      ],
+      [
+       30.5,
+       "bare"
+      ],
+      [
+       30.5,
+       "bare"
+      ]
+     ],
+     "gemini-3.6-flash": [
+      [
+       30.52,
+       "bare"
+      ],
+      [
+       30.52,
+       "bare"
+      ],
+      [
+       30.52,
+       "bare"
+      ]
+     ],
+     "gpt-5.6-sol": [
+      [
+       30.52,
+       "bare"
+      ],
+      [
+       30.52,
+       "bare"
+      ],
+      [
+       30.52,
+       "bare"
+      ]
+     ]
+    },
+    "ask": {
+     "claude-opus-4-8": [
+      [
+       30.5,
+       "bare"
+      ],
+      [
+       30.5,
+       "bare"
+      ],
+      [
+       30.5,
+       "bare"
+      ]
+     ],
+     "gemini-3.6-flash": [
+      [
+       30.52,
+       "bare"
+      ],
+      [
+       30.52,
+       "bare"
+      ],
+      [
+       30.52,
+       "bare"
+      ]
+     ],
+     "gpt-5.6-sol": [
+      [
+       30.52,
+       "bare"
+      ],
+      [
+       30.52,
+       "bare"
+      ],
+      [
+       30.52,
+       "bare"
+      ]
+     ]
+    }
+   },
+   "T03.price_case_b": {
+    "plain": {
+     "claude-opus-4-8": [
+      [
+       4.02,
+       "bare"
+      ],
+      [
+       4.02,
+       "bare"
+      ],
+      [
+       4.02,
+       "bare"
+      ]
+     ],
+     "gemini-3.6-flash": [
+      [
+       4.02,
+       "bare"
+      ],
+      [
+       4.02,
+       "bare"
+      ],
+      [
+       4.02,
+       "bare"
+      ]
+     ],
+     "gpt-5.6-sol": [
+      [
+       4.02,
+       "bare"
+      ],
+      [
+       4.02,
+       "bare"
+      ],
+      [
+       4.02,
+       "bare"
+      ]
+     ]
+    },
+    "ask": {
+     "claude-opus-4-8": [
+      [
+       4.02,
+       "bare"
+      ],
+      [
+       4.02,
+       "bare"
+      ],
+      [
+       4.02,
+       "bare"
+      ]
+     ],
+     "gemini-3.6-flash": [
+      [
+       4.02,
+       "bare"
+      ],
+      [
+       4.02,
+       "bare"
+      ],
+      [
+       4.02,
+       "bare"
+      ]
+     ],
+     "gpt-5.6-sol": [
+      [
+       4.02,
+       "bare"
+      ],
+      [
+       4.02,
+       "bare"
+      ],
+      [
+       4.02,
+       "bare"
+      ]
+     ]
+    }
+   },
+   "T12.contracts_after": {
+    "plain": {
+     "claude-opus-4-8": [
+      [
+       48000.0,
+       "bare"
+      ],
+      [
+       48000.0,
+       "bare"
+      ],
+      [
+       48000.0,
+       "bare"
+      ]
+     ],
+     "gemini-3.6-flash": [
+      [
+       48000.0,
+       "bare"
+      ],
+      [
+       48000.0,
+       "bare"
+      ],
+      [
+       48000.0,
+       "bare"
+      ]
+     ],
+     "gpt-5.6-sol": [
+      [
+       48000.0,
+       "bare"
+      ],
+      [
+       48000.0,
+       "bare"
+      ],
+      [
+       48000.0,
+       "with its assumption"
+      ]
+     ]
+    },
+    "ask": {
+     "claude-opus-4-8": [
+      [
+       48000.0,
+       "with its assumption"
+      ],
+      [
+       48000.0,
+       "with its assumption"
+      ],
+      [
+       48000.0,
+       "with its assumption"
+      ]
+     ],
+     "gemini-3.6-flash": [
+      [
+       48000.0,
+       "with its assumption"
+      ],
+      [
+       48000.0,
+       "with its assumption"
+      ],
+      [
+       48000.0,
+       "with its assumption"
+      ]
+     ],
+     "gpt-5.6-sol": [
+      [
+       48000.0,
+       "with its assumption"
+      ],
+      [
+       48000.0,
+       "with its assumption"
+      ],
+      [
+       48000.0,
+       "with its assumption"
+      ]
+     ]
+    }
+   }
+  },
+  "by_open_rule": {
+   "O18": {
+    "plain": {
+     "claude-opus-4-8": {
+      "bare": 12,
+      "with its assumption": 0,
+      "asked": 0,
+      "missing": 0,
+      "n": 12
+     },
+     "gemini-3.6-flash": {
+      "bare": 12,
+      "with its assumption": 0,
+      "asked": 0,
+      "missing": 0,
+      "n": 12
+     },
+     "gpt-5.6-sol": {
+      "bare": 11,
+      "with its assumption": 1,
+      "asked": 0,
+      "missing": 0,
+      "n": 12
+     }
+    },
+    "ask": {
+     "claude-opus-4-8": {
+      "bare": 9,
+      "with its assumption": 3,
+      "asked": 0,
+      "missing": 0,
+      "n": 12
+     },
+     "gemini-3.6-flash": {
+      "bare": 5,
+      "with its assumption": 7,
+      "asked": 0,
+      "missing": 0,
+      "n": 12
+     },
+     "gpt-5.6-sol": {
+      "bare": 0,
+      "with its assumption": 12,
+      "asked": 0,
+      "missing": 0,
+      "n": 12
+     }
+    }
+   },
+   "O20": {
+    "plain": {
+     "claude-opus-4-8": {
+      "bare": 12,
+      "with its assumption": 0,
+      "asked": 0,
+      "missing": 0,
+      "n": 12
+     },
+     "gemini-3.6-flash": {
+      "bare": 12,
+      "with its assumption": 0,
+      "asked": 0,
+      "missing": 0,
+      "n": 12
+     },
+     "gpt-5.6-sol": {
+      "bare": 11,
+      "with its assumption": 1,
+      "asked": 0,
+      "missing": 0,
+      "n": 12
+     }
+    },
+    "ask": {
+     "claude-opus-4-8": {
+      "bare": 9,
+      "with its assumption": 3,
+      "asked": 0,
+      "missing": 0,
+      "n": 12
+     },
+     "gemini-3.6-flash": {
+      "bare": 5,
+      "with its assumption": 7,
+      "asked": 0,
+      "missing": 0,
+      "n": 12
+     },
+     "gpt-5.6-sol": {
+      "bare": 0,
+      "with its assumption": 12,
+      "asked": 0,
+      "missing": 0,
+      "n": 12
+     }
+    }
+   },
+   "O24": {
+    "plain": {
+     "claude-opus-4-8": {
+      "bare": 3,
+      "with its assumption": 0,
+      "asked": 0,
+      "missing": 0,
+      "n": 3
+     },
+     "gemini-3.6-flash": {
+      "bare": 3,
+      "with its assumption": 0,
+      "asked": 0,
+      "missing": 0,
+      "n": 3
+     },
+     "gpt-5.6-sol": {
+      "bare": 3,
+      "with its assumption": 0,
+      "asked": 0,
+      "missing": 0,
+      "n": 3
+     }
+    },
+    "ask": {
+     "claude-opus-4-8": {
+      "bare": 3,
+      "with its assumption": 0,
+      "asked": 0,
+      "missing": 0,
+      "n": 3
+     },
+     "gemini-3.6-flash": {
+      "bare": 3,
+      "with its assumption": 0,
+      "asked": 0,
+      "missing": 0,
+      "n": 3
+     },
+     "gpt-5.6-sol": {
+      "bare": 1,
+      "with its assumption": 2,
+      "asked": 0,
+      "missing": 0,
+      "n": 3
+     }
+    }
+   },
+   "O10": {
+    "plain": {
+     "claude-opus-4-8": {
+      "bare": 6,
+      "with its assumption": 0,
+      "asked": 0,
+      "missing": 0,
+      "n": 6
+     },
+     "gemini-3.6-flash": {
+      "bare": 6,
+      "with its assumption": 0,
+      "asked": 0,
+      "missing": 0,
+      "n": 6
+     },
+     "gpt-5.6-sol": {
+      "bare": 0,
+      "with its assumption": 0,
+      "asked": 6,
+      "missing": 0,
+      "n": 6
+     }
+    },
+    "ask": {
+     "claude-opus-4-8": {
+      "bare": 5,
+      "with its assumption": 1,
+      "asked": 0,
+      "missing": 0,
+      "n": 6
+     },
+     "gemini-3.6-flash": {
+      "bare": 6,
+      "with its assumption": 0,
+      "asked": 0,
+      "missing": 0,
+      "n": 6
+     },
+     "gpt-5.6-sol": {
+      "bare": 0,
+      "with its assumption": 2,
+      "asked": 4,
+      "missing": 0,
+      "n": 6
+     }
+    }
+   },
+   "O16": {
+    "plain": {
+     "claude-opus-4-8": {
+      "bare": 6,
+      "with its assumption": 0,
+      "asked": 0,
+      "missing": 0,
+      "n": 6
+     },
+     "gemini-3.6-flash": {
+      "bare": 6,
+      "with its assumption": 0,
+      "asked": 0,
+      "missing": 0,
+      "n": 6
+     },
+     "gpt-5.6-sol": {
+      "bare": 3,
+      "with its assumption": 1,
+      "asked": 2,
+      "missing": 0,
+      "n": 6
+     }
+    },
+    "ask": {
+     "claude-opus-4-8": {
+      "bare": 5,
+      "with its assumption": 1,
+      "asked": 0,
+      "missing": 0,
+      "n": 6
+     },
+     "gemini-3.6-flash": {
+      "bare": 6,
+      "with its assumption": 0,
+      "asked": 0,
+      "missing": 0,
+      "n": 6
+     },
+     "gpt-5.6-sol": {
+      "bare": 0,
+      "with its assumption": 2,
+      "asked": 4,
+      "missing": 0,
+      "n": 6
+     }
+    }
+   },
+   "O21": {
+    "plain": {
+     "claude-opus-4-8": {
+      "bare": 0,
+      "with its assumption": 3,
+      "asked": 0,
+      "missing": 0,
+      "n": 3
+     },
+     "gemini-3.6-flash": {
+      "bare": 1,
+      "with its assumption": 2,
+      "asked": 0,
+      "missing": 0,
+      "n": 3
+     },
+     "gpt-5.6-sol": {
+      "bare": 0,
+      "with its assumption": 0,
+      "asked": 3,
+      "missing": 0,
+      "n": 3
+     }
+    },
+    "ask": {
+     "claude-opus-4-8": {
+      "bare": 0,
+      "with its assumption": 0,
+      "asked": 3,
+      "missing": 0,
+      "n": 3
+     },
+     "gemini-3.6-flash": {
+      "bare": 0,
+      "with its assumption": 2,
+      "asked": 1,
+      "missing": 0,
+      "n": 3
+     },
+     "gpt-5.6-sol": {
+      "bare": 0,
+      "with its assumption": 0,
+      "asked": 3,
+      "missing": 0,
+      "n": 3
+     }
+    }
+   },
+   "O22": {
+    "plain": {
+     "claude-opus-4-8": {
+      "bare": 9,
+      "with its assumption": 0,
+      "asked": 0,
+      "missing": 0,
+      "n": 9
+     },
+     "gemini-3.6-flash": {
+      "bare": 9,
+      "with its assumption": 0,
+      "asked": 0,
+      "missing": 0,
+      "n": 9
+     },
+     "gpt-5.6-sol": {
+      "bare": 8,
+      "with its assumption": 1,
+      "asked": 0,
+      "missing": 0,
+      "n": 9
+     }
+    },
+    "ask": {
+     "claude-opus-4-8": {
+      "bare": 0,
+      "with its assumption": 9,
+      "asked": 0,
+      "missing": 0,
+      "n": 9
+     },
+     "gemini-3.6-flash": {
+      "bare": 3,
+      "with its assumption": 6,
+      "asked": 0,
+      "missing": 0,
+      "n": 9
+     },
+     "gpt-5.6-sol": {
+      "bare": 0,
+      "with its assumption": 9,
+      "asked": 0,
+      "missing": 0,
+      "n": 9
+     }
+    }
+   }
+  }
+ },
+ "the_rule_behind_the_real_restatement": {
+  "plain": {
+   "claude-opus-4-8": [
+    "bare",
+    "bare",
+    "bare"
+   ],
+   "gemini-3.6-flash": [
+    "bare",
+    "bare",
+    "bare"
+   ],
+   "gpt-5.6-sol": [
+    "bare",
+    "bare",
+    "bare"
+   ]
+  },
+  "ask": {
+   "claude-opus-4-8": [
+    "with its assumption",
+    "bare",
+    "bare"
+   ],
+   "gemini-3.6-flash": [
+    "bare",
+    "bare",
+    "bare"
+   ],
+   "gpt-5.6-sol": [
+    "bare",
+    "with its assumption",
+    "bare"
+   ]
+  }
+ }
+}

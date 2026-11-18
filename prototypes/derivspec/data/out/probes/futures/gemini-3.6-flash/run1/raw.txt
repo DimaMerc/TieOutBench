@@ -1,0 +1,42 @@
+```json
+{
+  "additions": [
+    {
+      "question": "How frequently are net investment income dividends declared and paid for the fund?",
+      "verdict": "stated",
+      "quote": "dividends from net investment income, if any, are declared and paid monthly for each of Aggregate Bond ETF, Barrier Income ETF, Bond Bull ETF, Bitcoin Strategy ETF, Currency Strategy ETF, China A Shares PLUS Income ETF, Enhanced Income ETF, Gold Strategy ETF, High Yield ETF, Interest Rate Hedge ETF, Intermediate Term Treasury Futures Strategy ETF, MBS ETF, Short Term Treasury Futures Strategy ETF, Target 15 Distribution ETF, Treasury Option Income ETF, US Equity Income ETF, and Volatility Premium ETF.",
+      "missing": ""
+    },
+    {
+      "question": "On what day relative to trade date are futures transactions reflected in daily NAV calculations versus financial statements?",
+      "verdict": "stated",
+      "quote": "For financial reporting purposes, investment transactions are reported on the trade date. However, for daily NAV determination, portfolio securities transactions are reflected no later than in the first calculation on the first business day following trade date.",
+      "missing": ""
+    },
+    {
+      "question": "Which level under the U.S. GAAP fair value hierarchy is assigned to open exchange-traded futures contracts for financial reporting disclosures?",
+      "verdict": "stated",
+      "quote": "Futures contracts are generally valued at the settlement prices established each day on the exchange on which they are traded and are categorized as Level 1.",
+      "missing": ""
+    },
+    {
+      "question": "How frequently are net realized capital gains distributed by the fund to shareholders?",
+      "verdict": "stated",
+      "quote": "The Funds distribute their net realized capital gains, if any, to shareholders annually.",
+      "missing": ""
+    },
+    {
+      "question": "How are exchange-traded options on futures valued for daily NAV calculation?",
+      "verdict": "stated",
+      "quote": "Exchange traded options are valued at the last quoted sales price or, in the absence of a sale, at the mean between the current bid and ask prices on the exchange on which such options are traded.",
+      "missing": ""
+    },
+    {
+      "question": "What commodity pool operator (CPO) regulatory status or exemption under the Commodity Exchange Act applies to the fund?",
+      "verdict": "stated",
+      "quote": "The Adviser, on behalf of the Funds (except Simplify Gold Strategy ETF), has filed with the National Futures Association, a notice claiming an exemption from the definition of the term “commodity pool operator” in accordance with Rule 4.5 under the Commodity Exchange Act (“CEA”), as amended, and the rules of the Commodity Futures Trading Commission promulgated thereunder.",
+      "missing": ""
+    }
+  ]
+}
+```

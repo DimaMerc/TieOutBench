@@ -1,0 +1,32 @@
+{
+ "fund": "options",
+ "reader": "gemini-3.6-flash",
+ "mode": "draft",
+ "draft_arm": "plain",
+ "drafter": "gpt-5.6-sol",
+ "draft_run": 1,
+ "started": "2026-11-16T17:11:42",
+ "prompt": {
+  "sha256": "c2d4a490f8813652c195adb8dd8d2ea206c55f6473240e14925b75c8a7bd237c",
+  "chars": 59522,
+  "tokens_approx": 14880
+ },
+ "max_tokens": 32000,
+ "finish_reason": "stop",
+ "usage": {
+  "completion_tokens": 2320,
+  "prompt_tokens": 16681,
+  "prompt_tokens_details": {
+   "cached_tokens": 8174
+  },
+  "total_tokens": 29524
+ },
+ "content_chars": 7655,
+ "reasoning_chars": 0,
+ "elapsed_s": 65.078,
+ "deadline_hit": false,
+ "temperature": 0.0,
+ "temperature_dropped": false,
+ "token_field": "max_tokens",
+ "endpoint_host": "generativelanguage.googleapis.com"
+}

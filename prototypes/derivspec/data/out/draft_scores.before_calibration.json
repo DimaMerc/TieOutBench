@@ -1,0 +1,4116 @@
+[
+ {
+  "arm": "plain",
+  "model": "claude-opus-4-8",
+  "finish_reason": "stop",
+  "usage": {
+   "completion_tokens": 4669,
+   "prompt_tokens": 9209,
+   "total_tokens": 13878
+  },
+  "parsed": true,
+  "settled": {
+   "figures": 27,
+   "right": 24,
+   "wrong": 3,
+   "no_number": 0
+  },
+  "unsettled": {
+   "figures": 29,
+   "bare": 28,
+   "with_its_assumption": 0,
+   "asked": 1,
+   "missing": 0,
+   "bare_and_same_as_reference": 21,
+   "bare_and_different": 6
+  },
+  "requirements": {
+   "count": 12,
+   "bases": null,
+   "topics": {
+    "day count": {
+     "mentioned": false,
+     "requirements": [],
+     "flagged": false
+    },
+    "weekends and holidays": {
+     "mentioned": true,
+     "requirements": [
+      "Q4",
+      "Q8"
+     ],
+     "flagged": false
+    },
+    "rate reset": {
+     "mentioned": false,
+     "requirements": [],
+     "flagged": false
+    },
+    "income timing": {
+     "mentioned": true,
+     "requirements": [
+      "Q5",
+      "Q6"
+     ],
+     "flagged": true
+    },
+    "what a payment date does": {
+     "mentioned": true,
+     "requirements": [
+      "Q2",
+      "Q6",
+      "Q7",
+      "Q12"
+     ],
+     "flagged": true
+    },
+    "change of size": {
+     "mentioned": false,
+     "requirements": [],
+     "flagged": false
+    },
+    "price source": {
+     "mentioned": false,
+     "requirements": [],
+     "flagged": false
+    },
+    "collateral": {
+     "mentioned": true,
+     "requirements": [
+      "Q11"
+     ],
+     "flagged": false
+    },
+    "expense basis": {
+     "mentioned": false,
+     "requirements": [],
+     "flagged": false
+    },
+    "error threshold": {
+     "mentioned": false,
+     "requirements": [],
+     "flagged": false
+    },
+    "corporate actions": {
+     "mentioned": true,
+     "requirements": [
+      "Q12"
+     ],
+     "flagged": false
+    }
+   }
+  },
+  "rows": [
+   {
+    "scenario": "S01",
+    "field": "units",
+    "settled": true,
+    "expected": 2500000.0,
+    "value": 2500000.0,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [],
+    "words": "2x * 50000000 / 40 = 2500000 reference shares.   "
+   },
+   {
+    "scenario": "S01",
+    "field": "notional",
+    "settled": true,
+    "expected": 100000000.0,
+    "value": 100000000.0,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [],
+    "words": "2500000 * 40 = 100000000.   "
+   },
+   {
+    "scenario": "S02",
+    "field": "unrealized_gain",
+    "settled": true,
+    "expected": 2500000.0,
+    "value": 2500000.0,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [],
+    "words": "2500000 * (41-40) = 2500000.   "
+   },
+   {
+    "scenario": "S02",
+    "field": "per_share",
+    "settled": true,
+    "expected": 1.25,
+    "value": 1.25,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [],
+    "words": "2500000 / 2000000 = 1.25.   "
+   },
+   {
+    "scenario": "S02",
+    "field": "price_to_use",
+    "settled": false,
+    "expected": null,
+    "value": 41.0,
+    "how": "bare",
+    "same_as_reference": false,
+    "open_rules": [
+     "R17"
+    ],
+    "words": "The current closing market price of the reference ETF.   "
+   },
+   {
+    "scenario": "S03",
+    "field": "one_day",
+    "settled": false,
+    "expected": 17500.0,
+    "value": 17500.0,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [
+     "R04",
+     "R05"
+    ],
+    "words": "100000000 * (0.043+0.02)/360 * 1 = 17500.   "
+   },
+   {
+    "scenario": "S03",
+    "field": "weekend",
+    "settled": false,
+    "expected": 52500.0,
+    "value": 52500.0,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [
+     "R04",
+     "R05",
+     "R06"
+    ],
+    "words": "Three calendar days Fri-Mon: 17500 * 3 = 52500.   "
+   },
+   {
+    "scenario": "S04",
+    "field": "total",
+    "settled": false,
+    "expected": 51805.555555555555,
+    "value": 52083.33,
+    "how": "bare",
+    "same_as_reference": false,
+    "open_rules": [
+     "R04",
+     "R05",
+     "R07"
+    ],
+    "words": "100000000/360 * (0.063+0.063+0.0605) = 17500+17500+17083.33.   "
+   },
+   {
+    "scenario": "S04",
+    "field": "third_day",
+    "settled": false,
+    "expected": 16805.555555555555,
+    "value": 17083.33,
+    "how": "bare",
+    "same_as_reference": false,
+    "open_rules": [
+     "R04",
+     "R05",
+     "R07"
+    ],
+    "words": "100000000 * (0.0405+0.02)/360 = 17083.33.   "
+   },
+   {
+    "scenario": "S05",
+    "field": "income_owed",
+    "settled": false,
+    "expected": 300000.0,
+    "value": 300000.0,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [
+     "R08"
+    ],
+    "words": "2500000 * 0.12 * 100% = 300000.   "
+   },
+   {
+    "scenario": "S05",
+    "field": "change_in_unrealized",
+    "settled": true,
+    "expected": -299999.9999999935,
+    "value": -300000.0,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [],
+    "words": "Price drops 41.00 to 40.88: 2500000 * (-0.12) = -300000.   "
+   },
+   {
+    "scenario": "S05",
+    "field": "net_effect_on_net_assets_on_ex_date",
+    "settled": false,
+    "expected": 6.51925802230835e-09,
+    "value": 0.0,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [
+     "R08"
+    ],
+    "words": "Dividend income of +300000 offsets price-drop unrealized of -300000.   "
+   },
+   {
+    "scenario": "S05",
+    "field": "error_per_share_if_omitted",
+    "settled": false,
+    "expected": 0.15,
+    "value": 0.15,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [
+     "R08"
+    ],
+    "words": "300000 / 2000000 = 0.15 per share.   "
+   },
+   {
+    "scenario": "S05",
+    "field": "error_percent_if_omitted",
+    "settled": false,
+    "expected": 0.5714285714285714,
+    "value": 0.5714,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [
+     "R08"
+    ],
+    "words": "0.15 / 26.25 = 0.571% of NAV (52500000/2000000).   "
+   },
+   {
+    "scenario": "S06",
+    "field": "exposure_before",
+    "settled": true,
+    "expected": 102500000.0,
+    "value": 102500000.0,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [],
+    "words": "2500000 * 41 = 102500000.   "
+   },
+   {
+    "scenario": "S06",
+    "field": "target_exposure",
+    "settled": true,
+    "expected": 105000000.0,
+    "value": 105000000.0,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [],
+    "words": "2x * 52500000 = 105000000.   "
+   },
+   {
+    "scenario": "S06",
+    "field": "units_added",
+    "settled": true,
+    "expected": 60975.60975609766,
+    "value": 60975.61,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [],
+    "words": "(105000000-102500000)/41 = 60975.61 shares.   "
+   },
+   {
+    "scenario": "S06",
+    "field": "units_after",
+    "settled": true,
+    "expected": 2560975.6097560977,
+    "value": 2560975.61,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [],
+    "words": "2500000 + 60975.61.   "
+   },
+   {
+    "scenario": "S06",
+    "field": "unrealized_after",
+    "settled": true,
+    "expected": 2499999.999999996,
+    "value": 2500000.0,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [],
+    "words": "Reset is at 41 for new units; existing units still carry 2500000 until reset.   "
+   },
+   {
+    "scenario": "S07",
+    "field": "exposure_before",
+    "settled": true,
+    "expected": 95000000.0,
+    "value": 95000000.0,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [],
+    "words": "2500000 * 38 = 95000000.   "
+   },
+   {
+    "scenario": "S07",
+    "field": "target_exposure",
+    "settled": true,
+    "expected": 90000000.0,
+    "value": 90000000.0,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [],
+    "words": "2x * 45000000 = 90000000.   "
+   },
+   {
+    "scenario": "S07",
+    "field": "units_removed",
+    "settled": true,
+    "expected": 131578.94736842113,
+    "value": 131578.95,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [],
+    "words": "(95000000-90000000)/38 = 131578.95 shares.   "
+   },
+   {
+    "scenario": "S07",
+    "field": "realized",
+    "settled": false,
+    "expected": -263157.89473684225,
+    "value": -263157.89,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [
+     "R10"
+    ],
+    "words": "131578.95 * (38-40) = -263157.89.   "
+   },
+   {
+    "scenario": "S07",
+    "field": "unrealized_after",
+    "settled": false,
+    "expected": -4736842.105263158,
+    "value": -4736842.11,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [
+     "R10"
+    ],
+    "words": "Remaining 2368421.05 * (38-40) = -4736842.11.   "
+   },
+   {
+    "scenario": "S08",
+    "field": "financing_accrued",
+    "settled": false,
+    "expected": 525000.0,
+    "value": 525000.0,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [
+     "R04",
+     "R05",
+     "R06"
+    ],
+    "words": "100000000 * (0.043+0.02)/360 * 30 = 525000.   "
+   },
+   {
+    "scenario": "S08",
+    "field": "payment_to_fund",
+    "settled": false,
+    "expected": 4775000.0,
+    "value": 4775000.0,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [
+     "R11",
+     "R04",
+     "R05",
+     "R06",
+     "R08"
+    ],
+    "words": "Appreciation 2500000*(42-40)=5000000 + income 300000 - financing 525000 = 4775000 to the fund.   "
+   },
+   {
+    "scenario": "S08",
+    "field": "notional_after",
+    "settled": false,
+    "expected": 105000000.0,
+    "value": 105000000.0,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [
+     "R11"
+    ],
+    "words": "2500000 * 42 reset price = 105000000.   "
+   },
+   {
+    "scenario": "S08",
+    "field": "accruals_after",
+    "settled": false,
+    "expected": 0.0,
+    "value": 0.0,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [
+     "R11"
+    ],
+    "words": "Financing and income accruals are cleared at reset.   "
+   },
+   {
+    "scenario": "S09",
+    "field": "cash_for_shares",
+    "settled": true,
+    "expected": 1312500.0,
+    "value": 1312500.0,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [],
+    "words": "50000 * 26.25 = 1312500.   "
+   },
+   {
+    "scenario": "S09",
+    "field": "fee_received",
+    "settled": true,
+    "expected": 500.0,
+    "value": 500.0,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [],
+    "words": "One creation order, $500 transaction fee.   "
+   },
+   {
+    "scenario": "S09",
+    "field": "units_added",
+    "settled": true,
+    "expected": 62523.8095238097,
+    "value": 62500.0,
+    "how": "bare",
+    "same_as_reference": false,
+    "open_rules": [],
+    "words": "2x * 1312500 / 42 = 62500 shares.   "
+   },
+   {
+    "scenario": "S09",
+    "field": "nav_per_share_published",
+    "settled": true,
+    "expected": 26.25,
+    "value": 26.25,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [],
+    "words": "NAV per share unchanged by a cash creation at NAV.   "
+   },
+   {
+    "scenario": "S10",
+    "field": "cash_paid",
+    "settled": true,
+    "expected": 2624500.0,
+    "value": 2624500.0,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [],
+    "words": "100000 * 26.25 = 2625000 less $500 redemption fee = 2624500.   "
+   },
+   {
+    "scenario": "S10",
+    "field": "units_removed",
+    "settled": true,
+    "expected": 124976.1904761903,
+    "value": 125000.0,
+    "how": "bare",
+    "same_as_reference": false,
+    "open_rules": [],
+    "words": "2x * 2625000 / 42 = 125000 shares.   "
+   },
+   {
+    "scenario": "S10",
+    "field": "realized",
+    "settled": false,
+    "expected": 249952.3809523806,
+    "value": 250000.0,
+    "how": "bare",
+    "same_as_reference": false,
+    "open_rules": [
+     "R10"
+    ],
+    "words": "125000 * (42-40) = 250000 gain.   "
+   },
+   {
+    "scenario": "S10",
+    "field": "nav_per_share_published",
+    "settled": true,
+    "expected": 26.25,
+    "value": 26.25,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [],
+    "words": "NAV per share unchanged by a cash redemption at NAV.   "
+   },
+   {
+    "scenario": "S11",
+    "field": "cash_after",
+    "settled": false,
+    "expected": 47000000.0,
+    "value": 47000000.0,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [
+     "R13"
+    ],
+    "words": "50000000 - 3000000 moved to segregated collateral.   "
+   },
+   {
+    "scenario": "S11",
+    "field": "collateral_posted_after",
+    "settled": false,
+    "expected": 3000000.0,
+    "value": 3000000.0,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [
+     "R13"
+    ],
+    "words": "3000000 segregated as collateral.   "
+   },
+   {
+    "scenario": "S11",
+    "field": "change_in_net_assets",
+    "settled": false,
+    "expected": 0.0,
+    "value": 0.0,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [
+     "R13"
+    ],
+    "words": "A reclassification within assets; net assets unchanged.   "
+   },
+   {
+    "scenario": "S12",
+    "field": "one_day",
+    "settled": false,
+    "expected": 1301.3698630136987,
+    "value": 1319.44,
+    "how": "bare",
+    "same_as_reference": false,
+    "open_rules": [
+     "R14"
+    ],
+    "words": "50000000 * 0.0095 / 360 = 1319.44.   "
+   },
+   {
+    "scenario": "S12",
+    "field": "weekend",
+    "settled": false,
+    "expected": 3904.109589041096,
+    "value": 3958.33,
+    "how": "bare",
+    "same_as_reference": false,
+    "open_rules": [
+     "R14"
+    ],
+    "words": "Three calendar days: 1319.44 * 3 = 3958.33.   "
+   },
+   {
+    "scenario": "S13",
+    "field": "right_net_assets",
+    "settled": true,
+    "expected": 48750000.0,
+    "value": 48750000.0,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [],
+    "words": "Cash 50000000 + swap 2500000*(39.5-40)=-1250000 = 48750000.   "
+   },
+   {
+    "scenario": "S13",
+    "field": "misstatement",
+    "settled": true,
+    "expected": 3750000.0,
+    "value": 3750000.0,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [],
+    "words": "Using 41: swap +2500000 gives 52500000, overstated by 3750000.   "
+   },
+   {
+    "scenario": "S13",
+    "field": "per_share",
+    "settled": true,
+    "expected": 1.875,
+    "value": 1.875,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [],
+    "words": "3750000 / 2000000 = 1.875.   "
+   },
+   {
+    "scenario": "S13",
+    "field": "percent",
+    "settled": true,
+    "expected": 7.692307692307687,
+    "value": 7.6923,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [],
+    "words": "3750000 / 48750000 = 7.69% of the correct NAV.   "
+   },
+   {
+    "scenario": "S13",
+    "field": "correction_threshold",
+    "settled": false,
+    "expected": null,
+    "value": null,
+    "how": "asked",
+    "same_as_reference": false,
+    "open_rules": [
+     "R15"
+    ],
+    "words": "No numeric NAV-error threshold is stated in the documents.   "
+   },
+   {
+    "scenario": "S14",
+    "field": "units_after",
+    "settled": false,
+    "expected": 10000000.0,
+    "value": 10000000.0,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [
+     "R16"
+    ],
+    "words": "2500000 * 4 = 10000000 shares after 4-for-1 split.   "
+   },
+   {
+    "scenario": "S14",
+    "field": "reset_price_after",
+    "settled": false,
+    "expected": 10.0,
+    "value": 10.0,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [
+     "R16"
+    ],
+    "words": "40 / 4 = 10.00 split-adjusted reset price.   "
+   },
+   {
+    "scenario": "S14",
+    "field": "unrealized_after",
+    "settled": false,
+    "expected": 10000000.0,
+    "value": 10000000.0,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [
+     "R16"
+    ],
+    "words": "10000000 * (11-10) = 10000000 unchanged by split.   "
+   },
+   {
+    "scenario": "S14",
+    "field": "unrealized_before",
+    "settled": true,
+    "expected": 10000000.0,
+    "value": 10000000.0,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [],
+    "words": "2500000 * (44-40) = 10000000.   "
+   },
+   {
+    "scenario": "S14",
+    "field": "wrong_unrealized",
+    "settled": true,
+    "expected": -72500000.0,
+    "value": 2500000.0,
+    "how": "bare",
+    "same_as_reference": false,
+    "open_rules": [],
+    "words": "If price updated to 11 but units not split: 2500000 * (11-40) = -72500000 wrong.   "
+   },
+   {
+    "scenario": "S15",
+    "field": "net_assets_at_close",
+    "settled": false,
+    "expected": 52481198.63013699,
+    "value": 52481180.56,
+    "how": "bare",
+    "same_as_reference": false,
+    "open_rules": [
+     "R04",
+     "R05",
+     "R14"
+    ],
+    "words": "50000000 + swap gain 2500000 - financing 17500 - expense 1319.44.   "
+   },
+   {
+    "scenario": "S15",
+    "field": "nav_per_share_published",
+    "settled": false,
+    "expected": 26.24,
+    "value": 26.24,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [
+     "R04",
+     "R05",
+     "R14"
+    ],
+    "words": "52481180.56 / 2000000 = 26.2406, rounded to 26.24.   "
+   },
+   {
+    "scenario": "S15",
+    "field": "return_percent",
+    "settled": false,
+    "expected": 4.962397260273987,
+    "value": 4.9624,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [
+     "R04",
+     "R05",
+     "R14"
+    ],
+    "words": "(52481180.56-50000000)/50000000 = 4.962%.   "
+   },
+   {
+    "scenario": "S15",
+    "field": "twice_reference_percent",
+    "settled": true,
+    "expected": 4.999999999999982,
+    "value": 5.0,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [],
+    "words": "2 * (41-40)/40 = 5.00%.   "
+   },
+   {
+    "scenario": "S15",
+    "field": "shortfall_basis_points",
+    "settled": false,
+    "expected": 3.7602739725994816,
+    "value": 3.76,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [
+     "R04",
+     "R05",
+     "R14"
+    ],
+    "words": "5.00% - 4.9624% = 0.0376% = 3.76 bps.   "
+   }
+  ]
+ },
+ {
+  "arm": "plain",
+  "model": "gemini-3.6-flash",
+  "finish_reason": "stop",
+  "usage": {
+   "completion_tokens": 5083,
+   "prompt_tokens": 6734,
+   "total_tokens": 20947
+  },
+  "parsed": false,
+  "settled": {
+   "figures": 27,
+   "right": 0,
+   "wrong": 0,
+   "no_number": 27
+  },
+  "unsettled": {
+   "figures": 29,
+   "bare": 0,
+   "with_its_assumption": 0,
+   "asked": 0,
+   "missing": 29,
+   "bare_and_same_as_reference": 0,
+   "bare_and_different": 0
+  },
+  "requirements": {
+   "count": 0,
+   "bases": null,
+   "topics": {
+    "day count": {
+     "mentioned": false,
+     "requirements": [],
+     "flagged": false
+    },
+    "weekends and holidays": {
+     "mentioned": false,
+     "requirements": [],
+     "flagged": false
+    },
+    "rate reset": {
+     "mentioned": false,
+     "requirements": [],
+     "flagged": false
+    },
+    "income timing": {
+     "mentioned": false,
+     "requirements": [],
+     "flagged": false
+    },
+    "what a payment date does": {
+     "mentioned": false,
+     "requirements": [],
+     "flagged": false
+    },
+    "change of size": {
+     "mentioned": false,
+     "requirements": [],
+     "flagged": false
+    },
+    "price source": {
+     "mentioned": false,
+     "requirements": [],
+     "flagged": false
+    },
+    "collateral": {
+     "mentioned": false,
+     "requirements": [],
+     "flagged": false
+    },
+    "expense basis": {
+     "mentioned": false,
+     "requirements": [],
+     "flagged": false
+    },
+    "error threshold": {
+     "mentioned": false,
+     "requirements": [],
+     "flagged": false
+    },
+    "corporate actions": {
+     "mentioned": false,
+     "requirements": [],
+     "flagged": false
+    }
+   }
+  },
+  "rows": [
+   {
+    "scenario": "S01",
+    "field": "units",
+    "settled": true,
+    "expected": 2500000.0,
+    "value": null,
+    "how": "missing",
+    "same_as_reference": false,
+    "open_rules": [],
+    "words": ""
+   },
+   {
+    "scenario": "S01",
+    "field": "notional",
+    "settled": true,
+    "expected": 100000000.0,
+    "value": null,
+    "how": "missing",
+    "same_as_reference": false,
+    "open_rules": [],
+    "words": ""
+   },
+   {
+    "scenario": "S02",
+    "field": "unrealized_gain",
+    "settled": true,
+    "expected": 2500000.0,
+    "value": null,
+    "how": "missing",
+    "same_as_reference": false,
+    "open_rules": [],
+    "words": ""
+   },
+   {
+    "scenario": "S02",
+    "field": "per_share",
+    "settled": true,
+    "expected": 1.25,
+    "value": null,
+    "how": "missing",
+    "same_as_reference": false,
+    "open_rules": [],
+    "words": ""
+   },
+   {
+    "scenario": "S02",
+    "field": "price_to_use",
+    "settled": false,
+    "expected": null,
+    "value": null,
+    "how": "missing",
+    "same_as_reference": false,
+    "open_rules": [
+     "R17"
+    ],
+    "words": ""
+   },
+   {
+    "scenario": "S03",
+    "field": "one_day",
+    "settled": false,
+    "expected": 17500.0,
+    "value": null,
+    "how": "missing",
+    "same_as_reference": false,
+    "open_rules": [
+     "R04",
+     "R05"
+    ],
+    "words": ""
+   },
+   {
+    "scenario": "S03",
+    "field": "weekend",
+    "settled": false,
+    "expected": 52500.0,
+    "value": null,
+    "how": "missing",
+    "same_as_reference": false,
+    "open_rules": [
+     "R04",
+     "R05",
+     "R06"
+    ],
+    "words": ""
+   },
+   {
+    "scenario": "S04",
+    "field": "total",
+    "settled": false,
+    "expected": 51805.555555555555,
+    "value": null,
+    "how": "missing",
+    "same_as_reference": false,
+    "open_rules": [
+     "R04",
+     "R05",
+     "R07"
+    ],
+    "words": ""
+   },
+   {
+    "scenario": "S04",
+    "field": "third_day",
+    "settled": false,
+    "expected": 16805.555555555555,
+    "value": null,
+    "how": "missing",
+    "same_as_reference": false,
+    "open_rules": [
+     "R04",
+     "R05",
+     "R07"
+    ],
+    "words": ""
+   },
+   {
+    "scenario": "S05",
+    "field": "income_owed",
+    "settled": false,
+    "expected": 300000.0,
+    "value": null,
+    "how": "missing",
+    "same_as_reference": false,
+    "open_rules": [
+     "R08"
+    ],
+    "words": ""
+   },
+   {
+    "scenario": "S05",
+    "field": "change_in_unrealized",
+    "settled": true,
+    "expected": -299999.9999999935,
+    "value": null,
+    "how": "missing",
+    "same_as_reference": false,
+    "open_rules": [],
+    "words": ""
+   },
+   {
+    "scenario": "S05",
+    "field": "net_effect_on_net_assets_on_ex_date",
+    "settled": false,
+    "expected": 6.51925802230835e-09,
+    "value": null,
+    "how": "missing",
+    "same_as_reference": false,
+    "open_rules": [
+     "R08"
+    ],
+    "words": ""
+   },
+   {
+    "scenario": "S05",
+    "field": "error_per_share_if_omitted",
+    "settled": false,
+    "expected": 0.15,
+    "value": null,
+    "how": "missing",
+    "same_as_reference": false,
+    "open_rules": [
+     "R08"
+    ],
+    "words": ""
+   },
+   {
+    "scenario": "S05",
+    "field": "error_percent_if_omitted",
+    "settled": false,
+    "expected": 0.5714285714285714,
+    "value": null,
+    "how": "missing",
+    "same_as_reference": false,
+    "open_rules": [
+     "R08"
+    ],
+    "words": ""
+   },
+   {
+    "scenario": "S06",
+    "field": "exposure_before",
+    "settled": true,
+    "expected": 102500000.0,
+    "value": null,
+    "how": "missing",
+    "same_as_reference": false,
+    "open_rules": [],
+    "words": ""
+   },
+   {
+    "scenario": "S06",
+    "field": "target_exposure",
+    "settled": true,
+    "expected": 105000000.0,
+    "value": null,
+    "how": "missing",
+    "same_as_reference": false,
+    "open_rules": [],
+    "words": ""
+   },
+   {
+    "scenario": "S06",
+    "field": "units_added",
+    "settled": true,
+    "expected": 60975.60975609766,
+    "value": null,
+    "how": "missing",
+    "same_as_reference": false,
+    "open_rules": [],
+    "words": ""
+   },
+   {
+    "scenario": "S06",
+    "field": "units_after",
+    "settled": true,
+    "expected": 2560975.6097560977,
+    "value": null,
+    "how": "missing",
+    "same_as_reference": false,
+    "open_rules": [],
+    "words": ""
+   },
+   {
+    "scenario": "S06",
+    "field": "unrealized_after",
+    "settled": true,
+    "expected": 2499999.999999996,
+    "value": null,
+    "how": "missing",
+    "same_as_reference": false,
+    "open_rules": [],
+    "words": ""
+   },
+   {
+    "scenario": "S07",
+    "field": "exposure_before",
+    "settled": true,
+    "expected": 95000000.0,
+    "value": null,
+    "how": "missing",
+    "same_as_reference": false,
+    "open_rules": [],
+    "words": ""
+   },
+   {
+    "scenario": "S07",
+    "field": "target_exposure",
+    "settled": true,
+    "expected": 90000000.0,
+    "value": null,
+    "how": "missing",
+    "same_as_reference": false,
+    "open_rules": [],
+    "words": ""
+   },
+   {
+    "scenario": "S07",
+    "field": "units_removed",
+    "settled": true,
+    "expected": 131578.94736842113,
+    "value": null,
+    "how": "missing",
+    "same_as_reference": false,
+    "open_rules": [],
+    "words": ""
+   },
+   {
+    "scenario": "S07",
+    "field": "realized",
+    "settled": false,
+    "expected": -263157.89473684225,
+    "value": null,
+    "how": "missing",
+    "same_as_reference": false,
+    "open_rules": [
+     "R10"
+    ],
+    "words": ""
+   },
+   {
+    "scenario": "S07",
+    "field": "unrealized_after",
+    "settled": false,
+    "expected": -4736842.105263158,
+    "value": null,
+    "how": "missing",
+    "same_as_reference": false,
+    "open_rules": [
+     "R10"
+    ],
+    "words": ""
+   },
+   {
+    "scenario": "S08",
+    "field": "financing_accrued",
+    "settled": false,
+    "expected": 525000.0,
+    "value": null,
+    "how": "missing",
+    "same_as_reference": false,
+    "open_rules": [
+     "R04",
+     "R05",
+     "R06"
+    ],
+    "words": ""
+   },
+   {
+    "scenario": "S08",
+    "field": "payment_to_fund",
+    "settled": false,
+    "expected": 4775000.0,
+    "value": null,
+    "how": "missing",
+    "same_as_reference": false,
+    "open_rules": [
+     "R11",
+     "R04",
+     "R05",
+     "R06",
+     "R08"
+    ],
+    "words": ""
+   },
+   {
+    "scenario": "S08",
+    "field": "notional_after",
+    "settled": false,
+    "expected": 105000000.0,
+    "value": null,
+    "how": "missing",
+    "same_as_reference": false,
+    "open_rules": [
+     "R11"
+    ],
+    "words": ""
+   },
+   {
+    "scenario": "S08",
+    "field": "accruals_after",
+    "settled": false,
+    "expected": 0.0,
+    "value": null,
+    "how": "missing",
+    "same_as_reference": false,
+    "open_rules": [
+     "R11"
+    ],
+    "words": ""
+   },
+   {
+    "scenario": "S09",
+    "field": "cash_for_shares",
+    "settled": true,
+    "expected": 1312500.0,
+    "value": null,
+    "how": "missing",
+    "same_as_reference": false,
+    "open_rules": [],
+    "words": ""
+   },
+   {
+    "scenario": "S09",
+    "field": "fee_received",
+    "settled": true,
+    "expected": 500.0,
+    "value": null,
+    "how": "missing",
+    "same_as_reference": false,
+    "open_rules": [],
+    "words": ""
+   },
+   {
+    "scenario": "S09",
+    "field": "units_added",
+    "settled": true,
+    "expected": 62523.8095238097,
+    "value": null,
+    "how": "missing",
+    "same_as_reference": false,
+    "open_rules": [],
+    "words": ""
+   },
+   {
+    "scenario": "S09",
+    "field": "nav_per_share_published",
+    "settled": true,
+    "expected": 26.25,
+    "value": null,
+    "how": "missing",
+    "same_as_reference": false,
+    "open_rules": [],
+    "words": ""
+   },
+   {
+    "scenario": "S10",
+    "field": "cash_paid",
+    "settled": true,
+    "expected": 2624500.0,
+    "value": null,
+    "how": "missing",
+    "same_as_reference": false,
+    "open_rules": [],
+    "words": ""
+   },
+   {
+    "scenario": "S10",
+    "field": "units_removed",
+    "settled": true,
+    "expected": 124976.1904761903,
+    "value": null,
+    "how": "missing",
+    "same_as_reference": false,
+    "open_rules": [],
+    "words": ""
+   },
+   {
+    "scenario": "S10",
+    "field": "realized",
+    "settled": false,
+    "expected": 249952.3809523806,
+    "value": null,
+    "how": "missing",
+    "same_as_reference": false,
+    "open_rules": [
+     "R10"
+    ],
+    "words": ""
+   },
+   {
+    "scenario": "S10",
+    "field": "nav_per_share_published",
+    "settled": true,
+    "expected": 26.25,
+    "value": null,
+    "how": "missing",
+    "same_as_reference": false,
+    "open_rules": [],
+    "words": ""
+   },
+   {
+    "scenario": "S11",
+    "field": "cash_after",
+    "settled": false,
+    "expected": 47000000.0,
+    "value": null,
+    "how": "missing",
+    "same_as_reference": false,
+    "open_rules": [
+     "R13"
+    ],
+    "words": ""
+   },
+   {
+    "scenario": "S11",
+    "field": "collateral_posted_after",
+    "settled": false,
+    "expected": 3000000.0,
+    "value": null,
+    "how": "missing",
+    "same_as_reference": false,
+    "open_rules": [
+     "R13"
+    ],
+    "words": ""
+   },
+   {
+    "scenario": "S11",
+    "field": "change_in_net_assets",
+    "settled": false,
+    "expected": 0.0,
+    "value": null,
+    "how": "missing",
+    "same_as_reference": false,
+    "open_rules": [
+     "R13"
+    ],
+    "words": ""
+   },
+   {
+    "scenario": "S12",
+    "field": "one_day",
+    "settled": false,
+    "expected": 1301.3698630136987,
+    "value": null,
+    "how": "missing",
+    "same_as_reference": false,
+    "open_rules": [
+     "R14"
+    ],
+    "words": ""
+   },
+   {
+    "scenario": "S12",
+    "field": "weekend",
+    "settled": false,
+    "expected": 3904.109589041096,
+    "value": null,
+    "how": "missing",
+    "same_as_reference": false,
+    "open_rules": [
+     "R14"
+    ],
+    "words": ""
+   },
+   {
+    "scenario": "S13",
+    "field": "right_net_assets",
+    "settled": true,
+    "expected": 48750000.0,
+    "value": null,
+    "how": "missing",
+    "same_as_reference": false,
+    "open_rules": [],
+    "words": ""
+   },
+   {
+    "scenario": "S13",
+    "field": "misstatement",
+    "settled": true,
+    "expected": 3750000.0,
+    "value": null,
+    "how": "missing",
+    "same_as_reference": false,
+    "open_rules": [],
+    "words": ""
+   },
+   {
+    "scenario": "S13",
+    "field": "per_share",
+    "settled": true,
+    "expected": 1.875,
+    "value": null,
+    "how": "missing",
+    "same_as_reference": false,
+    "open_rules": [],
+    "words": ""
+   },
+   {
+    "scenario": "S13",
+    "field": "percent",
+    "settled": true,
+    "expected": 7.692307692307687,
+    "value": null,
+    "how": "missing",
+    "same_as_reference": false,
+    "open_rules": [],
+    "words": ""
+   },
+   {
+    "scenario": "S13",
+    "field": "correction_threshold",
+    "settled": false,
+    "expected": null,
+    "value": null,
+    "how": "missing",
+    "same_as_reference": false,
+    "open_rules": [
+     "R15"
+    ],
+    "words": ""
+   },
+   {
+    "scenario": "S14",
+    "field": "units_after",
+    "settled": false,
+    "expected": 10000000.0,
+    "value": null,
+    "how": "missing",
+    "same_as_reference": false,
+    "open_rules": [
+     "R16"
+    ],
+    "words": ""
+   },
+   {
+    "scenario": "S14",
+    "field": "reset_price_after",
+    "settled": false,
+    "expected": 10.0,
+    "value": null,
+    "how": "missing",
+    "same_as_reference": false,
+    "open_rules": [
+     "R16"
+    ],
+    "words": ""
+   },
+   {
+    "scenario": "S14",
+    "field": "unrealized_after",
+    "settled": false,
+    "expected": 10000000.0,
+    "value": null,
+    "how": "missing",
+    "same_as_reference": false,
+    "open_rules": [
+     "R16"
+    ],
+    "words": ""
+   },
+   {
+    "scenario": "S14",
+    "field": "unrealized_before",
+    "settled": true,
+    "expected": 10000000.0,
+    "value": null,
+    "how": "missing",
+    "same_as_reference": false,
+    "open_rules": [],
+    "words": ""
+   },
+   {
+    "scenario": "S14",
+    "field": "wrong_unrealized",
+    "settled": true,
+    "expected": -72500000.0,
+    "value": null,
+    "how": "missing",
+    "same_as_reference": false,
+    "open_rules": [],
+    "words": ""
+   },
+   {
+    "scenario": "S15",
+    "field": "net_assets_at_close",
+    "settled": false,
+    "expected": 52481198.63013699,
+    "value": null,
+    "how": "missing",
+    "same_as_reference": false,
+    "open_rules": [
+     "R04",
+     "R05",
+     "R14"
+    ],
+    "words": ""
+   },
+   {
+    "scenario": "S15",
+    "field": "nav_per_share_published",
+    "settled": false,
+    "expected": 26.24,
+    "value": null,
+    "how": "missing",
+    "same_as_reference": false,
+    "open_rules": [
+     "R04",
+     "R05",
+     "R14"
+    ],
+    "words": ""
+   },
+   {
+    "scenario": "S15",
+    "field": "return_percent",
+    "settled": false,
+    "expected": 4.962397260273987,
+    "value": null,
+    "how": "missing",
+    "same_as_reference": false,
+    "open_rules": [
+     "R04",
+     "R05",
+     "R14"
+    ],
+    "words": ""
+   },
+   {
+    "scenario": "S15",
+    "field": "twice_reference_percent",
+    "settled": true,
+    "expected": 4.999999999999982,
+    "value": null,
+    "how": "missing",
+    "same_as_reference": false,
+    "open_rules": [],
+    "words": ""
+   },
+   {
+    "scenario": "S15",
+    "field": "shortfall_basis_points",
+    "settled": false,
+    "expected": 3.7602739725994816,
+    "value": null,
+    "how": "missing",
+    "same_as_reference": false,
+    "open_rules": [
+     "R04",
+     "R05",
+     "R14"
+    ],
+    "words": ""
+   }
+  ]
+ },
+ {
+  "arm": "plain",
+  "model": "gpt-5.6-sol",
+  "finish_reason": "stop",
+  "usage": {
+   "prompt_tokens": 5883,
+   "completion_tokens": 5752,
+   "total_tokens": 11635,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 5880,
+    "audio_tokens": 0
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 2211,
+    "audio_tokens": 0,
+    "accepted_prediction_tokens": 0,
+    "rejected_prediction_tokens": 0
+   }
+  },
+  "parsed": true,
+  "settled": {
+   "figures": 27,
+   "right": 27,
+   "wrong": 0,
+   "no_number": 0
+  },
+  "unsettled": {
+   "figures": 29,
+   "bare": 29,
+   "with_its_assumption": 0,
+   "asked": 0,
+   "missing": 0,
+   "bare_and_same_as_reference": 19,
+   "bare_and_different": 8
+  },
+  "requirements": {
+   "count": 16,
+   "bases": null,
+   "topics": {
+    "day count": {
+     "mentioned": true,
+     "requirements": [
+      "Q1",
+      "Q5"
+     ],
+     "flagged": false
+    },
+    "weekends and holidays": {
+     "mentioned": true,
+     "requirements": [
+      "Q5",
+      "Q12"
+     ],
+     "flagged": false
+    },
+    "rate reset": {
+     "mentioned": true,
+     "requirements": [
+      "Q1"
+     ],
+     "flagged": false
+    },
+    "income timing": {
+     "mentioned": true,
+     "requirements": [
+      "Q6"
+     ],
+     "flagged": false
+    },
+    "what a payment date does": {
+     "mentioned": true,
+     "requirements": [
+      "Q1",
+      "Q3",
+      "Q7",
+      "Q8",
+      "Q9",
+      "Q10"
+     ],
+     "flagged": true
+    },
+    "change of size": {
+     "mentioned": false,
+     "requirements": [],
+     "flagged": false
+    },
+    "price source": {
+     "mentioned": true,
+     "requirements": [
+      "Q9"
+     ],
+     "flagged": false
+    },
+    "collateral": {
+     "mentioned": true,
+     "requirements": [
+      "Q1",
+      "Q11"
+     ],
+     "flagged": true
+    },
+    "expense basis": {
+     "mentioned": false,
+     "requirements": [],
+     "flagged": false
+    },
+    "error threshold": {
+     "mentioned": true,
+     "requirements": [
+      "Q16"
+     ],
+     "flagged": false
+    },
+    "corporate actions": {
+     "mentioned": true,
+     "requirements": [
+      "Q3",
+      "Q10"
+     ],
+     "flagged": false
+    }
+   }
+  },
+  "rows": [
+   {
+    "scenario": "S01",
+    "field": "units",
+    "settled": true,
+    "expected": 2500000.0,
+    "value": 2500000.0,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [],
+    "words": "Target exposure is $50000000 multiplied by 2.0 and divided by the $40 reference price.   "
+   },
+   {
+    "scenario": "S01",
+    "field": "notional",
+    "settled": true,
+    "expected": 100000000.0,
+    "value": 100000000.0,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [],
+    "words": "The initial swap notional equals 200% of net assets.   "
+   },
+   {
+    "scenario": "S02",
+    "field": "unrealized_gain",
+    "settled": true,
+    "expected": 2500000.0,
+    "value": 2500000.0,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [],
+    "words": "The gain is 2500000 units multiplied by the $1 price increase.   "
+   },
+   {
+    "scenario": "S02",
+    "field": "per_share",
+    "settled": true,
+    "expected": 1.25,
+    "value": 1.25,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [],
+    "words": "The $2500000 gain divided by 2000000 fund shares is $1.25 per share.   "
+   },
+   {
+    "scenario": "S02",
+    "field": "price_to_use",
+    "settled": false,
+    "expected": null,
+    "value": 41.0,
+    "how": "bare",
+    "same_as_reference": false,
+    "open_rules": [
+     "R17"
+    ],
+    "words": "The current closing price is used for the daily mark rather than the prior reset price.   "
+   },
+   {
+    "scenario": "S03",
+    "field": "one_day",
+    "settled": false,
+    "expected": 17500.0,
+    "value": 17260.273973,
+    "how": "bare",
+    "same_as_reference": false,
+    "open_rules": [
+     "R04",
+     "R05"
+    ],
+    "words": "One-day financing is $100000000 multiplied by 6.3% and divided by 365.   "
+   },
+   {
+    "scenario": "S03",
+    "field": "weekend",
+    "settled": false,
+    "expected": 52500.0,
+    "value": 51780.821918,
+    "how": "bare",
+    "same_as_reference": false,
+    "open_rules": [
+     "R04",
+     "R05",
+     "R06"
+    ],
+    "words": "Friday-to-Monday financing covers three calendar days at 6.3% on an actual/365 basis.   "
+   },
+   {
+    "scenario": "S04",
+    "field": "total",
+    "settled": false,
+    "expected": 51805.555555555555,
+    "value": 51095.890411,
+    "how": "bare",
+    "same_as_reference": false,
+    "open_rules": [
+     "R04",
+     "R05",
+     "R07"
+    ],
+    "words": "The total is two days at 6.3% plus one day at 6.05%, using actual/365.   "
+   },
+   {
+    "scenario": "S04",
+    "field": "third_day",
+    "settled": false,
+    "expected": 16805.555555555555,
+    "value": 16575.342466,
+    "how": "bare",
+    "same_as_reference": false,
+    "open_rules": [
+     "R04",
+     "R05",
+     "R07"
+    ],
+    "words": "The third-day charge uses the new 4.05% floating rate plus the 2.00% spread.   "
+   },
+   {
+    "scenario": "S05",
+    "field": "income_owed",
+    "settled": false,
+    "expected": 300000.0,
+    "value": 300000.0,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [
+     "R08"
+    ],
+    "words": "The dividend equivalent is 2500000 units multiplied by $0.12.   "
+   },
+   {
+    "scenario": "S05",
+    "field": "change_in_unrealized",
+    "settled": true,
+    "expected": -299999.9999999935,
+    "value": -300000.0,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [],
+    "words": "The $0.12 ex-dividend price decrease reduces price-based unrealized gain by $300000.   "
+   },
+   {
+    "scenario": "S05",
+    "field": "net_effect_on_net_assets_on_ex_date",
+    "settled": false,
+    "expected": 6.51925802230835e-09,
+    "value": 0.0,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [
+     "R08"
+    ],
+    "words": "The $300000 dividend equivalent exactly offsets the $300000 price-based decrease.   "
+   },
+   {
+    "scenario": "S05",
+    "field": "error_per_share_if_omitted",
+    "settled": false,
+    "expected": 0.15,
+    "value": 0.15,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [
+     "R08"
+    ],
+    "words": "Omitting the dividend equivalent understates NAV by $300000 divided by 2000000 shares.   "
+   },
+   {
+    "scenario": "S05",
+    "field": "error_percent_if_omitted",
+    "settled": false,
+    "expected": 0.5714285714285714,
+    "value": 0.571429,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [
+     "R08"
+    ],
+    "words": "The omission is 0.571429% of the correct $52500000 net assets.   "
+   },
+   {
+    "scenario": "S06",
+    "field": "exposure_before",
+    "settled": true,
+    "expected": 102500000.0,
+    "value": 102500000.0,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [],
+    "words": "Closing exposure is 2500000 units multiplied by $41.   "
+   },
+   {
+    "scenario": "S06",
+    "field": "target_exposure",
+    "settled": true,
+    "expected": 105000000.0,
+    "value": 105000000.0,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [],
+    "words": "Target exposure is twice the $52500000 closing net assets.   "
+   },
+   {
+    "scenario": "S06",
+    "field": "units_added",
+    "settled": true,
+    "expected": 60975.60975609766,
+    "value": 60975.609756,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [],
+    "words": "The $2500000 exposure shortfall divided by $41 requires 60975.609756 additional units.   "
+   },
+   {
+    "scenario": "S06",
+    "field": "units_after",
+    "settled": true,
+    "expected": 2560975.6097560977,
+    "value": 2560975.609756,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [],
+    "words": "Units after rebalancing equal the original units plus the units added.   "
+   },
+   {
+    "scenario": "S06",
+    "field": "unrealized_after",
+    "settled": true,
+    "expected": 2499999.999999996,
+    "value": 2500000.0,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [],
+    "words": "Existing units retain their $2500000 gain, while units added at $41 initially have no unrealized result.   "
+   },
+   {
+    "scenario": "S07",
+    "field": "exposure_before",
+    "settled": true,
+    "expected": 95000000.0,
+    "value": 95000000.0,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [],
+    "words": "Closing exposure is 2500000 units multiplied by $38.   "
+   },
+   {
+    "scenario": "S07",
+    "field": "target_exposure",
+    "settled": true,
+    "expected": 90000000.0,
+    "value": 90000000.0,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [],
+    "words": "Target exposure is twice the $45000000 closing net assets.   "
+   },
+   {
+    "scenario": "S07",
+    "field": "units_removed",
+    "settled": true,
+    "expected": 131578.94736842113,
+    "value": 131578.947368,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [],
+    "words": "The $5000000 excess exposure divided by $38 is removed.   "
+   },
+   {
+    "scenario": "S07",
+    "field": "realized",
+    "settled": false,
+    "expected": -263157.89473684225,
+    "value": -263157.894737,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [
+     "R10"
+    ],
+    "words": "The removed units realize a $2 loss per unit relative to the $40 reset price.   "
+   },
+   {
+    "scenario": "S07",
+    "field": "unrealized_after",
+    "settled": false,
+    "expected": -4736842.105263158,
+    "value": -4736842.105263,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [
+     "R10"
+    ],
+    "words": "The remaining 2368421.052632 units retain a $2 unrealized loss per unit.   "
+   },
+   {
+    "scenario": "S08",
+    "field": "financing_accrued",
+    "settled": false,
+    "expected": 525000.0,
+    "value": 517808.219178,
+    "how": "bare",
+    "same_as_reference": false,
+    "open_rules": [
+     "R04",
+     "R05",
+     "R06"
+    ],
+    "words": "Financing is $100000000 multiplied by 6.3% for 30 days on an actual/365 basis.   "
+   },
+   {
+    "scenario": "S08",
+    "field": "payment_to_fund",
+    "settled": false,
+    "expected": 4775000.0,
+    "value": 4782191.780822,
+    "how": "bare",
+    "same_as_reference": false,
+    "open_rules": [
+     "R11",
+     "R04",
+     "R05",
+     "R06",
+     "R08"
+    ],
+    "words": "The fund receives the $5000000 price gain plus $300000 income less $517808.219178 financing.   "
+   },
+   {
+    "scenario": "S08",
+    "field": "notional_after",
+    "settled": false,
+    "expected": 105000000.0,
+    "value": 105000000.0,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [
+     "R11"
+    ],
+    "words": "After payment and reset, continuing notional is 2500000 units multiplied by the new $42 reset price.   "
+   },
+   {
+    "scenario": "S08",
+    "field": "accruals_after",
+    "settled": false,
+    "expected": 0.0,
+    "value": 0.0,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [
+     "R11"
+    ],
+    "words": "All settled equity-return, income and financing accruals are cleared on the reset date.   "
+   },
+   {
+    "scenario": "S09",
+    "field": "cash_for_shares",
+    "settled": true,
+    "expected": 1312500.0,
+    "value": 1312500.0,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [],
+    "words": "Creation cash for the shares is 50000 multiplied by the $26.25 NAV.   "
+   },
+   {
+    "scenario": "S09",
+    "field": "fee_received",
+    "settled": true,
+    "expected": 500.0,
+    "value": 500.0,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [],
+    "words": "The transaction fee is received in addition to the creation cash.   "
+   },
+   {
+    "scenario": "S09",
+    "field": "units_added",
+    "settled": true,
+    "expected": 62523.8095238097,
+    "value": 62523.809524,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [],
+    "words": "Including the retained fee, net assets increase by $1313000 and target exposure increases by $2626000, divided by $42.   "
+   },
+   {
+    "scenario": "S09",
+    "field": "nav_per_share_published",
+    "settled": true,
+    "expected": 26.25,
+    "value": 26.25,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [],
+    "words": "Exact NAV is approximately $26.250243902 and is published at $26.25 after rounding to the nearest cent.   "
+   },
+   {
+    "scenario": "S10",
+    "field": "cash_paid",
+    "settled": true,
+    "expected": 2624500.0,
+    "value": 2624500.0,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [],
+    "words": "The fund pays $2625000 of redemption value less the $500 transaction fee.   "
+   },
+   {
+    "scenario": "S10",
+    "field": "units_removed",
+    "settled": true,
+    "expected": 124976.1904761903,
+    "value": 124976.190476,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [],
+    "words": "After retaining the fee, target exposure falls by $5249000, which at $42 equals 124976.190476 units.   "
+   },
+   {
+    "scenario": "S10",
+    "field": "realized",
+    "settled": false,
+    "expected": 249952.3809523806,
+    "value": 249952.380952,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [
+     "R10"
+    ],
+    "words": "The terminated units realize a $2 gain per unit relative to the $40 reset price.   "
+   },
+   {
+    "scenario": "S10",
+    "field": "nav_per_share_published",
+    "settled": true,
+    "expected": 26.25,
+    "value": 26.25,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [],
+    "words": "Exact post-redemption NAV is approximately $26.250263158 and is published at $26.25.   "
+   },
+   {
+    "scenario": "S11",
+    "field": "cash_after",
+    "settled": false,
+    "expected": 47000000.0,
+    "value": 47000000.0,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [
+     "R13"
+    ],
+    "words": "Unrestricted cash decreases by the $3000000 collateral posting.   "
+   },
+   {
+    "scenario": "S11",
+    "field": "collateral_posted_after",
+    "settled": false,
+    "expected": 3000000.0,
+    "value": 3000000.0,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [
+     "R13"
+    ],
+    "words": "The posted amount is recorded as restricted or segregated collateral.   "
+   },
+   {
+    "scenario": "S11",
+    "field": "change_in_net_assets",
+    "settled": false,
+    "expected": 0.0,
+    "value": 0.0,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [
+     "R13"
+    ],
+    "words": "Posting collateral only reclassifies an asset and does not change net assets.   "
+   },
+   {
+    "scenario": "S12",
+    "field": "one_day",
+    "settled": false,
+    "expected": 1301.3698630136987,
+    "value": 1301.369863,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [
+     "R14"
+    ],
+    "words": "One-day expense is $50000000 multiplied by 0.95% and divided by 365.   "
+   },
+   {
+    "scenario": "S12",
+    "field": "weekend",
+    "settled": false,
+    "expected": 3904.109589041096,
+    "value": 3904.109589,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [
+     "R14"
+    ],
+    "words": "A three-calendar-day weekend accrual is three times the one-day expense.   "
+   },
+   {
+    "scenario": "S13",
+    "field": "right_net_assets",
+    "settled": true,
+    "expected": 48750000.0,
+    "value": 48750000.0,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [],
+    "words": "Current-price net assets are $50000000 cash plus a $1250000 swap loss.   "
+   },
+   {
+    "scenario": "S13",
+    "field": "misstatement",
+    "settled": true,
+    "expected": 3750000.0,
+    "value": 3750000.0,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [],
+    "words": "Using $41 instead of $39.50 overstates the swap and net assets by $1.50 on 2500000 units.   "
+   },
+   {
+    "scenario": "S13",
+    "field": "per_share",
+    "settled": true,
+    "expected": 1.875,
+    "value": 1.875,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [],
+    "words": "The $3750000 overstatement divided by 2000000 shares is $1.875 per share.   "
+   },
+   {
+    "scenario": "S13",
+    "field": "percent",
+    "settled": true,
+    "expected": 7.692307692307687,
+    "value": 7.692308,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [],
+    "words": "The misstatement is 7.692308% of the correct $48750000 net assets.   "
+   },
+   {
+    "scenario": "S13",
+    "field": "correction_threshold",
+    "settled": false,
+    "expected": null,
+    "value": 0.0,
+    "how": "bare",
+    "same_as_reference": false,
+    "open_rules": [
+     "R15"
+    ],
+    "words": "There is no permitted stale-price threshold; any known error must be corrected under the applicable NAV error procedures.   "
+   },
+   {
+    "scenario": "S14",
+    "field": "units_after",
+    "settled": false,
+    "expected": 10000000.0,
+    "value": 10000000.0,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [
+     "R16"
+    ],
+    "words": "A four-for-one split multiplies the reference units by four.   "
+   },
+   {
+    "scenario": "S14",
+    "field": "reset_price_after",
+    "settled": false,
+    "expected": 10.0,
+    "value": 10.0,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [
+     "R16"
+    ],
+    "words": "The $40 pre-split reset price is divided by four.   "
+   },
+   {
+    "scenario": "S14",
+    "field": "unrealized_after",
+    "settled": false,
+    "expected": 10000000.0,
+    "value": 10000000.0,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [
+     "R16"
+    ],
+    "words": "Post-split gain is 10000000 units multiplied by the $1 increase from $10 to $11.   "
+   },
+   {
+    "scenario": "S14",
+    "field": "unrealized_before",
+    "settled": true,
+    "expected": 10000000.0,
+    "value": 10000000.0,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [],
+    "words": "Pre-split gain is 2500000 units multiplied by the $4 increase from $40 to $44.   "
+   },
+   {
+    "scenario": "S14",
+    "field": "wrong_unrealized",
+    "settled": true,
+    "expected": -72500000.0,
+    "value": -72500000.0,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [],
+    "words": "Updating the price without adjusting units and reset price would produce 2500000 multiplied by $11 less $40.   "
+   },
+   {
+    "scenario": "S15",
+    "field": "net_assets_at_close",
+    "settled": false,
+    "expected": 52481198.63013699,
+    "value": 52481438.356164,
+    "how": "bare",
+    "same_as_reference": false,
+    "open_rules": [
+     "R04",
+     "R05",
+     "R14"
+    ],
+    "words": "Closing net assets equal $50000000 plus the $2500000 swap gain less $17260.273973 financing and $1301.369863 operating expense.   "
+   },
+   {
+    "scenario": "S15",
+    "field": "nav_per_share_published",
+    "settled": false,
+    "expected": 26.24,
+    "value": 26.24,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [
+     "R04",
+     "R05",
+     "R14"
+    ],
+    "words": "Exact NAV per share is approximately $26.240719178 and is published at $26.24 after cent rounding.   "
+   },
+   {
+    "scenario": "S15",
+    "field": "return_percent",
+    "settled": false,
+    "expected": 4.962397260273987,
+    "value": 4.962877,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [
+     "R04",
+     "R05",
+     "R14"
+    ],
+    "words": "The unrounded one-day fund return is the $2481438.356164 net increase divided by starting net assets.   "
+   },
+   {
+    "scenario": "S15",
+    "field": "twice_reference_percent",
+    "settled": true,
+    "expected": 4.999999999999982,
+    "value": 5.0,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [],
+    "words": "The reference return is 2.5%, and twice that return is 5.0%.   "
+   },
+   {
+    "scenario": "S15",
+    "field": "shortfall_basis_points",
+    "settled": false,
+    "expected": 3.7602739725994816,
+    "value": 3.712329,
+    "how": "bare",
+    "same_as_reference": false,
+    "open_rules": [
+     "R04",
+     "R05",
+     "R14"
+    ],
+    "words": "Financing and operating expenses reduce the return by approximately 3.712329 basis points versus the 5.0% gross target.   "
+   }
+  ]
+ },
+ {
+  "arm": "ask",
+  "model": "claude-opus-4-8",
+  "finish_reason": "stop",
+  "usage": {
+   "completion_tokens": 8487,
+   "prompt_tokens": 9362,
+   "total_tokens": 17849
+  },
+  "parsed": true,
+  "settled": {
+   "figures": 27,
+   "right": 25,
+   "wrong": 2,
+   "no_number": 0
+  },
+  "unsettled": {
+   "figures": 29,
+   "bare": 15,
+   "with_its_assumption": 13,
+   "asked": 1,
+   "missing": 0,
+   "bare_and_same_as_reference": 13,
+   "bare_and_different": 1
+  },
+  "requirements": {
+   "count": 19,
+   "bases": {
+    "document": 14,
+    "assumption": 3,
+    "question": 2
+   },
+   "topics": {
+    "day count": {
+     "mentioned": true,
+     "requirements": [
+      "Q4",
+      "Q5",
+      "Q15"
+     ],
+     "bases": [
+      "document",
+      "question"
+     ]
+    },
+    "weekends and holidays": {
+     "mentioned": true,
+     "requirements": [
+      "Q5",
+      "Q15"
+     ],
+     "bases": [
+      "document",
+      "question"
+     ]
+    },
+    "rate reset": {
+     "mentioned": true,
+     "requirements": [
+      "Q6"
+     ],
+     "bases": [
+      "assumption"
+     ]
+    },
+    "income timing": {
+     "mentioned": true,
+     "requirements": [
+      "Q7",
+      "Q8",
+      "Q10"
+     ],
+     "bases": [
+      "assumption",
+      "document"
+     ]
+    },
+    "what a payment date does": {
+     "mentioned": true,
+     "requirements": [
+      "Q2",
+      "Q6",
+      "Q10",
+      "Q11",
+      "Q16"
+     ],
+     "bases": [
+      "assumption",
+      "document"
+     ]
+    },
+    "change of size": {
+     "mentioned": false,
+     "requirements": [],
+     "bases": []
+    },
+    "price source": {
+     "mentioned": true,
+     "requirements": [
+      "Q9",
+      "Q11"
+     ],
+     "bases": [
+      "document"
+     ]
+    },
+    "collateral": {
+     "mentioned": true,
+     "requirements": [
+      "Q14"
+     ],
+     "bases": [
+      "document"
+     ]
+    },
+    "expense basis": {
+     "mentioned": true,
+     "requirements": [
+      "Q5",
+      "Q15"
+     ],
+     "bases": [
+      "document",
+      "question"
+     ]
+    },
+    "error threshold": {
+     "mentioned": true,
+     "requirements": [
+      "Q18"
+     ],
+     "bases": [
+      "question"
+     ]
+    },
+    "corporate actions": {
+     "mentioned": true,
+     "requirements": [
+      "Q16"
+     ],
+     "bases": [
+      "assumption"
+     ]
+    }
+   }
+  },
+  "rows": [
+   {
+    "scenario": "S01",
+    "field": "units",
+    "settled": true,
+    "expected": 2500000.0,
+    "value": 2500000.0,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [],
+    "words": " Target exposure = 2 x 50000000 = 100000000; units = 100000000/40 = 2500000  "
+   },
+   {
+    "scenario": "S01",
+    "field": "notional",
+    "settled": true,
+    "expected": 100000000.0,
+    "value": 100000000.0,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [],
+    "words": " Notional = 2 x net assets = 100000000  "
+   },
+   {
+    "scenario": "S02",
+    "field": "unrealized_gain",
+    "settled": true,
+    "expected": 2500000.0,
+    "value": 2500000.0,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [],
+    "words": " 2500000 x (41-40) = 2500000  "
+   },
+   {
+    "scenario": "S02",
+    "field": "per_share",
+    "settled": true,
+    "expected": 1.25,
+    "value": 1.25,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [],
+    "words": " 2500000/2000000  "
+   },
+   {
+    "scenario": "S02",
+    "field": "price_to_use",
+    "settled": false,
+    "expected": null,
+    "value": 41.0,
+    "how": "bare",
+    "same_as_reference": false,
+    "open_rules": [
+     "R17"
+    ],
+    "words": " Current (closing) market price of the reference security  "
+   },
+   {
+    "scenario": "S03",
+    "field": "one_day",
+    "settled": false,
+    "expected": 17500.0,
+    "value": 17500.0,
+    "how": "with its assumption",
+    "same_as_reference": true,
+    "open_rules": [
+     "R04",
+     "R05"
+    ],
+    "words": " ACT/360: 100000000 x (0.043+0.02)/360 x 1 = 17500  "
+   },
+   {
+    "scenario": "S03",
+    "field": "weekend",
+    "settled": false,
+    "expected": 52500.0,
+    "value": 52500.0,
+    "how": "with its assumption",
+    "same_as_reference": true,
+    "open_rules": [
+     "R04",
+     "R05",
+     "R06"
+    ],
+    "words": " ACT/360, 3 calendar days Fri->Mon: 100000000 x 0.063/360 x 3 = 52500  "
+   },
+   {
+    "scenario": "S04",
+    "field": "total",
+    "settled": false,
+    "expected": 51805.555555555555,
+    "value": 51805.56,
+    "how": "with its assumption",
+    "same_as_reference": true,
+    "open_rules": [
+     "R04",
+     "R05",
+     "R07"
+    ],
+    "words": " ACT/360: Mon 100M x0.063/360=17500; Tue 17500; Wed 100M x0.0605/360=16805.56; total=51805.56  "
+   },
+   {
+    "scenario": "S04",
+    "field": "third_day",
+    "settled": false,
+    "expected": 16805.555555555555,
+    "value": 16805.56,
+    "how": "with its assumption",
+    "same_as_reference": true,
+    "open_rules": [
+     "R04",
+     "R05",
+     "R07"
+    ],
+    "words": " Wednesday rate 0.0405+0.02=0.0605: 100000000 x 0.0605/360 = 16805.56  "
+   },
+   {
+    "scenario": "S05",
+    "field": "income_owed",
+    "settled": false,
+    "expected": 300000.0,
+    "value": 300000.0,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [
+     "R08"
+    ],
+    "words": " 2500000 x 0.12 x 100% = 300000  "
+   },
+   {
+    "scenario": "S05",
+    "field": "change_in_unrealized",
+    "settled": true,
+    "expected": -299999.9999999935,
+    "value": -300000.0,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [],
+    "words": " 2500000 x (40.88-41.00) = -300000  "
+   },
+   {
+    "scenario": "S05",
+    "field": "net_effect_on_net_assets_on_ex_date",
+    "settled": false,
+    "expected": 6.51925802230835e-09,
+    "value": 0.0,
+    "how": "with its assumption",
+    "same_as_reference": true,
+    "open_rules": [
+     "R08"
+    ],
+    "words": " Dividend income +300000 offsets price-drop unrealized -300000 = 0 net effect  "
+   },
+   {
+    "scenario": "S05",
+    "field": "error_per_share_if_omitted",
+    "settled": false,
+    "expected": 0.15,
+    "value": 0.15,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [
+     "R08"
+    ],
+    "words": " If 300000 income omitted: 300000/2000000 = 0.15 understatement  "
+   },
+   {
+    "scenario": "S05",
+    "field": "error_percent_if_omitted",
+    "settled": false,
+    "expected": 0.5714285714285714,
+    "value": 0.5714,
+    "how": "with its assumption",
+    "same_as_reference": true,
+    "open_rules": [
+     "R08"
+    ],
+    "words": " Right NAV = 52500000/2000000=26.25; error 0.15/26.25 = 0.5714%  "
+   },
+   {
+    "scenario": "S06",
+    "field": "exposure_before",
+    "settled": true,
+    "expected": 102500000.0,
+    "value": 102500000.0,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [],
+    "words": " 2500000 x 41 = 102500000  "
+   },
+   {
+    "scenario": "S06",
+    "field": "target_exposure",
+    "settled": true,
+    "expected": 105000000.0,
+    "value": 105000000.0,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [],
+    "words": " 2 x 52500000 = 105000000  "
+   },
+   {
+    "scenario": "S06",
+    "field": "units_added",
+    "settled": true,
+    "expected": 60975.60975609766,
+    "value": 60975.61,
+    "how": "with its assumption",
+    "same_as_reference": true,
+    "open_rules": [],
+    "words": " (105000000-102500000)/41 = 60975.61  "
+   },
+   {
+    "scenario": "S06",
+    "field": "units_after",
+    "settled": true,
+    "expected": 2560975.6097560977,
+    "value": 2560975.61,
+    "how": "with its assumption",
+    "same_as_reference": true,
+    "open_rules": [],
+    "words": " 2500000 + 60975.61  "
+   },
+   {
+    "scenario": "S06",
+    "field": "unrealized_after",
+    "settled": true,
+    "expected": 2499999.999999996,
+    "value": 2500000.0,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [],
+    "words": " Added units priced at 41 (their reset); existing 2500000 x (41-40)=2500000 unrealized unchanged by rebalance  "
+   },
+   {
+    "scenario": "S07",
+    "field": "exposure_before",
+    "settled": true,
+    "expected": 95000000.0,
+    "value": 95000000.0,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [],
+    "words": " 2500000 x 38 = 95000000  "
+   },
+   {
+    "scenario": "S07",
+    "field": "target_exposure",
+    "settled": true,
+    "expected": 90000000.0,
+    "value": 90000000.0,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [],
+    "words": " 2 x 45000000 = 90000000  "
+   },
+   {
+    "scenario": "S07",
+    "field": "units_removed",
+    "settled": true,
+    "expected": 131578.94736842113,
+    "value": 131578.95,
+    "how": "with its assumption",
+    "same_as_reference": true,
+    "open_rules": [],
+    "words": " (95000000-90000000)/38 = 131578.95  "
+   },
+   {
+    "scenario": "S07",
+    "field": "realized",
+    "settled": false,
+    "expected": -263157.89473684225,
+    "value": -263157.89,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [
+     "R10"
+    ],
+    "words": " 131578.95 x (38-40) = -263157.89  "
+   },
+   {
+    "scenario": "S07",
+    "field": "unrealized_after",
+    "settled": false,
+    "expected": -4736842.105263158,
+    "value": -4736842.11,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [
+     "R10"
+    ],
+    "words": " Remaining 2368421.05 x (38-40) = -4736842.11  "
+   },
+   {
+    "scenario": "S08",
+    "field": "financing_accrued",
+    "settled": false,
+    "expected": 525000.0,
+    "value": 250000.0,
+    "how": "with its assumption",
+    "same_as_reference": false,
+    "open_rules": [
+     "R04",
+     "R05",
+     "R06"
+    ],
+    "words": " Notional at reset 2500000 x 40 = 100000000; ACT/360: 100000000 x 0.063/360 x 30 = 525000. Figure shown uses that method; if 360-day: 525000. Reported value 525000 (not 250000)  "
+   },
+   {
+    "scenario": "S08",
+    "field": "payment_to_fund",
+    "settled": false,
+    "expected": 4775000.0,
+    "value": 4775000.0,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [
+     "R11",
+     "R04",
+     "R05",
+     "R06",
+     "R08"
+    ],
+    "words": " Equity gain 2500000x(42-40)=5000000 + dividend 300000 - financing 525000 = 4775000 received  "
+   },
+   {
+    "scenario": "S08",
+    "field": "notional_after",
+    "settled": false,
+    "expected": 105000000.0,
+    "value": 105000000.0,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [
+     "R11"
+    ],
+    "words": " Reset notional to current exposure: 2500000 x 42 = 105000000  "
+   },
+   {
+    "scenario": "S08",
+    "field": "accruals_after",
+    "settled": false,
+    "expected": 0.0,
+    "value": 0.0,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [
+     "R11"
+    ],
+    "words": " After settlement all accruals (financing, dividend, equity P/L) are zeroed and realized  "
+   },
+   {
+    "scenario": "S09",
+    "field": "cash_for_shares",
+    "settled": true,
+    "expected": 1312500.0,
+    "value": 1312500.0,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [],
+    "words": " 50000 x 26.25 = 1312500  "
+   },
+   {
+    "scenario": "S09",
+    "field": "fee_received",
+    "settled": true,
+    "expected": 500.0,
+    "value": 500.0,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [],
+    "words": " $500 per creation order  "
+   },
+   {
+    "scenario": "S09",
+    "field": "units_added",
+    "settled": true,
+    "expected": 62523.8095238097,
+    "value": 62500.0,
+    "how": "bare",
+    "same_as_reference": false,
+    "open_rules": [],
+    "words": " New exposure = 2 x 1312500 = 2625000; /42 = 62500  "
+   },
+   {
+    "scenario": "S09",
+    "field": "nav_per_share_published",
+    "settled": true,
+    "expected": 26.25,
+    "value": 26.25,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [],
+    "words": " Creating at NAV does not change NAV per share; fee booked to fund not per-share  "
+   },
+   {
+    "scenario": "S10",
+    "field": "cash_paid",
+    "settled": true,
+    "expected": 2624500.0,
+    "value": 2624500.0,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [],
+    "words": " 100000 x 26.25 = 2625000 less 500 fee = 2624500  "
+   },
+   {
+    "scenario": "S10",
+    "field": "units_removed",
+    "settled": true,
+    "expected": 124976.1904761903,
+    "value": 125000.0,
+    "how": "bare",
+    "same_as_reference": false,
+    "open_rules": [],
+    "words": " Exposure removed = 2 x 2625000 = 5250000; /42 = 125000  "
+   },
+   {
+    "scenario": "S10",
+    "field": "realized",
+    "settled": false,
+    "expected": 249952.3809523806,
+    "value": 250000.0,
+    "how": "bare",
+    "same_as_reference": false,
+    "open_rules": [
+     "R10"
+    ],
+    "words": " 125000 x (42-40) = 250000  "
+   },
+   {
+    "scenario": "S10",
+    "field": "nav_per_share_published",
+    "settled": true,
+    "expected": 26.25,
+    "value": 26.25,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [],
+    "words": " Redeeming at NAV does not change NAV per share; fee retained by fund  "
+   },
+   {
+    "scenario": "S11",
+    "field": "cash_after",
+    "settled": false,
+    "expected": 47000000.0,
+    "value": 47000000.0,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [
+     "R13"
+    ],
+    "words": " 50000000 - 3000000 = 47000000 free cash  "
+   },
+   {
+    "scenario": "S11",
+    "field": "collateral_posted_after",
+    "settled": false,
+    "expected": 3000000.0,
+    "value": 3000000.0,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [
+     "R13"
+    ],
+    "words": " 3000000 reclassified to segregated collateral  "
+   },
+   {
+    "scenario": "S11",
+    "field": "change_in_net_assets",
+    "settled": false,
+    "expected": 0.0,
+    "value": 0.0,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [
+     "R13"
+    ],
+    "words": " Segregated collateral remains the Fund's asset; reclassification only, net assets unchanged  "
+   },
+   {
+    "scenario": "S12",
+    "field": "one_day",
+    "settled": false,
+    "expected": 1301.3698630136987,
+    "value": 1301.37,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [
+     "R14"
+    ],
+    "words": " ACT/365: 50000000 x 0.0095/365 = 1301.37  "
+   },
+   {
+    "scenario": "S12",
+    "field": "weekend",
+    "settled": false,
+    "expected": 3904.109589041096,
+    "value": 3904.11,
+    "how": "with its assumption",
+    "same_as_reference": true,
+    "open_rules": [
+     "R14"
+    ],
+    "words": " 3 calendar days: 50000000 x 0.0095/365 x 3 = 3904.11  "
+   },
+   {
+    "scenario": "S13",
+    "field": "right_net_assets",
+    "settled": true,
+    "expected": 48750000.0,
+    "value": 48750000.0,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [],
+    "words": " Cash 50000000 + swap unrealized 2500000 x (39.5-40) = -1250000 => 48750000  "
+   },
+   {
+    "scenario": "S13",
+    "field": "misstatement",
+    "settled": true,
+    "expected": 3750000.0,
+    "value": 3750000.0,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [],
+    "words": " Using 41 gives swap +2500000 => 52500000; overstatement 52500000-48750000 = 3750000  "
+   },
+   {
+    "scenario": "S13",
+    "field": "per_share",
+    "settled": true,
+    "expected": 1.875,
+    "value": 1.875,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [],
+    "words": " 3750000/2000000 = 1.875  "
+   },
+   {
+    "scenario": "S13",
+    "field": "percent",
+    "settled": true,
+    "expected": 7.692307692307687,
+    "value": 7.6923,
+    "how": "with its assumption",
+    "same_as_reference": true,
+    "open_rules": [],
+    "words": " 3750000/48750000 = 7.6923%  "
+   },
+   {
+    "scenario": "S13",
+    "field": "correction_threshold",
+    "settled": false,
+    "expected": null,
+    "value": null,
+    "how": "asked",
+    "same_as_reference": false,
+    "open_rules": [
+     "R15"
+    ],
+    "words": " The documents state no NAV error threshold; ask the administrator/Advisor for the NAV error correction policy (commonly 0.50% of NAV).  "
+   },
+   {
+    "scenario": "S14",
+    "field": "units_after",
+    "settled": false,
+    "expected": 10000000.0,
+    "value": 10000000.0,
+    "how": "with its assumption",
+    "same_as_reference": true,
+    "open_rules": [
+     "R16"
+    ],
+    "words": " 4:1 split: 2500000 x 4 = 10000000; confirm corporate-action treatment  "
+   },
+   {
+    "scenario": "S14",
+    "field": "reset_price_after",
+    "settled": false,
+    "expected": 10.0,
+    "value": 10.0,
+    "how": "with its assumption",
+    "same_as_reference": true,
+    "open_rules": [
+     "R16"
+    ],
+    "words": " 40/4 = 10.00  "
+   },
+   {
+    "scenario": "S14",
+    "field": "unrealized_after",
+    "settled": false,
+    "expected": 10000000.0,
+    "value": 2500000.0,
+    "how": "with its assumption",
+    "same_as_reference": false,
+    "open_rules": [
+     "R16"
+    ],
+    "words": " 10000000 x (11-10) = 2500000 (unchanged by split)  "
+   },
+   {
+    "scenario": "S14",
+    "field": "unrealized_before",
+    "settled": true,
+    "expected": 10000000.0,
+    "value": 10000000.0,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [],
+    "words": " Pre-split: 2500000 x (44-40) = 10000000  "
+   },
+   {
+    "scenario": "S14",
+    "field": "wrong_unrealized",
+    "settled": true,
+    "expected": -72500000.0,
+    "value": -72500000.0,
+    "how": "with its assumption",
+    "same_as_reference": true,
+    "open_rules": [],
+    "words": " If price updated to 11 but units left at 2500000 and reset at 40: 2500000 x (11-40) = -72500000  "
+   },
+   {
+    "scenario": "S15",
+    "field": "net_assets_at_close",
+    "settled": false,
+    "expected": 52481198.63013699,
+    "value": 52481198.63,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [
+     "R04",
+     "R05",
+     "R14"
+    ],
+    "words": " Start 50000000 + equity 2500000x(41-40)=2500000 - financing 100000000x0.063/360=17500 - expense 50000000x0.0095/365=1301.37 = 52481198.63  "
+   },
+   {
+    "scenario": "S15",
+    "field": "nav_per_share_published",
+    "settled": false,
+    "expected": 26.24,
+    "value": 26.24,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [
+     "R04",
+     "R05",
+     "R14"
+    ],
+    "words": " 52481198.63/2000000 = 26.2406 -> 26.24  "
+   },
+   {
+    "scenario": "S15",
+    "field": "return_percent",
+    "settled": false,
+    "expected": 4.962397260273987,
+    "value": 4.9624,
+    "how": "with its assumption",
+    "same_as_reference": true,
+    "open_rules": [
+     "R04",
+     "R05",
+     "R14"
+    ],
+    "words": " (52481198.63-50000000)/50000000 = 4.9624%  "
+   },
+   {
+    "scenario": "S15",
+    "field": "twice_reference_percent",
+    "settled": true,
+    "expected": 4.999999999999982,
+    "value": 5.0,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [],
+    "words": " Reference return (41-40)/40=2.5%; 2x = 5.0%  "
+   },
+   {
+    "scenario": "S15",
+    "field": "shortfall_basis_points",
+    "settled": false,
+    "expected": 3.7602739725994816,
+    "value": 3.76,
+    "how": "with its assumption",
+    "same_as_reference": true,
+    "open_rules": [
+     "R04",
+     "R05",
+     "R14"
+    ],
+    "words": " 5.00% - 4.9624% = 0.0376% = 3.76 bps (financing + expense drag)  "
+   }
+  ]
+ },
+ {
+  "arm": "ask",
+  "model": "gpt-5.6-sol",
+  "finish_reason": "stop",
+  "usage": {
+   "prompt_tokens": 6005,
+   "completion_tokens": 8771,
+   "total_tokens": 14776,
+   "prompt_tokens_details": {
+    "cached_tokens": 0,
+    "cache_write_tokens": 6002,
+    "audio_tokens": 0
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 2981,
+    "audio_tokens": 0,
+    "accepted_prediction_tokens": 0,
+    "rejected_prediction_tokens": 0
+   }
+  },
+  "parsed": true,
+  "settled": {
+   "figures": 27,
+   "right": 25,
+   "wrong": 2,
+   "no_number": 0
+  },
+  "unsettled": {
+   "figures": 29,
+   "bare": 5,
+   "with_its_assumption": 23,
+   "asked": 1,
+   "missing": 0,
+   "bare_and_same_as_reference": 4,
+   "bare_and_different": 0
+  },
+  "requirements": {
+   "count": 27,
+   "bases": {
+    "document": 18,
+    "assumption": 4,
+    "question": 5
+   },
+   "topics": {
+    "day count": {
+     "mentioned": true,
+     "requirements": [
+      "Q1",
+      "Q8",
+      "Q9"
+     ],
+     "bases": [
+      "document",
+      "question"
+     ]
+    },
+    "weekends and holidays": {
+     "mentioned": true,
+     "requirements": [
+      "Q9",
+      "Q24"
+     ],
+     "bases": [
+      "question"
+     ]
+    },
+    "rate reset": {
+     "mentioned": true,
+     "requirements": [
+      "Q1",
+      "Q3",
+      "Q8",
+      "Q9"
+     ],
+     "bases": [
+      "document",
+      "question"
+     ]
+    },
+    "income timing": {
+     "mentioned": true,
+     "requirements": [
+      "Q10",
+      "Q12"
+     ],
+     "bases": [
+      "document"
+     ]
+    },
+    "what a payment date does": {
+     "mentioned": true,
+     "requirements": [
+      "Q1",
+      "Q3",
+      "Q9",
+      "Q12",
+      "Q13",
+      "Q14",
+      "Q15",
+      "Q18"
+     ],
+     "bases": [
+      "assumption",
+      "document",
+      "question"
+     ]
+    },
+    "change of size": {
+     "mentioned": true,
+     "requirements": [
+      "Q13",
+      "Q14"
+     ],
+     "bases": [
+      "assumption",
+      "question"
+     ]
+    },
+    "price source": {
+     "mentioned": true,
+     "requirements": [
+      "Q6"
+     ],
+     "bases": [
+      "document"
+     ]
+    },
+    "collateral": {
+     "mentioned": true,
+     "requirements": [
+      "Q1",
+      "Q19",
+      "Q20",
+      "Q26"
+     ],
+     "bases": [
+      "assumption",
+      "document"
+     ]
+    },
+    "expense basis": {
+     "mentioned": false,
+     "requirements": [],
+     "bases": []
+    },
+    "error threshold": {
+     "mentioned": true,
+     "requirements": [
+      "Q27"
+     ],
+     "bases": [
+      "question"
+     ]
+    },
+    "corporate actions": {
+     "mentioned": true,
+     "requirements": [
+      "Q3",
+      "Q18"
+     ],
+     "bases": [
+      "assumption",
+      "document"
+     ]
+    }
+   }
+  },
+  "rows": [
+   {
+    "scenario": "S01",
+    "field": "units",
+    "settled": true,
+    "expected": 2500000.0,
+    "value": 2500000.0,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [],
+    "words": "   "
+   },
+   {
+    "scenario": "S01",
+    "field": "notional",
+    "settled": true,
+    "expected": 100000000.0,
+    "value": 100000000.0,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [],
+    "words": "   "
+   },
+   {
+    "scenario": "S02",
+    "field": "unrealized_gain",
+    "settled": true,
+    "expected": 2500000.0,
+    "value": 2500000.0,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [],
+    "words": "   "
+   },
+   {
+    "scenario": "S02",
+    "field": "per_share",
+    "settled": true,
+    "expected": 1.25,
+    "value": 1.25,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [],
+    "words": "   "
+   },
+   {
+    "scenario": "S02",
+    "field": "price_to_use",
+    "settled": false,
+    "expected": null,
+    "value": 41.0,
+    "how": "bare",
+    "same_as_reference": false,
+    "open_rules": [
+     "R17"
+    ],
+    "words": "   "
+   },
+   {
+    "scenario": "S03",
+    "field": "one_day",
+    "settled": false,
+    "expected": 17500.0,
+    "value": 17500.0,
+    "how": "with its assumption",
+    "same_as_reference": true,
+    "open_rules": [
+     "R04",
+     "R05"
+    ],
+    "words": " Ask the counterparty for the confirmation's day-count convention. For this test, assume ACT/360 and one calendar day: $100000000 x 6.3% x 1/360.  "
+   },
+   {
+    "scenario": "S03",
+    "field": "weekend",
+    "settled": false,
+    "expected": 52500.0,
+    "value": 52500.0,
+    "how": "with its assumption",
+    "same_as_reference": true,
+    "open_rules": [
+     "R04",
+     "R05",
+     "R06"
+    ],
+    "words": " Ask the counterparty. For this test, assume ACT/360 with three calendar days from Friday to Monday: $100000000 x 6.3% x 3/360.  "
+   },
+   {
+    "scenario": "S04",
+    "field": "total",
+    "settled": false,
+    "expected": 51805.555555555555,
+    "value": 51805.5555555556,
+    "how": "with its assumption",
+    "same_as_reference": true,
+    "open_rules": [
+     "R04",
+     "R05",
+     "R07"
+    ],
+    "words": " Ask the counterparty. For this test, assume ACT/360, one day at each stated day's contemporaneous rate, and no observation lag.  "
+   },
+   {
+    "scenario": "S04",
+    "field": "third_day",
+    "settled": false,
+    "expected": 16805.555555555555,
+    "value": 16805.5555555556,
+    "how": "with its assumption",
+    "same_as_reference": true,
+    "open_rules": [
+     "R04",
+     "R05",
+     "R07"
+    ],
+    "words": " Ask the counterparty. For this test, use 6.05% for the third day under ACT/360: $100000000 x 6.05% / 360.  "
+   },
+   {
+    "scenario": "S05",
+    "field": "income_owed",
+    "settled": false,
+    "expected": 300000.0,
+    "value": 300000.0,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [
+     "R08"
+    ],
+    "words": "   "
+   },
+   {
+    "scenario": "S05",
+    "field": "change_in_unrealized",
+    "settled": true,
+    "expected": -299999.9999999935,
+    "value": -300000.0,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [],
+    "words": "   "
+   },
+   {
+    "scenario": "S05",
+    "field": "net_effect_on_net_assets_on_ex_date",
+    "settled": false,
+    "expected": 6.51925802230835e-09,
+    "value": 0.0,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [
+     "R08"
+    ],
+    "words": "   "
+   },
+   {
+    "scenario": "S05",
+    "field": "error_per_share_if_omitted",
+    "settled": false,
+    "expected": 0.15,
+    "value": 0.15,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [
+     "R08"
+    ],
+    "words": " The omission understates NAV by $300000, or $0.15 per share.  "
+   },
+   {
+    "scenario": "S05",
+    "field": "error_percent_if_omitted",
+    "settled": false,
+    "expected": 0.5714285714285714,
+    "value": 0.5714285714285714,
+    "how": "with its assumption",
+    "same_as_reference": true,
+    "open_rules": [
+     "R08"
+    ],
+    "words": " Assume the requested percentage is the $300000 omission divided by correct net assets of $52500000, expressed as a percentage.  "
+   },
+   {
+    "scenario": "S06",
+    "field": "exposure_before",
+    "settled": true,
+    "expected": 102500000.0,
+    "value": 102500000.0,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [],
+    "words": "   "
+   },
+   {
+    "scenario": "S06",
+    "field": "target_exposure",
+    "settled": true,
+    "expected": 105000000.0,
+    "value": 105000000.0,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [],
+    "words": "   "
+   },
+   {
+    "scenario": "S06",
+    "field": "units_added",
+    "settled": true,
+    "expected": 60975.60975609766,
+    "value": 60975.60975609756,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [],
+    "words": "   "
+   },
+   {
+    "scenario": "S06",
+    "field": "units_after",
+    "settled": true,
+    "expected": 2560975.6097560977,
+    "value": 2560975.6097560977,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [],
+    "words": "   "
+   },
+   {
+    "scenario": "S06",
+    "field": "unrealized_after",
+    "settled": true,
+    "expected": 2499999.999999996,
+    "value": 2500000.0,
+    "how": "with its assumption",
+    "same_as_reference": true,
+    "open_rules": [],
+    "words": " Ask the counterparty whether resizing resets or settles existing P&L. For this test, assume the added units start at $41 with zero gain and the existing $2500000 gain remains unrealized.  "
+   },
+   {
+    "scenario": "S07",
+    "field": "exposure_before",
+    "settled": true,
+    "expected": 95000000.0,
+    "value": 95000000.0,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [],
+    "words": "   "
+   },
+   {
+    "scenario": "S07",
+    "field": "target_exposure",
+    "settled": true,
+    "expected": 90000000.0,
+    "value": 90000000.0,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [],
+    "words": "   "
+   },
+   {
+    "scenario": "S07",
+    "field": "units_removed",
+    "settled": true,
+    "expected": 131578.94736842113,
+    "value": 131578.94736842104,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [],
+    "words": "   "
+   },
+   {
+    "scenario": "S07",
+    "field": "realized",
+    "settled": false,
+    "expected": -263157.89473684225,
+    "value": -263157.8947368421,
+    "how": "with its assumption",
+    "same_as_reference": true,
+    "open_rules": [
+     "R10"
+    ],
+    "words": " Assume a pro-rata partial termination at $38 with a $40 reset price, and that the terminated portion's loss is realized.  "
+   },
+   {
+    "scenario": "S07",
+    "field": "unrealized_after",
+    "settled": false,
+    "expected": -4736842.105263158,
+    "value": -4736842.105263158,
+    "how": "with its assumption",
+    "same_as_reference": true,
+    "open_rules": [
+     "R10"
+    ],
+    "words": " Assume 2368421.052631579 remaining units retain the $40 reset price and the partial termination does not reset the remaining swap.  "
+   },
+   {
+    "scenario": "S08",
+    "field": "financing_accrued",
+    "settled": false,
+    "expected": 525000.0,
+    "value": 525000.0,
+    "how": "with its assumption",
+    "same_as_reference": true,
+    "open_rules": [
+     "R04",
+     "R05",
+     "R06"
+    ],
+    "words": " Ask the counterparty. For this test, assume ACT/360 on the $100000000 pre-reset notional for 30 days at 6.3%.  "
+   },
+   {
+    "scenario": "S08",
+    "field": "payment_to_fund",
+    "settled": false,
+    "expected": 4775000.0,
+    "value": 4775000.0,
+    "how": "with its assumption",
+    "same_as_reference": true,
+    "open_rules": [
+     "R11",
+     "R04",
+     "R05",
+     "R06",
+     "R08"
+    ],
+    "words": " Assume the reset pays the $5000000 price gain plus $300000 income less $525000 financing, with no other charges.  "
+   },
+   {
+    "scenario": "S08",
+    "field": "notional_after",
+    "settled": false,
+    "expected": 105000000.0,
+    "value": 105000000.0,
+    "how": "with its assumption",
+    "same_as_reference": true,
+    "open_rules": [
+     "R11"
+    ],
+    "words": " Assume the payment-date reset establishes a new notional at 2500000 units x the $42 closing/reset price.  "
+   },
+   {
+    "scenario": "S08",
+    "field": "accruals_after",
+    "settled": false,
+    "expected": 0.0,
+    "value": 0.0,
+    "how": "with its assumption",
+    "same_as_reference": true,
+    "open_rules": [
+     "R11"
+    ],
+    "words": " Assume all equity-return, income and financing accruals are paid and cleared on the stated payment and reset date.  "
+   },
+   {
+    "scenario": "S09",
+    "field": "cash_for_shares",
+    "settled": true,
+    "expected": 1312500.0,
+    "value": 1312500.0,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [],
+    "words": "   "
+   },
+   {
+    "scenario": "S09",
+    "field": "fee_received",
+    "settled": true,
+    "expected": 500.0,
+    "value": 500.0,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [],
+    "words": "   "
+   },
+   {
+    "scenario": "S09",
+    "field": "units_added",
+    "settled": true,
+    "expected": 62523.8095238097,
+    "value": 62500.0,
+    "how": "with its assumption",
+    "same_as_reference": false,
+    "open_rules": [],
+    "words": " Assume the $1312500 creation capital requires twice that amount of new exposure at $42, and the $500 fee offsets equal transaction costs rather than creating additional target exposure.  "
+   },
+   {
+    "scenario": "S09",
+    "field": "nav_per_share_published",
+    "settled": true,
+    "expected": 26.25,
+    "value": 26.25,
+    "how": "with its assumption",
+    "same_as_reference": true,
+    "open_rules": [],
+    "words": " Assume the $500 fee is offset by $500 of creation-related costs. Net assets and shares therefore increase proportionately and published NAV remains $26.25.  "
+   },
+   {
+    "scenario": "S10",
+    "field": "cash_paid",
+    "settled": true,
+    "expected": 2624500.0,
+    "value": 2624500.0,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [],
+    "words": "   "
+   },
+   {
+    "scenario": "S10",
+    "field": "units_removed",
+    "settled": true,
+    "expected": 124976.1904761903,
+    "value": 125000.0,
+    "how": "with its assumption",
+    "same_as_reference": false,
+    "open_rules": [],
+    "words": " Assume exposure is reduced by twice the $2625000 redemption capital at the $42 closing price; the transaction fee offsets costs and does not alter target exposure.  "
+   },
+   {
+    "scenario": "S10",
+    "field": "realized",
+    "settled": false,
+    "expected": 249952.3809523806,
+    "value": 250000.0,
+    "how": "with its assumption",
+    "same_as_reference": false,
+    "open_rules": [
+     "R10"
+    ],
+    "words": " Assume a pro-rata partial termination of 125000 units at $42 against the $40 reset price.  "
+   },
+   {
+    "scenario": "S10",
+    "field": "nav_per_share_published",
+    "settled": true,
+    "expected": 26.25,
+    "value": 26.25,
+    "how": "with its assumption",
+    "same_as_reference": true,
+    "open_rules": [],
+    "words": " Assume the retained $500 redemption fee is offset by $500 of redemption-related costs, leaving NAV per share unchanged.  "
+   },
+   {
+    "scenario": "S11",
+    "field": "cash_after",
+    "settled": false,
+    "expected": 47000000.0,
+    "value": 47000000.0,
+    "how": "with its assumption",
+    "same_as_reference": true,
+    "open_rules": [
+     "R13"
+    ],
+    "words": " Assume the Fund posts $3000000 from unrestricted cash and retains ownership of the collateral.  "
+   },
+   {
+    "scenario": "S11",
+    "field": "collateral_posted_after",
+    "settled": false,
+    "expected": 3000000.0,
+    "value": 3000000.0,
+    "how": "with its assumption",
+    "same_as_reference": true,
+    "open_rules": [
+     "R13"
+    ],
+    "words": " Assume segregated collateral is recorded as a separate restricted-cash asset.  "
+   },
+   {
+    "scenario": "S11",
+    "field": "change_in_net_assets",
+    "settled": false,
+    "expected": 0.0,
+    "value": 0.0,
+    "how": "with its assumption",
+    "same_as_reference": true,
+    "open_rules": [
+     "R13"
+    ],
+    "words": " Assume posting is an asset reclassification, not a payment or title-transfer expense. Confirm this treatment under the collateral agreement.  "
+   },
+   {
+    "scenario": "S12",
+    "field": "one_day",
+    "settled": false,
+    "expected": 1301.3698630136987,
+    "value": 1301.3698630136987,
+    "how": "with its assumption",
+    "same_as_reference": true,
+    "open_rules": [
+     "R14"
+    ],
+    "words": " Ask the client for the expense-accrual convention. For this test, assume 365 calendar days and opening net assets: $50000000 x 0.95% / 365.  "
+   },
+   {
+    "scenario": "S12",
+    "field": "weekend",
+    "settled": false,
+    "expected": 3904.109589041096,
+    "value": 3904.109589041096,
+    "how": "with its assumption",
+    "same_as_reference": true,
+    "open_rules": [
+     "R14"
+    ],
+    "words": " Ask the client. For this test, assume three calendar days accrue over Friday-to-Monday using a 365-day denominator.  "
+   },
+   {
+    "scenario": "S13",
+    "field": "right_net_assets",
+    "settled": true,
+    "expected": 48750000.0,
+    "value": 48750000.0,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [],
+    "words": "   "
+   },
+   {
+    "scenario": "S13",
+    "field": "misstatement",
+    "settled": true,
+    "expected": 3750000.0,
+    "value": 3750000.0,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [],
+    "words": " Using $41 instead of $39.50 overstates the swap and net assets by 2500000 x $1.50.  "
+   },
+   {
+    "scenario": "S13",
+    "field": "per_share",
+    "settled": true,
+    "expected": 1.875,
+    "value": 1.875,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [],
+    "words": "   "
+   },
+   {
+    "scenario": "S13",
+    "field": "percent",
+    "settled": true,
+    "expected": 7.692307692307687,
+    "value": 7.6923076923076925,
+    "how": "with its assumption",
+    "same_as_reference": true,
+    "open_rules": [],
+    "words": " Assume percentage misstatement means $3750000 divided by the correct $48750000 net assets, expressed as a percentage.  "
+   },
+   {
+    "scenario": "S13",
+    "field": "correction_threshold",
+    "settled": false,
+    "expected": null,
+    "value": null,
+    "how": "asked",
+    "same_as_reference": false,
+    "open_rules": [
+     "R15"
+    ],
+    "words": " Ask the client for the Board-approved NAV and pricing error correction policy. The current price must be used for the initial NAV calculation regardless of the later error-correction threshold.  "
+   },
+   {
+    "scenario": "S14",
+    "field": "units_after",
+    "settled": false,
+    "expected": 10000000.0,
+    "value": 10000000.0,
+    "how": "with its assumption",
+    "same_as_reference": true,
+    "open_rules": [
+     "R16"
+    ],
+    "words": " Assume the swap applies the four-for-one split factor to reference units.  "
+   },
+   {
+    "scenario": "S14",
+    "field": "reset_price_after",
+    "settled": false,
+    "expected": 10.0,
+    "value": 10.0,
+    "how": "with its assumption",
+    "same_as_reference": true,
+    "open_rules": [
+     "R16"
+    ],
+    "words": " Assume the contractual reset price is divided by four so the split is economically neutral.  "
+   },
+   {
+    "scenario": "S14",
+    "field": "unrealized_after",
+    "settled": false,
+    "expected": 10000000.0,
+    "value": 10000000.0,
+    "how": "with its assumption",
+    "same_as_reference": true,
+    "open_rules": [
+     "R16"
+    ],
+    "words": " Assume both units and reset price are adjusted: 10000000 x ($11 - $10). Confirm the swap's corporate-action provisions.  "
+   },
+   {
+    "scenario": "S14",
+    "field": "unrealized_before",
+    "settled": true,
+    "expected": 10000000.0,
+    "value": 10000000.0,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [],
+    "words": "   "
+   },
+   {
+    "scenario": "S14",
+    "field": "wrong_unrealized",
+    "settled": true,
+    "expected": -72500000.0,
+    "value": -72500000.0,
+    "how": "with its assumption",
+    "same_as_reference": true,
+    "open_rules": [],
+    "words": " Assume the erroneous books update only the market price to $11 while leaving 2500000 units and the $40 reset price unchanged: 2500000 x ($11 - $40).  "
+   },
+   {
+    "scenario": "S15",
+    "field": "net_assets_at_close",
+    "settled": false,
+    "expected": 52481198.63013699,
+    "value": 52481198.63013699,
+    "how": "with its assumption",
+    "same_as_reference": true,
+    "open_rules": [
+     "R04",
+     "R05",
+     "R14"
+    ],
+    "words": " Calculated as $50000000 plus $2500000 swap gain less $17500 financing and $1301.369863 expense. Financing assumes ACT/360; Fund expense assumes 365 days and opening net assets.  "
+   },
+   {
+    "scenario": "S15",
+    "field": "nav_per_share_published",
+    "settled": false,
+    "expected": 26.24,
+    "value": 26.24,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [
+     "R04",
+     "R05",
+     "R14"
+    ],
+    "words": " The unrounded NAV is approximately $26.2405993151.  "
+   },
+   {
+    "scenario": "S15",
+    "field": "return_percent",
+    "settled": false,
+    "expected": 4.962397260273987,
+    "value": 4.962397260273989,
+    "how": "with its assumption",
+    "same_as_reference": true,
+    "open_rules": [
+     "R04",
+     "R05",
+     "R14"
+    ],
+    "words": " Assume performance is calculated from unrounded net assets/NAV: $52481198.63013699 divided by $50000000 less one, expressed as a percentage.  "
+   },
+   {
+    "scenario": "S15",
+    "field": "twice_reference_percent",
+    "settled": true,
+    "expected": 4.999999999999982,
+    "value": 5.0,
+    "how": "bare",
+    "same_as_reference": true,
+    "open_rules": [],
+    "words": "   "
+   },
+   {
+    "scenario": "S15",
+    "field": "shortfall_basis_points",
+    "settled": false,
+    "expected": 3.7602739725994816,
+    "value": 3.760273972601079,
+    "how": "with its assumption",
+    "same_as_reference": true,
+    "open_rules": [
+     "R04",
+     "R05",
+     "R14"
+    ],
+    "words": " Calculated from the unrounded return: (5.000000% - 4.962397260273989%) x 100 basis points per percentage point. The shortfall consists of the assumed financing and expense accruals.  "
+   }
+  ]
+ }
+]

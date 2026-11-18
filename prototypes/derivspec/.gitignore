@@ -1,0 +1,6 @@
+# downloaded fund documents (public, not redistributed) and their text conversions
+sources/
+__pycache__/
+# two notes of unverified paraphrase that the report does not use (kept locally)
+docs/04-msox-nport-2026-03-31.md
+docs/06-direxion-tsll-comparison.md

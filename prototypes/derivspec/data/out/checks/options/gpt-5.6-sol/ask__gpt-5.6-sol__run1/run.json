@@ -1,0 +1,40 @@
+{
+ "fund": "options",
+ "reader": "gpt-5.6-sol",
+ "mode": "draft",
+ "draft_arm": "ask",
+ "drafter": "gpt-5.6-sol",
+ "draft_run": 1,
+ "started": "2026-11-16T17:14:14",
+ "prompt": {
+  "sha256": "5786a42fbdcc108b862747f32d475c08a199b2ffc2e31de61d344b327f1cd39a",
+  "chars": 71301,
+  "tokens_approx": 17825
+ },
+ "max_tokens": 24000,
+ "finish_reason": "stop",
+ "usage": {
+  "prompt_tokens": 16807,
+  "completion_tokens": 3636,
+  "total_tokens": 20443,
+  "prompt_tokens_details": {
+   "cached_tokens": 0,
+   "cache_write_tokens": 16804,
+   "audio_tokens": 0
+  },
+  "completion_tokens_details": {
+   "reasoning_tokens": 2382,
+   "audio_tokens": 0,
+   "accepted_prediction_tokens": 0,
+   "rejected_prediction_tokens": 0
+  }
+ },
+ "content_chars": 5333,
+ "reasoning_chars": 0,
+ "elapsed_s": 35.391,
+ "deadline_hit": false,
+ "temperature": "omitted",
+ "temperature_dropped": true,
+ "token_field": "max_completion_tokens",
+ "endpoint_host": "api.openai.com"
+}

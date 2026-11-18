@@ -1,0 +1,297 @@
+{
+ "fund": {
+  "shares_outstanding": 2000000,
+  "net_assets": 50000000.0,
+  "expense_ratio": 0.0095,
+  "transaction_fee": 500.0
+ },
+ "confirmation": {
+  "reference_price_at_trade": 40.0,
+  "floating_rate_index": 0.043,
+  "spread": 0.02,
+  "day_count": "actual/360",
+  "dividend_payout": 1.0,
+  "payment_dates": "monthly, last business day"
+ },
+ "scenarios": [
+  {
+   "id": "S01",
+   "title": "Setting up the position",
+   "given": {
+    "net_assets": 50000000,
+    "target_multiple": 2.0,
+    "reference_price": 40.0
+   },
+   "ask": "How many reference shares must the swap cover, and what is its notional amount?",
+   "answer_fields": [
+    "units",
+    "notional"
+   ]
+  },
+  {
+   "id": "S02",
+   "title": "One day's change in value",
+   "given": {
+    "units": 2500000,
+    "price_at_last_reset": 40.0,
+    "closing_price": 41.0,
+    "shares_outstanding": 2000000
+   },
+   "ask": "What is the swap's unrealized gain, in dollars and per fund share? Which price of the reference security is the right one to use?",
+   "answer_fields": [
+    "unrealized_gain",
+    "per_share",
+    "price_to_use"
+   ]
+  },
+  {
+   "id": "S03",
+   "title": "Financing for one day and over a weekend",
+   "given": {
+    "notional": 100000000,
+    "floating_rate": 0.043,
+    "spread": 0.02,
+    "day_count": "actual/360",
+    "case_a": "Tuesday to Wednesday",
+    "case_b": "Friday to Monday"
+   },
+   "ask": "How much financing does the fund owe for each period?",
+   "answer_fields": [
+    "one_day",
+    "weekend"
+   ]
+  },
+  {
+   "id": "S04",
+   "title": "The floating rate changes",
+   "given": {
+    "notional": 100000000,
+    "spread": 0.02,
+    "day_count": "actual/360",
+    "floating_rate_by_day": {
+     "Monday": 0.043,
+     "Tuesday": 0.043,
+     "Wednesday": 0.0405
+    }
+   },
+   "ask": "How much financing accrues over the three days?",
+   "answer_fields": [
+    "total",
+    "third_day"
+   ]
+  },
+  {
+   "id": "S05",
+   "title": "The reference security goes ex-dividend",
+   "given": {
+    "units": 2500000,
+    "price_at_last_reset": 40.0,
+    "closing_price_before": 41.0,
+    "dividend_per_share": 0.12,
+    "closing_price_on_ex_date": 40.88,
+    "payout_to_the_fund": "100%",
+    "shares_outstanding": 2000000,
+    "net_assets_before": 52500000
+   },
+   "ask": "What income is the fund owed, what is the change in unrealized gain, and what is the net effect on NAV on the ex-date? If the income is left out, by how much is NAV per share wrong?",
+   "answer_fields": [
+    "income_owed",
+    "change_in_unrealized",
+    "net_effect_on_net_assets_on_ex_date",
+    "error_per_share_if_omitted",
+    "error_percent_if_omitted"
+   ]
+  },
+  {
+   "id": "S06",
+   "title": "Rebalancing after a gain",
+   "given": {
+    "net_assets_at_close": 52500000,
+    "units": 2500000,
+    "price_at_last_reset": 40.0,
+    "closing_price": 41.0,
+    "target_multiple": 2.0
+   },
+   "ask": "By how many reference shares must the swap grow, and what is the unrealized gain afterwards?",
+   "answer_fields": [
+    "exposure_before",
+    "target_exposure",
+    "units_added",
+    "units_after",
+    "unrealized_after"
+   ]
+  },
+  {
+   "id": "S07",
+   "title": "Rebalancing after a loss",
+   "given": {
+    "net_assets_at_close": 45000000,
+    "units": 2500000,
+    "price_at_last_reset": 40.0,
+    "closing_price": 38.0,
+    "target_multiple": 2.0
+   },
+   "ask": "By how many reference shares must the swap shrink, and what loss is realized on them?",
+   "answer_fields": [
+    "exposure_before",
+    "target_exposure",
+    "units_removed",
+    "realized",
+    "unrealized_after"
+   ]
+  },
+  {
+   "id": "S08",
+   "title": "A reset and payment date",
+   "given": {
+    "units": 2500000,
+    "price_at_last_reset": 40.0,
+    "closing_price": 42.0,
+    "days_of_financing_accrued": 30,
+    "floating_rate": 0.043,
+    "spread": 0.02,
+    "day_count": "actual/360",
+    "income_owed": 300000
+   },
+   "ask": "What net amount is paid, to whom, and what are the notional and the accruals afterwards?",
+   "answer_fields": [
+    "financing_accrued",
+    "payment_to_fund",
+    "notional_after",
+    "accruals_after"
+   ]
+  },
+  {
+   "id": "S09",
+   "title": "A creation for cash",
+   "given": {
+    "shares_outstanding": 2000000,
+    "nav_per_share": 26.25,
+    "shares_created": 50000,
+    "units": 2500000,
+    "closing_price": 42.0,
+    "target_multiple": 2.0,
+    "transaction_fee": 500
+   },
+   "ask": "What cash does the fund receive, how many reference shares are added to the swap, and what NAV per share is published afterwards?",
+   "answer_fields": [
+    "cash_for_shares",
+    "fee_received",
+    "units_added",
+    "nav_per_share_published"
+   ]
+  },
+  {
+   "id": "S10",
+   "title": "A redemption for cash",
+   "given": {
+    "shares_outstanding": 2000000,
+    "nav_per_share": 26.25,
+    "shares_redeemed": 100000,
+    "units": 2500000,
+    "price_at_last_reset": 40.0,
+    "closing_price": 42.0,
+    "target_multiple": 2.0,
+    "transaction_fee": 500
+   },
+   "ask": "What cash does the fund pay, how many reference shares come off the swap, and what gain is realized on them?",
+   "answer_fields": [
+    "cash_paid",
+    "units_removed",
+    "realized",
+    "nav_per_share_published"
+   ]
+  },
+  {
+   "id": "S11",
+   "title": "Posting collateral",
+   "given": {
+    "cash": 50000000,
+    "collateral_called": 3000000
+   },
+   "ask": "What changes in the fund's books, and what is the effect on net assets?",
+   "answer_fields": [
+    "cash_after",
+    "collateral_posted_after",
+    "change_in_net_assets"
+   ]
+  },
+  {
+   "id": "S12",
+   "title": "The management fee for one day and over a weekend",
+   "given": {
+    "net_assets": 50000000,
+    "annual_rate": 0.0095,
+    "basis": "365 days"
+   },
+   "ask": "How much expense accrues for one day and for a weekend?",
+   "answer_fields": [
+    "one_day",
+    "weekend"
+   ]
+  },
+  {
+   "id": "S13",
+   "title": "The swap is valued at yesterday's price",
+   "given": {
+    "units": 2500000,
+    "price_at_last_reset": 40.0,
+    "yesterdays_close": 41.0,
+    "todays_close": 39.5,
+    "shares_outstanding": 2000000,
+    "cash": 50000000
+   },
+   "ask": "By how much is NAV misstated if yesterday's price is used, in dollars, per share and in percent of the right NAV? Above what size must it be corrected?",
+   "answer_fields": [
+    "right_net_assets",
+    "misstatement",
+    "per_share",
+    "percent",
+    "correction_threshold"
+   ]
+  },
+  {
+   "id": "S14",
+   "title": "The reference security splits four for one",
+   "given": {
+    "units": 2500000,
+    "price_at_last_reset": 40.0,
+    "price_before_split": 44.0,
+    "price_after_split": 11.0
+   },
+   "ask": "What are the units, the reset price and the unrealized gain after the split? What gain would the books show if the price were updated and the units were not?",
+   "answer_fields": [
+    "units_after",
+    "reset_price_after",
+    "unrealized_after",
+    "unrealized_before",
+    "wrong_unrealized"
+   ]
+  },
+  {
+   "id": "S15",
+   "title": "One whole day",
+   "given": {
+    "net_assets_at_start": 50000000,
+    "shares_outstanding": 2000000,
+    "units": 2500000,
+    "price_at_last_reset": 40.0,
+    "closing_price": 41.0,
+    "floating_rate": 0.043,
+    "spread": 0.02,
+    "day_count": "actual/360",
+    "annual_expense_rate": 0.0095,
+    "expense_basis": "365 days, on the day's opening net assets",
+    "days": 1
+   },
+   "ask": "What NAV per share is published at the close, and how far is the day's return from twice the reference's return?",
+   "answer_fields": [
+    "net_assets_at_close",
+    "nav_per_share_published",
+    "return_percent",
+    "twice_reference_percent",
+    "shortfall_basis_points"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,38 @@
+{
+ "fund": "swap",
+ "arm": "plain",
+ "run": 2,
+ "model": "gpt-5.6-sol",
+ "started": "2026-11-16T16:43:45",
+ "prompt": {
+  "sha256": "44da78267886a659b880d9735776a4a66802c70591b1a470195f397549fe7a4a",
+  "chars": 24561,
+  "tokens_approx": 6140
+ },
+ "max_tokens": 24000,
+ "finish_reason": "stop",
+ "usage": {
+  "prompt_tokens": 5883,
+  "completion_tokens": 6898,
+  "total_tokens": 12781,
+  "prompt_tokens_details": {
+   "cached_tokens": 0,
+   "cache_write_tokens": 5880,
+   "audio_tokens": 0
+  },
+  "completion_tokens_details": {
+   "reasoning_tokens": 3204,
+   "audio_tokens": 0,
+   "accepted_prediction_tokens": 0,
+   "rejected_prediction_tokens": 0
+  }
+ },
+ "content_chars": 15498,
+ "reasoning_chars": 0,
+ "elapsed_s": 78.938,
+ "deadline_hit": false,
+ "temperature": "omitted",
+ "temperature_dropped": true,
+ "token_field": "max_completion_tokens",
+ "endpoint_host": "api.openai.com"
+}

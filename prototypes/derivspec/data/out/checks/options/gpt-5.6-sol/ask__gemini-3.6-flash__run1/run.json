@@ -1,0 +1,40 @@
+{
+ "fund": "options",
+ "reader": "gpt-5.6-sol",
+ "mode": "draft",
+ "draft_arm": "ask",
+ "drafter": "gemini-3.6-flash",
+ "draft_run": 1,
+ "started": "2026-11-16T17:14:50",
+ "prompt": {
+  "sha256": "48f2d72a225a9b9b34be9935409ce8ba1ba7add890abf60d85cafd9da2396fde",
+  "chars": 63499,
+  "tokens_approx": 15874
+ },
+ "max_tokens": 24000,
+ "finish_reason": "stop",
+ "usage": {
+  "prompt_tokens": 15719,
+  "completion_tokens": 3655,
+  "total_tokens": 19374,
+  "prompt_tokens_details": {
+   "cached_tokens": 0,
+   "cache_write_tokens": 15716,
+   "audio_tokens": 0
+  },
+  "completion_tokens_details": {
+   "reasoning_tokens": 2368,
+   "audio_tokens": 0,
+   "accepted_prediction_tokens": 0,
+   "rejected_prediction_tokens": 0
+  }
+ },
+ "content_chars": 5498,
+ "reasoning_chars": 0,
+ "elapsed_s": 35.11,
+ "deadline_hit": false,
+ "temperature": "omitted",
+ "temperature_dropped": true,
+ "token_field": "max_completion_tokens",
+ "endpoint_host": "api.openai.com"
+}

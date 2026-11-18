@@ -1,0 +1,29 @@
+{
+ "fund": "options",
+ "reader": "claude-opus-4-8",
+ "mode": "draft",
+ "draft_arm": "plain",
+ "drafter": "claude-opus-4-8",
+ "draft_run": 1,
+ "started": "2026-11-16T17:07:11",
+ "prompt": {
+  "sha256": "cdeb87fff052917c4c88f69c04a15246bee3f7c48a1545d9067bbf64e7a74a73",
+  "chars": 55387,
+  "tokens_approx": 13846
+ },
+ "max_tokens": 24000,
+ "finish_reason": "stop",
+ "usage": {
+  "completion_tokens": 2652,
+  "prompt_tokens": 20691,
+  "total_tokens": 23343
+ },
+ "content_chars": 6521,
+ "reasoning_chars": 0,
+ "elapsed_s": 26.859,
+ "deadline_hit": false,
+ "temperature": "omitted",
+ "temperature_dropped": true,
+ "token_field": "max_tokens",
+ "endpoint_host": "api.anthropic.com"
+}

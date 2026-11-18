@@ -1,0 +1,29 @@
+{
+ "fund": "swap",
+ "reader": "gemini-3.6-flash",
+ "mode": "draft",
+ "draft_arm": "ask",
+ "drafter": "gpt-5.6-sol",
+ "draft_run": 1,
+ "started": "2026-11-16T17:06:07",
+ "prompt": {
+  "sha256": "66434e7e4e4db080d27ef7696824fa42afd141114f6df018c57b956a2385b366",
+  "chars": 50133,
+  "tokens_approx": 12533
+ },
+ "max_tokens": 32000,
+ "finish_reason": "stop",
+ "usage": {
+  "completion_tokens": 2013,
+  "prompt_tokens": 12916,
+  "total_tokens": 25145
+ },
+ "content_chars": 5899,
+ "reasoning_chars": 0,
+ "elapsed_s": 58.187,
+ "deadline_hit": false,
+ "temperature": 0.0,
+ "temperature_dropped": false,
+ "token_field": "max_tokens",
+ "endpoint_host": "generativelanguage.googleapis.com"
+}

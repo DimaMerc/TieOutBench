@@ -1,0 +1,260 @@
+```json
+{
+ "scenarios": {
+  "S01": {
+   "units": {
+    "verdict": "supported",
+    "missing": ""
+   },
+   "notional": {
+    "verdict": "supported",
+    "missing": ""
+   }
+  },
+  "S02": {
+   "unrealized_gain": {
+    "verdict": "supported",
+    "missing": ""
+   },
+   "per_share": {
+    "verdict": "supported",
+    "missing": ""
+   },
+   "price_to_use": {
+    "verdict": "supported",
+    "missing": ""
+   }
+  },
+  "S03": {
+   "one_day": {
+    "verdict": "not supported",
+    "missing": "day-count convention for swap financing (e.g., ACT/360 vs ACT/365)"
+   },
+   "weekend": {
+    "verdict": "not supported",
+    "missing": "day-count convention and weekend accrual rules for swap financing"
+   }
+  },
+  "S04": {
+   "total": {
+    "verdict": "not supported",
+    "missing": "day-count convention and floating-rate observation lag/reset rules for swap financing"
+   },
+   "third_day": {
+    "verdict": "not supported",
+    "missing": "day-count convention and floating-rate observation lag/reset rules for swap financing"
+   }
+  },
+  "S05": {
+   "income_owed": {
+    "verdict": "supported",
+    "missing": ""
+   },
+   "change_in_unrealized": {
+    "verdict": "supported",
+    "missing": ""
+   },
+   "net_effect_on_net_assets_on_ex_date": {
+    "verdict": "supported",
+    "missing": ""
+   },
+   "error_per_share_if_omitted": {
+    "verdict": "supported",
+    "missing": ""
+   },
+   "error_percent_if_omitted": {
+    "verdict": "supported",
+    "missing": ""
+   }
+  },
+  "S06": {
+   "exposure_before": {
+    "verdict": "supported",
+    "missing": ""
+   },
+   "target_exposure": {
+    "verdict": "supported",
+    "missing": ""
+   },
+   "units_added": {
+    "verdict": "supported",
+    "missing": ""
+   },
+   "units_after": {
+    "verdict": "supported",
+    "missing": ""
+   },
+   "unrealized_after": {
+    "verdict": "not supported",
+    "missing": "swap reset and P&L accounting rules when adding units during daily rebalancing"
+   }
+  },
+  "S07": {
+   "exposure_before": {
+    "verdict": "supported",
+    "missing": ""
+   },
+   "target_exposure": {
+    "verdict": "supported",
+    "missing": ""
+   },
+   "units_removed": {
+    "verdict": "supported",
+    "missing": ""
+   },
+   "realized": {
+    "verdict": "not supported",
+    "missing": "lot-allocation method and realization rules for partial swap terminations"
+   },
+   "unrealized_after": {
+    "verdict": "not supported",
+    "missing": "lot-allocation method and reset mechanics for remaining swap units after partial termination"
+   }
+  },
+  "S08": {
+   "financing_accrued": {
+    "verdict": "not supported",
+    "missing": "day-count convention for swap financing (e.g., ACT/360 vs ACT/365)"
+   },
+   "payment_to_fund": {
+    "verdict": "not supported",
+    "missing": "day-count convention for swap financing accrual"
+   },
+   "notional_after": {
+    "verdict": "supported",
+    "missing": ""
+   },
+   "accruals_after": {
+    "verdict": "supported",
+    "missing": ""
+   }
+  },
+  "S09": {
+   "cash_for_shares": {
+    "verdict": "supported",
+    "missing": ""
+   },
+   "fee_received": {
+    "verdict": "supported",
+    "missing": ""
+   },
+   "units_added": {
+    "verdict": "supported",
+    "missing": ""
+   },
+   "nav_per_share_published": {
+    "verdict": "supported",
+    "missing": ""
+   }
+  },
+  "S10": {
+   "cash_paid": {
+    "verdict": "supported",
+    "missing": ""
+   },
+   "units_removed": {
+    "verdict": "supported",
+    "missing": ""
+   },
+   "realized": {
+    "verdict": "not supported",
+    "missing": "lot-allocation method and realization rules for partial swap terminations"
+   },
+   "nav_per_share_published": {
+    "verdict": "supported",
+    "missing": ""
+   }
+  },
+  "S11": {
+   "cash_after": {
+    "verdict": "supported",
+    "missing": ""
+   },
+   "collateral_posted_after": {
+    "verdict": "supported",
+    "missing": ""
+   },
+   "change_in_net_assets": {
+    "verdict": "supported",
+    "missing": ""
+   }
+  },
+  "S12": {
+   "one_day": {
+    "verdict": "not supported",
+    "missing": "day-count denominator for fund expense accruals (e.g., 365 vs 366 days)"
+   },
+   "weekend": {
+    "verdict": "not supported",
+    "missing": "day-count convention and weekend accrual rules for fund expenses"
+   }
+  },
+  "S13": {
+   "right_net_assets": {
+    "verdict": "supported",
+    "missing": ""
+   },
+   "misstatement": {
+    "verdict": "supported",
+    "missing": ""
+   },
+   "per_share": {
+    "verdict": "supported",
+    "missing": ""
+   },
+   "percent": {
+    "verdict": "supported",
+    "missing": ""
+   },
+   "correction_threshold": {
+    "verdict": "not supported",
+    "missing": "NAV error correction threshold or policy"
+   }
+  },
+  "S14": {
+   "units_after": {
+    "verdict": "not supported",
+    "missing": "swap corporate-action adjustment rules for stock splits"
+   },
+   "reset_price_after": {
+    "verdict": "not supported",
+    "missing": "swap corporate-action adjustment rules for stock splits"
+   },
+   "unrealized_after": {
+    "verdict": "not supported",
+    "missing": "swap corporate-action adjustment rules for stock splits"
+   },
+   "unrealized_before": {
+    "verdict": "supported",
+    "missing": ""
+   },
+   "wrong_unrealized": {
+    "verdict": "supported",
+    "missing": ""
+   }
+  },
+  "S15": {
+   "net_assets_at_close": {
+    "verdict": "not supported",
+    "missing": "day-count conventions for swap financing and fund expense accruals"
+   },
+   "nav_per_share_published": {
+    "verdict": "not supported",
+    "missing": "day-count conventions for swap financing and fund expense accruals"
+   },
+   "return_percent": {
+    "verdict": "not supported",
+    "missing": "day-count conventions for swap financing and fund expense accruals"
+   },
+   "twice_reference_percent": {
+    "verdict": "supported",
+    "missing": ""
+   },
+   "shortfall_basis_points": {
+    "verdict": "not supported",
+    "missing": "day-count conventions for swap financing and fund expense accruals"
+   }
+  }
+ }
+}
+```

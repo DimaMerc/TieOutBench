@@ -1,0 +1,52 @@
+{
+ "fund": "options",
+ "reader": "claude-opus-4-8",
+ "run": 2,
+ "questions": {
+  "Q01": "O01",
+  "Q02": "O02",
+  "Q03": "O03",
+  "Q04": "O04",
+  "Q05": "O05",
+  "Q06": "O06",
+  "Q07": "O07",
+  "Q08": "O08",
+  "Q09": "O09",
+  "Q10": "O10",
+  "Q11": "O11",
+  "Q12": "O12",
+  "Q13": "O13",
+  "Q14": "O14",
+  "Q15": "O15",
+  "Q16": "O16",
+  "Q17": "O17",
+  "Q18": "O18",
+  "Q19": "O19",
+  "Q20": "O20",
+  "Q21": "O21",
+  "Q22": "O22",
+  "Q23": "O23",
+  "Q24": "O24"
+ },
+ "started": "2026-11-16T17:30:58",
+ "prompt": {
+  "sha256": "045ea006880df66a0f61919c6ef7e66b09f3717ce944b4a7f627e01f89ed2060",
+  "chars": 25955,
+  "tokens_approx": 6488
+ },
+ "max_tokens": 24000,
+ "finish_reason": "stop",
+ "usage": {
+  "completion_tokens": 3317,
+  "prompt_tokens": 8721,
+  "total_tokens": 12038
+ },
+ "content_chars": 9746,
+ "reasoning_chars": 0,
+ "elapsed_s": 33.422,
+ "deadline_hit": false,
+ "temperature": "omitted",
+ "temperature_dropped": true,
+ "token_field": "max_tokens",
+ "endpoint_host": "api.anthropic.com"
+}

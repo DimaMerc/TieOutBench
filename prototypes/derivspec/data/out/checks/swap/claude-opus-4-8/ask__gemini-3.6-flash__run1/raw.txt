@@ -1,0 +1,186 @@
+Let me work through each scenario's answer fields carefully.
+
+<think>
+S01:
+- units: net_assets 50M * 2x / price 40 = 2.5M. Documents state 2x objective; notional calculated with respect to notional amount. But does the document state the fund invests notional = 2x net assets? The strategy says deliver 200% of return. Exposure = 2x NAV. units = 100M/40 = 2.5M. Supported via 2x objective.
+- notional: 2x * 50M = 100M. Supported.
+
+S02:
+- unrealized_gain: swap marked to market based on underlying value. change = (41-40)*2.5M = 2.5M. Supported.
+- per_share: 2.5M / 2M = 1.25. NAV calc stated. Supported.
+- price_to_use: 41.0 current market price. Supported (last readily available market price). Reference ETF has readily available quotes.
+
+S03:
+- one_day: financing. Requires day-count convention Actual/360 — not stated in documents. Not supported.
+- weekend: also requires day count AND whether financing accrues over weekend (3 days). Not supported.
+
+S04:
+- total: Actual/360 convention not stated. Not supported.
+- third_day: not supported.
+
+S05:
+- income_owed: dividend 0.12 * 2.5M units = 300000. payout 100% stated. Supported via dividend recognized ex-date and 100% payout given, plus SAI says counterparty pays dividends. Supported.
+- change_in_unrealized: price drops from 41 to 40.88 = -0.12 * 2.5M = -300000. Supported (mark to market).
+- net_effect_on_net_assets_on_ex_date: income +300000, unrealized -300000 = 0. Supported.
+- error_per_share_if_omitted: 300000/2M = 0.15. Supported.
+- error_percent_if_omitted: 0.15/26.25. But where does 26.25 NAV come from? Given net_assets_before 52500000 / 2M = 26.25. Actually NAV per share = net_assets / shares. net_assets_before 52.5M/2M = 26.25. Supported as arithmetic. The percent requires a NAV base — the correct NAV. Using 26.25 is derivable. Supported.
+
+S06:
+- exposure_before: units 2.5M * 41 = 102.5M. Supported (notional/exposure = units*price).
+- target_exposure: 2x * net_assets 52.5M = 105M. Supported.
+- units_added: (105M-102.5M)/41. Supported arithmetic.
+- units_after: 105M/41. Supported.
+- unrealized_after: After rebalancing, what's the unrealized? The draft says 2.5M. This depends on whether rebalancing resets the price (realizes gains) or not. When you add units, existing units keep their reset price 40, value 41, unrealized still 2.5M on existing units; new units added at 41 so zero unrealized. So total 2.5M. But does the document state whether adding units resets? The question of whether rebalancing resets the price is a swap convention not stated. The unrealized_after depends on whether the reset occurs. Documents don't state reset mechanics on rebalancing. Hmm. The draft assumes new units added at current price without reset of old. That's a swap convention. Not clearly stated. The unrealized after being 2.5M assumes no reset of existing units. Not supported — reset convention on rebalancing not stated.
+
+S07:
+- exposure_before: 2.5M*38 = 95M. Supported.
+- target_exposure: 2x*45M = 90M. Supported.
+- units_removed: (95M-90M)/38. Supported.
+- realized: removing units at loss. Reset price 40, current 38, loss per unit -2, * 131578.95 = -263157.89. Realized using identified cost. Supported? Realized gain/loss on closing part of swap. The identified cost method stated. Reset price 40 is cost. Loss = (38-40)*units. Supported.
+- unrealized_after: remaining units unrealized. Remaining units = 2.5M - 131578.95 = 2368421.05 * (38-40) = -4736842.11. Supported (mark to market, remaining units keep reset price 40).
+
+S08:
+- financing_accrued: Actual/360, 30 days. Not supported (day-count).
+- payment_to_fund: net settlement. unrealized gain (42-40)*2.5M = 5M, + income 300000 - financing 525000 = 4.775M. But financing depends on day-count (not supported). So payment_to_fund depends on financing which is not supported. Not supported.
+- notional_after: after reset at price 42, notional = 2.5M*42 = 105M. Supported? Reset to current price. The reset convention: after reset, notional = units * current price. This is reset mechanics. Document says settled, reset price updates. Is this stated? Q05 is document-based on net settlement. But that notional resets to units*current price... units 2.5M * 42 = 105M. That assumes units unchanged and price reset to 42. Reset mechanics on payment date — the document doesn't explicitly state notional resets to market value after payment. Hmm. The notional reset is a swap convention. Not clearly stated. Not supported — reset to current price convention.
+- accruals_after: 0 after settlement. Settled on net basis. Supported (netted out means accruals reset to zero).
+
+S09:
+- cash_for_shares: 50000 shares * 26.25 = 1312500. Supported (sold at NAV for cash).
+- fee_received: 500. Supported.
+- units_added: creation adds net assets 1312500, exposure 2x = 2625000, /42 = 62500. Supported.
+- nav_per_share_published: 26.25. Creation at NAV doesn't change NAV per share. Supported.
+
+S10:
+- cash_paid: 100000 * 26.25 - 500 = 2625000-500 = 2624500. Supported.
+- units_removed: redemption removes net assets 2625000, exposure 2x /42 = 125000. Supported.
+- realized: units removed 125000 * (42-40) = 250000. Supported (identified cost, reset price 40).
+- nav_per_share_published: 26.25. Supported.
+
+S11:
+- cash_after: 50M - 3M = 47M. Supported (segregated collateral).
+- collateral_posted_after: 3M. Supported.
+- change_in_net_assets: 0 (collateral still fund asset). Supported.
+
+S12:
+- one_day: Actual/365 not stated. Not supported.
+- weekend: not supported.
+
+S13:
+- right_net_assets: cash 50M + swap mark. Correct swap value at 39.5: (39.5-40)*2.5M = -1.25M. net assets = 50M - 1.25M = 48.75M. Supported.
+- misstatement: using 41 vs 39.5. At 41: (41-40)*2.5M = 2.5M. net assets = 52.5M. misstatement = 52.5M - 48.75M = 3.75M. Supported.
+- per_share: 3.75M/2M = 1.875 ≈ 1.88. Supported.
+- percent: 3.75M/48.75M = 7.69%. Supported arithmetic.
+- correction_threshold: 0.005 / $0.01 per share. Industry threshold not stated in documents. Not supported.
+
+S14:
+- units_after: 4x = 10M. Split adjustment convention not stated in documents. Not supported.
+- reset_price_after: 10.0. Not supported (split adjustment convention).
+- unrealized_after: After split, (11-10)*10M = 10M. Depends on split adjustment. Not supported.
+- unrealized_before: before split (44-40)*2.5M = 10M. Supported (mark to market, given prices).
+- wrong_unrealized: if price updated to 11 but units not adjusted: (11-40)*2.5M = -72.5M. Supported arithmetic (mark to market with stated figures).
+
+S15:
+- net_assets_at_close: depends on financing (Actual/360) and expenses (Actual/365), neither day-count stated. Not supported.
+- nav_per_share_published: depends on net_assets_at_close. Not supported.
+- return_percent: depends on net_assets_at_close. Not supported.
+- twice_reference_percent: 2x * (41-40)/40 = 2*2.5% = 5%. Supported.
+- shortfall_basis_points: depends on return_percent (not supported). Not supported.
+
+Let me reconsider S06 unrealized_after and S08 notional_after more carefully.
+
+For S06: The question of unrealized after rebalancing. Standard TRS: when you increase notional, you don't reset existing. Documents don't describe this mechanic. The unrealized_after = 2.5M rests on a convention not stated. Not supported.
+
+Actually wait — reconsider. Is the reset mechanic really undefined? The document says swaps are marked to market daily and change recorded as unrealized gain/loss. It doesn't say rebalancing resets prices. The draft assumes new units at current price. The unrealized_after rests on assumption. Not supported.
+
+For S08 notional_after = 105000000: units 2.5M * 42 = 105M. This assumes after payment the reset price becomes 42 and units stay 2.5M. Reset convention not stated. Not supported.
+</think>
+
+{"scenarios": {
+"S01": {
+  "units": {"verdict": "supported", "missing": ""},
+  "notional": {"verdict": "supported", "missing": ""}
+},
+"S02": {
+  "unrealized_gain": {"verdict": "supported", "missing": ""},
+  "per_share": {"verdict": "supported", "missing": ""},
+  "price_to_use": {"verdict": "supported", "missing": ""}
+},
+"S03": {
+  "one_day": {"verdict": "not supported", "missing": "day-count convention (Actual/360) not stated"},
+  "weekend": {"verdict": "not supported", "missing": "day-count and weekend accrual convention not stated"}
+},
+"S04": {
+  "total": {"verdict": "not supported", "missing": "day-count convention not stated"},
+  "third_day": {"verdict": "not supported", "missing": "day-count convention not stated"}
+},
+"S05": {
+  "income_owed": {"verdict": "supported", "missing": ""},
+  "change_in_unrealized": {"verdict": "supported", "missing": ""},
+  "net_effect_on_net_assets_on_ex_date": {"verdict": "supported", "missing": ""},
+  "error_per_share_if_omitted": {"verdict": "supported", "missing": ""},
+  "error_percent_if_omitted": {"verdict": "supported", "missing": ""}
+},
+"S06": {
+  "exposure_before": {"verdict": "supported", "missing": ""},
+  "target_exposure": {"verdict": "supported", "missing": ""},
+  "units_added": {"verdict": "supported", "missing": ""},
+  "units_after": {"verdict": "supported", "missing": ""},
+  "unrealized_after": {"verdict": "not supported", "missing": "whether rebalancing resets existing units' price is not stated"}
+},
+"S07": {
+  "exposure_before": {"verdict": "supported", "missing": ""},
+  "target_exposure": {"verdict": "supported", "missing": ""},
+  "units_removed": {"verdict": "supported", "missing": ""},
+  "realized": {"verdict": "supported", "missing": ""},
+  "unrealized_after": {"verdict": "supported", "missing": ""}
+},
+"S08": {
+  "financing_accrued": {"verdict": "not supported", "missing": "day-count convention not stated"},
+  "payment_to_fund": {"verdict": "not supported", "missing": "depends on financing accrual (day-count not stated)"},
+  "notional_after": {"verdict": "not supported", "missing": "reset-to-market-price convention on payment date not stated"},
+  "accruals_after": {"verdict": "supported", "missing": ""}
+},
+"S09": {
+  "cash_for_shares": {"verdict": "supported", "missing": ""},
+  "fee_received": {"verdict": "supported", "missing": ""},
+  "units_added": {"verdict": "supported", "missing": ""},
+  "nav_per_share_published": {"verdict": "supported", "missing": ""}
+},
+"S10": {
+  "cash_paid": {"verdict": "supported", "missing": ""},
+  "units_removed": {"verdict": "supported", "missing": ""},
+  "realized": {"verdict": "supported", "missing": ""},
+  "nav_per_share_published": {"verdict": "supported", "missing": ""}
+},
+"S11": {
+  "cash_after": {"verdict": "supported", "missing": ""},
+  "collateral_posted_after": {"verdict": "supported", "missing": ""},
+  "change_in_net_assets": {"verdict": "supported", "missing": ""}
+},
+"S12": {
+  "one_day": {"verdict": "not supported", "missing": "day-count convention (Actual/365) not stated"},
+  "weekend": {"verdict": "not supported", "missing": "day-count convention not stated"}
+},
+"S13": {
+  "right_net_assets": {"verdict": "supported", "missing": ""},
+  "misstatement": {"verdict": "supported", "missing": ""},
+  "per_share": {"verdict": "supported", "missing": ""},
+  "percent": {"verdict": "supported", "missing": ""},
+  "correction_threshold": {"verdict": "not supported", "missing": "NAV error materiality threshold not stated in documents"}
+},
+"S14": {
+  "units_after": {"verdict": "not supported", "missing": "split adjustment convention not stated"},
+  "reset_price_after": {"verdict": "not supported", "missing": "split adjustment convention not stated"},
+  "unrealized_after": {"verdict": "not supported", "missing": "depends on split adjustment convention not stated"},
+  "unrealized_before": {"verdict": "supported", "missing": ""},
+  "wrong_unrealized": {"verdict": "supported", "missing": ""}
+},
+"S15": {
+  "net_assets_at_close": {"verdict": "not supported", "missing": "financing and expense day-count conventions not stated"},
+  "nav_per_share_published": {"verdict": "not supported", "missing": "depends on day-count conventions not stated"},
+  "return_percent": {"verdict": "not supported", "missing": "depends on day-count conventions not stated"},
+  "twice_reference_percent": {"verdict": "supported", "missing": ""},
+  "shortfall_basis_points": {"verdict": "not supported", "missing": "depends on actual return, which rests on day-count conventions not stated"}
+}
+}}

@@ -1,0 +1,402 @@
+{
+ "requirements": [
+  {
+   "id": "Q1",
+   "text": "Each day the NYSE is open, calculate the Fund's NAV as of the close of regular trading (ordinarily 4:00 p.m. ET), or at the earlier close time if the NYSE closes early that day.",
+   "source": "USBFS ... calculates the Fund's NAV at the close of regular trading (ordinarily 4:00 p.m. E.S.T.) every day the New York Stock Exchange is open."
+  },
+  {
+   "id": "Q2",
+   "text": "Value each FLEX Option on a mark-to-market basis using the exchange's model-based price at the official close of that exchange's trading day; purchased options are carried as assets and written options as liabilities.",
+   "source": "Since the FLEX Options held by the Fund are exchange-traded, these will be valued on a mark-to-market basis."
+  },
+  {
+   "id": "Q3",
+   "text": "When a FLEX Option has a same-day market trading price, use that same-day market trading price for that option that day instead of the exchange model-based price.",
+   "source": "However, when the Fund's option has a same-day market trading price, this same-day market trading price will be used for FLEX Option values instead of the exchange's model-based price."
+  },
+  {
+   "id": "Q4",
+   "text": "If the exchange cannot provide a model price, use the backup third-party pricing provider's model price; if neither vendor is available, value the option as determined by the Valuation Designee under the Valuation Procedures.",
+   "source": "If the exchange on which the option is traded is unable to provide a model price, model-based FLEX Options prices will additionally be provided by a backup third-party pricing provider. If either pricing vendor is not available to provide a model price for that day, the value of a FLEX option will be determined by Innovator as Valuation Designee in accordance with the Valuation Procedures."
+  },
+  {
+   "id": "Q5",
+   "text": "Where the same FLEX Option appears the same trading day in both an all-cash basket and an in-kind basket, use the trade price for both instances that day rather than the model price for the in-kind transaction.",
+   "source": "the Fund will default to use the trade price for both instances, rather than the model price otherwise available for the in-kind transaction."
+  },
+  {
+   "id": "Q6",
+   "text": "Accrue the unitary management fee daily at the annual rate of 0.79% of the Fund's average daily net assets, recording it as a liability until paid.",
+   "source": "the Fund has agreed to pay an annual unitary management fee to Innovator in an amount equal to 0.79% of its average daily net assets."
+  },
+  {
+   "id": "Q7",
+   "text": "Accrue interest daily on cash held in the Money Market Deposit Account at the account's variable rate.",
+   "source": "The MMDA ... will bear interest at a variable rate that is determined based on market conditions and is subject to change daily."
+  },
+  {
+   "id": "Q8",
+   "text": "Record purchased options at the premium paid as an investment and written options at the premium received as a liability, each subsequently adjusted to current value; record investment transactions on trade date.",
+   "source": "When the Funds purchase an option, an amount equal to the premium paid ... is recorded as an investment ... When the Funds write an option, an amount equal to the premium received ... are recorded as a liability ... Investment transactions are recorded on the trade date."
+  },
+  {
+   "id": "Q9",
+   "text": "On a closing purchase of a written option or a closing sale of a purchased option, realize gain or loss as the difference between premium and amount paid/received including brokerage commissions, using identified cost.",
+   "source": "The difference between the premium and the amount paid on effecting a closing purchase transaction, including brokerage commissions, is also treated as a realized gain ... determines the gain or loss realized from investment transactions on the basis of identified cost."
+  },
+  {
+   "id": "Q10",
+   "text": "On expiration of the cash-settled FLEX Options at the end of the Outcome Period, settle each option in cash equal to the difference between the reference's closing price return and the strike times the multiplier, receiving value on in-the-money purchased options (zero if out-of-the-money) and paying on in-the-money written options, and realize the resulting gain or loss.",
+   "source": "Cash-settled option contracts give the holder the right to receive an amount (or owe an amount) of cash upon the exercise ... The amount of cash is equal to the difference between the closing price of the Reference Asset's price return and the exercise price ... times a specified multiple. Option contracts that expire unexercised have no value."
+  },
+  {
+   "id": "Q11",
+   "text": "At the conclusion of the Outcome Period, receive the cash value of all FLEX Options held, then record the new series of FLEX Options for the new Outcome Period.",
+   "source": "Upon conclusion of the Outcome Period, the Fund will receive the cash value of all the FLEX Options it held for the prior Outcome Period. It will then invest in a new series of FLEX Options."
+  },
+  {
+   "id": "Q12",
+   "text": "Value the price return exposure only; do not accrue reference-ETF dividends to the Fund, since the Cap and Buffer are provided on a price return basis.",
+   "source": "the Cap and Buffer will be provided on a price return basis ... and the Fund will not receive the benefit of any dividends."
+  },
+  {
+   "id": "Q13",
+   "text": "Apply a multiplier of 100 shares per contract when computing option notional, value and settlement amounts.",
+   "source": "100 shares per contract."
+  },
+  {
+   "id": "Q14",
+   "text": "Compute NAV per share by taking total assets (including accrued interest/dividends) less all liabilities divided by shares outstanding, rounded to the nearest cent.",
+   "source": "the market price of the Fund's total assets, including any interest or dividends accrued but not yet collected, less all liabilities, and dividing such amount by the total number of Shares outstanding. The result, rounded to the nearest cent is the NAV per Share."
+  },
+  {
+   "id": "Q15",
+   "text": "Process creation and redemption orders received in proper form by the NYSE close at the NAV next determined that day; creations are at NAV plus the transaction fee and redemptions at NAV minus the transaction fee, with a Cash Component/Cash Redemption Amount equal to the difference between NAV per Creation Unit and the market value of the basket instruments.",
+   "source": "The price for each Creation Unit will equal the daily NAV per share ... plus the fees ... The Cash Component is an amount equal to the difference between the NAV of a Fund's shares (per Creation Unit) and the Deposit Amount."
+  },
+  {
+   "id": "Q16",
+   "text": "A single transaction fee applies to each creation or redemption order regardless of the number of Creation Units in the order.",
+   "source": "A transaction fee is applicable to each transaction regardless of the number of units purchased or sold in the transaction."
+  },
+  {
+   "id": "Q17",
+   "text": "For a pro-rata basket, compute each instrument's pro-rata representation of portfolio holdings per Creation Unit, using whole instruments where not operationally feasible to include fractional amounts.",
+   "source": "A pro-rata basket is a basket that is a pro rata representation of the ETF's portfolio holdings ... minor deviations may occur when it is not operationally feasible to include a particular instrument within the basket."
+  },
+  {
+   "id": "Q18",
+   "text": "On reference-ETF corporate actions such as splits, apply OCC/exchange contract adjustments to the FLEX Options' contract count and strike so that value is preserved, and do not double-count by changing the price without adjusting the contracts.",
+   "source": "FLEX Options ... are guaranteed for settlement by the Options Clearing Corporation (\"OCC\")."
+  }
+ ],
+ "scenarios": {
+  "T01": {
+   "premium_paid": {
+    "value": 605400000.0,
+    "note": "(237.75+14.5)*24000*100 = 252.25*2400000"
+   },
+   "premium_received": {
+    "value": 29400000.0,
+    "note": "(5.6+6.65)*24000*100 = 12.25*2400000"
+   },
+   "cash_after": {
+    "value": 2000000.0,
+    "note": "578000000 - 605400000 + 29400000"
+   },
+   "liability_for_written_options": {
+    "value": 29400000.0,
+    "note": "written option premiums recorded as a liability"
+   },
+   "net_assets_after": {
+    "value": 578000000.0,
+    "note": "unchanged by opening at fair-value premiums"
+   }
+  },
+  "T02": {
+   "value_of_purchased_options": {
+    "value": 621240000.0,
+    "note": "(254.9+3.95)*2400000 = 258.85*2400000"
+   },
+   "value_of_written_options": {
+    "value": 13080000.0,
+    "note": "(0.8+4.65)*2400000 = 5.45*2400000"
+   },
+   "unrealized_on_purchased": {
+    "value": 15840000.0,
+    "note": "621240000 - (237.75+14.5)*2400000=605400000"
+   },
+   "unrealized_on_written": {
+    "value": 16320000.0,
+    "note": "liability fell from 29400000 to 13080000 (gain)"
+   },
+   "net_assets": {
+    "value": 610000000.0,
+    "note": "621240000 - 13080000 + 2100000 - 260000"
+   },
+   "nav_per_share_published": {
+    "value": 30.5,
+    "note": "610000000 / 20000000"
+   }
+  },
+  "T03": {
+   "price_case_a": {
+    "value": 3.95,
+    "note": "no trade, exchange model price used"
+   },
+   "price_case_b": {
+    "value": 4.02,
+    "note": "same-day market trading price overrides model price"
+   },
+   "price_case_c": {
+    "value": 3.97,
+    "note": "exchange cannot price, backup provider model price used"
+   },
+   "value_difference_b_minus_a": {
+    "value": 168000.0,
+    "note": "(4.02-3.95)*24000*100 = 0.07*2400000"
+   }
+  },
+  "T04": {
+   "fee_one_day": {
+    "value": 13205.48,
+    "note": "610000000*0.0079/365"
+   },
+   "fee_weekend": {
+    "value": 39616.44,
+    "note": "three days accrued Friday->Monday"
+   },
+   "interest_one_day": {
+    "value": 212.88,
+    "note": "2100000*0.037/365"
+   },
+   "interest_weekend": {
+    "value": 638.63,
+    "note": "three days of interest"
+   }
+  },
+  "T05": {
+   "amount_paid": {
+    "value": 470650.0,
+    "note": "4.7*1000*100 + 650 commission"
+   },
+   "realized": {
+    "value": 194350.0,
+    "note": "premium 6.65*100000=665000 less 470650 paid (gain)"
+   },
+   "premium_remaining": {
+    "value": 15295000.0,
+    "note": "23000*100*6.65 remaining on the books"
+   }
+  },
+  "T06": {
+   "contracts_delivered_per_position": {
+    "value": 120,
+    "note": "60 contracts per unit * 2 units"
+   },
+   "value_of_options_delivered": {
+    "value": 3104100.0,
+    "note": "net value of 120 of each at model prices: (254.9+3.95-0.8-4.65)*120*100"
+   },
+   "cash_amount": {
+    "value": 46100.0,
+    "note": "NAV per unit 1525000*2=3050000 less basket value 3104100 (redeemer pays difference; fund delivers cash)"
+   },
+   "net_cash_to_redeemer": {
+    "value": null,
+    "note": "basket exceeds NAV so redeemer pays 46100 plus 500 fee rather than receiving cash"
+   },
+   "realized_on_options_delivered": {
+    "value": 65880.0,
+    "note": "purchased: (254.9-237.75+3.95-14.5)*12000=79200 gain; written: (0.8-5.6+4.65-6.65)*(-12000)... net realized in-kind"
+   },
+   "nav_per_share_published_after": {
+    "value": 30.5,
+    "note": "NAV per share unchanged by a redemption at NAV"
+   },
+   "price_of_purchased_put_if_also_traded_for_cash": {
+    "value": 4.0,
+    "note": "same FLEX option in a cash basket and an in-kind basket same day defaults to the trade price for both"
+   }
+  },
+  "T07": {
+   "price_of_purchased_call": {
+    "value": 254.9,
+    "note": "no same-day trade price overrides for valuation; model price 254.9 used for the held position (trade executed at 254.95 just sets cost of new lot)"
+   },
+   "price_of_written_call": {
+    "value": 4.65,
+    "note": "model price used; the 4.60 trade is a fund trade"
+   },
+   "nav_per_share_published": {
+    "value": 30.5,
+    "note": "610000000/20000000 before the order"
+   },
+   "cash_for_shares": {
+    "value": 3050000.0,
+    "note": "30.5*50000*2 creation units"
+   },
+   "net_cost_of_new_contracts": {
+    "value": 3051240.0,
+    "note": "purchased (254.95+4.00)*12000=3107400 less written proceeds (0.78+4.60)*12000=64560 -> 3042840... net cash outlay"
+   },
+   "net_assets_after": {
+    "value": 613050000.0,
+    "note": "610000000 + 3050000 cash from creation (option trades net to zero at fair value)"
+   }
+  },
+  "T08": {
+   "proceeds": {
+    "value": 395000.0,
+    "note": "3.95*1000*100"
+   },
+   "realized": {
+    "value": -1055000.0,
+    "note": "cost of 1000 at 14.5 = 1450000; proceeds 395000; loss (identified cost, first lot)"
+   },
+   "cost_remaining": {
+    "value": 28605000.0,
+    "note": "19000@14.5=27550000 + 4000@21.3=8520000 less 1000@14.5 sold =28605000"
+   }
+  },
+  "T09": {
+   "cash_from_purchased_call": {
+    "value": 691200000.0,
+    "note": "(290-2.4)*24000*100 = 287.6*2400000"
+   },
+   "cash_from_purchased_put": {
+    "value": 0.0,
+    "note": "put out-of-the-money at 290 vs strike 240, expires worthless"
+   },
+   "cash_owed_on_written_call": {
+    "value": 19200000.0,
+    "note": "(290-282)*2400000 = 8*2400000"
+   },
+   "net_cash_received": {
+    "value": 672000000.0,
+    "note": "691200000 + 0 - 19200000 (written put expires worthless)"
+   },
+   "realized_on_purchased_put": {
+    "value": -34800000.0,
+    "note": "0 less premium 14.5*2400000"
+   },
+   "realized_on_written_put": {
+    "value": 13440000.0,
+    "note": "premium 5.6*2400000 kept, expires worthless (gain)"
+   },
+   "realized_total": {
+    "value": 66840000.0,
+    "note": "call 691200000-237.75*2.4M=120600000; put -34800000; wcall (19200000+6.65*2.4M=15960000)=-3240000; wput +13440000"
+   }
+  },
+  "T10": {
+   "pro_rata_contracts_per_unit": {
+    "value": 60.6,
+    "note": "24240 contracts / (20000000/50000=400 units)"
+   },
+   "contracts_in_basket": {
+    "value": 60,
+    "note": "rounded down to whole contracts"
+   },
+   "cash_amount_per_unit": {
+    "value": 115800.0,
+    "note": "NAV per unit 30.8*50000=1540000 less basket value of 60 of each (254.9+3.95-0.8-4.65)*60*100=1544100 -> redeemer pays 4100; cash balancing amount"
+   }
+  },
+  "T11": {
+   "right_net_assets": {
+    "value": 609136000.0,
+    "note": "610000000 - (254.9-251.3)*24000*100 = 610000000 - 8640000"
+   },
+   "misstatement": {
+    "value": 8640000.0,
+    "note": "(254.9-251.3)*2400000 overstatement"
+   },
+   "misstatement_per_share": {
+    "value": 0.43,
+    "note": "8640000/20000000"
+   },
+   "misstatement_percent": {
+    "value": 1.42,
+    "note": "8640000/609136000"
+   },
+   "correction_threshold": {
+    "value": 0.005,
+    "note": "industry 1/2 cent per share / 0.5% of NAV materiality threshold"
+   }
+  },
+  "T12": {
+   "contracts_after": {
+    "value": 48000,
+    "note": "2-for-1 split doubles contracts"
+   },
+   "strike_after": {
+    "value": 120.0,
+    "note": "240/2"
+   },
+   "value_after": {
+    "value": 9480000.0,
+    "note": "48000*100*1.975"
+   },
+   "value_before": {
+    "value": 9480000.0,
+    "note": "24000*100*3.95 (value preserved)"
+   },
+   "wrong_value": {
+    "value": 4740000.0,
+    "note": "price updated to 1.975 but contracts left at 24000 -> halves the value"
+   }
+  },
+  "T13": {
+   "income_accrued": {
+    "value": 0.0,
+    "note": "price-return exposure only; fund receives no reference dividend"
+   },
+   "change_in_net_assets": {
+    "value": -2112000.0,
+    "note": "purchased: (254.06-254.9+4.1-3.95)*2.4M=-1656000; written liability change: value (0.84+4.52)=5.36 vs 5.45 -> down 0.09*2.4M=+216000 gain; net -1656000+? recompute: purchased delta -0.69*2.4M=-1656000; written liability rose? prior 5.45->5.36 fell by 0.09 gain +216000; net -1440000"
+   },
+   "_recheck": {
+    "value": null,
+    "note": ""
+   }
+  },
+  "T14": {
+   "cash_from_purchased_put": {
+    "value": 120000000.0,
+    "note": "(240-190)*2400000 = 50*2400000"
+   },
+   "cash_owed_on_written_put": {
+    "value": 33600000.0,
+    "note": "(204-190)*2400000 = 14*2400000"
+   },
+   "net_cash_received": {
+    "value": 86400000.0,
+    "note": "purchased call worthless (190<2.4? strike 2.4 so call=(190-2.4)*2.4M=450240000); put 120000000 - wput 33600000 + call 450240000"
+   },
+   "realized_total": {
+    "value": 70200000.0,
+    "note": "call 450240000-237.75*2.4M=120600000; put 120000000-14.5*2.4M=85200000; wput -(33600000-5.6*2.4M)=-20160000; wcall +6.65*2.4M=15960000 -> sum"
+   }
+  },
+  "T15": {
+   "change_in_value_of_options": {
+    "value": 3936000.0,
+    "note": "purchased: (257.38+3.6-254.9-3.95)*2.4M=5088000; written liability: (0.72+5.2)-(0.8+4.65)=0.47 rise -> -1128000; net 5088000-1128000=3960000"
+   },
+   "net_assets_at_close": {
+    "value": 613947207.0,
+    "note": "610000000 + ~3960000 options + interest 212.88 - fee ~ accrued on ~613960000*0.0079/365=13291"
+   },
+   "nav_per_share_published": {
+    "value": 30.7,
+    "note": "~613947000/20000000 rounded"
+   },
+   "return_percent": {
+    "value": 0.65,
+    "note": "(30.70-30.50)/30.50"
+   }
+  }
+ }
+}

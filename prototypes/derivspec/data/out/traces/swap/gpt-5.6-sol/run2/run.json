@@ -1,0 +1,60 @@
+{
+ "fund": "swap",
+ "reader": "gpt-5.6-sol",
+ "run": 2,
+ "questions": {
+  "Q01": "R01",
+  "Q02": "R02",
+  "Q03": "R03",
+  "Q04": "R04",
+  "Q05": "R05",
+  "Q06": "R06",
+  "Q07": "R07",
+  "Q08": "R08",
+  "Q09": "R09",
+  "Q10": "R10",
+  "Q11": "R11",
+  "Q12": "R12",
+  "Q13": "R13",
+  "Q14": "R14",
+  "Q15": "R15",
+  "Q16": "R16",
+  "Q17": "R17",
+  "Q18": "R18",
+  "Q19": "R19",
+  "Q20": "R20",
+  "Q21": "R21"
+ },
+ "started": "2026-11-16T17:29:35",
+ "prompt": {
+  "sha256": "f0659a166a556404cecabb61dce8db89905f10fe26af058ad08287667a1d4392",
+  "chars": 19075,
+  "tokens_approx": 4768
+ },
+ "max_tokens": 24000,
+ "finish_reason": "stop",
+ "usage": {
+  "prompt_tokens": 4062,
+  "completion_tokens": 4157,
+  "total_tokens": 8219,
+  "prompt_tokens_details": {
+   "cached_tokens": 4059,
+   "cache_write_tokens": 0,
+   "audio_tokens": 0
+  },
+  "completion_tokens_details": {
+   "reasoning_tokens": 2260,
+   "audio_tokens": 0,
+   "accepted_prediction_tokens": 0,
+   "rejected_prediction_tokens": 0
+  }
+ },
+ "content_chars": 9225,
+ "reasoning_chars": 0,
+ "elapsed_s": 38.656,
+ "deadline_hit": false,
+ "temperature": "omitted",
+ "temperature_dropped": true,
+ "token_field": "max_completion_tokens",
+ "endpoint_host": "api.openai.com"
+}

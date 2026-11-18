@@ -1,0 +1,102 @@
+I'll work through each scenario, judging whether the documents (plus scenario figures) settle each answer field.
+
+{"scenarios": {
+"T01": {
+"premium_paid": {"verdict": "supported", "missing": ""},
+"premium_received": {"verdict": "supported", "missing": ""},
+"cash_after": {"verdict": "supported", "missing": ""},
+"liability_for_written_options": {"verdict": "supported", "missing": ""},
+"net_assets_after": {"verdict": "supported", "missing": ""}
+},
+"T02": {
+"value_of_purchased_options": {"verdict": "supported", "missing": ""},
+"value_of_written_options": {"verdict": "supported", "missing": ""},
+"unrealized_on_purchased": {"verdict": "supported", "missing": ""},
+"unrealized_on_written": {"verdict": "supported", "missing": ""},
+"net_assets": {"verdict": "supported", "missing": ""},
+"nav_per_share_published": {"verdict": "supported", "missing": ""}
+},
+"T03": {
+"price_case_a": {"verdict": "supported", "missing": ""},
+"price_case_b": {"verdict": "not supported", "missing": "whether the Fund's own trade is a qualifying same-day market trading price and applies to the whole series"},
+"price_case_c": {"verdict": "supported", "missing": ""},
+"value_difference_b_minus_a": {"verdict": "not supported", "missing": "depends on case B price, which rests on the unstated same-day-trade convention"}
+},
+"T04": {
+"fee_one_day": {"verdict": "not supported", "missing": "day-count denominator and weekend/holiday accrual convention; 'average daily net assets' meaning"},
+"fee_weekend": {"verdict": "not supported", "missing": "whether fee accrues over three calendar days; day-count convention"},
+"interest_one_day": {"verdict": "not supported", "missing": "MMDA day-count basis, compounding, rate-change convention"},
+"interest_weekend": {"verdict": "not supported", "missing": "day-count basis, compounding, weekend accrual convention"}
+},
+"T05": {
+"amount_paid": {"verdict": "supported", "missing": ""},
+"realized": {"verdict": "supported", "missing": ""},
+"premium_remaining": {"verdict": "supported", "missing": ""}
+},
+"T06": {
+"contracts_delivered_per_position": {"verdict": "supported", "missing": ""},
+"value_of_options_delivered": {"verdict": "supported", "missing": ""},
+"cash_amount": {"verdict": "supported", "missing": ""},
+"net_cash_to_redeemer": {"verdict": "supported", "missing": ""},
+"realized_on_options_delivered": {"verdict": "supported", "missing": ""},
+"nav_per_share_published_after": {"verdict": "not supported", "missing": "whether retained transaction fee changes net assets; and the fee's effect on NAV is below rounding but treatment of fee as net-asset addition rests on SoCNA disclosure, not a timing rule"},
+"price_of_purchased_put_if_also_traded_for_cash": {"verdict": "supported", "missing": ""}
+},
+"T07": {
+"price_of_purchased_call": {"verdict": "not supported", "missing": "whether the Fund's own trade is a qualifying same-day market trading price for the series"},
+"price_of_written_call": {"verdict": "not supported", "missing": "whether the Fund's own trade is a qualifying same-day market trading price for the series"},
+"nav_per_share_published": {"verdict": "not supported", "missing": "depends on same-day-trade valuation convention"},
+"cash_for_shares": {"verdict": "not supported", "missing": "whether AP pays on rounded published NAV or unrounded portfolio NAV; valuation convention"},
+"net_cost_of_new_contracts": {"verdict": "supported", "missing": ""},
+"net_assets_after": {"verdict": "not supported", "missing": "depends on NAV valuation convention for creation consideration and fee treatment"}
+},
+"T08": {
+"proceeds": {"verdict": "supported", "missing": ""},
+"realized": {"verdict": "not supported", "missing": "lot-selection method (FIFO/LIFO/average) not stated in the documents"},
+"cost_remaining": {"verdict": "not supported", "missing": "lot-selection method not stated in the documents"}
+},
+"T09": {
+"cash_from_purchased_call": {"verdict": "supported", "missing": ""},
+"cash_from_purchased_put": {"verdict": "supported", "missing": ""},
+"cash_owed_on_written_call": {"verdict": "supported", "missing": ""},
+"net_cash_received": {"verdict": "supported", "missing": ""},
+"realized_on_purchased_put": {"verdict": "supported", "missing": ""},
+"realized_on_written_put": {"verdict": "supported", "missing": ""},
+"realized_total": {"verdict": "supported", "missing": ""}
+},
+"T10": {
+"pro_rata_contracts_per_unit": {"verdict": "supported", "missing": ""},
+"contracts_in_basket": {"verdict": "not supported", "missing": "whole-contract rounding rule for fractional pro-rata quantities not stated"},
+"cash_amount_per_unit": {"verdict": "not supported", "missing": "depends on unresolved basket rounding rule"}
+},
+"T11": {
+"right_net_assets": {"verdict": "supported", "missing": ""},
+"misstatement": {"verdict": "supported", "missing": ""},
+"misstatement_per_share": {"verdict": "supported", "missing": ""},
+"misstatement_percent": {"verdict": "supported", "missing": ""},
+"correction_threshold": {"verdict": "not supported", "missing": "no NAV-error materiality/correction threshold stated in the documents"}
+},
+"T12": {
+"contracts_after": {"verdict": "not supported", "missing": "OCC split-adjustment mechanics (contracts vs. multiplier) not stated"},
+"strike_after": {"verdict": "not supported", "missing": "OCC split-adjustment mechanics not stated"},
+"value_after": {"verdict": "not supported", "missing": "depends on OCC adjustment representation"},
+"value_before": {"verdict": "supported", "missing": ""},
+"wrong_value": {"verdict": "supported", "missing": ""}
+},
+"T13": {
+"income_accrued": {"verdict": "supported", "missing": ""},
+"change_in_net_assets": {"verdict": "supported", "missing": ""}
+},
+"T14": {
+"cash_from_purchased_put": {"verdict": "supported", "missing": ""},
+"cash_owed_on_written_put": {"verdict": "supported", "missing": ""},
+"net_cash_received": {"verdict": "supported", "missing": ""},
+"realized_total": {"verdict": "supported", "missing": ""}
+},
+"T15": {
+"change_in_value_of_options": {"verdict": "supported", "missing": ""},
+"net_assets_at_close": {"verdict": "not supported", "missing": "fee and interest day-count/accrual conventions not stated"},
+"nav_per_share_published": {"verdict": "not supported", "missing": "depends on fee/interest accrual conventions"},
+"return_percent": {"verdict": "not supported", "missing": "depends on fee/interest accrual conventions; return formula not stated"}
+}
+}}

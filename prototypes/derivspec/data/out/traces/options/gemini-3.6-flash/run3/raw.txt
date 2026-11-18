@@ -1,0 +1,126 @@
+```json
+{
+  "answers": {
+    "Q01": {
+      "verdict": "stated",
+      "quote": "US Bancorp Fund Services LLC (“USBFS”), the Fund’s administrator and fund accounting agent, calculates the Fund’s NAV at the close of regular trading (ordinarily 4:00 p.m. E.S.T.) every day the New York Stock Exchange is open. The NAV for one Share is the value of that Share’s portion of the net assets of the Fund, which is calculated by taking the market price of the Fund’s total assets, including any interest or dividends accrued but not yet collected, less all liabilities, and dividing such amount by the total number of Shares outstanding. The result, rounded to the nearest cent is the NAV per Share.",
+      "missing": ""
+    },
+    "Q02": {
+      "verdict": "stated",
+      "quote": "When the Funds purchase an option, an amount equal to the premium paid by the Funds are recorded as an investment and is subsequently adjusted to the current value of the option purchased.",
+      "missing": ""
+    },
+    "Q03": {
+      "verdict": "stated",
+      "quote": "When the Funds write an option, an amount equal to the premium received by the Funds are recorded as a liability and is subsequently adjusted to the current value of the option written.",
+      "missing": ""
+    },
+    "Q04": {
+      "verdict": "stated",
+      "quote": "100 shares per contract.",
+      "missing": ""
+    },
+    "Q05": {
+      "verdict": "stated",
+      "quote": "FLEX Options listed on an exchange will typically be valued at a model-based price provided by the exchange at the official close of that exchange’s trading day.",
+      "missing": ""
+    },
+    "Q06": {
+      "verdict": "stated",
+      "quote": "However, when the Fund’s option has a same-day market trading price, this same-day market trading price will be used for FLEX Option values instead of the exchange’s model-based price.",
+      "missing": ""
+    },
+    "Q07": {
+      "verdict": "stated",
+      "quote": "If the exchange on which the option is traded is unable to provide a model price, model-based FLEX Options prices will additionally be provided by a backup third-party pricing provider. In selecting the model prices, the Sub-Adviser may provide a review of the calculation of model prices provided by each vendor, and may note to such vendors of any data errors observed, or where an underlying component value of the model pricing package may be missing or incorrect, prior to publication by the vendor of the model pricing to the Fund Accounting Agent for purposes of that day’s NAV. If either pricing vendor is not available to provide a model price for that day, the value of a FLEX option will be determined by Innovator as Valuation Designee in accordance with the Valuation Procedures.",
+      "missing": ""
+    },
+    "Q08": {
+      "verdict": "stated",
+      "quote": "In instances where in the same trading day, a particular FLEX Option is represented in an all-cash basket (either a creation unit or redemption unit), as well as in an in-kind basket (either a creation unit or a redemption unit), for valuation purposes that trading day the Fund will default to use the trade price for both instances, rather than the model price otherwise available for the in-kind transaction.",
+      "missing": ""
+    },
+    "Q09": {
+      "verdict": "partly",
+      "quote": "If an option expires on the stipulated expiration date or if the Funds enter into a closing sale transaction, a gain or loss is realized. ... The difference between the premium and the amount paid on effecting a closing purchase transaction, including brokerage commissions, is also treated as a realized gain, or if the premium is less than the amount paid for the closing purchase transaction, as a realized loss.",
+      "missing": "The passages state how realized gain or loss is measured (including brokerage commissions) when closing written option positions via a closing purchase transaction, but do not state how gain or loss is measured or whether brokerage commissions are included when closing a purchased option via a closing sale transaction."
+    },
+    "Q10": {
+      "verdict": "partly",
+      "quote": "The Trust determines the gain or loss realized from investment transactions on the basis of identified cost.",
+      "missing": "The passages state that realized gain or loss is determined on the basis of identified cost, but do not state the default accounting ordering rule (such as FIFO, LIFO, or HIFO) used to select which specific purchase lots are closed first if not explicitly identified."
+    },
+    "Q11": {
+      "verdict": "stated",
+      "quote": "Option contracts that expire unexercised have no value. Notwithstanding the above, the Funds utilize FLEX Options that are cash-settled. Cash-settled option contracts give the holder the right to receive an amount (or owe an amount) of cash upon the exercise of the option contracts. Gain or loss depends on changes in the value of the Reference Asset’s price return relative to the strike price for a given option contract. The amount of cash is equal to the difference between the closing price of the Reference Asset’s price return and the exercise price of the option contract times a specified multiple (“multiplier”), which determines the total value for each point of such difference.",
+      "missing": ""
+    },
+    "Q12": {
+      "verdict": "partly",
+      "quote": "If an option expires on the stipulated expiration date or if the Funds enter into a closing sale transaction, a gain or loss is realized. ... Premiums received from writing options that expire unexercised are treated by the Funds on the expiration date as realized gain from written options.",
+      "missing": "The passages state that gain/loss is realized upon option expiration and that unexercised written option premiums are treated as realized gain, but describe exercise mechanics in terms of physical delivery of underlying securities rather than stating the explicit accounting entries for cash settlement payouts or receipts on in-the-money cash-settled FLEX options at expiration."
+    },
+    "Q13": {
+      "verdict": "stated",
+      "quote": "The price for each Creation Unit will equal the daily NAV per share of a Fund times the number of shares in a Creation Unit, plus the fees described above and, if applicable, any operational processing and brokerage costs, transfer fees, stamp taxes and part or all of the spread between the expected bid and offer side of the market related to the securities comprising the creation basket. ... The price received for each Creation Unit will equal the daily NAV per share of a Fund times the number of shares in a Creation Unit, minus the fees described above and, if applicable, any operational processing and brokerage costs, transfer fees, stamp taxes and part or all of the spread between the expected bid and offer side of the market related to the securities comprising the redemption basket. ... The Cash Component is an amount equal to the difference between the NAV of a Fund’s shares (per Creation Unit) and the Deposit Amount. If the Cash Component is a positive number (i.e., the NAV per Creation Unit exceeds the Deposit Amount), the creator will deliver the Cash Component. If the Cash Component is a negative number (i.e., the NAV per Creation Unit is less than the Deposit Amount), the creator will receive the Cash Component.",
+      "missing": ""
+    },
+    "Q14": {
+      "verdict": "partly",
+      "quote": "(b) Amount is included in realized gain/(loss) in-kind on the Statements of Operations.",
+      "missing": "The passages state that gain or loss on options delivered in-kind is included in realized gain/(loss) in-kind on the Statements of Operations, but do not state the carrying value at which options are removed from the books upon in-kind delivery or how the realized gain/loss in-kind is calculated."
+    },
+    "Q15": {
+      "verdict": "stated",
+      "quote": "A pro-rata basket is a basket that is a pro rata representation of the ETF’s portfolio holdings.",
+      "missing": ""
+    },
+    "Q16": {
+      "verdict": "not stated",
+      "quote": "",
+      "missing": "The client or clearing broker/distributor must be asked for the exact rounding convention or cash-in-lieu rule when a pro-rata basket calculation results in a fractional option contract."
+    },
+    "Q17": {
+      "verdict": "stated",
+      "quote": "All other Innovator ETFs included in this report each, respectively, pay monthly the Adviser a unitary fee calculated daily based on the average daily net assets of each Fund at the annual rate of 0.79%.",
+      "missing": ""
+    },
+    "Q18": {
+      "verdict": "not stated",
+      "quote": "",
+      "missing": "The client or fund manager must be asked for the day-count denominator (e.g., 365, 366, or 360 days) used for daily fee accrual calculations and which day's net assets baseline is used for the accrual calculation."
+    },
+    "Q19": {
+      "verdict": "stated",
+      "quote": "The NAV for one Share is the value of that Share’s portion of the net assets of the Fund, which is calculated by taking the market price of the Fund’s total assets, including any interest or dividends accrued but not yet collected, less all liabilities, and dividing such amount by the total number of Shares outstanding.",
+      "missing": ""
+    },
+    "Q20": {
+      "verdict": "not stated",
+      "quote": "",
+      "missing": "The client or depositary bank must be asked for the specific day-count convention (e.g., Actual/360 or Actual/365) used to calculate interest accruals on the Money Market Deposit Account."
+    },
+    "Q21": {
+      "verdict": "not stated",
+      "quote": "",
+      "missing": "The client or fund administrator must be asked for the fund's NAV error threshold policy (e.g., 0.5% of NAV or $0.01 per share) and the corresponding correction/reprocessing procedures."
+    },
+    "Q22": {
+      "verdict": "not stated",
+      "quote": "",
+      "missing": "The client or clearing broker/OCC must be asked for the corporate action adjustment rules applied to contract multipliers and strike prices of FLEX options if the underlying ETF undergoes a stock split."
+    },
+    "Q23": {
+      "verdict": "stated",
+      "quote": "If the Fund invests solely in FLEX Options that reference the Underlying ETF, the Cap and Buffer will be provided on a price return basis (i.e., the returns will be provided based on changes in the share price of the Underlying ETF), and the Fund will not receive the benefit of any dividends.",
+      "missing": ""
+    },
+    "Q24": {
+      "verdict": "stated",
+      "quote": "Additional charges received by the Funds, if any, are disclosed as Transaction Fees on the Statements of Changes in Net Assets. ... During the term of the Advisory Agreement, the Adviser pays all expenses of the Funds, including the cost of transfer agency, custody, fund administration, legal, audit, and other services and license fees, except for the fees paid under the Advisory Agreement, interest, taxes, brokerage commissions and other expenses connected with the execution of portfolio transactions, distribution and service fees payable pursuant to a Rule 12b-1 plan, if any, and extraordinary expenses.",
+      "missing": ""
+    }
+  }
+}
+```

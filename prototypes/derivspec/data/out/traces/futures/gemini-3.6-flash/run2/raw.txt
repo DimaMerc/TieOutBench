@@ -1,0 +1,131 @@
+```json
+{
+  "answers": {
+    "Q01": {
+      "verdict": "stated",
+      "quote": "Futures and options on futures are valued at the settlement price determined by the exchange, or, if no settlement price is available, at the last sale price as of the close of business prior to when the Funds calculate NAV.",
+      "missing": ""
+    },
+    "Q02": {
+      "verdict": "partly",
+      "quote": "Futures and options on futures are valued at the settlement price determined by the exchange, or, if no settlement price is available, at the last sale price as of the close of business prior to when the Funds calculate NAV.",
+      "missing": "The passages state how a futures contract is valued if no settlement price is available, but do not state how it is valued when trading has stopped at a price limit."
+    },
+    "Q03": {
+      "verdict": "partly",
+      "quote": "Futures and options on futures are valued at the settlement price determined by the exchange, or, if no settlement price is available, at the last sale price as of the close of business prior to when the Funds calculate NAV.",
+      "missing": "The passages do not state which price is taken when the futures market close occurs at a different time from the NAV strike time (4:00 p.m. Eastern Time)."
+    },
+    "Q04": {
+      "verdict": "not stated",
+      "quote": "",
+      "missing": "The client or futures broker must be asked for the contract size and price multiplier for the U.S. Treasury futures contracts traded by the Fund."
+    },
+    "Q05": {
+      "verdict": "stated",
+      "quote": "because investment companies account for their derivatives at fair value and record any changes in fair value in current period earnings.",
+      "missing": ""
+    },
+    "Q06": {
+      "verdict": "partly",
+      "quote": "These subsequent payments, called “variation margin,” to and from the futures broker, are made on a daily basis as the price of the underlying assets fluctuate making the long and short positions in the futures contract more or less valuable, a process known as “marking to the market.”",
+      "missing": "The passages describe daily variation margin payments to and from the broker, but do not state the accounting presentation or ledger entries used to reflect those payments while the contract remains open."
+    },
+    "Q07": {
+      "verdict": "stated",
+      "quote": "Unlike when a Fund purchases or sells a security, no price would be paid or received by a Fund upon the purchase or sale of a futures contract. Upon entering into a futures contract, and to maintain a Fund’s open positions in futures contracts, a Fund would be required to deposit with its custodian or futures broker in a segregated account in the name of the futures broker an amount of cash, U.S. government securities, suitable money market instruments, or other liquid securities, known as “initial margin.”",
+      "missing": ""
+    },
+    "Q08": {
+      "verdict": "partly",
+      "quote": "Upon entering into a futures contract, and to maintain a Fund’s open positions in futures contracts, a Fund would be required to deposit with its custodian or futures broker in a segregated account in the name of the futures broker an amount of cash, U.S. government securities, suitable money market instruments, or other liquid securities, known as “initial margin.” The margin required for a particular futures contract is set by the exchange on which the contract is traded, and may be significantly modified from time to time by the exchange during the term of the contract.",
+      "missing": "The passages do not state the specific initial margin rates required for the Fund's futures contracts nor how initial margin deposits are classified and carried in the Fund's general ledger."
+    },
+    "Q09": {
+      "verdict": "stated",
+      "quote": "Closing out an open futures contract purchase or sale is effected by entering into an offsetting futures contract sale or purchase, respectively, for the same aggregate amount of the identical underlying instrument or index and the same delivery date. If the offsetting purchase price is less than the original sale price, a Fund realizes a gain; if it is more, a Fund realizes a loss. Conversely, if the offsetting sale price is more than the original purchase price, a Fund realizes a gain; if it is less, a Fund realizes a loss. The transaction costs must also be included in these calculations.",
+      "missing": ""
+    },
+    "Q10": {
+      "verdict": "partly",
+      "quote": "Gains or losses realized on sales of securities are determined using the specific identification method by comparing the identified cost of the security lot sold with the net sales proceeds.",
+      "missing": "The passages state that specific identification is used for sales of securities, but do not explicitly state whether futures lot relief follows specific identification, FIFO, or another method when partially closing a futures position."
+    },
+    "Q11": {
+      "verdict": "partly",
+      "quote": "Brokerage fees are paid when a futures contract is bought or sold and margin deposits must be maintained. Entering into a contract to buy is commonly referred to as buying or purchasing a contract or holding a long position. Entering into a contract to sell is commonly referred to as selling a contract or holding a short position." \n"The transaction costs must also be included in these calculations.",
+      "missing": "The passages do not explicitly state the timing or accounting treatment of futures brokerage commissions (e.g., whether expensed immediately when paid or capitalized into contract cost and recognized upon closing)."
+    },
+    "Q12": {
+      "verdict": "partly",
+      "quote": "The Fund rebalances its holdings no less frequent than quarterly to position its portfolio so that its exposure to the Index is consistent with its quarterly investment objective.",
+      "missing": "The passages state the quarterly rebalancing frequency, but do not state the specific roll schedule, roll dates, or target contract months for rolling expiring futures into later contracts."
+    },
+    "Q13": {
+      "verdict": "partly",
+      "quote": "Although certain futures contracts, by their terms, require actual future delivery of and payment for the underlying instruments, in practice most futures contracts are usually closed out before the delivery date.",
+      "missing": "The passages do not state whether the Fund's Treasury futures contracts are settled by physical delivery or cash settlement if held to expiration, nor the final settlement pricing rule."
+    },
+    "Q14": {
+      "verdict": "partly",
+      "quote": "The Fund has adopted a non-fundamental policy that, under normal circumstances, the Fund invests at least 80% of its net assets (plus any borrowings for investment purposes) in futures contracts, call options, and put options on U.S. treasury futures, U.S. Government securities, such as bills, notes and bonds issued by the U.S. Treasury or fixed income ETFs that invest in U.S. Treasuries." \n"The Fund rebalances its holdings no less frequent than quarterly to position its portfolio so that its exposure to the Index is consistent with its quarterly investment objective.",
+      "missing": "The passages state the 80% policy and quarterly rebalancing frequency, but do not state the exact target futures exposure ratio or leverage percentage relative to net assets."
+    },
+    "Q15": {
+      "verdict": "partly",
+      "quote": "At June 30, 2026, open futures contracts were as follows. Columns: contract | number of contracts | notional value | expiration date | value/unrealized appreciation (depreciation)",
+      "missing": "The passages report futures exposure as notional value in the Schedule of Investments, but do not state the calculation formula or rule used to measure futures exposure."
+    },
+    "Q16": {
+      "verdict": "partly",
+      "quote": "The Collateral may consist of (1) U.S. Government securities, such as bills, notes and bonds issued by the U.S. Treasury with a duration of less than two years; (2) money market funds (including affiliated money market ETFs); (3) fixed income ETFs; and/or (4) corporate debt securities, such as commercial paper and other short-term unsecured promissory notes issued by companies that are rated investment grade or of comparable quality." \n"Interest income is recognized on an accrual basis and includes, where applicable, the amortization of premium or accretion of discount based on effective yield.",
+      "missing": "The passages specify the allowed collateral investments and note that interest income is recognized on an accrual basis, but do not state the day-count convention (e.g., Actual/360 or Actual/365) used for interest accrual."
+    },
+    "Q17": {
+      "verdict": "partly",
+      "quote": "A Fund expects to earn interest income on margin deposits.",
+      "missing": "The passages state that the Fund expects to earn interest income on margin deposits, but do not state the rate, benchmark, or calculation basis."
+    },
+    "Q18": {
+      "verdict": "stated",
+      "quote": "Creation Units are issued and redeemed primarily in-kind for securities but may include cash." \n"The Fund will issue and redeem Shares at NAV only in large blocks of 25,000 Shares (each block of Shares is called a “Creation Unit”)." \n"Authorized participants pay a fixed transaction fee of $500 to the Funds’ custodian when purchasing and redeeming Creation Units of a Fund. The transaction fee is used to defray the costs associated with the issuance and redemption of Creation Units. In addition to the fixed transaction fee, the Funds may charge an additional variable fee of up to a maximum of 3% of the amount invested for creations and redemptions in cash, to offset brokerage and impact expenses associated with a cash transaction.",
+      "missing": ""
+    },
+    "Q19": {
+      "verdict": "partly",
+      "quote": "In such cases, the Authorized Participant will reimburse the relevant Fund for, among other things, any difference between the market value at which the securities and/or financial instruments were purchased by the Fund and the cash-in-lieu amount, applicable registration fees, brokerage commissions and certain taxes.",
+      "missing": "The passages state who reimburses the Fund for trading differences when fees are waived, but do not state the execution price rules or execution timing for trading futures against cash creation/redemption orders relative to NAV."
+    },
+    "Q20": {
+      "verdict": "partly",
+      "quote": "The transaction fee is used to defray the costs associated with the issuance and redemption of Creation Units. In addition to the fixed transaction fee, the Funds may charge an additional variable fee of up to a maximum of 3% of the amount invested for creations and redemptions in cash, to offset brokerage and impact expenses associated with a cash transaction.",
+      "missing": "The passages state the purpose of the creation/redemption transaction fees, but do not state the accounting entries or general ledger accounts used to book these fees and related costs."
+    },
+    "Q21": {
+      "verdict": "partly",
+      "quote": "NAV is computed by determining, the aggregate market value of all assets of the applicable Fund, less its liabilities, divided by the total number of shares outstanding ((assets-liabilities)/number of shares = NAV)." \n"The NAV of each Fund is determined at the close of regular trading (normally 4:00 p.m. Eastern Time) on each day the Exchange is open for business.",
+      "missing": "The passages state how NAV is computed and when it is struck, but do not state the rounding rule or decimal precision used for NAV per share."
+    },
+    "Q22": {
+      "verdict": "stated",
+      "quote": "The NAV takes into account, the expenses and fees of each Fund, including management, administration, and distribution fees, which are accrued daily." \n"For its investment advisory services to the Funds below, the Adviser was entitled to receive a management fee based on each Fund’s average daily net assets, computed and accrued daily and payable monthly, at an annual rate equal to:" \n"Simplify Intermediate Term Treasury Futures Strategy ETF | 0.50%" \n"The Adviser for the Fund below has contractually agreed, until at least October 31, 2026, to waive its management fees to 0.25% of the Fund’s average daily net assets.",
+      "missing": ""
+    },
+    "Q23": {
+      "verdict": "partly",
+      "quote": "computed and accrued daily and payable monthly, at an annual rate equal to:",
+      "missing": "The passages state that management fees are accrued daily on average daily net assets, but do not state the day-count denominator (e.g., 365 or 366 days) or how weekend/non-business days are handled."
+    },
+    "Q24": {
+      "verdict": "not stated",
+      "quote": "",
+      "missing": "The client or fund administrator must be asked for the NAV error policy, including materiality threshold percentages and correction procedures."
+    },
+    "Q25": {
+      "verdict": "stated",
+      "quote": "The differences between book-basis and tax-basis components of net assets, if applicable, are primarily attributable to the tax deferral of losses on wash sales, grantor trust adjustments, section 1256 mark-to-market treatment of derivatives and return of capital basis adjustments from underlying investments.",
+      "missing": ""
+    }
+  }
+}
+```

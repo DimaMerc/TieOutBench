@@ -1,0 +1,154 @@
+{
+ "rules": {
+  "rules": 24,
+  "fund_rules": 20,
+  "fund_specified": 15,
+  "fund_partly": 3,
+  "fund_absent": 2,
+  "contract_rules": 4,
+  "contract_in_the_documents": 2
+ },
+ "figures": 68,
+ "figures_settled": 53,
+ "scenarios": 15,
+ "scenarios_all_settled": 8,
+ "scenarios_none_settled": 1,
+ "per_scenario": [
+  {
+   "id": "T01",
+   "title": "Setting up the positions at the start of the outcome period",
+   "figures": 5,
+   "settled": 5,
+   "all_settled": true,
+   "open_rules": []
+  },
+  {
+   "id": "T02",
+   "title": "One day's value",
+   "figures": 6,
+   "settled": 6,
+   "all_settled": true,
+   "open_rules": []
+  },
+  {
+   "id": "T03",
+   "title": "Which price values an option",
+   "figures": 4,
+   "settled": 4,
+   "all_settled": true,
+   "open_rules": []
+  },
+  {
+   "id": "T04",
+   "title": "The management fee and the interest on cash, for one day and over a weekend",
+   "figures": 4,
+   "settled": 0,
+   "all_settled": false,
+   "open_rules": [
+    "O18",
+    "O20"
+   ]
+  },
+  {
+   "id": "T05",
+   "title": "Buying back part of a written position",
+   "figures": 3,
+   "settled": 3,
+   "all_settled": true,
+   "open_rules": []
+  },
+  {
+   "id": "T06",
+   "title": "A redemption in kind",
+   "figures": 7,
+   "settled": 7,
+   "all_settled": true,
+   "open_rules": []
+  },
+  {
+   "id": "T07",
+   "title": "A creation for cash",
+   "figures": 6,
+   "settled": 5,
+   "all_settled": false,
+   "open_rules": [
+    "O24"
+   ]
+  },
+  {
+   "id": "T08",
+   "title": "Selling part of a position built in two purchases",
+   "figures": 3,
+   "settled": 1,
+   "all_settled": false,
+   "open_rules": [
+    "O10"
+   ]
+  },
+  {
+   "id": "T09",
+   "title": "The options expire with the reference above the cap",
+   "figures": 7,
+   "settled": 7,
+   "all_settled": true,
+   "open_rules": []
+  },
+  {
+   "id": "T10",
+   "title": "The basket when the pro-rata share is not a whole number of contracts",
+   "figures": 3,
+   "settled": 1,
+   "all_settled": false,
+   "open_rules": [
+    "O16"
+   ]
+  },
+  {
+   "id": "T11",
+   "title": "A position is valued at yesterday's price",
+   "figures": 5,
+   "settled": 4,
+   "all_settled": false,
+   "open_rules": [
+    "O21"
+   ]
+  },
+  {
+   "id": "T12",
+   "title": "The reference ETF splits two for one",
+   "figures": 5,
+   "settled": 2,
+   "all_settled": false,
+   "open_rules": [
+    "O22"
+   ]
+  },
+  {
+   "id": "T13",
+   "title": "The reference ETF goes ex-dividend",
+   "figures": 2,
+   "settled": 2,
+   "all_settled": true,
+   "open_rules": []
+  },
+  {
+   "id": "T14",
+   "title": "The options expire with the reference below the buffer",
+   "figures": 4,
+   "settled": 4,
+   "all_settled": true,
+   "open_rules": []
+  },
+  {
+   "id": "T15",
+   "title": "One whole day",
+   "figures": 4,
+   "settled": 2,
+   "all_settled": false,
+   "open_rules": [
+    "O18",
+    "O20"
+   ]
+  }
+ ]
+}

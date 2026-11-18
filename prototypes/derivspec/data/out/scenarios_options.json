@@ -1,0 +1,1022 @@
+{
+ "fund": {
+  "shares_outstanding": 20000000,
+  "net_assets_at_the_start_of_the_period": 578000000.0,
+  "annual_management_fee_rate": 0.0079,
+  "deposit_account_rate": 0.037,
+  "creation_unit_shares": 50000,
+  "transaction_fee_per_order": 500.0
+ },
+ "conventions": {
+  "fee_basis": "365 days, on the day's opening net assets",
+  "interest_basis": "365 days, every calendar day",
+  "lot_order": "the highest premium first",
+  "basket_rounding": "whole contracts, rounded down; the difference in the cash amount",
+  "split_adjustment": "contracts times the ratio, strike divided by it, 100 shares per contract unchanged"
+ },
+ "scenarios": [
+  {
+   "id": "T01",
+   "title": "Setting up the positions at the start of the outcome period",
+   "given": {
+    "net_assets_all_in_cash": 578000000.0,
+    "reference_price": 240.0,
+    "positions": {
+     "purchased_call": {
+      "strike": 2.4,
+      "contracts": 24000
+     },
+     "purchased_put": {
+      "strike": 240.0,
+      "contracts": 24000
+     },
+     "written_put": {
+      "strike": 204.0,
+      "contracts": 24000
+     },
+     "written_call": {
+      "strike": 282.0,
+      "contracts": 24000
+     }
+    },
+    "price_per_share_at_which_each_is_opened": {
+     "purchased_call": 237.75,
+     "purchased_put": 14.5,
+     "written_put": 5.6,
+     "written_call": 6.65
+    }
+   },
+   "ask": "What premium does the fund pay for the purchased options and receive for the written ones, what cash is left, what is recorded as a liability, and what are net assets afterwards?",
+   "expected": {
+    "premium_paid": 605400000.0,
+    "premium_received": 29400000.0,
+    "cash_after": 2000000.0,
+    "liability_for_written_options": 29400000.0,
+    "net_assets_after": 578000000.0
+   },
+   "needs": {
+    "premium_paid": [
+     "O02",
+     "O04"
+    ],
+    "premium_received": [
+     "O03",
+     "O04"
+    ],
+    "cash_after": [
+     "O02",
+     "O03",
+     "O04"
+    ],
+    "liability_for_written_options": [
+     "O03",
+     "O04"
+    ],
+    "net_assets_after": [
+     "O02",
+     "O03",
+     "O04"
+    ]
+   },
+   "rules": [
+    "O02",
+    "O03",
+    "O04"
+   ]
+  },
+  {
+   "id": "T02",
+   "title": "One day's value",
+   "given": {
+    "positions": {
+     "purchased_call": {
+      "strike": 2.4,
+      "contracts": 24000
+     },
+     "purchased_put": {
+      "strike": 240.0,
+      "contracts": 24000
+     },
+     "written_put": {
+      "strike": 204.0,
+      "contracts": 24000
+     },
+     "written_call": {
+      "strike": 282.0,
+      "contracts": 24000
+     }
+    },
+    "premium_per_share_at_which_each_was_opened": {
+     "purchased_call": 237.75,
+     "purchased_put": 14.5,
+     "written_put": 5.6,
+     "written_call": 6.65
+    },
+    "exchange_model_price_at_the_close": {
+     "purchased_call": 254.9,
+     "purchased_put": 3.95,
+     "written_put": 0.8,
+     "written_call": 4.65
+    },
+    "trades_in_the_options_that_day": "none",
+    "cash": 2100000.0,
+    "management_fee_accrued_and_unpaid": 260000.0,
+    "shares_outstanding": 20000000
+   },
+   "ask": "What are the value of the purchased options, the value of the written options, the unrealized gain or loss on each group, net assets and the NAV per share that is published?",
+   "expected": {
+    "value_of_purchased_options": 621240000.0,
+    "value_of_written_options": 13080000.0,
+    "unrealized_on_purchased": 15840000.0,
+    "unrealized_on_written": 16320000.0,
+    "net_assets": 610000000.0,
+    "nav_per_share_published": 30.5
+   },
+   "needs": {
+    "value_of_purchased_options": [
+     "O02",
+     "O04",
+     "O05"
+    ],
+    "value_of_written_options": [
+     "O03",
+     "O04",
+     "O05"
+    ],
+    "unrealized_on_purchased": [
+     "O02",
+     "O04",
+     "O05"
+    ],
+    "unrealized_on_written": [
+     "O03",
+     "O04",
+     "O05"
+    ],
+    "net_assets": [
+     "O01",
+     "O02",
+     "O03",
+     "O04",
+     "O05"
+    ],
+    "nav_per_share_published": [
+     "O01",
+     "O02",
+     "O03",
+     "O04",
+     "O05"
+    ]
+   },
+   "rules": [
+    "O01",
+    "O02",
+    "O03",
+    "O04",
+    "O05"
+   ]
+  },
+  {
+   "id": "T03",
+   "title": "Which price values an option",
+   "given": {
+    "option": "the purchased put",
+    "contracts_held_at_the_close_in_each_case": 24000,
+    "case_a": {
+     "exchange_model_price_at_its_official_close": 3.95,
+     "closing_bid": 3.85,
+     "closing_ask": 4.15,
+     "trades_in_the_option_that_day": "none"
+    },
+    "case_b": {
+     "exchange_model_price_at_its_official_close": 3.95,
+     "closing_bid": 3.85,
+     "closing_ask": 4.15,
+     "trades_in_the_option_that_day": "the fund bought 120 contracts at 4.02"
+    },
+    "case_c": {
+     "exchange_model_price_at_its_official_close": "not provided",
+     "backup_pricing_provider_model_price": 3.97,
+     "closing_bid": 3.85,
+     "closing_ask": 4.15,
+     "trades_in_the_option_that_day": "none"
+    }
+   },
+   "ask": "Which price values the option in each case, and by how much does the position's value in case B differ from case A?",
+   "expected": {
+    "price_case_a": 3.95,
+    "price_case_b": 4.02,
+    "price_case_c": 3.97,
+    "value_difference_b_minus_a": 168000.0
+   },
+   "needs": {
+    "price_case_a": [
+     "O05"
+    ],
+    "price_case_b": [
+     "O06"
+    ],
+    "price_case_c": [
+     "O07"
+    ],
+    "value_difference_b_minus_a": [
+     "O05",
+     "O06",
+     "O04"
+    ]
+   },
+   "rules": [
+    "O04",
+    "O05",
+    "O06",
+    "O07"
+   ]
+  },
+  {
+   "id": "T04",
+   "title": "The management fee and the interest on cash, for one day and over a weekend",
+   "given": {
+    "net_assets": 610000000.0,
+    "annual_management_fee_rate": 0.0079,
+    "cash_in_the_deposit_account": 2100000.0,
+    "deposit_account_rate": 0.037,
+    "fee_basis": "365 days, on the day's opening net assets",
+    "interest_basis": "365 days, every calendar day",
+    "case_a": "Tuesday to Wednesday",
+    "case_b": "Friday to Monday"
+   },
+   "ask": "How much fee and how much interest accrue for each period?",
+   "expected": {
+    "fee_one_day": 13202.73973,
+    "fee_weekend": 39608.21918,
+    "interest_one_day": 212.87671,
+    "interest_weekend": 638.63014
+   },
+   "needs": {
+    "fee_one_day": [
+     "O17",
+     "O18"
+    ],
+    "fee_weekend": [
+     "O17",
+     "O18"
+    ],
+    "interest_one_day": [
+     "O19",
+     "O20"
+    ],
+    "interest_weekend": [
+     "O19",
+     "O20"
+    ]
+   },
+   "rules": [
+    "O17",
+    "O18",
+    "O19",
+    "O20"
+   ]
+  },
+  {
+   "id": "T05",
+   "title": "Buying back part of a written position",
+   "given": {
+    "option": "the written call",
+    "contracts_written": 24000,
+    "premium_per_share_received": 6.65,
+    "written_in": "one transaction",
+    "contracts_bought_back": 1000,
+    "price_per_share_paid": 4.7,
+    "brokerage_commission": 650.0
+   },
+   "ask": "What does the fund pay in total, what gain or loss is realized, and what premium remains on the books for the position?",
+   "expected": {
+    "amount_paid": 470650.0,
+    "realized": 194350.0,
+    "premium_remaining": 15295000.0
+   },
+   "needs": {
+    "amount_paid": [
+     "O09",
+     "O04"
+    ],
+    "realized": [
+     "O09",
+     "O03",
+     "O04"
+    ],
+    "premium_remaining": [
+     "O03",
+     "O04"
+    ]
+   },
+   "rules": [
+    "O03",
+    "O04",
+    "O09"
+   ]
+  },
+  {
+   "id": "T06",
+   "title": "A redemption in kind",
+   "given": {
+    "shares_outstanding": 20000000,
+    "nav_per_share": 30.5,
+    "positions": {
+     "purchased_call": {
+      "strike": 2.4,
+      "contracts": 24000
+     },
+     "purchased_put": {
+      "strike": 240.0,
+      "contracts": 24000
+     },
+     "written_put": {
+      "strike": 204.0,
+      "contracts": 24000
+     },
+     "written_call": {
+      "strike": 282.0,
+      "contracts": 24000
+     }
+    },
+    "premium_per_share_at_which_each_was_opened": {
+     "purchased_call": 237.75,
+     "purchased_put": 14.5,
+     "written_put": 5.6,
+     "written_call": 6.65
+    },
+    "opened_in": "one transaction each",
+    "creation_units_redeemed": 2,
+    "shares_per_creation_unit": 50000,
+    "basket_per_creation_unit": "60 contracts of each of the four positions",
+    "exchange_model_price_at_the_close": {
+     "purchased_call": 254.9,
+     "purchased_put": 3.95,
+     "written_put": 0.8,
+     "written_call": 4.65
+    },
+    "trades_in_the_options_that_day": "none",
+    "transaction_fee": 500.0
+   },
+   "ask": "How many contracts of each position are delivered, what is their net value, what cash amount goes with them, and what cash does the redeemer receive after the fee? What gain or loss does the fund realize on the options delivered, and what NAV per share is published after the redemption? If the fund had also traded the purchased put that day at 4.00 for a cash order, which price would value the purchased put delivered in kind?",
+   "expected": {
+    "contracts_delivered_per_position": 120.0,
+    "value_of_options_delivered": 3040800.0,
+    "cash_amount": 9200.0,
+    "net_cash_to_redeemer": 8700.0,
+    "realized_on_options_delivered": 160800.0,
+    "nav_per_share_published_after": 30.5,
+    "price_of_purchased_put_if_also_traded_for_cash": 4.0
+   },
+   "needs": {
+    "contracts_delivered_per_position": [
+     "O13",
+     "O15"
+    ],
+    "value_of_options_delivered": [
+     "O13",
+     "O04",
+     "O05"
+    ],
+    "cash_amount": [
+     "O13",
+     "O04",
+     "O05"
+    ],
+    "net_cash_to_redeemer": [
+     "O13",
+     "O04",
+     "O05"
+    ],
+    "realized_on_options_delivered": [
+     "O14",
+     "O02",
+     "O03",
+     "O04",
+     "O05"
+    ],
+    "nav_per_share_published_after": [
+     "O01",
+     "O13"
+    ],
+    "price_of_purchased_put_if_also_traded_for_cash": [
+     "O08"
+    ]
+   },
+   "rules": [
+    "O01",
+    "O02",
+    "O03",
+    "O04",
+    "O05",
+    "O08",
+    "O13",
+    "O14",
+    "O15"
+   ]
+  },
+  {
+   "id": "T07",
+   "title": "A creation for cash",
+   "given": {
+    "shares_outstanding": 20000000,
+    "positions": {
+     "purchased_call": {
+      "strike": 2.4,
+      "contracts": 24000
+     },
+     "purchased_put": {
+      "strike": 240.0,
+      "contracts": 24000
+     },
+     "written_put": {
+      "strike": 204.0,
+      "contracts": 24000
+     },
+     "written_call": {
+      "strike": 282.0,
+      "contracts": 24000
+     }
+    },
+    "cash": 2100000.0,
+    "management_fee_accrued_and_unpaid": 260000.0,
+    "exchange_model_price_at_the_close": {
+     "purchased_call": 254.9,
+     "purchased_put": 3.95,
+     "written_put": 0.8,
+     "written_call": 4.65
+    },
+    "creation_units_ordered_for_cash": 2,
+    "shares_per_creation_unit": 50000,
+    "the_funds_trades_that_day_to_invest_the_cash": {
+     "purchased_call": "bought 120 contracts at 254.95",
+     "purchased_put": "bought 120 contracts at 4.00",
+     "written_put": "wrote 120 more contracts at 0.78",
+     "written_call": "wrote 120 more contracts at 4.60"
+    },
+    "transaction_fee": 500.0
+   },
+   "ask": "At which price are the purchased call and the written call valued that day? What NAV per share is published, what cash does the purchaser pay for the shares before the fee, what do the new contracts cost the fund net of the premiums received, and what are net assets once the order and the trades are booked?",
+   "expected": {
+    "price_of_purchased_call": 254.95,
+    "price_of_written_call": 4.6,
+    "nav_per_share_published": 30.52,
+    "cash_for_shares": 3052000.0,
+    "net_cost_of_new_contracts": 3042840.0,
+    "net_assets_after": 613460000.0
+   },
+   "needs": {
+    "price_of_purchased_call": [
+     "O06"
+    ],
+    "price_of_written_call": [
+     "O06"
+    ],
+    "nav_per_share_published": [
+     "O01",
+     "O02",
+     "O03",
+     "O04",
+     "O06"
+    ],
+    "cash_for_shares": [
+     "O13",
+     "O01",
+     "O02",
+     "O03",
+     "O04",
+     "O06"
+    ],
+    "net_cost_of_new_contracts": [
+     "O02",
+     "O03",
+     "O04"
+    ],
+    "net_assets_after": [
+     "O24",
+     "O13",
+     "O01",
+     "O02",
+     "O03",
+     "O04",
+     "O06"
+    ]
+   },
+   "rules": [
+    "O01",
+    "O02",
+    "O03",
+    "O04",
+    "O06",
+    "O13",
+    "O24"
+   ]
+  },
+  {
+   "id": "T08",
+   "title": "Selling part of a position built in two purchases",
+   "given": {
+    "option": "the purchased put",
+    "first_purchase": {
+     "contracts": 20000,
+     "price_per_share": 14.5
+    },
+    "second_purchase": {
+     "contracts": 4000,
+     "price_per_share": 21.3
+    },
+    "contracts_sold": 1000,
+    "price_per_share_received": 3.95,
+    "brokerage_commission": 0.0,
+    "lot_order": "the highest premium first"
+   },
+   "ask": "What are the proceeds, what gain or loss is realized, and what cost remains on the books for the position?",
+   "expected": {
+    "proceeds": 395000.0,
+    "realized": -1735000.0,
+    "cost_remaining": 35390000.0
+   },
+   "needs": {
+    "proceeds": [
+     "O09",
+     "O04"
+    ],
+    "realized": [
+     "O09",
+     "O10",
+     "O04"
+    ],
+    "cost_remaining": [
+     "O10",
+     "O02",
+     "O04"
+    ]
+   },
+   "rules": [
+    "O02",
+    "O04",
+    "O09",
+    "O10"
+   ]
+  },
+  {
+   "id": "T09",
+   "title": "The options expire with the reference above the cap",
+   "given": {
+    "positions": {
+     "purchased_call": {
+      "strike": 2.4,
+      "contracts": 24000
+     },
+     "purchased_put": {
+      "strike": 240.0,
+      "contracts": 24000
+     },
+     "written_put": {
+      "strike": 204.0,
+      "contracts": 24000
+     },
+     "written_call": {
+      "strike": 282.0,
+      "contracts": 24000
+     }
+    },
+    "premium_per_share_at_which_each_was_opened": {
+     "purchased_call": 237.75,
+     "purchased_put": 14.5,
+     "written_put": 5.6,
+     "written_call": 6.65
+    },
+    "closing_price_of_the_reference_on_the_last_day_of_the_outcome_period": 290.0
+   },
+   "ask": "What cash does the fund receive or owe on the positions named in the answer fields, what is the net cash, and what gain or loss is realized?",
+   "expected": {
+    "cash_from_purchased_call": 690240000.0,
+    "cash_from_purchased_put": 0.0,
+    "cash_owed_on_written_call": 19200000.0,
+    "net_cash_received": 671040000.0,
+    "realized_on_purchased_put": -34800000.0,
+    "realized_on_written_put": 13440000.0,
+    "realized_total": 95040000.0
+   },
+   "needs": {
+    "cash_from_purchased_call": [
+     "O11",
+     "O04"
+    ],
+    "cash_from_purchased_put": [
+     "O11",
+     "O04"
+    ],
+    "cash_owed_on_written_call": [
+     "O11",
+     "O04"
+    ],
+    "net_cash_received": [
+     "O11",
+     "O04"
+    ],
+    "realized_on_purchased_put": [
+     "O11",
+     "O12",
+     "O02",
+     "O04"
+    ],
+    "realized_on_written_put": [
+     "O11",
+     "O12",
+     "O03",
+     "O04"
+    ],
+    "realized_total": [
+     "O11",
+     "O12",
+     "O02",
+     "O03",
+     "O04"
+    ]
+   },
+   "rules": [
+    "O02",
+    "O03",
+    "O04",
+    "O11",
+    "O12"
+   ]
+  },
+  {
+   "id": "T10",
+   "title": "The basket when the pro-rata share is not a whole number of contracts",
+   "given": {
+    "contracts_in_each_position": 24240,
+    "shares_outstanding": 20000000,
+    "shares_per_creation_unit": 50000,
+    "nav_per_share": 30.8,
+    "exchange_model_price_at_the_close": {
+     "purchased_call": 254.9,
+     "purchased_put": 3.95,
+     "written_put": 0.8,
+     "written_call": 4.65
+    },
+    "basket_rounding": "whole contracts, rounded down; the difference in the cash amount"
+   },
+   "ask": "What is the pro-rata number of contracts of each position per creation unit, how many contracts of each position go into the basket, and what cash amount per unit goes with them on a redemption (before the fee)?",
+   "expected": {
+    "pro_rata_contracts_per_unit": 60.6,
+    "contracts_in_basket": 60.0,
+    "cash_amount_per_unit": 19600.0
+   },
+   "needs": {
+    "pro_rata_contracts_per_unit": [
+     "O15"
+    ],
+    "contracts_in_basket": [
+     "O15",
+     "O16"
+    ],
+    "cash_amount_per_unit": [
+     "O13",
+     "O15",
+     "O16",
+     "O04",
+     "O05"
+    ]
+   },
+   "rules": [
+    "O04",
+    "O05",
+    "O13",
+    "O15",
+    "O16"
+   ]
+  },
+  {
+   "id": "T11",
+   "title": "A position is valued at yesterday's price",
+   "given": {
+    "option": "the purchased call",
+    "contracts": 24000,
+    "yesterdays_model_price": 254.9,
+    "todays_model_price": 251.3,
+    "net_assets_computed_with_yesterdays_price": 610000000.0,
+    "shares_outstanding": 20000000,
+    "everything_else": "valued at today's prices"
+   },
+   "ask": "By how much is NAV misstated if yesterday's price is used, in dollars, per share and in percent of the right NAV? Above what size must it be corrected?",
+   "expected": {
+    "right_net_assets": 601360000.0,
+    "misstatement": 8640000.0,
+    "misstatement_per_share": 0.432,
+    "misstatement_percent": 1.43674,
+    "correction_threshold": null
+   },
+   "needs": {
+    "right_net_assets": [
+     "O02",
+     "O04",
+     "O05"
+    ],
+    "misstatement": [
+     "O02",
+     "O04",
+     "O05"
+    ],
+    "misstatement_per_share": [
+     "O02",
+     "O04",
+     "O05",
+     "O01"
+    ],
+    "misstatement_percent": [
+     "O02",
+     "O04",
+     "O05"
+    ],
+    "correction_threshold": [
+     "O21"
+    ]
+   },
+   "rules": [
+    "O01",
+    "O02",
+    "O04",
+    "O05",
+    "O21"
+   ]
+  },
+  {
+   "id": "T12",
+   "title": "The reference ETF splits two for one",
+   "given": {
+    "option": "the purchased put",
+    "contracts": 24000,
+    "strike": 240.0,
+    "model_price_before_the_split": 3.95,
+    "model_price_after_the_split": 1.975,
+    "split_adjustment": "contracts times the ratio, strike divided by it, 100 shares per contract unchanged"
+   },
+   "ask": "What are the number of contracts and the strike after the split, and the position's value before and after? What value would the books show if the price were updated and the contracts were not?",
+   "expected": {
+    "contracts_after": 48000,
+    "strike_after": 120.0,
+    "value_after": 9480000.0,
+    "value_before": 9480000.0,
+    "wrong_value": 4740000.0
+   },
+   "needs": {
+    "contracts_after": [
+     "O22"
+    ],
+    "strike_after": [
+     "O22"
+    ],
+    "value_after": [
+     "O22",
+     "O04",
+     "O05"
+    ],
+    "value_before": [
+     "O04",
+     "O05"
+    ],
+    "wrong_value": [
+     "O04",
+     "O05"
+    ]
+   },
+   "rules": [
+    "O04",
+    "O05",
+    "O22"
+   ]
+  },
+  {
+   "id": "T13",
+   "title": "The reference ETF goes ex-dividend",
+   "given": {
+    "positions": {
+     "purchased_call": {
+      "strike": 2.4,
+      "contracts": 24000
+     },
+     "purchased_put": {
+      "strike": 240.0,
+      "contracts": 24000
+     },
+     "written_put": {
+      "strike": 204.0,
+      "contracts": 24000
+     },
+     "written_call": {
+      "strike": 282.0,
+      "contracts": 24000
+     }
+    },
+    "dividend_per_share_of_the_reference": 0.85,
+    "exchange_model_price_the_day_before": {
+     "purchased_call": 254.9,
+     "purchased_put": 3.95,
+     "written_put": 0.8,
+     "written_call": 4.65
+    },
+    "exchange_model_price_on_the_ex_date": {
+     "purchased_call": 254.06,
+     "purchased_put": 4.1,
+     "written_put": 0.84,
+     "written_call": 4.52
+    },
+    "trades_in_the_options": "none"
+   },
+   "ask": "What income does the fund accrue for the dividend, and what is the change in net assets on the ex-date from the options?",
+   "expected": {
+    "income_accrued": 0.0,
+    "change_in_net_assets": -1440000.0
+   },
+   "needs": {
+    "income_accrued": [
+     "O23"
+    ],
+    "change_in_net_assets": [
+     "O02",
+     "O03",
+     "O04",
+     "O05"
+    ]
+   },
+   "rules": [
+    "O02",
+    "O03",
+    "O04",
+    "O05",
+    "O23"
+   ]
+  },
+  {
+   "id": "T14",
+   "title": "The options expire with the reference below the buffer",
+   "given": {
+    "positions": {
+     "purchased_call": {
+      "strike": 2.4,
+      "contracts": 24000
+     },
+     "purchased_put": {
+      "strike": 240.0,
+      "contracts": 24000
+     },
+     "written_put": {
+      "strike": 204.0,
+      "contracts": 24000
+     },
+     "written_call": {
+      "strike": 282.0,
+      "contracts": 24000
+     }
+    },
+    "premium_per_share_at_which_each_was_opened": {
+     "purchased_call": 237.75,
+     "purchased_put": 14.5,
+     "written_put": 5.6,
+     "written_call": 6.65
+    },
+    "closing_price_of_the_reference_on_the_last_day_of_the_outcome_period": 190.0
+   },
+   "ask": "What cash does the fund receive or owe on the positions named in the answer fields, what is the net cash, and what gain or loss is realized?",
+   "expected": {
+    "cash_from_purchased_put": 120000000.0,
+    "cash_owed_on_written_put": 33600000.0,
+    "net_cash_received": 536640000.0,
+    "realized_total": -39360000.0
+   },
+   "needs": {
+    "cash_from_purchased_put": [
+     "O11",
+     "O04"
+    ],
+    "cash_owed_on_written_put": [
+     "O11",
+     "O04"
+    ],
+    "net_cash_received": [
+     "O11",
+     "O04"
+    ],
+    "realized_total": [
+     "O11",
+     "O12",
+     "O02",
+     "O03",
+     "O04"
+    ]
+   },
+   "rules": [
+    "O02",
+    "O03",
+    "O04",
+    "O11",
+    "O12"
+   ]
+  },
+  {
+   "id": "T15",
+   "title": "One whole day",
+   "given": {
+    "net_assets_at_the_start": 610000000.0,
+    "shares_outstanding": 20000000,
+    "positions": {
+     "purchased_call": {
+      "strike": 2.4,
+      "contracts": 24000
+     },
+     "purchased_put": {
+      "strike": 240.0,
+      "contracts": 24000
+     },
+     "written_put": {
+      "strike": 204.0,
+      "contracts": 24000
+     },
+     "written_call": {
+      "strike": 282.0,
+      "contracts": 24000
+     }
+    },
+    "exchange_model_price_at_the_previous_close": {
+     "purchased_call": 254.9,
+     "purchased_put": 3.95,
+     "written_put": 0.8,
+     "written_call": 4.65
+    },
+    "exchange_model_price_at_todays_close": {
+     "purchased_call": 257.38,
+     "purchased_put": 3.6,
+     "written_put": 0.72,
+     "written_call": 5.2
+    },
+    "trades_and_orders_today": "none",
+    "cash_in_the_deposit_account": 2100000.0,
+    "deposit_account_rate": 0.037,
+    "annual_management_fee_rate": 0.0079,
+    "fee_basis": "365 days, on the day's opening net assets",
+    "interest_basis": "365 days, every calendar day",
+    "days": 1
+   },
+   "ask": "What is the change in the value of the options, what are net assets at the close, what NAV per share is published, and what is the day's return in percent?",
+   "expected": {
+    "change_in_value_of_options": 3984000.0,
+    "net_assets_at_close": 613971010.13699,
+    "nav_per_share_published": 30.7,
+    "return_percent": 0.65099
+   },
+   "needs": {
+    "change_in_value_of_options": [
+     "O02",
+     "O03",
+     "O04",
+     "O05"
+    ],
+    "net_assets_at_close": [
+     "O01",
+     "O02",
+     "O03",
+     "O04",
+     "O05",
+     "O17",
+     "O18",
+     "O19",
+     "O20"
+    ],
+    "nav_per_share_published": [
+     "O01",
+     "O02",
+     "O03",
+     "O04",
+     "O05"
+    ],
+    "return_percent": [
+     "O01",
+     "O02",
+     "O03",
+     "O04",
+     "O05",
+     "O17",
+     "O18",
+     "O19",
+     "O20"
+    ]
+   },
+   "rules": [
+    "O01",
+    "O02",
+    "O03",
+    "O04",
+    "O05",
+    "O17",
+    "O18",
+    "O19",
+    "O20"
+   ]
+  }
+ ]
+}

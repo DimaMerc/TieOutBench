@@ -1,0 +1,111 @@
+```json
+{
+  "answers": {
+    "Q01": {
+      "verdict": "stated",
+      "quote": "The NAV per share of a Fund is computed by dividing the value of the net assets of the Fund (i.e., the value of its total assets less total liabilities) by the total number of shares of the Fund outstanding, rounded to the nearest cent. Expenses and fees, including without limitation, the management, administration and distribution fees, are accrued daily and taken into account for purposes of determining NAV per share. The NAV per share for the Fund is calculated by the Administrator and determined as of the regularly scheduled close of normal trading on the NYSE (normally 4:00 p.m. Eastern Time) on each day that the NYSE is open.",
+      "missing": ""
+    },
+    "Q02": {
+      "verdict": "stated",
+      "quote": "Equity swap contracts are marked to market daily based on the value of the underlying security and the change, if any, is recorded as an unrealized gain or loss.",
+      "missing": ""
+    },
+    "Q03": {
+      "verdict": "stated",
+      "quote": "Equity swap contracts are marked to market daily based on the value of the underlying security and the change, if any, is recorded as an unrealized gain or loss.",
+      "missing": ""
+    },
+    "Q04": {
+      "verdict": "stated",
+      "quote": "The Fund will agree to pay to the counterparty a floating rate of interest on the notional amount of the swap agreement plus the amount, if any, by which the notional amount would have decreased in value had it been invested in such stocks.",
+      "missing": ""
+    },
+    "Q05": {
+      "verdict": "not stated",
+      "quote": "",
+      "missing": "The passages do not state the day-count convention (e.g., Actual/360, Actual/365, or 30/360) applied to calculate the swap financing rate. This must be asked of the client or swap counterparty."
+    },
+    "Q06": {
+      "verdict": "not stated",
+      "quote": "",
+      "missing": "The passages do not state whether swap financing accrues on business days only or on every calendar day. This must be asked of the client or swap counterparty."
+    },
+    "Q07": {
+      "verdict": "not stated",
+      "quote": "",
+      "missing": "The passages do not state how often the floating reference rate resets or which specific day's published rate applies to each day of accrual. This must be asked of the client or swap counterparty."
+    },
+    "Q08": {
+      "verdict": "stated",
+      "quote": "The counterparty will generally agree to pay the Fund the amount, if any, by which the notional amount of the swap agreement would have increased in value had it been invested in the particular stocks, plus the dividends that would have been received on those stocks.",
+      "missing": ""
+    },
+    "Q09": {
+      "verdict": "stated",
+      "quote": "In order to achieve a high degree of correlation with the US Cannabis ETF, the Fund seeks to rebalance its portfolio daily to keep exposure consistent with its investment objective.",
+      "missing": ""
+    },
+    "Q10": {
+      "verdict": "not stated",
+      "quote": "",
+      "missing": "The passages do not state the accounting treatment or settlement mechanics for unrealized or realized gain/loss when a swap position is reduced during daily rebalancing. This must be asked of the client or swap counterparty."
+    },
+    "Q11": {
+      "verdict": "partly",
+      "quote": "Swap agreements typically are settled on a net basis, which means that the two payment streams are netted out, with the Fund receiving or paying, as the case may be, only the net amount of the two payments. Payments may be made at the conclusion of a swap agreement or periodically during its term. [...] Periodic payments received or paid by a Fund are recorded as realized gains or losses.",
+      "missing": "The passages do not state the price at which the swap contract continues after a reset or payment date."
+    },
+    "Q12": {
+      "verdict": "stated",
+      "quote": "Creation Units of the Cash Funds are sold only for cash (\"Cash Purchase Amount\"). Creation Units are sold at the NAV per share next computed, plus a transaction fee [...] Creation Transaction Fee ... \"ALL FUNDS $500\" [...] Redemption Transaction Fee ... \"ALL FUNDS $500\" The redemption proceeds for a Creation Unit of the Cash Funds, will consist solely of cash in an amount equal to the NAV of the shares being redeemed, as next determined after receipt of a request in proper form less a redemption transaction fee",
+      "missing": ""
+    },
+    "Q13": {
+      "verdict": "not stated",
+      "quote": "",
+      "missing": "The passages do not state the journal entries or impact on net assets when collateral is posted for the swap contract. This must be asked of the client or swap counterparty."
+    },
+    "Q14": {
+      "verdict": "stated",
+      "quote": "Expenses and fees, including without limitation, the management, administration and distribution fees, are accrued daily and taken into account for purposes of determining NAV per share.",
+      "missing": ""
+    },
+    "Q15": {
+      "verdict": "not stated",
+      "quote": "",
+      "missing": "The passages do not state the threshold size for NAV error correction or the procedure for correcting NAV errors. This must be asked of the client."
+    },
+    "Q16": {
+      "verdict": "not stated",
+      "quote": "",
+      "missing": "The passages do not state how swap terms, notionals, or reference pricing are adjusted in the event of a stock split of the reference security. This must be asked of the client or swap counterparty."
+    },
+    "Q17": {
+      "verdict": "partly",
+      "quote": "In computing each Fund's NAV, the Fund's portfolio investments are generally valued based on their last readily available market price.",
+      "missing": "The passages do not specify the exact market price type (e.g., official primary exchange closing price vs. evaluation price) or specific pricing vendor used to value the reference security."
+    },
+    "Q18": {
+      "verdict": "partly",
+      "quote": "To compensate a Fund for transfer and other transaction costs involved in creation transactions and redemption transactions through the clearing process, investors will be required to pay a minimum transaction fee, assessed per transaction, of $500.",
+      "missing": "The passages do not state the ledger booking rules for the transaction fee collected or the related transaction costs incurred."
+    },
+    "Q19": {
+      "verdict": "partly",
+      "quote": "Dividend income and distributions to shareholders are recognized on the ex-dividend date and interest income and expenses are recognized on the accrual basis.",
+      "missing": "The passages do not state the exact recognition date or rule for income (such as substitute dividends) owed to the fund under a swap agreement."
+    },
+    "Q20": {
+      "verdict": "partly",
+      "quote": "For its services, the Advisor is entitled to an annual management fee from each Fund, which is calculated daily and paid monthly based on the Fund's average daily net assets.",
+      "missing": "The passages do not state the annual day-count factor (e.g., 365 or 360 days) or whether the daily calculation applies to prior day net assets or current day net assets before expenses."
+    },
+    "Q21": {
+      "verdict": "not stated",
+      "quote": "",
+      "missing": "The passages do not state the accounting treatment for existing unrealized gain or loss when a swap notional is increased. This must be asked of the client or swap counterparty."
+    }
+  }
+}
+```

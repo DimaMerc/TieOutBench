@@ -1,0 +1,320 @@
+{
+ "requirements": [
+  {
+   "id": "Q1",
+   "text": "Each business day as of the regularly scheduled close of normal trading on the NYSE (normally 4:00 p.m. ET), the system must compute NAV per share by valuing total assets, subtracting total liabilities, and dividing by shares outstanding, rounded to the nearest cent.",
+   "source": "The NAV per share for the Fund is calculated by the Administrator and determined as of the regularly scheduled close of normal trading on the NYSE (normally 4:00 p.m. Eastern Time) on each day that the NYSE is open."
+  },
+  {
+   "id": "Q2",
+   "text": "Each day the system must mark each total return swap to market by valuing it at the net unrealized gain/loss, computed from the change in the reference security's current market price (last readily available market price) versus the price at the last reset applied to the swap's reference units.",
+   "source": "Equity swap contracts are marked to market daily based on the value of the underlying security and the change, if any, is recorded as an unrealized gain or loss."
+  },
+  {
+   "id": "Q3",
+   "text": "When a market quotation for the reference security is not readily available or is unreliable, the system must use the Advisor's fair value in calculating NAV rather than a stale price.",
+   "source": "When market quotations are not readily available, a portfolio investment's fair value will be determined and such fair valuations will be used in calculating a Fund's NAV."
+  },
+  {
+   "id": "Q4",
+   "text": "Each day the system must accrue the floating financing cost the Fund owes the counterparty on the swap notional at the agreed floating rate plus spread (OBFR + spread), accruing on an actual/360 basis so that non-business days such as weekends accrue the appropriate number of calendar days.",
+   "source": "The Fund will agree to pay to the counterparty a floating rate of interest on the notional amount of the swap agreement plus the amount, if any, by which the notional amount would have decreased in value had it been invested in such stocks."
+  },
+  {
+   "id": "Q5",
+   "text": "When the reference security goes ex-dividend, the system must accrue the dividend amount the Fund is entitled to under the swap (per the agreed payout percentage) as income receivable on the ex-dividend date, so that the price drop on the ex-date is offset by dividend income in NAV.",
+   "source": "The counterparty will generally agree to pay the Fund the amount, if any, by which the notional amount of the swap agreement would have increased in value had it been invested in the particular stocks, plus the dividends that would have been received on those stocks."
+  },
+  {
+   "id": "Q6",
+   "text": "At the end of every trading day the system must rebalance swap exposure so that the reference-share exposure equals the target multiple (2x) times the Fund's net assets, adding or removing reference units accordingly.",
+   "source": "The Fund will reposition its portfolio at the end of every trading day."
+  },
+  {
+   "id": "Q7",
+   "text": "On a reset/payment date the system must net the two payment streams (appreciation/depreciation plus dividends owed to the Fund, less financing owed by the Fund), settle the net amount with the counterparty, reset the price to the current reference price, and zero the accrued financing and income.",
+   "source": "Swap agreements typically are settled on a net basis, which means that the two payment streams are netted out, with the Fund receiving or paying, as the case may be, only the net amount of the two payments."
+  },
+  {
+   "id": "Q8",
+   "text": "Periodic payments received or paid by the Fund on settlement, and reductions of reference units on rebalancing/redemption, must be recorded as realized gains or losses using the identified cost method, with the remaining position marked to the net unrealized gain/loss.",
+   "source": "Periodic payments received or paid by a Fund are recorded as realized gains or losses."
+  },
+  {
+   "id": "Q9",
+   "text": "The system must accrue daily, for purposes of determining NAV, the management, administration and distribution fees and other operating expenses at the applicable annual expense rate applied to net assets on an appropriate day-count, including weekend days.",
+   "source": "Expenses and fees, including without limitation, the management, administration and distribution fees, are accrued daily and taken into account for purposes of determining NAV per share."
+  },
+  {
+   "id": "Q10",
+   "text": "The system must process creations and redemptions for cash only, at the NAV per share next determined after an order received in proper form (by the Fund's earlier 3:00 p.m. ET cutoff), and assess the $500 transaction fee per order, adding/removing swap exposure to keep 2x the post-flow net assets.",
+   "source": "Creation Units of the Cash Funds are sold only for cash ... Creation Units are sold at the NAV per share next computed, plus a transaction fee; Creation Transaction Fee ... ALL FUNDS $500."
+  },
+  {
+   "id": "Q11",
+   "text": "The system must record cash segregated/posted as collateral for swap contracts as a reclassification within assets (cash to collateral posted) with no effect on net assets.",
+   "source": "As of June 30, 2026, cash in the amount of $55830545 has been segregated as collateral from the broker for swap contracts."
+  },
+  {
+   "id": "Q12",
+   "text": "On a corporate action such as a stock split, the system must adjust the reference units and the reset price by the split ratio so that the swap's unrealized gain/loss is unchanged by the split.",
+   "source": "Equity swap contracts are marked to market daily based on the value of the underlying security and the change, if any, is recorded as an unrealized gain or loss."
+  }
+ ],
+ "scenarios": {
+  "S01": {
+   "units": {
+    "value": 2500000,
+    "note": "2x * $50000000 = $100000000 exposure / $40 = 2500000 shares."
+   },
+   "notional": {
+    "value": 100000000,
+    "note": "2500000 * $40."
+   }
+  },
+  "S02": {
+   "unrealized_gain": {
+    "value": 2500000,
+    "note": "2500000 * ($41-$40)."
+   },
+   "per_share": {
+    "value": 1.25,
+    "note": "$2500000 / 2000000 shares."
+   },
+   "price_to_use": {
+    "value": null,
+    "note": "The current closing market price $41, the last readily available market price."
+   }
+  },
+  "S03": {
+   "one_day": {
+    "value": 17500.0,
+    "note": "$100000000 * (0.043+0.02) * 1/360."
+   },
+   "weekend": {
+    "value": 52500.0,
+    "note": "3 calendar days (Fri to Mon) accrue: 100000000*0.063*3/360."
+   }
+  },
+  "S04": {
+   "total": {
+    "value": 51805.56,
+    "note": "Mon+Tue at 6.3% + Wed at 6.05%: (17500+17500+16805.56)."
+   },
+   "third_day": {
+    "value": 16805.56,
+    "note": "100000000 * (0.0405+0.02) * 1/360."
+   }
+  },
+  "S05": {
+   "income_owed": {
+    "value": 300000,
+    "note": "2500000 * $0.12 * 100%."
+   },
+   "change_in_unrealized": {
+    "value": -300000,
+    "note": "Price falls $0.12 on ex-date: 2500000 * (40.88-41.00)."
+   },
+   "net_effect_on_net_assets_on_ex_date": {
+    "value": 0,
+    "note": "Dividend income +$300000 offsets unrealized -$300000."
+   },
+   "error_per_share_if_omitted": {
+    "value": -0.15,
+    "note": "$300000 omitted / 2000000 shares."
+   },
+   "error_percent_if_omitted": {
+    "value": -0.5714,
+    "note": "$300000 / $52500000 net assets."
+   }
+  },
+  "S06": {
+   "exposure_before": {
+    "value": 102500000,
+    "note": "2500000 * $41."
+   },
+   "target_exposure": {
+    "value": 105000000,
+    "note": "2x * $52500000 net assets."
+   },
+   "units_added": {
+    "value": 60975.61,
+    "note": "($105000000-$102500000)/$41."
+   },
+   "units_after": {
+    "value": 2560975.61,
+    "note": "2500000 + 60975.61."
+   },
+   "unrealized_after": {
+    "value": 2500000,
+    "note": "New units added at $41 reset carry no gain; existing gain unchanged."
+   }
+  },
+  "S07": {
+   "exposure_before": {
+    "value": 95000000,
+    "note": "2500000 * $38."
+   },
+   "target_exposure": {
+    "value": 90000000,
+    "note": "2x * $45000000 net assets."
+   },
+   "units_removed": {
+    "value": 131578.95,
+    "note": "($95000000-$90000000)/$38."
+   },
+   "realized": {
+    "value": -263157.89,
+    "note": "131578.95 * ($38-$40)."
+   },
+   "unrealized_after": {
+    "value": -4736842.11,
+    "note": "Remaining 2368421.05 units * ($38-$40)."
+   }
+  },
+  "S08": {
+   "financing_accrued": {
+    "value": 525000.0,
+    "note": "$100000000 notional * (0.043+0.02) * 30/360."
+   },
+   "payment_to_fund": {
+    "value": 4775000.0,
+    "note": "Appreciation 2500000*($42-$40)=5000000 + income 300000 - financing 525000."
+   },
+   "notional_after": {
+    "value": 105000000,
+    "note": "2500000 * $42 reset price."
+   },
+   "accruals_after": {
+    "value": 0,
+    "note": "Financing and income accruals reset to zero after settlement."
+   }
+  },
+  "S09": {
+   "cash_for_shares": {
+    "value": 1312500.0,
+    "note": "50000 * $26.25 NAV."
+   },
+   "fee_received": {
+    "value": 500,
+    "note": "One creation order."
+   },
+   "units_added": {
+    "value": 62500,
+    "note": "2x * $1312500 / $42 = $2625000 exposure / $42."
+   },
+   "nav_per_share_published": {
+    "value": 26.25,
+    "note": "Creation at NAV does not change NAV per share."
+   }
+  },
+  "S10": {
+   "cash_paid": {
+    "value": 2624500.0,
+    "note": "100000 * $26.25 = 2625000 less $500 redemption fee."
+   },
+   "units_removed": {
+    "value": 125000,
+    "note": "2x * $2625000 / $42 = $5250000 exposure / $42."
+   },
+   "realized": {
+    "value": 250000,
+    "note": "125000 * ($42-$40)."
+   },
+   "nav_per_share_published": {
+    "value": 26.25,
+    "note": "Redemption at NAV; fee offsets transaction costs, NAV unchanged."
+   }
+  },
+  "S11": {
+   "cash_after": {
+    "value": 47000000,
+    "note": "$50000000 - $3000000 posted."
+   },
+   "collateral_posted_after": {
+    "value": 3000000,
+    "note": "Reclassified from cash to collateral."
+   },
+   "change_in_net_assets": {
+    "value": 0,
+    "note": "A reclassification within assets; no effect on net assets."
+   }
+  },
+  "S12": {
+   "one_day": {
+    "value": 1319.44,
+    "note": "$50000000 * 0.0095 / 360."
+   },
+   "weekend": {
+    "value": 3958.33,
+    "note": "3 days: $50000000 * 0.0095 * 3/360."
+   }
+  },
+  "S13": {
+   "right_net_assets": {
+    "value": 48750000,
+    "note": "Cash 50000000 + swap unrealized 2500000*($39.50-$40)=-1250000."
+   },
+   "misstatement": {
+    "value": 3750000,
+    "note": "Using $41 gives +2500000 vs correct -1250000; overstated by $3750000."
+   },
+   "per_share": {
+    "value": 1.875,
+    "note": "$3750000 / 2000000 shares."
+   },
+   "percent": {
+    "value": 7.6923,
+    "note": "$3750000 / $48750000 right net assets."
+   },
+   "correction_threshold": {
+    "value": 0.005,
+    "note": "NAV errors of 0.5% or more of NAV are typically corrected."
+   }
+  },
+  "S14": {
+   "units_after": {
+    "value": 10000000,
+    "note": "2500000 * 4 for a 4-for-1 split."
+   },
+   "reset_price_after": {
+    "value": 10.0,
+    "note": "$40 reset / 4."
+   },
+   "unrealized_after": {
+    "value": 10000000,
+    "note": "10000000 * ($11.00-$10.00)."
+   },
+   "unrealized_before": {
+    "value": 10000000,
+    "note": "2500000 * ($44-$40) before split."
+   },
+   "wrong_unrealized": {
+    "value": -72500000,
+    "note": "If price set to $11 but units/reset not adjusted: 2500000*($11-$40)."
+   }
+  },
+  "S15": {
+   "net_assets_at_close": {
+    "value": 52481180.56,
+    "note": "50000000 + unrealized 2500000 - financing 17500 - expense 1319.44."
+   },
+   "nav_per_share_published": {
+    "value": 26.24,
+    "note": "$52481180.56 / 2000000, rounded to nearest cent."
+   },
+   "return_percent": {
+    "value": 4.9624,
+    "note": "($52481180.56-$50000000)/$50000000."
+   },
+   "twice_reference_percent": {
+    "value": 5.0,
+    "note": "2 * ($41-$40)/$40 = 2*2.5%."
+   },
+   "shortfall_basis_points": {
+    "value": 3.76,
+    "note": "5.00% - 4.9624% = 0.0376% from financing and expense drag."
+   }
+  }
+ }
+}

@@ -1,0 +1,103 @@
+{"requirements": [
+{"id": "Q1", "text": "Each business day as of the regularly scheduled close of normal trading on the NYSE (normally 4:00 p.m. Eastern Time), value each total return swap and compute NAV per share by dividing net assets (total assets less total liabilities) by shares outstanding, rounded to the nearest cent.", "source": "The NAV per share for the Fund is calculated by the Administrator and determined as of the regularly scheduled close of normal trading on the NYSE (normally 4:00 p.m. Eastern Time) on each day that the NYSE is open."},
+{"id": "Q2", "text": "Value each swap daily at its net unrealized gain/loss, marking to market based on the current market value of the reference security (AdvisorShares Pure US Cannabis ETF) versus the price at the last reset, using the reference ETF's last readily available market price.", "source": "Derivative instruments, including swap contracts, are valued at the net unrealized gain (loss) on the instrument. ... Equity swap contracts are marked to market daily based on the value of the underlying security and the change, if any, is recorded as an unrealized gain or loss."},
+{"id": "Q3", "text": "Where market quotations for the reference security are not readily available or are unreliable, use the Advisor's fair value as designated by the Board in calculating NAV.", "source": "When market quotations are not readily available, a portfolio investment's fair value will be determined and such fair valuations will be used in calculating a Fund's NAV."},
+{"id": "Q4", "text": "Accrue the swap financing cost daily on the notional amount at the agreed floating financing rate plus spread (OBFR + spread), accruing for every calendar day including weekends and holidays, and reflect it as a reduction to net assets.", "source": "The Fund will agree to pay to the counterparty a floating rate of interest on the notional amount of the swap agreement ... interest income and expenses are recognized on the accrual basis."},
+{"id": "Q5", "text": "Accrue to the fund, on each ex-dividend date of the reference security, the dividend amount that would have been received on the notional stocks at the agreed payout percentage, recognized on the ex-dividend date.", "source": "the counterparty will generally agree to pay the Fund ... plus the dividends that would have been received on those stocks ... distributions to shareholders are recognized on the ex-dividend date."},
+{"id": "Q6", "text": "On a reset/payment date, settle the swap on a net basis: net the accrued financing owed, any dividend income owed, and the appreciation/depreciation since the last reset into a single payment received or paid; record the resulting periodic payment as a realized gain or loss and reset the reference price and clear the accruals.", "source": "Swap agreements typically are settled on a net basis, which means that the two payment streams are netted out, with the Fund receiving or paying, as the case may be, only the net amount of the two payments. ... Periodic payments received or paid by a Fund are recorded as realized gains or losses."},
+{"id": "Q7", "text": "At the end of every trading day, rebalance the swap exposure so that total reference exposure equals the target multiple (2x) of the Fund's net assets, adding reference units after a gain and removing units after a loss; units removed realize gain/loss versus the reset price.", "source": "The Fund will reposition its portfolio at the end of every trading day. ... the Fund seeks to rebalance its portfolio daily to keep exposure consistent with its investment objective."},
+{"id": "Q8", "text": "Accrue the Fund's expenses (management, administration and distribution fees) daily based on net assets at the annual expense rate, accruing for every calendar day, and take them into account in determining NAV.", "source": "Expenses and fees, including without limitation, the management, administration and distribution fees, are accrued daily and taken into account for purposes of determining NAV per share."},
+{"id": "Q9", "text": "Process creations and redemptions for cash only at the NAV per share next determined after an order received in proper form (order cutoff 3:00 p.m. Eastern Time for this Fund), adding or removing swap reference units to maintain 2x exposure and collecting the $500 transaction fee per order.", "source": "Creation Units of the Cash Funds are sold only for cash ... at the NAV per share next computed, plus a transaction fee ... Creation Transaction Fee ... ALL FUNDS $500."},
+{"id": "Q10", "text": "Record the $500 transaction fee per creation/redemption order as a credit to the Fund (offsetting transaction costs), not as part of the shareholder's share consideration.", "source": "To compensate a Fund for transfer and other transaction costs involved in creation transactions and redemption transactions ... investors will be required to pay a minimum transaction fee, assessed per transaction, of $500."},
+{"id": "Q11", "text": "Record cash segregated/posted as collateral to the counterparty as a reclassification within assets (from cash to segregated collateral); this does not change net assets.", "source": "cash in the amount of $55,830,545 has been segregated as collateral from the broker for swap contracts."},
+{"id": "Q12", "text": "Apply standard corporate-action adjustments (e.g., stock splits) to the reference security by adjusting the units and the reset price so that notional exposure and unrealized gain/loss are unchanged by the event.", "source": "Equity swap contracts are marked to market daily based on the value of the underlying security and the change, if any, is recorded as an unrealized gain or loss."}
+],
+"scenarios": {
+"S01": {
+"units": {"value": 2500000, "note": "2x * 50,000,000 / 40 = 2,500,000 reference shares."},
+"notional": {"value": 100000000, "note": "2,500,000 * 40 = 100,000,000."}
+},
+"S02": {
+"unrealized_gain": {"value": 2500000, "note": "2,500,000 * (41-40) = 2,500,000."},
+"per_share": {"value": 1.25, "note": "2,500,000 / 2,000,000 = 1.25."},
+"price_to_use": {"value": 41.0, "note": "The current closing market price of the reference ETF."}
+},
+"S03": {
+"one_day": {"value": 17500.0, "note": "100,000,000 * (0.043+0.02)/360 * 1 = 17,500."},
+"weekend": {"value": 52500.0, "note": "Three calendar days Fri-Mon: 17,500 * 3 = 52,500."}
+},
+"S04": {
+"total": {"value": 52083.33, "note": "100,000,000/360 * (0.063+0.063+0.0605) = 17,500+17,500+17,083.33."},
+"third_day": {"value": 17083.33, "note": "100,000,000 * (0.0405+0.02)/360 = 17,083.33."}
+},
+"S05": {
+"income_owed": {"value": 300000, "note": "2,500,000 * 0.12 * 100% = 300,000."},
+"change_in_unrealized": {"value": -300000, "note": "Price drops 41.00 to 40.88: 2,500,000 * (-0.12) = -300,000."},
+"net_effect_on_net_assets_on_ex_date": {"value": 0, "note": "Dividend income of +300,000 offsets price-drop unrealized of -300,000."},
+"error_per_share_if_omitted": {"value": 0.15, "note": "300,000 / 2,000,000 = 0.15 per share."},
+"error_percent_if_omitted": {"value": 0.5714, "note": "0.15 / 26.25 = 0.571% of NAV (52,500,000/2,000,000)."}
+},
+"S06": {
+"exposure_before": {"value": 102500000, "note": "2,500,000 * 41 = 102,500,000."},
+"target_exposure": {"value": 105000000, "note": "2x * 52,500,000 = 105,000,000."},
+"units_added": {"value": 60975.61, "note": "(105,000,000-102,500,000)/41 = 60,975.61 shares."},
+"units_after": {"value": 2560975.61, "note": "2,500,000 + 60,975.61."},
+"unrealized_after": {"value": 2500000, "note": "Reset is at 41 for new units; existing units still carry 2,500,000 until reset."}
+},
+"S07": {
+"exposure_before": {"value": 95000000, "note": "2,500,000 * 38 = 95,000,000."},
+"target_exposure": {"value": 90000000, "note": "2x * 45,000,000 = 90,000,000."},
+"units_removed": {"value": 131578.95, "note": "(95,000,000-90,000,000)/38 = 131,578.95 shares."},
+"realized": {"value": -263157.89, "note": "131,578.95 * (38-40) = -263,157.89."},
+"unrealized_after": {"value": -4736842.11, "note": "Remaining 2,368,421.05 * (38-40) = -4,736,842.11."}
+},
+"S08": {
+"financing_accrued": {"value": 525000.0, "note": "100,000,000 * (0.043+0.02)/360 * 30 = 525,000."},
+"payment_to_fund": {"value": 4775000.0, "note": "Appreciation 2,500,000*(42-40)=5,000,000 + income 300,000 - financing 525,000 = 4,775,000 to the fund."},
+"notional_after": {"value": 105000000, "note": "2,500,000 * 42 reset price = 105,000,000."},
+"accruals_after": {"value": 0, "note": "Financing and income accruals are cleared at reset."}
+},
+"S09": {
+"cash_for_shares": {"value": 1312500.0, "note": "50,000 * 26.25 = 1,312,500."},
+"fee_received": {"value": 500, "note": "One creation order, $500 transaction fee."},
+"units_added": {"value": 62500.0, "note": "2x * 1,312,500 / 42 = 62,500 shares."},
+"nav_per_share_published": {"value": 26.25, "note": "NAV per share unchanged by a cash creation at NAV."}
+},
+"S10": {
+"cash_paid": {"value": 2624500.0, "note": "100,000 * 26.25 = 2,625,000 less $500 redemption fee = 2,624,500."},
+"units_removed": {"value": 125000.0, "note": "2x * 2,625,000 / 42 = 125,000 shares."},
+"realized": {"value": 250000.0, "note": "125,000 * (42-40) = 250,000 gain."},
+"nav_per_share_published": {"value": 26.25, "note": "NAV per share unchanged by a cash redemption at NAV."}
+},
+"S11": {
+"cash_after": {"value": 47000000, "note": "50,000,000 - 3,000,000 moved to segregated collateral."},
+"collateral_posted_after": {"value": 3000000, "note": "3,000,000 segregated as collateral."},
+"change_in_net_assets": {"value": 0, "note": "A reclassification within assets; net assets unchanged."}
+},
+"S12": {
+"one_day": {"value": 1319.44, "note": "50,000,000 * 0.0095 / 360 = 1,319.44."},
+"weekend": {"value": 3958.33, "note": "Three calendar days: 1,319.44 * 3 = 3,958.33."}
+},
+"S13": {
+"right_net_assets": {"value": 48750000, "note": "Cash 50,000,000 + swap 2,500,000*(39.5-40)=-1,250,000 = 48,750,000."},
+"misstatement": {"value": 3750000, "note": "Using 41: swap +2,500,000 gives 52,500,000, overstated by 3,750,000."},
+"per_share": {"value": 1.875, "note": "3,750,000 / 2,000,000 = 1.875."},
+"percent": {"value": 7.6923, "note": "3,750,000 / 48,750,000 = 7.69% of the correct NAV."},
+"correction_threshold": {"value": null, "note": "No numeric NAV-error threshold is stated in the documents."}
+},
+"S14": {
+"units_after": {"value": 10000000, "note": "2,500,000 * 4 = 10,000,000 shares after 4-for-1 split."},
+"reset_price_after": {"value": 10.0, "note": "40 / 4 = 10.00 split-adjusted reset price."},
+"unrealized_after": {"value": 10000000, "note": "10,000,000 * (11-10) = 10,000,000 unchanged by split."},
+"unrealized_before": {"value": 10000000, "note": "2,500,000 * (44-40) = 10,000,000."},
+"wrong_unrealized": {"value": 2500000, "note": "If price updated to 11 but units not split: 2,500,000 * (11-40) = -72,500,000 wrong."}
+},
+"S15": {
+"net_assets_at_close": {"value": 52481180.56, "note": "50,000,000 + swap gain 2,500,000 - financing 17,500 - expense 1,319.44."},
+"nav_per_share_published": {"value": 26.24, "note": "52,481,180.56 / 2,000,000 = 26.2406, rounded to 26.24."},
+"return_percent": {"value": 4.9624, "note": "(52,481,180.56-50,000,000)/50,000,000 = 4.962%."},
+"twice_reference_percent": {"value": 5.0, "note": "2 * (41-40)/40 = 5.00%."},
+"shortfall_basis_points": {"value": 3.76, "note": "5.00% - 4.9624% = 0.0376% = 3.76 bps."}
+}
+}
+}

@@ -1,0 +1,168 @@
+{
+ "rules": {
+  "rules": 21,
+  "fund_rules": 17,
+  "fund_specified": 10,
+  "fund_partly": 3,
+  "fund_absent": 4,
+  "confirmation_rules": 4,
+  "confirmation_public": 0
+ },
+ "figures": 56,
+ "figures_settled": 32,
+ "scenarios": 15,
+ "scenarios_all_settled": 3,
+ "scenarios_none_settled": 4,
+ "per_scenario": [
+  {
+   "id": "S01",
+   "title": "Setting up the position",
+   "figures": 2,
+   "settled": 2,
+   "all_settled": true,
+   "open_rules": []
+  },
+  {
+   "id": "S02",
+   "title": "One day's change in value",
+   "figures": 3,
+   "settled": 3,
+   "all_settled": true,
+   "open_rules": []
+  },
+  {
+   "id": "S03",
+   "title": "Financing for one day and over a weekend",
+   "figures": 2,
+   "settled": 0,
+   "all_settled": false,
+   "open_rules": [
+    "R05",
+    "R06"
+   ]
+  },
+  {
+   "id": "S04",
+   "title": "The floating rate changes",
+   "figures": 2,
+   "settled": 0,
+   "all_settled": false,
+   "open_rules": [
+    "R05",
+    "R07"
+   ]
+  },
+  {
+   "id": "S05",
+   "title": "The reference security goes ex-dividend",
+   "figures": 5,
+   "settled": 4,
+   "all_settled": false,
+   "open_rules": [
+    "R19"
+   ]
+  },
+  {
+   "id": "S06",
+   "title": "Rebalancing after a gain",
+   "figures": 5,
+   "settled": 4,
+   "all_settled": false,
+   "open_rules": [
+    "R21"
+   ]
+  },
+  {
+   "id": "S07",
+   "title": "Rebalancing after a loss",
+   "figures": 5,
+   "settled": 3,
+   "all_settled": false,
+   "open_rules": [
+    "R10"
+   ]
+  },
+  {
+   "id": "S08",
+   "title": "A reset and payment date",
+   "figures": 4,
+   "settled": 0,
+   "all_settled": false,
+   "open_rules": [
+    "R05",
+    "R06",
+    "R11"
+   ]
+  },
+  {
+   "id": "S09",
+   "title": "A creation for cash",
+   "figures": 4,
+   "settled": 3,
+   "all_settled": false,
+   "open_rules": [
+    "R18"
+   ]
+  },
+  {
+   "id": "S10",
+   "title": "A redemption for cash",
+   "figures": 4,
+   "settled": 2,
+   "all_settled": false,
+   "open_rules": [
+    "R10",
+    "R18"
+   ]
+  },
+  {
+   "id": "S11",
+   "title": "Posting collateral",
+   "figures": 3,
+   "settled": 3,
+   "all_settled": true,
+   "open_rules": []
+  },
+  {
+   "id": "S12",
+   "title": "The management fee for one day and over a weekend",
+   "figures": 2,
+   "settled": 0,
+   "all_settled": false,
+   "open_rules": [
+    "R20"
+   ]
+  },
+  {
+   "id": "S13",
+   "title": "The swap is valued at yesterday's price",
+   "figures": 5,
+   "settled": 4,
+   "all_settled": false,
+   "open_rules": [
+    "R15"
+   ]
+  },
+  {
+   "id": "S14",
+   "title": "The reference security splits four for one",
+   "figures": 5,
+   "settled": 2,
+   "all_settled": false,
+   "open_rules": [
+    "R16"
+   ]
+  },
+  {
+   "id": "S15",
+   "title": "One whole day",
+   "figures": 5,
+   "settled": 2,
+   "all_settled": false,
+   "open_rules": [
+    "R05",
+    "R20"
+   ]
+  }
+ ]
+}

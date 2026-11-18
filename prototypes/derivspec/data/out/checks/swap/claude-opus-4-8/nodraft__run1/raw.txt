@@ -1,0 +1,88 @@
+{"scenarios": {
+ "S01": {
+  "units": {"verdict": "supported", "missing": ""},
+  "notional": {"verdict": "supported", "missing": ""}
+ },
+ "S02": {
+  "unrealized_gain": {"verdict": "supported", "missing": ""},
+  "per_share": {"verdict": "supported", "missing": ""},
+  "price_to_use": {"verdict": "supported", "missing": ""}
+ },
+ "S03": {
+  "one_day": {"verdict": "not supported", "missing": "day-count convention (e.g. actual/360 or /365) for the financing rate is not stated"},
+  "weekend": {"verdict": "not supported", "missing": "day-count convention and whether financing accrues over non-business days is not stated"}
+ },
+ "S04": {
+  "total": {"verdict": "not supported", "missing": "day-count convention not stated"},
+  "third_day": {"verdict": "not supported", "missing": "day-count convention not stated"}
+ },
+ "S05": {
+  "income_owed": {"verdict": "supported", "missing": ""},
+  "change_in_unrealized": {"verdict": "supported", "missing": ""},
+  "net_effect_on_net_assets_on_ex_date": {"verdict": "not supported", "missing": "financing accrual and daily expense for the day are not given, so full net effect on NAV is not settled"},
+  "error_per_share_if_omitted": {"verdict": "supported", "missing": ""},
+  "error_percent_if_omitted": {"verdict": "supported", "missing": ""}
+ },
+ "S06": {
+  "exposure_before": {"verdict": "supported", "missing": ""},
+  "target_exposure": {"verdict": "supported", "missing": ""},
+  "units_added": {"verdict": "supported", "missing": ""},
+  "units_after": {"verdict": "supported", "missing": ""},
+  "unrealized_after": {"verdict": "not supported", "missing": "whether rebalancing resets the swap (new units added at current price) and how unrealized is carried/reset is not stated"}
+ },
+ "S07": {
+  "exposure_before": {"verdict": "supported", "missing": ""},
+  "target_exposure": {"verdict": "supported", "missing": ""},
+  "units_removed": {"verdict": "supported", "missing": ""},
+  "realized": {"verdict": "supported", "missing": ""},
+  "unrealized_after": {"verdict": "supported", "missing": ""}
+ },
+ "S08": {
+  "financing_accrued": {"verdict": "not supported", "missing": "day-count convention for the 30-day accrual not stated"},
+  "payment_to_fund": {"verdict": "not supported", "missing": "depends on financing accrued (day-count); netting of return+income less financing is stated but financing amount not settled"},
+  "notional_after": {"verdict": "not supported", "missing": "whether reset re-strikes notional to current fair value is not explicitly stated"},
+  "accruals_after": {"verdict": "not supported", "missing": "whether payment zeroes accruals and reset mechanics not stated"}
+ },
+ "S09": {
+  "cash_for_shares": {"verdict": "supported", "missing": ""},
+  "fee_received": {"verdict": "supported", "missing": ""},
+  "units_added": {"verdict": "supported", "missing": ""},
+  "nav_per_share_published": {"verdict": "supported", "missing": ""}
+ },
+ "S10": {
+  "cash_paid": {"verdict": "supported", "missing": ""},
+  "units_removed": {"verdict": "supported", "missing": ""},
+  "realized": {"verdict": "supported", "missing": ""},
+  "nav_per_share_published": {"verdict": "supported", "missing": ""}
+ },
+ "S11": {
+  "cash_after": {"verdict": "supported", "missing": ""},
+  "collateral_posted_after": {"verdict": "supported", "missing": ""},
+  "change_in_net_assets": {"verdict": "supported", "missing": ""}
+ },
+ "S12": {
+  "one_day": {"verdict": "not supported", "missing": "number of days in year for daily accrual (e.g. /365) not stated"},
+  "weekend": {"verdict": "not supported", "missing": "day-count basis and number of days accrued over weekend not stated"}
+ },
+ "S13": {
+  "right_net_assets": {"verdict": "supported", "missing": ""},
+  "misstatement": {"verdict": "supported", "missing": ""},
+  "per_share": {"verdict": "supported", "missing": ""},
+  "percent": {"verdict": "supported", "missing": ""},
+  "correction_threshold": {"verdict": "not supported", "missing": "no NAV error / correction threshold (materiality level) is stated in the documents"}
+ },
+ "S14": {
+  "units_after": {"verdict": "not supported", "missing": "no stated corporate-action/stock-split adjustment convention for the swap"},
+  "reset_price_after": {"verdict": "not supported", "missing": "no stated split adjustment convention for the reset price"},
+  "unrealized_after": {"verdict": "not supported", "missing": "depends on unstated split adjustment convention"},
+  "unrealized_before": {"verdict": "supported", "missing": ""},
+  "wrong_unrealized": {"verdict": "supported", "missing": ""}
+ },
+ "S15": {
+  "net_assets_at_close": {"verdict": "not supported", "missing": "day-count convention for financing and expense accrual not stated"},
+  "nav_per_share_published": {"verdict": "not supported", "missing": "depends on financing/expense accrual day-count not stated"},
+  "return_percent": {"verdict": "not supported", "missing": "depends on net assets at close which is not settled"},
+  "twice_reference_percent": {"verdict": "supported", "missing": ""},
+  "shortfall_basis_points": {"verdict": "not supported", "missing": "depends on unsettled fund return"}
+ }
+}}

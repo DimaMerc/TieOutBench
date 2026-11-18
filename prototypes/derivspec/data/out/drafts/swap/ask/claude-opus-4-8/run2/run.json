@@ -1,0 +1,27 @@
+{
+ "fund": "swap",
+ "arm": "ask",
+ "run": 2,
+ "model": "claude-opus-4-8",
+ "started": "2026-11-16T16:45:29",
+ "prompt": {
+  "sha256": "1845c0fad60d11fbce195968a3cb95cb00cd05adf4e4ee95e02a4e30fcbd4427",
+  "chars": 25101,
+  "tokens_approx": 6275
+ },
+ "max_tokens": 24000,
+ "finish_reason": "stop",
+ "usage": {
+  "completion_tokens": 7601,
+  "prompt_tokens": 9362,
+  "total_tokens": 16963
+ },
+ "content_chars": 19066,
+ "reasoning_chars": 0,
+ "elapsed_s": 82.641,
+ "deadline_hit": false,
+ "temperature": "omitted",
+ "temperature_dropped": true,
+ "token_field": "max_tokens",
+ "endpoint_host": "api.anthropic.com"
+}

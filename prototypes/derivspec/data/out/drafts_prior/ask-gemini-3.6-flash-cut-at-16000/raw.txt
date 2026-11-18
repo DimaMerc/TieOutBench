@@ -1,0 +1,245 @@
+```json
+{
+  "requirements": [
+    {
+      "id": "Q1",
+      "text": "The system must mark total return swap contracts to market daily based on the current market price of the underlying reference security at NYSE close (normally 4:00 p.m. ET) and record the daily change as unrealized gain or loss in NAV.",
+      "basis": "document",
+      "quote": "Equity swap contracts are marked to market daily based on the value of the underlying security and the change, if any, is recorded as an unrealized gain or loss.",
+      "assumption_or_question": ""
+    },
+    {
+      "id": "Q2",
+      "text": "The system must accrue daily floating rate financing expenses payable to swap counterparties based on the swap notional amount and the agreed floating benchmark rate plus spread (e.g., OBFR + spread) using an Actual/360 day-count convention.",
+      "basis": "document",
+      "quote": "The Fund will agree to pay to the counterparty a floating rate of interest on the notional amount of the swap agreement plus the amount, if any, by which the notional amount would have decreased in value had it been invested in such stocks.",
+      "assumption_or_question": ""
+    },
+    {
+      "id": "Q3",
+      "text": "The system must calculate and accrue management fees daily based on average daily net assets at the contractual rate (net of expense waivers/reimbursements) using an Actual/365 day-count convention.",
+      "basis": "document",
+      "quote": "For its services, the Advisor is entitled to an annual management fee from each Fund, which is calculated daily and paid monthly based on the Fund's average daily net assets.",
+      "assumption_or_question": ""
+    },
+    {
+      "id": "Q4",
+      "text": "The system must process daily portfolio rebalancing at the end of each trading day to adjust swap share units and total notional exposure to target 200% (2x) of daily Net Asset Value.",
+      "basis": "document",
+      "quote": "In order to achieve a high degree of correlation with the US Cannabis ETF, the Fund seeks to rebalance its portfolio daily to keep exposure consistent with its investment objective.",
+      "assumption_or_question": ""
+    },
+    {
+      "id": "Q5",
+      "text": "On the ex-dividend date of the underlying reference security, the system must record dividend income receivable from the swap counterparty on total reference share units held to offset the market price drop of the reference asset.",
+      "basis": "document",
+      "quote": "The counterparty will generally agree to pay the Fund the amount, if any, by which the notional amount of the swap agreement would have increased in value had it been invested in the particular stocks, plus the dividends that would have been received on those stocks.",
+      "assumption_or_question": ""
+    },
+    {
+      "id": "Q6",
+      "text": "On scheduled reset/settlement dates, the system must net the accrued floating financing fee, dividend receivable, and price appreciation/depreciation, record realized gain/loss, settle net cash, and reset the swap notional price to current market price.",
+      "basis": "document",
+      "quote": "Swap agreements typically are settled on a net basis, which means that the two payment streams are netted out, with the Fund receiving or paying, as the case may be, only the net amount of the two payments. Periodic payments received or paid by a Fund are recorded as realized gains or losses.",
+      "assumption_or_question": ""
+    },
+    {
+      "id": "Q7",
+      "text": "The system must process cash creations and redemptions at the next calculated NAV per share, add/deduct the $500 creation/redemption transaction fee, update shares outstanding, and rebalance swap notional exposure.",
+      "basis": "document",
+      "quote": "Creation Units of the Cash Funds are sold only for cash ('Cash Purchase Amount'). Creation Units are sold at the NAV per share next computed, plus a transaction fee... Creation Transaction Fee ... ALL FUNDS $500",
+      "assumption_or_question": ""
+    },
+    {
+      "id": "Q8",
+      "text": "The system must account for cash transfers to or from swap counterparties as segregated collateral cash assets without altering total Net Assets.",
+      "basis": "document",
+      "quote": "cash in the amount of $55,830,545 has been segregated as collateral from the broker for swap contracts.",
+      "assumption_or_question": ""
+    },
+    {
+      "id": "Q9",
+      "text": "Upon corporate action stock splits on the reference security, the system must adjust swap reference share units and reset prices inversely by the split factor on ex-date to maintain constant total notional and unrealized gain/loss.",
+      "basis": "assumption",
+      "quote": "",
+      "assumption_or_question": "Standard fund accounting practice dictates adjusting underlying contract share count and reset strike price proportionally on stock split ex-dates."
+    },
+    {
+      "id": "Q10",
+      "text": "The system must flag and enforce correction procedures for any NAV calculation error equal to or exceeding 0.50% of NAV or $0.01 per share.",
+      "basis": "assumption",
+      "quote": "",
+      "assumption_or_question": "Industry standard NAV policy (SEC framework) requires correction and reprocessing for errors >= 0.50% of NAV or $0.01 per share."
+    }
+  ],
+  "scenarios": {
+    "S01": {
+      "units": {
+        "value": 2500000,
+        "basis": "document",
+        "quote": "The Fund seeks daily investment results that, before fees and expenses, correspond to approximately two times (2x) the daily total return of the AdvisorShares Pure US Cannabis ETF.",
+        "assumption_or_question": "Target exposure = $50,000,000 net assets * 2.0 target multiple = $100,000,000. Units = $100,000,000 / $40.00 reference price = 2,500,000 units."
+      },
+      "notional": {
+        "value": 100000000,
+        "basis": "document",
+        "quote": "The gross return to be exchanged or 'swapped' between the parties is calculated with respect to a 'notional amount'",
+        "assumption_or_question": "Notional = Units * Reference Price = 2,500,000 * $40.00 = $100,000,000."
+      }
+    },
+    "S02": {
+      "unrealized_gain": {
+        "value": 2500000,
+        "basis": "document",
+        "quote": "Equity swap contracts are marked to market daily based on the value of the underlying security and the change, if any, is recorded as an unrealized gain or loss.",
+        "assumption_or_question": "Unrealized Gain = (Closing Price - Reset Price) * Units = ($41.00 - $40.00) * 2,500,000 = $2,500,000."
+      },
+      "per_share": {
+        "value": 1.25,
+        "basis": "document",
+        "quote": "The Fund calculates NAV by (i) taking the current market value of its total assets, (ii) subtracting any liabilities, and (iii) dividing that amount by the total number of shares owned by shareholders.",
+        "assumption_or_question": "Per share impact = $2,500,000 unrealized gain / 2,000,000 shares outstanding = $1.25."
+      },
+      "price_to_use": {
+        "value": 41.0,
+        "basis": "document",
+        "quote": "determined as of the regularly scheduled close of normal trading on the NYSE (normally 4:00 p.m. Eastern Time)",
+        "assumption_or_question": "The official NYSE closing price ($41.00) of the reference security."
+      }
+    },
+    "S03": {
+      "one_day": {
+        "value": 17500,
+        "basis": "assumption",
+        "quote": "",
+        "assumption_or_question": "Financing rate = 4.3% + 2.0% = 6.3%. Daily accrual calculated on Actual/360 basis: $100,000,000 * 6.3% * (1 / 360) = $17,500."
+      },
+      "weekend": {
+        "value": 52500,
+        "basis": "assumption",
+        "quote": "",
+        "assumption_or_question": "Weekend accrual for 3 days (Friday to Monday) on Actual/360 basis: $100,000,000 * 6.3% * (3 / 360) = $52,500."
+      }
+    },
+    "S04": {
+      "total": {
+        "value": 51805.56,
+        "basis": "assumption",
+        "quote": "",
+        "assumption_or_question": "Calculated on Actual/360 basis. Mon: 6.3% ($17,500), Tue: 6.3% ($17,500), Wed: 6.05% ($16,805.56). Total = $51,805.56."
+      },
+      "third_day": {
+        "value": 16805.56,
+        "basis": "assumption",
+        "quote": "",
+        "assumption_or_question": "Wed floating rate = 4.05% + 2.00% = 6.05%. Wed accrual = $100,000,000 * 6.05% * (1 / 360) = $16,805.56."
+      }
+    },
+    "S05": {
+      "income_owed": {
+        "value": 300000,
+        "basis": "document",
+        "quote": "plus the dividends that would have been received on those stocks.",
+        "assumption_or_question": "Dividend Income = 2,500,000 units * $0.12 dividend per share = $300,000."
+      },
+      "change_in_unrealized": {
+        "value": -300000,
+        "basis": "document",
+        "quote": "Equity swap contracts are marked to market daily based on the value of the underlying security and the change, if any, is recorded as an unrealized gain or loss.",
+        "assumption_or_question": "Change in unrealized gain = ($40.88 - $41.00) * 2,500,000 = -$300,000."
+      },
+      "net_effect_on_net_assets_on_ex_date": {
+        "value": 0,
+        "basis": "document",
+        "quote": "Dividend income and distributions to shareholders are recognized on the ex-dividend date",
+        "assumption_or_question": "Net effect = +$300,000 dividend receivable - $300,000 unrealized drop = $0."
+      },
+      "error_per_share_if_omitted": {
+        "value": 0.15,
+        "basis": "document",
+        "quote": "The NAV per share for the Fund is calculated by the Administrator and determined as of the regularly scheduled close of normal trading on the NYSE",
+        "assumption_or_question": "Omission of $300,000 dividend income understates net assets by $300,000 / 2,000,000 shares = $0.15 per share."
+      },
+      "error_percent_if_omitted": {
+        "value": 0.5714,
+        "basis": "assumption",
+        "quote": "",
+        "assumption_or_question": "Error percent = $300,000 error / $52,500,000 true net assets = 0.5714%."
+      }
+    },
+    "S06": {
+      "exposure_before": {
+        "value": 102500000,
+        "basis": "document",
+        "quote": "The gross return to be exchanged or 'swapped' between the parties is calculated with respect to a 'notional amount'",
+        "assumption_or_question": "Exposure before rebalance = 2,500,000 units * $41.00 closing price = $102,500,000."
+      },
+      "target_exposure": {
+        "value": 105000000,
+        "basis": "document",
+        "quote": "the Fund seeks to rebalance its portfolio daily to keep exposure consistent with its investment objective.",
+        "assumption_or_question": "Target exposure = $52,500,000 closing net assets * 2.0 = $105,000,000."
+      },
+      "units_added": {
+        "value": 60975.61,
+        "basis": "assumption",
+        "quote": "",
+        "assumption_or_question": "Target units = $105,000,000 / $41.00 = 2,560,975.61. Units added = 2,560,975.61 - 2,500,000 = 60,975.61."
+      },
+      "units_after": {
+        "value": 2560975.61,
+        "basis": "assumption",
+        "quote": "",
+        "assumption_or_question": "Total units after rebalance = 2,560,975.61."
+      },
+      "unrealized_after": {
+        "value": 2500000,
+        "basis": "document",
+        "quote": "Equity swap contracts are marked to market daily based on the value of the underlying security and the change, if any, is recorded as an unrealized gain or loss.",
+        "assumption_or_question": "Unrealized gain remains $2,500,000 (gain on original 2,500,000 units from reset price $40.00 to $41.00; newly added units priced at $41.00 have zero unrealized at close)."
+      }
+    },
+    "S07": {
+      "exposure_before": {
+        "value": 95000000,
+        "basis": "document",
+        "quote": "The gross return to be exchanged or 'swapped' between the parties is calculated with respect to a 'notional amount'",
+        "assumption_or_question": "Exposure before = 2,500,000 units * $38.00 = $95,000,000."
+      },
+      "target_exposure": {
+        "value": 90000000,
+        "basis": "document",
+        "quote": "the Fund seeks to rebalance its portfolio daily to keep exposure consistent with its investment objective.",
+        "assumption_or_question": "Target exposure = $45,000,000 net assets * 2.0 = $90,000,000."
+      },
+      "units_removed": {
+        "value": 131578.95,
+        "basis": "assumption",
+        "quote": "",
+        "assumption_or_question": "Target units = $90,000,000 / $38.00 = 2,368,421.05. Units removed = 2,500,000 - 2,368,421.05 = 131,578.95."
+      },
+      "realized": {
+        "value": -263157.89,
+        "basis": "document",
+        "quote": "Periodic payments received or paid by a Fund are recorded as realized gains or losses.",
+        "assumption_or_question": "Realized loss on removed units = ($38.00 - $40.00 reset price) * 131,578.95 units = -$263,157.89."
+      },
+      "unrealized_after": {
+        "value": -4736842.11,
+        "basis": "document",
+        "quote": "Equity swap contracts are marked to market daily based on the value of the underlying security and the change, if any, is recorded as an unrealized gain or loss.",
+        "assumption_or_question": "Unrealized loss on remaining 2,368,421.05 units = ($38.00 - $40.00) * 2,368,421.05 = -$4,736,842.11."
+      }
+    },
+    "S08": {
+      "financing_accrued": {
+        "value": 525000,
+        "basis": "assumption",
+        "quote": "",
+        "assumption_or_question": "30 days financing on Actual/360 basis = $100,000,000 * 6.3% * (30 / 360) = $525,000."
+      },
+      "payment_to_fund": {
+        "value": 4775000,
+        "basis": "document",
+        "quote": "Swap agreements typically are settled on a net basis, which means that the two payment streams are netted out, with the Fund receiving or paying, as the case may be, only the net amount of the two payments.",
+        "assumption_or_question": "Net payment to fund = Swap Appreciation ($5,000,000) + Dividend Income ($300,000) - Financing Fee ($525,000) = $4,775,000

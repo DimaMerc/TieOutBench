@@ -1,0 +1,1573 @@
+{
+ "readings": 54,
+ "all_finished_and_parsed": true,
+ "tokens": 1053406,
+ "by_mode": {
+  "nodraft": {
+   "all readers": {
+    "unsettled": 351,
+    "caught": 281,
+    "missed": 70,
+    "no_verdict_unsettled": 0,
+    "caught_and_names_the_open_rule": 275,
+    "settled": 765,
+    "false_alarms": 35,
+    "no_verdict_settled": 0,
+    "draft_bare": 0,
+    "draft_bare_caught": 0,
+    "draft_flagged": 0,
+    "draft_flagged_kept": 0,
+    "draft_flag_removed": 0,
+    "unflagged_if_the_reader_decides": 70,
+    "unflagged_if_either_flags": 70
+   },
+   "claude-opus-4-8": {
+    "unsettled": 117,
+    "caught": 96,
+    "missed": 21,
+    "no_verdict_unsettled": 0,
+    "caught_and_names_the_open_rule": 91,
+    "settled": 255,
+    "false_alarms": 11,
+    "no_verdict_settled": 0,
+    "draft_bare": 0,
+    "draft_bare_caught": 0,
+    "draft_flagged": 0,
+    "draft_flagged_kept": 0,
+    "draft_flag_removed": 0,
+    "unflagged_if_the_reader_decides": 21,
+    "unflagged_if_either_flags": 21
+   },
+   "gpt-5.6-sol": {
+    "unsettled": 117,
+    "caught": 104,
+    "missed": 13,
+    "no_verdict_unsettled": 0,
+    "caught_and_names_the_open_rule": 103,
+    "settled": 255,
+    "false_alarms": 17,
+    "no_verdict_settled": 0,
+    "draft_bare": 0,
+    "draft_bare_caught": 0,
+    "draft_flagged": 0,
+    "draft_flagged_kept": 0,
+    "draft_flag_removed": 0,
+    "unflagged_if_the_reader_decides": 13,
+    "unflagged_if_either_flags": 13
+   },
+   "gemini-3.6-flash": {
+    "unsettled": 117,
+    "caught": 81,
+    "missed": 36,
+    "no_verdict_unsettled": 0,
+    "caught_and_names_the_open_rule": 81,
+    "settled": 255,
+    "false_alarms": 7,
+    "no_verdict_settled": 0,
+    "draft_bare": 0,
+    "draft_bare_caught": 0,
+    "draft_flagged": 0,
+    "draft_flagged_kept": 0,
+    "draft_flag_removed": 0,
+    "unflagged_if_the_reader_decides": 36,
+    "unflagged_if_either_flags": 36
+   }
+  },
+  "plain drafts": {
+   "all readers": {
+    "unsettled": 351,
+    "caught": 288,
+    "missed": 63,
+    "no_verdict_unsettled": 0,
+    "caught_and_names_the_open_rule": 274,
+    "settled": 765,
+    "false_alarms": 48,
+    "no_verdict_settled": 0,
+    "draft_bare": 333,
+    "draft_bare_caught": 271,
+    "draft_flagged": 18,
+    "draft_flagged_kept": 17,
+    "draft_flag_removed": 1,
+    "unflagged_if_the_reader_decides": 63,
+    "unflagged_if_either_flags": 62
+   },
+   "claude-opus-4-8": {
+    "unsettled": 117,
+    "caught": 105,
+    "missed": 12,
+    "no_verdict_unsettled": 0,
+    "caught_and_names_the_open_rule": 94,
+    "settled": 255,
+    "false_alarms": 24,
+    "no_verdict_settled": 0,
+    "draft_bare": 111,
+    "draft_bare_caught": 100,
+    "draft_flagged": 6,
+    "draft_flagged_kept": 5,
+    "draft_flag_removed": 1,
+    "unflagged_if_the_reader_decides": 12,
+    "unflagged_if_either_flags": 11
+   },
+   "gpt-5.6-sol": {
+    "unsettled": 117,
+    "caught": 106,
+    "missed": 11,
+    "no_verdict_unsettled": 0,
+    "caught_and_names_the_open_rule": 103,
+    "settled": 255,
+    "false_alarms": 19,
+    "no_verdict_settled": 0,
+    "draft_bare": 111,
+    "draft_bare_caught": 100,
+    "draft_flagged": 6,
+    "draft_flagged_kept": 6,
+    "draft_flag_removed": 0,
+    "unflagged_if_the_reader_decides": 11,
+    "unflagged_if_either_flags": 11
+   },
+   "gemini-3.6-flash": {
+    "unsettled": 117,
+    "caught": 77,
+    "missed": 40,
+    "no_verdict_unsettled": 0,
+    "caught_and_names_the_open_rule": 77,
+    "settled": 255,
+    "false_alarms": 5,
+    "no_verdict_settled": 0,
+    "draft_bare": 111,
+    "draft_bare_caught": 71,
+    "draft_flagged": 6,
+    "draft_flagged_kept": 6,
+    "draft_flag_removed": 0,
+    "unflagged_if_the_reader_decides": 40,
+    "unflagged_if_either_flags": 40
+   }
+  },
+  "ask drafts": {
+   "all readers": {
+    "unsettled": 351,
+    "caught": 300,
+    "missed": 51,
+    "no_verdict_unsettled": 0,
+    "caught_and_names_the_open_rule": 298,
+    "settled": 765,
+    "false_alarms": 51,
+    "no_verdict_settled": 0,
+    "draft_bare": 120,
+    "draft_bare_caught": 78,
+    "draft_flagged": 231,
+    "draft_flagged_kept": 222,
+    "draft_flag_removed": 9,
+    "unflagged_if_the_reader_decides": 51,
+    "unflagged_if_either_flags": 42
+   },
+   "claude-opus-4-8": {
+    "unsettled": 117,
+    "caught": 102,
+    "missed": 15,
+    "no_verdict_unsettled": 0,
+    "caught_and_names_the_open_rule": 101,
+    "settled": 255,
+    "false_alarms": 26,
+    "no_verdict_settled": 0,
+    "draft_bare": 40,
+    "draft_bare_caught": 26,
+    "draft_flagged": 77,
+    "draft_flagged_kept": 76,
+    "draft_flag_removed": 1,
+    "unflagged_if_the_reader_decides": 15,
+    "unflagged_if_either_flags": 14
+   },
+   "gpt-5.6-sol": {
+    "unsettled": 117,
+    "caught": 107,
+    "missed": 10,
+    "no_verdict_unsettled": 0,
+    "caught_and_names_the_open_rule": 106,
+    "settled": 255,
+    "false_alarms": 19,
+    "no_verdict_settled": 0,
+    "draft_bare": 40,
+    "draft_bare_caught": 32,
+    "draft_flagged": 77,
+    "draft_flagged_kept": 75,
+    "draft_flag_removed": 2,
+    "unflagged_if_the_reader_decides": 10,
+    "unflagged_if_either_flags": 8
+   },
+   "gemini-3.6-flash": {
+    "unsettled": 117,
+    "caught": 91,
+    "missed": 26,
+    "no_verdict_unsettled": 0,
+    "caught_and_names_the_open_rule": 91,
+    "settled": 255,
+    "false_alarms": 6,
+    "no_verdict_settled": 0,
+    "draft_bare": 40,
+    "draft_bare_caught": 20,
+    "draft_flagged": 77,
+    "draft_flagged_kept": 71,
+    "draft_flag_removed": 6,
+    "unflagged_if_the_reader_decides": 26,
+    "unflagged_if_either_flags": 20
+   }
+  }
+ },
+ "by_reader": {
+  "claude-opus-4-8": {
+   "drafts": {
+    "unsettled": 234,
+    "caught": 207,
+    "missed": 27,
+    "no_verdict_unsettled": 0,
+    "caught_and_names_the_open_rule": 195,
+    "settled": 510,
+    "false_alarms": 50,
+    "no_verdict_settled": 0,
+    "draft_bare": 151,
+    "draft_bare_caught": 126,
+    "draft_flagged": 83,
+    "draft_flagged_kept": 81,
+    "draft_flag_removed": 2,
+    "unflagged_if_the_reader_decides": 27,
+    "unflagged_if_either_flags": 25
+   },
+   "nodraft": {
+    "unsettled": 117,
+    "caught": 96,
+    "missed": 21,
+    "no_verdict_unsettled": 0,
+    "caught_and_names_the_open_rule": 91,
+    "settled": 255,
+    "false_alarms": 11,
+    "no_verdict_settled": 0,
+    "draft_bare": 0,
+    "draft_bare_caught": 0,
+    "draft_flagged": 0,
+    "draft_flagged_kept": 0,
+    "draft_flag_removed": 0,
+    "unflagged_if_the_reader_decides": 21,
+    "unflagged_if_either_flags": 21
+   }
+  },
+  "gpt-5.6-sol": {
+   "drafts": {
+    "unsettled": 234,
+    "caught": 213,
+    "missed": 21,
+    "no_verdict_unsettled": 0,
+    "caught_and_names_the_open_rule": 209,
+    "settled": 510,
+    "false_alarms": 38,
+    "no_verdict_settled": 0,
+    "draft_bare": 151,
+    "draft_bare_caught": 132,
+    "draft_flagged": 83,
+    "draft_flagged_kept": 81,
+    "draft_flag_removed": 2,
+    "unflagged_if_the_reader_decides": 21,
+    "unflagged_if_either_flags": 19
+   },
+   "nodraft": {
+    "unsettled": 117,
+    "caught": 104,
+    "missed": 13,
+    "no_verdict_unsettled": 0,
+    "caught_and_names_the_open_rule": 103,
+    "settled": 255,
+    "false_alarms": 17,
+    "no_verdict_settled": 0,
+    "draft_bare": 0,
+    "draft_bare_caught": 0,
+    "draft_flagged": 0,
+    "draft_flagged_kept": 0,
+    "draft_flag_removed": 0,
+    "unflagged_if_the_reader_decides": 13,
+    "unflagged_if_either_flags": 13
+   }
+  },
+  "gemini-3.6-flash": {
+   "drafts": {
+    "unsettled": 234,
+    "caught": 168,
+    "missed": 66,
+    "no_verdict_unsettled": 0,
+    "caught_and_names_the_open_rule": 168,
+    "settled": 510,
+    "false_alarms": 11,
+    "no_verdict_settled": 0,
+    "draft_bare": 151,
+    "draft_bare_caught": 91,
+    "draft_flagged": 83,
+    "draft_flagged_kept": 77,
+    "draft_flag_removed": 6,
+    "unflagged_if_the_reader_decides": 66,
+    "unflagged_if_either_flags": 60
+   },
+   "nodraft": {
+    "unsettled": 117,
+    "caught": 81,
+    "missed": 36,
+    "no_verdict_unsettled": 0,
+    "caught_and_names_the_open_rule": 81,
+    "settled": 255,
+    "false_alarms": 7,
+    "no_verdict_settled": 0,
+    "draft_bare": 0,
+    "draft_bare_caught": 0,
+    "draft_flagged": 0,
+    "draft_flagged_kept": 0,
+    "draft_flag_removed": 0,
+    "unflagged_if_the_reader_decides": 36,
+    "unflagged_if_either_flags": 36
+   }
+  }
+ },
+ "own_and_other": {
+  "claude-opus-4-8": {
+   "own drafts": {
+    "unsettled": 78,
+    "caught": 66,
+    "missed": 12,
+    "no_verdict_unsettled": 0,
+    "caught_and_names_the_open_rule": 60,
+    "settled": 170,
+    "false_alarms": 14,
+    "no_verdict_settled": 0,
+    "draft_bare": 54,
+    "draft_bare_caught": 44,
+    "draft_flagged": 24,
+    "draft_flagged_kept": 22,
+    "draft_flag_removed": 2,
+    "unflagged_if_the_reader_decides": 12,
+    "unflagged_if_either_flags": 10
+   },
+   "other drafts": {
+    "unsettled": 156,
+    "caught": 141,
+    "missed": 15,
+    "no_verdict_unsettled": 0,
+    "caught_and_names_the_open_rule": 135,
+    "settled": 340,
+    "false_alarms": 36,
+    "no_verdict_settled": 0,
+    "draft_bare": 97,
+    "draft_bare_caught": 82,
+    "draft_flagged": 59,
+    "draft_flagged_kept": 59,
+    "draft_flag_removed": 0,
+    "unflagged_if_the_reader_decides": 15,
+    "unflagged_if_either_flags": 15
+   }
+  },
+  "gpt-5.6-sol": {
+   "own drafts": {
+    "unsettled": 78,
+    "caught": 71,
+    "missed": 7,
+    "no_verdict_unsettled": 0,
+    "caught_and_names_the_open_rule": 67,
+    "settled": 170,
+    "false_alarms": 12,
+    "no_verdict_settled": 0,
+    "draft_bare": 36,
+    "draft_bare_caught": 30,
+    "draft_flagged": 42,
+    "draft_flagged_kept": 41,
+    "draft_flag_removed": 1,
+    "unflagged_if_the_reader_decides": 7,
+    "unflagged_if_either_flags": 6
+   },
+   "other drafts": {
+    "unsettled": 156,
+    "caught": 142,
+    "missed": 14,
+    "no_verdict_unsettled": 0,
+    "caught_and_names_the_open_rule": 142,
+    "settled": 340,
+    "false_alarms": 26,
+    "no_verdict_settled": 0,
+    "draft_bare": 115,
+    "draft_bare_caught": 102,
+    "draft_flagged": 41,
+    "draft_flagged_kept": 40,
+    "draft_flag_removed": 1,
+    "unflagged_if_the_reader_decides": 14,
+    "unflagged_if_either_flags": 13
+   }
+  },
+  "gemini-3.6-flash": {
+   "own drafts": {
+    "unsettled": 78,
+    "caught": 57,
+    "missed": 21,
+    "no_verdict_unsettled": 0,
+    "caught_and_names_the_open_rule": 57,
+    "settled": 170,
+    "false_alarms": 4,
+    "no_verdict_settled": 0,
+    "draft_bare": 61,
+    "draft_bare_caught": 40,
+    "draft_flagged": 17,
+    "draft_flagged_kept": 17,
+    "draft_flag_removed": 0,
+    "unflagged_if_the_reader_decides": 21,
+    "unflagged_if_either_flags": 21
+   },
+   "other drafts": {
+    "unsettled": 156,
+    "caught": 111,
+    "missed": 45,
+    "no_verdict_unsettled": 0,
+    "caught_and_names_the_open_rule": 111,
+    "settled": 340,
+    "false_alarms": 7,
+    "no_verdict_settled": 0,
+    "draft_bare": 90,
+    "draft_bare_caught": 51,
+    "draft_flagged": 66,
+    "draft_flagged_kept": 60,
+    "draft_flag_removed": 6,
+    "unflagged_if_the_reader_decides": 45,
+    "unflagged_if_either_flags": 39
+   }
+  }
+ },
+ "by_fund": {
+  "swap": {
+   "nodraft": {
+    "unsettled": 216,
+    "caught": 155,
+    "missed": 61,
+    "no_verdict_unsettled": 0,
+    "caught_and_names_the_open_rule": 151,
+    "settled": 288,
+    "false_alarms": 22,
+    "no_verdict_settled": 0,
+    "draft_bare": 0,
+    "draft_bare_caught": 0,
+    "draft_flagged": 0,
+    "draft_flagged_kept": 0,
+    "draft_flag_removed": 0,
+    "unflagged_if_the_reader_decides": 61,
+    "unflagged_if_either_flags": 61
+   },
+   "plain drafts": {
+    "unsettled": 216,
+    "caught": 169,
+    "missed": 47,
+    "no_verdict_unsettled": 0,
+    "caught_and_names_the_open_rule": 156,
+    "settled": 288,
+    "false_alarms": 36,
+    "no_verdict_settled": 0,
+    "draft_bare": 213,
+    "draft_bare_caught": 167,
+    "draft_flagged": 3,
+    "draft_flagged_kept": 2,
+    "draft_flag_removed": 1,
+    "unflagged_if_the_reader_decides": 47,
+    "unflagged_if_either_flags": 46
+   },
+   "ask drafts": {
+    "unsettled": 216,
+    "caught": 171,
+    "missed": 45,
+    "no_verdict_unsettled": 0,
+    "caught_and_names_the_open_rule": 169,
+    "settled": 288,
+    "false_alarms": 30,
+    "no_verdict_settled": 0,
+    "draft_bare": 69,
+    "draft_bare_caught": 31,
+    "draft_flagged": 147,
+    "draft_flagged_kept": 140,
+    "draft_flag_removed": 7,
+    "unflagged_if_the_reader_decides": 45,
+    "unflagged_if_either_flags": 38
+   }
+  },
+  "options": {
+   "nodraft": {
+    "unsettled": 135,
+    "caught": 126,
+    "missed": 9,
+    "no_verdict_unsettled": 0,
+    "caught_and_names_the_open_rule": 124,
+    "settled": 477,
+    "false_alarms": 13,
+    "no_verdict_settled": 0,
+    "draft_bare": 0,
+    "draft_bare_caught": 0,
+    "draft_flagged": 0,
+    "draft_flagged_kept": 0,
+    "draft_flag_removed": 0,
+    "unflagged_if_the_reader_decides": 9,
+    "unflagged_if_either_flags": 9
+   },
+   "plain drafts": {
+    "unsettled": 135,
+    "caught": 119,
+    "missed": 16,
+    "no_verdict_unsettled": 0,
+    "caught_and_names_the_open_rule": 118,
+    "settled": 477,
+    "false_alarms": 12,
+    "no_verdict_settled": 0,
+    "draft_bare": 120,
+    "draft_bare_caught": 104,
+    "draft_flagged": 15,
+    "draft_flagged_kept": 15,
+    "draft_flag_removed": 0,
+    "unflagged_if_the_reader_decides": 16,
+    "unflagged_if_either_flags": 16
+   },
+   "ask drafts": {
+    "unsettled": 135,
+    "caught": 129,
+    "missed": 6,
+    "no_verdict_unsettled": 0,
+    "caught_and_names_the_open_rule": 129,
+    "settled": 477,
+    "false_alarms": 21,
+    "no_verdict_settled": 0,
+    "draft_bare": 51,
+    "draft_bare_caught": 47,
+    "draft_flagged": 84,
+    "draft_flagged_kept": 82,
+    "draft_flag_removed": 2,
+    "unflagged_if_the_reader_decides": 6,
+    "unflagged_if_either_flags": 4
+   }
+  },
+  "futures": {
+   "nodraft": {
+    "unsettled": 0,
+    "caught": 0,
+    "missed": 0,
+    "no_verdict_unsettled": 0,
+    "caught_and_names_the_open_rule": 0,
+    "settled": 0,
+    "false_alarms": 0,
+    "no_verdict_settled": 0,
+    "draft_bare": 0,
+    "draft_bare_caught": 0,
+    "draft_flagged": 0,
+    "draft_flagged_kept": 0,
+    "draft_flag_removed": 0,
+    "unflagged_if_the_reader_decides": 0,
+    "unflagged_if_either_flags": 0
+   },
+   "plain drafts": {
+    "unsettled": 0,
+    "caught": 0,
+    "missed": 0,
+    "no_verdict_unsettled": 0,
+    "caught_and_names_the_open_rule": 0,
+    "settled": 0,
+    "false_alarms": 0,
+    "no_verdict_settled": 0,
+    "draft_bare": 0,
+    "draft_bare_caught": 0,
+    "draft_flagged": 0,
+    "draft_flagged_kept": 0,
+    "draft_flag_removed": 0,
+    "unflagged_if_the_reader_decides": 0,
+    "unflagged_if_either_flags": 0
+   },
+   "ask drafts": {
+    "unsettled": 0,
+    "caught": 0,
+    "missed": 0,
+    "no_verdict_unsettled": 0,
+    "caught_and_names_the_open_rule": 0,
+    "settled": 0,
+    "false_alarms": 0,
+    "no_verdict_settled": 0,
+    "draft_bare": 0,
+    "draft_bare_caught": 0,
+    "draft_flagged": 0,
+    "draft_flagged_kept": 0,
+    "draft_flag_removed": 0,
+    "unflagged_if_the_reader_decides": 0,
+    "unflagged_if_either_flags": 0
+   }
+  }
+ },
+ "false_alarms_by_kind": {
+  "all readers": {
+   "same to the cent": 65,
+   "other": 41,
+   "collateral line": 28
+  },
+  "claude-opus-4-8": {
+   "same to the cent": 26,
+   "other": 31,
+   "collateral line": 4
+  },
+  "gpt-5.6-sol": {
+   "collateral line": 24,
+   "same to the cent": 22,
+   "other": 9
+  },
+  "gemini-3.6-flash": {
+   "same to the cent": 17,
+   "other": 1
+  }
+ },
+ "settled_verdicts": 2295,
+ "unsettled_verdicts": 1053,
+ "all_readings": {
+  "all readers": {
+   "unsettled": 1053,
+   "caught": 869,
+   "missed": 184,
+   "no_verdict_unsettled": 0,
+   "caught_and_names_the_open_rule": 847,
+   "settled": 2295,
+   "false_alarms": 134,
+   "no_verdict_settled": 0,
+   "draft_bare": 453,
+   "draft_bare_caught": 349,
+   "draft_flagged": 249,
+   "draft_flagged_kept": 239,
+   "draft_flag_removed": 10,
+   "unflagged_if_the_reader_decides": 184,
+   "unflagged_if_either_flags": 174
+  },
+  "claude-opus-4-8": {
+   "unsettled": 351,
+   "caught": 303,
+   "missed": 48,
+   "no_verdict_unsettled": 0,
+   "caught_and_names_the_open_rule": 286,
+   "settled": 765,
+   "false_alarms": 61,
+   "no_verdict_settled": 0,
+   "draft_bare": 151,
+   "draft_bare_caught": 126,
+   "draft_flagged": 83,
+   "draft_flagged_kept": 81,
+   "draft_flag_removed": 2,
+   "unflagged_if_the_reader_decides": 48,
+   "unflagged_if_either_flags": 46
+  },
+  "gpt-5.6-sol": {
+   "unsettled": 351,
+   "caught": 317,
+   "missed": 34,
+   "no_verdict_unsettled": 0,
+   "caught_and_names_the_open_rule": 312,
+   "settled": 765,
+   "false_alarms": 55,
+   "no_verdict_settled": 0,
+   "draft_bare": 151,
+   "draft_bare_caught": 132,
+   "draft_flagged": 83,
+   "draft_flagged_kept": 81,
+   "draft_flag_removed": 2,
+   "unflagged_if_the_reader_decides": 34,
+   "unflagged_if_either_flags": 32
+  },
+  "gemini-3.6-flash": {
+   "unsettled": 351,
+   "caught": 249,
+   "missed": 102,
+   "no_verdict_unsettled": 0,
+   "caught_and_names_the_open_rule": 249,
+   "settled": 765,
+   "false_alarms": 18,
+   "no_verdict_settled": 0,
+   "draft_bare": 151,
+   "draft_bare_caught": 91,
+   "draft_flagged": 83,
+   "draft_flagged_kept": 77,
+   "draft_flag_removed": 6,
+   "unflagged_if_the_reader_decides": 102,
+   "unflagged_if_either_flags": 96
+  }
+ },
+ "with_a_draft": {
+  "all readers": {
+   "unsettled": 702,
+   "caught": 588,
+   "missed": 114,
+   "no_verdict_unsettled": 0,
+   "caught_and_names_the_open_rule": 572,
+   "settled": 1530,
+   "false_alarms": 99,
+   "no_verdict_settled": 0,
+   "draft_bare": 453,
+   "draft_bare_caught": 349,
+   "draft_flagged": 249,
+   "draft_flagged_kept": 239,
+   "draft_flag_removed": 10,
+   "unflagged_if_the_reader_decides": 114,
+   "unflagged_if_either_flags": 104
+  },
+  "claude-opus-4-8": {
+   "unsettled": 234,
+   "caught": 207,
+   "missed": 27,
+   "no_verdict_unsettled": 0,
+   "caught_and_names_the_open_rule": 195,
+   "settled": 510,
+   "false_alarms": 50,
+   "no_verdict_settled": 0,
+   "draft_bare": 151,
+   "draft_bare_caught": 126,
+   "draft_flagged": 83,
+   "draft_flagged_kept": 81,
+   "draft_flag_removed": 2,
+   "unflagged_if_the_reader_decides": 27,
+   "unflagged_if_either_flags": 25
+  },
+  "gpt-5.6-sol": {
+   "unsettled": 234,
+   "caught": 213,
+   "missed": 21,
+   "no_verdict_unsettled": 0,
+   "caught_and_names_the_open_rule": 209,
+   "settled": 510,
+   "false_alarms": 38,
+   "no_verdict_settled": 0,
+   "draft_bare": 151,
+   "draft_bare_caught": 132,
+   "draft_flagged": 83,
+   "draft_flagged_kept": 81,
+   "draft_flag_removed": 2,
+   "unflagged_if_the_reader_decides": 21,
+   "unflagged_if_either_flags": 19
+  },
+  "gemini-3.6-flash": {
+   "unsettled": 234,
+   "caught": 168,
+   "missed": 66,
+   "no_verdict_unsettled": 0,
+   "caught_and_names_the_open_rule": 168,
+   "settled": 510,
+   "false_alarms": 11,
+   "no_verdict_settled": 0,
+   "draft_bare": 151,
+   "draft_bare_caught": 91,
+   "draft_flagged": 83,
+   "draft_flagged_kept": 77,
+   "draft_flag_removed": 6,
+   "unflagged_if_the_reader_decides": 66,
+   "unflagged_if_either_flags": 60
+  }
+ },
+ "by_kind_of_gap": {
+  "when swap income is accrued": {
+   "verdicts": 27,
+   "caught": 1
+  },
+  "how the transaction fee is booked": {
+   "verdicts": 81,
+   "caught": 15
+  },
+  "what a reduction of the swap realizes": {
+   "verdicts": 81,
+   "caught": 48
+  },
+  "what a reset or payment date does": {
+   "verdicts": 81,
+   "caught": 57
+  },
+  "what an increase of the swap does to the gain so far": {
+   "verdicts": 27,
+   "caught": 19
+  },
+  "day counts and day bases": {
+   "verdicts": 459,
+   "caught": 453
+  },
+  "lot order, basket rounding, correction threshold, split of the reference": {
+   "verdicts": 324,
+   "caught": 303
+  }
+ },
+ "by_group_of_gap": {
+  "accounting treatment": {
+   "verdicts": 297,
+   "caught": 140,
+   "with_a_draft": {
+    "verdicts": 198,
+    "caught": 101
+   },
+   "without_a_draft": {
+    "verdicts": 99,
+    "caught": 39
+   }
+  },
+  "terms and parameters": {
+   "verdicts": 756,
+   "caught": 729,
+   "with_a_draft": {
+    "verdicts": 504,
+    "caught": 487
+   },
+   "without_a_draft": {
+    "verdicts": 252,
+    "caught": 242
+   }
+  }
+ },
+ "by_drafter_plain": {
+  "claude-opus-4-8": {
+   "unsettled": 117,
+   "caught": 92,
+   "missed": 25,
+   "no_verdict_unsettled": 0,
+   "caught_and_names_the_open_rule": 86,
+   "settled": 255,
+   "false_alarms": 17,
+   "no_verdict_settled": 0,
+   "draft_bare": 111,
+   "draft_bare_caught": 87,
+   "draft_flagged": 6,
+   "draft_flagged_kept": 5,
+   "draft_flag_removed": 1,
+   "unflagged_if_the_reader_decides": 25,
+   "unflagged_if_either_flags": 24
+  },
+  "gpt-5.6-sol": {
+   "unsettled": 117,
+   "caught": 94,
+   "missed": 23,
+   "no_verdict_unsettled": 0,
+   "caught_and_names_the_open_rule": 90,
+   "settled": 255,
+   "false_alarms": 9,
+   "no_verdict_settled": 0,
+   "draft_bare": 105,
+   "draft_bare_caught": 82,
+   "draft_flagged": 12,
+   "draft_flagged_kept": 12,
+   "draft_flag_removed": 0,
+   "unflagged_if_the_reader_decides": 23,
+   "unflagged_if_either_flags": 23
+  },
+  "gemini-3.6-flash": {
+   "unsettled": 117,
+   "caught": 102,
+   "missed": 15,
+   "no_verdict_unsettled": 0,
+   "caught_and_names_the_open_rule": 98,
+   "settled": 255,
+   "false_alarms": 22,
+   "no_verdict_settled": 0,
+   "draft_bare": 117,
+   "draft_bare_caught": 102,
+   "draft_flagged": 0,
+   "draft_flagged_kept": 0,
+   "draft_flag_removed": 0,
+   "unflagged_if_the_reader_decides": 15,
+   "unflagged_if_either_flags": 15
+  }
+ },
+ "by_drafter_ask": {
+  "claude-opus-4-8": {
+   "unsettled": 117,
+   "caught": 96,
+   "missed": 21,
+   "no_verdict_unsettled": 0,
+   "caught_and_names_the_open_rule": 96,
+   "settled": 255,
+   "false_alarms": 12,
+   "no_verdict_settled": 0,
+   "draft_bare": 51,
+   "draft_bare_caught": 33,
+   "draft_flagged": 66,
+   "draft_flagged_kept": 63,
+   "draft_flag_removed": 3,
+   "unflagged_if_the_reader_decides": 21,
+   "unflagged_if_either_flags": 18
+  },
+  "gpt-5.6-sol": {
+   "unsettled": 117,
+   "caught": 108,
+   "missed": 9,
+   "no_verdict_unsettled": 0,
+   "caught_and_names_the_open_rule": 106,
+   "settled": 255,
+   "false_alarms": 28,
+   "no_verdict_settled": 0,
+   "draft_bare": 3,
+   "draft_bare_caught": 0,
+   "draft_flagged": 114,
+   "draft_flagged_kept": 108,
+   "draft_flag_removed": 6,
+   "unflagged_if_the_reader_decides": 9,
+   "unflagged_if_either_flags": 3
+  },
+  "gemini-3.6-flash": {
+   "unsettled": 117,
+   "caught": 96,
+   "missed": 21,
+   "no_verdict_unsettled": 0,
+   "caught_and_names_the_open_rule": 96,
+   "settled": 255,
+   "false_alarms": 11,
+   "no_verdict_settled": 0,
+   "draft_bare": 66,
+   "draft_bare_caught": 45,
+   "draft_flagged": 51,
+   "draft_flagged_kept": 51,
+   "draft_flag_removed": 0,
+   "unflagged_if_the_reader_decides": 21,
+   "unflagged_if_either_flags": 21
+  }
+ },
+ "three_readers_on_one_draft": {
+  "fields_read_by_all_three": 744,
+  "unsettled": 234,
+  "caught_by_all_three": 166,
+  "caught_by_two_or_more": 202,
+  "caught_by_at_least_one": 220,
+  "caught_by_none": 14,
+  "settled": 510,
+  "flagged_by_all_three": 11,
+  "flagged_by_two_or_more": 18,
+  "flagged_by_at_least_one": 70,
+  "all_three_agree": 631
+ },
+ "repeated_without_a_draft": {
+  "swap/claude-opus-4-8": {
+   "runs": 3,
+   "fields": 56,
+   "same_verdict_in_every_run": 50,
+   "unsettled": 24,
+   "caught_in_every_run": 16,
+   "caught_in_some_runs": 4,
+   "caught_in_no_run": 4,
+   "settled": 32,
+   "flagged_in_every_run": 1,
+   "flagged_in_some_runs": 2
+  },
+  "swap/gpt-5.6-sol": {
+   "runs": 3,
+   "fields": 56,
+   "same_verdict_in_every_run": 54,
+   "unsettled": 24,
+   "caught_in_every_run": 20,
+   "caught_in_some_runs": 1,
+   "caught_in_no_run": 3,
+   "settled": 32,
+   "flagged_in_every_run": 4,
+   "flagged_in_some_runs": 1
+  },
+  "swap/gemini-3.6-flash": {
+   "runs": 3,
+   "fields": 56,
+   "same_verdict_in_every_run": 53,
+   "unsettled": 24,
+   "caught_in_every_run": 12,
+   "caught_in_some_runs": 3,
+   "caught_in_no_run": 9,
+   "settled": 32,
+   "flagged_in_every_run": 1,
+   "flagged_in_some_runs": 0
+  },
+  "options/claude-opus-4-8": {
+   "runs": 3,
+   "fields": 68,
+   "same_verdict_in_every_run": 66,
+   "unsettled": 15,
+   "caught_in_every_run": 14,
+   "caught_in_some_runs": 0,
+   "caught_in_no_run": 1,
+   "settled": 53,
+   "flagged_in_every_run": 1,
+   "flagged_in_some_runs": 2
+  },
+  "options/gpt-5.6-sol": {
+   "runs": 3,
+   "fields": 68,
+   "same_verdict_in_every_run": 68,
+   "unsettled": 15,
+   "caught_in_every_run": 14,
+   "caught_in_some_runs": 0,
+   "caught_in_no_run": 1,
+   "settled": 53,
+   "flagged_in_every_run": 1,
+   "flagged_in_some_runs": 0
+  },
+  "options/gemini-3.6-flash": {
+   "runs": 3,
+   "fields": 68,
+   "same_verdict_in_every_run": 67,
+   "unsettled": 15,
+   "caught_in_every_run": 14,
+   "caught_in_some_runs": 0,
+   "caught_in_no_run": 1,
+   "settled": 53,
+   "flagged_in_every_run": 1,
+   "flagged_in_some_runs": 1
+  }
+ },
+ "by_open_rule": {
+  "swap": {
+   "R05": {
+    "draft": {
+     "claude-opus-4-8": {
+      "caught": 54,
+      "n": 54
+     },
+     "gpt-5.6-sol": {
+      "caught": 54,
+      "n": 54
+     },
+     "gemini-3.6-flash": {
+      "caught": 54,
+      "n": 54
+     }
+    },
+    "nodraft": {
+     "claude-opus-4-8": {
+      "caught": 27,
+      "n": 27
+     },
+     "gpt-5.6-sol": {
+      "caught": 27,
+      "n": 27
+     },
+     "gemini-3.6-flash": {
+      "caught": 27,
+      "n": 27
+     }
+    }
+   },
+   "R06": {
+    "draft": {
+     "claude-opus-4-8": {
+      "caught": 18,
+      "n": 18
+     },
+     "gpt-5.6-sol": {
+      "caught": 18,
+      "n": 18
+     },
+     "gemini-3.6-flash": {
+      "caught": 18,
+      "n": 18
+     }
+    },
+    "nodraft": {
+     "claude-opus-4-8": {
+      "caught": 9,
+      "n": 9
+     },
+     "gpt-5.6-sol": {
+      "caught": 9,
+      "n": 9
+     },
+     "gemini-3.6-flash": {
+      "caught": 9,
+      "n": 9
+     }
+    }
+   },
+   "R07": {
+    "draft": {
+     "claude-opus-4-8": {
+      "caught": 12,
+      "n": 12
+     },
+     "gpt-5.6-sol": {
+      "caught": 12,
+      "n": 12
+     },
+     "gemini-3.6-flash": {
+      "caught": 12,
+      "n": 12
+     }
+    },
+    "nodraft": {
+     "claude-opus-4-8": {
+      "caught": 6,
+      "n": 6
+     },
+     "gpt-5.6-sol": {
+      "caught": 6,
+      "n": 6
+     },
+     "gemini-3.6-flash": {
+      "caught": 6,
+      "n": 6
+     }
+    }
+   },
+   "R19": {
+    "draft": {
+     "claude-opus-4-8": {
+      "caught": 0,
+      "n": 6
+     },
+     "gpt-5.6-sol": {
+      "caught": 0,
+      "n": 6
+     },
+     "gemini-3.6-flash": {
+      "caught": 0,
+      "n": 6
+     }
+    },
+    "nodraft": {
+     "claude-opus-4-8": {
+      "caught": 1,
+      "n": 3
+     },
+     "gpt-5.6-sol": {
+      "caught": 0,
+      "n": 3
+     },
+     "gemini-3.6-flash": {
+      "caught": 0,
+      "n": 3
+     }
+    }
+   },
+   "R21": {
+    "draft": {
+     "claude-opus-4-8": {
+      "caught": 6,
+      "n": 6
+     },
+     "gpt-5.6-sol": {
+      "caught": 6,
+      "n": 6
+     },
+     "gemini-3.6-flash": {
+      "caught": 1,
+      "n": 6
+     }
+    },
+    "nodraft": {
+     "claude-opus-4-8": {
+      "caught": 3,
+      "n": 3
+     },
+     "gpt-5.6-sol": {
+      "caught": 3,
+      "n": 3
+     },
+     "gemini-3.6-flash": {
+      "caught": 0,
+      "n": 3
+     }
+    }
+   },
+   "R10": {
+    "draft": {
+     "claude-opus-4-8": {
+      "caught": 10,
+      "n": 18
+     },
+     "gpt-5.6-sol": {
+      "caught": 17,
+      "n": 18
+     },
+     "gemini-3.6-flash": {
+      "caught": 8,
+      "n": 18
+     }
+    },
+    "nodraft": {
+     "claude-opus-4-8": {
+      "caught": 1,
+      "n": 9
+     },
+     "gpt-5.6-sol": {
+      "caught": 9,
+      "n": 9
+     },
+     "gemini-3.6-flash": {
+      "caught": 3,
+      "n": 9
+     }
+    }
+   },
+   "R11": {
+    "draft": {
+     "claude-opus-4-8": {
+      "caught": 14,
+      "n": 18
+     },
+     "gpt-5.6-sol": {
+      "caught": 18,
+      "n": 18
+     },
+     "gemini-3.6-flash": {
+      "caught": 6,
+      "n": 18
+     }
+    },
+    "nodraft": {
+     "claude-opus-4-8": {
+      "caught": 8,
+      "n": 9
+     },
+     "gpt-5.6-sol": {
+      "caught": 8,
+      "n": 9
+     },
+     "gemini-3.6-flash": {
+      "caught": 3,
+      "n": 9
+     }
+    }
+   },
+   "R18": {
+    "draft": {
+     "claude-opus-4-8": {
+      "caught": 8,
+      "n": 12
+     },
+     "gpt-5.6-sol": {
+      "caught": 4,
+      "n": 12
+     },
+     "gemini-3.6-flash": {
+      "caught": 0,
+      "n": 12
+     }
+    },
+    "nodraft": {
+     "claude-opus-4-8": {
+      "caught": 0,
+      "n": 6
+     },
+     "gpt-5.6-sol": {
+      "caught": 0,
+      "n": 6
+     },
+     "gemini-3.6-flash": {
+      "caught": 0,
+      "n": 6
+     }
+    }
+   },
+   "R20": {
+    "draft": {
+     "claude-opus-4-8": {
+      "caught": 30,
+      "n": 30
+     },
+     "gpt-5.6-sol": {
+      "caught": 30,
+      "n": 30
+     },
+     "gemini-3.6-flash": {
+      "caught": 30,
+      "n": 30
+     }
+    },
+    "nodraft": {
+     "claude-opus-4-8": {
+      "caught": 15,
+      "n": 15
+     },
+     "gpt-5.6-sol": {
+      "caught": 15,
+      "n": 15
+     },
+     "gemini-3.6-flash": {
+      "caught": 15,
+      "n": 15
+     }
+    }
+   },
+   "R15": {
+    "draft": {
+     "claude-opus-4-8": {
+      "caught": 5,
+      "n": 6
+     },
+     "gpt-5.6-sol": {
+      "caught": 6,
+      "n": 6
+     },
+     "gemini-3.6-flash": {
+      "caught": 6,
+      "n": 6
+     }
+    },
+    "nodraft": {
+     "claude-opus-4-8": {
+      "caught": 3,
+      "n": 3
+     },
+     "gpt-5.6-sol": {
+      "caught": 3,
+      "n": 3
+     },
+     "gemini-3.6-flash": {
+      "caught": 3,
+      "n": 3
+     }
+    }
+   },
+   "R16": {
+    "draft": {
+     "claude-opus-4-8": {
+      "caught": 18,
+      "n": 18
+     },
+     "gpt-5.6-sol": {
+      "caught": 18,
+      "n": 18
+     },
+     "gemini-3.6-flash": {
+      "caught": 9,
+      "n": 18
+     }
+    },
+    "nodraft": {
+     "claude-opus-4-8": {
+      "caught": 8,
+      "n": 9
+     },
+     "gpt-5.6-sol": {
+      "caught": 9,
+      "n": 9
+     },
+     "gemini-3.6-flash": {
+      "caught": 0,
+      "n": 9
+     }
+    }
+   }
+  },
+  "options": {
+   "O18": {
+    "draft": {
+     "claude-opus-4-8": {
+      "caught": 24,
+      "n": 24
+     },
+     "gpt-5.6-sol": {
+      "caught": 24,
+      "n": 24
+     },
+     "gemini-3.6-flash": {
+      "caught": 20,
+      "n": 24
+     }
+    },
+    "nodraft": {
+     "claude-opus-4-8": {
+      "caught": 12,
+      "n": 12
+     },
+     "gpt-5.6-sol": {
+      "caught": 12,
+      "n": 12
+     },
+     "gemini-3.6-flash": {
+      "caught": 12,
+      "n": 12
+     }
+    }
+   },
+   "O20": {
+    "draft": {
+     "claude-opus-4-8": {
+      "caught": 24,
+      "n": 24
+     },
+     "gpt-5.6-sol": {
+      "caught": 24,
+      "n": 24
+     },
+     "gemini-3.6-flash": {
+      "caught": 20,
+      "n": 24
+     }
+    },
+    "nodraft": {
+     "claude-opus-4-8": {
+      "caught": 12,
+      "n": 12
+     },
+     "gpt-5.6-sol": {
+      "caught": 12,
+      "n": 12
+     },
+     "gemini-3.6-flash": {
+      "caught": 12,
+      "n": 12
+     }
+    }
+   },
+   "O24": {
+    "draft": {
+     "claude-opus-4-8": {
+      "caught": 3,
+      "n": 6
+     },
+     "gpt-5.6-sol": {
+      "caught": 0,
+      "n": 6
+     },
+     "gemini-3.6-flash": {
+      "caught": 0,
+      "n": 6
+     }
+    },
+    "nodraft": {
+     "claude-opus-4-8": {
+      "caught": 0,
+      "n": 3
+     },
+     "gpt-5.6-sol": {
+      "caught": 0,
+      "n": 3
+     },
+     "gemini-3.6-flash": {
+      "caught": 0,
+      "n": 3
+     }
+    }
+   },
+   "O10": {
+    "draft": {
+     "claude-opus-4-8": {
+      "caught": 12,
+      "n": 12
+     },
+     "gpt-5.6-sol": {
+      "caught": 12,
+      "n": 12
+     },
+     "gemini-3.6-flash": {
+      "caught": 12,
+      "n": 12
+     }
+    },
+    "nodraft": {
+     "claude-opus-4-8": {
+      "caught": 6,
+      "n": 6
+     },
+     "gpt-5.6-sol": {
+      "caught": 6,
+      "n": 6
+     },
+     "gemini-3.6-flash": {
+      "caught": 6,
+      "n": 6
+     }
+    }
+   },
+   "O16": {
+    "draft": {
+     "claude-opus-4-8": {
+      "caught": 12,
+      "n": 12
+     },
+     "gpt-5.6-sol": {
+      "caught": 12,
+      "n": 12
+     },
+     "gemini-3.6-flash": {
+      "caught": 12,
+      "n": 12
+     }
+    },
+    "nodraft": {
+     "claude-opus-4-8": {
+      "caught": 6,
+      "n": 6
+     },
+     "gpt-5.6-sol": {
+      "caught": 6,
+      "n": 6
+     },
+     "gemini-3.6-flash": {
+      "caught": 6,
+      "n": 6
+     }
+    }
+   },
+   "O21": {
+    "draft": {
+     "claude-opus-4-8": {
+      "caught": 6,
+      "n": 6
+     },
+     "gpt-5.6-sol": {
+      "caught": 6,
+      "n": 6
+     },
+     "gemini-3.6-flash": {
+      "caught": 6,
+      "n": 6
+     }
+    },
+    "nodraft": {
+     "claude-opus-4-8": {
+      "caught": 3,
+      "n": 3
+     },
+     "gpt-5.6-sol": {
+      "caught": 3,
+      "n": 3
+     },
+     "gemini-3.6-flash": {
+      "caught": 3,
+      "n": 3
+     }
+    }
+   },
+   "O22": {
+    "draft": {
+     "claude-opus-4-8": {
+      "caught": 17,
+      "n": 18
+     },
+     "gpt-5.6-sol": {
+      "caught": 18,
+      "n": 18
+     },
+     "gemini-3.6-flash": {
+      "caught": 18,
+      "n": 18
+     }
+    },
+    "nodraft": {
+     "claude-opus-4-8": {
+      "caught": 9,
+      "n": 9
+     },
+     "gpt-5.6-sol": {
+      "caught": 9,
+      "n": 9
+     },
+     "gemini-3.6-flash": {
+      "caught": 9,
+      "n": 9
+     }
+    }
+   }
+  }
+ },
+ "the_rule_behind_the_real_restatement": {
+  "readings": 27,
+  "caught": 1
+ },
+ "options_readings_that_name_the_other_pricing_rule": {
+  "readings": 27,
+  "naming": 0
+ },
+ "repeated_without_a_draft_total": {
+  "fields": 372,
+  "same_verdict_in_every_run": 358
+ },
+ "options_pricing_fields": {
+  "verdicts": 216,
+  "marked_not_supported": 5,
+  "of_which_mention_another_document": 0
+ }
+}

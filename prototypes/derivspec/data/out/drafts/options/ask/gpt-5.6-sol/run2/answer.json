@@ -1,0 +1,612 @@
+{
+ "requirements": [
+  {
+   "id": "Q1",
+   "text": "On every day the NYSE is open, calculate the Fund's NAV as of the close of regular NYSE trading, or as of the actual early close when applicable.",
+   "basis": "document",
+   "quote": "USBFS... calculates the Fund\u2019s NAV at the close of regular trading (ordinarily 4:00 p.m. E.S.T.) every day the New York Stock Exchange is open... If the NYSE closes early on a valuation day, the Funds shall determine NAV as of that time.",
+   "assumption_or_question": ""
+  },
+  {
+   "id": "Q2",
+   "text": "Maintain each FLEX option by underlying ETF, call or put, purchased or written status, European exercise style, strike, expiration date, contract quantity, contract multiplier, trade-date cost or premium, and current value. For these tests, apply a multiplier of 100 shares per contract.",
+   "basis": "document",
+   "quote": "The FLEX Options in which the Fund invests are all European style option contracts... Footnotes to the options: Exchange-traded. 100 shares per contract.",
+   "assumption_or_question": ""
+  },
+  {
+   "id": "Q3",
+   "text": "Record option purchases on trade date as investments at premium paid, including capitalizable transaction costs, and subsequently mark them to current value.",
+   "basis": "document",
+   "quote": "Investment transactions are recorded on the trade date... When the Funds purchase an option, an amount equal to the premium paid by the Funds are recorded as an investment and is subsequently adjusted to the current value of the option purchased.",
+   "assumption_or_question": ""
+  },
+  {
+   "id": "Q4",
+   "text": "Record written options on trade date as liabilities at premium received and subsequently mark the liabilities to current value. Do not offset purchased-option assets against written-option liabilities on the balance sheet.",
+   "basis": "document",
+   "quote": "When the Funds write an option, an amount equal to the premium received by the Funds are recorded as a liability and is subsequently adjusted to the current value of the option written... All of the FLEX Option contracts held by the Funds are fully funded and cash settled, therefore balance sheet offsetting under U.S. GAAP does not apply.",
+   "assumption_or_question": ""
+  },
+  {
+   "id": "Q5",
+   "text": "Value a FLEX option at its same-day market trading price when one exists; otherwise use the exchange's model-based price at the exchange's official close.",
+   "basis": "document",
+   "quote": "FLEX Options listed on an exchange will typically be valued at a model-based price provided by the exchange at the official close of that exchange\u2019s trading day. However, when the Fund\u2019s option has a same-day market trading price, this same-day market trading price will be used... instead of the exchange\u2019s model-based price.",
+   "assumption_or_question": ""
+  },
+  {
+   "id": "Q6",
+   "text": "If the exchange does not provide a FLEX model price, use the backup third-party provider's model price. If an applicable pricing vendor is unavailable, obtain a value from Innovator as Valuation Designee under the valuation procedures.",
+   "basis": "document",
+   "quote": "If the exchange on which the option is traded is unable to provide a model price, model-based FLEX Options prices will additionally be provided by a backup third-party pricing provider... If either pricing vendor is not available to provide a model price for that day, the value of a FLEX option will be determined by Innovator as Valuation Designee in accordance with the Valuation Procedures.",
+   "assumption_or_question": ""
+  },
+  {
+   "id": "Q7",
+   "text": "Obtain the client's approved operational definition of 'same-day market trading price,' including whether the Fund's own trade controls, which trade controls when there are multiple trades, and whether trades occurring before or after an exchange model or settlement publication are treated differently.",
+   "basis": "question",
+   "quote": "When the Fund\u2019s option has a same-day market trading price, this same-day market trading price will be used...",
+   "assumption_or_question": "Ask the client and Valuation Designee for the approved price-source hierarchy and multiple-trade convention before configuring production valuation."
+  },
+  {
+   "id": "Q8",
+   "text": "When the same FLEX option appears in both an all-cash basket and an in-kind basket on the same trading day, use the trade price for both instances instead of using a model price for the in-kind transaction.",
+   "basis": "document",
+   "quote": "In instances where in the same trading day, a particular FLEX Option is represented in an all-cash basket... as well as in an in-kind basket... the Fund will default to use the trade price for both instances, rather than the model price otherwise available for the in-kind transaction.",
+   "assumption_or_question": ""
+  },
+  {
+   "id": "Q9",
+   "text": "Calculate purchased-option unrealized gain or loss as current value less identified cost. Calculate written-option unrealized gain or loss as premium received less the current liability value. Post daily changes through the Fund's derivative gain or loss accounts.",
+   "basis": "document",
+   "quote": "When the Funds purchase an option... [it] is subsequently adjusted to the current value... When the Funds write an option... [the liability] is subsequently adjusted to the current value... The Trust determines the gain or loss realized from investment transactions on the basis of identified cost.",
+   "assumption_or_question": ""
+  },
+  {
+   "id": "Q10",
+   "text": "For a purchased option sold or closed before expiration, remove the identified cost of the contracts closed and recognize proceeds less that cost and applicable brokerage commission as realized gain or loss. For a written option bought back, recognize allocated premium received less repurchase price and brokerage commission as realized gain or loss.",
+   "basis": "document",
+   "quote": "If an option expires... or if the Funds enter into a closing sale transaction, a gain or loss is realized... The difference between the premium and the amount paid on effecting a closing purchase transaction, including brokerage commissions, is also treated as a realized gain, or... realized loss.",
+   "assumption_or_question": ""
+  },
+  {
+   "id": "Q11",
+   "text": "Configure identified-lot processing for partial option disposals and require a valid lot election or approved default method when more than one opening lot exists.",
+   "basis": "question",
+   "quote": "The Trust determines the gain or loss realized from investment transactions on the basis of identified cost.",
+   "assumption_or_question": "Ask the client which lot-selection method applies when no specific lot instruction is received; identified cost does not itself specify FIFO, LIFO, highest cost, or another default."
+  },
+  {
+   "id": "Q12",
+   "text": "At expiration, cash-settle each option using its intrinsic value: call equals max(reference closing price minus strike, zero) times the applicable multiplier and contracts; put equals max(strike minus reference closing price, zero) times the multiplier and contracts. Purchased options generate cash receivable; written options generate cash payable. Remove all expired positions and recognize realized gain or loss against their cost or premium.",
+   "basis": "document",
+   "quote": "Cash-settled option contracts give the holder the right to receive an amount (or owe an amount) of cash... The amount of cash is equal to the difference between the closing price of the Reference Asset\u2019s price return and the exercise price of the option contract times a specified multiple... Option contracts that expire unexercised have no value.",
+   "assumption_or_question": ""
+  },
+  {
+   "id": "Q13",
+   "text": "At the conclusion of an Outcome Period, settle all expiring FLEX options in cash, close the old series, and book the new approximately one-year FLEX series on its trade date as the next Outcome Period begins.",
+   "basis": "document",
+   "quote": "Upon conclusion of the Outcome Period, the Fund will receive the cash value of all the FLEX Options it held for the prior Outcome Period. It will then invest in a new series of FLEX Options with an expiration date of approximately one year in the future.",
+   "assumption_or_question": ""
+  },
+  {
+   "id": "Q14",
+   "text": "Do not accrue dividend income merely because the reference ETF goes ex-dividend when the Fund holds only FLEX options. Mark the options to their ex-date values, because the strategy receives price return rather than the reference ETF's dividends.",
+   "basis": "document",
+   "quote": "If the Fund invests solely in FLEX Options that reference the Underlying ETF... returns will be provided based on changes in the share price of the Underlying ETF, and the Fund will not receive the benefit of any dividends.",
+   "assumption_or_question": ""
+  },
+  {
+   "id": "Q15",
+   "text": "Accrue the 0.79% annual unitary management fee daily based on average daily net assets and record the unpaid accrual as a liability; settle it monthly.",
+   "basis": "document",
+   "quote": "The Fund has agreed to pay an annual unitary management fee... equal to 0.79% of its average daily net assets... pay monthly the Adviser a unitary fee calculated daily based on the average daily net assets... at the annual rate of 0.79%.",
+   "assumption_or_question": ""
+  },
+  {
+   "id": "Q16",
+   "text": "Obtain and configure the fee accrual day-count basis and the precise definition of average daily net assets, including treatment of weekends, holidays, subscriptions, redemptions, and same-day market movements.",
+   "basis": "question",
+   "quote": "A unitary fee calculated daily based on the average daily net assets... at the annual rate of 0.79%.",
+   "assumption_or_question": "The documents do not specify a 365/366-day convention or the intraday averaging method."
+  },
+  {
+   "id": "Q17",
+   "text": "Accrue MMDA interest using the applicable daily variable rate and the custodian's approved balance and day-count convention, including calendar-day accrual over weekends.",
+   "basis": "document",
+   "quote": "The MMDA will bear interest at a variable rate that is determined based on market conditions and is subject to change daily.",
+   "assumption_or_question": ""
+  },
+  {
+   "id": "Q18",
+   "text": "Obtain the MMDA's contractual day-count basis, compounding convention, rate-effective time, and treatment of weekends and holidays from the custodian before production configuration.",
+   "basis": "question",
+   "quote": "The MMDA will bear interest at a variable rate...",
+   "assumption_or_question": "The public documents do not specify these interest-calculation conventions."
+  },
+  {
+   "id": "Q19",
+   "text": "Calculate net assets as total current assets, including accrued income, less all liabilities. Divide by shares outstanding and publish NAV per share rounded to the nearest cent.",
+   "basis": "document",
+   "quote": "The NAV for one Share... is calculated by taking the market price of the Fund\u2019s total assets, including any interest or dividends accrued but not yet collected, less all liabilities, and dividing such amount by the total number of Shares outstanding. The result, rounded to the nearest cent is the NAV per Share.",
+   "assumption_or_question": ""
+  },
+  {
+   "id": "Q20",
+   "text": "Process Creation Unit orders at the applicable NAV. For creations, issue shares and receive the NAV consideration plus the transaction fee. For redemptions, cancel shares and deliver instruments plus or minus balancing cash, less the redemption fee and other applicable charges. A stated transaction fee applies once per order regardless of the number of units in that order.",
+   "basis": "document",
+   "quote": "Creation Units are sold at their NAV plus a transaction fee... A transaction fee is applicable to each transaction regardless of the number of units purchased or sold in the transaction.",
+   "assumption_or_question": ""
+  },
+  {
+   "id": "Q21",
+   "text": "For an in-kind basket, calculate the Cash Component or Cash Redemption Amount as NAV per Creation Unit minus the aggregate net market value of the instruments. Retain the applicable transaction fee for the Fund and recognize realized gain or loss on options transferred in kind using identified cost.",
+   "basis": "document",
+   "quote": "The Cash Component is an amount equal to the difference between the NAV of a Fund\u2019s shares (per Creation Unit) and the Deposit Amount... The redemption proceeds... consist of the Deposit Instruments... plus or minus cash... less the applicable Redemption Transaction Fee... Amount is included in realized gain/(loss) in-kind.",
+   "assumption_or_question": ""
+  },
+  {
+   "id": "Q22",
+   "text": "Obtain the operational rule for converting fractional pro-rata option quantities into whole-contract basket quantities, including rounding direction and cash-in-lieu treatment.",
+   "basis": "question",
+   "quote": "When utilizing a pro-rata basket, minor deviations may occur when it is not operationally feasible to include a particular instrument within the basket.",
+   "assumption_or_question": "The documents permit minor deviations but do not prescribe whether 60.6 contracts must be rounded to 60, rounded to 61, or handled through a custom basket."
+  },
+  {
+   "id": "Q23",
+   "text": "Apply OCC or clearing-broker corporate-action adjustments to contract quantities, strikes, multipliers, and deliverables on the effective date, and reconcile the adjusted position to the clearing record before NAV.",
+   "basis": "question",
+   "quote": "FLEX Options... are guaranteed for settlement by the Options Clearing Corporation (OCC).",
+   "assumption_or_question": "Ask OCC or the clearing broker for the authoritative adjustment terms for each split or other reference-ETF corporate action; the documents do not specify the adjustment algorithm."
+  },
+  {
+   "id": "Q24",
+   "text": "Maintain a stale-price and NAV-error control that compares each day's loaded FLEX price with the current approved source, quantifies the dollar and per-share effect of any error, and routes errors under the Fund's correction policy.",
+   "basis": "question",
+   "quote": "",
+   "assumption_or_question": "Ask the client for its NAV-error materiality threshold, correction methodology, shareholder reimbursement rules, and escalation requirements; none are stated in the supplied documents."
+  }
+ ],
+ "scenarios": {
+  "T01": {
+   "premium_paid": {
+    "value": 605400000,
+    "basis": "document",
+    "quote": "When the Funds purchase an option, an amount equal to the premium paid... [is] recorded as an investment.",
+    "assumption_or_question": "Uses 100 shares per contract and assumes no unlisted commissions: (237.75 + 14.50) \u00d7 24000 \u00d7 100."
+   },
+   "premium_received": {
+    "value": 29400000,
+    "basis": "document",
+    "quote": "When the Funds write an option, an amount equal to the premium received... [is] recorded as a liability.",
+    "assumption_or_question": "Uses 100 shares per contract: (5.60 + 6.65) \u00d7 24000 \u00d7 100."
+   },
+   "cash_after": {
+    "value": 2000000,
+    "basis": "document",
+    "quote": "Investment transactions are recorded on the trade date.",
+    "assumption_or_question": "Initial cash 578000000 minus premiums paid 605400000 plus premiums received 29400000; assumes no unlisted commissions."
+   },
+   "liability_for_written_options": {
+    "value": 29400000,
+    "basis": "document",
+    "quote": "When the Funds write an option, an amount equal to the premium received... [is] recorded as a liability.",
+    "assumption_or_question": ""
+   },
+   "net_assets_after": {
+    "value": 578000000,
+    "basis": "document",
+    "quote": "All of the FLEX Option contracts held by the Funds are fully funded and cash settled, therefore balance sheet offsetting under U.S. GAAP does not apply.",
+    "assumption_or_question": "Assets are 2000000 cash plus 605400000 purchased options; liabilities are 29400000 written options."
+   }
+  },
+  "T02": {
+   "value_of_purchased_options": {
+    "value": 621240000,
+    "basis": "document",
+    "quote": "FLEX Options... will be valued on a mark-to-market basis.",
+    "assumption_or_question": "(254.90 + 3.95) \u00d7 24000 \u00d7 100."
+   },
+   "value_of_written_options": {
+    "value": 13080000,
+    "basis": "document",
+    "quote": "When the Funds write an option... [the liability] is subsequently adjusted to the current value of the option written.",
+    "assumption_or_question": "Positive answer denotes the liability amount: (0.80 + 4.65) \u00d7 24000 \u00d7 100."
+   },
+   "unrealized_on_purchased": {
+    "value": 15840000,
+    "basis": "document",
+    "quote": "When the Funds purchase an option... [it] is subsequently adjusted to the current value of the option purchased.",
+    "assumption_or_question": "621240000 current value minus 605400000 cost."
+   },
+   "unrealized_on_written": {
+    "value": 16320000,
+    "basis": "document",
+    "quote": "When the Funds write an option... [the liability] is subsequently adjusted to the current value of the option written.",
+    "assumption_or_question": "29400000 premium received minus 13080000 current liability."
+   },
+   "net_assets": {
+    "value": 610000000,
+    "basis": "document",
+    "quote": "NAV... [is] the market price of the Fund\u2019s total assets... less all liabilities.",
+    "assumption_or_question": "621240000 options plus 2100000 cash minus 13080000 written-option liability minus 260000 fee liability."
+   },
+   "nav_per_share_published": {
+    "value": 30.5,
+    "basis": "document",
+    "quote": "The result, rounded to the nearest cent is the NAV per Share.",
+    "assumption_or_question": "610000000 divided by 20000000 shares."
+   }
+  },
+  "T03": {
+   "price_case_a": {
+    "value": 3.95,
+    "basis": "document",
+    "quote": "FLEX Options... will typically be valued at a model-based price provided by the exchange at the official close...",
+    "assumption_or_question": "No same-day trade exists."
+   },
+   "price_case_b": {
+    "value": 4.02,
+    "basis": "document",
+    "quote": "When the Fund\u2019s option has a same-day market trading price, this same-day market trading price will be used... instead of the exchange\u2019s model-based price.",
+    "assumption_or_question": "Assumes the Fund's stated purchase is the controlling same-day market trading price."
+   },
+   "price_case_c": {
+    "value": 3.97,
+    "basis": "document",
+    "quote": "If the exchange... is unable to provide a model price, model-based FLEX Options prices will additionally be provided by a backup third-party pricing provider.",
+    "assumption_or_question": ""
+   },
+   "value_difference_b_minus_a": {
+    "value": 168000,
+    "basis": "document",
+    "quote": "100 shares per contract.",
+    "assumption_or_question": "(4.02 - 3.95) \u00d7 24000 \u00d7 100."
+   }
+  },
+  "T04": {
+   "fee_one_day": {
+    "value": 13202.74,
+    "basis": "assumption",
+    "quote": "A unitary fee calculated daily based on the average daily net assets... at the annual rate of 0.79%.",
+    "assumption_or_question": "Assumes ACT/365 and that the stated 610000000 is the applicable daily average net-assets base: 610000000 \u00d7 0.0079 \u00f7 365."
+   },
+   "fee_weekend": {
+    "value": 39608.22,
+    "basis": "assumption",
+    "quote": "A unitary fee calculated daily based on the average daily net assets...",
+    "assumption_or_question": "Assumes three calendar days, ACT/365, and an unchanged 610000000 base."
+   },
+   "interest_one_day": {
+    "value": 212.88,
+    "basis": "assumption",
+    "quote": "The MMDA will bear interest at a variable rate...",
+    "assumption_or_question": "Assumes simple ACT/365 interest and an unchanged rate and balance: 2100000 \u00d7 0.037 \u00f7 365."
+   },
+   "interest_weekend": {
+    "value": 638.63,
+    "basis": "assumption",
+    "quote": "The MMDA will bear interest at a variable rate...",
+    "assumption_or_question": "Assumes three calendar days of simple ACT/365 interest at the stated unchanged rate and balance."
+   }
+  },
+  "T05": {
+   "amount_paid": {
+    "value": 470650,
+    "basis": "document",
+    "quote": "The amount paid on effecting a closing purchase transaction, including brokerage commissions...",
+    "assumption_or_question": "4.70 \u00d7 1000 \u00d7 100 plus 650 commission."
+   },
+   "realized": {
+    "value": 194350,
+    "basis": "document",
+    "quote": "The difference between the premium and the amount paid on effecting a closing purchase transaction, including brokerage commissions, is... realized gain... or realized loss.",
+    "assumption_or_question": "Allocated premium 6.65 \u00d7 1000 \u00d7 100 = 665000, less 470650 total close cost."
+   },
+   "premium_remaining": {
+    "value": 15295000,
+    "basis": "document",
+    "quote": "When the Funds write an option, an amount equal to the premium received... [is] recorded as a liability.",
+    "assumption_or_question": "The single opening transaction leaves 23000 contracts: 6.65 \u00d7 23000 \u00d7 100."
+   }
+  },
+  "T06": {
+   "contracts_delivered_per_position": {
+    "value": 120,
+    "basis": "document",
+    "quote": "The redemption proceeds for a Creation Unit generally consist of the Deposit Instruments...",
+    "assumption_or_question": "Two units \u00d7 60 contracts of each position per unit."
+   },
+   "value_of_options_delivered": {
+    "value": 3040800,
+    "basis": "document",
+    "quote": "The Cash Redemption Amount [uses] the aggregate market value of the Deposit Instruments.",
+    "assumption_or_question": "Net value: [(254.90 + 3.95) - (0.80 + 4.65)] \u00d7 120 \u00d7 100."
+   },
+   "cash_amount": {
+    "value": 9200,
+    "basis": "document",
+    "quote": "Cash [is] an amount equal to the difference between the net asset value... being redeemed... and the aggregate market value of the Deposit Instruments.",
+    "assumption_or_question": "100000 shares \u00d7 30.50 minus 3040800 net instrument value."
+   },
+   "net_cash_to_redeemer": {
+    "value": 8700,
+    "basis": "document",
+    "quote": "Redemption proceeds... [are] less the applicable Redemption Transaction Fee.",
+    "assumption_or_question": "9200 balancing cash minus one 500 transaction fee."
+   },
+   "realized_on_options_delivered": {
+    "value": 160800,
+    "basis": "document",
+    "quote": "Amount is included in realized gain/(loss) in-kind... The Trust determines the gain or loss realized... on the basis of identified cost.",
+    "assumption_or_question": "Net delivered value 3040800 minus net opening basis of 2880000 for the 120 contracts of each position."
+   },
+   "nav_per_share_published_after": {
+    "value": 30.5,
+    "basis": "document",
+    "quote": "The result, rounded to the nearest cent is the NAV per Share.",
+    "assumption_or_question": "Assumes the 500 fee is retained by the Fund: (610000000 - 3050000 + 500) \u00f7 19900000 = 30.500025..., published as 30.50."
+   },
+   "price_of_purchased_put_if_also_traded_for_cash": {
+    "value": 4,
+    "basis": "document",
+    "quote": "When... a particular FLEX Option is represented in an all-cash basket... as well as in an in-kind basket... the Fund will default to use the trade price for both instances.",
+    "assumption_or_question": ""
+   }
+  },
+  "T07": {
+   "price_of_purchased_call": {
+    "value": 254.95,
+    "basis": "document",
+    "quote": "When the Fund\u2019s option has a same-day market trading price, this same-day market trading price will be used...",
+    "assumption_or_question": "Assumes the stated Fund trade is the controlling same-day price."
+   },
+   "price_of_written_call": {
+    "value": 4.6,
+    "basis": "document",
+    "quote": "When the Fund\u2019s option has a same-day market trading price, this same-day market trading price will be used...",
+    "assumption_or_question": "Assumes the stated Fund trade is the controlling same-day price."
+   },
+   "nav_per_share_published": {
+    "value": 30.52,
+    "basis": "document",
+    "quote": "The result, rounded to the nearest cent is the NAV per Share.",
+    "assumption_or_question": "All four traded options are valued at their trade prices. Pre-creation net assets are 610408000, or exact NAV 30.5204 per share."
+   },
+   "cash_for_shares": {
+    "value": 3052040,
+    "basis": "assumption",
+    "quote": "The price for each Creation Unit will equal the daily NAV per share... times the number of shares in a Creation Unit...",
+    "assumption_or_question": "Assumes creations use unrounded accounting NAV of 30.5204 rather than published rounded NAV of 30.52: 100000 \u00d7 30.5204. Client operating procedures should confirm."
+   },
+   "net_cost_of_new_contracts": {
+    "value": 3042840,
+    "basis": "document",
+    "quote": "Investment transactions are recorded on the trade date.",
+    "assumption_or_question": "Purchases of 3107400 less written premiums of 64560."
+   },
+   "net_assets_after": {
+    "value": 613460540,
+    "basis": "assumption",
+    "quote": "Creation Units are sold at their NAV plus a transaction fee.",
+    "assumption_or_question": "Assumes unrounded NAV consideration and that the 500 transaction fee is Fund income: 610408000 + 3052040 + 500. The trades occur at their valuation prices and therefore create no immediate gain or loss."
+   }
+  },
+  "T08": {
+   "proceeds": {
+    "value": 395000,
+    "basis": "document",
+    "quote": "100 shares per contract.",
+    "assumption_or_question": "3.95 \u00d7 1000 \u00d7 100; no commission is stated."
+   },
+   "realized": {
+    "value": -1055000,
+    "basis": "assumption",
+    "quote": "The Trust determines the gain or loss realized from investment transactions on the basis of identified cost.",
+    "assumption_or_question": "The scenario gives no identified-lot instruction. This result assumes FIFO, assigning 1000 contracts from the first purchase: 395000 proceeds minus 1450000 cost. A different identified lot gives a different result."
+   },
+   "cost_remaining": {
+    "value": 36070000,
+    "basis": "assumption",
+    "quote": "The Trust determines the gain or loss realized from investment transactions on the basis of identified cost.",
+    "assumption_or_question": "Assumes FIFO: total cost 37520000 less 1450000 cost removed. The client must specify the default lot-selection rule."
+   }
+  },
+  "T09": {
+   "cash_from_purchased_call": {
+    "value": 690240000,
+    "basis": "document",
+    "quote": "The amount of cash is equal to the difference between the closing price... and the exercise price... times a specified multiple.",
+    "assumption_or_question": "(290.00 - 2.40) \u00d7 24000 \u00d7 100."
+   },
+   "cash_from_purchased_put": {
+    "value": 0,
+    "basis": "document",
+    "quote": "Option contracts that expire unexercised have no value.",
+    "assumption_or_question": "The 240 put is out of the money at 290."
+   },
+   "cash_owed_on_written_call": {
+    "value": 19200000,
+    "basis": "document",
+    "quote": "Cash-settled option contracts give the holder the right to receive an amount (or owe an amount) of cash upon exercise.",
+    "assumption_or_question": "(290.00 - 282.00) \u00d7 24000 \u00d7 100."
+   },
+   "net_cash_received": {
+    "value": 671040000,
+    "basis": "document",
+    "quote": "Upon conclusion of the Outcome Period, the Fund will receive the cash value of all the FLEX Options it held...",
+    "assumption_or_question": "690240000 received less 19200000 owed; both puts expire at zero."
+   },
+   "realized_on_purchased_put": {
+    "value": -34800000,
+    "basis": "document",
+    "quote": "If an option expires on the stipulated expiration date... a gain or loss is realized.",
+    "assumption_or_question": "Zero settlement less 14.50 \u00d7 24000 \u00d7 100 cost."
+   },
+   "realized_on_written_put": {
+    "value": 13440000,
+    "basis": "document",
+    "quote": "Premiums received from writing options that expire unexercised are treated... as realized gain from written options.",
+    "assumption_or_question": "5.60 \u00d7 24000 \u00d7 100."
+   },
+   "realized_total": {
+    "value": 95040000,
+    "basis": "document",
+    "quote": "If an option expires... a gain or loss is realized... Premiums received from writing options that expire unexercised are treated... as realized gain.",
+    "assumption_or_question": "Net cash settlement 671040000 minus purchased premiums of 605400000 plus written premiums of 29400000."
+   }
+  },
+  "T10": {
+   "pro_rata_contracts_per_unit": {
+    "value": 60.6,
+    "basis": "document",
+    "quote": "A pro-rata basket is a basket that is a pro rata representation of the ETF\u2019s portfolio holdings.",
+    "assumption_or_question": "24240 \u00d7 50000 \u00f7 20000000."
+   },
+   "contracts_in_basket": {
+    "value": 60,
+    "basis": "assumption",
+    "quote": "Minor deviations may occur when it is not operationally feasible to include a particular instrument within the basket.",
+    "assumption_or_question": "Assumes the basket rounds fractional option quantities down to 60 whole contracts. The client must confirm the approved rounding rule."
+   },
+   "cash_amount_per_unit": {
+    "value": 19600,
+    "basis": "assumption",
+    "quote": "The Cash Redemption Amount [equals] the difference between the net asset value... and the aggregate market value of the Deposit Instruments.",
+    "assumption_or_question": "Under the assumed 60-contract basket, net instrument value is 1520400 and unit NAV is 1540000, leaving 19600 cash before the fee. Rounding to 61 would instead produce a negative cash amount of 5740."
+   }
+  },
+  "T11": {
+   "right_net_assets": {
+    "value": 601360000,
+    "basis": "document",
+    "quote": "FLEX Options... will be valued on a mark-to-market basis.",
+    "assumption_or_question": "610000000 stale-price net assets less (254.90 - 251.30) \u00d7 24000 \u00d7 100."
+   },
+   "misstatement": {
+    "value": 8640000,
+    "basis": "document",
+    "quote": "FLEX Options will be valued at a model-based price provided by the exchange... at the official close...",
+    "assumption_or_question": "Positive amount denotes overstatement: 3.60 \u00d7 24000 \u00d7 100."
+   },
+   "misstatement_per_share": {
+    "value": 0.432,
+    "basis": "document",
+    "quote": "NAV... [is] divided by the total number of Shares outstanding.",
+    "assumption_or_question": "8640000 \u00f7 20000000."
+   },
+   "misstatement_percent": {
+    "value": 1.43661,
+    "basis": "document",
+    "quote": "NAV... [is] the market price of the Fund\u2019s total assets... less all liabilities.",
+    "assumption_or_question": "8640000 \u00f7 correct net assets of 601360000 \u00d7 100."
+   },
+   "correction_threshold": {
+    "value": null,
+    "basis": "question",
+    "quote": "",
+    "assumption_or_question": "Ask the client for the approved NAV-error correction and materiality threshold. It is not stated in the supplied documents."
+   }
+  },
+  "T12": {
+   "contracts_after": {
+    "value": 48000,
+    "basis": "assumption",
+    "quote": "FLEX Options... are guaranteed for settlement by the Options Clearing Corporation (OCC).",
+    "assumption_or_question": "Assumes the applicable OCC adjustment for this two-for-one split doubles the option contracts while retaining a 100-share multiplier. Confirm against the OCC or clearing-broker adjustment notice."
+   },
+   "strike_after": {
+    "value": 120,
+    "basis": "assumption",
+    "quote": "FLEX Options provide investors with the ability to customize... exercise prices...",
+    "assumption_or_question": "Assumes the OCC adjustment halves the strike from 240 to 120."
+   },
+   "value_after": {
+    "value": 9480000,
+    "basis": "assumption",
+    "quote": "100 shares per contract.",
+    "assumption_or_question": "Under the assumed adjustment: 1.975 \u00d7 48000 \u00d7 100."
+   },
+   "value_before": {
+    "value": 9480000,
+    "basis": "document",
+    "quote": "100 shares per contract.",
+    "assumption_or_question": "3.95 \u00d7 24000 \u00d7 100."
+   },
+   "wrong_value": {
+    "value": 4740000,
+    "basis": "assumption",
+    "quote": "FLEX Options... will be valued on a mark-to-market basis.",
+    "assumption_or_question": "If price is changed to 1.975 but contracts incorrectly remain 24000: 1.975 \u00d7 24000 \u00d7 100."
+   }
+  },
+  "T13": {
+   "income_accrued": {
+    "value": 0,
+    "basis": "document",
+    "quote": "If the Fund invests solely in FLEX Options... the Fund will not receive the benefit of any dividends.",
+    "assumption_or_question": "The Fund holds the options rather than shares of the reference ETF."
+   },
+   "change_in_net_assets": {
+    "value": -1440000,
+    "basis": "document",
+    "quote": "Since the FLEX Options held by the Fund are exchange-traded, these will be valued on a mark-to-market basis.",
+    "assumption_or_question": "Purchased changes: (-0.84 + 0.15) \u00d7 2400000 = -1656000. Written-liability effect: -(0.04 - 0.13) \u00d7 2400000 = +216000. Total = -1440000."
+   }
+  },
+  "T14": {
+   "cash_from_purchased_put": {
+    "value": 120000000,
+    "basis": "document",
+    "quote": "The amount of cash is equal to the difference between the closing price... and the exercise price... times a specified multiple.",
+    "assumption_or_question": "(240 - 190) \u00d7 24000 \u00d7 100."
+   },
+   "cash_owed_on_written_put": {
+    "value": 33600000,
+    "basis": "document",
+    "quote": "Cash-settled option contracts give the holder the right to receive an amount (or owe an amount) of cash upon exercise.",
+    "assumption_or_question": "(204 - 190) \u00d7 24000 \u00d7 100."
+   },
+   "net_cash_received": {
+    "value": 536640000,
+    "basis": "document",
+    "quote": "Upon conclusion of the Outcome Period, the Fund will receive the cash value of all the FLEX Options it held...",
+    "assumption_or_question": "Purchased call pays 450240000, purchased put pays 120000000, written put requires 33600000, and written call expires at zero."
+   },
+   "realized_total": {
+    "value": -39360000,
+    "basis": "document",
+    "quote": "If an option expires... a gain or loss is realized... Premiums received from writing options that expire unexercised are treated... as realized gain.",
+    "assumption_or_question": "Net settlement 536640000 minus purchased premiums 605400000 plus written premiums 29400000."
+   }
+  },
+  "T15": {
+   "change_in_value_of_options": {
+    "value": 3984000,
+    "basis": "document",
+    "quote": "Since the FLEX Options held by the Fund are exchange-traded, these will be valued on a mark-to-market basis.",
+    "assumption_or_question": "Purchased call +5952000; purchased put -840000; written-put liability decrease +192000; written-call liability increase -1320000."
+   },
+   "net_assets_at_close": {
+    "value": 613971010.14,
+    "basis": "assumption",
+    "quote": "The Fund... pay[s]... a unitary fee calculated daily... The MMDA will bear interest at a variable rate...",
+    "assumption_or_question": "Assumes ACT/365 and uses starting net assets as the fee base: 610000000 + 3984000 + 212.88 interest - 13202.74 fee."
+   },
+   "nav_per_share_published": {
+    "value": 30.7,
+    "basis": "document",
+    "quote": "The result, rounded to the nearest cent is the NAV per Share.",
+    "assumption_or_question": "613971010.14 \u00f7 20000000 = 30.6985505..., rounded to 30.70."
+   },
+   "return_percent": {
+    "value": 0.650985,
+    "basis": "assumption",
+    "quote": "NAV... [is] the market price of the Fund\u2019s total assets... less all liabilities.",
+    "assumption_or_question": "Assumes return is measured using unrounded net assets with no distributions or share flows: (613971010.14 \u00f7 610000000 - 1) \u00d7 100."
+   }
+  }
+ }
+}

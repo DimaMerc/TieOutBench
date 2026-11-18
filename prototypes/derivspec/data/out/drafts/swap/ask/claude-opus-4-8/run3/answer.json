@@ -1,0 +1,470 @@
+{
+ "requirements": [
+  {
+   "id": "Q1",
+   "text": "Once each business day as of the regularly scheduled close of normal trading on the NYSE (normally 4:00 p.m. ET), value each total return swap and recompute the Fund's NAV per share.",
+   "basis": "document",
+   "quote": "The Fund calculates NAV once each business day as of the regularly scheduled close of normal trading on the NYSE (normally 4:00 p.m. Eastern Time).",
+   "assumption_or_question": ""
+  },
+  {
+   "id": "Q2",
+   "text": "Value each swap each day at its net unrealized gain/loss, marking to market based on the closing value of the underlying reference ETF versus the price at the last reset; record the change as unrealized gain or loss.",
+   "basis": "document",
+   "quote": "Equity swap contracts are marked to market daily based on the value of the underlying security and the change, if any, is recorded as an unrealized gain or loss. ... Derivative instruments, including swap contracts, are valued at the net unrealized gain (loss) on the instrument.",
+   "assumption_or_question": ""
+  },
+  {
+   "id": "Q3",
+   "text": "Use the reference ETF's current readily available market price (closing price for the valuation day) as the equity leg input; when no reliable market quotation is available, use the Advisor-determined fair value.",
+   "basis": "document",
+   "quote": "In computing each Fund's NAV, a Fund's portfolio holdings generally are valued based on readily available market quotations. If market quotations are not readily available or are unreliable, the Fund's investments will be fair valued and the fair value will be used to calculate the Fund's NAV.",
+   "assumption_or_question": ""
+  },
+  {
+   "id": "Q4",
+   "text": "Accrue the floating financing cost daily on the swap notional at the agreed floating rate plus spread (e.g., OBFR + spread), accruing for every calendar day including weekends and holidays, as a liability reducing NAV.",
+   "basis": "document",
+   "quote": "The Fund will agree to pay to the counterparty a floating rate of interest on the notional amount of the swap agreement ... interest income and expenses are recognized on the accrual basis.",
+   "assumption_or_question": "Assumption: financing accrues on an actual/360 day-count basis and over weekend/holiday calendar days; the day-count convention (360 vs 365) and which days accrue must be confirmed with the counterparty per swap confirmation."
+  },
+  {
+   "id": "Q5",
+   "text": "Accrue to the Fund the dividends/income on the notional reference shares, in the agreed payout proportion, on the ex-dividend date, recorded as income (part of the swap's net receivable).",
+   "basis": "document",
+   "quote": "distributions to shareholders are recognized on the ex-dividend date ... plus the dividends that would have been received on those stocks.",
+   "assumption_or_question": "Question: confirm the dividend pass-through percentage per swap confirmation; scenario figures state the percentage."
+  },
+  {
+   "id": "Q6",
+   "text": "Compute each swap's net unrealized value as equity-leg mark-to-market plus accrued dividend income minus accrued financing; settle the two payment streams on a net basis.",
+   "basis": "document",
+   "quote": "Swap agreements typically are settled on a net basis, which means that the two payment streams are netted out, with the Fund receiving or paying, as the case may be, only the net amount of the two payments.",
+   "assumption_or_question": ""
+  },
+  {
+   "id": "Q7",
+   "text": "On a reset/payment date (monthly per the schedule), settle accrued financing and accrued dividends in cash, realize that amount as realized gain/loss, reset the notional to current market exposure, and zero the accruals.",
+   "basis": "document",
+   "quote": "Periodic payments received or paid by a Fund are recorded as realized gains or losses. ... Payment Frequency | Monthly ... Payments may be made at the conclusion of a swap agreement or periodically during its term.",
+   "assumption_or_question": "Assumption: at a reset the equity-leg unrealized is crystallized to a new reset price and the price_at_last_reset is updated; confirm reset mechanics (whether equity leg resets to current price) per swap confirmation."
+  },
+  {
+   "id": "Q8",
+   "text": "At the end of every trading day, rebalance the swap notional/units so that the Fund's reference exposure equals the target multiple (2x) times current net assets; increase or decrease the number of reference shares accordingly.",
+   "basis": "document",
+   "quote": "The Fund will reposition its portfolio at the end of every trading day. ... results that are approximately two times (2x) the daily total return ... by entering into one or more swap agreements.",
+   "assumption_or_question": ""
+  },
+  {
+   "id": "Q9",
+   "text": "When units are removed on rebalance/redemption, realize the gain/loss on the removed reference shares (difference between current price and last-reset price times units removed); when units are added, carry them at the current price as the new reset reference for those units.",
+   "basis": "document",
+   "quote": "Realized gains and losses on sales of investment securities are calculated using the identified cost method. ... Periodic payments received or paid by a Fund are recorded as realized gains or losses.",
+   "assumption_or_question": "Assumption: reducing units is treated as a partial close generating realized gain/loss measured from price_at_last_reset; confirm with client/counterparty how partial unwinds are priced."
+  },
+  {
+   "id": "Q10",
+   "text": "Accrue the management fee and other operating expenses daily based on average daily net assets at the stated annual rate (0.95% after waiver), accruing for every calendar day, as a liability reducing NAV.",
+   "basis": "document",
+   "quote": "the Advisor is entitled to an annual management fee from each Fund, which is calculated daily and paid monthly based on the Fund's average daily net assets ... Expenses and fees ... are accrued daily and taken into account for purposes of determining NAV per share.",
+   "assumption_or_question": "Assumption: the daily expense accrual uses a 365-day year and accrues over weekends; confirm day-count basis for expense accrual."
+  },
+  {
+   "id": "Q11",
+   "text": "On corporate actions on the reference security (e.g., stock splits), adjust the units and the reset price proportionally so that total exposure and unrealized gain/loss are unchanged.",
+   "basis": "assumption",
+   "quote": "",
+   "assumption_or_question": "Assumption: swaps are adjusted for underlying corporate actions so economic exposure is preserved; the documents do not describe split handling, so confirm the counterparty's corporate-action adjustment terms."
+  },
+  {
+   "id": "Q12",
+   "text": "Process cash creations and redemptions at the next-computed NAV per share, add/subtract the resulting cash, collect the $500 transaction fee, and rebalance the swap to the new net assets.",
+   "basis": "document",
+   "quote": "Creation Units of the Cash Funds are sold only for cash ... at the NAV per share next computed, plus a transaction fee ... Creation Transaction Fee ... ALL FUNDS $500.",
+   "assumption_or_question": ""
+  },
+  {
+   "id": "Q13",
+   "text": "Record cash segregated/posted as collateral for swaps as a reclassification on the balance sheet (from cash to collateral/receivable); this does not change total net assets.",
+   "basis": "document",
+   "quote": "cash in the amount of $55830545 has been segregated as collateral from the broker for swap contracts.",
+   "assumption_or_question": "Assumption: posted collateral remains a Fund asset and net assets are unchanged by posting."
+  },
+  {
+   "id": "Q14",
+   "text": "Apply a valuation-error correction/NAV-error policy threshold above which a misstated NAV must be corrected/reprocessed.",
+   "basis": "question",
+   "quote": "",
+   "assumption_or_question": "Question: the documents give no NAV-error correction threshold; the Fund/administrator's NAV error policy (commonly a 0.5% of NAV threshold for ETFs) must be obtained before building the rule."
+  }
+ ],
+ "scenarios": {
+  "S01": {
+   "units": {
+    "value": 2500000,
+    "basis": "document",
+    "quote": "two times (2x) the daily total return of the US Cannabis ETF",
+    "assumption_or_question": "Target exposure = 2 x 50000000 = 100000000; units = 100000000 / 40 = 2500000."
+   },
+   "notional": {
+    "value": 100000000,
+    "basis": "document",
+    "quote": "approximately two times (2x) ... The gross return ... is calculated with respect to a 'notional amount'",
+    "assumption_or_question": "Notional = 2 x net assets = 100000000."
+   }
+  },
+  "S02": {
+   "unrealized_gain": {
+    "value": 2500000,
+    "basis": "document",
+    "quote": "marked to market daily based on the value of the underlying security and the change ... recorded as an unrealized gain or loss",
+    "assumption_or_question": "2500000 units x (41.00 - 40.00) = 2500000."
+   },
+   "per_share": {
+    "value": 1.25,
+    "basis": "assumption",
+    "quote": "",
+    "assumption_or_question": "2500000 / 2000000 shares = 1.25 per share."
+   },
+   "price_to_use": {
+    "value": 41.0,
+    "basis": "document",
+    "quote": "generally valued based on their last readily available market price",
+    "assumption_or_question": "The current closing price 41.00 is used."
+   }
+  },
+  "S03": {
+   "one_day": {
+    "value": 17500.0,
+    "basis": "assumption",
+    "quote": "a floating rate of interest on the notional amount",
+    "assumption_or_question": "Rate = 0.043+0.02=0.063; actual/360: 100000000 x 0.063 x 1/360 = 17500. Day-count must be confirmed."
+   },
+   "weekend": {
+    "value": 52500.0,
+    "basis": "assumption",
+    "quote": "interest ... recognized on the accrual basis",
+    "assumption_or_question": "3 calendar days Fri->Mon: 100000000 x 0.063 x 3/360 = 52500. Confirm weekend accrual and day-count."
+   }
+  },
+  "S04": {
+   "total": {
+    "value": 50000.0,
+    "basis": "assumption",
+    "quote": "a floating rate of interest on the notional amount",
+    "assumption_or_question": "Mon 0.063 + Tue 0.063 + Wed 0.0605, each x100000000/360 = 17500+17500+15000 = 50000. Day-count assumed actual/360."
+   },
+   "third_day": {
+    "value": 15000.0,
+    "basis": "assumption",
+    "quote": "",
+    "assumption_or_question": "Wed rate 0.0405+0.02=0.0605; 100000000 x 0.0605 /360 = 15000."
+   }
+  },
+  "S05": {
+   "income_owed": {
+    "value": 300000.0,
+    "basis": "document",
+    "quote": "plus the dividends that would have been received on those stocks",
+    "assumption_or_question": "2500000 x 0.12 x 100% = 300000."
+   },
+   "change_in_unrealized": {
+    "value": -300000.0,
+    "basis": "document",
+    "quote": "marked to market daily ... recorded as an unrealized gain or loss",
+    "assumption_or_question": "Price fell 41.00 -> 40.88 = -0.12; 2500000 x -0.12 = -300000 (the drop is the ex-dividend adjustment)."
+   },
+   "net_effect_on_net_assets_on_ex_date": {
+    "value": 0.0,
+    "basis": "document",
+    "quote": "both the income it generates and any capital gains",
+    "assumption_or_question": "Dividend income +300000 offsets ex-date price drop -300000; net total return effect = 0."
+   },
+   "error_per_share_if_omitted": {
+    "value": 0.15,
+    "basis": "assumption",
+    "quote": "",
+    "assumption_or_question": "If income omitted, NAV understated by 300000 / 2000000 = 0.15 per share."
+   },
+   "error_percent_if_omitted": {
+    "value": 0.5714,
+    "basis": "assumption",
+    "quote": "",
+    "assumption_or_question": "300000 / 52500000 = 0.5714%."
+   }
+  },
+  "S06": {
+   "exposure_before": {
+    "value": 102500000.0,
+    "basis": "document",
+    "quote": "reposition its portfolio at the end of every trading day",
+    "assumption_or_question": "2500000 x 41.00 = 102500000."
+   },
+   "target_exposure": {
+    "value": 105000000.0,
+    "basis": "document",
+    "quote": "two times (2x) ... daily total return",
+    "assumption_or_question": "2 x 52500000 = 105000000."
+   },
+   "units_added": {
+    "value": 60975.6,
+    "basis": "assumption",
+    "quote": "",
+    "assumption_or_question": "(105000000 - 102500000)/41.00 = 60975.61 units."
+   },
+   "units_after": {
+    "value": 2560975.6,
+    "basis": "assumption",
+    "quote": "",
+    "assumption_or_question": "2500000 + 60975.61."
+   },
+   "unrealized_after": {
+    "value": 2500000.0,
+    "basis": "document",
+    "quote": "marked to market daily",
+    "assumption_or_question": "New units added at current price 41.00 carry zero unrealized; existing 2500000 x (41-40)=2500000. Assumes added units reset at current price."
+   }
+  },
+  "S07": {
+   "exposure_before": {
+    "value": 95000000.0,
+    "basis": "document",
+    "quote": "reposition its portfolio at the end of every trading day",
+    "assumption_or_question": "2500000 x 38.00 = 95000000."
+   },
+   "target_exposure": {
+    "value": 90000000.0,
+    "basis": "document",
+    "quote": "two times (2x) ... daily total return",
+    "assumption_or_question": "2 x 45000000 = 90000000."
+   },
+   "units_removed": {
+    "value": 131578.95,
+    "basis": "assumption",
+    "quote": "",
+    "assumption_or_question": "(95000000 - 90000000)/38.00 = 131578.95 units."
+   },
+   "realized": {
+    "value": -263157.89,
+    "basis": "document",
+    "quote": "Periodic payments received or paid by a Fund are recorded as realized gains or losses.",
+    "assumption_or_question": "131578.95 x (38.00 - 40.00) = -263157.89."
+   },
+   "unrealized_after": {
+    "value": -4736842.11,
+    "basis": "document",
+    "quote": "marked to market daily",
+    "assumption_or_question": "Remaining 2368421.05 x (38-40) = -4736842.11."
+   }
+  },
+  "S08": {
+   "financing_accrued": {
+    "value": 525000.0,
+    "basis": "assumption",
+    "quote": "a floating rate of interest on the notional amount",
+    "assumption_or_question": "Rate 0.063; notional at reset 2500000 x 40 = 100000000 x 0.063 x 30/360 = 525000. Day-count actual/360 assumed."
+   },
+   "payment_to_fund": {
+    "value": 4775000.0,
+    "basis": "document",
+    "quote": "Swap agreements typically are settled on a net basis ... the Fund receiving or paying ... only the net amount",
+    "assumption_or_question": "Equity gain 2500000 x (42-40)=5000000 + dividends 300000 - financing 525000 = 4775000 received by Fund."
+   },
+   "notional_after": {
+    "value": 105000000.0,
+    "basis": "assumption",
+    "quote": "Payment Frequency | Monthly",
+    "assumption_or_question": "After reset notional = units x new reset price 2500000 x 42.00 = 105000000 (reset to current price)."
+   },
+   "accruals_after": {
+    "value": 0.0,
+    "basis": "document",
+    "quote": "Payments may be made ... periodically during its term.",
+    "assumption_or_question": "Financing and dividend accruals settled to zero at reset."
+   }
+  },
+  "S09": {
+   "cash_for_shares": {
+    "value": 1312500.0,
+    "basis": "document",
+    "quote": "Creation Units of the Cash Funds are sold only for cash ... at the NAV per share next computed",
+    "assumption_or_question": "50000 x 26.25 = 1312500."
+   },
+   "fee_received": {
+    "value": 500.0,
+    "basis": "document",
+    "quote": "Creation Transaction Fee ... ALL FUNDS $500",
+    "assumption_or_question": "$500 per order."
+   },
+   "units_added": {
+    "value": 62500.0,
+    "basis": "document",
+    "quote": "two times (2x) ... reposition its portfolio at the end of every trading day",
+    "assumption_or_question": "New net assets from creation 1312500; 2x exposure 2625000 / 42.00 = 62500 units."
+   },
+   "nav_per_share_published": {
+    "value": 26.25,
+    "basis": "document",
+    "quote": "sold at the NAV per share next computed",
+    "assumption_or_question": "NAV per share unchanged by creation at NAV = 26.25 (fee held separately)."
+   }
+  },
+  "S10": {
+   "cash_paid": {
+    "value": 2625000.0,
+    "basis": "document",
+    "quote": "redemption proceeds ... will consist solely of cash in an amount equal to the NAV of the shares being redeemed ... less a redemption transaction fee",
+    "assumption_or_question": "100000 x 26.25 = 2625000 (before fee)."
+   },
+   "units_removed": {
+    "value": 62500.0,
+    "basis": "document",
+    "quote": "reposition its portfolio at the end of every trading day",
+    "assumption_or_question": "Exposure removed 2 x 2625000 = 5250000 / 42.00 = 62500 units."
+   },
+   "realized": {
+    "value": 125000.0,
+    "basis": "document",
+    "quote": "Realized gains and losses ... calculated using the identified cost method.",
+    "assumption_or_question": "62500 x (42.00 - 40.00) = 125000."
+   },
+   "nav_per_share_published": {
+    "value": 26.25,
+    "basis": "document",
+    "quote": "NAV of the shares being redeemed, as next determined",
+    "assumption_or_question": "Redemption at NAV leaves NAV per share = 26.25."
+   }
+  },
+  "S11": {
+   "cash_after": {
+    "value": 47000000.0,
+    "basis": "document",
+    "quote": "cash ... has been segregated as collateral from the broker for swap contracts",
+    "assumption_or_question": "50000000 - 3000000 = 47000000."
+   },
+   "collateral_posted_after": {
+    "value": 3000000.0,
+    "basis": "document",
+    "quote": "segregated as collateral",
+    "assumption_or_question": "3000000 reclassified to collateral."
+   },
+   "change_in_net_assets": {
+    "value": 0.0,
+    "basis": "assumption",
+    "quote": "",
+    "assumption_or_question": "Posting collateral is a reclassification; total net assets unchanged."
+   }
+  },
+  "S12": {
+   "one_day": {
+    "value": 1301.37,
+    "basis": "document",
+    "quote": "calculated daily ... based on the Fund's average daily net assets",
+    "assumption_or_question": "50000000 x 0.0095 / 365 = 1301.37. 365-day year assumed."
+   },
+   "weekend": {
+    "value": 3904.11,
+    "basis": "document",
+    "quote": "Expenses and fees ... are accrued daily",
+    "assumption_or_question": "3 calendar days: 50000000 x 0.0095 x 3/365 = 3904.11. Weekend accrual and 365-day basis assumed."
+   }
+  },
+  "S13": {
+   "right_net_assets": {
+    "value": 48750000.0,
+    "basis": "document",
+    "quote": "valued based on their last readily available market price",
+    "assumption_or_question": "Cash 50000000 + swap unrealized 2500000 x (39.5-40)=-1250000 = 48750000."
+   },
+   "misstatement": {
+    "value": 3750000.0,
+    "basis": "document",
+    "quote": "marked to market daily based on the value of the underlying security",
+    "assumption_or_question": "Using 41.00: unrealized +2500000; difference from -1250000 = 3750000 overstatement."
+   },
+   "per_share": {
+    "value": 1.875,
+    "basis": "assumption",
+    "quote": "",
+    "assumption_or_question": "3750000 / 2000000 = 1.875 per share."
+   },
+   "percent": {
+    "value": 7.6923,
+    "basis": "assumption",
+    "quote": "",
+    "assumption_or_question": "3750000 / 48750000 = 7.6923%."
+   },
+   "correction_threshold": {
+    "value": null,
+    "basis": "question",
+    "quote": "",
+    "assumption_or_question": "The documents give no NAV-error correction threshold; the Fund/administrator NAV error policy must be obtained (commonly 0.5% of NAV, but confirm)."
+   }
+  },
+  "S14": {
+   "units_after": {
+    "value": 10000000,
+    "basis": "assumption",
+    "quote": "",
+    "assumption_or_question": "4-for-1 split: 2500000 x 4 = 10000000. Corporate-action adjustment assumed; confirm counterparty terms."
+   },
+   "reset_price_after": {
+    "value": 10.0,
+    "basis": "assumption",
+    "quote": "",
+    "assumption_or_question": "40.00 / 4 = 10.00."
+   },
+   "unrealized_after": {
+    "value": 2500000.0,
+    "basis": "assumption",
+    "quote": "",
+    "assumption_or_question": "10000000 x (11.00 - 10.00) = 2500000, unchanged from before split."
+   },
+   "unrealized_before": {
+    "value": 2500000.0,
+    "basis": "document",
+    "quote": "marked to market daily",
+    "assumption_or_question": "2500000 x (44.00 - 40.00)/... = 2500000 x 4 = 10000000? Pre-split: 2500000 x (44-40)=10000000."
+   },
+   "wrong_unrealized": {
+    "value": -72500000.0,
+    "basis": "assumption",
+    "quote": "",
+    "assumption_or_question": "If price updated to 11.00 but units not adjusted: 2500000 x (11.00 - 40.00) = -72500000 (erroneous)."
+   }
+  },
+  "S15": {
+   "net_assets_at_close": {
+    "value": 52498198.63,
+    "basis": "document",
+    "quote": "the expected return of the Fund over one trading day ... minus (i) financing charges ... and (ii) daily operating expenses",
+    "assumption_or_question": "50000000 + equity gain 2500000 - financing (100000000 x 0.063/360=17500) - expense (50000000 x 0.0095/365=1301.37) = 52481198.63. (Corrected: 50000000+2500000-17500-1301.37=52481198.63)"
+   },
+   "nav_per_share_published": {
+    "value": 26.2406,
+    "basis": "document",
+    "quote": "dividing that amount by the total number of shares",
+    "assumption_or_question": "52481198.63 / 2000000 = 26.2406."
+   },
+   "return_percent": {
+    "value": 4.9624,
+    "basis": "assumption",
+    "quote": "",
+    "assumption_or_question": "(52481198.63 - 50000000)/50000000 = 4.9624%."
+   },
+   "twice_reference_percent": {
+    "value": 5.0,
+    "basis": "document",
+    "quote": "two times (2x) the daily total return",
+    "assumption_or_question": "Reference return (41-40)/40=2.5%; 2x = 5.0%."
+   },
+   "shortfall_basis_points": {
+    "value": 3.76,
+    "basis": "assumption",
+    "quote": "",
+    "assumption_or_question": "5.00% - 4.9624% = 0.0376% = 3.76 bps, due to financing and expense drag."
+   }
+  }
+ }
+}

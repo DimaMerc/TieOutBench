@@ -1,0 +1,53 @@
+{
+ "fund": "futures",
+ "reader": "gemini-3.6-flash",
+ "run": 1,
+ "questions": {
+  "Q01": "F01",
+  "Q02": "F02",
+  "Q03": "F03",
+  "Q04": "F04",
+  "Q05": "F05",
+  "Q06": "F06",
+  "Q07": "F07",
+  "Q08": "F08",
+  "Q09": "F09",
+  "Q10": "F10",
+  "Q11": "F11",
+  "Q12": "F12",
+  "Q13": "F13",
+  "Q14": "F14",
+  "Q15": "F15",
+  "Q16": "F16",
+  "Q17": "F17",
+  "Q18": "F18",
+  "Q19": "F19",
+  "Q20": "F20",
+  "Q21": "F21",
+  "Q22": "F22",
+  "Q23": "F23",
+  "Q24": "F24",
+  "Q25": "F25"
+ },
+ "started": "2026-11-16T18:29:51",
+ "prompt": {
+  "sha256": "3512c452eded51bd7e612be636b5d5db3e32d5b9b805af318ba2e4104d54ff11",
+  "chars": 104676,
+  "tokens_approx": 26169
+ },
+ "max_tokens": 32000,
+ "finish_reason": "stop",
+ "usage": {
+  "completion_tokens": 2954,
+  "prompt_tokens": 20756,
+  "total_tokens": 36747
+ },
+ "content_chars": 12994,
+ "reasoning_chars": 0,
+ "elapsed_s": 66.921,
+ "deadline_hit": false,
+ "temperature": 0.0,
+ "temperature_dropped": false,
+ "token_field": "max_tokens",
+ "endpoint_host": "generativelanguage.googleapis.com"
+}

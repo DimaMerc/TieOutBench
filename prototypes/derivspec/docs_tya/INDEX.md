@@ -1,0 +1,707 @@
+# Third fund: Simplify Intermediate Term Treasury Futures Strategy ETF (TYA)
+
+Collected 2026-11-16 by collect_tya.py from the full text of three public documents (sponsor's site, plain download),
+after the question list ds/fut_questions.py had been written. Passages are taken by rule (whole sections named by their
+heading, or every paragraph of a wider section that contains a word), not chosen one by one.
+
+| document | file | bytes | sha256 (first 16) | words |
+|---|---|---|---|---|
+| PROSPECTUS of the trust, dated November 1, 2026 | https://www.simplify.us/sites/default/files/etfs/prospectus/2026-11/Simplify-Combined-Prospectus-112026_25.pdf | 2,613,612 | 056b1ac0eed30c73 | 186,141 |
+| STATEMENT OF ADDITIONAL INFORMATION of the trust, dated November 1, 2026 | https://www.simplify.us/sites/default/files/etf/2026-11/Simplify-Combined-SAI-112026_25.pdf | 645,514 | 12dc8fec2811a343 | 41,163 |
+| ANNUAL FINANCIAL STATEMENTS of the trust, June 30, 2026 (audited) | https://www.simplify.us/sites/default/files/2026-09/Simplify-Annual-Financial-Statement-2026.pdf | 2,349,314 | 05bcce03d055ae37 | 167,254 |
+
+Risks the prospectus lists for the fund: Active Management Risk; Affiliated Money Market ETF Conflict of Interest Risk; Cash or Cash Equivalents Risk; Counterparty Risk; Derivatives Risk; Early Close/Trading Halt Risk; ETF Structure Risks; Fixed Income Securities Risk; Futures Risk; Leverage Risk; Market and Geopolitical Risk; Option Risk; Over-the-Counter Market Risk; Quarterly Rebalancing Risk; Short-Term Investment Risk; U.S. Treasuries Risk; Underlying Fund Risk
+
+## Passages
+
+**PR01** (prospectus; Fund Summary of the Fund [whole section])
+
+> Investment Objective: The Simplify Intermediate Term Treasury Futures Strategy ETF (the “Fund” or “TYA”) seeks to provide total return, before fees and expenses, that matches or outperforms the performance of the ICE US Treasury 20+ Year Index on a calendar quarter basis. The Fund does not seek to achieve its stated investment objective over a period of time different than a full calendar quarter.
+
+**PR02** (prospectus; Fund Summary of the Fund [whole section])
+
+> Fees and Expenses of the Fund: This table describes the fees and expenses that you may pay if you buy, sell, and hold shares of the Fund. You may pay other fees, such as brokerage commissions and other fees to financial intermediaries on the purchase and sale of Fund shares, which are not reflected in the tables and examples below.
+
+**PR03** (prospectus; Fund Summary of the Fund [whole section])
+
+> (1) Acquired Fund Fees and Expenses are the indirect costs of investing in other investment companies. The operating expenses in this fee table do not correlate to the expense ratio in the Fund’s financial highlights because the financial statements include only the direct operating expenses incurred by the Fund.
+
+**PR04** (prospectus; Fund Summary of the Fund [whole section])
+
+> Example: This Example is intended to help you compare the cost of investing in the Fund with the cost of investing in other funds.
+
+**PR05** (prospectus; Fund Summary of the Fund [whole section])
+
+> The Example assumes that you invest $10,000 in the Fund for the time periods indicated and then redeem all of your shares at the end of those periods. The Example also assumes that your investment has a 5% return each year and that the Fund’s operating expenses remain the same. Although your actual costs may be higher or lower, based upon these assumptions your costs would be:
+
+**PR06** (prospectus; Fund Summary of the Fund [whole section])
+
+> Portfolio Turnover: The Fund pays transaction costs, such as commissions, when it buys and sells securities (or “turns over” its portfolio). A higher portfolio turnover rate may indicate higher transaction costs and may result in higher taxes when Fund shares are held in a taxable account. These costs, which are not reflected in annual fund operating expenses or in the Example, affect the Fund’s performance. During the most recent fiscal year, the Fund’s portfolio turnover rate was 0% of the average value of its portfolio.
+
+**PR07** (prospectus; Fund Summary of the Fund [whole section])
+
+> Principal Investment Strategies: The Fund is an actively managed exchange-traded fund (“ETF”) that seeks to provide total return, before fees and expenses, that matches or outperforms the performance of the ICE US Treasury 20+ Year Index (the “Index”) for a calendar quarter, not for any other period. The Fund has adopted a non-fundamental policy that, under normal circumstances, the Fund invests at least 80% of its net assets (plus any borrowings for investment purposes) in futures contracts, call options, and put options on U.S. treasury futures, U.S. Government securities, such as bills, notes and bonds issued by the U.S. Treasury or fixed income ETFs that invest in U.S. Treasuries. The Adviser may invest in affiliated money market ETFs to manage liquidity or to pledge as collateral for derivatives. The Fund may hold cash and cash-like instruments or high-quality short term fixed income securities (collectively, “Collateral”). The Collateral may consist of (1) U.S. Government securities, such as bills, notes and bonds issued by the U.S. Treasury with a duration of less than two years; (2) money market funds (including affiliated money market ETFs); (3) fixed income ETFs; and/or (4) corporate debt securities, such as commercial paper and other short-term unsecured promissory notes issued by companies that are rated investment grade or of comparable quality.
+
+**PR08** (prospectus; Fund Summary of the Fund [whole section])
+
+> The Fund rebalances its holdings no less frequent than quarterly to position its portfolio so that its exposure to the Index is consistent with its quarterly investment objective. The impact of changes to the value of the Index each quarter will affect whether the Fund’s portfolio needs to be rebalanced.
+
+**PR09** (prospectus; Fund Summary of the Fund [whole section])
+
+> The Index is a non-investable index that is part of a series of indices intended to assess U.S. Treasury issued debt. The Index consists of only U.S. dollar denominated, fixed rate securities with a minimum term to maturity greater than twenty years.
+
+**PR10** (prospectus; Fund Summary of the Fund [whole section])
+
+> Principal Investment Risks: As with all funds, there is the risk that you could lose money through your investment in the Fund. Many factors affect the Fund’s NAV and price of shares and performance.
+
+**PR11** (prospectus; Fund Summary of the Fund [whole section])
+
+> The following describes the principal risks the Fund bears with respect to its investments. As with any fund, there is no guarantee that the Fund will achieve its goal.
+
+**PR12** (prospectus; Fund Summary of the Fund [whole section])
+
+> U.S. Treasuries Risk. U.S. Treasury obligations are backed by the “full faith and credit” of the U.S. government and generally have negligible credit risk. Securities issued or guaranteed by federal agencies or authorities and U.S. government-sponsored instrumentalities or enterprises may or may not be backed by the full faith and credit of the U.S. government.
+
+**PR13** (prospectus; Fund Summary of the Fund [whole section])
+
+> Futures Risk. The Fund’s use of futures involves risks different from, or possibly greater than, the risks associated with investing directly in securities and other traditional investments. These risks include (i) leverage risk (ii) risk of mispricing or improper valuation; and (iii) the risk that changes in the value of the futures contract may not correlate perfectly with the underlying index. Investments in futures involve leverage, which means a small percentage of assets invested in futures can have a disproportionately large impact on the Fund. This risk could cause the Fund to lose more than the principal amount invested. Futures contracts may become mispriced or improperly valued when compared to the Adviser’s expectation and may not produce the desired investment results. Additionally, changes in the value of futures contracts may not track or correlate perfectly with the underlying index because of temporary, or even long-term, supply and demand imbalances and because futures do not pay interest unlike the securities upon which they are based. When short-term borrowing rates are higher than short-term, medium-term, or long-term U.S. Treasury rates, the use of futures will tend to detract from the Fund’s returns.
+
+**PR14** (prospectus; Fund Summary of the Fund [whole section])
+
+> Quarterly Rebalancing Risk. The quarterly rebalancing of the futures contracts underlying the Index may impact trading in such futures contracts. For example, such trading may cause Futures Commission Merchants to adjust their hedges. The trading activity associated with such transactions will contribute to the existing trading volume of the underlying futures contracts and may adversely affect the market price of such underlying futures contracts and in turn the level of the Index.
+
+**PR15** (prospectus; Fund Summary of the Fund [whole section])
+
+> Short-Term Investment Risk. Investors holding shares of the Fund over longer-term periods may be subject to increased risk of loss. The Fund is intended to be used only for short-term investment horizons. An investor in the Fund can lose all or a substantial portion of his or her investment within a single day. The longer an investor’s holding period in the Fund, the greater the potential for loss.
+
+**PR16** (prospectus; Fund Summary of the Fund [whole section])
+
+> Active Management Risk. The Fund is subject to the risk that the investment management strategy may not produce the intended results and may negatively impact Fund performance.
+
+**PR17** (prospectus; Fund Summary of the Fund [whole section])
+
+> Cash or Cash Equivalents Risk. At any time, the Fund may have significant investments in cash or cash equivalents. When a substantial portion of a portfolio is held in cash or cash equivalents, there is the risk that the value of the cash account, including interest, will not keep pace with inflation, thus reducing purchasing power over time. Additionally, in rising markets, holding cash or cash equivalents may adversely affect the Fund’s performance and the Fund may not achieve its investment objective.
+
+**PR18** (prospectus; Fund Summary of the Fund [whole section])
+
+> Affiliated Money Market ETF Conflict of Interest Risk. Because the Fund may invest in an affiliated ETF, the Adviser is subject to conflicts of interest in allocating the Fund’s assets to the affiliated ETF. The Adviser will receive more revenue to the extent it selects an affiliated ETF rather than an unaffiliated ETF for inclusion in the Fund’s portfolio.
+
+**PR19** (prospectus; Fund Summary of the Fund [whole section])
+
+> Counterparty Risk. Counterparty risk is the risk that a counterparty to a financial instrument held by the Fund or by a special purpose or structured vehicle invested in by the Fund may become insolvent or otherwise fail to perform its obligations, and the Fund may obtain no or limited recovery of its investment, and any recovery may be significantly delayed.
+
+**PR20** (prospectus; Fund Summary of the Fund [whole section])
+
+> Derivatives Risk. Options are a derivative investment. The use of derivative instruments involves risks different from, or possibly greater than, the risks associated with investing directly in securities and other traditional investments. These risks include (i) the risk that the counterparty to a derivative transaction may not fulfill its contractual obligations; (ii) risk of mispricing or improper valuation; and (iii) the risk that changes in the value of the derivative may not correlate perfectly with the underlying asset, rate or index. Derivative prices are highly volatile and may fluctuate substantially during a short period of time. Such prices are influenced by numerous factors that affect the markets, including, but not limited to: changing supply and demand relationships; government programs and policies; national and international political and economic events, changes in interest rates, inflation and deflation and changes in supply and demand relationships. Trading derivative instruments involves risks different from, or possibly greater than, the risks associated with investing directly in securities.
+
+**PR21** (prospectus; Fund Summary of the Fund [whole section])
+
+> Early Close/Trading Halt Risk. An exchange or market may close or issue trading halts on specific securities, or the ability to buy or sell certain securities or financial instruments may be restricted, which may prevent the Fund from buying or selling certain securities or financial instruments. In these circumstances, the Fund may be unable to rebalance its portfolio, may be unable to accurately price its investments and may incur substantial trading losses.
+
+**PR22** (prospectus; Fund Summary of the Fund [whole section])
+
+> ETF Structure Risks: The Fund is structured as an ETF and will invest in underlying ETFs. As a result, the Fund is subject to special risks, including:
+
+**PR23** (prospectus; Fund Summary of the Fund [whole section])
+
+> ● Not Individually Redeemable. The Fund’s shares (“Shares”) are not redeemable by retail investors and may be redeemed only by Authorized Participants at net asset value (“NAV”) and only in Creation Units. A retail investor generally incurs brokerage costs when selling shares.
+
+**PR24** (prospectus; Fund Summary of the Fund [whole section])
+
+> ● Trading Issues. Trading in Shares on the CBOE BZX Exchange, Inc. (the “Exchange”) may be halted due to market conditions or for reasons that, in the view of the Exchange, make trading in Shares inadvisable, such as extraordinary market volatility. There can be no assurance that Shares will continue to meet the listing requirements of the Exchange which may result in the Shares being delisted. An active trading market for the Shares may not be developed or maintained. If the Shares are traded outside a collateralized settlement system, the number of financial institutions that can act as Authorized Participants that can post collateral on an agency basis is limited, which may limit the market for the Shares.
+
+**PR25** (prospectus; Fund Summary of the Fund [whole section])
+
+> ● Market Price Variance Risk. The market prices of Shares will fluctuate in response to changes in NAV and supply and demand for Shares and will include a “bid-ask spread” charged by the exchange specialists, market makers or other participants that trade the Shares. There may be times when the market price and the NAV vary significantly. This means that Shares may trade at a discount to NAV.
+
+**PR26** (prospectus; Fund Summary of the Fund [whole section])
+
+> ○ In times of market stress, market makers may step away from their role market making in the Shares and in executing trades, which can lead to differences between the market value of the Shares and the Fund’s NAV.
+
+**PR27** (prospectus; Fund Summary of the Fund [whole section])
+
+> ○ The market price of the Shares may deviate from the Fund’s NAV, particularly during times of market stress, with the result that investors may pay significantly more or significantly less the Shares than the Fund’s NAV, which is reflected in the bid and ask price for the Shares or in the closing price.
+
+**PR28** (prospectus; Fund Summary of the Fund [whole section])
+
+> ○ In stressed market conditions, the market for the Shares may become less liquid in response to the deteriorating liquidity of the Fund’s portfolio. This adverse effect on the liquidity of the Shares may, in turn, lead to differences between the market value of the hares and the Fund’s NAV.
+
+**PR29** (prospectus; Fund Summary of the Fund [whole section])
+
+> ● Authorized Participant Risk. Only an Authorized Participant may engage in creation or redemption transactions directly with the Fund. The Fund has a limited number of institutions that may act as an Authorized Participant on an agency basis (i.e., on behalf of other market participants). To the extent that Authorized Participants exit the business or are unable to proceed with creation or redemption orders with respect to the Fund and no other Authorized Participant is able to step forward to create or redeem Creation Units, Fund shares may be more likely to trade at a premium or discount to net asset value and possibly face trading halts or delisting. Authorized Participant concentration risk may be heightened for securities or instruments that have lower trading volumes.
+
+**PR30** (prospectus; Fund Summary of the Fund [whole section])
+
+> Fixed Income Securities Risk. When the Fund invests in fixed income securities, the value of your investment in the Fund will fluctuate with changes in interest rates. Typically, a rise in interest rates causes a decline in the value of fixed income securities owned by the Fund. In general, the market price of fixed income securities with longer maturities will increase or decrease more in response to changes in interest rates than shorter-term securities. Other risk factors include credit risk (the debtor may default), extension risk (an issuer may exercise its right to repay principal on a fixed rate obligation held by the Fund later than expected), and prepayment risk (the debtor may pay its obligation early, reducing the amount of interest payments). These risks could affect the value of a particular investment by the Fund, possibly causing the Fund’s share price and total return to be reduced and fluctuate more than other types of investments.
+
+**PR31** (prospectus; Fund Summary of the Fund [whole section])
+
+> Leverage Risk. The use of leverage by the Fund, such as borrowing money to purchase securities or the use of options, will cause the Fund to incur additional expenses and magnify the Fund’s gains or losses.
+
+**PR32** (prospectus; Fund Summary of the Fund [whole section])
+
+> Market and Geopolitical Risk. The increasing interconnectivity between global economies and financial markets increases the likelihood that events or conditions in one region or financial market may adversely impact issuers in a different country, region or financial market. Securities in the Funds’ portfolios may underperform due to inflation (or expectations for inflation), interest rates, global demand for particular products or resources, climate change or climate related events, natural disasters, pandemics, epidemics, tariffs and trade wars, terrorism, international conflicts and wars, regulatory events and governmental or quasi-governmental actions. The occurrence of global events similar to those in recent years may result in market volatility and may have long term effects on both the U.S. and global financial markets.
+
+**PR33** (prospectus; Fund Summary of the Fund [whole section])
+
+> Option Risk. As the buyer of a put or call option, the Fund risks losing the entire premium invested in the option if the Fund does not exercise the option.
+
+**PR34** (prospectus; Fund Summary of the Fund [whole section])
+
+> Over-the-Counter Market Risk. Securities and options traded in over-the-counter markets may trade less frequently and in limited volumes and thus exhibit more volatility and liquidity risk, and the prices paid by the Fund in over-the-counter transactions may include an undisclosed dealer markup. The Fund is also exposed to default by the over-the-counter option writer who may be unwilling or unable to perform its contractual obligations to the Fund.
+
+**PR35** (prospectus; Fund Summary of the Fund [whole section])
+
+> Underlying Fund Risk. ETFs and ETPs in which the Fund invests are subject to investment advisory and other expenses, which will be indirectly paid by the Fund. As a result, the cost of investing in the Fund will be higher than the cost of investing directly in the ETFs and ETPs and may be higher than other funds that invest directly in stocks and bonds. Each of the ETFs and ETPs is subject to its own specific risks, but the Adviser expects the principal investments risks of such ETFs will be similar to the risks of investing in the Fund.
+
+**PR36** (prospectus; Fund Summary of the Fund [whole section])
+
+> Performance: The following performance information provides some indication of the risks of investing in the Fund. The bar chart shows changes in the Fund’s performance from year to year. The table shows how the Fund’s average annual total returns compare to those of a broad-based securities market index and an additional index. The additional index tracks long-duration U.S. Treasury bonds and is included as a performance benchmark that provides context for the broader Treasury market relative to the Fund’s intermediate-term futures positioning. The Fund’s past performance (before and after taxes) is not necessarily an indication of how the Fund will perform in the future. Updated performance information is available at no cost by visiting www.simplify.us/etfs or by calling 1 (855) 772-8488.
+
+**PR37** (prospectus; Fund Summary of the Fund [whole section])
+
+> During the periods shown in the bar chart above, the Fund’s highest quarterly return was 13.71% (quarter ended December 31, 2023) and the Fund’s lowest quarterly return was -18.22% (quarter ended March 31, 2022). The calendar year-to-date total return of the Fund as of September 30, 2026 was (17.70)%.
+
+**PR38** (prospectus; Fund Summary of the Fund [whole section])
+
+> Average Annual Total Returns for the Periods Ended December 31, 2025
+
+**PR39** (prospectus; Fund Summary of the Fund [whole section])
+
+> After-tax returns are calculated using the historical highest individual federal marginal income tax rates during the period covered by the table above and do not reflect the impact of state and local taxes. Actual after-tax returns depend on an investor’s tax situation and may differ from those shown. After-tax returns shown are not relevant to investors who hold shares through tax-advantaged arrangements, such as 401(k) plans or individual retirement accounts.
+
+**PR40** (prospectus; Fund Summary of the Fund [whole section])
+
+> Investment Adviser: Simplify Asset Management Inc. (the “Adviser”).
+
+**PR41** (prospectus; Fund Summary of the Fund [whole section])
+
+> Portfolio Managers: David Berns, PhD, Chief Investment Officer of the Adviser; Ken Miller, Portfolio Manager of the Adviser; and Jason England, Portfolio Manager of the Adviser, serve as portfolio managers of the Fund. Dr. Berns has served the Fund as a portfolio manager since it commenced operations in September 2021. Mr. Miller and Mr. England have each served the Fund as a portfolio manager since November 2024. Dr. Berns, Mr. Miller, and Mr. England are jointly and primarily responsible for the management of the Fund.
+
+**PR42** (prospectus; Fund Summary of the Fund [whole section])
+
+> Purchase and Sale of Fund Shares: The Fund will issue and redeem Shares at NAV only in large blocks of 25,000 Shares (each block of Shares is called a “Creation Unit”). Creation Units are issued and redeemed primarily in-kind for securities but may include cash. Individual Shares may only be purchased and sold in secondary market transactions through brokers. Except when aggregated in Creation Units in transactions with Authorized Participants, the Shares are not redeemable securities of the Fund.
+
+**PR43** (prospectus; Fund Summary of the Fund [whole section])
+
+> Shares of the Fund are listed for trading on the Exchange and trade at market prices rather than NAV. Shares of the Fund may trade at a price that is greater than, at, or less than NAV. An investor may incur costs attributable to the difference between the highest price a buyer is willing to pay to purchase shares of the Fund (bid) and the lowest price a seller is willing to accept for shares of the Fund (ask) when buying or selling shares in the secondary market. Recent information on the Fund’s NAV, market price, premiums and discounts, and bid-ask spreads is available at www.simplify.us/etfs.
+
+**PR44** (prospectus; Fund Summary of the Fund [whole section])
+
+> Tax Information: The Fund’s distributions generally will be taxable as ordinary income or long-term capital gains. A sale of Shares may result in capital gain or loss.
+
+**PR45** (prospectus; Fund Summary of the Fund [whole section])
+
+> Payments to Broker-Dealers and Other Financial Intermediaries: If you purchase the Fund through a broker-dealer or other financial intermediary (such as a bank), the Fund and its related companies may pay the intermediary for the sale of Fund shares and related services. These payments may create a conflict of interest by influencing the broker-dealer or other intermediary and your salesperson to recommend the Fund over another investment. Ask your salesperson or visit your financial intermediary’s website for more information.
+
+**PR46** (prospectus; Additional Information About the Fund's Principal Investment Strategies [the Fund's own part, whole])
+
+> The Fund is an actively managed ETF that seeks to provide total return, before fees and expenses, that matches or outperforms the performance of the ICE US Treasury 20+ Year Index (the “Index”) for a calendar quarter basis, not for any other period. The Fund has adopted a non-fundamental policy that, under normal circumstances, the Fund invests at least 80% of its net assets (plus any borrowings for investment purposes) in futures contracts, call options, and put options on U.S. treasury futures, U.S. Government securities, such as bills, notes and bonds issued by the U.S. Treasury or fixed income ETFs that invest in U.S. Treasuries. The Adviser may invest in affiliated money market ETFs to manage liquidity or to pledge as collateral for derivatives. The Fund may hold cash and cash-like instruments or high-quality short term fixed income securities (collectively, “Collateral”). The Collateral may consist of (1) U.S. Government securities, such as bills, notes and bonds issued by the U.S. Treasury with a duration of less than two years; (2) money market funds (including affiliated money market ETFs); (3) fixed income ETFs; and/or (4) corporate debt securities, such as commercial paper and other short-term unsecured promissory notes issued by companies that are rated investment grade or of comparable quality.
+
+**PR47** (prospectus; Additional Information About the Fund's Principal Investment Strategies [the Fund's own part, whole])
+
+> The Fund rebalances its holdings no less frequent than quarterly. The Fund rebalances its holdings no less frequent than quarterly to position its portfolio so that its exposure to the Index is consistent with its quarterly investment objective. The impact of changes to the value of the Index each quarter will affect whether the Fund’s portfolio needs to be rebalanced.
+
+**PR48** (prospectus; Principal Investment Risks [the definition of a risk listed for the Fund: Counterparty Risk])
+
+> Counterparty Risk. The Fund may engage in transactions in securities and financial instruments that involve counterparties. Counterparty risk is the risk that a counterparty (the other party to a transaction or an agreement or the party with whom the Fund executes transactions) to a transaction with the Fund may be unable or unwilling to make timely principal, interest or settlement payments, or otherwise honor its obligations. To limit the counterparty risk associated with such transactions, the Fund conducts business only with financial institutions judged by the Adviser to present acceptable credit risk.
+
+**PR49** (prospectus; Principal Investment Risks [the definition of a risk listed for the Fund: Derivatives Risk])
+
+> Derivatives Risk. A Fund’s use of derivative instruments involves risks different from, or possibly greater than, the risks associated with investing directly in securities and other traditional investments. These risks include (i) the risk that the counterparty to a derivative transaction may not fulfill its contractual obligations; (ii) risk of mispricing or improper valuation; and (iii) the risk that changes in the value of the derivative may not correlate perfectly with the underlying asset, rate or index. Derivative prices are highly volatile and may fluctuate substantially during a short period of time. Such prices are influenced by numerous factors that affect the markets, including, but not limited to: changing supply and demand relationships; government programs and policies; national and international political and economic events, changes in interest rates, inflation and deflation and changes in supply and demand relationships. Trading derivative instruments involves risks different from, or possibly greater than, the risks associated with investing directly in securities.
+
+**PR50** (prospectus; Principal Investment Risks [the definition of a risk listed for the Fund: Derivatives Risk])
+
+> ○ Options Risk. As the buyer of a put or call option, the Fund risks losing the entire premium invested in the option if the Fund does not exercise the option. Spread writing exposes the Fund to losses up to the amount between strike prices of the purchased option and the written option.
+
+**PR51** (prospectus; Principal Investment Risks [the definition of a risk listed for the Fund: Derivatives Risk])
+
+> ○ Futures Risk. The Fund’s use of futures involves risks different from, or possibly greater than, the risks associated with investing directly in securities and other traditional investments. These risks include leverage risk, risk of mispricing or improper valuation, and the risk that changes in the value of the futures contract may not correlate perfectly with the underlying index.
+
+**PR52** (prospectus; Principal Investment Risks [the definition of a risk listed for the Fund: Derivatives Risk])
+
+> ○ Swaps Risk. Swaps are subject to tracking risk because they may not be perfect substitutes for the instruments they are intended to hedge or replace. Over the counter swaps are subject to counterparty default. Leverage inherent in derivatives will tend to magnify the Fund’s losses.
+
+**PR53** (prospectus; Principal Investment Risks [the definition of a risk listed for the Fund: Early Close/Trading Halt Risk])
+
+> Early Close/Trading Halt Risk. An exchange or market may close or issue trading halts on specific securities, or the ability to buy or sell certain securities or financial instruments may be restricted, which may prevent a Fund from buying or selling certain securities or financial instruments. In these circumstances, a Fund may be unable to rebalance its portfolio, may be unable to accurately price its investments and may incur substantial trading losses.
+
+**PR54** (prospectus; Principal Investment Risks [the definition of a risk listed for the Fund: ETF Structure Risk])
+
+> ETF Structure Risk: Each Fund is structured as an ETF and some Funds may invest in Underlying ETFs. As a result, each Fund is subject to special risks, including:
+
+**PR55** (prospectus; Principal Investment Risks [the definition of a risk listed for the Fund: ETF Structure Risk])
+
+> ● Not Individually Redeemable. A Fund’s Shares (“Shares”) are not redeemable by retail investors and may be redeemed only by the Authorized Participant at net asset value (“NAV”) and only in Creation Units. A retail investor generally incurs brokerage costs when selling shares.
+
+**PR56** (prospectus; Principal Investment Risks [the definition of a risk listed for the Fund: ETF Structure Risk])
+
+> ● Trading Issues. Trading in Shares on the Exchange may be halted due to market conditions or for reasons that, in the view of the Exchange, make trading in Shares inadvisable, such as extraordinary market volatility. There can be no assurance that Shares will continue to meet the listing requirements of the Exchange, which may result in a Fund’s shares being delisted. An active trading market for the Shares may not be developed or maintained. If the Shares are traded outside a collateralized settlement system, the number of financial institutions that can act as Authorized Participants that can post collateral on an agency basis is limited, which may limit the market for the Shares.
+
+**PR57** (prospectus; Principal Investment Risks [the definition of a risk listed for the Fund: ETF Structure Risk])
+
+> ● Market Price Variance Risk. Individual Shares of a Fund that are listed for trading on the Exchange can be bought and sold in the secondary market at market prices. The market prices of Shares will fluctuate in response to changes in NAV and supply and demand for Shares. There may be times when the market price and the NAV vary significantly and you may pay more than NAV when buying Shares on the secondary market, and you may receive less than NAV when you sell those Shares. The market price of Shares, like the price of any exchange-traded security, includes a “bid-ask spread” charged by the exchange specialists, market makers or other participants that trade the particular security. In times of severe market disruption, the bid- ask spread often increases significantly. This means that Shares may trade at a discount to NAV and the discount is likely to be greatest when the price of Shares is falling fastest, which may be the time that you most want to sell your Shares. A Fund’s investment results are measured based upon the daily NAV of a Fund over a period of time. Investors purchasing and selling Shares in the secondary market may not experience investment results consistent with those experienced by those Authorized Participants creating and redeeming directly with a Fund.
+
+**PR58** (prospectus; Principal Investment Risks [the definition of a risk listed for the Fund: ETF Structure Risk])
+
+> ○ In times of market stress, market makers may step away from their role market making in shares of ETFs and in executing trades, which can lead to differences between the market value of Shares and the Fund’s NAV.
+
+**PR59** (prospectus; Principal Investment Risks [the definition of a risk listed for the Fund: ETF Structure Risk])
+
+> ○ The market price for the Shares may deviate from a Fund’s NAV, particularly during times of market stress, with the result that investors may pay significantly more or significantly less for Shares than a Fund’s NAV, which is reflected in the bid and ask price for Fund shares or in the closing price.
+
+**PR60** (prospectus; Principal Investment Risks [the definition of a risk listed for the Fund: ETF Structure Risk])
+
+> ○ In stressed market conditions, the market for the Shares may become less liquid in response to the deteriorating liquidity of a Fund’s portfolio. This adverse effect on the liquidity of the Shares may, in turn, lead to differences between the market value of the Shares and a Fund’s NAV.
+
+**PR61** (prospectus; Principal Investment Risks [the definition of a risk listed for the Fund: ETF Structure Risk])
+
+> ● Authorized Participant Risk. Only an Authorized Participant may engage in creation or redemption transactions directly with a Fund. A Fund has a limited number of institutions that may act as an Authorized Participant on an agency basis (i.e., on behalf of other market participants). To the extent that Authorized Participants exit the business or are unable to proceed with creation or redemption orders with respect to a Fund and no other Authorized Participant is able to step forward to create or redeem Creation Units, a Fund’s shares may be more likely to trade at a premium or discount to NAV and possibly face trading halts or delisting. Authorized Participant concentration risk may be heightened for securities or instruments that have lower trading volumes.
+
+**PR62** (prospectus; Principal Investment Risks [the definition of a risk listed for the Fund: ETF Structure Risk])
+
+> Exchange Traded Product (ETP) Risk. The Fund invests in Bitcoin ETPs. Through its positions in Bitcoin ETPs, the Fund generally will be subject to the risks associated with such vehicle’s investments, including the possibility that the value of the securities or instruments held by or linked to a Bitcoin ETP could decrease. The Bitcoin ETPs in which the Fund invests are not registered, nor are they required to be registered, as investment companies subject to the 1940 Act and, therefore, are not subject to the regulatory scheme of the 1940 Act including: provisions preventing Bitcoin ETP insiders from managing a Spot Bitcoin ETP to their benefit and to the detriment of shareholders; provisions preventing a Bitcoin ETP from issuing securities having inequitable or discriminatory provisions; provisions preventing management by irresponsible persons; provisions preventing the use of unsound or misleading methods of computing Bitcoin ETP earnings and asset value; provisions prohibiting suspension of redemptions (except under limited circumstances); provisions limiting fund leverage; provisions imposing a fiduciary duty on fund managers with respect to receipt of compensation for services; and provisions preventing changes in a Bitcoin ETP’s character without the consent of shareholders. When the Fund invests in a Bitcoin ETP, in addition to directly bearing the expenses associated with its own operations, it also will bear a pro rata portion of the Bitcoin ETP’s expenses (including operating costs and management fees).
+
+**PR63** (prospectus; Principal Investment Risks [the definition of a risk listed for the Fund: Leverage Risk])
+
+> Leverage Risk. Using derivatives or futures can create leverage, which can amplify the effects of market volatility on each Fund’s share price and make a Fund’s returns more volatile. The use of leverage may cause a Fund to liquidate portfolio positions when it would not be advantageous to do so in order to satisfy its obligations. The use of leverage may also cause a Fund to have higher expenses than those of other funds that do not use such techniques.
+
+**PR64** (prospectus; Principal Investment Risks [the definition of a risk listed for the Fund: Short-Term Investment Risk])
+
+> Short-Term Investment Risk. Investors holding shares of the Fund over longer-term periods may be subject to increased risk of loss. The Fund is intended to be used only for short-term investment horizons. An investor in the Fund can lose all or a substantial portion of his or her investment within a calendar quarter. The longer an investor’s holding period in the Fund, the greater the potential for loss.
+
+**PR65** (prospectus; How Shares Are Priced [whole section])
+
+> The NAV of each Fund is determined at the close of regular trading (normally 4:00 p.m. Eastern Time) on each day the Exchange is open for business. NAV is computed by determining, the aggregate market value of all assets of the applicable Fund, less its liabilities, divided by the total number of shares outstanding ((assets-liabilities)/number of shares = NAV). The Exchange is closed on weekends and New Year’s Day, Martin Luther King, Jr. Day, Presidents’ Day, Good Friday, Memorial Day, Juneteenth, Independence Day, Labor Day, Thanksgiving Day and Christmas Day (“Exchange Close”). The NAV takes into account, the expenses and fees of each Fund, including management, administration, and distribution fees, which are accrued daily. The determination of NAV for each Fund for a particular day is applicable to all applications for the purchase of shares, as well as all requests for the redemption of Creation Units, received by each Fund (or an authorized broker or agent, or its authorized designee) before the close of trading on the Exchange on that day.
+
+**PR66** (prospectus; How Shares Are Priced [whole section])
+
+> Generally, each Fund’s portfolio securities, including securities issued by ETFs, are valued each day at the last quoted sales price on each security’s primary exchange. Securities traded or dealt in upon one or more securities exchanges (whether domestic or foreign) for which market quotations are readily available and not subject to restrictions against resale shall be valued at the last quoted sales price on the primary exchange or, in the absence of a sale on the primary exchange, at the mean between the current bid and ask prices on such exchange. Securities primarily traded in the National Association of Securities Dealers’ Automated Quotation System (“NASDAQ”) National Market System for which market quotations are readily available shall be valued using the NASDAQ Official Closing Price. Securities that are not traded on any securities exchange (whether domestic or foreign) and for which over-the-counter market quotations are readily available generally shall be valued at the last sale price or, in the absence of a sale, at the mean between the current bid and ask price on such over- the-counter market. Debt securities not traded on an exchange may be valued at prices supplied by a pricing agent(s) based on broker or dealer supplied valuations or matrix pricing, a method of valuing securities by reference to the value of other securities with similar characteristics, such as rating, interest rate and maturity.
+
+**PR67** (prospectus; How Shares Are Priced [whole section])
+
+> If market quotations are not readily available, securities will be valued at their fair market value as determined using the “fair value” procedures approved by the Board and the Adviser. The Board has selected the Adviser as its valuation designee. Fair value pricing involves subjective judgments and it is possible that the fair value determined for a security may be materially different than the value that could be realized upon the sale of that security. The fair value prices can differ from market prices when they become available or when a price becomes available. The Board reviews the execution of this process at least annually to ensure the process produces reliable results. Independent pricing services may assist in calculating the value of each Fund’s portfolio securities. In addition, market prices for foreign securities are not determined at the same time of day as the NAV for each Fund.
+
+**PR68** (prospectus; How Shares Are Priced [whole section])
+
+> The Funds may use independent pricing services to assist in calculating the value of each Fund’s portfolio securities. In addition, market prices for foreign securities are not determined at the same time of day as the NAV for the Funds.
+
+**PR69** (prospectus; How Shares Are Priced [whole section])
+
+> In computing the NAV, the Funds value foreign securities held by a Fund at the latest closing price on the exchange in which they are traded immediately prior to closing of the Exchange. Prices of foreign securities quoted in foreign currencies are translated into U.S. dollars at current rates. If events materially affecting the value of a security in a Fund’s portfolio, particularly foreign securities, occur after the close of trading on a foreign market but before a Fund prices its shares, the security will be valued at fair value. For example, if trading in a portfolio security is halted and does not resume before a Fund calculates its NAV, the Adviser may need to price the security using the Funds’ fair value pricing guidelines. Without a fair value price, short-term traders could take advantage of the arbitrage opportunity and dilute the NAV of long-term investors. Fair valuation of a Fund’s portfolio securities can serve to reduce arbitrage opportunities available to short-term traders, but there is no assurance that fair value pricing policies will prevent dilution of a Fund’s NAV by short term traders. The determination of fair value involves subjective judgments. As a result, using fair value to price a security may result in a price materially different from the prices used by other mutual funds to determine NAV, or from the price that may be realized upon the actual sale of the security.
+
+**PR70** (prospectus; How to Buy and Sell Shares [whole section])
+
+> Shares of the Funds are listed for trading on the respective Exchanges, as stated below. Share prices are reported in dollars and cents per Share. Shares can be bought and sold on the secondary market throughout the trading day like other publicly traded shares, and Shares typically trade in blocks of less than a Creation Unit. There is no minimum investment required. Shares may only be purchased and sold on the secondary market when the Exchange is open for trading. The Exchange is open for trading Monday through Friday and is closed on weekends and the following holidays, as observed: New Year’s Day, Martin Luther King, Jr. Day, Presidents’ Day, Good Friday, Memorial Day, Juneteenth, Independence Day, Labor Day, Thanksgiving Day and Christmas Day.
+
+**PR71** (prospectus; How to Buy and Sell Shares [whole section])
+
+> When buying or selling Shares through a broker, you will incur customary brokerage commissions and charges, and you may pay some or all of the spread between the bid and the offered price in the secondary market on each leg of a round trip (purchase and sale) transaction.
+
+**PR72** (prospectus; How to Buy and Sell Shares [whole section])
+
+> Authorized Participants that have entered into a contract with the Funds’ distributor may acquire Shares from the Funds, and Authorized Participants may tender their Shares for redemption directly to the Funds, at NAV per Share only in large blocks, or Creation Units, of 25,000 Shares (Simplify Government Money Market ETF Creation Units of 10,000 Shares). Purchases and redemptions directly with the Funds must follow each Fund’s procedures, which are described in the SAI. The Funds expect that purchases and redemptions of Creation Units will be made primarily through in-kind delivery of portfolio securities. A Fund may liquidate and terminate at any time without shareholder approval.
+
+**PR73** (prospectus; How to Buy and Sell Shares [whole section])
+
+> The approximate value of Shares, an amount representing on a per share basis the sum of the current market price of the securities accepted by the Funds in exchange for Shares and an estimated cash component, may be disseminated every 15 seconds throughout the trading day through the facilities of the Consolidated Tape Association. This approximate value should not be viewed as a “real-time” update of the NAV per Share because the approximate value may not be calculated in the same manner as the NAV, which is computed once a day, generally at the end of the business day. The Funds are not involved in, or responsible for, the calculation or dissemination of the approximate value of the Shares, and the Funds do not make any warranty as to the accuracy of these values.
+
+**PR74** (prospectus; How to Buy and Sell Shares [whole section])
+
+> Shares are held in book entry form, which means that no stock certificates are issued. The Depository Trust Company (“DTC”) or its nominee is the record owner of all outstanding Shares and is recognized as the owner of all Shares for all purposes.
+
+**PR75** (prospectus; How to Buy and Sell Shares [whole section])
+
+> Investors owning Shares are beneficial owners as shown on the records of DTC or its participants. DTC serves as the securities depository for all Shares. Participants in DTC include securities brokers and dealers, banks, trust companies, clearing corporations and other institutions that directly or indirectly maintain a custodial relationship with DTC. As a beneficial owner of Shares, you are not entitled to receive physical delivery of stock certificates or to have Shares registered in your name, and you are not considered a registered owner of Shares. Therefore, to exercise any right as an owner of Shares, you must rely upon the procedures of DTC and its participants. These procedures are the same as those that apply to any other securities that you hold in book entry or “street name” form.
+
+**PR76** (prospectus; Frequent Purchases and Redemptions of Fund Shares [whole section])
+
+> Shares can only be purchased and redeemed directly from the Funds in Creation Units by Authorized Participants that have entered into a contract with the Funds’ distributor. The vast majority of trading in Shares occurs on the secondary market. Because the secondary market trades do not directly involve the Fund, it is unlikely those trades would cause the harmful effects of market timing, including dilution, disruption of portfolio management, increases in the Funds’ trading costs and the realization of capital gains. With regard to the purchase or redemption of Creation Units directly with the Funds, to the extent effected in-kind (i.e., for securities), those trades do not cause the harmful effects that may result from frequent cash trades. To the extent trades are effected in whole or in part in cash, those trades could result in dilution to the Funds and increased transaction costs, which could negatively impact a Fund’s ability to achieve its investment objective. However, direct trading by Authorized Participants is critical to ensuring that Shares trade at or close to NAV. The Funds also employ fair valuation pricing to minimize potential dilution from market timing. In addition, the Funds impose transaction fees on purchases and redemptions of Shares to cover the custodial and other costs incurred by the Funds in effecting trades. These fees increase if an investor substitutes cash in part or in whole for securities, reflecting the fact that a Fund’s trading costs increase in those circumstances. Given this structure, the Trust has determined that it is not necessary to adopt policies and procedures to detect and deter market timing of the Shares.
+
+**PR77** (prospectus; Dividends, Other Distributions and Taxes [paragraphs with the word futures, margin or 1256])
+
+> Ordinarily, dividends from net investment income, if any, are declared and paid quarterly by each of the Chinese Commodities Strategy No K-1, Commodities Strategy No K-1, DBi CTA Managed Futures Index ETF, Health Care ETF, Hedged Equity ETF, Multi-QIS ETF, US Equity PLUS Convexity ETF, US Equity PLUS Downside Convexity ETF, US Equity PLUS Bitcoin Strategy ETF, and US Equity PLUS Managed Futures Strategy ETF; and dividends from net investment income, if any, are declared and paid monthly for each of Aggregate Bond ETF, Barrier Income ETF, Bond Bull ETF, Bitcoin Strategy ETF, Currency Strategy ETF, China A Shares PLUS Income ETF, Enhanced Income ETF, Gold Strategy ETF, High Yield ETF, Interest Rate Hedge ETF, Intermediate Term Treasury Futures Strategy ETF, MBS ETF, Short Term Treasury Futures Strategy ETF, Target 15 Distribution ETF, Treasury Option Income ETF, US Equity Income ETF, and Volatility Premium ETF. The Funds distribute their net realized capital gains, if any, to shareholders annually. The Funds may also pay a special distribution at the end of a calendar year to comply with federal tax requirements.
+
+**SA01** (sai; Types of Investments [every paragraph with the word futures])
+
+> A Fund may also enter into a swap agreement in circumstances where the Adviser believes that it may be more cost effective or practical than buying the reference assets such as securities represented by an index or a futures contract or an option on such index. The counterparty to any swap agreement will typically be a bank, investment banking firm or broker/dealer. The counterparty will generally agree to pay a Fund the amount, if any, by which the notional amount of the swap agreement would have increased in value had it been invested in, for example, the particular stocks represented in the index, plus the dividends that would have been received on those stocks. A Fund will typically agree to pay to the counterparty a floating rate of interest on the notional amount of the swap agreement plus the amount, if any, by which the notional amount would have decreased in value had it been invested, for example, stocks in an index. Therefore, the return to a Fund on any swap agreement should be the gain or loss on the notional amount plus dividends on the stocks, for example, less the interest paid by the Fund on the notional amount.
+
+**SA02** (sai; Types of Investments [every paragraph with the word futures])
+
+> The Simplify Barrier Income ETF, Simplify Bond Bull ETF, Simplify China A Shares Plus Income ETF, Simplify Currency Strategy ETF, Simplify DBi CTA Managed Futures Index ETF, Simplify Gold Strategy ETF, Simplify Government Money Market ETF, Simplify MBS ETF, Simplify Multi-QIS Alternative ETF, Simplify Target 15 Distribution ETF, and Simplify US Equity PLUS Managed Futures Strategy ETF may invest in mortgage-backed securities, such as those issued by the Government National Mortgage Association (“GNMA”), Federal National Mortgage Association (“FNMA”), Federal Home Loan Mortgage Corporation (“FHLMC”) or certain foreign issuers. Mortgage-backed securities represent direct or indirect participations in, or are secured by and payable from, mortgage loans secured by real property. The mortgages backing these securities include, among other mortgage instruments, conventional 30-year fixed-rate mortgages, 15-year fixed-rate mortgages, graduated payment mortgages and adjustable rate mortgages. The government or the issuing agency typically guarantees the payment of interest and principal of these securities. However, the guarantees do not extend to the securities’ yield or value, which are likely to vary inversely with fluctuations in interest rates, nor do the guarantees extend to the yield or value of a Fund’s shares. These securities generally are “pass-through” instruments, through which the holders receive a share of all interest and principal payments from the mortgages underlying the securities, net of certain fees. Yields on pass-through securities are typically quoted by investment dealers and vendors based on the maturity of the underlying instruments and the associated average life assumption. The average life of pass-through pools varies with the maturities of the underlying mortgage loans. A pool’s term may be shortened by unscheduled or early payments of principal on the underlying mortgages. The occurrence of mortgage prepayments is affected by various factors, including the level of interest rates, general economic conditions, the location, scheduled maturity and age of the mortgage and other social and demographic conditions. Because prepayment rates of individual pools vary widely, it is not possible to predict accurately the average life of a particular pool. For pools of fixed-rate 30-year mortgages in a stable interest rate environment, a common industry practice in the U.S. has been to assume that prepayments will result in a 12-year average life, although it may vary depending on numerous factors. At present, pools, particularly those with loans with other maturities or different characteristics, are priced on an assumption of average life determined for each pool. In periods of falling interest rates, the rate of prepayment tends to increase, thereby shortening the actual average life of a pool of mortgage-related securities. Conversely, in periods of rising rates the rate of prepayment tends to decrease, thereby lengthening the actual average life of the pool. However, these effects may not be present, or may differ in degree, if the mortgage loans in the pools have adjustable interest rates or other special payment terms, such as a prepayment charge. Actual prepayment experience may cause the yield of mortgage-backed securities to differ from the assumed average life yield. Reinvestment of prepayments may occur at higher or lower interest rates than the original investment, thus affecting a Fund’s yield.
+
+**SA03** (sai; Types of Investments [every paragraph with the word futures])
+
+> The Simplify Barrier Income ETF, Simplify Bond Bull ETF, Simplify China A Shares Plus Income ETF, Simplify Currency Strategy ETF, Simplify DBi CTA Managed Futures Index ETF, Simplify Gold Strategy ETF, Simplify Government Money Market ETF, Simplify MBS ETF, Simplify Multi-QIS Alternative ETF, Simplify Target 15 Distribution ETF, and Simplify US Equity PLUS Managed Futures Strategy ETF may invest in asset-backed securities, which represent participations in, or are secured by and payable from, assets such as motor vehicle installment sales, installment loan contracts, leases of various types of real and personal property and receivables from revolving credit (credit card) agreements. Such assets are securitized through the use of trusts and special purpose corporations. Payments or distributions of principal and interest may be guaranteed up to certain amounts and for a certain time period by a letter of credit or a pool insurance policy issued by a financial institution unaffiliated with the trust or corporation.
+
+**SA04** (sai; Types of Investments [every paragraph with the word futures])
+
+> A Fund may purchase and sell options on the same types of futures in which it may invest. Options on futures are similar to options on underlying instruments except that options on futures give the purchaser the right, in return for the premium paid, to assume a position in a futures contract (a long position if the option is a call and a short position if the option is a put), rather than to purchase or sell the futures contract, at a specified exercise price at any time during the period of the option. Upon exercise of the option, the delivery of the futures position by the writer of the option to the holder of the option will be accompanied by the delivery of the accumulated balance in the writer’s futures margin account which represents the amount by which the market price of the futures contract, at exercise, exceeds (in the case of a call) or is less than (in the case of a put) the exercise price of the option on the futures contract. Purchasers of options who fail to exercise their options prior to the exercise date suffer a loss of the premium paid.
+
+**SA05** (sai; Types of Investments [every paragraph with the word futures])
+
+> A Fund may purchase covered spread options from securities dealers. These covered spread options are not presently exchange-listed or exchange- traded. The purchase of a spread option gives a Fund the right to put securities that it owns at a fixed dollar spread or fixed yield spread in relationship to another security that a Fund does not own, but which is used as a benchmark. The risk to a Fund, in addition to the risks of dealer options described above, is the cost of the premium paid as well as any transaction costs. The purchase of spread options will be used to protect a Fund against adverse changes in prevailing credit quality spreads, i.e., the yield spread between high quality and lower quality securities. This protection is provided only during the life of the spread options. Spread options may include those based on volatility and/or commodity linked futures, securities and indices.
+
+**SA06** (sai; Types of Investments [every paragraph with the word futures])
+
+> A futures contract provides for the future sale by one party and purchase by another party of a specified amount of a specific financial instrument (e.g., units of a stock index) for a specified price, date, time and place designated at the time the contract is made. Brokerage fees are paid when a futures contract is bought or sold and margin deposits must be maintained. Entering into a contract to buy is commonly referred to as buying or purchasing a contract or holding a long position. Entering into a contract to sell is commonly referred to as selling a contract or holding a short position.
+
+**SA07** (sai; Types of Investments [every paragraph with the word futures])
+
+> Unlike when a Fund purchases or sells a security, no price would be paid or received by a Fund upon the purchase or sale of a futures contract. Upon entering into a futures contract, and to maintain a Fund’s open positions in futures contracts, a Fund would be required to deposit with its custodian or futures broker in a segregated account in the name of the futures broker an amount of cash, U.S. government securities, suitable money market instruments, or other liquid securities, known as “initial margin.” The margin required for a particular futures contract is set by the exchange on which the contract is traded, and may be significantly modified from time to time by the exchange during the term of the contract. Futures contracts are customarily purchased and sold on margins that may range upward from less than 5% of the value of the contract being traded.
+
+**SA08** (sai; Types of Investments [every paragraph with the word futures])
+
+> If the price of an open futures contract changes (by increase in underlying instrument or index in the case of a sale or by decrease in the case of a purchase) so that the loss on the futures contract reaches a point at which the margin on deposit does not satisfy margin requirements, the broker will require an increase in the margin. However, if the value of a position increases because of favorable price changes in the futures contract so that the margin deposit exceeds the required margin, the broker will pay the excess to a Fund.
+
+**SA09** (sai; Types of Investments [every paragraph with the word futures])
+
+> These subsequent payments, called “variation margin,” to and from the futures broker, are made on a daily basis as the price of the underlying assets fluctuate making the long and short positions in the futures contract more or less valuable, a process known as “marking to the market.” A Fund expects to earn interest income on margin deposits.
+
+**SA10** (sai; Types of Investments [every paragraph with the word futures])
+
+> Although certain futures contracts, by their terms, require actual future delivery of and payment for the underlying instruments, in practice most futures contracts are usually closed out before the delivery date. Closing out an open futures contract purchase or sale is effected by entering into an offsetting futures contract sale or purchase, respectively, for the same aggregate amount of the identical underlying instrument or index and the same delivery date. If the offsetting purchase price is less than the original sale price, a Fund realizes a gain; if it is more, a Fund realizes a loss. Conversely, if the offsetting sale price is more than the original purchase price, a Fund realizes a gain; if it is less, a Fund realizes a loss. The transaction costs must also be included in these calculations. There can be no assurance, however, that a Fund will be able to enter into an offsetting transaction with respect to a particular futures contract at a particular time. If a Fund is not able to enter into an offsetting transaction, a Fund will continue to be required to maintain the margin deposits on the futures contract.
+
+**SA11** (sai; Types of Investments [every paragraph with the word futures])
+
+> For example, one contract in the Financial Times Stock Exchange 100 Index future is a contract to buy 25 pounds sterling multiplied by the level of the UK Financial Times 100 Share Index on a given future date. Settlement of a stock index futures contract may or may not be in the underlying instrument or index. If not in the underlying instrument or index, then settlement will be made in cash, equivalent over time to the difference between the contract price and the actual price of the underlying asset at the time the stock index futures contract expires.
+
+**SA12** (sai; Types of Investments [every paragraph with the word futures])
+
+> The Adviser is registered with the National Futures Association as a commodity pool operator under the Commodity Exchange Act, as amended, and the rules of the Commodity Futures Trading Commission promulgated thereunder, with respect to the Funds’ operation. The Adviser, on behalf of the Funds (except Simplify Gold Strategy ETF), has filed with the National Futures Association, a notice claiming an exemption from the definition of the term “commodity pool operator” in accordance with Rule 4.5 under the Commodity Exchange Act (“CEA”), as amended, and the rules of the Commodity Futures Trading Commission promulgated thereunder, with respect to the Funds’ operations. Accordingly, the Funds are not subject, nor will they be subject, to registration or regulation as a commodity pool operator under the CEA. The Simplify Gold Strategy ETF and its Subsidiary, are “commodity pools” under the U.S. Commodity Exchange Act (“CEA”). As a registered commodity pool operator with respect to this ETF, the Adviser must comply with various regulatory requirements under the CEA, and the rules and regulations of the CFTC and the NFA, including investor protection requirements. The Adviser is also subject to periodic inspections and audits by the CFTC and NFA.
+
+**SA13** (sai; Purchase, Redemption and Pricing of Shares: Calculation of Share Price [whole subsection])
+
+> As indicated in the Prospectus under the heading “How Shares are Priced,” the NAV of a Fund’s shares is determined by dividing the total value of a Fund’s portfolio investments and other assets, less any liabilities, by the total number of shares outstanding of a Fund.
+
+**SA14** (sai; Purchase, Redemption and Pricing of Shares: Calculation of Share Price [whole subsection])
+
+> Generally, the Funds’ domestic securities (including underlying ETFs which hold portfolio securities primarily listed on foreign (non-U.S.) exchanges) are valued each day at the last quoted sales price on each security’s primary exchange. Securities traded or dealt in upon one or more securities exchanges for which market quotations are readily available and not subject to restrictions against resale shall be valued at the last quoted sales price on the primary exchange or, in the absence of a sale on the primary exchange, at the mean between the current bid and ask prices on such exchange. Securities primarily traded in the NASDAQ National Market System for which market quotations are readily available shall be valued using the NASDAQ Official Closing Price. If market quotations are not readily available, securities will be valued at their fair market value as determined in good faith by the Funds’ Adviser as the Board’s valuation designee in accordance with procedures approved by the Board and as further described below. Securities that are not traded or dealt in any securities exchange (whether domestic or foreign) and for which over-the-counter market quotations are readily available generally shall be valued at the last sale price or, in the absence of a sale, at the mean between the current bid and ask price on such over-the- counter market.
+
+**SA15** (sai; Purchase, Redemption and Pricing of Shares: Calculation of Share Price [whole subsection])
+
+> Certain securities or investments for which daily market quotes are not readily available may be valued, pursuant to guidelines established by the Board, with reference to other securities or indices. Debt securities not traded on an exchange may be valued at prices supplied by a pricing agent(s) based on broker or dealer supplied valuations or matrix pricing, a method of valuing securities by reference to the value of other securities with similar characteristics, such as rating, interest rate and maturity. Short-term investments having a maturity of 60 days or less may be generally valued at amortized cost when it approximated fair value.
+
+**SA16** (sai; Purchase, Redemption and Pricing of Shares: Calculation of Share Price [whole subsection])
+
+> Exchange traded options are valued at the last quoted sales price or, in the absence of a sale, at the mean between the current bid and ask prices on the exchange on which such options are traded. Futures and options on futures are valued at the settlement price determined by the exchange, or, if no settlement price is available, at the last sale price as of the close of business prior to when the Funds calculate NAV. Other securities for which market quotes are not readily available are valued at fair value as determined in good faith by the Adviser acting as the Board’s valuation designee. Swap agreements and other derivatives are generally valued daily depending on the type of instrument and reference assets based upon market prices, the mean between bid and asked prices quotations from market makers or by a pricing service or other parties in accordance with the valuation procedures of the Adviser as valuation designee.
+
+**SA17** (sai; Purchase, Redemption and Pricing of Shares: Calculation of Share Price [whole subsection])
+
+> Under certain circumstances, a Fund may use an independent pricing service to calculate the fair market value of foreign equity securities on a daily basis by applying valuation factors to the last sale price or the mean price as noted above. The fair market values supplied by the independent pricing service will generally reflect market trading that occurs after the close of the applicable foreign markets of comparable securities or the value of other instruments that have a strong correlation to the fair-valued securities. The independent pricing service will also take into account the current relevant currency exchange rate. A security that is fair valued may be valued at a price higher or lower than actual market quotations or the value determined by other funds using their own fair valuation procedures. Because foreign securities may trade on days when Shares are not priced, the value of securities held by the Funds can change on days when Shares cannot be redeemed or purchased. In the event that a foreign security’s market quotations are not readily available or are deemed unreliable (for reasons other than because the foreign exchange on which it trades closed before the Funds’ calculation of NAV), the security will be valued at its fair market value as determined in good faith by the Funds’ Adviser as the Board’s valuation designee in accordance with procedures approved by the Board as discussed below. Without fair valuation, it is possible that short-term traders could take advantage of the arbitrage opportunity and dilute the NAV of long-term investors. Fair valuation of the Funds’ portfolio securities can serve to reduce arbitrage opportunities available to short-term traders, but there is no assurance that it will prevent dilution of the Funds’ NAV by short-term traders. In addition, because the Funds may invest in underlying ETFs which hold portfolio securities primarily listed on foreign (non-U.S.) exchanges, and these exchanges may trade on weekends or other days when the underlying ETFs do not price their shares, the value of these portfolio securities may change on days when you may not be able to buy or sell Shares.
+
+**SA18** (sai; Purchase, Redemption and Pricing of Shares: Calculation of Share Price [whole subsection])
+
+> Investments initially valued in currencies other than the U.S. dollar are converted to U.S. dollars using exchange rates obtained from pricing services or other parties in accordance with the valuation procedures of the Adviser as the Board’s valuation designee. As a result, the NAV of the Shares may be affected by changes in the value of currencies in relation to the U.S. dollar. The value of securities traded in markets outside the United States or denominated in currencies other than the U.S. dollar may be affected significantly on a day that the Exchange is closed and an investor is not able to purchase, redeem or exchange Shares.
+
+**SA19** (sai; Purchase, Redemption and Pricing of Shares: Calculation of Share Price [whole subsection])
+
+> Shares are valued at the close of regular trading on each Exchange (normally 4:00 p.m., Eastern time) (the “Exchange Close”) on each day that each Exchange is open. For purposes of calculating the NAV, a Fund normally use pricing data for domestic equity securities received shortly after the Exchange Close and does not normally take into account trading, clearances or settlements that take place after the Exchange Close. Domestic fixed income and foreign securities are normally priced using data reflecting the earlier closing of the principal markets for those securities. Information that becomes known to the Funds or its agents after the NAV has been calculated on a particular day will not generally be used to retroactively adjust the price of the security or the NAV determined earlier that day.
+
+**SA20** (sai; Purchase, Redemption and Pricing of Shares: Calculation of Share Price [whole subsection])
+
+> When market quotations are insufficient or not readily available, the Funds may value securities at fair value or estimate their value as determined in good faith by the Adviser as the Board’s valuation designee, pursuant to procedures approved by the Board. Fair valuation may also be used by the Adviser if extraordinary events occur after the close of the relevant market but prior to the Exchange Close.
+
+**SA21** (sai; Purchase, Redemption and Pricing of Shares: Creation Units [whole subsection])
+
+> Each Fund sells and redeems Shares in Creation Units on a continuous basis through the Distributor, without a sales load, at the NAV next determined after receipt of an order in proper form on any Business Day. A “Business Day” is any day on which each Exchange is open for business. As of the date of this SAI, each Exchange observes the following holidays: New Year’s Day, Martin Luther King, Jr. Day, Presidents’ Day, Good Friday, Memorial Day, Juneteenth, Independence Day, Labor Day, Thanksgiving Day and Christmas Day.
+
+**SA22** (sai; Purchase, Redemption and Pricing of Shares: Creation Units [whole subsection])
+
+> A Creation Unit is an aggregation of 25,000 Shares (or 10,000 Shares in case of Simplify Bitcoin Strategy ETF and Simplify Government Money Market ETF). The Board may declare a split or a consolidation in the number of Shares outstanding of a Fund or Trust and make a corresponding change in the number of Shares in a Creation Unit.
+
+**SA23** (sai; Purchase, Redemption and Pricing of Shares: Transaction Fees [whole subsection])
+
+> A fixed fee payable to the Custodian is imposed on each creation and redemption transaction regardless of the number of Creation Units involved in the transaction (“Fixed Fee”). Purchases and redemptions of Creation Units for cash or involving cash-in-lieu (as defined below) are required to pay an additional variable charge to compensate the relevant Fund and its ongoing shareholders for brokerage and market impact expenses relating to Creation Unit transactions (“Variable Charge,” and together with the Fixed Fee, the “Transaction Fees”). With the approval of the Board, the Adviser may waive or adjust the Transaction Fees, including the Fixed Fee and/or Variable Charge (shown in the table below), from time to time. In such cases, the Authorized Participant will reimburse the relevant Fund for, among other things, any difference between the market value at which the securities and/or financial instruments were purchased by the Fund and the cash-in-lieu amount, applicable registration fees, brokerage commissions and certain taxes. In addition, purchasers of Creation Units are responsible for the costs of transferring the deposit securities to the account of the relevant Fund.
+
+**SA24** (sai; Purchase, Redemption and Pricing of Shares: Transaction Fees [whole subsection])
+
+> Investors who use the services of a broker, or other such intermediary may be charged a fee for such services. The Transaction Fees for the Funds are listed in the table below.
+
+**SA25** (sai; Purchase, Redemption and Pricing of Shares: Transaction Fees [whole subsection])
+
+> * As a percentage of the amount invested.
+
+**SA26** (sai; Purchase, Redemption and Pricing of Shares: Transaction Fees [whole subsection])
+
+> Transactions by an Authorized Participant that is a Participating Party using the NSCC system are referred to as transactions “through the Clearing Process.” Transactions by an Authorized Participant that is a DTC Participant using the DTC system are referred to as transactions “outside the Clearing Process.” The Clearing Process is an enhanced clearing process that is available only for certain securities and only to DTC participants that are also participants in the Continuous Net Settlement System of the NSCC. In-kind (portions of) purchase orders not subject to the Clearing Process will go through a manual clearing process run by DTC. Portfolio Deposits that include government securities must be delivered through the Federal Reserve Bank wire transfer system (“Federal Reserve System”). Fund Deposits that include cash may be delivered through the Clearing Process or the Federal Reserve System. In-kind deposits of securities for orders outside the Clearing Process must be delivered through the Federal Reserve System (for government securities) or through DTC (for corporate securities).
+
+**SA27** (sai; Purchase, Redemption and Pricing of Shares: Transaction Fees [whole subsection])
+
+> Because the portfolio securities of the Funds may trade on days that each Exchange is closed or are otherwise not Business Days for the Funds, shareholders may not be able to redeem their shares of the Funds, or to purchase or sell shares of the Funds on each Exchange, on days when the NAV of the Funds could be significantly affected by events in the relevant foreign markets.
+
+**SA28** (sai; Purchase, Redemption and Pricing of Shares: Portfolio Deposit [whole subsection])
+
+> The consideration for a Creation Unit generally consists of the deposit securities and a Cash Component. Together, the deposit securities and the Cash Component constitute the “Portfolio Deposit.” The Cash Component serves the function of compensating for any differences between the net asset value per Creation Unit and the deposit securities. Thus, the Cash Component is equal to the difference between (x) the net asset value per Creation Unit of the relevant Fund and (y) the market value of the deposit securities. If (x) is more than (y), the Authorized Participant will pay the Cash Component to the relevant Fund. If (x) is less than (y), the Authorized Participant will receive the Cash Component from the relevant Fund.
+
+**SA29** (sai; Purchase, Redemption and Pricing of Shares: Portfolio Deposit [whole subsection])
+
+> On each Business Day, prior to the opening of business on each Exchange (currently 9:30 a.m., Eastern Time), the Adviser through the Custodian makes available through NSCC the name and amount of each deposit security in the current Portfolio Deposit (based on information at the end of the previous Business Day) for a Fund and the (estimated) Cash Component, effective through and including the previous Business Day, per Creation Unit. The deposit securities announced are applicable to purchases of Creation Units until the next announcement of deposit securities.
+
+**SA30** (sai; Purchase, Redemption and Pricing of Shares: Portfolio Deposit [whole subsection])
+
+> The deposit securities may change and as rebalancing adjustments and corporate action events of a relevant index, if any, are reflected from time to time by the Adviser in a Fund’s portfolio. The deposit securities may also change in response to the rebalancing and/or constitution of a relevant index. These adjustments will reflect changes known to the Adviser on the date of announcement to be in effect by the time of delivery of the Portfolio Deposit.
+
+**SA31** (sai; Purchase, Redemption and Pricing of Shares: Portfolio Deposit [whole subsection])
+
+> Payment of any stamp duty or the like shall be the sole responsibility of the Authorized Participant purchasing a Creation Unit. The Authorized Participant must ensure that all deposit securities properly denote change in beneficial ownership.
+
+**SA32** (sai; Purchase, Redemption and Pricing of Shares: Portfolio Deposit [whole subsection])
+
+> Each Fund may, in its sole discretion, permit or require the substitution of an amount of cash (“cash-in-lieu”) to be added to the Cash Component to replace any deposit security. A Fund may permit or require cash-in-lieu when, for example, a deposit security may not be available in sufficient quantity for delivery or may not be eligible for transfer through the systems of DTC or the Clearing Process. Similarly, a Fund may permit or require cash in lieu of deposit securities when, for example, the Authorized Participant or its underlying investor is restricted under U.S. or local securities laws or policies from transacting in one or more deposit securities. The Funds will comply with the federal securities laws in accepting deposit securities including that the deposit securities are sold in transactions that would be exempt from registration under the Securities Act. All orders involving cash-in-lieu, as well as certain other types of orders, are considered to be “Custom Orders.”
+
+**SA33** (sai; Purchase, Redemption and Pricing of Shares: Cash Purchase Method [whole subsection])
+
+> When cash purchases of Creation Units are available or specified for a Fund, they will be effected in essentially the same manner as in-kind purchases. In the case of a cash purchase, the investor must pay the cash equivalent of the Portfolio Deposit. In addition, cash purchases will be subject to Transaction Fees, as described above.
+
+**SA34** (sai; Purchase, Redemption and Pricing of Shares: Redemption Basket [whole subsection])
+
+> The consideration received in connection with the redemption of a Creation Unit generally consists of an in-kind basket of designated securities (“Redemption Securities”) and a Cash Component. Together, the Redemption Securities and the Cash Component constitute the “Redemption Basket.”
+
+**SA35** (sai; Purchase, Redemption and Pricing of Shares: Redemption Basket [whole subsection])
+
+> There can be no assurance that there will be sufficient liquidity in Shares in the secondary market to permit assembly of a Creation Unit. In addition, investors may incur brokerage and other costs in connection with assembling a Creation Unit.
+
+**SA36** (sai; Purchase, Redemption and Pricing of Shares: Redemption Basket [whole subsection])
+
+> The Cash Component serves the function of compensating for any differences between the net asset value per Creation Unit and the Redemption Securities. Thus, the Cash Component is equal to the difference between (x) the net asset value per Creation Unit of a Fund and (y) the market value of the Redemption Securities. If (x) is more than (y), the Authorized Participant will receive the Cash Component from a Fund. If (x) is less than (y), the Authorized Participant will pay the Cash Component to a Fund.
+
+**SA37** (sai; Purchase, Redemption and Pricing of Shares: Redemption Basket [whole subsection])
+
+> If the Redemption Securities on a Business Day are different from the deposit securities, prior to the opening of business on each Exchange (currently 9:30 a.m., Eastern Time), the Adviser through the Custodian makes available through NSCC the name and amount of each Redemption Security in the current Redemption Basket (based on information at the end of the previous Business Day) for a Fund and the (estimated) Cash Component, effective through and including the previous Business Day, per Creation Unit. If the Redemption Securities on a Business Day are different from the deposit securities, all redemption requests that day will be processed outside the Clearing Process.
+
+**SA38** (sai; Purchase, Redemption and Pricing of Shares: Redemption Basket [whole subsection])
+
+> The Redemption Securities may change as rebalancing adjustments and corporate action events of the Underlying Index are reflected from time to time by the Adviser in a Fund’s portfolio. The Redemption Securities may also change in response to the rebalancing and/or reconstitution of a relevant index, if any. These adjustments will reflect changes known to the Adviser on the date of announcement to be in effect by the time of delivery of the Redemption Basket.
+
+**SA39** (sai; Purchase, Redemption and Pricing of Shares: Redemption Basket [whole subsection])
+
+> The right of redemption may be suspended or the date of payment postponed: (i) for any period during which the NYSE is closed (other than customary weekend and holiday closings); (ii) for any period during which trading on the NYSE is suspended or restricted; (iii) for any period during which an emergency exists as a result of which disposal of the Shares or determination of the ETF’s NAV is not reasonably practicable; or (iv) in such other circumstances as permitted by the SEC.
+
+**SA40** (sai; Purchase, Redemption and Pricing of Shares: Redemption Basket [whole subsection])
+
+> Each Fund may, in its sole discretion, permit or require the substitution of cash-in-lieu to be added to the Cash Component to replace any Redemption Security. Each Fund may permit or require cash-in-lieu when, for example, a Redemption Security may not be available in sufficient quantity for delivery or may not be eligible for transfer through the systems of DTC or the Clearing Process. Similarly, each Fund may permit or require cash-in-lieu of Redemption Securities when, for example, the Authorized Participant or its underlying investor is restricted under U.S. or local securities law or policies from transacting in one or more Redemption Securities. Each Fund will comply with the federal securities laws in satisfying redemptions with Redemption Securities, including that the Redemption Securities are sold in transactions that would be exempt from registration under the Securities Act. All redemption requests involving cash- in-lieu are considered to be “Custom Redemptions.”
+
+**SA41** (sai; Purchase, Redemption and Pricing of Shares: Cash Redemption Method [whole subsection])
+
+> When cash redemptions of Creation Units are available or specified for a Fund, they will be effected in essentially the same manner as in-kind redemptions. In the case of a cash redemption, the investor will receive the cash equivalent of the Redemption Basket minus any Transaction Fees, as described above.
+
+**SA42** (sai; Tax Status [every paragraph with the word futures or 1256])
+
+> To be treated as a regulated investment company under Subchapter M of the Tax Code, a Fund must also (a) derive at least 90% of its gross income from dividends, interest, payments with respect to securities loans, net income from certain publicly traded partnerships and gains from the sale or other disposition of securities or foreign currencies, or other income (including, but not limited to, gains from options, futures or forward contracts) derived with respect to the business of investing in such securities or currencies, and (b) diversify its holding so that, at the end of each fiscal quarter, (i) at least 50% of the market value of a Fund’s assets is represented by cash, U.S. government securities and securities of other regulated investment companies, and other securities (for purposes of this calculation, generally limited in respect of any one issuer, to an amount not greater than 5% of the market value of a Fund’s assets and 10% of the outstanding voting securities of such issuer) and (ii) not more than 25% of the value of its assets is invested in the securities of (other than U.S. government securities or the securities of other regulated investment companies) any one issuer, two or more issuers that a Fund controls and that are determined to be engaged in the same or similar trades or businesses, or the securities of certain publicly traded partnerships.
+
+**SA43** (sai; Tax Status [every paragraph with the word futures or 1256])
+
+> Options, Futures, Forward Contracts and Swap Agreements
+
+**SA44** (sai; Tax Status [every paragraph with the word futures or 1256])
+
+> To the extent such investments are permissible for a Fund, a Fund’s transactions in options, futures contracts, hedging transactions, forward contracts, straddles and foreign currencies will be subject to special tax rules (including mark-to-market, constructive sale, straddle, wash sale and short sale rules), the effect of which may be to accelerate income to a Fund, defer losses to a Fund, cause adjustments in the holding periods of a Fund’s securities, convert long-term capital gains into short-term capital gains and convert short-term capital losses into long-term capital losses. These rules could therefore affect the amount, timing and character of distributions to shareholders.
+
+**SA45** (sai; Tax Status [every paragraph with the word futures or 1256])
+
+> A Fund’s transactions in foreign currencies, foreign currency-denominated debt securities and certain foreign currency options, futures contracts and forward contracts (and similar instruments) may give rise to ordinary income or loss to the extent such income or loss results from fluctuations in the value of the foreign currency concerned.
+
+**AN01** (annual; Notes to Financial Statements, 3. Significant Accounting Policies [opening, whole])
+
+> The financial statements have been prepared in conformity with U.S. generally accepted accounting principles (“U.S. GAAP”), which require management to make certain estimates and assumptions that affect the reported amounts and disclosures of contingent assets and liabilities at the date of the financial statements and the reported amounts of revenues and expenses during the reporting period. Actual results could differ from those estimates. The Funds are investment companies and accordingly follow the investment company accounting and reporting guidance of the Financial Accounting Standards Board (“FASB”) Accounting Standards Codification Topic 946 Financial Services – Investment Companies, including Accounting Standards Update 2013-08. The following is a summary of significant accounting policies followed by the Funds.
+
+**AN02** (annual; Notes to Financial Statements, 3. Significant Accounting Policies: Investment Valuation [whole])
+
+> Each Fund’s investments are valued using procedures approved by the Board and are generally valued using market valuations (Market Approach). A market valuation generally means a valuation (i) obtained from an exchange, a pricing service, or a major market maker (or dealer) or (ii) based on a price quotation or other equivalent indication of value supplied by an exchange, a pricing service, or a major market maker (or dealer). A price obtained from a pricing service based on such pricing service’s valuation matrix may be considered a market valuation.
+
+**AN03** (annual; Notes to Financial Statements, 3. Significant Accounting Policies: Investment Valuation [whole])
+
+> If market quotations are not readily available, securities will be valued at their fair market value as determined using the “fair value” procedures approved by the Board and the Adviser. Fair value pricing involves subjective judgments and it is possible that the fair value determined for a security may be materially different than the value that could be realized upon the sale of that security. The fair value prices can differ from market prices when they become available or when a price becomes available. The Board has designated the Adviser as its valuation designee to execute these procedures pursuant to Rule 2a-5 under the 1940 Act. Independent pricing services may assist in calculating the value of a Fund’s portfolio securities. The Board reviews the execution of this process and the resultant fair value prices at least quarterly to assure the process produces reliable results. These securities are either categorized as Level 2 or 3 of the fair value hierarchy depending on the relevant inputs used.
+
+**AN04** (annual; Notes to Financial Statements, 3. Significant Accounting Policies: Investment Valuation [whole])
+
+> The Simplify Government Money Market ETF operates as a “government money market fund” pursuant to Rule 2a-7 under the Investment Company Act of 1940, as amended. Although the Fund seeks to continue to qualify as a “government money market fund,” it does not seek to maintain a stable NAV per share using the amortized cost or penny rounding method of valuation. Instead, the Fund calculates its NAV per share based on the market value of its investments. In addition, unlike a traditional money market fund, the Fund operates as an ETF. As an ETF, the Fund's shares will be traded on NYSE Arca and will generally fluctuate in accordance with changes in NAV per share as well as the relative supply of, and demand for, shares on NYSE Arca.
+
+**AN05** (annual; Notes to Financial Statements, 3. Significant Accounting Policies: Investment Valuation [whole])
+
+> Equity securities and ETFs are valued at the most recent sale price or official closing price reported on the exchange (U.S. or foreign) or over-the-counter market on which they trade. Securities or ETFs for which no sales are reported are valued at the calculated mean between the most recent bid and asked quotations on the relevant market or, if a mean cannot be determined, at the most recent bid quotation. Equity securities and ETFs are generally categorized as Level 1 of the fair value hierarchy.
+
+**AN06** (annual; Notes to Financial Statements, 3. Significant Accounting Policies: Investment Valuation [whole])
+
+> Exchange traded options are valued at the mean between the current bid and ask prices on the exchange on which such options are traded. If a mean price is not available, the closing price is used. Exchange traded options are categorized as Level 1. Options with international equity exposure are marked to market using closing prices for the underlying and interpolated option implied volatilities obtained from mid-market prices for options on the same underlying of similar expiries and strike prices. These securities are categorized as Level 2 in the fair value hierarchy.
+
+**AN07** (annual; Notes to Financial Statements, 3. Significant Accounting Policies: Investment Valuation [whole])
+
+> Over-the-counter options are valued based on prices provided by a broker.
+
+**AN08** (annual; Notes to Financial Statements, 3. Significant Accounting Policies: Investment Valuation [whole])
+
+> Debt securities not traded on an exchange may be valued at prices supplied by a pricing agent(s) based on broker or dealer supplied valuations or matrix pricing, a method of valuing securities by reference to the value of other securities with similar characteristics, such as rating, interest rate and maturity. Debt securities are generally categorized as Level 2 of the fair value hierarchy.
+
+**AN09** (annual; Notes to Financial Statements, 3. Significant Accounting Policies: Investment Valuation [whole])
+
+> Swaptions are valued based on prices provided by a third-party pricing vendor that collects and aggregates market data to produce valuations. These securities are categorized as Level 2 in the fair value hierarchy.
+
+**AN10** (annual; Notes to Financial Statements, 3. Significant Accounting Policies: Investment Valuation [whole])
+
+> Futures contracts are generally valued at the settlement prices established each day on the exchange on which they are traded and are categorized as Level 1.
+
+**AN11** (annual; Notes to Financial Statements, 3. Significant Accounting Policies: Investment Valuation [whole])
+
+> Swap agreements and other derivatives are generally valued daily depending on the type of instrument and reference assets based upon market prices, the mean between bid and asked prices quotations from market makers or by a pricing service or other parties in accordance with the valuation procedures approved by the Board. These securities are categorized as Level 2 in the fair value hierarchy.
+
+**AN12** (annual; Notes to Financial Statements, 3. Significant Accounting Policies: Investment Valuation [whole])
+
+> Money Market Funds are valued at NAV.
+
+**AN13** (annual; Notes to Financial Statements, 3. Significant Accounting Policies: Investment Valuation [whole])
+
+> Forward foreign currency contracts are valued at the prevailing forward exchange rate of the underlying currencies and are categorized as Level 2.
+
+**AN14** (annual; Notes to Financial Statements, 3. Significant Accounting Policies: Investment Valuation [whole])
+
+> Reverse repurchase agreements and repurchase agreements are valued at cost plus accrued interest, which approximates fair value. These securities are categorized as Level 2 in the fair value hierarchy.
+
+**AN15** (annual; Notes to Financial Statements, 3. Significant Accounting Policies: Investment Valuation [whole])
+
+> Shares cannot be redeemed or purchased. In the event that a foreign security's market quotations are not readily available or are deemed unreliable (for reasons other than because the foreign exchange on which it trades closed before the Funds' calculation of NAV), the security will be valued at its fair market value as determined in good faith by the Adviser in accordance with procedures approved by the Board. Without fair valuation, it is possible that short-term traders could take advantage of the arbitrage opportunity and dilute the NAV of long-term investors. Fair valuation of the Funds' portfolio securities can serve to reduce arbitrage opportunities available to short-term traders, but there is no assurance that it will prevent dilution of the Funds' NAV by short-term traders. In addition, because the Funds may invest in underlying ETFs which hold portfolio securities primarily listed on foreign (non-U.S.) exchanges, and these exchanges may trade on weekends or other days when the underlying ETFs do not price their shares, the value of these portfolio securities may change on days when you may not be able to buy or sell Shares.
+
+**AN16** (annual; Notes to Financial Statements, 3. Significant Accounting Policies: Investment Valuation [whole])
+
+> Investments initially valued in currencies other than the U.S. dollar are converted to U.S. dollars using exchange rates obtained from pricing services or other parties in accordance with the valuation procedures of the Adviser. As a result, the NAV of the Shares may be affected by changes in the value of currencies in relation to the U.S. dollar. The value of securities traded in markets outside the United States or denominated in currencies other than the U.S. dollar may be affected significantly on a day that the Exchange is closed and an investor is not able to purchase, redeem or exchange Shares.
+
+**AN17** (annual; Notes to Financial Statements, 3. Significant Accounting Policies: Investment Valuation [whole])
+
+> Each Fund categorizes the inputs to valuation techniques used to value its investments into a disclosure hierarchy consisting of three levels as shown below:
+
+**AN18** (annual; Notes to Financial Statements, 3. Significant Accounting Policies: Investment Valuation [whole])
+
+> • Level 1 – Quoted prices in active markets for identical assets that the Funds have the ability to access.
+
+**AN19** (annual; Notes to Financial Statements, 3. Significant Accounting Policies: Investment Valuation [whole])
+
+> • Level 2 – Other significant observable inputs (including quoted prices for similar securities, interest rates, prepayment speeds, credit risk, etc.).
+
+**AN20** (annual; Notes to Financial Statements, 3. Significant Accounting Policies: Investment Valuation [whole])
+
+> • Level 3 – Significant unobservable inputs (including each Fund’s own assumptions in determining the fair value of investments).
+
+**AN21** (annual; Notes to Financial Statements, 3. Significant Accounting Policies: Investment Valuation [whole])
+
+> The inputs or methodology used for valuing securities are not necessarily an indication of the risk associated with investing in those securities.
+
+**AN22** (annual; Notes to Financial Statements, 3. Significant Accounting Policies: Investment Valuation [whole])
+
+> The following is a summary of the valuations as of June 30, 2026 for each Fund based upon the three levels defined above:
+
+**AN23** (annual; Notes to Financial Statements, 3. Significant Accounting Policies: Investment Transactions and Related Income [whole])
+
+> For financial reporting purposes, investment transactions are reported on the trade date. However, for daily NAV determination, portfolio securities transactions are reflected no later than in the first calculation on the first business day following trade date. Dividend income is recorded on the ex-dividend date. Interest income is recognized on an accrual basis and includes, where applicable, the amortization of premium or accretion of discount based on effective yield. Gains or losses realized on sales of securities are determined using the specific identification method by comparing the identified cost of the security lot sold with the net sales proceeds. Dividend Income on the Statements of Operations is shown net of any foreign taxes withheld on income from foreign securities, which are provided for in accordance with each Fund’s understanding of the applicable tax rules and regulations.
+
+**AN24** (annual; Notes to Financial Statements, 4. Derivative Financial Instruments, with Futures Contracts [whole])
+
+> In the normal course of business, a Fund uses derivative contracts in connection with its proprietary trading activities. Derivative contracts are subject to additional risks that can result in a loss of all or part of an investment. A Fund's derivative activities and exposure to derivative contracts are classified by the following primary underlying risks: interest rate, credit, foreign exchange, commodity price, and equity price. In addition to its primary underlying risks, the Fund is also subject to additional counterparty risk due to inability of its counterparties to meet the terms of their contracts.
+
+**AN25** (annual; Notes to Financial Statements, 4. Derivative Financial Instruments, with Futures Contracts [whole])
+
+> FASB Accounting Standards Codification, Derivatives and Hedging (“ASC 815”) requires enhanced disclosures about a Fund's use of, and accounting for, derivative instruments and the effect of derivative instruments on a Fund's financial position and results of operations. Tabular disclosure regarding derivative fair value and gain/loss by contract type (e.g., interest rate contracts, foreign exchange contracts, credit contracts, etc.) is required and derivatives accounted for as hedging instruments under ASC 815 must be disclosed separately from those that do not qualify for hedge accounting. Even though a Fund may use derivatives in an attempt to achieve an economic hedge, a Fund's derivatives are not accounted for as hedging instruments under ASC 815 because investment companies account for their derivatives at fair value and record any changes in fair value in current period earnings.
+
+**AN26** (annual; Notes to Financial Statements, 4. Derivative Financial Instruments, with Futures Contracts [whole])
+
+> A futures contract provides for the future sale by one party and purchase by another party of a specified amount of a specific financial instrument (e.g., units of a stock index) for a specified price, date, time and place designated at the time the contract is made. Brokerage fees are paid when a futures contract is bought or sold and margin deposits must be maintained. Unlike when a Fund purchases or sells a security, no price would be paid or received by a Fund upon the purchase or sale of a futures contract. Upon entering into a futures contract, and to maintain a Fund’s open positions in futures contracts, a Fund would be required to deposit with its custodian or futures broker in a segregated account in the name of the futures broker an amount of cash, U.S. government securities, suitable money market instruments, or other liquid securities, known as “initial margin.” The margin required for a particular futures contract is set by the exchange on which the contract is traded, and may be significantly modified from time to time by the exchange during the term of the contract. If the price of an open futures contract changes (by increase in underlying instrument or index in the case of a sale or by decrease in the case of a purchase) so that the loss on the futures contract reaches a point at which the margin on deposit does not satisfy margin requirements, the broker will require an increase in the margin. However, if the value of a position increases because of favorable price changes in the futures contract so that the margin deposit exceeds the required margin, the broker will pay the excess to a Fund.
+
+**AN27** (annual; Notes to Financial Statements, 4. Derivative Financial Instruments, with Futures Contracts [whole])
+
+> The primary risks associated with the use of futures contracts are (a) the imperfect correlation between the change in market value of the instruments held by a Fund and the price of the forward or futures contract; (b) possible lack of a liquid secondary market for a forward or futures contract and the resulting inability to close a forward or futures contract when desired; (c) investments in futures contracts involve leverage, which means a small percentage of assets in futures can have a disproportionately large impact on a Fund and the Fund can lose more than the principal amount invested; (d) losses caused by unanticipated market movements, which are potentially unlimited; (e) the Adviser’s inability to predict correctly the direction of securities prices, interest rates, currency exchange rates and other economic factors; (f) the possibility that the counterparty will default in the performance of its obligations; and (g) if a Fund has insufficient cash, it may have to sell securities from its portfolio to meet daily variation margin requirements, and a Fund may have to sell securities at a time when it may be disadvantageous to do so.
+
+**AN28** (annual; Notes to Financial Statements, 6. Investment Advisory Agreement and Other Agreements [whole, without the tables])
+
+> The Adviser has overall responsibility for the general management and administration of the Funds, subject to the oversight of the Board. Under an investment advisory agreement between the Trust, on behalf of the Funds, and the Adviser (the “Investment Advisory Agreement”), the Adviser is responsible for arranging sub-advisory, transfer agency, custody, fund administration, and all other non- distribution related services for the Funds to operate.
+
+**AN29** (annual; Notes to Financial Statements, 6. Investment Advisory Agreement and Other Agreements [whole, without the tables])
+
+> For its investment advisory services to the Funds below, the Adviser was entitled to receive a management fee based on each Fund’s average daily net assets, computed and accrued daily and payable monthly, at an annual rate equal to:
+
+**AN30** (annual; Notes to Financial Statements, 6. Investment Advisory Agreement and Other Agreements [whole, without the tables])
+
+> The Adviser for the Fund below has contractually agreed, until at least October 31, 2026, to waive its management fees to 0.25% of the Fund’s average daily net assets. The agreement may only be terminated by the Board on 60 days’ written notice to the Adviser. For the year/period ended June 30, 2026, the Adviser waived fees of the Funds as follows:
+
+**AN31** (annual; Notes to Financial Statements, 6. Investment Advisory Agreement and Other Agreements [whole, without the tables])
+
+> The Adviser for the Fund below has contractually agreed, until at least October 31, 2026, to waive its management fees to 0.15% of the Fund’s average daily net assets. The agreement may only be terminated by the Board on 60 days’ written notice to the Adviser. For the year/period ended June 30, 2026, the Adviser waived fees of the Fund as follows:
+
+**AN32** (annual; Notes to Financial Statements, 6. Investment Advisory Agreement and Other Agreements [whole, without the tables])
+
+> For the year/period ended June 30, 2026, the Adviser waived fees of each Fund as follows:
+
+**AN33** (annual; Notes to Financial Statements, 6. Investment Advisory Agreement and Other Agreements [whole, without the tables])
+
+> The Adviser for the Fund below has contractually agreed, until at least October 31, 2026, to waive its management fees to 0.40% of the
+
+**AN34** (annual; Notes to Financial Statements, 6. Investment Advisory Agreement and Other Agreements [whole, without the tables])
+
+> Fund’s average daily net assets. For the year/period ended June 30, 2026, the Adviser waived fees of the Fund as follows:
+
+**AN35** (annual; Notes to Financial Statements, 6. Investment Advisory Agreement and Other Agreements [whole, without the tables])
+
+> The Adviser for the Fund below has contractually agreed, until at least December 4, 2026, to waive its management fees to 0.07% of the Fund’s average daily net assets. For the year/period ended June 30, 2026, the Adviser waived fees of the Fund as follows:
+
+**AN36** (annual; Notes to Financial Statements, 6. Investment Advisory Agreement and Other Agreements [whole, without the tables])
+
+> The Adviser for the Fund below has contractually agreed, until at least April 5, 2027, to waive its management fees to 0.15% of the Fund’s average daily net assets. For the year/period ended June 30, 2026, the Adviser waived fees of the Fund as follows:
+
+**AN37** (annual; Notes to Financial Statements, 6. Investment Advisory Agreement and Other Agreements [whole, without the tables])
+
+> Under the Investment Advisory Agreement, the Adviser has agreed to pay substantially all the operating expenses of the Funds, excluding interest expenses, taxes, brokerage expenses, Rule 12b-1 fees (if any), acquired fund fees and expenses, expenses incidental to a meeting of a Fund’s shareholders and the management fee. In addition to the excluded operating expenses, the Funds also pay non- operating expenses such as litigation and indemnification expenses and other expenses determined to be extraordinary by the Trust.
+
+**AN38** (annual; Notes to Financial Statements, 6. Investment Advisory Agreement and Other Agreements [whole, without the tables])
+
+> The Board has adopted a Distribution and Service Plan pursuant to Rule 12b-1 under the 1940 Act. In accordance with its Rule 12b- 1 plan, each Fund is authorized to pay an amount up to 0.25% of its average daily net assets each year to finance activities primarily intended to result in the sale of Creation Units of the Fund or the provision of investor services. No Rule 12b-1 fees are currently paid by the Funds and there are no plans to impose these fees. However, in the event Rule 12b-1 fees are charged in the future, they will be paid out of the Fund’s assets, and directly impact the NAV per share of each Fund.
+
+**AN39** (annual; Notes to Financial Statements, 6. Investment Advisory Agreement and Other Agreements [whole, without the tables])
+
+> The Bank of New York Mellon, a wholly-owned subsidiary of The Bank of New York Mellon Corporation, serves as Administrator, Custodian, Accounting Agent and Transfer Agent for each Fund.
+
+**AN40** (annual; Notes to Financial Statements, 6. Investment Advisory Agreement and Other Agreements [whole, without the tables])
+
+> Foreside Financial Services, LLC (the “Distributor”) serves as the distributor of Creation Units for each Fund on an agency basis. The Distributor does not maintain a secondary market in Shares of a Fund. Adviser Compliance Associates, LLC d/b/a ACA Group, a related party to the Distributor, also provides a Chief Compliance Officer to the Trust.
+
+**AN41** (annual; Notes to Financial Statements, 6. Investment Advisory Agreement and Other Agreements [whole, without the tables])
+
+> A Trustee and certain Officers of the Trust are also employees of the Adviser and/or the Distributor.
+
+**AN42** (annual; Notes to Financial Statements, 8. Fund Share Transactions [whole])
+
+> The Funds issue and redeem Shares at NAV only in large blocks of 25,000 Shares or 10,000 shares in the case of Simplify Bitcoin Strategy ETF (each block of Shares is called a “Creation Unit”). Creation Units are issued and redeemed primarily in-kind for securities but may include cash. Individual Shares may only be purchased and sold in secondary market transactions through brokers. Except when aggregated in Creation Units in transactions with Authorized Participants, the Shares are not redeemable securities of the Fund.
+
+**AN43** (annual; Notes to Financial Statements, 8. Fund Share Transactions [whole])
+
+> Fund Shares are listed and traded on their respective exchange on each day that the exchange is open for business (“Business Day”). Each Fund’s Shares may only be purchased and sold on their respective exchange through a broker-dealer. Because each Fund’s Shares trade at market prices rather than at their NAV, Shares may trade at a price equal to the NAV, greater than NAV (premium) or less than NAV (discount).
+
+**AN44** (annual; Notes to Financial Statements, 8. Fund Share Transactions [whole])
+
+> Authorized participants pay a fixed transaction fee of $500 to the Funds’ custodian when purchasing and redeeming Creation Units of a Fund. The transaction fee is used to defray the costs associated with the issuance and redemption of Creation Units. In addition to the fixed transaction fee, the Funds may charge an additional variable fee of up to a maximum of 3% of the amount invested for creations and redemptions in cash, to offset brokerage and impact expenses associated with a cash transaction.
+
+**AN45** (annual; Notes to Financial Statements, 9. Federal Income Taxes [paragraphs with the word futures, margin or 1256])
+
+> The differences between book-basis and tax-basis components of net assets, if applicable, are primarily attributable to the tax deferral of losses on wash sales, grantor trust adjustments, section 1256 mark-to-market treatment of derivatives and return of capital basis adjustments from underlying investments.
+
+**AN46** (annual; Notes to Financial Statements [any other paragraph with the word futures or margin])
+
+> * Includes cumulative unrealized appreciation or unrealized cumulative depreciation on futures contracts as disclosed in the Schedule of Investments or Consolidated Schedule of Investments.
+
+**AN47** (annual; Notes to Financial Statements [any other paragraph with the word futures or margin])
+
+> For the year/period ended June 30, 2026, realized gains/(losses) and the change in unrealized appreciation/(depreciation) on futures contracts by risk type, as disclosed in the Statements of Operations, is as follows:
+
+**AT1** (annual; Schedule of Investments of the Fund, June 30, 2026 [table, transcribed])
+
+> Schedule of Investments of the Fund, June 30, 2026. Columns: description | shares | value
+> U.S. Exchange-Traded Funds – 99.2% | Money Market ETFs - 99.2%: Simplify Government Money Market ETF (Cost $65,673,982) | 656,500 | $65,689,390
+> Money Market Fund – 0.1%: BNY Dreyfus Treasury Obligations Cash Management Fund, Institutional Shares, 3.52% (Cost $76,080) | 76,080 | 76,080
+> Total Investments – 99.3% (Cost $65,750,062) | $65,765,470
+> Other Assets in Excess of Liabilities – 0.7% | 490,991
+> Net Assets – 100.0% | $66,256,461
+> At June 30, 2026, open futures contracts were as follows. Columns: contract | number of contracts | notional value | expiration date | value/unrealized appreciation (depreciation)
+> Long position contracts: U.S. 2 Years Note (CBT) | 1,803 | $198,132,797 | 9/21/26 | $605,294
+
+**AT2** (annual; Notes to Financial Statements, 6. Investment Advisory Agreement: the table of management fee rates [the Fund's row, transcribed])
+
+> Simplify Intermediate Term Treasury Futures Strategy ETF | 0.50%
+

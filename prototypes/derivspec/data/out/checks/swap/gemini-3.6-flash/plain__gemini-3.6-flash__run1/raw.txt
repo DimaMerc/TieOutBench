@@ -1,0 +1,260 @@
+```json
+{
+ "scenarios": {
+  "S01": {
+   "units": {
+    "verdict": "supported",
+    "missing": ""
+   },
+   "notional": {
+    "verdict": "supported",
+    "missing": ""
+   }
+  },
+  "S02": {
+   "unrealized_gain": {
+    "verdict": "supported",
+    "missing": ""
+   },
+   "per_share": {
+    "verdict": "supported",
+    "missing": ""
+   },
+   "price_to_use": {
+    "verdict": "supported",
+    "missing": ""
+   }
+  },
+  "S03": {
+   "one_day": {
+    "verdict": "not supported",
+    "missing": "The passages do not state the day-count convention (e.g., Actual/360) for swap financing rate accruals."
+   },
+   "weekend": {
+    "verdict": "not supported",
+    "missing": "The passages do not state the day-count convention (e.g., Actual/360) for swap financing rate accruals."
+   }
+  },
+  "S04": {
+   "total": {
+    "verdict": "not supported",
+    "missing": "The passages do not state the day-count convention (e.g., Actual/360) for swap financing rate accruals."
+   },
+   "third_day": {
+    "verdict": "not supported",
+    "missing": "The passages do not state the day-count convention (e.g., Actual/360) for swap financing rate accruals."
+   }
+  },
+  "S05": {
+   "income_owed": {
+    "verdict": "supported",
+    "missing": ""
+   },
+   "change_in_unrealized": {
+    "verdict": "supported",
+    "missing": ""
+   },
+   "net_effect_on_net_assets_on_ex_date": {
+    "verdict": "supported",
+    "missing": ""
+   },
+   "error_per_share_if_omitted": {
+    "verdict": "supported",
+    "missing": ""
+   },
+   "error_percent_if_omitted": {
+    "verdict": "supported",
+    "missing": ""
+   }
+  },
+  "S06": {
+   "exposure_before": {
+    "verdict": "supported",
+    "missing": ""
+   },
+   "target_exposure": {
+    "verdict": "supported",
+    "missing": ""
+   },
+   "units_added": {
+    "verdict": "supported",
+    "missing": ""
+   },
+   "units_after": {
+    "verdict": "supported",
+    "missing": ""
+   },
+   "unrealized_after": {
+    "verdict": "supported",
+    "missing": ""
+   }
+  },
+  "S07": {
+   "exposure_before": {
+    "verdict": "supported",
+    "missing": ""
+   },
+   "target_exposure": {
+    "verdict": "supported",
+    "missing": ""
+   },
+   "units_removed": {
+    "verdict": "supported",
+    "missing": ""
+   },
+   "realized": {
+    "verdict": "not supported",
+    "missing": "The passages do not state whether daily swap rebalancing unwinds trigger realized gain/loss recognition or how cost basis for partial unwinds is determined."
+   },
+   "unrealized_after": {
+    "verdict": "supported",
+    "missing": ""
+   }
+  },
+  "S08": {
+   "financing_accrued": {
+    "verdict": "not supported",
+    "missing": "The passages do not state the day-count convention (e.g., Actual/360) for swap financing rate accruals."
+   },
+   "payment_to_fund": {
+    "verdict": "not supported",
+    "missing": "The passages do not state the day-count convention for swap financing rate accruals needed to compute the net payment."
+   },
+   "notional_after": {
+    "verdict": "supported",
+    "missing": ""
+   },
+   "accruals_after": {
+    "verdict": "supported",
+    "missing": ""
+   }
+  },
+  "S09": {
+   "cash_for_shares": {
+    "verdict": "supported",
+    "missing": ""
+   },
+   "fee_received": {
+    "verdict": "supported",
+    "missing": ""
+   },
+   "units_added": {
+    "verdict": "supported",
+    "missing": ""
+   },
+   "nav_per_share_published": {
+    "verdict": "supported",
+    "missing": ""
+   }
+  },
+  "S10": {
+   "cash_paid": {
+    "verdict": "supported",
+    "missing": ""
+   },
+   "units_removed": {
+    "verdict": "supported",
+    "missing": ""
+   },
+   "realized": {
+    "verdict": "not supported",
+    "missing": "The passages do not state whether swap unit unwinds resulting from share redemptions trigger realized gain/loss recognition."
+   },
+   "nav_per_share_published": {
+    "verdict": "supported",
+    "missing": ""
+   }
+  },
+  "S11": {
+   "cash_after": {
+    "verdict": "supported",
+    "missing": ""
+   },
+   "collateral_posted_after": {
+    "verdict": "supported",
+    "missing": ""
+   },
+   "change_in_net_assets": {
+    "verdict": "supported",
+    "missing": ""
+   }
+  },
+  "S12": {
+   "one_day": {
+    "verdict": "not supported",
+    "missing": "The passages do not state the day-count convention (e.g., Actual/365) for fund expense accruals."
+   },
+   "weekend": {
+    "verdict": "not supported",
+    "missing": "The passages do not state the day-count convention (e.g., Actual/365) for fund expense accruals."
+   }
+  },
+  "S13": {
+   "right_net_assets": {
+    "verdict": "supported",
+    "missing": ""
+   },
+   "misstatement": {
+    "verdict": "supported",
+    "missing": ""
+   },
+   "per_share": {
+    "verdict": "supported",
+    "missing": ""
+   },
+   "percent": {
+    "verdict": "supported",
+    "missing": ""
+   },
+   "correction_threshold": {
+    "verdict": "not supported",
+    "missing": "The passages do not state the materiality threshold (e.g. 0.5% or $0.01 per share) for NAV error correction."
+   }
+  },
+  "S14": {
+   "units_after": {
+    "verdict": "supported",
+    "missing": ""
+   },
+   "reset_price_after": {
+    "verdict": "supported",
+    "missing": ""
+   },
+   "unrealized_after": {
+    "verdict": "supported",
+    "missing": ""
+   },
+   "unrealized_before": {
+    "verdict": "supported",
+    "missing": ""
+   },
+   "wrong_unrealized": {
+    "verdict": "supported",
+    "missing": ""
+   }
+  },
+  "S15": {
+   "net_assets_at_close": {
+    "verdict": "not supported",
+    "missing": "The passages do not state the day-count conventions for swap financing (Actual/360) and management fee accruals (Actual/365)."
+   },
+   "nav_per_share_published": {
+    "verdict": "not supported",
+    "missing": "The passages do not state the day-count conventions for swap financing (Actual/360) and management fee accruals (Actual/365)."
+   },
+   "return_percent": {
+    "verdict": "not supported",
+    "missing": "The passages do not state the day-count conventions for swap financing (Actual/360) and management fee accruals (Actual/365)."
+   },
+   "twice_reference_percent": {
+    "verdict": "supported",
+    "missing": ""
+   },
+   "shortfall_basis_points": {
+    "verdict": "not supported",
+    "missing": "The passages do not state the day-count conventions for swap financing (Actual/360) and management fee accruals (Actual/365)."
+   }
+  }
+ }
+}
+```

@@ -1,0 +1,72 @@
+{
+ "a number of days in the year (fee or interest accrual)": {
+  "pattern": "36[056][- ]days?|/ ?36[056]\\b|day[- ]count|actual/36",
+  "hits": {
+   "prospectus": 0,
+   "sai": 0,
+   "annual": 0
+  },
+  "lines": {},
+  "read": ""
+ },
+ "the order in which cost lots are relieved": {
+  "pattern": "first[- ]in,? first[- ]out|\\bfifo\\b|\\blifo\\b|highest cost|average cost|specific identification",
+  "hits": {
+   "prospectus": 0,
+   "sai": 0,
+   "annual": 0
+  },
+  "lines": {},
+  "read": ""
+ },
+ "a policy or threshold for correcting a NAV error": {
+  "pattern": "nav error|pricing error|error correction|reprocess|materiality threshold|correct(ed|ion)? .{0,40}(nav|net asset value)|(nav|net asset value) .{0,40}(error|restat)",
+  "hits": {
+   "prospectus": 0,
+   "sai": 0,
+   "annual": 0
+  },
+  "lines": {},
+  "read": ""
+ },
+ "a dollar amount for the transaction fee": {
+  "pattern": "transaction fee[^.]{0,80}\\$ ?\\d|\\$ ?\\d[^.]{0,80}transaction fee",
+  "hits": {
+   "prospectus": 0,
+   "sai": 0,
+   "annual": 0
+  },
+  "lines": {},
+  "read": ""
+ },
+ "the number of shares in a creation unit": {
+  "pattern": "creation unit[^.]{0,60}\\d{2},\\d{3}|\\d{2},\\d{3} shares[^.]{0,60}creation unit",
+  "hits": {
+   "prospectus": 0,
+   "sai": 0,
+   "annual": 0
+  },
+  "lines": {},
+  "read": ""
+ },
+ "how an option is adjusted when the reference security splits": {
+  "pattern": "(adjust|split)[^.]{0,80}(strike|exercise price|number of contracts|deliverable)",
+  "hits": {
+   "prospectus": 0,
+   "sai": 0,
+   "annual": 0
+  },
+  "lines": {},
+  "read": ""
+ },
+ "how a basket is rounded to whole contracts": {
+  "pattern": "fractional contract|whole contract|round(ed|ing)? (up|down)|whole number of",
+  "hits": {
+   "prospectus": 0,
+   "sai": 0,
+   "annual": 0
+  },
+  "lines": {},
+  "read": ""
+ }
+}

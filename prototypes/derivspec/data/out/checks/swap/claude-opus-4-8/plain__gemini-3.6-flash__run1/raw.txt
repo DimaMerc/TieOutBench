@@ -1,0 +1,96 @@
+I'll analyze each answer field to determine whether the passages settle it.
+
+Key recurring issues:
+- **Day-count convention** (Actual/360): not stated anywhere in passages.
+- **Rebalancing to 2x net assets**: the "2x daily return" objective is stated, but the mechanical rule that notional = 2 × net assets at close is a convention not explicitly stated.
+- **Financing payment direction / rate (OBFR)**: OBFR + spread is stated in the annual report swap table, but scenarios give their own floating rates.
+- **Correction threshold 0.5%**: not in passages.
+
+{"scenarios": {
+"S01": {
+  "units": {"verdict": "not supported", "missing": "that notional exposure = 2x net assets (only 2x daily return is stated, not the exposure-sizing rule)"},
+  "notional": {"verdict": "not supported", "missing": "same exposure-sizing convention (notional = units x price); depends on units"}
+},
+"S02": {
+  "unrealized_gain": {"verdict": "supported", "missing": ""},
+  "per_share": {"verdict": "supported", "missing": ""},
+  "price_to_use": {"verdict": "supported", "missing": ""}
+},
+"S03": {
+  "one_day": {"verdict": "not supported", "missing": "day-count convention (Actual/360) not stated"},
+  "weekend": {"verdict": "not supported", "missing": "day-count/number-of-days convention for weekend accrual not stated"}
+},
+"S04": {
+  "total": {"verdict": "not supported", "missing": "day-count convention not stated"},
+  "third_day": {"verdict": "not supported", "missing": "day-count convention not stated"}
+},
+"S05": {
+  "income_owed": {"verdict": "supported", "missing": ""},
+  "change_in_unrealized": {"verdict": "supported", "missing": ""},
+  "net_effect_on_net_assets_on_ex_date": {"verdict": "supported", "missing": ""},
+  "error_per_share_if_omitted": {"verdict": "supported", "missing": ""},
+  "error_percent_if_omitted": {"verdict": "not supported", "missing": "correct NAV per share ($26.25) not derivable from given figures; used as divisor"}
+},
+"S06": {
+  "exposure_before": {"verdict": "supported", "missing": ""},
+  "target_exposure": {"verdict": "not supported", "missing": "rule that target exposure = 2x net assets not stated"},
+  "units_added": {"verdict": "not supported", "missing": "depends on unstated 2x-exposure target"},
+  "units_after": {"verdict": "not supported", "missing": "depends on unstated 2x-exposure target"},
+  "unrealized_after": {"verdict": "not supported", "missing": "depends on whether rebalance resets/adds units at market; reset treatment not stated"}
+},
+"S07": {
+  "exposure_before": {"verdict": "supported", "missing": ""},
+  "target_exposure": {"verdict": "not supported", "missing": "rule that target exposure = 2x net assets not stated"},
+  "units_removed": {"verdict": "not supported", "missing": "depends on unstated 2x-exposure target"},
+  "realized": {"verdict": "not supported", "missing": "depends on units_removed (unstated target) and that reducing exposure realizes gain/loss at original reset price"},
+  "unrealized_after": {"verdict": "not supported", "missing": "depends on unstated 2x target and treatment of remaining units"}
+},
+"S08": {
+  "financing_accrued": {"verdict": "not supported", "missing": "day-count convention (Actual/360) not stated"},
+  "payment_to_fund": {"verdict": "not supported", "missing": "depends on financing accrual (day-count) and netting of appreciation/dividend/financing"},
+  "notional_after": {"verdict": "not supported", "missing": "rule that notional resets to current units x current price not stated"},
+  "accruals_after": {"verdict": "not supported", "missing": "whether reset zeroes unrealized appreciation and accruals not stated"}
+},
+"S09": {
+  "cash_for_shares": {"verdict": "supported", "missing": ""},
+  "fee_received": {"verdict": "supported", "missing": ""},
+  "units_added": {"verdict": "not supported", "missing": "2x-exposure sizing rule for new assets not stated"},
+  "nav_per_share_published": {"verdict": "supported", "missing": ""}
+},
+"S10": {
+  "cash_paid": {"verdict": "supported", "missing": ""},
+  "units_removed": {"verdict": "not supported", "missing": "2x-exposure sizing rule not stated"},
+  "realized": {"verdict": "not supported", "missing": "depends on units_removed (unstated target) and realization at original reset price"},
+  "nav_per_share_published": {"verdict": "supported", "missing": ""}
+},
+"S11": {
+  "cash_after": {"verdict": "supported", "missing": ""},
+  "collateral_posted_after": {"verdict": "supported", "missing": ""},
+  "change_in_net_assets": {"verdict": "supported", "missing": ""}
+},
+"S12": {
+  "one_day": {"verdict": "not supported", "missing": "day-count basis (Actual/365) and that only the 0.85%/0.95% rate used; daily accrual basis not specified"},
+  "weekend": {"verdict": "not supported", "missing": "day-count basis and number-of-days-accrued convention not stated"}
+},
+"S13": {
+  "right_net_assets": {"verdict": "supported", "missing": ""},
+  "misstatement": {"verdict": "supported", "missing": ""},
+  "per_share": {"verdict": "supported", "missing": ""},
+  "percent": {"verdict": "supported", "missing": ""},
+  "correction_threshold": {"verdict": "not supported", "missing": "0.5% materiality/correction threshold not stated in passages"}
+},
+"S14": {
+  "units_after": {"verdict": "not supported", "missing": "split-adjustment convention for swap units not stated in passages"},
+  "reset_price_after": {"verdict": "not supported", "missing": "split-adjustment of reset price not stated"},
+  "unrealized_after": {"verdict": "not supported", "missing": "depends on unstated split-adjustment convention"},
+  "unrealized_before": {"verdict": "supported", "missing": ""},
+  "wrong_unrealized": {"verdict": "supported", "missing": ""}
+},
+"S15": {
+  "net_assets_at_close": {"verdict": "not supported", "missing": "financing day-count and expense accrual basis not stated"},
+  "nav_per_share_published": {"verdict": "not supported", "missing": "depends on net_assets_at_close (unstated accrual conventions); rounding to cent is stated"},
+  "return_percent": {"verdict": "not supported", "missing": "depends on net_assets_at_close (unstated conventions)"},
+  "twice_reference_percent": {"verdict": "supported", "missing": ""},
+  "shortfall_basis_points": {"verdict": "not supported", "missing": "depends on return_percent (unstated accrual conventions)"}
+}
+}}

@@ -1,0 +1,561 @@
+{
+ "requirements": [
+  {
+   "id": "Q1",
+   "text": "Record each total return swap on its trade date and capture, at minimum, counterparty, reference entity, direction, effective date, termination date, reference units, initial/reset price, notional amount, floating-rate index, spread, payment frequency, day-count convention, rate-reset convention, dividend treatment, collateral terms and settlement currency.",
+   "basis": "document",
+   "quote": "Investment transactions are accounted for on the trade date. The swap table identifies the reference entity, annual financing rate paid, payment frequency, termination date and notional amounts.",
+   "assumption_or_question": ""
+  },
+  {
+   "id": "Q2",
+   "text": "Model a long total return swap so that the Fund receives the positive total return, including income, of the reference investment and pays its negative return, while also accruing the contractual floating financing rate plus spread on the applicable notional.",
+   "basis": "document",
+   "quote": "The return to the Fund on any swap agreement should be the gain or loss on the notional amount plus dividends on the stocks less the interest paid by the Fund on the notional amount.",
+   "assumption_or_question": ""
+  },
+  {
+   "id": "Q3",
+   "text": "Calculate the equity-return component from the contractual reference units multiplied by the change between the current reference value and the applicable initial or last-reset value, adjusted for contractual corporate actions and other total-return components.",
+   "basis": "document",
+   "quote": "Equity swap contracts are marked to market daily based on the value of the underlying security and the change, if any, is recorded as an unrealized gain or loss.",
+   "assumption_or_question": ""
+  },
+  {
+   "id": "Q4",
+   "text": "Mark every open swap to market on each NYSE business day as of the Fund's NAV calculation time, normally 4:00 p.m. Eastern Time, and include the resulting fair value in that day's NAV.",
+   "basis": "document",
+   "quote": "Equity swap contracts are marked to market daily... The Fund calculates NAV once each business day as of the regularly scheduled close of normal trading on the NYSE (normally 4:00 p.m. Eastern Time).",
+   "assumption_or_question": ""
+  },
+  {
+   "id": "Q5",
+   "text": "Use the reference investment's current, readily available closing market quotation corresponding to the Fund's valuation time. Do not carry forward a prior-day quotation when a reliable current quotation is available.",
+   "basis": "document",
+   "quote": "In calculating NAV, the Fund generally values its portfolio investments at their current market value as reflected by readily available market quotations.",
+   "assumption_or_question": ""
+  },
+  {
+   "id": "Q6",
+   "text": "If a current market quotation is unavailable or unreliable, use a fair value determined under the Advisor's approved valuation procedures and retain the price source, override and approval audit trail.",
+   "basis": "document",
+   "quote": "If market quotations are not readily available or are unreliable, the Fund's investments will be fair valued and the fair value will be used to calculate the Fund's NAV.",
+   "assumption_or_question": ""
+  },
+  {
+   "id": "Q7",
+   "text": "Present each derivative instrument in the investment valuation at its net unrealized gain or loss, with a positive amount recorded as an asset and a negative amount recorded as a liability, subject to the Fund's approved financial-statement presentation rules.",
+   "basis": "document",
+   "quote": "Derivative instruments, including swap contracts, are valued at the net unrealized gain (loss) on the instrument.",
+   "assumption_or_question": ""
+  },
+  {
+   "id": "Q8",
+   "text": "Accrue swap financing through each valuation date using the contractual notional, floating-rate observation, spread, calendar-day count and day-count denominator. The accrual must reduce net assets even when it is not yet payable.",
+   "basis": "document",
+   "quote": "Interest income and expenses are recognized on the accrual basis. The Fund will agree to pay to the counterparty a floating rate of interest on the notional amount of the swap agreement.",
+   "assumption_or_question": ""
+  },
+  {
+   "id": "Q9",
+   "text": "Obtain and configure separately for each swap the day-count convention, business-day convention, floating-rate observation date and lag, treatment of weekends and holidays, compounding convention, and whether financing uses beginning, ending, average or reset notional.",
+   "basis": "question",
+   "quote": "The documents identify annual financing rates and monthly payment frequency but do not state these calculation conventions.",
+   "assumption_or_question": "Ask each counterparty and the client to provide the executed confirmation and calculation-agent conventions before build."
+  },
+  {
+   "id": "Q10",
+   "text": "On an ex-dividend date, accrue the contractual dividend or distribution entitlement on the reference units and include it in swap fair value or as a separate swap receivable without double counting it. Recognize the offsetting ex-dividend price movement in the equity-return component.",
+   "basis": "document",
+   "quote": "A total return swap... includes both the income it generates and any capital gains... The counterparty will generally agree to pay the Fund... plus the dividends that would have been received.",
+   "assumption_or_question": ""
+  },
+  {
+   "id": "Q11",
+   "text": "Configure whether reference distributions are passed through at 100% of the gross amount or are adjusted for taxes, fees, special distributions, return of capital or other contractual factors.",
+   "basis": "question",
+   "quote": "The documents describe dividends as part of total return but do not specify the treatment of every distribution type or deduction.",
+   "assumption_or_question": "Ask the counterparty and client for the executed confirmation's distribution provisions."
+  },
+  {
+   "id": "Q12",
+   "text": "At each contractual payment or reset date, net the equity-return amount, dividend or other income amount, and financing amount; record the resulting cash receivable or payable; reclassify the settled swap amounts from unrealized to realized gain or loss; and clear the settled accruals once payment is made or received.",
+   "basis": "document",
+   "quote": "Swap agreements typically are settled on a net basis... Periodic payments received or paid by a Fund are recorded as realized gains or losses.",
+   "assumption_or_question": ""
+  },
+  {
+   "id": "Q13",
+   "text": "Obtain the counterparty's rules for daily resets, payment resets and notional changes, including whether accrued equity return is cash-settled, capitalized into notional, retained as an accrued fair-value amount, or realized without immediate cash movement.",
+   "basis": "question",
+   "quote": "The documents state that payments may be periodic or at conclusion but do not specify the reset mechanics of an individual confirmation.",
+   "assumption_or_question": "Ask the counterparty and client for the reset and settlement provisions before configuring accounting."
+  },
+  {
+   "id": "Q14",
+   "text": "For a partial termination or notional reduction, derecognize the terminated portion, record its associated gain or loss as realized, and retain the remaining portion as unrealized under the contractual lot-allocation method.",
+   "basis": "assumption",
+   "quote": "",
+   "assumption_or_question": "Assume pro-rata allocation to the terminated reference units unless the confirmation requires identified lots, a full reset or another method."
+  },
+  {
+   "id": "Q15",
+   "text": "On full termination, maturity or counterparty closeout, calculate the final equity return, income and financing through the effective closeout date; record the net settlement as realized gain or loss; clear all related fair value and accrual balances; and close the position.",
+   "basis": "document",
+   "quote": "Payments may be made at the conclusion of a swap agreement or periodically during its term... the terms of a swap agreement... may permit the counterparty to immediately close out the transaction with the Fund.",
+   "assumption_or_question": ""
+  },
+  {
+   "id": "Q16",
+   "text": "After each trading day's NAV has been determined, calculate the next trading day's target reference exposure using the approved target multiple, ordinarily approximately 200% of closing net assets, and generate the required swap increase or decrease.",
+   "basis": "document",
+   "quote": "The Fund seeks to rebalance its portfolio daily to keep exposure consistent with its investment objective... The Fund will reposition its portfolio at the end of every trading day.",
+   "assumption_or_question": ""
+  },
+  {
+   "id": "Q17",
+   "text": "Treat end-of-day rebalancing trades as effective for the following single-day measurement period and ensure that the same exposure is not included twice in the closing NAV.",
+   "basis": "document",
+   "quote": "If an investor purchases Fund shares at close of the markets on a given trading day, the investor's exposure... would reflect approximately 200%... during the following trading day.",
+   "assumption_or_question": ""
+  },
+  {
+   "id": "Q18",
+   "text": "Apply split, reverse-split and similar corporate-action factors consistently to reference units and initial/reset prices so that the action alone does not create a swap gain or loss.",
+   "basis": "assumption",
+   "quote": "",
+   "assumption_or_question": "Assume economically neutral adjustment: multiply units and divide the initial/reset price by the same split factor. Confirm the executed swap's corporate-action and calculation-agent provisions."
+  },
+  {
+   "id": "Q19",
+   "text": "Record cash collateral that remains the Fund's property as a transfer from unrestricted cash to segregated or restricted collateral cash, without changing net assets. Record collateral received, title-transfer collateral and non-cash collateral according to the governing agreement.",
+   "basis": "assumption",
+   "quote": "As of June 30, 2026, cash in the amount of $55830545 has been segregated as collateral from the broker for swap contracts.",
+   "assumption_or_question": "Assume posted cash remains a Fund asset. Confirm title, custody location, counterparty presentation, reuse rights and balance-sheet classification under each collateral agreement."
+  },
+  {
+   "id": "Q20",
+   "text": "Accrue interest or other income earned on collateral according to the collateral account or swap agreement and include it in NAV separately from swap financing unless the contract requires net presentation.",
+   "basis": "document",
+   "quote": "The total indirect cost of investing in swaps... may be partially offset by interest earned on cash collateral balances in connection with the swaps.",
+   "assumption_or_question": ""
+  },
+  {
+   "id": "Q21",
+   "text": "Process accepted creation and redemption orders in cash at the applicable next-determined NAV, update shares outstanding, cash and net assets, and adjust swap exposure for the resulting capital activity in the end-of-day rebalance.",
+   "basis": "document",
+   "quote": "Creation Units of the Cash Funds are sold only for cash... The redemption proceeds... will consist solely of cash in an amount equal to the NAV of the shares being redeemed... less a redemption transaction fee.",
+   "assumption_or_question": ""
+  },
+  {
+   "id": "Q22",
+   "text": "Book the $500 creation or redemption transaction fee separately from share capital and apply related transaction costs to the Fund so that the fee offsets those costs to the extent incurred.",
+   "basis": "document",
+   "quote": "Creation Transaction Fee... ALL FUNDS $500... Redemption Transaction Fee... ALL FUNDS $500... transaction fees... are designed to offset the Fund's transfer and other transaction costs.",
+   "assumption_or_question": ""
+  },
+  {
+   "id": "Q23",
+   "text": "Accrue Fund expenses and fees daily and include them as liabilities in NAV. Maintain effective rates and waiver or reimbursement arrangements as configurable data rather than hard-coding a published historical rate.",
+   "basis": "document",
+   "quote": "Expenses and fees... are accrued daily and taken into account for purposes of determining NAV per share.",
+   "assumption_or_question": ""
+  },
+  {
+   "id": "Q24",
+   "text": "Obtain the client's expense-accrual denominator, weekend and holiday treatment, base-net-asset convention, waiver mechanics and effective rate schedule.",
+   "basis": "question",
+   "quote": "The documents state that expenses are accrued daily but do not provide all daily accrual conventions; published expense rates also differ by document and period.",
+   "assumption_or_question": "Ask the client which contractual and capped expense rates apply from each effective date and whether accruals use 365, 366 or another denominator."
+  },
+  {
+   "id": "Q25",
+   "text": "Calculate net assets as total assets less total liabilities, divide by shares outstanding, and publish NAV per share rounded to the nearest cent while retaining unrounded NAV for accounting, performance and subsequent calculations.",
+   "basis": "document",
+   "quote": "The NAV per share... is computed by dividing the value of the net assets... by the total number of shares... outstanding, rounded to the nearest cent.",
+   "assumption_or_question": ""
+  },
+  {
+   "id": "Q26",
+   "text": "Run daily controls that compare reference prices with independent sources, identify stale or unchanged prices, reconcile swap units, notionals, rates, financing, income, collateral and fair value to counterparty records, and route exceptions for review before NAV release.",
+   "basis": "assumption",
+   "quote": "",
+   "assumption_or_question": "Assume these controls are required to implement the documented daily mark-to-market and reliable-price requirements safely."
+  },
+  {
+   "id": "Q27",
+   "text": "Configure the Fund's NAV-error correction threshold and escalation, shareholder-compensation and financial-reporting procedures; do not infer a numerical threshold from these public documents.",
+   "basis": "question",
+   "quote": "The supplied documents require current or fair-valued prices but state no NAV-error correction threshold.",
+   "assumption_or_question": "Ask the client for the Board-approved NAV error and pricing error policy, including any materiality bands and mandatory-correction rules."
+  }
+ ],
+ "scenarios": {
+  "S01": {
+   "units": {
+    "value": 2500000,
+    "basis": "document",
+    "quote": "The Fund seeks to rebalance its portfolio daily to keep exposure consistent with its investment objective... approximately two times (2x) the daily total return.",
+    "assumption_or_question": ""
+   },
+   "notional": {
+    "value": 100000000,
+    "basis": "document",
+    "quote": "The gross return to be exchanged or \"swapped\" between the parties is calculated with respect to a \"notional amount\".",
+    "assumption_or_question": ""
+   }
+  },
+  "S02": {
+   "unrealized_gain": {
+    "value": 2500000,
+    "basis": "document",
+    "quote": "Equity swap contracts are marked to market daily based on the value of the underlying security and the change... is recorded as an unrealized gain or loss.",
+    "assumption_or_question": ""
+   },
+   "per_share": {
+    "value": 1.25,
+    "basis": "document",
+    "quote": "The NAV per share... is computed by dividing the value of the net assets... by the total number of shares... outstanding.",
+    "assumption_or_question": ""
+   },
+   "price_to_use": {
+    "value": 41,
+    "basis": "document",
+    "quote": "The Fund generally values its portfolio investments at their current market value as reflected by readily available market quotations.",
+    "assumption_or_question": ""
+   }
+  },
+  "S03": {
+   "one_day": {
+    "value": 17500,
+    "basis": "question",
+    "quote": "The documents do not state the swap's day-count denominator.",
+    "assumption_or_question": "Ask the counterparty for the confirmation's day-count convention. For this test, assume ACT/360 and one calendar day: $100000000 x 6.3% x 1/360."
+   },
+   "weekend": {
+    "value": 52500,
+    "basis": "question",
+    "quote": "The documents do not state the swap's day-count denominator or weekend treatment.",
+    "assumption_or_question": "Ask the counterparty. For this test, assume ACT/360 with three calendar days from Friday to Monday: $100000000 x 6.3% x 3/360."
+   }
+  },
+  "S04": {
+   "total": {
+    "value": 51805.5555555556,
+    "basis": "question",
+    "quote": "The documents do not state the day-count convention or floating-rate observation lag.",
+    "assumption_or_question": "Ask the counterparty. For this test, assume ACT/360, one day at each stated day's contemporaneous rate, and no observation lag."
+   },
+   "third_day": {
+    "value": 16805.5555555556,
+    "basis": "question",
+    "quote": "The documents do not state the day-count convention or floating-rate observation lag.",
+    "assumption_or_question": "Ask the counterparty. For this test, use 6.05% for the third day under ACT/360: $100000000 x 6.05% / 360."
+   }
+  },
+  "S05": {
+   "income_owed": {
+    "value": 300000,
+    "basis": "document",
+    "quote": "A total return swap... includes both the income it generates and any capital gains... plus the dividends that would have been received.",
+    "assumption_or_question": ""
+   },
+   "change_in_unrealized": {
+    "value": -300000,
+    "basis": "document",
+    "quote": "Equity swap contracts are marked to market daily based on the value of the underlying security.",
+    "assumption_or_question": ""
+   },
+   "net_effect_on_net_assets_on_ex_date": {
+    "value": 0,
+    "basis": "document",
+    "quote": "The return to the Fund... should be the gain or loss on the notional amount plus dividends.",
+    "assumption_or_question": ""
+   },
+   "error_per_share_if_omitted": {
+    "value": 0.15,
+    "basis": "document",
+    "quote": "The NAV per share... is computed by dividing the value of net assets by shares outstanding.",
+    "assumption_or_question": "The omission understates NAV by $300000, or $0.15 per share."
+   },
+   "error_percent_if_omitted": {
+    "value": 0.5714285714285714,
+    "basis": "assumption",
+    "quote": "",
+    "assumption_or_question": "Assume the requested percentage is the $300000 omission divided by correct net assets of $52500000, expressed as a percentage."
+   }
+  },
+  "S06": {
+   "exposure_before": {
+    "value": 102500000,
+    "basis": "document",
+    "quote": "The gross return... is calculated with respect to a notional amount.",
+    "assumption_or_question": ""
+   },
+   "target_exposure": {
+    "value": 105000000,
+    "basis": "document",
+    "quote": "The Fund seeks to rebalance its portfolio daily to keep exposure consistent with its investment objective... approximately two times (2x).",
+    "assumption_or_question": ""
+   },
+   "units_added": {
+    "value": 60975.60975609756,
+    "basis": "document",
+    "quote": "The Fund will reposition its portfolio at the end of every trading day.",
+    "assumption_or_question": ""
+   },
+   "units_after": {
+    "value": 2560975.6097560977,
+    "basis": "document",
+    "quote": "The Fund will reposition its portfolio at the end of every trading day.",
+    "assumption_or_question": ""
+   },
+   "unrealized_after": {
+    "value": 2500000,
+    "basis": "question",
+    "quote": "The documents do not specify the accounting treatment of a notional increase between payment dates.",
+    "assumption_or_question": "Ask the counterparty whether resizing resets or settles existing P&L. For this test, assume the added units start at $41 with zero gain and the existing $2500000 gain remains unrealized."
+   }
+  },
+  "S07": {
+   "exposure_before": {
+    "value": 95000000,
+    "basis": "document",
+    "quote": "The gross return... is calculated with respect to a notional amount.",
+    "assumption_or_question": ""
+   },
+   "target_exposure": {
+    "value": 90000000,
+    "basis": "document",
+    "quote": "The Fund seeks to rebalance its portfolio daily to keep exposure consistent with its investment objective... approximately two times (2x).",
+    "assumption_or_question": ""
+   },
+   "units_removed": {
+    "value": 131578.94736842104,
+    "basis": "document",
+    "quote": "The Fund will reposition its portfolio at the end of every trading day.",
+    "assumption_or_question": ""
+   },
+   "realized": {
+    "value": -263157.8947368421,
+    "basis": "assumption",
+    "quote": "",
+    "assumption_or_question": "Assume a pro-rata partial termination at $38 with a $40 reset price, and that the terminated portion's loss is realized."
+   },
+   "unrealized_after": {
+    "value": -4736842.105263158,
+    "basis": "assumption",
+    "quote": "",
+    "assumption_or_question": "Assume 2368421.052631579 remaining units retain the $40 reset price and the partial termination does not reset the remaining swap."
+   }
+  },
+  "S08": {
+   "financing_accrued": {
+    "value": 525000,
+    "basis": "question",
+    "quote": "The documents state that the Fund pays floating interest on notional but do not state the day-count denominator.",
+    "assumption_or_question": "Ask the counterparty. For this test, assume ACT/360 on the $100000000 pre-reset notional for 30 days at 6.3%."
+   },
+   "payment_to_fund": {
+    "value": 4775000,
+    "basis": "question",
+    "quote": "Swap agreements typically are settled on a net basis.",
+    "assumption_or_question": "Assume the reset pays the $5000000 price gain plus $300000 income less $525000 financing, with no other charges."
+   },
+   "notional_after": {
+    "value": 105000000,
+    "basis": "assumption",
+    "quote": "",
+    "assumption_or_question": "Assume the payment-date reset establishes a new notional at 2500000 units x the $42 closing/reset price."
+   },
+   "accruals_after": {
+    "value": 0,
+    "basis": "assumption",
+    "quote": "",
+    "assumption_or_question": "Assume all equity-return, income and financing accruals are paid and cleared on the stated payment and reset date."
+   }
+  },
+  "S09": {
+   "cash_for_shares": {
+    "value": 1312500,
+    "basis": "document",
+    "quote": "Creation Units of the Cash Funds are sold only for cash... at the NAV per share next computed, plus a transaction fee.",
+    "assumption_or_question": ""
+   },
+   "fee_received": {
+    "value": 500,
+    "basis": "document",
+    "quote": "Creation Transaction Fee... ALL FUNDS $500.",
+    "assumption_or_question": ""
+   },
+   "units_added": {
+    "value": 62500,
+    "basis": "assumption",
+    "quote": "",
+    "assumption_or_question": "Assume the $1312500 creation capital requires twice that amount of new exposure at $42, and the $500 fee offsets equal transaction costs rather than creating additional target exposure."
+   },
+   "nav_per_share_published": {
+    "value": 26.25,
+    "basis": "assumption",
+    "quote": "NAV per share is rounded to the nearest cent.",
+    "assumption_or_question": "Assume the $500 fee is offset by $500 of creation-related costs. Net assets and shares therefore increase proportionately and published NAV remains $26.25."
+   }
+  },
+  "S10": {
+   "cash_paid": {
+    "value": 2624500,
+    "basis": "document",
+    "quote": "Redemption proceeds... consist solely of cash in an amount equal to the NAV of the shares being redeemed... less a redemption transaction fee.",
+    "assumption_or_question": ""
+   },
+   "units_removed": {
+    "value": 125000,
+    "basis": "assumption",
+    "quote": "",
+    "assumption_or_question": "Assume exposure is reduced by twice the $2625000 redemption capital at the $42 closing price; the transaction fee offsets costs and does not alter target exposure."
+   },
+   "realized": {
+    "value": 250000,
+    "basis": "assumption",
+    "quote": "",
+    "assumption_or_question": "Assume a pro-rata partial termination of 125000 units at $42 against the $40 reset price."
+   },
+   "nav_per_share_published": {
+    "value": 26.25,
+    "basis": "assumption",
+    "quote": "NAV per share is rounded to the nearest cent.",
+    "assumption_or_question": "Assume the retained $500 redemption fee is offset by $500 of redemption-related costs, leaving NAV per share unchanged."
+   }
+  },
+  "S11": {
+   "cash_after": {
+    "value": 47000000,
+    "basis": "assumption",
+    "quote": "",
+    "assumption_or_question": "Assume the Fund posts $3000000 from unrestricted cash and retains ownership of the collateral."
+   },
+   "collateral_posted_after": {
+    "value": 3000000,
+    "basis": "assumption",
+    "quote": "Cash... has been segregated as collateral... for swap contracts.",
+    "assumption_or_question": "Assume segregated collateral is recorded as a separate restricted-cash asset."
+   },
+   "change_in_net_assets": {
+    "value": 0,
+    "basis": "assumption",
+    "quote": "",
+    "assumption_or_question": "Assume posting is an asset reclassification, not a payment or title-transfer expense. Confirm this treatment under the collateral agreement."
+   }
+  },
+  "S12": {
+   "one_day": {
+    "value": 1301.3698630136987,
+    "basis": "question",
+    "quote": "Expenses and fees... are accrued daily, but the documents do not state the denominator.",
+    "assumption_or_question": "Ask the client for the expense-accrual convention. For this test, assume 365 calendar days and opening net assets: $50000000 x 0.95% / 365."
+   },
+   "weekend": {
+    "value": 3904.109589041096,
+    "basis": "question",
+    "quote": "The documents do not state weekend expense-accrual treatment.",
+    "assumption_or_question": "Ask the client. For this test, assume three calendar days accrue over Friday-to-Monday using a 365-day denominator."
+   }
+  },
+  "S13": {
+   "right_net_assets": {
+    "value": 48750000,
+    "basis": "document",
+    "quote": "Equity swap contracts are marked to market daily based on the value of the underlying security.",
+    "assumption_or_question": ""
+   },
+   "misstatement": {
+    "value": 3750000,
+    "basis": "document",
+    "quote": "The Fund generally values its portfolio investments at their current market value as reflected by readily available market quotations.",
+    "assumption_or_question": "Using $41 instead of $39.50 overstates the swap and net assets by 2500000 x $1.50."
+   },
+   "per_share": {
+    "value": 1.875,
+    "basis": "document",
+    "quote": "NAV per share is computed by dividing net assets by shares outstanding.",
+    "assumption_or_question": ""
+   },
+   "percent": {
+    "value": 7.6923076923076925,
+    "basis": "assumption",
+    "quote": "",
+    "assumption_or_question": "Assume percentage misstatement means $3750000 divided by the correct $48750000 net assets, expressed as a percentage."
+   },
+   "correction_threshold": {
+    "value": null,
+    "basis": "question",
+    "quote": "The supplied documents state no NAV-error correction threshold.",
+    "assumption_or_question": "Ask the client for the Board-approved NAV and pricing error correction policy. The current price must be used for the initial NAV calculation regardless of the later error-correction threshold."
+   }
+  },
+  "S14": {
+   "units_after": {
+    "value": 10000000,
+    "basis": "assumption",
+    "quote": "",
+    "assumption_or_question": "Assume the swap applies the four-for-one split factor to reference units."
+   },
+   "reset_price_after": {
+    "value": 10,
+    "basis": "assumption",
+    "quote": "",
+    "assumption_or_question": "Assume the contractual reset price is divided by four so the split is economically neutral."
+   },
+   "unrealized_after": {
+    "value": 10000000,
+    "basis": "assumption",
+    "quote": "",
+    "assumption_or_question": "Assume both units and reset price are adjusted: 10000000 x ($11 - $10). Confirm the swap's corporate-action provisions."
+   },
+   "unrealized_before": {
+    "value": 10000000,
+    "basis": "document",
+    "quote": "Equity swap contracts are marked to market daily based on the value of the underlying security.",
+    "assumption_or_question": ""
+   },
+   "wrong_unrealized": {
+    "value": -72500000,
+    "basis": "assumption",
+    "quote": "",
+    "assumption_or_question": "Assume the erroneous books update only the market price to $11 while leaving 2500000 units and the $40 reset price unchanged: 2500000 x ($11 - $40)."
+   }
+  },
+  "S15": {
+   "net_assets_at_close": {
+    "value": 52481198.63013699,
+    "basis": "assumption",
+    "quote": "",
+    "assumption_or_question": "Calculated as $50000000 plus $2500000 swap gain less $17500 financing and $1301.369863 expense. Financing assumes ACT/360; Fund expense assumes 365 days and opening net assets."
+   },
+   "nav_per_share_published": {
+    "value": 26.24,
+    "basis": "document",
+    "quote": "NAV per share is computed by dividing net assets by shares outstanding, rounded to the nearest cent.",
+    "assumption_or_question": "The unrounded NAV is approximately $26.2405993151."
+   },
+   "return_percent": {
+    "value": 4.962397260273989,
+    "basis": "assumption",
+    "quote": "",
+    "assumption_or_question": "Assume performance is calculated from unrounded net assets/NAV: $52481198.63013699 divided by $50000000 less one, expressed as a percentage."
+   },
+   "twice_reference_percent": {
+    "value": 5,
+    "basis": "document",
+    "quote": "The expected return... is equal to... the daily US Cannabis ETF's return multiplied by the Fund's daily leveraged investment objective, minus financing charges and daily operating expenses.",
+    "assumption_or_question": ""
+   },
+   "shortfall_basis_points": {
+    "value": 3.760273972601079,
+    "basis": "assumption",
+    "quote": "",
+    "assumption_or_question": "Calculated from the unrounded return: (5.000000% - 4.962397260273989%) x 100 basis points per percentage point. The shortfall consists of the assumed financing and expense accruals."
+   }
+  }
+ }
+}

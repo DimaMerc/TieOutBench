@@ -1,0 +1,52 @@
+{
+ "fund": "options",
+ "reader": "gemini-3.6-flash",
+ "run": 1,
+ "questions": {
+  "Q01": "O01",
+  "Q02": "O02",
+  "Q03": "O03",
+  "Q04": "O04",
+  "Q05": "O05",
+  "Q06": "O06",
+  "Q07": "O07",
+  "Q08": "O08",
+  "Q09": "O09",
+  "Q10": "O10",
+  "Q11": "O11",
+  "Q12": "O12",
+  "Q13": "O13",
+  "Q14": "O14",
+  "Q15": "O15",
+  "Q16": "O16",
+  "Q17": "O17",
+  "Q18": "O18",
+  "Q19": "O19",
+  "Q20": "O20",
+  "Q21": "O21",
+  "Q22": "O22",
+  "Q23": "O23",
+  "Q24": "O24"
+ },
+ "started": "2026-11-16T17:31:20",
+ "prompt": {
+  "sha256": "045ea006880df66a0f61919c6ef7e66b09f3717ce944b4a7f627e01f89ed2060",
+  "chars": 25955,
+  "tokens_approx": 6488
+ },
+ "max_tokens": 32000,
+ "finish_reason": "stop",
+ "usage": {
+  "completion_tokens": 2365,
+  "prompt_tokens": 5729,
+  "total_tokens": 17349
+ },
+ "content_chars": 10058,
+ "reasoning_chars": 0,
+ "elapsed_s": 42.938,
+ "deadline_hit": false,
+ "temperature": 0.0,
+ "temperature_dropped": false,
+ "token_field": "max_tokens",
+ "endpoint_host": "generativelanguage.googleapis.com"
+}

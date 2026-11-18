@@ -1,0 +1,30 @@
+{
+ "fund": "options",
+ "arm": "ask",
+ "run": 3,
+ "model": "gemini-3.6-flash",
+ "started": "2026-11-16T16:40:45",
+ "prompt": {
+  "sha256": "53cff8dec25ab7f085e02b4753565433de4b71609f39aec476f23e6bb49ff6ef",
+  "chars": 39977,
+  "tokens_approx": 9994
+ },
+ "max_tokens": 32000,
+ "finish_reason": "stop",
+ "usage": {
+  "completion_tokens": 10056,
+  "prompt_tokens": 11344,
+  "prompt_tokens_details": {
+   "cached_tokens": 9295
+  },
+  "total_tokens": 34849
+ },
+ "content_chars": 30784,
+ "reasoning_chars": 0,
+ "elapsed_s": 91.297,
+ "deadline_hit": false,
+ "temperature": 0.0,
+ "temperature_dropped": false,
+ "token_field": "max_tokens",
+ "endpoint_host": "generativelanguage.googleapis.com"
+}

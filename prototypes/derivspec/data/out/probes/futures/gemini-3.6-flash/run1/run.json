@@ -1,0 +1,20 @@
+{
+ "fund": "futures",
+ "reader": "gemini-3.6-flash",
+ "mode": "probe",
+ "started": "2026-11-16T18:32:44",
+ "prompt": {
+  "sha256": "99b7b96d3c3bc09842a956aa2eafb30011b1c83f94276aaf35ac0744f8324f81",
+  "chars": 104437,
+  "tokens_approx": 26109
+ },
+ "max_tokens": 32000,
+ "finish_reason": "stop",
+ "usage": {
+  "completion_tokens": 623,
+  "prompt_tokens": 20693,
+  "total_tokens": 25124
+ },
+ "content_chars": 2854,
+ "elapsed_s": 17.844
+}

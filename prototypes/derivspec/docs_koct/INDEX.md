@@ -1,0 +1,190 @@
+# Second fund: Innovator U.S. Small Cap Power Buffer ETF - October (KOCT)
+
+Collected 2026-11-16 by collect_koct.py from the full text of three public documents (sponsor's site, plain download).
+Passages are cut from the text between a start and an end anchor; tables are transcribed and their figures checked.
+
+| document | file | bytes | sha256 (first 16) | words |
+|---|---|---|---|---|
+| PROSPECTUS dated February 27, 2026, as supplemented October 1, 2026 | https://www.innovatoretfs.com/pdf/koct_prospectus.pdf | 299,851 | 2a23f7386138fadf | 29,778 |
+| STATEMENT OF ADDITIONAL INFORMATION dated February 27, 2026, as supplemented April 16, 2026 | https://www.innovatoretfs.com/pdf/sai_non_us_equity.pdf | 382,314 | 9501c7ddadac7b35 | 63,392 |
+| ANNUAL FINANCIAL STATEMENTS, October 31, 2025 (audited) | https://www.innovatoretfs.com/pdf/do_annual_core_financials.pdf | 4,277,853 | 3280bdff238dad0c | 319,214 |
+
+## Passages
+
+**P1** (prospectus; Cover page)
+
+> If the Fund invests solely in FLEX Options that reference the Underlying ETF, the Cap and Buffer will be provided on a price return basis (i.e., the returns will be provided based on changes in the share price of the Underlying ETF), and the Fund will not receive the benefit of any dividends.
+
+**P2** (prospectus; Principal Investment Strategies)
+
+> Upon conclusion of the Outcome Period, the Fund will receive the cash value of all the FLEX Options it held for the prior Outcome Period. It will then invest in a new series of FLEX Options with an expiration date of approximately one year in the future, and a new Outcome Period will begin.
+
+**P3** (prospectus; Additional Information About the Fund's Principal Investment Strategies)
+
+> Each FLEX Option contract that the Fund enters into references the Underlying ETF and expires on the last day of the Outcome Period. The Fund uses purchased and sold call and put FLEX Options with varying strike prices, the layering of which provides the mechanism for producing the Fund’s desired Outcomes, as detailed below.
+
+**P4** (prospectus; Additional Information About the Fund's Principal Investment Strategies)
+
+> The purchased call FLEX Option provides the Fund’s upside participation that matches that of the Underlying ETF’s share price. At the expiration date, these FLEX Options realize a value equal to that of the Underlying ETF’s share price. The Fund may determine to purchase the Underlying ETF or its component securities directly in lieu of this purchased call FLEX Option position. In such instance, the Fund may invest in additional purchased call and sold put option contracts to, in the aggregate, provide the Fund with full exposure (i.e., 100% notional value) to the Underlying ETF.
+
+**P5** (prospectus; Additional Information About the Fund's Principal Investment Strategies)
+
+> Taken together, the purchase and sale of put FLEX Options produces the 15% “power” Buffer. The Fund’s purchased put FLEX Option contract enables the Fund to profit from decreases in the Underlying ETF’s share price. The Fund’s sold put FLEX Option limits the gains the Fund experiences from the purchased put option contract. These FLEX Option contracts utilize differing strike prices, the combination of which produces the Fund’s 15% power Buffer.
+
+**P6** (prospectus; Additional Information About the Fund's Principal Investment Strategies)
+
+> To help pay for the positions that provide upside exposure to the Underlying ETF and the Buffer, the Fund sells a call FLEX Option that results in the Cap. The Cap level is chosen so that the combined net purchase prices in all of the Fund’s positions is approximately equal to the Fund’s NAV. The Cap is the strike price of the sold call FLEX Option and effectively trades away the Fund’s ability to participate in upside price return gains of the Underlying ETF that exceed the strike price of the sold call FLEX Option.
+
+**P7** (prospectus; Fund Investments: FLEX Options)
+
+> The FLEX Options in which the Fund invests are all European style option contracts (option contracts that are exercisable only on the expiration date). The FLEX Options are listed on the Chicago Board Options Exchange.
+
+**P8** (prospectus; Fund Investments: FLEX Options)
+
+> Since the FLEX Options held by the Fund are exchange-traded, these will be valued on a mark-to-market basis.
+
+**P9** (prospectus; Management Fee)
+
+> Pursuant to an investment advisory agreement between Innovator and the Trust, on behalf of the Fund (the “Investment Management Agreement”), the Fund has agreed to pay an annual unitary management fee to Innovator in an amount equal to 0.79% of its average daily net assets.
+
+**P10** (prospectus; How to Buy and Sell Shares)
+
+> The Fund will issue or redeem its Shares at NAV per Share only in Creation Units.
+
+**P11** (prospectus; Frequent Purchases and Redemptions of Shares)
+
+> To minimize these potential consequences of frequent purchases and redemptions of Shares, the Fund imposes transaction fees on purchases and redemptions of Creation Units to cover the custodial and other costs the Fund incurs in effecting trades.
+
+**P12** (prospectus; Net Asset Value)
+
+> US Bancorp Fund Services LLC (“USBFS”), the Fund’s administrator and fund accounting agent, calculates the Fund’s NAV at the close of regular trading (ordinarily 4:00 p.m. E.S.T.) every day the New York Stock Exchange is open. The NAV for one Share is the value of that Share’s portion of the net assets of the Fund, which is calculated by taking the market price of the Fund’s total assets, including any interest or dividends accrued but not yet collected, less all liabilities, and dividing such amount by the total number of Shares outstanding. The result, rounded to the nearest cent is the NAV per Share.
+
+**P13** (prospectus; Net Asset Value)
+
+> FLEX Options listed on an exchange will typically be valued at a model-based price provided by the exchange at the official close of that exchange’s trading day. However, when the Fund’s option has a same-day market trading price, this same-day market trading price will be used for FLEX Option values instead of the exchange’s model-based price. If the exchange on which the option is traded is unable to provide a model price, model-based FLEX Options prices will additionally be provided by a backup third-party pricing provider. In selecting the model prices, the Sub-Adviser may provide a review of the calculation of model prices provided by each vendor, and may note to such vendors of any data errors observed, or where an underlying component value of the model pricing package may be missing or incorrect, prior to publication by the vendor of the model pricing to the Fund Accounting Agent for purposes of that day’s NAV. If either pricing vendor is not available to provide a model price for that day, the value of a FLEX option will be determined by Innovator as Valuation Designee in accordance with the Valuation Procedures. In instances where in the same trading day, a particular FLEX Option is represented in an all-cash basket (either a creation unit or redemption unit), as well as in an in-kind basket (either a creation unit or a redemption unit), for valuation purposes that trading day the Fund will default to use the trade price for both instances, rather than the model price otherwise available for the in-kind transaction.
+
+**S1** (sai; FLEX Options)
+
+> FLexible EXchange® Options (“FLEX Options”) are customized option contracts available through national securities exchanges that are guaranteed for settlement by the Options Clearing Corporation (“OCC”). FLEX Options are listed on a U.S. national securities exchange. FLEX Options provide investors with the ability to customize assets referenced by the options, exercise prices, exercise styles (i.e., American-style, exercisable any time prior to the expiration date, or European-style, exercisable only on the option expiration date) and expiration dates, while achieving price discovery in competitive, transparent auctions markets and avoiding the counterparty exposure of over-the-counter (“OTC”) options positions. Each option contract entitles the holder thereof to purchase (for the call options) or sell (for the put options) shares of the reference asset at the strike price.
+
+**S2** (sai; Certain Considerations Regarding Options)
+
+> Option contracts that expire unexercised have no value.
+
+**S3** (sai; Certain Considerations Regarding Options)
+
+> Notwithstanding the above, the Funds utilize FLEX Options that are cash-settled. Cash-settled option contracts give the holder the right to receive an amount (or owe an amount) of cash upon the exercise of the option contracts. Gain or loss depends on changes in the value of the Reference Asset’s price return relative to the strike price for a given option contract. The amount of cash is equal to the difference between the closing price of the Reference Asset’s price return and the exercise price of the option contract times a specified multiple (“multiplier”), which determines the total value for each point of such difference.
+
+**S4** (sai; Creation and Redemption of Creation Units: Basket Composition and Custom Baskets)
+
+> The Funds may effect creation and redemptions for in-kind securities or for cash, rather than in-kind securities. Creation Units are sold at their NAV plus a transaction fee.
+
+**S5** (sai; Creation and Redemption of Creation Units: Basket Composition and Custom Baskets)
+
+> Each Fund may utilize a “pro-rata basket” or a “custom basket” in reliance on Rule 6c-11. A pro-rata basket is a basket that is a pro rata representation of the ETF’s portfolio holdings. When utilizing a pro-rata basket, minor deviations may occur when it is not operationally feasible to include a particular instrument within the basket, except to the extent that the Fund utilized different baskets in transactions on the same Business Day.
+
+**S6** (sai; Creation and Redemption of Creation Units: Placement of Creation or Redemption Orders)
+
+> Except as set forth below, all orders to purchase or redeem Creation Units must be received by the transfer agent in the proper form required by the Participant Agreement no later than the closing time of the regular trading session of the NYSE (ordinarily 4:00 p.m. Eastern Time) on each day the NYSE is open for business (the “Closing Time”) in order for the purchase or redemption of Creation Units to be effected based on the NAV of shares of a Fund as next determined on such date after receipt of the order in proper form.
+
+**S7** (sai; Creation and Redemption of Creation Units: Placement of Creation or Redemption Orders)
+
+> The delivery of Creation Units properly created will occur no later than the first Business Day following the day on which the purchase order is deemed received (“T+1”). The requisite Cash Redemption Amount (as defined below) for an order properly submitted to redeem Creation Units will ordinarily be transferred no later than T+1.
+
+**S8** (sai; Creation and Redemption of Creation Units: Purchase and Issuance of Creation Units)
+
+> The consideration for the purchase of a Creation Unit of shares of a Fund may consist of the in-kind deposit of a designated portfolio of securities and other instruments (the “Deposit Instruments”) and an amount of cash computed as described below (the “Cash Component”). Together, the Deposit Instruments (and/or any cash with respect to cash purchases and cash-in-lieu amounts) and the Cash Component constitute the “Fund Deposit,” which represents the minimum initial and subsequent investment amount for a Creation Unit of such Fund. The Cash Component is sometimes also referred to as the Balancing Amount. The Cash Component serves the function of compensating for any differences between the NAV per Creation Unit and the “Deposit Amount” (an amount equal to the aggregate market value of the Deposit Instruments and/or cash in lieu of all or a portion of the Deposit Instruments). The Cash Component is an amount equal to the difference between the NAV of a Fund’s shares (per Creation Unit) and the Deposit Amount. If the Cash Component is a positive number (i.e., the NAV per Creation Unit exceeds the Deposit Amount), the creator will deliver the Cash Component. If the Cash Component is a negative number (i.e., the NAV per Creation Unit is less than the Deposit Amount), the creator will receive the Cash Component.
+
+**S9** (sai; Creation and Redemption of Creation Units: Delivery of Redemption Proceeds)
+
+> The redemption proceeds for a Creation Unit generally consist of the Deposit Instruments—as announced on the Business Day of the request for redemption received in proper form—plus or minus cash in an amount equal to the difference between the net asset value of the Funds’ shares (per Creation Unit) being redeemed, as next determined after a receipt of a request in proper form, and the aggregate market value of the Deposit Instruments (the “Cash Redemption Amount”), less the applicable Redemption Transaction Fee as described below and, if applicable, any operational processing and brokerage costs, transfer fees or stamp taxes. In the event that the Deposit Instruments have an aggregate market value greater than the net asset value of the applicable Fund’s shares (per Creation Unit), a compensating cash payment equal to the difference plus the applicable Redemption Transaction Fee and, if applicable, any operational processing and brokerage costs, transfer fees or stamp taxes, is required to be made by or through an Authorized Participant by the redeeming shareholder.
+
+**S10** (sai; Creation and Redemption of Creation Units: Creation Transaction Fees)
+
+> Each Fund imposes fees in connection with the purchase of Creation Units. Each Fund, or the Distributor on behalf of the Fund, will provide Authorized Participants with prior notice of such Fees. Each Fund may adjust the fee from time to time based upon actual experience. The price for each Creation Unit will equal the daily NAV per share of a Fund times the number of shares in a Creation Unit, plus the fees described above and, if applicable, any operational processing and brokerage costs, transfer fees, stamp taxes and part or all of the spread between the expected bid and offer side of the market related to the securities comprising the creation basket.
+
+**S11** (sai; Creation and Redemption of Creation Units: Redemption Transaction Fees)
+
+> Each Fund imposes fees in connection with the redemption of Creation Units. Each Fund, or the Distributor on behalf of the Fund, will provide the Authorized Participants with prior notice of any such fees. Each Fund may adjust the fee from time to time based upon actual experience. The price received for each Creation Unit will equal the daily NAV per share of a Fund times the number of shares in a Creation Unit, minus the fees described above and, if applicable, any operational processing and brokerage costs, transfer fees, stamp taxes and part or all of the spread between the expected bid and offer side of the market related to the securities comprising the redemption basket.
+
+**S12** (sai; Determining Offering Price and Net Asset Value)
+
+> In accordance with procedures approved by the Trustees, the NAV per share of the Fund’s Shares is calculated by the Fund’s provider of administrative services by determining the value of the net assets attributed to the Fund and dividing by the number of outstanding shares of the Fund. All securities are generally valued on each Business Day as of the close of regular trading on the NYSE (normally, but not always, 4:00 p.m. Eastern time), or such other times as the NYSE or the National Association of Securities Dealers Automated Quotations System (“NASDAQ”) market may officially close.
+
+**S13** (sai; Determining Offering Price and Net Asset Value)
+
+> Portfolio securities of the Fund are generally valued as follows:
+
+**S14** (sai; Determining Offering Price and Net Asset Value [items (ix) and (x) of the list that follows; items (i) to (viii) concern other instruments])
+
+> (ix) exchange-traded options contracts with settlement prices will be valued at the last published settlement price on an exchange where they are principally traded (or, if a sale occurs after the last published settlement price but before the NAV calculation time, at the last sale price at the time closest to, but no later than, the NAV calculation time); (x) exchange-traded options contracts without settlement prices will be valued at the midpoint of the bid and ask prices on an exchange where they are principally traded (or, in the absence of two-way trading, at the last bid price for long positions and the last ask price for short positions at the time closest to, but no later than, the NAV calculation time);
+
+**A1** (annual; Notes to Financial Statements, 2. Significant Accounting Policies: Valuation)
+
+> Valuation: The net asset values (“NAV”) of the Funds are determined as of the close of regular trading on the NYSE (normally 4:00 p.m. ET). If the NYSE closes early on a valuation day, the Funds shall determine NAV as of that time.
+
+**A2** (annual; Notes to Financial Statements, 2. Significant Accounting Policies: Valuation)
+
+> Exchange-traded option contracts (other than FLEX Option contracts) will be valued at the closing price in the market where such contracts are principally traded. If no closing price is available, they will be fair valued at the mean of their most recent bid and asked price, if available, and otherwise at their closing bid price. OTC options are fair valued at the mean of the most recent bid and asked price, if available, and otherwise at their closing bid price. FLEX Options will be valued at a model-based price provided by the exchange on which the option is traded at the official close of that exchange’s trading date. Otherwise, the value of a FLEX Option will be determined by the Valuation Designee in accordance with the Trust’s valuation procedures.
+
+**A3** (annual; Notes to Financial Statements, 2. Significant Accounting Policies: Option Contracts)
+
+> When the Funds purchase an option, an amount equal to the premium paid by the Funds are recorded as an investment and is subsequently adjusted to the current value of the option purchased. If an option expires on the stipulated expiration date or if the Funds enter into a closing sale transaction, a gain or loss is realized. If a call option is exercised, the cost of the security acquired is increased by the premium paid for the call. If a put option is exercised, a gain or loss is realized from the sale of the underlying security, and the proceeds from such sale are decreased by the premium originally paid. Purchased options are non-income producing securities. When the Funds write an option, an amount equal to the premium received by the Funds are recorded as a liability and is subsequently adjusted to the current value of the option written. Premiums received from writing options that expire unexercised are treated by the Funds on the expiration date as realized gain from written options. The difference between the premium and the amount paid on effecting a closing purchase transaction, including brokerage commissions, is also treated as a realized gain, or if the premium is less than the amount paid for the closing purchase transaction, as a realized loss. If a call option is exercised, the premium is added to the proceeds from the sale of the underlying security in determining whether the Funds have realized a gain or loss. If a put option is exercised, the premium reduces the cost basis of the securities purchased by the Funds. The Funds, as writers of an option, bear the market risk of an unfavorable change in the price of the security underlying the written option.
+
+**A4** (annual; Notes to Financial Statements, 2. Significant Accounting Policies: Option Contracts)
+
+> All of the FLEX Option contracts held by the Funds are fully funded and cash settled, therefore balance sheet offsetting under U.S. GAAP does not apply.
+
+**A5** (annual; Notes to Financial Statements, 2. Significant Accounting Policies)
+
+> Investment Transactions and Investment Income: Investment transactions are recorded on the trade date. The Trust determines the gain or loss realized from investment transactions on the basis of identified cost. Dividend income, if any, is recognized on the ex-dividend date. Interest income, including accretion of discounts and amortization of premiums is recognized on an accrual basis using the effective yield method.
+
+**A6** (annual; Notes to Financial Statements, 3. Investment Advisor and Other Affiliates [the Fund is one of the "other Innovator ETFs" of this sentence])
+
+> All other Innovator ETFs included in this report each, respectively, pay monthly the Adviser a unitary fee calculated daily based on the average daily net assets of each Fund at the annual rate of 0.79%. During the term of the Advisory Agreement, the Adviser pays all expenses of the Funds, including the cost of transfer agency, custody, fund administration, legal, audit, and other services and license fees, except for the fees paid under the Advisory Agreement, interest, taxes, brokerage commissions and other expenses connected with the execution of portfolio transactions, distribution and service fees payable pursuant to a Rule 12b-1 plan, if any, and extraordinary expenses.
+
+**A7** (annual; Notes to Financial Statements, 5. Creation and Redemption Transactions)
+
+> The Funds issue and redeem shares on a continuous basis at NAV only in blocks of shares called “Creation Units.” Creation Units are issued and redeemed principally for cash.
+
+**A8** (annual; Notes to Financial Statements, 5. Creation and Redemption Transactions)
+
+> A transaction fee is applicable to each transaction regardless of the number of units purchased or sold in the transaction. Each Fund, subject to approval by the Board of Trustees, may adjust transaction fees from time to time based upon actual experience. Additional charges received by the Funds, if any, are disclosed as Transaction Fees on the Statements of Changes in Net Assets.
+
+**A9** (annual; Schedule of Investments of the Fund, October 31, 2025: footnote to the Money Market Deposit Account)
+
+> The U.S. Bank Money Market Deposit Account (the “MMDA”) is a short-term vehicle in which the Fund holds cash balances. The MMDA will bear interest at a variable rate that is determined based on market conditions and is subject to change daily. The rate as of October 31, 2025 was 3.70%.
+
+**A10** (annual; Notes to Financial Statements: footnote (b) to the table of realized gain or loss on derivatives)
+
+> (b) Amount is included in realized gain/(loss) in-kind on the Statements of Operations.
+
+**T1** (annual; Schedule of Investments and Schedule of Written Options of the Fund, October 31, 2025 [table, transcribed])
+
+> Columns: description | notional amount | contracts | value
+> PURCHASED OPTIONS - 106.3% | Call Options - 99.6%: iShares Russell 2000 ETF, Expiration: 09/30/2026; Exercise Price: $2.42 | $138,676,736 | 5,632 | $136,591,432
+> PURCHASED OPTIONS | Put Options - 6.7%: iShares Russell 2000 ETF, Expiration: 09/30/2026; Exercise Price: $241.96 | 138,676,736 | 5,632 | 9,145,523
+> TOTAL PURCHASED OPTIONS (Cost $143,545,825) | 145,736,955
+> WRITTEN OPTIONS - (6.5)% | Call Options - (3.8)%: iShares Russell 2000 ETF, Expiration: 09/30/2026; Exercise Price: $283.53 | $(138,676,736) | (5,632) | $(5,169,782)
+> WRITTEN OPTIONS | Put Options - (2.7)%: iShares Russell 2000 ETF, Expiration: 09/30/2026; Exercise Price: $205.67 | (138,676,736) | (5,632) | (3,798,784)
+> TOTAL WRITTEN OPTIONS (Premiums received $8,485,782) | $(8,968,566)
+> Money Market Deposit Account - 0.3% | 401,470
+> Liabilities in Excess of Other Assets - (6.6)% | (9,055,737)
+> TOTAL NET ASSETS - 100.0% | $137,082,688
+> Footnotes to the options: Exchange-traded. 100 shares per contract. Purchased options: Non-income producing security; Held in connection with written option contracts.
+
+**T2** (annual; Notes to Financial Statements: the effect of derivative instruments on the Statements of Operations [column headings, transcribed])
+
+> Amount of Realized Gain/(Loss) on Derivatives Recognized in Income, columns: Purchased Options(a) | Purchased Options in-kind(b) | Options Written | Options Written in-kind(b)
+
+## Searched for over the whole text and not found
+
+| what | pattern | hits: prospectus / sai / annual | read |
+|---|---|---|---|
+| a number of days in the year (fee or interest accrual) | `36[056][- ]days?|/ ?36[056]\b|day[- ]count|actual/36` | 0 / 0 / 0 |  |
+| the order in which cost lots are relieved | `first[- ]in,? first[- ]out|\bfifo\b|\blifo\b|highest cost|average cost|specific identification` | 0 / 0 / 0 |  |
+| a policy or threshold for correcting a NAV error | `nav error|pricing error|error correction|reprocess|materiality threshold|correct(ed|ion)? .{0,40}(nav|net asset value)|(nav|net asset value) .{0,40}(error|restat)` | 0 / 0 / 0 |  |
+| a dollar amount for the transaction fee | `transaction fee[^.]{0,80}\$ ?\d|\$ ?\d[^.]{0,80}transaction fee` | 0 / 0 / 0 |  |
+| the number of shares in a creation unit | `creation unit[^.]{0,60}\d{2},\d{3}|\d{2},\d{3} shares[^.]{0,60}creation unit` | 0 / 0 / 0 |  |
+| how an option is adjusted when the reference security splits | `(adjust|split)[^.]{0,80}(strike|exercise price|number of contracts|deliverable)` | 0 / 0 / 0 |  |
+| how a basket is rounded to whole contracts | `fractional contract|whole contract|round(ed|ing)? (up|down)|whole number of` | 0 / 0 / 0 |  |
